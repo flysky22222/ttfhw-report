@@ -3,7 +3,7 @@
   "use strict";
   const SCEN = { user: "用户场景", developer: "开发者场景" };
   const RES = { success: "成功", partial: "部分成功", failed: "失败", unknown: "未知", not_run: "未执行" };
-  const COMM_ORDER = ["openEuler","HPCKit","UBS Core","openUBMC","CANN","MindSpeed","MindIE","PTA","MindSpore","openGauss","Ascend","其他"];
+  const COMM_ORDER = ["openEuler","HPCKit","UBS Core","openUBMC","CANN","MindSpeed","MindIE","PTA","MindSpore","openGauss","Triton","TileLang","Ascend","其他"];
   const COLOR = { success: "#0f9d58", partial: "#d98a00", failed: "#d23f3f", unknown: "#b0b7c3", not_run: "#98a2b3" };
 
   // 内联 SVG 图标（stroke 风格）
@@ -71,7 +71,7 @@
     const content = document.getElementById("content"), empty = document.getElementById("empty");
     content.innerHTML = ""; empty.hidden = recs.length > 0;
     if (!recs.length) return;
-    (state.scenario === "all" ? ["developer", "user"] : [state.scenario]).forEach(sc => {
+    (state.scenario === "all" ? ["user", "developer"] : [state.scenario]).forEach(sc => {
       const sr = recs.filter(r => r.scenario === sc);
       if (sr.length) content.appendChild(scenarioBlock(sc, sr));
     });
@@ -222,7 +222,7 @@
     const defects = r.defects || [];
     if (defects.length) sections.push(`<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）</h2>
       <table class="dtable"><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
-        defects.map(d => `<tr><td>${esc(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
+        defects.map(d => `<tr><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
           <td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
 
     const problems = (r.problems || []).filter(p => p.title);
@@ -237,11 +237,14 @@
       hist.map(h => `<div class="hist" data-id="${h.id}"><span>${h.date}</span><span class="badge ${h.result}">${RES[h.result]}</span>
         <span class="src">${h.scene && h.scene !== "compile-verify" ? h.scene : ""}</span><span class="num mono" style="text-align:right">${h.totalMinutes ? h.totalMinutes + " min" : "—"}</span></div>`).join("")}</div></div>`);
 
+    if (r.reportFile) sections.push(`<div class="section"><h2>${ico("doc")} 完整报告（原始文档）</h2><div id="fullReport" class="full-report">加载中…</div></div>`);
+
     content.innerHTML = `<div class="detail"><a class="back" href="#">‹ 返回总览</a>
       <div class="detail-head"><div class="dh-id"><h1>${ico("repo")} ${r.repo}</h1>
         <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span><span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div></div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
     content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { location.hash = "#id=" + h.dataset.id; }));
+    if (r.reportFile) loadReport(r);
     window.scrollTo(0, 0);
   }
 
@@ -251,4 +254,42 @@
   }
   const badge = s => `<span class="badge ${s || "unknown"}">${RES[s] || "未知"}</span>`;
   const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // 行内 markdown：粗体 / 行内代码 / 链接
+  const inline = s => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+  // 轻量 markdown → HTML（标题/表格/列表/代码块/引用/段落）
+  function mdToHtml(md) {
+    const lines = md.replace(/\r/g, "").split("\n"), out = [];
+    let i = 0;
+    while (i < lines.length) {
+      let ln = lines[i];
+      if (/^```/.test(ln)) { const buf = []; i++; while (i < lines.length && !/^```/.test(lines[i])) buf.push(lines[i++]); i++; out.push(`<pre class="md-code">${esc(buf.join("\n"))}</pre>`); continue; }
+      if (/^\s*\|.*\|/.test(ln)) {
+        const rows = []; while (i < lines.length && /^\s*\|.*\|/.test(lines[i])) rows.push(lines[i++]);
+        const cells = r => r.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+        const head = cells(rows[0]); const body = rows.slice(rows[1] && /^[\s|:-]+$/.test(rows[1]) ? 2 : 1);
+        out.push(`<table class="md-table"><thead><tr>${head.map(h => `<th>${inline(h)}</th>`).join("")}</tr></thead><tbody>${
+          body.map(r => `<tr>${cells(r).map(c => `<td>${inline(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`); continue;
+      }
+      const h = ln.match(/^(#{1,6})\s+(.*)/); if (h) { out.push(`<h${h[1].length} class="md-h">${inline(h[2])}</h${h[1].length}>`); i++; continue; }
+      if (/^\s*[-*]\s+/.test(ln)) { const items = []; while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) items.push(lines[i++].replace(/^\s*[-*]\s+/, "")); out.push(`<ul class="md-ul">${items.map(t => `<li>${inline(t)}</li>`).join("")}</ul>`); continue; }
+      if (/^\s*\d+\.\s+/.test(ln)) { const items = []; while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) items.push(lines[i++].replace(/^\s*\d+\.\s+/, "")); out.push(`<ol class="md-ol">${items.map(t => `<li>${inline(t)}</li>`).join("")}</ol>`); continue; }
+      if (/^\s*>/.test(ln)) { out.push(`<blockquote class="md-q">${inline(ln.replace(/^\s*>\s?/, ""))}</blockquote>`); i++; continue; }
+      if (/^\s*(---|\*\*\*)\s*$/.test(ln)) { out.push("<hr>"); i++; continue; }
+      if (!ln.trim()) { i++; continue; }
+      out.push(`<p class="md-p">${inline(ln)}</p>`); i++;
+    }
+    return out.join("\n");
+  }
+
+  function loadReport(r) {
+    fetch("./" + r.reportFile).then(x => x.ok ? x.text() : Promise.reject(x.status)).then(txt => {
+      const el = document.getElementById("fullReport"); if (!el) return;
+      if (r.reportFile.endsWith(".json")) { let p = txt; try { p = JSON.stringify(JSON.parse(txt), null, 2); } catch (e) {} el.innerHTML = `<pre class="json-dump">${esc(p)}</pre>`; }
+      else el.innerHTML = mdToHtml(txt);
+    }).catch(e => { const el = document.getElementById("fullReport"); if (el) el.textContent = "报告加载失败：" + e; });
+  }
+  window.__loadReport = loadReport;
 })();
