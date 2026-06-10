@@ -1,0 +1,6765 @@
+{
+  "generatedAt": "2026-06-10",
+  "phaseNames": {
+    "user": [
+      "了解",
+      "安装",
+      "使用",
+      "贡献"
+    ],
+    "developer": [
+      "获取",
+      "编译构建",
+      "测试",
+      "社区CI成功"
+    ]
+  },
+  "months": [
+    "2026-06",
+    "2026-05",
+    "2026-04"
+  ],
+  "records": [
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "hcomm",
+      "url": "https://gitcode.com/cann/hcomm.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 30,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openEuler",
+      "repo": "bishengjdk-8",
+      "url": "https://gitcode.com/openeuler/bishengjdk-8.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 9
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 9,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "https://gitcode.host/Ascend/MindSpeed-LLM.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "partial",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 75,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openEuler",
+      "repo": "A-Tune",
+      "url": "https://gitcode.com/openeuler/A-Tune.git",
+      "scene": "compile-verify",
+      "date": "2026-05-14",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "partial",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 25,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "amct",
+      "url": "https://gitcode.com/cann/amct.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 29,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "asc-devkit",
+      "url": "https://gitcode.com/cann/asc-devkit.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 136,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "asc-tools",
+      "url": "https://gitcode.com/cann/asc-tools.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 15,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "atvoss",
+      "url": "https://gitcode.com/cann/atvoss.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 108,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openUBMC",
+      "repo": "component_drivers",
+      "url": "https://gitcode.com/openUBMC/component_drivers.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "driver",
+      "url": "https://gitcode.com/cann/driver.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 11,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "ge",
+      "url": "https://gitcode.com/cann/ge.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 84,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "graph-autofusion",
+      "url": "https://gitcode.com/cann/graph-autofusion.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 52,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ham",
+      "url": "https://gitcode.com/openeuler/ham.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 7,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "hccl",
+      "url": "https://gitcode.com/cann/hccl.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 63,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "hixl",
+      "url": "https://gitcode.com/cann/hixl.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 30,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openEuler",
+      "repo": "iSulad",
+      "url": "https://gitcode.com/openeuler/iSulad.git",
+      "scene": "compile-verify",
+      "date": "2026-05-13",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 48,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "HPCKit",
+      "repo": "kupl",
+      "url": "https://gitcode.com/kunpengcompute/kupl.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 30,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openUBMC",
+      "repo": "libipmi",
+      "url": "https://gitcode.com/openUBMC/libipmi.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 15,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openUBMC",
+      "repo": "libmcpp",
+      "url": "https://gitcode.com/openUBMC/libmcpp.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 10,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "memcache",
+      "url": "https://gitcode.com/Ascend/memcache.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 20,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "memfabric_hybrid",
+      "url": "https://gitcode.com/Ascend/memfabric_hybrid.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 78,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "metadef",
+      "url": "https://gitcode.com/cann/metadef.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 45,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "MindIE",
+      "repo": "MindIE-Motor",
+      "url": "https://gitcode.com/Ascend/MindIE-Motor.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "MindIE",
+      "repo": "MindIE-PyMotor",
+      "url": "https://gitcode.com/Ascend/MindIE-PyMotor.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "MindIE",
+      "repo": "MindIE-SD",
+      "url": "https://gitcode.com/Ascend/MindIE-SD.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 30,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "MindIE",
+      "repo": "MindIE_LLM",
+      "url": "https://gitcode.com/Ascend/MindIE-LLM.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 90,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-MM",
+      "url": "https://gitcode.com/Ascend/MindSpeed-MM.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 85,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "oam-tools",
+      "url": "https://gitcode.com/cann/oam-tools.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 30,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "OmniStateStore",
+      "url": "https://gitcode.com/openeuler/OmniStateStore.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 25,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "PTA",
+      "repo": "op-plugin",
+      "url": "https://gitcode.com/Ascend/op-plugin.git",
+      "scene": "compile-verify",
+      "date": "2026-05-13",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "failed",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 121,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "opbase",
+      "url": "https://gitcode.com/cann/opbase.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openEuler",
+      "repo": "kernel",
+      "url": "https://gitcode.com/openeuler/kernel.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 19,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "ops-cv",
+      "url": "https://gitcode.com/cann/ops-cv.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 22,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "ops-math",
+      "url": "https://gitcode.com/cann/ops-math.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 135,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "ops-nn",
+      "url": "https://gitcode.com/cann/ops-nn.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 38,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "ops-transformer",
+      "url": "https://gitcode.com/cann/ops-transformer.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 136,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "pto-isa",
+      "url": "https://gitcode.com/cann/pto-isa.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 8,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "pyasc",
+      "url": "https://gitcode.com/cann/pyasc.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 104,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "pypto",
+      "url": "https://gitcode.com/cann/pypto.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 39,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "runtime",
+      "url": "https://gitcode.com/cann/runtime.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 110,
+      "result": "success",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "CANN",
+      "repo": "shmem",
+      "url": "https://gitcode.com/cann/shmem.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 54,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "openEuler",
+      "repo": "stratovirt",
+      "url": "https://gitcode.com/openeuler/stratovirt.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 9
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 9,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "PTA",
+      "repo": "torchair",
+      "url": "https://gitcode.host/Ascend/torchair.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 108,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ubs-comm",
+      "url": "https://gitcode.com/openeuler/ubs-comm.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 88,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ubs-engine",
+      "url": "https://gitcode.com/openeuler/ubs-engine.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 75,
+      "result": "failed",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ubs-io",
+      "url": "https://gitcode.com/openeuler/ubs-io.git",
+      "scene": "compile-verify",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 260,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ubs-mem",
+      "url": "https://gitcode.com/openeuler/ubs-mem.git",
+      "scene": "compile-verify",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 140,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ubs-virt",
+      "url": "https://gitcode.com/openeuler/ubs-virt.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "partial",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "developer",
+      "community": "UBS Core",
+      "repo": "ubturbo",
+      "url": "https://gitcode.com/openeuler/ubturbo.git",
+      "scene": "compile-verify",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "获取",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "编译构建",
+          "status": "success",
+          "minutes": 0
+        },
+        {
+          "name": "测试",
+          "status": "partial",
+          "minutes": 0
+        },
+        {
+          "name": "社区CI成功",
+          "status": "success",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 52,
+      "result": "partial",
+      "defects": []
+    },
+    {
+      "scenario": "user",
+      "community": "CANN",
+      "repo": "CANN",
+      "url": "",
+      "scene": "a2-offline-install",
+      "date": "2026-04-28",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 35
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 300
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 80
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 20
+        }
+      ],
+      "totalMinutes": 435,
+      "result": "success",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "MindIE",
+      "repo": "MindIE-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-04-28",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 45
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 240
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 135
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 16
+        }
+      ],
+      "totalMinutes": 436,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 70,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-24",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-25",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-26",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-27",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-28",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 22
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 56
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 7
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 13
+        }
+      ],
+      "totalMinutes": 98,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-29",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 70
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 88,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 80
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 105,
+      "result": "success",
+      "defects": [],
+      "defectCount": 8
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-06-01",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpeed",
+      "repo": "MindSpeed-LLM",
+      "url": "",
+      "scene": "llm-install",
+      "date": "2026-06-02",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 20,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-07",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 42,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-08",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 56
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 9
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 18
+        }
+      ],
+      "totalMinutes": 98,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-09",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 90
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 120,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 60
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 80,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-13",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-14",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 44
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 7
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 69,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-15",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-16",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-17",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-18",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 60
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 85,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-19",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 34
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 11
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 57,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-20",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 3,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-21",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 41,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 65,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-24",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-25",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 15
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 65,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-26",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-27",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 18,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-28",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 13
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 36
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 19
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 15
+        }
+      ],
+      "totalMinutes": 83,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-29",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "failed",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 50,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 35,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "cpu-install",
+      "date": "2026-06-01",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 24
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 37,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "install",
+      "date": "2026-04-28",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "MindSpore",
+      "repo": "MindSpore",
+      "url": "",
+      "scene": "install",
+      "date": "2026-04-29",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "partial",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 80,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openEuler",
+      "repo": "openEuler",
+      "url": "",
+      "scene": "rpm-build",
+      "date": "2026-04-29",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 75,
+      "result": "success",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openEuler",
+      "repo": "openEuler",
+      "url": "",
+      "scene": "rpm-build",
+      "date": "2026-04-29",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "partial",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "partial",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "docker-install",
+      "date": "2026-04-30",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 14
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 7
+        }
+      ],
+      "totalMinutes": 28,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "docker-install-v2",
+      "date": "2026-05-01",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 4
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 6
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "贡献",
+          "status": "failed",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 15,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "hello-world",
+      "date": "2026-04-28",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 29,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "install",
+      "date": "2026-04-30",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 25,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "install-v2",
+      "date": "2026-05-01",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 60
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 15
+        }
+      ],
+      "totalMinutes": 100,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-02",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 28
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "partial",
+          "minutes": 16
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 15
+        }
+      ],
+      "totalMinutes": 69,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-02",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 15,
+      "result": "success",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-02",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 13,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-03",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 90
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 120,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-03",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 70,
+      "result": "success",
+      "defects": [],
+      "defectCount": 7
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-03",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 25
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 70,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-03",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 39,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "failed",
+          "minutes": 30
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 50,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 70,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "failed",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "failed",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 45,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 66,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 25
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 65,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-07",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 6
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 23,
+      "result": "success",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-07",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "partial",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 37,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-07",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 80,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-07",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 4
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 12,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-08",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 1
+        }
+      ],
+      "totalMinutes": 22,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-08",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 33,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-09",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 7
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 1
+        }
+      ],
+      "totalMinutes": 17,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 20,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 80,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-13",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "partial",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 8
+        },
+        {
+          "name": "使用",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 15,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-14",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "failed",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-15",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-16",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 24
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 44,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-17",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 24
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 47,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-18",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "partial",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 1
+        }
+      ],
+      "totalMinutes": 19,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-19",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 7
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 6
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 1
+        }
+      ],
+      "totalMinutes": 15,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-20",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 26,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-21",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 35,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "partial",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 29,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-24",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-25",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 50
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 80,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-26",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "success",
+      "defects": [],
+      "defectCount": 2
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-27",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "failed",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 24
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-28",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "failed",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 31,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-29",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 65,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "partial",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 70,
+      "result": "success",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "jijian-docker-install-v1",
+      "date": "2026-06-01",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 63,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "lite-install",
+      "date": "2026-04-30",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 70
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 90,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openGauss",
+      "repo": "openGauss",
+      "url": "",
+      "scene": "lite-install-v2",
+      "date": "2026-05-01",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 6
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 42,
+      "result": "success",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "build",
+      "date": "2026-04-28",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 40
+        },
+        {
+          "name": "使用",
+          "status": "failed",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 70,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "build",
+      "date": "2026-04-29",
+      "month": "2026-04",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 90
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 115,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "build-from-source",
+      "date": "2026-05-04",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 60
+        },
+        {
+          "name": "使用",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 80,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "docker-env-allpaths",
+      "date": "2026-05-08",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 120
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 155,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "docker-env-fullcoverage",
+      "date": "2026-05-08",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 60
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 71,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "docker-env-fullcoverage",
+      "date": "2026-05-09",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 51
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 180
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 256,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-06",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 6
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 16,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-08",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 13,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-09",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-10",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 46,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-11",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 4
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 12,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-12",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-13",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-14",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 8,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-15",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-16",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "partial",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-17",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 50,
+      "result": "success",
+      "defects": [],
+      "defectCount": 8
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-18",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 16
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 39,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-19",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-20",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-21",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 2
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 1
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 8,
+      "result": "success",
+      "defects": [],
+      "defectCount": 6
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 13,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-24",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-25",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 4
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 12,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-26",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 4
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 2
+        }
+      ],
+      "totalMinutes": 14,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-27",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-28",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-29",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 3
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 33,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "partial",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 48,
+      "result": "success",
+      "defects": [],
+      "defectCount": 3
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 25
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 70
+        },
+        {
+          "name": "使用",
+          "status": "partial",
+          "minutes": 15
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 110,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-06-01",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 40,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "openUBMC",
+      "repo": "openUBMC",
+      "url": "",
+      "scene": "huaweicloud-mirror-install",
+      "date": "2026-06-07",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 20
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 5
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 3
+        }
+      ],
+      "totalMinutes": 43,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "TileLang",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-06-07",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "failed",
+          "minutes": 240
+        },
+        {
+          "name": "使用",
+          "status": "not_run",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 10
+        }
+      ],
+      "totalMinutes": 265,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 5
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "TileLang",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-06-07",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "TileLang",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-06-07",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "TileLang",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-06-07",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "failed",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "TileLang",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-06-07",
+      "month": "2026-06",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "安装",
+          "status": "success",
+          "minutes": 90
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 110,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-23",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 25
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 22
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 47,
+      "result": "success",
+      "defects": [],
+      "defectCount": 4
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 30
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 60,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-dev",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "not_run",
+          "minutes": 12
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 8
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 30,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-05-22",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "success",
+          "minutes": 10
+        },
+        {
+          "name": "安装",
+          "status": "partial",
+          "minutes": 90
+        },
+        {
+          "name": "使用",
+          "status": "success",
+          "minutes": 15
+        },
+        {
+          "name": "贡献",
+          "status": "success",
+          "minutes": 5
+        }
+      ],
+      "totalMinutes": 120,
+      "result": "success",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-05-30",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "partial",
+      "defects": [],
+      "defectCount": 0
+    },
+    {
+      "scenario": "user",
+      "community": "Ascend",
+      "repo": "Triton",
+      "url": "",
+      "scene": "a2-npu-install",
+      "date": "2026-05-31",
+      "month": "2026-05",
+      "phases": [
+        {
+          "name": "了解",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "安装",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "使用",
+          "status": "unknown",
+          "minutes": 0
+        },
+        {
+          "name": "贡献",
+          "status": "unknown",
+          "minutes": 0
+        }
+      ],
+      "totalMinutes": 0,
+      "result": "unknown",
+      "defects": [],
+      "defectCount": 0
+    }
+  ]
+}

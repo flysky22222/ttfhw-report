@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TTFHW 测试总汇报告</title>
+  <meta name="description" content="TTFHW —— 用户场景 + 开发者场景 文档可用性测试总汇报告，按社区分组、按月份筛选" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="logo">TTFHW</span>
+        <div class="brand-text">
+          <h1>测试总汇报告</h1>
+          <p>Test The First Hello World · 用户场景 + 开发者场景 · 按社区分组</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span id="genAt" class="gen-at"></span>
+        <a class="repo-link" href="https://github.com/opensourceways/ttfhw" target="_blank" rel="noopener">opensourceways/ttfhw ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="controls-inner">
+      <div class="control-group">
+        <label for="monthSel">月份</label>
+        <select id="monthSel" class="select"></select>
+      </div>
+      <div class="control-group">
+        <label>场景</label>
+        <div id="scenarioTabs" class="tabs">
+          <button class="tab active" data-scenario="all">全部</button>
+          <button class="tab" data-scenario="user">用户场景</button>
+          <button class="tab" data-scenario="developer">开发者场景</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <label>结果</label>
+        <div id="resultChips" class="chips">
+          <button class="chip active" data-result="all">全部</button>
+          <button class="chip" data-result="success">成功</button>
+          <button class="chip" data-result="partial">部分</button>
+          <button class="chip" data-result="failed">失败</button>
+        </div>
+      </div>
+      <div class="control-group grow">
+        <input id="search" class="search" type="search" placeholder="搜索仓库 / 社区…" />
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section id="stats" class="stats"></section>
+    <div id="content"></div>
+    <div id="empty" class="empty" hidden>当前筛选条件下没有数据。</div>
+  </main>
+
+  <footer class="site-footer">
+    <p>数据聚合自 <code>opensourceways/ttfhw</code>（用户场景）与 <code>computing-ttfhw/ttfhw-report</code>（开发者场景）。
+       由 <code>tools/ttfhw/cli/build_report_site.py</code> 生成。</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
