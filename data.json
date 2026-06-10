@@ -112,6 +112,71 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker run -d --name hcomm-verification -v /home/<user>/hcomm/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully with ID: d4416c40ab24"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y python3 python3-pip gcc g++ cmake pkg-config",
+     "ok": true,
+     "output": "All dependencies installed successfully. gcc version: 13.3.0, cmake version: 3.28.3, python version: 3.12.3"
+    },
+    {
+     "step": "",
+     "command": "cmake .. -DCMAKE_INSTALL_PREFIX=/workspace/build_out -DCANN_3RD_LIB_PATH=/workspace/third_party -DDEVICE_MODE=OFF -DPRODUCT=ascend -DPRODUCT_SIDE=host -DUSE_ALO",
+     "ok": true,
+     "output": "CMake configuration completed successfully. Third-party dependencies (OpenSSL, rdma-core, json, hcomm_utils, etc.) were found or downloaded automatically. Build files generated in /workspace/build."
+    },
+    {
+     "step": "",
+     "command": "cmake --build . -j9",
+     "ok": false,
+     "output": "Build failed at 3% progress"
+    },
+    {
+     "step": "",
+     "command": "cmake .. -DENABLE_TEST=ON -DENABLE_UT=ON",
+     "ok": false,
+     "output": "CMake configuration failed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "stub libraries: libascend_hal.so, libslog.so, libaicpu_sharder.so, libc_sec.so, ",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64",
+     "source": "CMakeLists.txt + build.sh"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Linux (Ubuntu, EulerOS)",
+     "source": "Build documentation and scripts"
+    },
+    {
+     "label": "镜像",
+     "value": "None provided",
+     "source": "Repository search"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0、pip3 >= 20.3.0、gcc & g++ (7.3.0 to 13.x)、cmake >= 3.16.0、pkg-config、CANN Toolkit Package (required for full compilation)、OpenSSL、rdma-core、Boost、GTest (for UT)、nlohmann/json",
+     "source": "docs/build/build.md + CMakeLists.txt"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh --ut",
+     "source": "docs/build/build.md"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "hcomm",
@@ -225,6 +290,45 @@
    "problems": [],
    "summary": "使用 openEuler 22.03 LTS SP3 镜像成功验证 bishengjdk-8 仓库的完整构建流程。所有依赖已正确安装，configure 配置成功，完整构建成功完成（总耗时 9 分 3 秒）。构建的 JDK 已通过全面功能验证：java、javac、jps、jmap 等工具均正常工作，示例程序（JTop 等）编译并运行成功。构建产物位于 /workspace/build/linux-aarch64-normal-server-release/jdk。",
    "result": "success",
+   "attempts": [
+    {
+     "step": "安装依赖",
+     "command": "",
+     "ok": true,
+     "output": "成功"
+    },
+    {
+     "step": "配置",
+     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
+     "ok": true,
+     "output": "成功"
+    },
+    {
+     "step": "编译构建",
+     "command": "",
+     "ok": true,
+     "output": "成功"
+    },
+    {
+     "step": "测试",
+     "command": "",
+     "ok": false,
+     "output": "JDK 已验证"
+    },
+    {
+     "step": "示例",
+     "command": "",
+     "ok": true,
+     "output": "成功"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "/workspace/build/linux-aarch64-normal-server-release/jdk",
+     "size": ""
+    }
+   ],
+   "docFacts": [],
    "scenario": "developer",
    "community": "openEuler",
    "repo": "bishengjdk-8",
@@ -319,6 +423,30 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "mindspeed_llm-26.0.0.dev0 installed in site-packages",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 recommended (Ascend NPU required)",
+     "source": "setup.py and requirements.txt"
+    },
+    {
+     "label": "依赖",
+     "value": "numpy>=1.19.2,<2.0.0、transformers==4.57.1、torch (via bitsandbytes-npu-beta)、ray==2.54.0、peft==0.7.1、torch_npu (NPU only)、triton-ascend (aarch64 only)",
+     "source": "requirements.txt"
+    },
+    {
+     "label": "测试命令",
+     "value": "pytest tests/ directory",
+     "source": "tests/README.md"
+    }
+   ],
    "scenario": "developer",
    "community": "MindSpeed",
    "repo": "MindSpeed-LLM",
@@ -415,6 +543,92 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/openeuler/A-Tune.git",
+     "ok": true,
+     "output": "Cloning into 'A-Tune'..."
+    },
+    {
+     "step": "",
+     "command": "docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+     "ok": true,
+     "output": "Status: Image is up to date"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-atune-env -v ./tmp_src/A-Tune:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts tail -f /dev/null",
+     "ok": true,
+     "output": "Container started: 1e335962fa91..."
+    },
+    {
+     "step": "",
+     "command": "dnf install -y golang python3 perf sysstat hwloc-gui lshw sqlite openssl make gcc",
+     "ok": true,
+     "output": "Complete!"
+    },
+    {
+     "step": "",
+     "command": "dnf install -y python3-flask-restful python3-pandas python3-scikit-learn python3-pyyaml python3-sqlalchemy python3-cryptography",
+     "ok": true,
+     "output": "Complete!"
+    },
+    {
+     "step": "",
+     "command": "pip3 install dict2xml --break-system-packages",
+     "ok": true,
+     "output": "Successfully installed dict2xml-1.7.8"
+    },
+    {
+     "step": "",
+     "command": "pip3 install scikit-optimize xgboost --break-system-packages",
+     "ok": false,
+     "output": "Download in progress (xgboost 131.7 MB)"
+    },
+    {
+     "step": "",
+     "command": "cd /workspace && time make",
+     "ok": true,
+     "output": "Go build successful, db failed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "atune-adm",
+     "size": "12.1 MB"
+    },
+    {
+     "name": "atuned",
+     "size": "16.2 MB"
+    },
+    {
+     "name": "daemon_profile_server.so",
+     "size": "22.8 MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 (openEuler 支持 x86_64 和 ARM64)",
+     "source": "README.md - 'Supported OS: openEuler 20.03 LTS or later'"
+    },
+    {
+     "label": "依赖",
+     "value": "golang (go 1.14+)、python3、perf sysstat hwloc-gui lshw、python3-flask-restful python3-pandas python3-scikit-learn python3-pyyaml、sqlite3 openssl make gcc、pip: dict2xml scikit-optimize xgboost",
+     "source": "README.md + go.mod + Makefile"
+    },
+    {
+     "label": "构建命令",
+     "value": "cd A-Tune && make",
+     "source": "README.md 第76-78行"
+    },
+    {
+     "label": "测试命令",
+     "value": "cd tests && sh run_tests.sh",
+     "source": "Makefile 第215-216行 (check 目标)"
+    }
+   ],
    "scenario": "developer",
    "community": "openEuler",
    "repo": "A-Tune",
@@ -534,6 +748,101 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "repository_clone",
+     "command": "git clone https://gitcode.com/cann/amct.git ./tmp_src/amct",
+     "ok": true,
+     "output": "Cloned 814 files successfully"
+    },
+    {
+     "step": "document_analysis",
+     "command": "Read README.md, docs/build.md, docs/quick_install.md, CMakeLists.txt, build.sh, requirements.txt",
+     "ok": true,
+     "output": "Extracted build requirements and dependencies"
+    },
+    {
+     "step": "container_setup",
+     "command": "docker run -d --name verification-env-amct -v /mnt/d/ttfhw_0510/amct/tmp_src/amct:/workspace -w /workspace ubuntu:24.04",
+     "ok": true,
+     "output": "Container d5ca9e98dc90 started successfully"
+    },
+    {
+     "step": "dependency_install_basic",
+     "command": "apt-get install -y build-essential cmake git python3 python3-pip python3.12-venv python3-full wget curl",
+     "ok": true,
+     "output": "Installed GCC 13.3.0, CMake 3.28.3, Python 3.12.3"
+    },
+    {
+     "step": "python_venv_setup",
+     "command": "python3 -m venv /workspace/venv",
+     "ok": true,
+     "output": "Virtual environment created at /workspace/venv"
+    },
+    {
+     "step": "install_graph_script",
+     "command": "bash install_graph.sh --cann_3rd_lib_path=",
+     "ok": true,
+     "output": "Downloaded cann-amct-graph_9.0.0_linux-x86_64.tar.gz, extracted to amctgraph/"
+    },
+    {
+     "step": "cmake_configuration",
+     "command": "cmake .. -DCMAKE_BUILD_TYPE=Release",
+     "ok": true,
+     "output": "CMake configuration completed, build files written to /workspace/build"
+    },
+    {
+     "step": "build_execution",
+     "command": "make -j12 (60% of 20 cores)",
+     "ok": false,
+     "output": "Build progressed to 43% before failing"
+    },
+    {
+     "step": "ut_build_execution",
+     "command": "bash build.sh -u",
+     "ok": false,
+     "output": "UT build started but failed"
+    },
+    {
+     "step": "container_cleanup",
+     "command": "docker stop verification-env-amct && docker rm verification-env-amct",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64",
+     "source": "README.md - 环境要求章节, docs/quick_install.md"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Linux (Ubuntu recommended)",
+     "source": "docs/quick_install.md"
+    },
+    {
+     "label": "镜像",
+     "value": "None - repository does not provide Dockerfile",
+     "source": "Repository root search"
+    },
+    {
+     "label": "依赖",
+     "value": "bash >= 5.1.16、GCC >= 7.3.x (tested with 13.3.0)、CMake >= 3.16.0 (recommended 3.20.0, tested with 3.28.3)、Python: 3.11 (>= 3.9 supported, tested with 3.12.3)、PyTorch: 2.7.1 or 2.1.0 (requires torch_np",
+     "source": "README.md, docs/quick_install.md, requirements.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg",
+     "source": "README.md - 快速开始章节, docs/build.md"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u (or --utest)",
+     "source": "docs/build.md - 本地验证章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "AMCT",
@@ -630,6 +939,106 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Image is up to date for ubuntu:24.04"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-asc-devkit-env -v .../tmp_src:/workspace ubuntu:24.04",
+     "ok": true,
+     "output": "Container started"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y cmake gcc g++ make python3 python3-pip git",
+     "ok": true,
+     "output": "cmake 3.28.3, gcc 13.3.0, python3 3.12.3 installed"
+    },
+    {
+     "step": "",
+     "command": "cd build && cmake .. (without CANN)",
+     "ok": false,
+     "output": "CMake Error: ASCEND_CANN_PACKAGE_PATH does not exist"
+    },
+    {
+     "step": "",
+     "command": "wget CANN toolkit 9.0.0 x86_64 (1.22GB)",
+     "ok": true,
+     "output": "Downloaded in 5m27s"
+    },
+    {
+     "step": "",
+     "command": "Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --install-path=/usr/local/Ascend --quiet",
+     "ok": true,
+     "output": "Toolkit install success, installed in /usr/local/Ascend"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && cmake -B build -DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann -DENABLE_TEST=OFF",
+     "ok": true,
+     "output": "Configuring done, Generating done"
+    },
+    {
+     "step": "",
+     "command": "cd build && make -j9",
+     "ok": true,
+     "output": "Built target tiling_api, aicpu_api"
+    },
+    {
+     "step": "",
+     "command": "pip3 install --break-system-packages pytest coverage",
+     "ok": true,
+     "output": "pytest 9.0.3, coverage 7.14.0 installed"
+    },
+    {
+     "step": "",
+     "command": "cmake -B build -DASCEND_CANN_PACKAGE_PATH=/usr/local/Ascend/cann -DENABLE_TEST=ON -DTEST_MOD=adv_test",
+     "ok": true,
+     "output": "Configuring done (33.8s), 174 tests prepared"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --adv_test -p /usr/local/Ascend/cann -j9",
+     "ok": true,
+     "output": "[==========] 174 tests from 7 test suites ran. [  PASSED  ] 174 tests."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libtiling_api.a",
+     "size": "3.4 MB"
+    },
+    {
+     "name": "libaicpu_api.a",
+     "size": "3.9 KB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64（文档支持多架构）",
+     "source": "docs/quick_start.md + README.md - 支持Atlas A2/A3系列产品和Ascend 950PR"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.9.0、gcc >= 7.3.0 / g++ >= 7.3.0（要求gcc与g++版本一致）、cmake >= 3.16.0、CANN toolkit包（必选，强依赖）、CANN ops包（可选，部分样例编译运行依赖）、git（构建系统FetchContent需要）、pytest >= 8.0.0（UT测试需要）、coverage >= 4.5.4（覆盖率测试需要）",
+     "source": "docs/quick_start.md - 依赖检查章节 + cmake/fetch_cann_cmake.cmake + CMakeLists.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg -p <CANN_PATH>",
+     "source": "docs/quick_start.md - 编译安装章节 + build.sh"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh --adv_test -p <CANN_PATH> 或 cmake -B build -DENABLE_TEST=ON && make <test_target>",
+     "source": "docs/quick_start.md - UT验证章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "asc-devkit",
@@ -720,6 +1129,112 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-asc-tools-env ubuntu:24.04",
+     "ok": true,
+     "output": "Container started"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y cmake gcc g++ make python3 python3-pip git wget",
+     "ok": true,
+     "output": "Dependencies installed"
+    },
+    {
+     "step": "",
+     "command": "Install CANN toolkit 9.0.0 (reused from previous download)",
+     "ok": true,
+     "output": "Toolkit installed in /usr/local/Ascend"
+    },
+    {
+     "step": "",
+     "command": "cmake -B build (without cpudebug)",
+     "ok": true,
+     "output": "Configuring done"
+    },
+    {
+     "step": "",
+     "command": "make -j9",
+     "ok": false,
+     "output": "stub_fun.h: No such file or directory"
+    },
+    {
+     "step": "",
+     "command": "wget cpudebug闭源包",
+     "ok": true,
+     "output": "Downloaded 6.47MB in 1.0s"
+    },
+    {
+     "step": "",
+     "command": "tar -xzf cpudebug.tar.gz -C libraries --strip-components 1",
+     "ok": true,
+     "output": "stub_fun.h extracted to libraries/lib/include/"
+    },
+    {
+     "step": "",
+     "command": "cmake -B build && make -j9",
+     "ok": true,
+     "output": "Built target cpudebug_*"
+    },
+    {
+     "step": "",
+     "command": "pip3 install pytest coverage",
+     "ok": true,
+     "output": "pytest 9.0.3, coverage 7.14.0"
+    },
+    {
+     "step": "",
+     "command": "cmake -B build -DENABLE_TEST=ON -DTEST_MOD=all && make tikcpp_utest_msobjdump",
+     "ok": true,
+     "output": "20 passed in 0.15s"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libcpudebug.so (ascend310B1)",
+     "size": ""
+    },
+    {
+     "name": "libcpudebug.so (ascend950pr_9599)",
+     "size": ""
+    },
+    {
+     "name": "libcpudebug.so (ascend910)",
+     "size": ""
+    },
+    {
+     "name": "libcpudebug.so (ascend910B1)",
+     "size": ""
+    },
+    {
+     "name": "libcpudebug_acl_stub.so",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64",
+     "source": "docs/00_quick_start.md"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0、gcc >= 7.3.0 / g++ >= 7.3.0、cmake >= 3.16.0、ccache >= 4.6.1（可选）、CANN toolkit包（必选）、CANN ops包（可选，样例依赖）、cpudebug闭源包（必选）、pytest >= 8.3.2（UT依赖）、coverage >= 4.5.4（UT依赖）、googletest >= 1.11.0（",
+     "source": "docs/00_quick_start.md - 安装依赖章节"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg -p <CANN_PATH>",
+     "source": "docs/00_quick_start.md - 编译安装章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -t 或 cmake -B build -DENABLE_TEST=ON -DTEST_MOD=all && make tikcpp_utest_*",
+     "source": "docs/00_quick_start.md - UT测试章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "asc-tools",
@@ -822,6 +1337,98 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/atvoss.git tmp_src/atvoss",
+     "ok": true,
+     "output": "Cloning into 'tmp_src/atvoss'... done."
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Image is up to date for ubuntu:24.04"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-atvoss-env ... ubuntu:24.04",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "wget https://ascend.devcloud.huaweicloud.com/.../Ascend-cann-toolkit_9.0.0_linux-x86_64.run",
+     "ok": true,
+     "output": "Downloaded 1.3GB CANN toolkit package"
+    },
+    {
+     "step": "",
+     "command": "Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --force --quiet --install-path=/usr/local/Ascend",
+     "ok": true,
+     "output": "Toolkit: Ascend-cann-toolkit_9.0.0_linux-x86_64 install success"
+    },
+    {
+     "step": "",
+     "command": "bash scripts/build.sh -DSOC=ascend950 rms_norm",
+     "ok": true,
+     "output": "Target 'rms_norm' built successfully."
+    },
+    {
+     "step": "",
+     "command": "bash scripts/build.sh -DSOC=ascend950 --host_ut",
+     "ok": true,
+     "output": "All host unit tests built and executed successfully"
+    },
+    {
+     "step": "",
+     "command": "bash scripts/build.sh -DSOC=ascend950 abs",
+     "ok": true,
+     "output": "Target 'abs' built successfully."
+    },
+    {
+     "step": "",
+     "command": "bash scripts/build.sh -DSOC=ascend950 muls",
+     "ok": true,
+     "output": "Target 'muls' built successfully."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "rms_norm",
+     "size": "394KB"
+    },
+    {
+     "name": "abs",
+     "size": "389KB"
+    },
+    {
+     "name": "muls",
+     "size": "387KB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64",
+     "source": "docs/quick_start.md - 系统要求章节"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0 (建议 <= 3.10)、gcc >= 7.3.0、cmake >= 3.16.0、pigz >= 2.4 (可选)、dos2unix、gawk、make、googletest release-1.11.0 (仅执行UT时依赖)、CANN toolkit (华为昇腾软件包) - 必需、bisheng (华为专用编译器) - CANN内置",
+     "source": "docs/quick_start.md + CMakeLists.txt + scripts/build.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash scripts/build.sh -DSOC=ascend950 <target>",
+     "source": "docs/quick_start.md - 编译执行章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash scripts/build.sh -DSOC=ascend950 --host_ut",
+     "source": "docs/quick_start.md - UT测试章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "atvoss",
@@ -971,6 +1578,90 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "1",
+     "command": "uname -m && nproc && docker --version",
+     "ok": true,
+     "output": "x86_64, 20 cores, Docker 29.1.3"
+    },
+    {
+     "step": "2",
+     "command": "docker run -d --name verification-env -v <tmp_src>:/srcrepo -w /srcrepo ubuntu:24.04",
+     "ok": true,
+     "output": "Container started successfully. Note: required multiple container recreations due to Docker mount caching resolving to wrong paths."
+    },
+    {
+     "step": "3",
+     "command": "apt-get install meson ninja-build gcc g++ pkg-config libdbus-1-dev libglib2.0-dev libboost-all-dev libgtest-dev libssl-dev zlib1g-dev git ccache file",
+     "ok": true,
+     "output": "All dependencies installed successfully"
+    },
+    {
+     "step": "4",
+     "command": "sed 's|git@gitcode.com:|https://gitcode.com/|' subprojects/libmcpp.wrap",
+     "ok": true,
+     "output": "libmcpp.wrap updated to use HTTPS URL"
+    },
+    {
+     "step": "5",
+     "command": "meson setup builddir",
+     "ok": true,
+     "output": "Build targets: 436. Subprojects: libmcpp (cloned via HTTPS), mcbase (from libmcpp). pkg-config: dbus-1 1.14.10, glib-2.0 2.80.0. Compiler: gcc 13.3.0."
+    },
+    {
+     "step": "6",
+     "command": "meson compile -C builddir -j 12",
+     "ok": true,
+     "output": "Build completed successfully. Generated 86 driver .so files, 13 library .so files, 50 test executables."
+    },
+    {
+     "step": "7",
+     "command": "meson test -C builddir --num-processes 12 --timeout-multiplier 1",
+     "ok": false,
+     "output": "142 total, 136 OK, 6 FAIL"
+    },
+    {
+     "step": "8",
+     "command": "dlopen driver .so + run individual tests",
+     "ok": true,
+     "output": "libLm75.so loaded successfully via dlopen. test_bus_base: 6/6 passed. lldp_test: 35/35 passed."
+    },
+    {
+     "step": "9",
+     "command": "docker stop verification-env && docker rm verification-env",
+     "ok": true,
+     "output": "Container stopped and removed."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / armv8 (aarch64)",
+     "source": "conanfile.py:76 - settings.arch check"
+    },
+    {
+     "label": "依赖",
+     "value": "meson、ninja-build、gcc、g++、pkg-config、libdbus-1-dev、libglib2.0-dev、libboost-all-dev、libgtest-dev、libssl-dev、zlib1g-dev、git、ccache、file、libmcpp (subproject, auto-cloned via .wrap)",
+     "source": "README.md (build section), smart_build.sh:908 (dependency check), meson.build:89-92 (pkg-config dependencies)"
+    },
+    {
+     "label": "构建命令",
+     "value": "./scripts/smart_build.sh (recommended) OR meson setup builddir && meson compile -C builddir -j $(nproc)",
+     "source": "README.md - 从源码构建 section"
+    },
+    {
+     "label": "测试命令",
+     "value": "meson test -C builddir",
+     "source": "README.md - setup.sh section"
+    }
+   ],
    "scenario": "developer",
    "community": "openUBMC",
    "repo": "component_drivers",
@@ -1061,6 +1752,72 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "安装依赖: cmake, gcc, g++, make, python3, libssl-dev, linux-headers-generic",
+     "ok": true,
+     "output": "依赖安装成功"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --pkg --soc=ascend910b -j4",
+     "ok": true,
+     "output": "构建成功，生成build目录和相关依赖"
+    },
+    {
+     "step": "",
+     "command": "bash test/run_test.sh -t",
+     "ok": true,
+     "output": "[UT] Testcase initialize success.\n[UT] Testcase run start...\n[UT] Testcase run success."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "build目录",
+     "size": ""
+    },
+    {
+     "name": "third_party库",
+     "size": ""
+    },
+    {
+     "name": "rdma-core",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64",
+     "source": "README.md - 系统架构描述"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Linux (Ubuntu 24.04)",
+     "source": "README.md + build.sh"
+    },
+    {
+     "label": "镜像",
+     "value": "仓库未提供Dockerfile",
+     "source": "仓库搜索结果"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.16、gcc、g++、make、python3、libssl-dev、linux-headers",
+     "source": "build.sh + CMakeLists.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg --soc=ascend910b [-jN]",
+     "source": "build.sh - 帮助信息"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash test/run_test.sh -t",
+     "source": "test/run_test.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "driver",
@@ -1156,6 +1913,78 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/ge.git",
+     "ok": true,
+     "output": "仓库克隆成功，47912 个对象"
+    },
+    {
+     "step": "",
+     "command": "docker pull internal-registry.example.com/example-org/openeuler22.03_lts_sp3:latest",
+     "ok": true,
+     "output": "openEuler 镜像拉取成功"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name verification-env -v ./tmp_src/ge:/workspace internal-registry.example.com/example-org/openeuler22.03_lts_sp3:latest",
+     "ok": true,
+     "output": "容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "yum update -y && yum install -y cmake gcc gcc-c++ make git wget patch perl python3 python3-devel python3-pip",
+     "ok": true,
+     "output": "系统依赖安装成功"
+    },
+    {
+     "step": "",
+     "command": "bash scripts/init_env.sh",
+     "ok": true,
+     "output": "CANN 9.0.0 toolkit 安装成功"
+    },
+    {
+     "step": "",
+     "command": "pip3 install pytest pytest-cov pybind11 coverage",
+     "ok": true,
+     "output": "Python 依赖安装成功（使用阿里云镜像）"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && bash build.sh --ge_compiler --ge_executor --dflow -j16",
+     "ok": true,
+     "output": "构建进行中，第三方依赖编译完成，主项目编译至 92%"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64, x86_64",
+     "source": "docs/build.md - 环境准备章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "openEuler 22.03 LTS SP3",
+     "source": "用户指定"
+    },
+    {
+     "label": "依赖",
+     "value": "GCC >= 7.3.x、Python3 >= 3.9.x、CMake >= 3.16.0、bash >= 5.1.16、ccache、asan、autoconf、automake、libtool、gperf、lcov、libasan、patch、perl、graph-easy (可选)",
+     "source": "docs/build.md - 4.2 安装依赖章节"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --<pkg_type>",
+     "source": "docs/build.md - 4.3 编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash tests/run_test.sh --ut",
+     "source": "docs/build.md - 4.4 本地验证章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "ge",
@@ -1258,6 +2087,71 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/graph-autofusion.git",
+     "ok": true,
+     "output": "Cloning into 'tmp_src'... done"
+    },
+    {
+     "step": "",
+     "command": "docker pull ascendhub/cann:9.0.0-beta.1-910-ubuntu22.04-py3.11",
+     "ok": true,
+     "output": "Status: Image is up to date"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name verification-env ...",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "bash scripts/init_env.sh --skip-cann",
+     "ok": true,
+     "output": "Development environment ready!"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --pkg --no-autofuse -j12",
+     "ok": false,
+     "output": "Build progress reached 37%"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64",
+     "source": "docs/quick_install.md"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 22.04 (官方Docker镜像)",
+     "source": "docs/quick_install.md - Docker部署章节"
+    },
+    {
+     "label": "镜像",
+     "value": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-beta.1-910-ubuntu22.04-py3.11",
+     "source": "docs/quick_install.md"
+    },
+    {
+     "label": "依赖",
+     "value": "Python3 >= 3.8.0、CMake >= 3.16.0 (建议 3.20.0)、CANN Toolkit (必需)、CANN ops (必需)、GCC/G++、git、make",
+     "source": "docs/build.md - 4.2.1 安装依赖"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg",
+     "source": "docs/build.md - 4.3 编译"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u",
+     "source": "docs/build.md - 4.4 测试验证"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "graph-autofusion",
@@ -1360,6 +2254,94 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "container_setup",
+     "command": "docker run -d --name ttfhw-ham-env -v /home/<user>/tmp_src:/workspace -w /workspace internal-registry.example.com/openeuler/openeuler:24.03-lts tail -f /dev/nul",
+     "ok": true,
+     "output": "Container started: e728144076dd"
+    },
+    {
+     "step": "dependency_install",
+     "command": "dnf install -y cmake gcc gcc-c++ make dos2unix patch git",
+     "ok": true,
+     "output": "Complete! All packages installed."
+    },
+    {
+     "step": "submodule_init",
+     "command": "git submodule update --init --recursive",
+     "ok": true,
+     "output": "All 3 submodules cloned: libboundscheck, googletest, mockcpp"
+    },
+    {
+     "step": "libboundscheck_build",
+     "command": "cd /workspace/3rdparty/libboundscheck && make",
+     "ok": true,
+     "output": "libboundscheck.so built successfully"
+    },
+    {
+     "step": "libboundscheck_install",
+     "command": "cp /workspace/3rdparty/libboundscheck/lib/libboundscheck.so /usr/lib64/",
+     "ok": true,
+     "output": "libboundscheck.so installed to /usr/lib64/"
+    },
+    {
+     "step": "cmake_configure",
+     "command": "cd /workspace/build && cmake -DCMAKE_BUILD_TYPE=Release ..",
+     "ok": true,
+     "output": "CMake configured successfully. GCC 12.3.1, C++17 standard."
+    },
+    {
+     "step": "build",
+     "command": "cd /workspace/build && make install -j14",
+     "ok": true,
+     "output": "[100%] Built target ham. Installed libham.so and ham.h to output/ham/"
+    },
+    {
+     "step": "unit_test",
+     "command": "bash test/run_dt.sh",
+     "ok": false,
+     "output": "8/8 tests PASSED. ham_dt ran successfully. lcov not found (openEuler repo has no lcov package)."
+    },
+    {
+     "step": "cleanup",
+     "command": "docker stop ttfhw-ham-env && docker rm ttfhw-ham-env",
+     "ok": true,
+     "output": "Container stopped and removed."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libham.so",
+     "size": "15K"
+    },
+    {
+     "name": "ham.h",
+     "size": "3.5K"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 (ARM64) only",
+     "source": "ham.spec - ExclusiveArch: %arm64; RPM naming: ham-libs-0.0.1.aarch64.rpm"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.16、gcc >= 7.3 (GNU C/C++)、make >= 4.3、libboundscheck (git submodule: 3rdparty/libboundscheck)、googletest (git submodule: test/3rdparty/googletest) - test only、mockcpp (git submodule: test/3",
+     "source": "CMakeLists.txt (cmake_minimum_required 3.16), cmake/building.cmake (GCC >= 7.3 check), ham.spec (BuildRequires), Develop"
+    },
+    {
+     "label": "构建命令",
+     "value": "mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j<thread-num>  OR  bash build.sh -t release",
+     "source": "doc/Developer_Tutorial.md - Build HAM section + build.sh"
+    },
+    {
+     "label": "测试命令",
+     "value": "git submodule update --init --recursive && bash test/run_dt.sh",
+     "source": "doc/Developer_Tutorial.md - Run test suite section + test/run_dt.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ham",
@@ -1450,6 +2432,94 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker run -d --name hccl_build -v /mnt/project/hccl:/mnt/project/hccl -w /mnt/project/hccl/tmp_src ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y gcc g++ cmake python3 git",
+     "ok": true,
+     "output": "依赖安装完成：gcc 13.3.0, cmake 3.28.3, python3 3.12.3, git"
+    },
+    {
+     "step": "",
+     "command": "/mnt/project/hccl/cann_pkg/Ascend-cann-toolkit_8.5.2_linux-x86_64.run --full --quiet --install-path=/usr/local/Ascend",
+     "ok": true,
+     "output": "CANN Toolkit 8.5.2安装成功"
+    },
+    {
+     "step": "",
+     "command": "git config --global --add safe.directory '*'",
+     "ok": true,
+     "output": "Git安全目录配置完成"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/ascend-toolkit/set_env.sh && bash build.sh --pkg",
+     "ok": true,
+     "output": "HCCL编译成功"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --full",
+     "ok": true,
+     "output": "HCCL完整编译成功"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libhccl_compat.so",
+     "size": "34800 bytes"
+    },
+    {
+     "name": "libscatter_aicpu_kernel.json",
+     "size": "211 bytes"
+    },
+    {
+     "name": "libscatter_aicpu_kernel_custom.json",
+     "size": "2 bytes"
+    },
+    {
+     "name": "compile_commands.json",
+     "size": "1054443 bytes"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64",
+     "source": "README.md - 系统要求章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04",
+     "source": "文档未指定，使用默认备选镜像"
+    },
+    {
+     "label": "镜像",
+     "value": "仓库未提供Dockerfile",
+     "source": "仓库根目录"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.16、gcc 7.3.0-13.3.x、python3 >= 3.7、CANN Toolkit",
+     "source": "README.md + docs/build/build.md"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg",
+     "source": "build.sh脚本"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u",
+     "source": "build.sh脚本"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "hccl",
@@ -1545,6 +2615,92 @@
    ],
    "summary": "HIXL项目在安装CANN Toolkit 9.0.0后，构建和单元测试全部成功通过。项目代码结构清晰，测试覆盖完整，可用于昇腾集群环境下的高效点对点数据传输。",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "环境检查 - 确认CANN Toolkit已安装",
+     "ok": true,
+     "output": "CANN 9.0.0 已安装在 /usr/local/Ascend/cann-9.0.0"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh",
+     "ok": true,
+     "output": "CANN环境变量配置完成，ASCEND_INSTALL_PATH=/usr/local/Ascend/cann-9.0.0"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -j9",
+     "ok": true,
+     "output": "CMake配置成功，开始编译。自动下载第三方依赖（pybind11, json等）。编译进度0%->100%"
+    },
+    {
+     "step": "",
+     "command": "构建完成 - 生成libcann_hixl.so",
+     "ok": true,
+     "output": "libcann_hixl.so (2.6MB) 构建成功"
+    },
+    {
+     "step": "",
+     "command": "构建完成 - 生成libllm_datadist.so",
+     "ok": true,
+     "output": "libllm_datadist.so (2.1MB) 和 libadxl_static.a (5.4MB) 构建成功"
+    },
+    {
+     "step": "",
+     "command": "构建完成 - Python Wheel包",
+     "ok": true,
+     "output": "llm_datadist-0.0.1-py3-none-any.whl 打包成功"
+    },
+    {
+     "step": "",
+     "command": "bash tests/run_test.sh -j9",
+     "ok": true,
+     "output": "测试构建完成，生成hixl_test (55MB) 和 llm_datadist_test (78MB)"
+    },
+    {
+     "step": "",
+     "command": "./hixl_test - HIXL单元测试执行",
+     "ok": true,
+     "output": "21个测试套件，共290个测试用例"
+    },
+    {
+     "step": "",
+     "command": "./llm_datadist_test - LLM DataDist单元测试执行",
+     "ok": true,
+     "output": "ChannelManagerUnitTest和ChannelMsgHandlerUnitTest等测试套件执行成功"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libcann_hixl.so",
+     "size": "2.6 MB"
+    },
+    {
+     "name": "libllm_datadist.so",
+     "size": "2.1 MB"
+    },
+    {
+     "name": "libadxl_static.a",
+     "size": "5.4 MB"
+    },
+    {
+     "name": "llm_datadist-0.0.1-py3-none-any.whl",
+     "size": "~10 MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64",
+     "source": "docs/build.md - Docker镜像地址章节; CMakeLists.txt - 交叉编译器配置"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh、bash build.sh -j<N> (设置并发数)、bash build.sh --examples (编译样例和基准测试)、bash build.sh --cann_3rd_lib_path=<PATH> (指定第三方依赖路径)",
+     "source": "build.sh + docs/build.md - 源码编译章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "hixl",
@@ -1647,6 +2803,109 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/openeuler/iSulad.git",
+     "ok": true,
+     "output": "仓库克隆成功到 tmp_src 目录"
+    },
+    {
+     "step": "",
+     "command": "docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+     "ok": true,
+     "output": "openEuler 24.03 LTS 镜像拉取成功"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-isulad-env ... openeuler:24.03-lts",
+     "ok": true,
+     "output": "openEuler 容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "dnf clean all && dnf makecache",
+     "ok": false,
+     "output": "dnf 命令卡住，网络连接问题，仓库返回 308 重定向"
+    },
+    {
+     "step": "",
+     "command": "docker stop/rm ttfhw-isulad-env",
+     "ok": true,
+     "output": "停止 openEuler 容器，切换到 Ubuntu"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-isulad-env ... ubuntu:24.04",
+     "ok": true,
+     "output": "Ubuntu 24.04 容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "apt-get update",
+     "ok": true,
+     "output": "apt 包列表更新成功"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y g++ cmake make pkg-config git python3 curl wget",
+     "ok": true,
+     "output": "基础构建工具安装成功（139 个包）"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y libprotobuf-dev protobuf-compiler libgrpc++-dev ...",
+     "ok": true,
+     "output": "iSulad 项目依赖安装成功（167 个包）"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y protobuf-compiler-grpc",
+     "ok": true,
+     "output": "grpc protobuf plugin 安装成功"
+    },
+    {
+     "step": "",
+     "command": "cmake .. (首次尝试)",
+     "ok": false,
+     "output": "缺少 libisula 包（来自 lcr 项目）"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y lxc-dev liblxc1t64",
+     "ok": true,
+     "output": "Ubuntu lxc 包安装成功"
+    },
+    {
+     "step": "",
+     "command": "git clone https://gitee.com/openeuler/lcr.git && cmake && make",
+     "ok": false,
+     "output": "lcr 构建失败：Ubuntu 标准 lxc 缺少 iSulad 特定 API（clean_container_resource, get_container_pids, set_terminal_winch 等）"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / ARM64",
+     "source": "README.md - 性能测试图表，支持多架构"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 2.8、gcc / g++ (支持 C++11/17)、protobuf >= 3.1.0、grpc >= 1.22.0、libyajl >= 2、libcap、libselinux >= 2.0、libseccomp、libcurl >= 7.4.0、libarchive >= 3.4、libwebsockets、libevent >= 2.1.8、libevhtp >= 1.",
+     "source": "README.md + docs/build_docs/guide/build_guide_zh.md + iSulad.spec + cmake/checker.cmake"
+    },
+    {
+     "label": "构建命令",
+     "value": "mkdir build && cd build && cmake .. && make -j$(nproc) && make install",
+     "source": "README.md - 快速设置章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "cmake -DENABLE_UT=ON .. && make && ctest -E 'registry_images_ut|volume_ut'",
+     "source": "iSulad.spec - check 章节"
+    }
+   ],
    "scenario": "developer",
    "community": "openEuler",
    "repo": "iSulad",
@@ -1755,6 +3014,95 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/kunpengcompute/kupl.git",
+     "ok": true,
+     "output": "克隆成功，545 个对象"
+    },
+    {
+     "step": "",
+     "command": "docker pull internal-registry.example.com/example-org/openeuler22.03_lts_sp3:latest",
+     "ok": true,
+     "output": "Image is up to date"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name kupl-verify -v ... openeuler22.03_lts_sp3:latest",
+     "ok": true,
+     "output": "容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "yum install -y cmake numactl numactl-devel gcc gcc-c++ make",
+     "ok": true,
+     "output": "安装 cmake-3.22.0, gcc-10.3.1, make-4.3 等 29 个包"
+    },
+    {
+     "step": "",
+     "command": "sh build.sh --install_path=/workspace/install (GCC)",
+     "ok": false,
+     "output": "编译至 41% 失败"
+    },
+    {
+     "step": "",
+     "command": "yum install -y clang15",
+     "ok": true,
+     "output": "安装 clang15-15.0.7"
+    },
+    {
+     "step": "",
+     "command": "yum install -y libomp libomp-devel",
+     "ok": true,
+     "output": "安装 OpenMP 支持"
+    },
+    {
+     "step": "",
+     "command": "sh build.sh --compiler=clang --install_path=/workspace/install",
+     "ok": false,
+     "output": "编译至 41% 失败"
+    },
+    {
+     "step": "",
+     "command": "sh build.sh --compiler=clang --enable_mma=off --install_path=/workspace/install",
+     "ok": false,
+     "output": "编译至 41% 失败"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "AArch64",
+     "source": "README.md - 版本配套章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "openEuler 20.03/22.03/24.03 AArch64, Kylin Linux AArch64",
+     "source": "README.md - 版本配套章节"
+    },
+    {
+     "label": "镜像",
+     "value": "仓库未提供 Dockerfile 或镜像定义",
+     "source": "搜索仓库根目录、docker/、build/、.devcontainer/ 目录"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake、numactl、numactl-devel、gcc/bisheng 编译器、HPCKit 软件包、module 工具",
+     "source": "README.md - 编译安装章节"
+    },
+    {
+     "label": "构建命令",
+     "value": "sh build.sh --install_path=[KUPL 安装目录]",
+     "source": "README.md - 编译 KUPL 章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "sh build.sh --build_kind=test && sh run_lcov.sh",
+     "source": "README.md - 编译运行测试程序章节"
+    }
+   ],
    "scenario": "developer",
    "community": "HPCKit",
    "repo": "kupl",
@@ -1862,6 +3210,107 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "1",
+     "command": "git clone https://gitcode.com/openUBMC/libipmi.git tmp_src",
+     "ok": true,
+     "output": "Cloning into 'tmp_src'..."
+    },
+    {
+     "step": "2",
+     "command": "docker pull ubuntu:24.04",
+     "ok": false,
+     "output": "dial tcp 128.242.245.180:443: i/o timeout (Docker Hub inaccessible)"
+    },
+    {
+     "step": "3",
+     "command": "docker run -d --name verification-env -v ./tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "verification-env started"
+    },
+    {
+     "step": "4",
+     "command": "apt-get update",
+     "ok": true,
+     "output": "Hit: noble InRelease, noble-updates InRelease, noble-security InRelease, noble-backports InRelease"
+    },
+    {
+     "step": "5",
+     "command": "apt-get install -y meson ninja-build g++ pkg-config libboost-all-dev libgtest-dev libdbus-1-dev libglib2.0-dev libluajit-5.1-dev",
+     "ok": true,
+     "output": "All packages installed successfully"
+    },
+    {
+     "step": "6",
+     "command": "apt-get install -y git",
+     "ok": true,
+     "output": "git 2.43.0 installed"
+    },
+    {
+     "step": "7",
+     "command": "cd subprojects && git clone https://gitcode.com/openUBMC/libmcpp.git",
+     "ok": true,
+     "output": "Cloning into 'libmcpp'..."
+    },
+    {
+     "step": "8",
+     "command": "meson setup builddir",
+     "ok": true,
+     "output": "Build targets in project: 14\nlibipmi 1.0.40\n  Subprojects: libmcpp: YES, mcbase: YES\nFound ninja-1.11.1"
+    },
+    {
+     "step": "9",
+     "command": "meson compile -C builddir -j12",
+     "ok": false,
+     "output": "[1/212] ... [179/212] Compiling C++ object src/libipmi.so.p/service_manager.cpp.o"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libmcbase.so.1.0.0",
+     "size": ""
+    },
+    {
+     "name": "libmcpp_base.a",
+     "size": ""
+    },
+    {
+     "name": "libmcpp_core.a",
+     "size": ""
+    },
+    {
+     "name": "libmcpp_engine.a",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64 / armv8",
+     "source": "README.md - 系统要求 + conanfile.py 架构条件判断"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04",
+     "source": "用户选择，默认选项"
+    },
+    {
+     "label": "依赖",
+     "value": "meson >= 0.56、ninja、g++ (C++17, GCC 7+)、pkg-config、libboost-all-dev、libgtest-dev、libdbus-1-dev、libglib2.0-dev、libluajit-5.1-dev、libmcpp (fallback via subprojects/wrap-git)、git (for wrap fallback)",
+     "source": "README.md - 系统要求/编译环境准备 + meson.build + meson_options.txt + conanfile.py"
+    },
+    {
+     "label": "构建命令",
+     "value": "meson setup builddir && meson compile -C builddir",
+     "source": "README.md - 从源码构建章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "meson test -C builddir",
+     "source": "README.md - 从源码构建章节"
+    }
+   ],
    "scenario": "developer",
    "community": "openUBMC",
    "repo": "libipmi",
@@ -1976,6 +3425,140 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "container_setup",
+     "command": "docker run -d --name ttfhw-libmcpp-env -v /workspace/TTFHW3/openUBMC/libmcpp/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started: 8a9206f5acdf"
+    },
+    {
+     "step": "dependency_install",
+     "command": "apt-get update && apt-get install -y meson ninja-build gcc g++ pkg-config libboost-all-dev libdbus-1-dev libglib2.0-dev libgtest-dev",
+     "ok": true,
+     "output": "All packages installed successfully. Boost 1.83.0, GCC 13.3.0, Meson 1.3.2, GTest 1.14.0"
+    },
+    {
+     "step": "meson_setup",
+     "command": "meson setup builddir",
+     "ok": true,
+     "output": "Build targets in project: 28. Subprojects: mcbase: YES. Found ninja-1.11.1. Lua not found (skipped), securec not found (using built-in)"
+    },
+    {
+     "step": "meson_compile",
+     "command": "time meson compile -C builddir -j 12",
+     "ok": true,
+     "output": "[372/372] Linking target tests/libmcpp_test. Build completed in 3m12s (real 192s)"
+    },
+    {
+     "step": "unit_tests",
+     "command": "time meson test -C builddir --num-processes 1 --timeout-multiplier 3",
+     "ok": true,
+     "output": "2/2 tests passed. mcbase unit tests: OK (16.71s). libmcpp unit tests: OK (16.64s). Total test time: 33.6s"
+    },
+    {
+     "step": "sample_plugin",
+     "command": "cd builddir/examples/plugin && ./example_plugin",
+     "ok": true,
+     "output": "Plugin example ran successfully. 3 services initialized, started, and stopped properly. Duration: 0.2s"
+    },
+    {
+     "step": "sample_interprocess",
+     "command": "cd builddir/examples/interprocess && ./interprocess_example",
+     "ok": true,
+     "output": "Interprocess example completed successfully. Shared memory, mutex, rw-lock tests all passed with multi-process correctness verified. Duration: 4.5s"
+    },
+    {
+     "step": "sample_task_service",
+     "command": "cd builddir/examples/task_service && ./task_service",
+     "ok": true,
+     "output": "Task service started successfully with dbus daemon. Long-running daemon process (event loop), verified it starts without errors. Duration: <30s before manual stop"
+    },
+    {
+     "step": "sample_module_test",
+     "command": "cd builddir/examples/module_test && ./module_test_example",
+     "ok": true,
+     "output": "All module tests passed: devices, network, protocol (init.so mode), database (deep path), two-stage unload verification. Program segfaulted on exit during cleanup (EXIT CODE 0 but core dumped). Duration: 0.1s"
+    },
+    {
+     "step": "cleanup",
+     "command": "docker stop ttfhw-libmcpp-env && docker rm ttfhw-libmcpp-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libmcpp.a",
+     "size": "16M"
+    },
+    {
+     "name": "libmcpp_base.a",
+     "size": "28M"
+    },
+    {
+     "name": "libmcpp_core.a",
+     "size": "39M"
+    },
+    {
+     "name": "libmcpp_expr.a",
+     "size": "57M"
+    },
+    {
+     "name": "libmcpp_engine.a",
+     "size": "237M"
+    },
+    {
+     "name": "libmcpp_test",
+     "size": "243M"
+    },
+    {
+     "name": "libmcbase.so",
+     "size": "动态库"
+    },
+    {
+     "name": "libmcbase_test.a",
+     "size": "13M"
+    },
+    {
+     "name": "libexample_plugin.so",
+     "size": "2.2M"
+    },
+    {
+     "name": "example_plugin",
+     "size": "可执行文件"
+    },
+    {
+     "name": "interprocess_example",
+     "size": "可执行文件"
+    },
+    {
+     "name": "task_service",
+     "size": "可执行文件"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64（README中声明支持Linux/GCC 7+, Clang 5+, MSVC 2019+）",
+     "source": "README.md - 系统要求章节 + 兼容性表格"
+    },
+    {
+     "label": "依赖",
+     "value": "meson >= 0.56、ninja-build、gcc/g++ (C++17)、libboost-all-dev >= 1.66、libdbus-1-dev、libglib2.0-dev、libgtest-dev、pkg-config",
+     "source": "README.md (编译环境章节) + meson.build (find_package行) + libraries/mcbase/meson.build"
+    },
+    {
+     "label": "构建命令",
+     "value": "meson setup builddir && meson compile -C builddir",
+     "source": "README.md - 构建与安装章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "meson test -C builddir",
+     "source": "README.md - 从源码构建章节"
+    }
+   ],
    "scenario": "developer",
    "community": "openUBMC",
    "repo": "libmcpp",
@@ -2096,6 +3679,94 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "container_setup",
+     "command": "docker run -d --name ttfhw-memcache-env -v /workspace/TTFHW3/UBSCore/memcache/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "dependency_install",
+     "command": "apt-get update && apt-get install -y cmake gcc g++ make python3 python3-dev python3-pip dos2unix lcov git libpython3-dev pkg-config bc",
+     "ok": true,
+     "output": "cmake 3.28.3, gcc 13.3.0, Python 3.12.3 installed"
+    },
+    {
+     "step": "dependency_install",
+     "command": "pip3 install --break-system-packages pybind11 -i https://pypi.tuna.tsinghua.edu.cn/simple",
+     "ok": true,
+     "output": "pybind11 3.0.4 installed via Tsinghua mirror (default PyPI timed out)"
+    },
+    {
+     "step": "build",
+     "command": "export MMC_BUILD_JOBS=12 && bash script/build_and_pack_run.sh --build_mode RELEASE",
+     "ok": true,
+     "output": "Build completed in 63.336s (real). Generated run package and wheel package."
+    },
+    {
+     "step": "ut",
+     "command": "export MMC_BUILD_JOBS=12 && bash script/run_ut.sh",
+     "ok": true,
+     "output": "154 tests from 27 test suites ran. All 154 PASSED. Total test time: 140617ms (~140.6s). Total script time: 3m38.801s (real)."
+    },
+    {
+     "step": "sample",
+     "command": "pip3 install output/memcache/wheel/memcache_hybrid-1.1.0-cp312-cp312-linux_x86_64.whl",
+     "ok": false,
+     "output": "Sample execution skipped"
+    },
+    {
+     "step": "cleanup",
+     "command": "docker stop ttfhw-memcache-env && docker rm ttfhw-memcache-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libmf_memcache.so",
+     "size": "2.8M"
+    },
+    {
+     "name": "_pymmc.cpython-312-x86_64-linux-gnu.so",
+     "size": "1.3M"
+    },
+    {
+     "name": "mmc_meta_service",
+     "size": "1.7M"
+    },
+    {
+     "name": "memcache_hybrid-1.1.0-cp312-cp312-linux_x86_64.whl",
+     "size": "1.6M"
+    },
+    {
+     "name": "memcache_hybrid-1.1.0_linux_x86_64.run",
+     "size": "6.0M"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64 (文档中声明支持)",
+     "source": "doc/build.md + README.md - 软件硬件配套说明章节"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.20、gcc >= 11.4、python 3.11.10、pybind11 2.10.3、make 4.3 or ninja 1.10.1、dos2unix、lcov (UT coverage)、MemFabric_Hybrid (第三方库，通过git submodule引入)",
+     "source": "doc/build.md - 环境准备章节 + CMakeLists.txt + script/run_ut.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash script/build_and_pack_run.sh --build_mode RELEASE",
+     "source": "doc/build.md - 编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash script/run_ut.sh",
+     "source": "doc/build.md - ut运行章节"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "memcache",
@@ -2198,6 +3869,136 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "1",
+     "command": "git clone https://gitcode.com/Ascend/memfabric_hybrid.git ./tmp_src/",
+     "ok": true,
+     "output": "Cloning into './tmp_src'..."
+    },
+    {
+     "step": "2",
+     "command": "uname -m",
+     "ok": true,
+     "output": "x86_64"
+    },
+    {
+     "step": "3",
+     "command": "docker run -d --name ttfhw-memfabric-hybrid-env -v ./tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started"
+    },
+    {
+     "step": "4",
+     "command": "apt-get install -y cmake gcc g++ make ninja-build python3 python3-pip python3-dev python3-venv dos2unix git bc lcov wheel",
+     "ok": true,
+     "output": "All packages installed successfully"
+    },
+    {
+     "step": "5",
+     "command": "pip3 install pybind11 --break-system-packages -i https://pypi.tuna.tsinghua.edu.cn/simple",
+     "ok": true,
+     "output": "Successfully installed pybind11-3.0.4"
+    },
+    {
+     "step": "6",
+     "command": "git submodule update --init --recursive",
+     "ok": false,
+     "output": "Failed to connect to github.com port 443 - connection timeout"
+    },
+    {
+     "step": "7",
+     "command": "git clone --depth 1 --branch v1.12.0 https://gitcode.com/google/googletest.git test/3rdparty/googletest && git clone --depth 1 --branch v2.7 https://gh-proxy.co",
+     "ok": true,
+     "output": "Both submodules cloned successfully"
+    },
+    {
+     "step": "8",
+     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
+     "ok": true,
+     "output": "C++ libraries compiled, whl package built, run package packaged"
+    },
+    {
+     "step": "9",
+     "command": "bash script/run_ut.sh (ASAN mode, BUILD_UT=ON)",
+     "ok": true,
+     "output": "1093 tests from 52 test suites ran. [PASSED] 1093 tests. Lines: 71.8%, Branches: 48.0%"
+    },
+    {
+     "step": "10",
+     "command": "docker stop ttfhw-memfabric-hybrid-env && docker rm ttfhw-memfabric-hybrid-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "memfabric_hybrid-1.1.0-cp312-cp312-linux_x86_64.whl",
+     "size": "2.2M"
+    },
+    {
+     "name": "memfabric_hybrid-1.1.0_linux_x86_64.run",
+     "size": "6.9M"
+    },
+    {
+     "name": "libmf_smem.so",
+     "size": "75M"
+    },
+    {
+     "name": "libmf_hybm_core.so",
+     "size": "94M"
+    },
+    {
+     "name": "libacc_tcp_net.so",
+     "size": "22M"
+    },
+    {
+     "name": "libmf_smem.a",
+     "size": "56M"
+    },
+    {
+     "name": "libmf_hybm_core.a",
+     "size": "175M"
+    },
+    {
+     "name": "libacc_tcp_net.a",
+     "size": "39M"
+    },
+    {
+     "name": "Headers (smem)",
+     "size": ""
+    },
+    {
+     "name": "Headers (hybm)",
+     "size": ""
+    },
+    {
+     "name": "Headers (acc_links)",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64/x86_64",
+     "source": "README.md - 软件硬件配套说明章节"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.19、gcc 11.4+、g++、make 4.3 or ninja 1.10.1、python 3.11.10、pybind11 2.10.3、dos2unix、GLIBC >= 2.28、git submodule: googletest v1.12.0 (test/3rdparty)、git submodule: mockcpp v2.7 (test/3rdparty)",
+     "source": "doc/installation.md + CMakeLists.txt + script/build.sh + script/run_ut.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
+     "source": "doc/installation.md - 编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash script/run_ut.sh (内部执行: cmake -DBUILD_UT=ON -DCMAKE_BUILD_TYPE=ASAN + ninja install + ./test_memfabric + lcov coverage)",
+     "source": "script/run_ut.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "memfabric_hybrid",
@@ -2306,6 +4107,112 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/metadef.git",
+     "ok": true,
+     "output": "Repository cloned successfully (972 files)"
+    },
+    {
+     "step": "",
+     "command": "docker pull swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-beta.1-910-ubuntu22.04-py3.11",
+     "ok": true,
+     "output": "Image pulled successfully"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name metadef-verify-env ...",
+     "ok": true,
+     "output": "Container started"
+    },
+    {
+     "step": "",
+     "command": "cmake -DCMAKE_BUILD_TYPE=Debug -B build .",
+     "ok": true,
+     "output": "CMake configuration successful (main build)"
+    },
+    {
+     "step": "",
+     "command": "make -j12 (main build)",
+     "ok": true,
+     "output": "Build completed: [100%] Built target opp_registry"
+    },
+    {
+     "step": "",
+     "command": "make install && make package",
+     "ok": true,
+     "output": "Package created: cann-metadef_9.0.0_linux-x86_64.run (19.5MB)"
+    },
+    {
+     "step": "",
+     "command": "cmake -DUSE_CXX11_ABI=0 -DENABLE_METADEF_UT=on -B build_gcov .",
+     "ok": true,
+     "output": "UT CMake configuration successful"
+    },
+    {
+     "step": "",
+     "command": "make ut_metadef ut_register ut_exe_meta_device ut_sc_check -j12",
+     "ok": true,
+     "output": "UT build completed successfully"
+    },
+    {
+     "step": "",
+     "command": "ctest --verbose -j12 -L ut",
+     "ok": true,
+     "output": "100% tests passed, 0 tests failed out of 3 (447 tests total)"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-metadef_9.0.0_linux-x86_64.run",
+     "size": "19527945 bytes (19.5 MB)"
+    },
+    {
+     "name": "libmetadef.so",
+     "size": ""
+    },
+    {
+     "name": "libopp_registry.so",
+     "size": ""
+    },
+    {
+     "name": "libexe_graph.so",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64",
+     "source": "docs/build.md - 4.3 编译章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 22.04",
+     "source": "docs/quick_install.md - Docker部署章节"
+    },
+    {
+     "label": "镜像",
+     "value": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-beta.1-910-ubuntu22.04-py3.11",
+     "source": "docs/quick_install.md - Docker部署章节"
+    },
+    {
+     "label": "依赖",
+     "value": "GCC >= 7.3.x、Python3 >= 3.9.x、CMake >= 3.16.0、ccache/cov/asan、CANN Toolkit (Ascend-cann-toolkit)、Environment variable: ASCEND_HOME_PATH、CMake variable: USE_CXX11_ABI=0 (for UT build)",
+     "source": "docs/build.md - 4.2 安装依赖章节 + 实际验证发现"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh",
+     "source": "docs/build.md - 4.3 编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash tests/run_test.sh -u",
+     "source": "docs/build.md - 4.3 本地验证（UT）章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "metadef",
@@ -2441,6 +4348,89 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "1",
+     "command": "docker pull ubuntu:24.04",
+     "ok": false,
+     "output": "Docker Hub timeout - dial tcp 108.160.163.117:443: i/o timeout"
+    },
+    {
+     "step": "2",
+     "command": "docker run -d --name verification-env -v ./tmp_src:/workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully with repo mounted at /workspace"
+    },
+    {
+     "step": "3",
+     "command": "apt-get update && apt-get install -y cmake gcc g++ make wget unzip tar git python3 python3-pip python3-venv bc file patch pkg-config libssl-dev libtool autoconf",
+     "ok": true,
+     "output": "All packages installed successfully"
+    },
+    {
+     "step": "4",
+     "command": "export NO_CHECK_CERTIFICATE=1 && env -u LD_LIBRARY_PATH bash build/build.sh -d 3rd -b 3rd",
+     "ok": true,
+     "output": "All third-party dependencies downloaded and built successfully:\n- boost 1.87.0: built and installed\n- openssl 3.0.9: built and installed\n- spdlog 1.15.3: built and installed\n- nlohmann-json 3.11.3: built and installed\n- pybind11 2.13.6: bui"
+    },
+    {
+     "step": "5",
+     "command": "cd mindie_motor/python && pip wheel . --no-build-isolation -v",
+     "ok": false,
+     "output": "Build started, compiled to ~40%. setup.py triggered build.sh -b ms for C++ compilation. Failed at coordinator/Coordinator.cpp with: fatal error: msServiceProfiler/Tracer.h: No such file or directory. The msServiceProfiler header is part of "
+    },
+    {
+     "step": "6",
+     "command": "cd mindie_motor/src/test/nodemanager_test && pytest . --continue-on-collection-errors",
+     "ok": false,
+     "output": "5 tests collected, 6 had import errors. All 5 collected tests (test_llm_daemon_starter.py) FAILED. Import errors (6): missing psutil, requests, pyopenssl, uvicorn, fastapi, pydantic - these dependencies are not documented in test requiremen"
+    },
+    {
+     "step": "7",
+     "command": "cd mindie_motor/src/test/adapter_test && pytest .",
+     "ok": false,
+     "output": "Cannot run: adapter directory does not exist in the repository. The run_test.sh references DT_MIECLIENT_SRC_HOME=$DT_ROOT_HOME/adapter which does not exist."
+    },
+    {
+     "step": "8",
+     "command": "docker stop verification-env && docker rm verification-env",
+     "ok": true,
+     "output": "Container stopped and removed successfully"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "third_party_libraries",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64",
+     "source": "build/build.sh - ARCH=$(arch) check; test_mindms.sh - CPU_TYPE check"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04 / openEuler (document references both)",
+     "source": "docs/zh/developer_guide/build_guide.md - mentions yum for openEuler"
+    },
+    {
+     "label": "依赖",
+     "value": "Python == 3.11 (build_guide.md), setup.py requires >=3.10、cmake >= 3.18 (CMakeLists.txt)、gcc, g++, make、wget, unzip, tar, git, patch, pkg-config、Ascend CANN toolkit (msServiceProfiler header - from $A",
+     "source": "docs/zh/developer_guide/build_guide.md + build/third_party/dependency.json + mindie_motor/python/setup.py + mindie_motor"
+    },
+    {
+     "label": "构建命令",
+     "value": "env -u LD_LIBRARY_PATH bash build/build.sh -d 3rd -b 3rd (download and build third-party)、cd mindie_motor/python && pip wheel . --no-build-isolation -v (build Python wheel)、pip install mindie_motor*.w",
+     "source": "docs/zh/developer_guide/build_guide.md - Steps 6-9"
+    },
+    {
+     "label": "测试命令",
+     "value": "C++ LLT: bash mindie_motor/src/test/test_mindms.sh (build) then ./mindie_ms_llt (run)、Python nodemanager_test: cd mindie_motor/src/test/nodemanager_test && bash run_test.sh、Python adapter_test: cd min",
+     "source": "mindie_motor/src/test/README.md + test run_test.sh files + tests/README.md"
+    }
+   ],
    "scenario": "developer",
    "community": "MindIE",
    "repo": "MindIE-Motor",
@@ -2566,6 +4556,125 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "1",
+     "command": "git clone https://gitcode.com/Ascend/MindIE-PyMotor.git /home/<user>/tmp_src",
+     "ok": true,
+     "output": "Cloning into '.'..."
+    },
+    {
+     "step": "2a",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Image already available locally"
+    },
+    {
+     "step": "2b",
+     "command": "docker run -d --name verification-env -v /home/<user>/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "2c",
+     "command": "apt-get update && apt-get install -y python3 python3-pip python3-venv",
+     "ok": true,
+     "output": "Python 3.12.3 installed"
+    },
+    {
+     "step": "2d",
+     "command": "python3 -m venv /workspace/venv",
+     "ok": true,
+     "output": "venv created with Python 3.12.3"
+    },
+    {
+     "step": "2e",
+     "command": "pip install psutil fastapi uvicorn[standard] pydantic msgspec requests httpx watchdog",
+     "ok": true,
+     "output": "Successfully installed 27 packages"
+    },
+    {
+     "step": "2f",
+     "command": "pip install grpcio grpcio-tools pyOpenSSL pytest-asyncio pytest pytest-xdist pytest-cov setproctitle pyzmq",
+     "ok": true,
+     "output": "Successfully installed 18 packages"
+    },
+    {
+     "step": "2g",
+     "command": "pip install kubernetes confluent_kafka opentelemetry-exporter-otlp-proto-http opentelemetry-exporter-otlp-proto-grpc",
+     "ok": true,
+     "output": "Successfully installed 18 packages"
+    },
+    {
+     "step": "2h",
+     "command": "pip install transformers",
+     "ok": true,
+     "output": "Successfully installed 15 packages (numpy-2.4.4, tokenizers, transformers-5.8.0, etc.)"
+    },
+    {
+     "step": "3a",
+     "command": "bash build.sh",
+     "ok": true,
+     "output": "Generating protobuf files...\n3 proto files generated (auth.proto, kv.proto, rpc.proto)\nBuilding wheel package with pip wheel (PEP517)...\nSuccessfully built motor-0.1.0-py3-none-any.whl (496K)"
+    },
+    {
+     "step": "3b",
+     "command": "pip install dist/motor-0.1.0-py3-none-any.whl",
+     "ok": true,
+     "output": "Successfully installed motor-0.1.0"
+    },
+    {
+     "step": "3c",
+     "command": "bash tests/run_tests.sh --serial",
+     "ok": true,
+     "output": "1035 tests passed in 56.22s"
+    },
+    {
+     "step": "3d",
+     "command": "N/A",
+     "ok": false,
+     "output": "Examples require NPU hardware (Ascend NPU drivers, npu-smi) and K8s cluster with MindCluster components"
+    },
+    {
+     "step": "4",
+     "command": "docker stop verification-env && docker rm verification-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "motor-0.1.0-py3-none-any.whl",
+     "size": "496K"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "Python package (platform-independent), targets Ascend NPU hardware for deployment",
+     "source": "README.md + setup.py (python_requires>=3.11)"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04 (chosen as default)",
+     "source": "User selection"
+    },
+    {
+     "label": "依赖",
+     "value": "Python >= 3.11、psutil>=5.9.8、fastapi>=0.68.0、uvicorn[standard]>=0.15.0、grpcio>=1.40.0、grpcio-tools>=1.40.0、pydantic>=1.8.0、msgspec>=0.18.0、requests>=2.31.0、httpx>=0.24.0、pytest-asyncio>=0.21、pyOpenSSL",
+     "source": "requirements.txt + setup.py"
+    },
+    {
+     "label": "构建命令",
+     "value": "./build.sh (runs scripts/generate_proto.sh, then python -m pip wheel . --no-deps --use-pep517 -w dist)",
+     "source": "build.sh"
+    },
+    {
+     "label": "测试命令",
+     "value": "tests/run_tests.sh (or pytest tests/)",
+     "source": "README.md + pytest.ini + tests/run_tests.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "MindIE",
    "repo": "MindIE-PyMotor",
@@ -2679,6 +4788,102 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Image already available locally (c4a8d5503dfb)"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name verification-env -v /home/<user>/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get update",
+     "ok": true,
+     "output": "Package lists updated successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y python3 python3-pip python3-venv gcc g++ make",
+     "ok": true,
+     "output": "All packages installed successfully"
+    },
+    {
+     "step": "",
+     "command": "pip3 install --break-system-packages 'setuptools>=65.5' wheel",
+     "ok": true,
+     "output": "setuptools and wheel installed"
+    },
+    {
+     "step": "",
+     "command": "bash build/build.sh",
+     "ok": false,
+     "output": "Build failed at build_ops.sh step: 'Can not find toolkit path, please set ASCEND_TOOLKIT_HOME'"
+    },
+    {
+     "step": "",
+     "command": "pip3 install --break-system-packages torch --index-url https://download.pytorch.org/whl/cpu",
+     "ok": true,
+     "output": "torch-2.11.0+cpu installed with dependencies (networkx, sympy, jinja2, etc.)"
+    },
+    {
+     "step": "",
+     "command": "pip3 install --break-system-packages pytest coverage einops numpy safetensors",
+     "ok": true,
+     "output": "All test dependencies installed"
+    },
+    {
+     "step": "",
+     "command": "cd /workspace/tests && python3 UT/run.py",
+     "ok": true,
+     "output": "Ran 34 tests in 0.963s - OK (all 34 passed)"
+    },
+    {
+     "step": "",
+     "command": "cd /workspace/tests && python3 -m pytest UT/ -v",
+     "ok": false,
+     "output": "17 passed, 17 ERROR (test_aclgraph_config tests fail due to missing torch_npu mock)"
+    },
+    {
+     "step": "",
+     "command": "docker stop verification-env && docker rm verification-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 or x86_64 (build.sh checks uname -m for both)",
+     "source": "build/build.sh lines 56-60"
+    },
+    {
+     "label": "OS 支持",
+     "value": "openEuler (primary in docs), Ubuntu (also supported)",
+     "source": "docs/en/installing_guide.md - mentions openEuler for container image"
+    },
+    {
+     "label": "依赖",
+     "value": "Python >= 3.10 (pyproject.toml)、setuptools >= 65.5 (pyproject.toml)、wheel (pyproject.toml)、torch (setup.py, requirements.txt: torch==2.9.0)、torch_npu (setup.py, Ascend NPU specific)、CANN toolkit (buil",
+     "source": "pyproject.toml, setup.py, requirements.txt, docs/en/installing_guide.md, build/build_ops.sh, build/build_plugin.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build/build.sh (runs python3 setup.py bdist_wheel)",
+     "source": "build/build.sh, docs/en/installing_guide.md"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash tests/run_UT_test.sh (coverage + unittest + pytest), bash tests/run_test.sh (full test suite with --cpu_only/--npu_only/--all flags)",
+     "source": "tests/run_UT_test.sh, tests/run_test.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "MindIE",
    "repo": "MindIE-SD",
@@ -2762,6 +4967,113 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "SSH Connection Establishment",
+     "ok": true,
+     "output": "Connected to <redacted-user>@<redacted-host>:22 successfully"
+    },
+    {
+     "step": "",
+     "command": "Docker Container Creation",
+     "ok": true,
+     "output": "Created container ttfhw-mindie-llm-final-build with openEuler 24.03 LTS image"
+    },
+    {
+     "step": "",
+     "command": "System Package Installation",
+     "ok": true,
+     "output": "Installed cmake, gcc, gcc-c++, make, git, python3, python3-pip, python3-devel, perl, autoconf, automake, libtool"
+    },
+    {
+     "step": "",
+     "command": "Python Package Installation (Huawei Mirror)",
+     "ok": true,
+     "output": "Installed torch==2.0.0, pybind11==3.0.4, posix_ipc==1.3.2, numpy successfully using Huawei Cloud PyPI mirror"
+    },
+    {
+     "step": "",
+     "command": "CUDA Stub Creation",
+     "ok": true,
+     "output": "Created CUDA stub directory at /usr/local/cuda to allow Torch CMake configuration without actual CUDA"
+    },
+    {
+     "step": "",
+     "command": "CMake Configuration",
+     "ok": true,
+     "output": "Configuring done (7.2s), Generating done (0.3s), Build files have been written to: /workspace/build\nFound: ZLIB, Boost, OpenSSL, c-ares, Threads, Python, Torch, pybind11, Protobuf\nTorch location: /usr/local/lib64/python3.11/site-packages/to"
+    },
+    {
+     "step": "",
+     "command": "Make Build",
+     "ok": false,
+     "output": "Partial compilation successful; some modules failed due to source code issues (missing <cstddef> include, torch API version mismatch in TCPStoreOptions)"
+    },
+    {
+     "step": "",
+     "command": "Pre-built Artifacts Verification",
+     "ok": true,
+     "output": "Found 16 .so libraries in output/lib/, all third-party dependencies pre-built and verified"
+    },
+    {
+     "step": "",
+     "command": "Examples Directory Verification",
+     "ok": true,
+     "output": "examples/atb_models/ directory structure verified complete with atb_framework, atb_llm, examples, tests, scripts"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libsystem_log.so",
+     "size": ""
+    },
+    {
+     "name": "libfoundation.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_llm_log.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_llm_utils.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_block_manager.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_scheduler.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_executor.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_engine.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_llm_manager.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_llm_manager_v2.so",
+     "size": ""
+    },
+    {
+     "name": "libmindie_load_balancer.so",
+     "size": ""
+    },
+    {
+     "name": "libmindieservice_endpoint.so",
+     "size": ""
+    }
+   ],
+   "docFacts": [],
    "scenario": "developer",
    "community": "MindIE",
    "repo": "MindIE_LLM",
@@ -2863,6 +5175,111 @@
    ],
    "summary": "MindSpeed-MM 是华为昇腾多模态大模型训练套件，专为 Ascend NPU 硬件设计。在标准 x86_64 CPU 环境下，python -m build 构建成功，31 个单元测试通过。完整验证需要 torch_npu 和 MindSpeed 包，这需要昇腾 NPU 硬件支持。",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/Ascend/MindSpeed-MM.git",
+     "ok": true,
+     "output": "Successfully cloned with GIT_SSL_NO_VERIFY=true"
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04 && docker run -d --name mindspeed-mm-env",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get install python3 python3-pip git",
+     "ok": true,
+     "output": "Python 3.12.3 installed"
+    },
+    {
+     "step": "",
+     "command": "pip3 install pytest pytest-mock",
+     "ok": true,
+     "output": "pytest 9.0.3 installed"
+    },
+    {
+     "step": "",
+     "command": "pip3 install torch --index-url https://download.pytorch.org/whl/cpu",
+     "ok": true,
+     "output": "torch 2.11.0+cpu installed"
+    },
+    {
+     "step": "",
+     "command": "git clone --branch core_v0.12.1 https://github.com/NVIDIA/Megatron-LM.git",
+     "ok": true,
+     "output": "Megatron-LM cloned and copied to /workspace/megatron/"
+    },
+    {
+     "step": "",
+     "command": "pytest tests/ut/test_ut_demo.py -v",
+     "ok": true,
+     "output": "1 passed"
+    },
+    {
+     "step": "",
+     "command": "pytest tests/ut/test_encoder_balance_comm.py tests/ut/test_lora_utils.py -v",
+     "ok": false,
+     "output": "ModuleNotFoundError: No module named 'torch_npu'"
+    },
+    {
+     "step": "",
+     "command": "python -m build",
+     "ok": true,
+     "output": "Successfully built mindspeed_mm-0.1.tar.gz and mindspeed_mm-0.1-py3-none-any.whl"
+    },
+    {
+     "step": "",
+     "command": "pip install dist/mindspeed_mm-0.1-py3-none-any.whl --no-deps",
+     "ok": true,
+     "output": "Successfully installed mindspeed-mm-0.1"
+    },
+    {
+     "step": "",
+     "command": "pytest tests/ut/ -v (排除依赖torch_npu的测试)",
+     "ok": true,
+     "output": "31 passed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "mindspeed_mm-0.1-py3-none-any.whl",
+     "size": "24MB"
+    },
+    {
+     "name": "mindspeed_mm-0.1.tar.gz",
+     "size": "23MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64 (Ascend NPU)",
+     "source": "README.md - 版本说明章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04 (验证环境), openEuler 22.03 LTS SP3 (用户选择但架构不匹配)",
+     "source": "用户选择"
+    },
+    {
+     "label": "依赖",
+     "value": "Python >= 3.10、PyTorch 2.7.1、torch_npu (Ascend NPU)、Megatron-LM core_v0.12.1、MindSpeed 26.0.0_core_r0.12.1、transformers、numpy、einops、pydantic",
+     "source": "README.md + pyproject.toml + docs/zh/install_guide.md"
+    },
+    {
+     "label": "构建命令",
+     "value": "python -m build (构建wheel包), pip install -e . (安装项目)",
+     "source": "pyproject.toml + docs/zh/install_guide.md - 手动安装章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "pytest tests/ut/",
+     "source": "tests/ut/ 目录结构 + pytest.ini"
+    }
+   ],
    "scenario": "developer",
    "community": "MindSpeed",
    "repo": "MindSpeed-MM",
@@ -2977,6 +5394,71 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/oam-tools.git",
+     "ok": true,
+     "output": "Repository cloned successfully (1191 files)"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name verification-env ubuntu:24.04",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get update",
+     "ok": true,
+     "output": "Package lists updated (37.9 MB fetched)"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y cmake gcc g++ python3 python3-pip make git wget curl",
+     "ok": true,
+     "output": "Installed: cmake 3.28.3, gcc 13.3.0, python3 3.12.3"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -j12",
+     "ok": false,
+     "output": "Downloaded cann-oam-tools-release-x86_64.tar.gz (227MB), extracted bundle/, cloned msprof and msprobe submodules"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 or aarch64",
+     "source": "README.md - 编译说明章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 22.04 (for Docker deployment), or any Linux with CANN support",
+     "source": "docs/quick_install.md - Docker部署章节"
+    },
+    {
+     "label": "镜像",
+     "value": "未提供Dockerfile，文档中提及AscendHub镜像: swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.0-910b-ubuntu22.04-py3.10",
+     "source": "docs/quick_install.md - Docker部署章节"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.9.0、gcc >= 7.3.0、cmake >= 3.16.0、ccache、CANN toolkit组合包 (Ascend-cann-toolkit)、CANN ops组合包 (Ascend-cann-ops)、protobuf >= 25.1、abseil >= 20230802.1、json >= 3.11.3、patch >= 2.7.6、googletest (",
+     "source": "docs/quick_install.md - 前置依赖章节"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh",
+     "source": "README.md - 源码编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u",
+     "source": "README.md - 验证章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "oam-tools",
@@ -3085,6 +5567,134 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "container_setup",
+     "command": "docker pull internal-registry.example.com/openeuler/openeuler:24.03-lts",
+     "ok": true,
+     "output": "Image pulled successfully"
+    },
+    {
+     "step": "container_setup",
+     "command": "docker run -d --name ttfhw-omnistatestore-env -v /home/<user>/tmp_src:/workspace -w /workspace internal-registry.example.com/openeuler/openeuler:24.03-lts tail ",
+     "ok": true,
+     "output": "Container started: 32e934ab0744"
+    },
+    {
+     "step": "dependency_install",
+     "command": "dnf install -y cmake gcc gcc-c++ make",
+     "ok": true,
+     "output": "cmake 3.27.9, gcc 12.3.1 installed"
+    },
+    {
+     "step": "dependency_install",
+     "command": "dnf install -y java-1.8.0-openjdk-devel",
+     "ok": true,
+     "output": "OpenJDK 1.8.0_462 (BiSheng) installed"
+    },
+    {
+     "step": "dependency_install",
+     "command": "dnf install -y maven",
+     "ok": true,
+     "output": "Apache Maven 3.6.3 installed"
+    },
+    {
+     "step": "dependency_install",
+     "command": "dnf install -y libaio-devel",
+     "ok": true,
+     "output": "libaio-devel 0.3.113 installed"
+    },
+    {
+     "step": "build_release",
+     "command": "bash scripts/build.sh -t release",
+     "ok": true,
+     "output": "Build succeeded. Generated BoostKit-omnistatestore_1.1.0_x86_64_release.tar.gz (7.2MB) + 4 Flink version JARs"
+    },
+    {
+     "step": "build_ut_first_attempt",
+     "command": "bash scripts/build.sh -t debug --ut",
+     "ok": false,
+     "output": "Build failed at linking stage"
+    },
+    {
+     "step": "build_ut_retry",
+     "command": "bash scripts/build.sh -t debug --ut (after installing libaio-devel)",
+     "ok": true,
+     "output": "Build succeeded. Generated bss_ut test executable"
+    },
+    {
+     "step": "unit_test",
+     "command": "cd /workspace/build && ./test/llt/bss_ut --gtest_output=xml:/workspace/build/test_report.xml",
+     "ok": false,
+     "output": "296 tests from 29 test suites ran. 295 PASSED, 1 FAILED"
+    },
+    {
+     "step": "cleanup",
+     "command": "docker stop ttfhw-omnistatestore-env && docker rm ttfhw-omnistatestore-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "BoostKit-omnistatestore_1.1.0_x86_64_release.tar.gz",
+     "size": "7.2M"
+    },
+    {
+     "name": "libockdbjni-linux64.so",
+     "size": ""
+    },
+    {
+     "name": "flink-boost-statebackend-1.1.0-SNAPSHOT-for-flink-1.16.1.jar",
+     "size": ""
+    },
+    {
+     "name": "flink-boost-statebackend-1.1.0-SNAPSHOT-for-flink-1.16.3.jar",
+     "size": ""
+    },
+    {
+     "name": "flink-boost-statebackend-1.1.0-SNAPSHOT-for-flink-1.17.1.jar",
+     "size": ""
+    },
+    {
+     "name": "flink-boost-statebackend-1.1.0-SNAPSHOT-for-flink-1.20.0.jar",
+     "size": ""
+    },
+    {
+     "name": "libbss_common.a",
+     "size": ""
+    },
+    {
+     "name": "libbss_db.a",
+     "size": ""
+    },
+    {
+     "name": "bss_ut",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 (文档声明 Kunpeng-920/Kunpeng-920B 处理器)",
+     "source": "docs/zh/quick_start.md - 编译依赖章节"
+    },
+    {
+     "label": "依赖",
+     "value": "CMake >= 3.14.1 (文档要求 3.22.0)、GCC >= 10.3.1、JDK 1.8、make、maven、libaio (测试依赖，未在文档中列出)",
+     "source": "docs/zh/quick_start.md + CMakeLists.txt + test/llt/CMakeLists.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash scripts/build.sh -t release (release) / bash scripts/build.sh -t debug --ut (debug + UT)",
+     "source": "docs/zh/quick_start.md - 源码编译章节 + scripts/build.sh"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash scripts/build.sh -t debug --ut (编译UT) + ./build/test/llt/bss_ut (执行UT)",
+     "source": "docs/zh/quick_start.md - 开发者测试章节 + test/llt/CMakeLists.txt"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "OmniStateStore",
@@ -3199,6 +5809,67 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/Ascend/op-plugin.git",
+     "ok": true,
+     "output": "Repository cloned successfully to tmp_src/op-plugin"
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04 && docker run -d --name ttfhw-op-plugin-env",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y git python3 python3-pip gcc g++ make cmake",
+     "ok": true,
+     "output": "Basic build tools installed"
+    },
+    {
+     "step": "",
+     "command": "pip3 install torch pyyaml numpy",
+     "ok": true,
+     "output": "PyTorch 2.12.0+cpu installed successfully"
+    },
+    {
+     "step": "",
+     "command": "bash ci/build.sh --python=3.12 --pytorch=master",
+     "ok": false,
+     "output": "Build started, cloning pytorch repository..."
+    },
+    {
+     "step": "",
+     "command": "bash ci/build.sh --python=3.10 --pytorch=v2.7.1-7.3.0",
+     "ok": false,
+     "output": "Build started with v2.7.1-7.3.0 branch..."
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, ARM (aarch64)",
+     "source": "README.md - 版本说明章节; docs/zh/INSTALL.md - GCC版本约束"
+    },
+    {
+     "label": "依赖",
+     "value": "PyTorch 2.6.0/2.7.1/2.8.0/2.9.0、Python 3.9/3.10/3.11 (v2.7.1), Python 3.10/3.11 (v2.9.0/master)、GCC: ARM架构推荐10.2, x86架构推荐9.3.1/11.2.1/13.3、CANN软件栈 (通过set_env.sh配置)、cmake, make, git",
+     "source": "README.md + docs/zh/INSTALL.md + ci/build.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash ci/build.sh --python=3.10 --pytorch=v2.7.1-7.3.0",
+     "source": "docs/zh/INSTALL.md - 操作步骤章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "python test/run_test.py",
+     "source": "test/run_test.py - 单元测试执行脚本"
+    }
+   ],
    "scenario": "developer",
    "community": "PTA",
    "repo": "op-plugin",
@@ -3301,6 +5972,112 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/opbase.git tmp_src/",
+     "ok": true,
+     "output": "Cloning into 'tmp_src'... done."
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "24.04: Pulling from library/ubuntu\nDigest: sha256:c4a8d5503dfb2a3eb8ab5f807da5bc69a85730fb49b5cfca2330194ebcc41c7b\nStatus: Image is up to date"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-opbase-env -v /root/workspace/ttfhw-verify-0511/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started: e0ed6e42e36e"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y gcc g++ cmake make python3 python3-pip python3-dev pigz patch dos2unix git wget",
+     "ok": true,
+     "output": "gcc 13.3.0, g++ 13.3.0, cmake 3.28.3, python3 3.12.3, make 4.3 installed"
+    },
+    {
+     "step": "",
+     "command": "pip3 install -r requirements.txt",
+     "ok": true,
+     "output": "Successfully installed pyyaml-6.0.3"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -j9 (首次构建，无CANN toolkit)",
+     "ok": false,
+     "output": "CMake Error: Check opbase build dependencies failed!\nversion.info does not exist for: runtime, metadef, bisheng-compiler, asc-devkit, ge-executor"
+    },
+    {
+     "step": "",
+     "command": "wget https://ascend.devcloud.huaweicloud.com/artifactory/cann-run-mirror/software/master/20260506000325116/Ascend-cann-toolkit_9.0.0_linux-x86_64.run",
+     "ok": true,
+     "output": "Downloaded CANN toolkit 9.0.0 (1.3GB)"
+    },
+    {
+     "step": "",
+     "command": "yes | Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --install-path=/usr/local/Ascend",
+     "ok": true,
+     "output": "Toolkit: Ascend-cann-toolkit_9.0.0_linux-x86_64 install success, installed in /usr/local/Ascend"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && bash build.sh -j9",
+     "ok": true,
+     "output": "ops_base build success!\nSelf-extractable archive cann-opbase_9.0.0_linux-x86_64.run successfully created."
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && bash build.sh -u -j9",
+     "ok": true,
+     "output": "nnopbase_utest: 952 tests from 75 test suites ran, 952 PASSED\nop_common_utest: 5 tests from 2 test suites ran, 5 PASSED\nExecute ops_base_ut successful."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-opbase_9.0.0_linux-x86_64.run",
+     "size": "9.4M"
+    },
+    {
+     "name": "libops_base.so",
+     "size": "1.3M"
+    },
+    {
+     "name": "libnnopbase.so",
+     "size": "4.4M"
+    },
+    {
+     "name": "libhost_ascend_protobuf.a",
+     "size": "13M"
+    },
+    {
+     "name": "libbase_ascend_protobuf.a",
+     "size": "14M"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64 (Docker镜像支持 amd64/arm64)",
+     "source": "docs/zh/install/quick_install.md - Docker部署章节"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0、gcc >= 7.3.0、g++ >= 7.3.0、cmake >= 3.16.0、pigz >= 2.4 (可选)、patch >= 2.7、dos2unix、git、make、pyyaml (Python依赖)、CANN toolkit >= 8.5 (关键依赖，提供runtime/metadef/bisheng-compiler/asc-devkit/ge-e",
+     "source": "docs/QUICKSTART.md + docs/zh/install/quick_install.md + install_deps.sh + requirements.txt + version.cmake"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
+     "source": "docs/QUICKSTART.md - 联网编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u (编译并执行所有UT) 或 bash build.sh -u --noexec (仅编译UT)",
+     "source": "docs/QUICKSTART.md - 执行UT章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "opbase",
@@ -3402,6 +6179,97 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone --depth=1 https://gitcode.com/openeuler/kernel.git",
+     "ok": true,
+     "output": "克隆完成，85404文件"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name verification-env -v /home/<user>/workspace/ttfhw-kernel/tmp_src:/workspace ubuntu:24.04",
+     "ok": true,
+     "output": "容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y gcc make flex bison bc libssl-dev perl pkg-config libelf-dev binutils",
+     "ok": true,
+     "output": "依赖安装成功：gcc 13.3.0, make 4.3, flex 2.6.4, bison 3.8.2, binutils 2.42"
+    },
+    {
+     "step": "",
+     "command": "make defconfig",
+     "ok": true,
+     "output": "配置成功 - x86_64_defconfig"
+    },
+    {
+     "step": "",
+     "command": "make -j12 (第一次编译)",
+     "ok": false,
+     "output": "编译失败 - sxe2驱动缺少IEEE_8021Q_MAX_PRIORITIES宏定义"
+    },
+    {
+     "step": "",
+     "command": "make tinyconfig",
+     "ok": false,
+     "output": "编译失败 - CONFIG_SMP未启用导致steal_fail_ni_enabled未定义"
+    },
+    {
+     "step": "",
+     "command": "sed -i 's/CONFIG_SXE2=m/# CONFIG_SXE2 is not set/' .config && make olddefconfig",
+     "ok": true,
+     "output": "成功禁用sxe2驱动"
+    },
+    {
+     "step": "",
+     "command": "make clean && make -j12 (最终编译)",
+     "ok": true,
+     "output": "编译成功完成，3827行输出，0错误"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "vmlinux",
+     "size": "49M"
+    },
+    {
+     "name": "bzImage",
+     "size": "13M"
+    },
+    {
+     "name": "System.map",
+     "size": "7.1M"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64",
+     "source": "Documentation/process/changes.rst - 默认架构，未明确指定限制"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04",
+     "source": "验证流程默认选择"
+    },
+    {
+     "label": "依赖",
+     "value": "GNU C >= 5.1、GNU make >= 3.82、bash >= 4.2、binutils >= 2.25、flex >= 2.5.35、bison >= 2.0、openssl/libcrypto >= 1.0.0、bc >= 1.06.95、perl 5、pkg-config、libelf-dev",
+     "source": "Documentation/process/changes.rst 第29-65行 + 验证补充"
+    },
+    {
+     "label": "构建命令",
+     "value": "make defconfig && make -j<N>",
+     "source": "Linux内核标准构建流程"
+    },
+    {
+     "label": "测试命令",
+     "value": "无标准单元测试命令",
+     "source": "内核仓库特性 - 有kunit/selftests框架但需要特定配置"
+    }
+   ],
    "scenario": "developer",
    "community": "openEuler",
    "repo": "kernel",
@@ -3510,6 +6378,96 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "镜像拉取成功"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-ops-cv-env -v ./tmp_src/ops-cv:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "容器启动成功"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y cmake gcc g++ make python3 python3-pip unzip wget",
+     "ok": true,
+     "output": "基础依赖安装成功"
+    },
+    {
+     "step": "",
+     "command": "pip3 install -r requirements.txt",
+     "ok": true,
+     "output": "Python依赖安装成功"
+    },
+    {
+     "step": "",
+     "command": "下载CANN toolkit包并安装",
+     "ok": true,
+     "output": "CANN toolkit 9.0.0 安装成功到/usr/local/Ascend/cann-9.0.0"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --pkg --soc=ascend910b -j9",
+     "ok": true,
+     "output": "编译成功，生成cann-ops-cv-custom-linux.x86_64.run"
+    },
+    {
+     "step": "",
+     "command": "cd build && cmake --build . --target cv_op_host_ut -j9",
+     "ok": true,
+     "output": "UT测试二进制编译成功"
+    },
+    {
+     "step": "",
+     "command": "export BUILD_PATH=/workspace/build && cd build/tests/ut/op_host && time ./cv_op_host_ut",
+     "ok": true,
+     "output": "[==========] Running 175 tests from 46 test suites ran. (96 ms total)\n[  PASSED  ] 175 tests.\nreal 0m0.166s"
+    },
+    {
+     "step": "",
+     "command": "安装算子包 ./build_out/cann-ops-cv-custom-linux.x86_64.run --force",
+     "ok": true,
+     "output": "算子包安装成功到/usr/local/Ascend/cann-9.0.0/opp/vendors/custom_cv"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --run_example add_example eager cust --vendor_name=custom --simulator --soc=ascend950",
+     "ok": false,
+     "output": "链接失败，大量undefined reference错误"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-ops-cv-custom-linux.x86_64.run",
+     "size": "2.5MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64",
+     "source": "文档未明确指定架构要求，默认为x86_64"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0、gcc >= 7.3.0、cmake >= 3.16.0、googletest >= 1.11.0、pigz >= 2.4 (可选)、dos2unix、patch、make、pyyaml、absl-py>=2.0.0、jinja2>=3.1.0、numpy<2.0、setuptools>=59.0.0、wheel>=0.37.0、decorator、sympy、at",
+     "source": "install_deps.sh + requirements.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg --soc=ascend910b -j16",
+     "source": "QUICKSTART.md - 编译AddExample算子章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "cd build/tests/ut/op_host && export BUILD_PATH=/workspace/build && ./cv_op_host_ut",
+     "source": "文档未明确列出UT命令，推导自构建产物和源码分析"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "ops-cv",
@@ -3581,6 +6539,77 @@
    ],
    "summary": "ops-math项目完整验证成功：\n1. 文档提供完整CANN toolkit下载地址\n2. cmake初始化成功\n3. add_example算子编译打包成功\n4. UT测试788/788全部通过\n5. 样例运行因版本配套问题未执行（文档已说明配套关系）",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "apt-get install cmake gcc g++ make python3 pip git googletest",
+     "ok": true,
+     "output": ""
+    },
+    {
+     "step": "",
+     "command": "wget CANN toolkit from docs URL (1.22GB)",
+     "ok": true,
+     "output": "下载完成，大小1.3GB"
+    },
+    {
+     "step": "",
+     "command": "Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --quiet",
+     "ok": true,
+     "output": "安装成功到/usr/local/Ascend/cann-9.0.0"
+    },
+    {
+     "step": "",
+     "command": "source set_env.sh && cmake ..",
+     "ok": true,
+     "output": "CMake初始化成功"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --pkg --soc=ascend950 --ops=add_example --simulator -j9",
+     "ok": true,
+     "output": "编译成功，生成cann-ops-math-custom_linux-x86_64.run"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -u --ophost --noexec",
+     "ok": true,
+     "output": "UT测试编译成功，生成math_op_host_ut"
+    },
+    {
+     "step": "",
+     "command": "./math_op_host_ut --gtest_filter='*'",
+     "ok": true,
+     "output": "788 tests from 207 test suites ran. [PASSED] 788 tests."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-ops-math-custom_linux-x86_64.run",
+     "size": ""
+    },
+    {
+     "name": "math_op_host_ut",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "依赖",
+     "value": "CANN toolkit包（编译态必需，文档提供下载地址）、python >= 3.7.0, gcc >= 7.3.0, cmake >= 3.16.0、googletest >= 1.11.0（UT测试需要）、pyyaml, setuptools, wheel, decorator, sympy, attrs, pytest",
+     "source": "docs/zh/install/quick_install.md + install_deps.sh + requirements.txt + tests/requirements.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg --soc=${soc_version} --ops=${op_name} -j${threads}",
+     "source": "docs/zh/install/compile.md"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u --[ophost|opapi|opkernel]",
+     "source": "docs/zh/install/compile.md - 本地验证章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "ops-math",
@@ -3689,6 +6718,126 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/ops-nn.git ops-nn-src",
+     "ok": true,
+     "output": "Cloning into 'ops-nn-src'... Updating files: 100% (15569/15569), done."
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Digest: sha256:c4a8d5503dfb2a3eb8ab5f807da5bc69a85730fb49b5cfca2330194ebcc41c7b\nStatus: Image is up to date"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-ops-nn-env -v /root/workspace/ttfhw-verify-0511/ops-nn-src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "37d343facce971b60974da08bb249c4ffdece09c7d7afb05ecfb54f7f6744871"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y python3 python3-pip python3-dev gcc g++ cmake make pigz dos2unix patch git wget curl",
+     "ok": true,
+     "output": "Python 3.12.3, gcc 13.3.0, cmake 3.28.3, make 4.3, pigz 2.8, dos2unix 7.5.1 installed successfully"
+    },
+    {
+     "step": "",
+     "command": "pip3 install -r requirements.txt",
+     "ok": true,
+     "output": "Successfully installed pyyaml-6.0.3 absl-py-2.4.0 attrs-26.1.0 decorator-5.2.1 jinja2-3.1.6 numpy-1.26.4 protobuf-7.34.1 psutil-7.2.2 scipy-1.17.1 sympy-1.14.0"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
+     "ok": false,
+     "output": "CMake Error at cmake/dependencies.cmake:75 (find_package): Could not find a package configuration file provided by 'ASC'"
+    },
+    {
+     "step": "",
+     "command": "wget 'https://ascend.devcloud.huaweicloud.com/artifactory/cann-run-mirror/software/master/20260506000325116/Ascend-cann-toolkit_9.0.0_linux-x86_64.run'",
+     "ok": true,
+     "output": "Downloaded Ascend-cann-toolkit_9.0.0_linux-x86_64.run (1.3GB)"
+    },
+    {
+     "step": "",
+     "command": "/tmp/Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --quiet --force",
+     "ok": true,
+     "output": "Toolkit: Ascend-cann-toolkit_9.0.0_linux-x86_64 install success, installed in /usr/local/Ascend"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
+     "ok": true,
+     "output": "Self-extractable archive \"cann-ops-nn-custom_linux-x86_64.run\" successfully created.\n[SUCCESS] Build package success!"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -u --ophost --ops=add_example -j9",
+     "ok": true,
+     "output": "[==========] Running 3 tests from 2 test suites.\n[  PASSED  ] 3 tests."
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --run_example add_example eager cust --vendor_name=custom",
+     "ok": false,
+     "output": "fatal error: aclnn_add_example.h: No such file or directory"
+    },
+    {
+     "step": "",
+     "command": "./build_out/cann-ops-nn-custom_linux-x86_64.run --force --quiet",
+     "ok": true,
+     "output": "SUCCESS - 自定义算子包安装到 /usr/local/Ascend/cann-9.0.0/opp/vendors/custom_nn/"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh --run_example add_example eager cust --vendor_name=custom（安装算子包后重试）",
+     "ok": false,
+     "output": "/usr/bin/ld: cannot find -lopapi_math: No such file or directory"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-ops-nn-custom_linux-x86_64.run",
+     "size": "2.5 MB"
+    },
+    {
+     "name": "libcust_opmaster_rt2.0.so",
+     "size": "N/A"
+    },
+    {
+     "name": "liboptiling.so",
+     "size": "N/A"
+    },
+    {
+     "name": "nn_op_host_ut",
+     "size": "N/A"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64（文档声明支持Atlas A2/A3/950系列产品，支持X86和ARM架构）",
+     "source": "README.md - 版本配套章节 + docs/zh/install/quick_install.md - Docker部署章节（提供arm64和amd64镜像）"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0（建议 <= 3.10）、gcc >= 7.3.0、cmake >= 3.16.0、pigz >= 2.4（可选，提升打包速度）、dos2unix、make、patch、googletest（仅UT时依赖，建议 release-1.11.0）、CANN toolkit包（Ascend-cann-toolkit，编译必需）、CANN ops包（运行态依赖，运行样例时需要",
+     "source": "docs/zh/install/quick_install.md - 安装基础依赖章节 + install_deps.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
+     "source": "docs/QUICKSTART.md - 编译运行章节 + docs/zh/install/compile.md - 联网编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u --ophost --ops=add_example（ophost UT）; bash build.sh -u --opapi（opapi UT）; bash build.sh -u --opkernel（opkernel UT）",
+     "source": "docs/zh/install/compile.md - 本地验证章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "ops-nn",
@@ -3803,6 +6952,78 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-ops-transformer-env -v ./ops-transformer-src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y cmake gcc g++ make python3 python3-pip wget git dos2unix patch pigz",
+     "ok": true,
+     "output": "Dependencies installed successfully"
+    },
+    {
+     "step": "",
+     "command": "pip3 install -r requirements.txt --break-system-packages",
+     "ok": true,
+     "output": "Python dependencies installed"
+    },
+    {
+     "step": "",
+     "command": "wget -O /tmp/Ascend-cann-toolkit_9.0.0_linux-x86_64.run https://ascend.devcloud.huaweicloud.com/artifactory/cann-run-mirror/software/master/20260510002900/x86_6",
+     "ok": true,
+     "output": "Downloaded CANN toolkit (1.3GB)"
+    },
+    {
+     "step": "",
+     "command": "./Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --quiet --force",
+     "ok": true,
+     "output": "CANN toolkit installed to /usr/local/Ascend/cann-9.0.0"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && bash build.sh --pkg --soc=ascend910b --ops=flash_attention_score -j9",
+     "ok": true,
+     "output": "Build completed successfully, generated cann-ops-transformer-custom_linux-x86_64.run (100MB)"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -u --ophost --ops=flash_attention_score -j9",
+     "ok": true,
+     "output": "4 tests from 2 test suites ran. [PASSED] 4 tests."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-ops-transformer-custom_linux-x86_64.run",
+     "size": "100MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64 (Atlas A2/A3 series products)",
+     "source": "README.md - Version support section, docs/zh/install/quick_install.md"
+    },
+    {
+     "label": "依赖",
+     "value": "CANN toolkit package (Ascend-cann-toolkit)、python >= 3.7.0 (建议版本 <= 3.10)、gcc >= 7.3.0、cmake >= 3.16.0、pigz (可选)、dos2unix、make、patch、googletest (UT依赖)、pyyaml、absl-py>=2.0.0、jinja2>=3.1.0、numpy<2.0、dec",
+     "source": "README.md + docs/zh/install/quick_install.md + requirements.txt + install_deps.sh"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
+     "source": "docs/zh/install/compile.md - Custom operator package section"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh -u --ophost --ops=<operator>",
+     "source": "docs/zh/install/compile.md - Local verification section"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "ops-transformer",
@@ -3868,6 +7089,102 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/pto-isa.git ./tmp_src/",
+     "ok": true,
+     "output": "Cloning into './tmp_src'... Receiving objects: 100% (21442/21442), 9.88 MiB. Resolving deltas: 100% (15893/15893), done."
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "24.04: Pulling from library/ubuntu. Status: Image is up to date for ubuntu:24.04"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-pto-isa-env -v ./tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container dfd45cb0a7b4 started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y build-essential cmake ninja-build python3 python3-pip python3-venv git",
+     "ok": true,
+     "output": "Installed: g++-13 (13.3.0), cmake (3.28.3), python3 (3.12.3), ninja-build, git, build-essential"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y python3-numpy",
+     "ok": true,
+     "output": "Installed python3-numpy (1.26.4+ds-6ubuntu1)"
+    },
+    {
+     "step": "",
+     "command": "python3 tests/run_cpu.py --clean --verbose",
+     "ok": true,
+     "output": "Build and all 93 CPU ST test cases passed. TOTAL time: 1.50s for tests. real 0m49.154s total (including build). Compiler: GNU 13.3.0, C++20, auto-detected g++/gcc."
+    },
+    {
+     "step": "",
+     "command": "python3 tests/run_cpu.py --demo gemm --verbose",
+     "ok": true,
+     "output": "gemm_demo: M=32 K=16 N=32, max_abs_diff=0, perf: avg_ms=0.0303591, gflops=1.07935. [PASS] demo: gemm (2.63s)"
+    },
+    {
+     "step": "",
+     "command": "python3 tests/run_cpu.py --demo flash_attn --verbose",
+     "ok": true,
+     "output": "flash_attention_demo: B=1 H=2 S=64 D=32, max_abs_diff=1.86265e-09, verify_allclose passed. perf: avg_ms=1.11819, gflops=0.93774. [PASS] demo: flash_attn (3.25s)"
+    },
+    {
+     "step": "",
+     "command": "python3 tests/run_cpu.py --demo mla --verbose",
+     "ok": true,
+     "output": "mla_attention_demo: B=1 H=2 S=64 D=32 R=16, max_abs_diff=1.81899e-11, verify_allclose passed. perf: avg_ms=1.31029, gflops=0.800262. [PASS] demo: mla (3.75s)"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "CPU ST test binaries (93 executables)",
+     "size": ""
+    },
+    {
+     "name": "gemm_demo",
+     "size": ""
+    },
+    {
+     "name": "flash_attention_demo",
+     "size": ""
+    },
+    {
+     "name": "mla_attention_demo",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / AArch64 (CPU Simulator), Ascend A2/A3/A5 (NPU)",
+     "source": "README.md - Platform Support章节, docs/getting-started.md - Prerequisites章节"
+    },
+    {
+     "label": "依赖",
+     "value": "Git、Python >= 3.11、CMake >= 3.16、C++20 compiler (GCC 13+ or Clang 15+)、numpy >= 1.22.0、Ninja (optional, for faster builds)、GoogleTest 1.14.0 (NPU path, fetched automatically for CPU path)",
+     "source": "docs/getting-started.md - Prerequisites章节 + tests/cpu/st/CMakeLists.txt (GTest FetchContent)"
+    },
+    {
+     "label": "构建命令",
+     "value": "python3 tests/run_cpu.py --clean --verbose",
+     "source": "README.md - Build and Run章节, docs/getting-started.md - Run CPU Simulator章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "python3 tests/run_cpu.py --clean --verbose (runs all CPU ST tests); python3 tests/run_cpu.py --testcase <testcase> (single testcase)",
+     "source": "README.md - Build and Run章节, docs/getting-started.md - Run CPU Simulator章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "pto-isa",
@@ -3964,6 +7281,96 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Image is up to date"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-pyasc-env -v /mnt/d/ttfhw_0511/pyasc/tmp_src:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y python3 python3-pip gcc g++ cmake ninja-build wget git",
+     "ok": true,
+     "output": "Dependencies installed successfully"
+    },
+    {
+     "step": "",
+     "command": "wget https://cann-ai.obs.cn-north-4.myhuaweicloud.com/llvm/llvm-19.1.7-x86_64.tar.xz",
+     "ok": true,
+     "output": "Downloaded 593MB LLVM package"
+    },
+    {
+     "step": "",
+     "command": "tar -xJf llvm-19.1.7-x86_64.tar.xz",
+     "ok": true,
+     "output": "Extracted LLVM to /opt/llvm-19.1.7-x86_64"
+    },
+    {
+     "step": "",
+     "command": "pip3 install -r requirements-build.txt -r requirements-runtime.txt",
+     "ok": true,
+     "output": "Installed all Python dependencies"
+    },
+    {
+     "step": "",
+     "command": "cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_PREFIX_PATH=/opt/llvm-19.1.7-x86_64 ...",
+     "ok": true,
+     "output": "CMake configuration successful"
+    },
+    {
+     "step": "",
+     "command": "ninja -j4 libpyasc",
+     "ok": true,
+     "output": "Built 119 targets successfully in 4m53s"
+    },
+    {
+     "step": "",
+     "command": "python3 -c 'import asc; print(\"pyasc imported successfully\")'",
+     "ok": true,
+     "output": "pyasc imported successfully"
+    },
+    {
+     "step": "",
+     "command": "cd test && bash build_llt.sh --run_python_ut --llvm_install_path /opt/llvm-19.1.7-x86_64",
+     "ok": false,
+     "output": "286 failed, 19 passed, 1 skipped in 5.86s"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libpyasc.cpython-312-x86_64-linux-gnu.so",
+     "size": "89MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 / x86_64",
+     "source": "README.md - 软硬件配套说明章节"
+    },
+    {
+     "label": "依赖",
+     "value": "python 3.9-3.12、GCC >= 9.4.0、GLIBC >= 2.31、cmake >= 3.20、ninja >= 1.11.1、pybind11 == 2.13.1、LLVM 19.1.7、numpy >= 1.24.4, <= 1.26.4、setuptools >= 71、setuptools-scm >= 8, < 9、wheel、attrs == 24.2.0、scipy",
+     "source": "README.md + requirements-build.txt + requirements-runtime.txt + setup.py + docs/quick_start.md"
+    },
+    {
+     "label": "构建命令",
+     "value": "python3 -m pip install . (普通模式) 或 python3 -m pip install -e . (开发者模式)",
+     "source": "docs/quick_start.md - pyasc基于源码安装章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "cd test && bash build_llt.sh --run_python_ut --llvm_install_path ${llvm_install_path} (Python UT) 或 cd test && bash build_llt.sh --check-ascir --llvm_install_path ${llvm_install_path} --lit_install_pa",
+     "source": "docs/quick_start.md - UT测试章节"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "pyasc",
@@ -4041,6 +7448,112 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/pypto.git",
+     "ok": true,
+     "output": "Repository cloned successfully (3124 files)"
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Image is up to date for ubuntu:24.04"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-pypto-env -v ./tmp_src:/workspace -w /workspace ubuntu:24.04",
+     "ok": true,
+     "output": "Container started successfully (ID: 6b7c83e96c23)"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y cmake make g++ python3 python3-dev python3-pip git wget",
+     "ok": true,
+     "output": "Dependencies installed successfully"
+    },
+    {
+     "step": "",
+     "command": "pip3 install --break-system-packages setuptools pybind11 pip build packaging pytest pytest-forked pytest-xdist PyYAML matplotlib pandas plotly tabulate psutil s",
+     "ok": true,
+     "output": "Python dependencies installed successfully"
+    },
+    {
+     "step": "",
+     "command": "pip3 install --break-system-packages torch --index-url https://download.pytorch.org/whl/cpu",
+     "ok": true,
+     "output": "PyTorch installed successfully (torch-2.11.0+cpu)"
+    },
+    {
+     "step": "",
+     "command": "python3 -m pip install . --verbose --break-system-packages",
+     "ok": true,
+     "output": "Successfully built pypto, installed pypto-0.2.1"
+    },
+    {
+     "step": "",
+     "command": "python3 build_ci.py -u --backend cost_model -j12",
+     "ok": true,
+     "output": "258 passed, 3 skipped"
+    },
+    {
+     "step": "",
+     "command": "python3 hello_world.py --run_mode=sim",
+     "ok": true,
+     "output": "Hello world example passed"
+    },
+    {
+     "step": "",
+     "command": "python3 basic_ops.py --run_mode=sim",
+     "ok": true,
+     "output": "All examples completed successfully"
+    },
+    {
+     "step": "",
+     "command": "python3 elementwise_ops.py --run_mode=sim",
+     "ok": true,
+     "output": "All element-wise tests passed"
+    },
+    {
+     "step": "",
+     "command": "docker stop ttfhw-pypto-env && docker rm ttfhw-pypto-env",
+     "ok": true,
+     "output": "Container stopped and removed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "pypto-0.2.1-cp312-cp312-linux_x86_64.whl",
+     "size": "9771220 bytes"
+    },
+    {
+     "name": "pypto_impl.cpython-312-x86_64-linux-gnu.so",
+     "size": "2255704 bytes"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64, aarch64",
+     "source": "docs/install/prepare_environment.md - 环境准备章节"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.16.3、make、g++ >= 7.3.1、python >= 3.9、python3-dev、setuptools>=77.0.3、pybind11>=3.0.1、pytest、pytest-forked、pytest-xdist、PyYAML、matplotlib、pandas、plotly、tabulate、psutil、setproctitle、torch (运行时",
+     "source": "docs/install/prepare_environment.md + docs/install/build_and_install.md + python/requirements.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "python3 -m pip install . --verbose",
+     "source": "docs/install/build_and_install.md - 常规安装章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "python3 build_ci.py -u --backend cost_model",
+     "source": "build_ci.py --help + docs/install/build_and_install.md"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "pypto",
@@ -4137,6 +7650,106 @@
    ],
    "summary": "",
    "result": "success",
+   "attempts": [
+    {
+     "step": "",
+     "command": "apt-get update",
+     "ok": true,
+     "output": "Fetched 37.9 MB in 24s"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y python3 python3-pip python3-dev gcc-9 g++-9 cmake ccache autoconf gperf libtool libtool-bin make git wget",
+     "ok": true,
+     "output": "All packages installed successfully"
+    },
+    {
+     "step": "",
+     "command": "update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9",
+     "ok": true,
+     "output": "gcc 9.5.0, g++ 9.5.0"
+    },
+    {
+     "step": "",
+     "command": "wget https://ascend.devcloud.huaweicloud.com/artifactory/cann-run-mirror/software/master/20260506000325116/Ascend-cann-toolkit_9.0.0_linux-x86_64.run",
+     "ok": true,
+     "output": "Downloaded CANN toolkit 9.0.0 x86_64 (1.3G)"
+    },
+    {
+     "step": "",
+     "command": "./Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --quiet --install-path=/usr/local/Ascend",
+     "ok": true,
+     "output": "Toolkit: Ascend-cann-toolkit_9.0.0_linux-x86_64 install success, installed in /usr/local/Ascend"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh",
+     "ok": true,
+     "output": "ASCEND_HOME_PATH=/usr/local/Ascend/cann-9.0.0"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -j9 (first attempt without CANN env)",
+     "ok": false,
+     "output": "nlohmann/json.hpp: No such file or directory - third_party dependencies incomplete"
+    },
+    {
+     "step": "",
+     "command": "rm -rf build build_out output && source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9 (full environment)",
+     "ok": true,
+     "output": "Build success, generated cann-npu-runtime_9.0.0_linux-x86_64.run (with host+device)"
+    },
+    {
+     "step": "",
+     "command": "source /usr/local/Ascend/cann/set_env.sh && bash tests/build_ut.sh --ut=acl --target=ascendcl_utest -j9",
+     "ok": true,
+     "output": "982 tests from 13 test suites ran. [PASSED] 982 tests."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "cann-npu-runtime_9.0.0_linux-x86_64.run",
+     "size": "100M+"
+    },
+    {
+     "name": "libascendcl.so",
+     "size": "218K"
+    },
+    {
+     "name": "libdatatransfer.so",
+     "size": "4.8M"
+    },
+    {
+     "name": "libindextransform.so",
+     "size": "14K"
+    },
+    {
+     "name": "device-npu-runtime.tar.gz",
+     "size": "N/A"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64",
+     "source": "README.md - 开源第三方软件依赖表格中提及x86_64与aarch64"
+    },
+    {
+     "label": "依赖",
+     "value": "python >= 3.7.0、pip3、gcc >= 7.3.0, <= 13、cmake >= 3.16.0、ccache、autoconf、gperf、libtool、make、git (隐含依赖，cmake FetchContent需要)、CANN toolkit包 (README环境部署章节要求安装)",
+     "source": "README.md - 安装基础依赖章节 + install_deps.sh + cmake/fetch_cann_cmake.cmake"
+    },
+    {
+     "label": "构建命令",
+     "value": "source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9",
+     "source": "README.md - 环境变量配置章节 + 编译runtime包章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "source /usr/local/Ascend/cann/set_env.sh && bash tests/build_ut.sh --ut=acl --target=ascendcl_utest -j9",
+     "source": "README.md - 本地验证章节 + tests/build_ut.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "runtime",
@@ -4239,6 +7852,116 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.com/cann/shmem.git ./tmp_src/shmem",
+     "ok": true,
+     "output": "Repository cloned successfully"
+    },
+    {
+     "step": "",
+     "command": "find ./tmp_src/shmem -name \"Dockerfile\" -o -name \"*.dockerfile\"",
+     "ok": true,
+     "output": "No Dockerfile found"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name verification-env -v ./tmp_src/shmem:/workspace -w /workspace ubuntu:24.04 tail -f /dev/null",
+     "ok": false,
+     "output": "permission denied while trying to connect to the docker API"
+    },
+    {
+     "step": "",
+     "command": "Check ASCEND_HOME_PATH environment variable",
+     "ok": false,
+     "output": "ASCEND_HOME_PATH not set, CANN not installed"
+    },
+    {
+     "step": "",
+     "command": "Check /usr/local/Ascend/ directory",
+     "ok": false,
+     "output": "No such file or directory - CANN not installed"
+    },
+    {
+     "step": "",
+     "command": "wget CANN Toolkit 9.0.0",
+     "ok": true,
+     "output": "Downloaded Ascend-cann-toolkit_9.0.0_linux-x86_64.run (1.4GB)"
+    },
+    {
+     "step": "",
+     "command": "Install CANN Toolkit to ~/Ascend/ascend-toolkit",
+     "ok": true,
+     "output": "CANN 9.0.0 installed successfully"
+    },
+    {
+     "step": "",
+     "command": "Source CANN environment and verify bisheng compiler",
+     "ok": true,
+     "output": "bisheng version 2026-03-04 clang version 15.0.5"
+    },
+    {
+     "step": "",
+     "command": "bash scripts/build.sh",
+     "ok": true,
+     "output": "SHMEM built successfully. Generated libshmem.so and other libraries"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libshmem.so",
+     "size": "1.9MB"
+    },
+    {
+     "name": "libshmem_utils.so",
+     "size": "173KB"
+    },
+    {
+     "name": "aclshmem_bootstrap_config_store.so",
+     "size": "570KB"
+    },
+    {
+     "name": "aclshmem_bootstrap_uid.so",
+     "size": "141KB"
+    },
+    {
+     "name": "SHMEM_1.0.0_linux-x86_64.run",
+     "size": "3.7MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64, x86_64",
+     "source": "README.md - 3.1 硬件要求"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04 LTS (验证环境)",
+     "source": "WSL2 环境"
+    },
+    {
+     "label": "镜像",
+     "value": "仓库未提供 Dockerfile 或镜像定义",
+     "source": "仓库根目录搜索"
+    },
+    {
+     "label": "依赖",
+     "value": "CANN 8.3.RC1+ / 8.5.0+ / 9.0.0-beta.2+ / 9.0.0+、Ascend HDK 25.0.RC1.1 (驱动固件)、cmake >= 3.19 (实际要求 >= 3.16)、GLIBC >= 2.28、bisheng 编译器、Python 3.7+ (可选)、PyTorch 1.12+ (可选)、MPI: OpenMPI 4.0+ (可选)、pyyaml==6",
+     "source": "README.md - 3.2 软件依赖, CMakeLists.txt, requirements.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash scripts/build.sh",
+     "source": "README.md - 4.1.1 方式一：源码编译"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash scripts/build.sh -uttests && bash scripts/run.sh",
+     "source": "README.md - 快速上手, scripts/build.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "CANN",
    "repo": "shmem",
@@ -4309,6 +8032,9 @@
    "problems": [],
    "summary": "",
    "result": "failed",
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
    "scenario": "developer",
    "community": "openEuler",
    "repo": "stratovirt",
@@ -4417,6 +8143,137 @@
    ],
    "summary": "TorchAir仓库编译验证通过。UT/ST测试需要Ascend SDK环境：(1) build.sh脚本报错'ASCEND_CUSTOM_PATH必须设置'；(2) C++ UT链接失败，缺少GE库符号；(3) Python ST导入torchair失败，缺少libge_runner.so。inductor_npu_ext子模块的UT测试可在CPU stub模式下运行，2/2测试通过。结论：编译成功，UT/ST测试需要Ascend SDK + NPU硬件。",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "git clone https://gitcode.host/Ascend/torchair.git ./tmp_src/",
+     "ok": true,
+     "output": "仓库克隆成功"
+    },
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "镜像拉取成功"
+    },
+    {
+     "step": "",
+     "command": "docker run -d --name torchair-verify -v ...",
+     "ok": true,
+     "output": "容器启动成功 (名称: torchair-verify)"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y build-essential git cmake python3 python3-pip",
+     "ok": true,
+     "output": "编译工具安装成功"
+    },
+    {
+     "step": "",
+     "command": "pip install torch --index-url https://download.pytorch.org/whl/cpu",
+     "ok": true,
+     "output": "torch 2.11.0+cpu 安装成功"
+    },
+    {
+     "step": "",
+     "command": "git submodule update --init --recursive",
+     "ok": true,
+     "output": "子模块初始化成功 (googletest, secure_c)"
+    },
+    {
+     "step": "",
+     "command": "export NO_ASCEND_SDK=1 && bash ./configure",
+     "ok": true,
+     "output": "配置完成"
+    },
+    {
+     "step": "",
+     "command": "cd build && cmake ..",
+     "ok": true,
+     "output": "CMake配置成功，生成构建文件"
+    },
+    {
+     "step": "",
+     "command": "make torchair -j$(nproc)",
+     "ok": true,
+     "output": "编译成功，生成 torchair-0.1-py3-none-any.whl"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -c",
+     "ok": true,
+     "output": "CI构建成功，wheel包输出到 output/ 目录"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -u",
+     "ok": false,
+     "output": "UT测试需要ASCEND_CUSTOM_PATH环境变量"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -s",
+     "ok": false,
+     "output": "ST测试需要ASCEND_CUSTOM_PATH环境变量"
+    },
+    {
+     "step": "",
+     "command": "cd tests/build && cmake .. && make torchair_ut",
+     "ok": false,
+     "output": "链接失败，缺少libge_runner.so等Ascend SDK库"
+    },
+    {
+     "step": "",
+     "command": "pip install torchair-0.1-py3-none-any.whl",
+     "ok": true,
+     "output": "torchair安装成功"
+    },
+    {
+     "step": "",
+     "command": "python3 -c 'import torchair'",
+     "ok": false,
+     "output": "导入失败，缺少Ascend SDK运行时库"
+    },
+    {
+     "step": "",
+     "command": "pip install inductor-npu-ext && python3 -m unittest ut_modified",
+     "ok": true,
+     "output": "inductor_npu_ext UT测试通过: 2/2 tests passed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "torchair-0.1-py3-none-any.whl",
+     "size": "1.7MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 (Atlas A2/A3 训练系列产品, Atlas A3 推理系列产品)",
+     "source": "README.md - 支持的型号章节"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04",
+     "source": "用户选择"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.14、gcc/g++ (C++17)、make、git、python3 (3.8.x-3.12.x)、torch >= 2.1.0、Ascend SDK (CANN) - 运行时必需",
+     "source": "README.md - 安装与卸载章节 + CMakeLists.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "mkdir build && cd build && cmake .. && make torchair -j$(nproc)",
+     "source": "README.md - 编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "./build.sh -u (需要ASCEND_CUSTOM_PATH环境变量)",
+     "source": "CONTRIBUTING.md - 执行UT测试章节"
+    }
+   ],
    "scenario": "developer",
    "community": "PTA",
    "repo": "torchair",
@@ -4525,6 +8382,80 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-ubs-comm-env -v D:/code/ttfhw_3/ubs-comm/tmp_src/ubs-comm:/workspace -w /workspace ubuntu:24.04 sleep infinity",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y cmake gcc g++ make git python3 libibverbs-dev librdmacm-dev libssl-dev ca-certificates",
+     "ok": true,
+     "output": "All build dependencies installed successfully"
+    },
+    {
+     "step": "",
+     "command": "cd /workspace && bash build.sh",
+     "ok": true,
+     "output": "Build completed successfully in 110 seconds. Libraries created: libhcom.so.0.0.1, libhcom_static.a"
+    },
+    {
+     "step": "",
+     "command": "Fix gtest/mockcpp library paths (lib64 -> lib symlink)",
+     "ok": true,
+     "output": "Created symlinks: /workspace/dist/hcom_test_tools/googletest/lib64 -> lib, /workspace/dist/hcom_test_tools/mockcpp/lib64 -> lib"
+    },
+    {
+     "step": "",
+     "command": "cd /workspace/tmp_build_dir_ut && cmake --build . -j16",
+     "ok": true,
+     "output": "Test binary hcom_test built successfully (72MB). Note: hcom_ut has template linking issue for specific test cases."
+    },
+    {
+     "step": "",
+     "command": "cd /workspace/tmp_build_dir_ut && LD_LIBRARY_PATH=/workspace/dist/hcom_3rdparty/libboundscheck/lib ./hcom_test",
+     "ok": true,
+     "output": "306 tests executed, 304 passed, 2 failed"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "libhcom.so.0.0.1",
+     "size": "52.6 MB"
+    },
+    {
+     "name": "libhcom_static.a",
+     "size": "134.5 MB"
+    },
+    {
+     "name": "hcom_test",
+     "size": "72.6 MB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 / aarch64 multi-architecture support",
+     "source": "CMakeLists.txt, build.sh - detected multi-architecture support in build system"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.16、gcc / g++ (C++11 support)、make、libibverbs-dev (RDMA support)、librdmacm-dev (RDMA support)、libssl-dev (SSL/TLS support)、python3 (for mockcpp build)、git (for fetching external dependencies",
+     "source": "build.sh, CMakeLists.txt, Docker build environment"
+    },
+    {
+     "label": "构建命令",
+     "value": "cd /workspace && bash build.sh",
+     "source": "Project root build.sh - main build script"
+    },
+    {
+     "label": "测试命令",
+     "value": "HCOM_BUILD_TESTS=on bash build.sh",
+     "source": "build.sh - build tests flag"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ubs-comm",
@@ -4645,6 +8576,136 @@
    ],
    "summary": "",
    "result": "failed",
+   "attempts": [
+    {
+     "step": "镜像拉取",
+     "command": "docker pull openeuler/openeuler:24.03",
+     "ok": true,
+     "output": "Digest: sha256:990f5a8528dc3375a358629bcb5500351f433a49922dca3588bcf32ecc5b7022"
+    },
+    {
+     "step": "容器启动",
+     "command": "docker run -d --name ttfhw-ubs-engine-env -v \"D:\\code\\ttfhw_3\\ubs-engine\\tmp_src\":/workspace openeuler/openeuler:24.03 sleep infinity",
+     "ok": true,
+     "output": "Container b171714f5f77 started"
+    },
+    {
+     "step": "镜像源配置",
+     "command": "替换 /etc/yum.repos.d/openEuler.repo 使用华为云镜像 (mirrors.huaweicloud.com)",
+     "ok": true,
+     "output": "OS, everything, EPOL, update 等全部仓库缓存成功创建"
+    },
+    {
+     "step": "依赖安装 (基础包)",
+     "command": "dnf install -y cmake make gcc gcc-c++ ninja-build bash bc coreutils sudo util-linux-user patch glibc-devel libstdc++-devel systemd-devel libboundscheck libxml2-",
+     "ok": true,
+     "output": "所有包安装成功"
+    },
+    {
+     "step": "ubs-comm 源码构建准备",
+     "command": "git clone -b openEuler-24.03-LTS-SP3 https://gitcode.com/src-openeuler/ubs-comm.git",
+     "ok": true,
+     "output": "克隆成功, 包含 hcom.spec 和 ubs-comm.tar.gz"
+    },
+    {
+     "step": "rdma-core-devel 安装",
+     "command": "dnf install -y rdma-core-devel",
+     "ok": true,
+     "output": "rdma-core-devel-50.0-42 安装成功"
+    },
+    {
+     "step": "dnf-plugins-core 安装",
+     "command": "dnf install -y dnf-plugins-core",
+     "ok": true,
+     "output": "builddep 插件已可用"
+    },
+    {
+     "step": "ubs-comm RPM 构建",
+     "command": "rpmbuild -ba ~/rpmbuild/SPECS/hcom.spec",
+     "ok": true,
+     "output": "生成 ubs-comm-lib-1.0.0-21 和 ubs-comm-devel-1.0.0-21"
+    },
+    {
+     "step": "ubs-comm 安装",
+     "command": "dnf install -y ~/rpmbuild/RPMS/x86_64/ubs-comm-lib-*.rpm ~/rpmbuild/RPMS/x86_64/ubs-comm-devel-*.rpm",
+     "ok": true,
+     "output": "ubs-comm-devel-1.0.0-21.x86_64 和 ubs-comm-lib-1.0.0-21.x86_64 安装成功"
+    },
+    {
+     "step": "ubs-engine Release 构建",
+     "command": "bash build.sh -j 14",
+     "ok": true,
+     "output": "493 个编译目标全部完成, 产物: bin/ubse, bin/ubsectl, lib/libubse-client.so, lib/libmempooling.so, lib/libvirtagent.so, lib/libucache_plugin.so, lib/libstrategy.so, lib/libubs-virt-agent.so.1.0.0"
+    },
+    {
+     "step": "单元测试编译",
+     "command": "bash build.sh ut -j 14 (编译阶段)",
+     "ok": true,
+     "output": "818 个目标编译完成 (含 mockcpp 和所有测试二进制文件)"
+    },
+    {
+     "step": "单元测试执行",
+     "command": "gtest (由 build.sh ut 自动调用)",
+     "ok": false,
+     "output": "1203 tests from 55 test suites"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "ubse",
+     "size": ""
+    },
+    {
+     "name": "ubsectl",
+     "size": ""
+    },
+    {
+     "name": "libubse-client.so",
+     "size": ""
+    },
+    {
+     "name": "libmempooling.so",
+     "size": ""
+    },
+    {
+     "name": "libvirtagent.so",
+     "size": ""
+    },
+    {
+     "name": "libucache_plugin.so",
+     "size": ""
+    },
+    {
+     "name": "libstrategy.so",
+     "size": ""
+    },
+    {
+     "name": "libubs-virt-agent.so",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 (文档声称的目标平台); x86_64 (实际测试平台)",
+     "source": "README.md - 系统要求; AGENTS.md"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.22、make >= 4.3、gcc >= 10.3、gcc-c++ >= 10.3、glibc-devel >= 2.34、libstdc++-devel >= 10.3、systemd-devel >= 249、libboundscheck >= v1.1、libxml2-devel >= 2.9、openssl-devel >= 3.0、cpp-httplib-deve",
+     "source": "ubs-engine.spec - BuildRequires 章节; hcom.spec - ubs-comm BuildRequires"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh                # Release构建\nbash build.sh -D             # Debug构建\nbash build.sh -T RelWithDebInfo  # RelWithDebInfo构建\nbash build.sh package        # 构建并打包为RPM",
+     "source": "README.md + AGENTS.md + docs/build_install/构建指导.md"
+    },
+    {
+     "label": "测试命令",
+     "value": "bash build.sh ut             # 运行所有单元测试\nbash build.sh ut -- --gtest_filter=\"TestSuite.*\"   # 运行指定测试",
+     "source": "AGENTS.md"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ubs-engine",
@@ -4765,6 +8826,112 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker pull ubuntu:24.04",
+     "ok": true,
+     "output": "Status: Downloaded newer image for ubuntu:24.04"
+    },
+    {
+     "step": "",
+     "command": "docker run -v ... ubuntu:24.04",
+     "ok": true,
+     "output": "Container started: ttfhw-ubs-io-env"
+    },
+    {
+     "step": "",
+     "command": "apt-get update && apt-get install -y cmake gcc g++ make git",
+     "ok": true,
+     "output": "基础构建工具安装完成"
+    },
+    {
+     "step": "",
+     "command": "bash build.sh -t release (GCC 13)",
+     "ok": false,
+     "output": "CMake配置失败"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y libibverbs-dev librdmacm-dev librados-dev libaio-dev",
+     "ok": true,
+     "output": "RDMA和存储依赖安装完成"
+    },
+    {
+     "step": "",
+     "command": "apt-get install -y gcc-11 g++-11",
+     "ok": true,
+     "output": "GCC 11安装完成"
+    },
+    {
+     "step": "",
+     "command": "export CC=gcc-11 CXX=g++-11 && bash build.sh -t release",
+     "ok": true,
+     "output": "构建成功，耗时约15分钟"
+    },
+    {
+     "step": "",
+     "command": "检查构建产物",
+     "ok": true,
+     "output": "BoostIO_1.0.0_Linux-x86_64_release.tar.gz (17MB)，包含7个.so库和bio_daemon二进制"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "BoostIO_1.0.0_Linux-x86_64_release.tar.gz (17.6 MB)",
+     "size": ""
+    },
+    {
+     "name": "libbio_interceptor_server.so",
+     "size": ""
+    },
+    {
+     "name": "libbio_sdk.a (72 MB)",
+     "size": ""
+    },
+    {
+     "name": "libbio_sdk.so.1.0.0 (1.8 MB)",
+     "size": ""
+    },
+    {
+     "name": "libbio_server.so (3.3 MB)",
+     "size": ""
+    },
+    {
+     "name": "libock_interceptor.so",
+     "size": ""
+    },
+    {
+     "name": "libock_iofwd_proxy.so",
+     "size": ""
+    },
+    {
+     "name": "bio_daemon (379 KB)",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64",
+     "source": "README.md - 项目简介"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.16、gcc、g++、make、git、libibverbs-dev、librdmacm-dev、librados-dev、libaio-dev、libboundscheck、spdlog、ubs-comm、googletest",
+     "source": "CMakeLists.txt + build.sh + 三方依赖.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "bash build.sh -t release",
+     "source": "ubsio-boostio/README.md - 源码编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "cd test/llt/ && bash run_dt.sh",
+     "source": "ubsio-boostio/README.md - UT章节"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ubs-io",
@@ -4897,6 +9064,128 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "",
+     "command": "docker run -d --name ttfhw-ubs-mem-env -v /d/code/ttfhw_3/ubs-mem/tmp_src:/workspace openeuler/openeuler:24.03 sleep infinity",
+     "ok": true,
+     "output": "Container started successfully"
+    },
+    {
+     "step": "",
+     "command": "dnf makecache (via mirrors.huaweicloud.com mirror)",
+     "ok": true,
+     "output": "Metadata cache created (OS/everything/EPOL/update repos)"
+    },
+    {
+     "step": "",
+     "command": "dnf install -y rpm-build cmake ninja-build gcc gcc-c++",
+     "ok": true,
+     "output": "43 packages installed (cmake 3.27.9, gcc 12.3.1, ninja 1.11.1)"
+    },
+    {
+     "step": "",
+     "command": "dnf install -y numactl-devel systemd-devel openssl-devel spdlog-devel spdlog libboundscheck",
+     "ok": true,
+     "output": "24 packages installed, 1 upgraded"
+    },
+    {
+     "step": "",
+     "command": "dnf search ubs-comm / dnf install ubs-comm-devel",
+     "ok": false,
+     "output": "ubs-comm-devel not found in any configured repo (OS/everything/EPOL/update)"
+    },
+    {
+     "step": "",
+     "command": "cmake -DCMAKE_BUILD_TYPE=Release -G Ninja -DUBSE_SDK=ON",
+     "ok": true,
+     "output": "Configuring done, Generating done"
+    },
+    {
+     "step": "",
+     "command": "ninja -j 4 install",
+     "ok": false,
+     "output": "Build failed at compilation step"
+    },
+    {
+     "step": "",
+     "command": "从 Gitee 克隆 ubs-comm 源码并构建 hcom",
+     "ok": true,
+     "output": "HCOM library built from source with RDMA/SHM disabled, installed to /usr/lib64/libhcom.so and /usr/include/hcom/"
+    },
+    {
+     "step": "",
+     "command": "修复 hcom_service.h - 添加 SetCtxStoreCapacity 方法",
+     "ok": true,
+     "output": "Added missing pure virtual method declaration"
+    },
+    {
+     "step": "",
+     "command": "创建 src/common/hcom_adapter/ 目录",
+     "ok": true,
+     "output": "Missing directory created"
+    },
+    {
+     "step": "",
+     "command": "sh build.sh -t release",
+     "ok": true,
+     "output": "Build completed: 88 steps, all targets built successfully"
+    },
+    {
+     "step": "",
+     "command": "dnf install -y git",
+     "ok": true,
+     "output": "git 2.43.0 installed"
+    },
+    {
+     "step": "",
+     "command": "dnf install -y libasan",
+     "ok": true,
+     "output": "libasan 12.3.1 installed"
+    },
+    {
+     "step": "",
+     "command": "cd test && bash run_dt.sh (第一轮, UT编译+执行)",
+     "ok": false,
+     "output": "UT binary compiled and linked successfully (mxmd_ut). 646 tests discovered across 55 suites."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "build/release/output/lib/libubsm_sdk.so",
+     "size": ""
+    },
+    {
+     "name": "build/release/output/lib/libubsmd.so",
+     "size": ""
+    },
+    {
+     "name": "build/release/output/bin/ubsmd",
+     "size": ""
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "x86_64 (openEuler 24.03 LTS SP3 or higher recommended)",
+     "source": "README.md - 环境要求章节"
+    },
+    {
+     "label": "依赖",
+     "value": "rpm-build、cmake (>= 3.13)、ninja-build、gcc (>= 10.3.1)、gcc-c++ (>= 10.3.1)、numactl-devel、systemd-devel、openssl-devel、spdlog-devel、spdlog、libboundscheck、ubs-comm-devel (从源码构建 hcom)、ubs-comm-lib (从源码构建 h",
+     "source": "README.md + ubs-mem.spec (buildrequires) + 源码构建"
+    },
+    {
+     "label": "构建命令",
+     "value": "sh build.sh -t release [-p]",
+     "source": "README.md - 构建项目章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "cd test && sh run_dt.sh",
+     "source": "README.md - 开发者测试章节"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ubs-mem",
@@ -5033,6 +9322,97 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "clone",
+     "command": "git clone https://gitcode.com/openeuler/ubs-virt.git /tmp/ubs-virt-verify/ubs-virt",
+     "ok": true,
+     "output": "Repository cloned successfully (468 files)"
+    },
+    {
+     "step": "virt-awaresched_build",
+     "command": "cd virt-awaresched && bash build.sh all",
+     "ok": true,
+     "output": "Build completed in 42.687s. Binaries: vasctl (688KB), vas_daemon (741KB)"
+    },
+    {
+     "step": "virt-awaresched_test",
+     "command": "cd virt-awaresched && bash build.sh test",
+     "ok": false,
+     "output": "184 tests from 18 test suites: 182 passed, 2 failed. Failures: TestVasSecurityManager.testModifyEffectiveCapabilities, TestVasSecurityManager.testClearCapabilities (both return code 14 vs expected 0 - WSL kernel capability limitation)"
+    },
+    {
+     "step": "ubs-virt-ovs_deps_install",
+     "command": "yum install -y libasan-static (as root)",
+     "ok": true,
+     "output": "Installed libasan-static-12.3.1-105.oe2403sp3.x86_64"
+    },
+    {
+     "step": "ubs-virt-ovs_build",
+     "command": "cd ubs-virt-ovs && bash build/build.sh relwithdebinfo",
+     "ok": true,
+     "output": "RPM built: ubs-virt-ovs-1.0.0-1.rel.x86_64.rpm (132KB)"
+    },
+    {
+     "step": "ubs-virt-ovs_test",
+     "command": "cd ubs-virt-ovs && bash build/build.sh dt",
+     "ok": true,
+     "output": "83 tests from 11 test suites: ALL 83 PASSED (5.365s)"
+    },
+    {
+     "step": "virt-optimizer_build",
+     "command": "cd virt-optimizer && bash build.sh",
+     "ok": false,
+     "output": "2/3 binaries built (ubs-opt 392KB, ubs-opt-guard 388KB). ubs-opt-tuner failed: missing #include <memory> in ebpf/src/optimizer/util/ui_manager.h (upstream code bug)"
+    },
+    {
+     "step": "ubs-virt-enpu_check",
+     "command": "Checked vcann-rt/build_ut.sh - requires ASCEND_HOME_PATH",
+     "ok": false,
+     "output": "Cannot build: requires Ascend NPU SDK (ASCEND_HOME_PATH not set). This is a hardware-specific component for Ascend NPU platforms."
+    },
+    {
+     "step": "virt-awaresched_sample",
+     "command": "vasctl --help && vas_daemon --help",
+     "ok": true,
+     "output": "vasctl: binary executes (terminal size error - WSL limitation). vas_daemon: binary executes (log dir permission error - expected in WSL)."
+    },
+    {
+     "step": "virt-optimizer_sample",
+     "command": "ubs-opt --help && ubs-opt-guard --help",
+     "ok": true,
+     "output": "Both binaries execute and display usage. ubs-opt: start_ebpf, stop_ebpf, reload_ebpf. ubs-opt-guard: start, stop."
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "vasctl",
+     "size": "688KB"
+    },
+    {
+     "name": "vas_daemon",
+     "size": "741KB"
+    },
+    {
+     "name": "ubs-virt-ovs",
+     "size": "132KB"
+    },
+    {
+     "name": "ubs-opt",
+     "size": "392KB"
+    },
+    {
+     "name": "ubs-opt-guard",
+     "size": "388KB"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "Not explicitly specified in docs; defaulted to x86_64",
+     "source": "All components built successfully on x86_64"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ubs-virt",
@@ -5182,6 +9562,149 @@
    ],
    "summary": "",
    "result": "partial",
+   "attempts": [
+    {
+     "step": "clone",
+     "command": "git clone https://gitcode.com/openeuler/ubturbo.git ./tmp_src/",
+     "ok": true,
+     "output": "Cloned successfully"
+    },
+    {
+     "step": "docker_setup",
+     "command": "docker pull ubuntu:24.04 (via mirror docker.1ms.run)",
+     "ok": true,
+     "output": "Image pulled successfully"
+    },
+    {
+     "step": "container_start",
+     "command": "docker run -d --name verification-env -v /home/<user>/tmp_src:/workspace ubuntu:24.04",
+     "ok": true,
+     "output": "Container started"
+    },
+    {
+     "step": "deps_install",
+     "command": "apt-get install -y cmake gcc g++ make dos2unix bc git lcov libvirt-dev python3",
+     "ok": true,
+     "output": "All packages installed"
+    },
+    {
+     "step": "submodule_init",
+     "command": "git submodule update --init 3rdparty/libboundscheck 3rdparty/rapidjson test/3rdparty/googletest test/3rdparty/mockcpp",
+     "ok": true,
+     "output": "4 submodules checked out"
+    },
+    {
+     "step": "build_attempt_1",
+     "command": "bash build.sh -j 14",
+     "ok": false,
+     "output": "CMakeLists.txt:151 file READ /etc/openEuler-release 失败（Ubuntu容器中不存在该文件）"
+    },
+    {
+     "step": "fix_openeuler_release",
+     "command": "echo 'openEuler release 22.03' > /etc/openEuler-release",
+     "ok": true,
+     "output": "文件创建成功，CMake可正常解析OS版本"
+    },
+    {
+     "step": "build_attempt_2",
+     "command": "bash build.sh -j 14",
+     "ok": false,
+     "output": "1) securec.h 找不到（libboundscheck子模块为空）2) rapidjson/document.h 找不到（rapidjson子模块为空）3) libvirt/libvirt.h 找不到 4) GCC 13 缺少 #include <cstdint>"
+    },
+    {
+     "step": "fix_submodules",
+     "command": "git submodule update --init 3rdparty/libboundscheck 3rdparty/rapidjson test/3rdparty/googletest test/3rdparty/mockcpp",
+     "ok": true,
+     "output": "4 critical submodules checked out"
+    },
+    {
+     "step": "fix_libboundscheck",
+     "command": "cd 3rdparty/libboundscheck && make && cp lib/libboundscheck.so /usr/lib64/ && cp include/securec.h /usr/include/",
+     "ok": true,
+     "output": "libboundscheck.so built and installed to /usr/lib64/ and /usr/include/securec.h"
+    },
+    {
+     "step": "fix_libvirt",
+     "command": "apt-get install -y libvirt-dev",
+     "ok": true,
+     "output": "libvirt-dev 10.0.0 installed"
+    },
+    {
+     "step": "fix_cstdint",
+     "command": "cmake ... -DCMAKE_CXX_FLAGS='-include cstdint'",
+     "ok": true,
+     "output": "GCC 13 严格模式下的 <cstdint> 缺失问题通过编译标志解决"
+    },
+    {
+     "step": "build_success",
+     "command": "cmake --build dist/release --target all -j 14",
+     "ok": true,
+     "output": "[100%] Built target ub_turbo_exec"
+    },
+    {
+     "step": "test_build",
+     "command": "cd test && cmake -S . -B build -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-wrap && cmake --build build --target ubturbo_ut rmrs_ut -j 14",
+     "ok": true,
+     "output": "Both ubturbo_ut and rmrs_ut built successfully"
+    },
+    {
+     "step": "test_run_ubturbo_ut",
+     "command": "cd test/build && ./ubturbo_ut",
+     "ok": false,
+     "output": "385 tests from 19 test suites. 384 PASSED, 1 FAILED"
+    },
+    {
+     "step": "test_run_rmrs_ut",
+     "command": "cd test/build && ./rmrs_ut",
+     "ok": false,
+     "output": "444 tests from 17 test suites. 443 PASSED, 1 FAILED"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "ub_turbo_exec",
+     "size": "476K"
+    },
+    {
+     "name": "libubturbo_client.so",
+     "size": "91K"
+    },
+    {
+     "name": "librmrs_ubturbo_plugin.so",
+     "size": "1020K"
+    },
+    {
+     "name": "config files",
+     "size": "ubturbo.conf, ubturbo_plugin_admission.conf, plugin_rmrs.conf"
+    }
+   ],
+   "docFacts": [
+    {
+     "label": "架构",
+     "value": "aarch64 (RPM package name in CMakeLists.txt specifies aarch64; README未明确指定)",
+     "source": "CMakeLists.txt line 174: CPACK_RPM_rmrs_FILE_NAME 包含 aarch64.rpm"
+    },
+    {
+     "label": "OS 支持",
+     "value": "Ubuntu 24.04",
+     "source": "用户选择，CMakeLists.txt 硬依赖 /etc/openEuler-release（openEuler 特有）"
+    },
+    {
+     "label": "依赖",
+     "value": "cmake >= 3.22、gcc、g++、make、dos2unix、bc、git、libboundscheck（子模块）、rapidjson（子模块）、libvirt-dev、libvirt/libvirt.h、securec.h（来自libboundscheck）、googletest（测试子模块）、mockcpp（测试子模块）、lcov（测试覆盖）、python3（mockcpp构建需要）",
+     "source": "README.md + CMakeLists.txt + build.sh + test/run_ut.sh + test/CMakeLists.txt"
+    },
+    {
+     "label": "构建命令",
+     "value": "git submodule update --init --recursive && dos2unix build.sh && sh build.sh",
+     "source": "README.md - 编译章节"
+    },
+    {
+     "label": "测试命令",
+     "value": "cd test && sh run_ut.sh（内部执行 cmake && make ubturbo_ut rmrs_ut && ./ubturbo_ut && ./rmrs_ut）",
+     "source": "test/run_ut.sh"
+    }
+   ],
    "scenario": "developer",
    "community": "UBS Core",
    "repo": "ubturbo",
@@ -13422,6 +17945,51 @@
   },
   {
    "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openUBMC",
+   "url": "",
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-06-10",
+   "month": "2026-06",
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 33,
+   "result": "success",
+   "defects": [],
+   "problems": [],
+   "summary": "成功。华为云开源镜像站路径可成功定位并验证，镜像可成功拉取并创建 Pod，开发环境完整，发现 3 条文档缺陷。",
+   "breakpoints": 0,
+   "build": {},
+   "test": {},
+   "env": {},
+   "id": 187
+  },
+  {
+   "scenario": "user",
    "community": "Ascend",
    "repo": "TileLang",
    "url": "",
@@ -13494,51 +18062,6 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 187
-  },
-  {
-   "scenario": "user",
-   "community": "Ascend",
-   "repo": "TileLang",
-   "url": "",
-   "scene": "a2-npu-install",
-   "date": "2026-06-07",
-   "month": "2026-06",
-   "phases": [
-    {
-     "name": "了解",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    },
-    {
-     "name": "安装",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    },
-    {
-     "name": "使用",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    },
-    {
-     "name": "贡献",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    }
-   ],
-   "totalMinutes": 0,
-   "result": "unknown",
-   "defects": [],
-   "problems": [],
-   "summary": "",
-   "breakpoints": 0,
-   "build": {},
-   "test": {},
-   "env": {},
    "id": 188
   },
   {
@@ -13576,7 +18099,7 @@
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "unknown",
    "defects": [],
    "problems": [],
    "summary": "",
@@ -13642,6 +18165,51 @@
    "phases": [
     {
      "name": "了解",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "failed",
+   "defects": [],
+   "problems": [],
+   "summary": "",
+   "breakpoints": 0,
+   "build": {},
+   "test": {},
+   "env": {},
+   "id": 191
+  },
+  {
+   "scenario": "user",
+   "community": "Ascend",
+   "repo": "TileLang",
+   "url": "",
+   "scene": "a2-npu-install",
+   "date": "2026-06-07",
+   "month": "2026-06",
+   "phases": [
+    {
+     "name": "了解",
      "status": "success",
      "minutes": 15,
      "breakpoints": 0
@@ -13670,51 +18238,6 @@
    "defects": [],
    "problems": [],
    "summary": "成功，向量加法验证通过（TileLang kernel 结果与 PyTorch 参考结果完全一致）",
-   "breakpoints": 0,
-   "build": {},
-   "test": {},
-   "env": {},
-   "id": 191
-  },
-  {
-   "scenario": "user",
-   "community": "Ascend",
-   "repo": "Triton",
-   "url": "",
-   "scene": "a2-npu-dev",
-   "date": "2026-05-23",
-   "month": "2026-05",
-   "phases": [
-    {
-     "name": "了解",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    },
-    {
-     "name": "安装",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    },
-    {
-     "name": "使用",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    },
-    {
-     "name": "贡献",
-     "status": "unknown",
-     "minutes": 0,
-     "breakpoints": 0
-    }
-   ],
-   "totalMinutes": 0,
-   "result": "partial",
-   "defects": [],
-   "problems": [],
-   "summary": "",
    "breakpoints": 0,
    "build": {},
    "test": {},
@@ -13817,7 +18340,7 @@
    "repo": "Triton",
    "url": "",
    "scene": "a2-npu-dev",
-   "date": "2026-05-30",
+   "date": "2026-05-23",
    "month": "2026-05",
    "phases": [
     {
@@ -13855,6 +18378,51 @@
    "test": {},
    "env": {},
    "id": 195
+  },
+  {
+   "scenario": "user",
+   "community": "Ascend",
+   "repo": "Triton",
+   "url": "",
+   "scene": "a2-npu-dev",
+   "date": "2026-05-30",
+   "month": "2026-05",
+   "phases": [
+    {
+     "name": "了解",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "partial",
+   "defects": [],
+   "problems": [],
+   "summary": "",
+   "breakpoints": 0,
+   "build": {},
+   "test": {},
+   "env": {},
+   "id": 196
   },
   {
    "scenario": "user",
@@ -13924,7 +18492,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 196
+   "id": 197
   },
   {
    "scenario": "user",
@@ -13969,7 +18537,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 197
+   "id": 198
   },
   {
    "scenario": "user",
@@ -14014,7 +18582,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 198
+   "id": 199
   },
   {
    "scenario": "user",
@@ -14059,7 +18627,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 199
+   "id": 200
   },
   {
    "scenario": "user",
@@ -14104,7 +18672,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 200
+   "id": 201
   },
   {
    "scenario": "user",
@@ -14149,7 +18717,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 201
+   "id": 202
   },
   {
    "scenario": "user",
@@ -14194,7 +18762,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 202
+   "id": 203
   },
   {
    "scenario": "user",
@@ -14239,7 +18807,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 203
+   "id": 204
   },
   {
    "scenario": "user",
@@ -14284,7 +18852,7 @@
    "build": {},
    "test": {},
    "env": {},
-   "id": 204
+   "id": 205
   }
  ]
 }
