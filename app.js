@@ -134,7 +134,7 @@
     const pieData = [["成功", cnt("success"), "#3ba272"], ["部分成功", cnt("partial"), "#fac858"],
       ["失败", cnt("failed"), "#ee6666"], ["未知", recs.length - cnt("success") - cnt("partial") - cnt("failed"), "#c7ccd6"]]
       .filter(d => d[1] > 0).map(d => ({ name: d[0], value: d[1], itemStyle: { color: d[2] } }));
-    const pie = echarts.init(document.getElementById("ec-pie"), th);
+    const pie = echarts.init(document.getElementById("ec-pie"), th, { renderer: "svg" });
     pie.setOption({
       tooltip: { trigger: "item", formatter: "{b}: {c} ({d}%)" },
       legend: { bottom: 0, icon: "circle", itemWidth: 9, itemHeight: 9, textStyle: { fontSize: 12 } },
@@ -155,7 +155,7 @@
       emphasis: { focus: "series" },
       data: top.map(r => ({ value: (r.phases[idx] && r.phases[idx].minutes) || 0, id: r.id })),
     }));
-    const topC = echarts.init(document.getElementById("ec-top"), th);
+    const topC = echarts.init(document.getElementById("ec-top"), th, { renderer: "svg" });
     topC.setOption({
       legend: { top: 0, itemWidth: 12, itemHeight: 9, textStyle: { fontSize: 11 }, data: names },
       grid: { left: 6, right: 52, top: 30, bottom: 4, containLabel: true },
@@ -173,7 +173,7 @@
     const rows = Object.entries(byC).map(([c, rs]) => ({ label: c,
       value: Math.round(rs.filter(r => r.result === "success" || r.result === "partial").length / rs.length * 100) }))
       .sort((a, b) => a.value - b.value);
-    const commC = echarts.init(document.getElementById("ec-comm"), th);
+    const commC = echarts.init(document.getElementById("ec-comm"), th, { renderer: "svg" });
     commC.setOption({
       grid: { left: 6, right: 44, top: 10, bottom: 6, containLabel: true },
       tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, formatter: p => `${p[0].name}: <b>${p[0].value}%</b>` },
