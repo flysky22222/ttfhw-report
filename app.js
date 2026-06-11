@@ -4,7 +4,7 @@
   const SCEN = { user: "用户场景", developer: "开发者场景" };
   const RES = { success: "成功", partial: "部分成功", failed: "失败", unknown: "未知", not_run: "未执行" };
   const COMM_ORDER = ["openEuler","HPCKit","UBS Core","openUBMC","CANN","MindSpeed","MindIE","PTA","MindSpore","openGauss","Triton","TileLang","Ascend","其他"];
-  const COLOR = { success: "#0f9d58", partial: "#d98a00", failed: "#d23f3f", unknown: "#b0b7c3", not_run: "#98a2b3" };
+  const COLOR = { success: "#3ba272", partial: "#fac858", failed: "#ee6666", unknown: "#A4B1D7", not_run: "#c7ccd6" };
 
   // 内联 SVG 图标（stroke 风格）
   const I = {
@@ -111,14 +111,15 @@
     // 各社区通过率
     const byC = {};
     recs.forEach(r => { (byC[r.community] = byC[r.community] || []).push(r); });
-    const commRows = Object.entries(byC).map(([c, rs]) => ({ label: c, value: Math.round(rs.filter(r => r.result === "success").length / rs.length * 100), n: rs.length }))
+    // 通过率 = (成功 + 部分) / 总数（部分成功＝验证通过也计入；失败不计）
+    const commRows = Object.entries(byC).map(([c, rs]) => ({ label: c, value: Math.round(rs.filter(r => r.result === "success" || r.result === "partial").length / rs.length * 100), n: rs.length }))
       .sort((a, b) => b.value - a.value);
     const commBars = commRows.map(r => `<div class="pbar-row"><span class="pbar-l">${r.label}</span><span class="pbar-track"><i style="width:${r.value}%;background:${r.value >= 67 ? COLOR.success : r.value >= 34 ? COLOR.partial : COLOR.failed}"></i></span><span class="pbar-v mono">${r.value}%<small>·${r.n}</small></span></div>`).join("");
     el.innerHTML =
       `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="donut-wrap">${donut}<div class="donut-legend">
         ${legend("success", "成功", succ)}${legend("partial", "部分", part)}${legend("failed", "失败", fail)}${unk ? legend("unknown", "未知", unk) : ""}</div></div></div>` +
       `<div class="chart-card"><h3>${ico("clock")} 耗时 TOP 10（min）</h3><div class="hbars">${topBars}</div></div>` +
-      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率</h3><div class="pbars">${commBars}</div></div>`;
+      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率<span class="hint">（成功+部分）</span></h3><div class="pbars">${commBars}</div></div>`;
     el.querySelectorAll(".hbar[data-id]").forEach(b => b.addEventListener("click", () => { location.hash = "#id=" + b.dataset.id; }));
   }
   const legend = (c, t, n) => `<span class="lg"><i style="background:${COLOR[c]}"></i>${t} <b>${n}</b></span>`;
@@ -136,7 +137,7 @@
   function hbars(rows, unit) {
     const max = Math.max(1, ...rows.map(r => r.value));
     return rows.map(r => `<div class="hbar" ${r.id != null ? `data-id="${r.id}"` : ""}><span class="hbar-l">${r.label}</span>
-      <span class="hbar-track"><i style="width:${Math.max(3, r.value / max * 100)}%;background:${r.color || "#4f46e5"}"></i></span>
+      <span class="hbar-track"><i style="width:${Math.max(3, r.value / max * 100)}%;background:${r.color || "#5470c6"}"></i></span>
       <span class="hbar-v mono">${r.value}<small> ${unit}</small></span></div>`).join("");
   }
 
@@ -220,9 +221,9 @@
         <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>`);
 
     const defects = r.defects || [];
-    if (defects.length) sections.push(`<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）</h2>
+    if (defects.length) sections.push(`<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）<span class="hint">点击行跳到下方完整报告对应缺陷</span></h2>
       <table class="dtable"><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
-        defects.map(d => `<tr><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
+        defects.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
           <td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
 
     const problems = (r.problems || []).filter(p => p.title);
@@ -244,6 +245,10 @@
         <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span><span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div></div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
     content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { location.hash = "#id=" + h.dataset.id; }));
+    content.querySelectorAll("tr.jumpable").forEach(tr => tr.addEventListener("click", () => {
+      const el = document.getElementById(tr.dataset.anchor);
+      if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1600); }
+    }));
     if (r.reportFile) loadReport(r);
     window.scrollTo(0, 0);
   }
@@ -273,7 +278,7 @@
         out.push(`<table class="md-table"><thead><tr>${head.map(h => `<th>${inline(h)}</th>`).join("")}</tr></thead><tbody>${
           body.map(r => `<tr>${cells(r).map(c => `<td>${inline(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>`); continue;
       }
-      const h = ln.match(/^(#{1,6})\s+(.*)/); if (h) { out.push(`<h${h[1].length} class="md-h">${inline(h[2])}</h${h[1].length}>`); i++; continue; }
+      const h = ln.match(/^(#{1,6})\s+(.*)/); if (h) { const dm = h[2].match(/缺陷\s*#?\s*(\d+)/); const id = dm ? ` id="rep-defect-${dm[1]}"` : ""; out.push(`<h${h[1].length} class="md-h"${id}>${inline(h[2])}</h${h[1].length}>`); i++; continue; }
       if (/^\s*[-*]\s+/.test(ln)) { const items = []; while (i < lines.length && /^\s*[-*]\s+/.test(lines[i])) items.push(lines[i++].replace(/^\s*[-*]\s+/, "")); out.push(`<ul class="md-ul">${items.map(t => `<li>${inline(t)}</li>`).join("")}</ul>`); continue; }
       if (/^\s*\d+\.\s+/.test(ln)) { const items = []; while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) items.push(lines[i++].replace(/^\s*\d+\.\s+/, "")); out.push(`<ol class="md-ol">${items.map(t => `<li>${inline(t)}</li>`).join("")}</ol>`); continue; }
       if (/^\s*>/.test(ln)) { out.push(`<blockquote class="md-q">${inline(ln.replace(/^\s*>\s?/, ""))}</blockquote>`); i++; continue; }

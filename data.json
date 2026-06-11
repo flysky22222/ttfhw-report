@@ -9774,68 +9774,78 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 25
+     "status": "success",
+     "minutes": 25,
+     "breakpoints": 3
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 5
+     "status": "unknown",
+     "minutes": 5,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
    "result": "partial",
    "defects": [
     {
-     "title": "软件包贡献流程文档缺失，对应贡献页面返回 404，贡献阶段无法形成闭环。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "prepare-environment.md 版本过期",
+     "level": "重要",
+     "source": "AtomGit openEuler/community zh/contributors/prepare-environment.md",
+     "detail": "现象：文档使用 openEuler-20.03-LTS，repo 源和 GPG 公钥 URL 都指向过期版本 / 根因：文档未随版本发布同步更新 / 建议：更新为当前稳定版本（24.03 LTS）或添加版本选择说明 / 影响：用户可能使用过期版本，无法获取最新软件包",
+     "anchor": 1
     },
     {
-     "title": "缺少本地 RPM 构建教程（无 rpm-build 安装、spec 规范、rpmbuild 流程说明）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "文档使用 yum 命令而非 dnf",
+     "level": "一般",
+     "source": "prepare-environment.md",
+     "detail": "现象：文档使用 yum 命令，openEuler 默认使用 dnf / 建议：将所有 yum 命令替换为 dnf 命令",
+     "anchor": 2
     },
     {
-     "title": "官方容器镜像需认证（401），文档未说明获取与认证方式。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "openEuler 镜像需要认证",
+     "level": "严重",
+     "source": "prepare-environment.md",
+     "detail": "现象：文档要求使用 openEuler 系统，但 SWR 镜像需认证才能拉取 / 建议：提供公开镜像地址或说明认证流程",
+     "anchor": 3
     },
     {
-     "title": "环境准备文档版本过期，仓库与 GPG 指向旧版本。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "spec 模板不完整",
+     "level": "重要",
+     "source": "packaging.md",
+     "detail": "现象：helloworld.spec 模板缺少 man/pkgconfig/静态库示例 / 建议：扩展模板或添加完整示例",
+     "anchor": 4
     },
     {
-     "title": "文档示例仍用 yum 而非 dnf，spec 模板不完整（缺 man/pkgconfig/静态库示例）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "文档未说明非 rpm 系统处理",
+     "level": "重要",
+     "source": "packaging.md",
+     "detail": "现象：BuildRequires 在 Ubuntu 上无法满足依赖检查 / 建议：明确仅适用 openEuler 或提供跨系统方案",
+     "anchor": 5
     },
     {
-     "title": "缺少构建后验证命令示例，SIG 归属信息不明确。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "无验证命令示例",
+     "level": "一般",
+     "source": "packaging.md",
+     "detail": "现象：未提供构建后验证命令 / 建议：添加 rpm -qpl、rpm -ivh、功能验证示例",
+     "anchor": 6
     }
    ],
    "problems": [],
    "summary": "沿用 0401-0519 期代表运行 20260429-01，本地 RPM 构建场景",
-   "breakpoints": 0,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-06-openeuler-ttfhw-openeuler-rpm-build-20260429-01.md",
    "build": {},
    "test": {},
@@ -9857,86 +9867,99 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 8
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 18
+     "status": "success",
+     "minutes": 18,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 58
+     "status": "success",
+     "minutes": 58,
+     "breakpoints": 4
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 35
+     "status": "success",
+     "minutes": 35,
+     "breakpoints": 7
     }
    ],
    "totalMinutes": 119,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "官方文档未说明 Ubuntu 24.04 需先添加 universe 源才能安装 pip3。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "容器环境驱动映射缺少专用配置说明，导致安装失败。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "linux-headers 安装步骤未区分物理机与容器环境，容器内无法匹配内核版本。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "环境变量脚本路径与实际安装结构不一致，文档路径与真实路径不符。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "文档未提示所用基础镜像缺少 universe 源。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "缺少 pip root 用户警告的预期行为说明。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "官网组件安装与 gitcode 示例文档镜像路径不一致，增加理解成本。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "`--soc` 参数与芯片型号映射说明不足，编译示例需人工试错才能确定正确参数。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "\"快速开始\"页面未提及对硬件环境的诉求，部分命令可能执行失败。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，组件安装走 gitcode 文档路径",
-   "breakpoints": 0,
+   "breakpoints": 11,
    "reportFile": "reports/user/2026-06-cann-cann-manual-20260524-report.md",
    "build": {},
    "test": {},
@@ -9959,67 +9982,56 @@
     {
      "name": "了解",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
-     "minutes": 48
+     "minutes": 48,
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "success",
-     "minutes": 15
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 87,
    "result": "success",
    "defects": [
     {
-     "title": "Ubuntu 24.04 / Python 3.12 的 PEP 668 pip 限制未说明，阻碍用户直接 pip 安装（出现频率最高，连续 20+ 天复现）。",
+     "title": "文档未说明 Ubuntu 24.04 的 PEP 668 限制",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": 1
     },
     {
-     "title": "操作系统支持范围说明过旧，文档仅基于旧版本，未覆盖 24.04。",
+     "title": "文档未说明 ascendhub/ubuntu 需启用 universe 源",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": 2
     },
     {
-     "title": "未说明仅支持 glibc，不兼容 musl libc，多次导致安装失败。",
+     "title": "GCC 版本要求范围过窄",
      "level": "",
      "source": "",
-     "detail": ""
-    },
-    {
-     "title": "Ubuntu universe 源未启用说明缺失，导致无法安装 python3/pip。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "缺少容器化安装指南，Docker 安装文档内容不完整。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "版本信息与安装命令 URL 存在细微不一致。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": 3
     }
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-19，MindSpore 2.9.0 CPU x86_64 安装与验证全程跑通",
-   "breakpoints": 0,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260523-19.md",
    "build": {},
    "test": {},
@@ -10041,68 +10053,71 @@
    "phases": [
     {
      "name": "了解",
-     "status": "success",
-     "minutes": 15
+     "status": "partial",
+     "minutes": 15,
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
-     "minutes": 35
+     "minutes": 35,
+     "breakpoints": 2
     },
     {
      "name": "使用",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 70,
    "result": "success",
    "defects": [
     {
-     "title": "docker load 后镜像名与文档示例不一致，文档示例镜像名无法直接 docker run（最高频，多次定级严重）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "官网登录凭据验证失败",
+     "level": "严重",
+     "source": "https://opengauss.org/zh/download/?version=rc",
+     "detail": "现象：点击下载按钮后弹出登录对话框，使用环境变量注入的官方凭据后返回 HTTP 400 Bad Request，无法获取 tar 包直链 / 根因：服务端拒绝凭据，可能是 secret 过期或认证机制故障 / 建议：检查凭据有效性，更新 secret 或修复认证机制；提供无需登录的公开 OBS 目录 / 影响：无法通过官网下载页获取最新版本 tar 包直链",
+     "anchor": 1
     },
     {
-     "title": "官网下载页登录接口返回受限状态码，无法正常获取安装包下载链接。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "文档示例代码架构不一致",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：示例代码默认显示 ARM 架构 URL（`arm/openGauss-Docker-7.0.0-RC3-aarch64.tar`），x86_64 URL 未突出 / 根因：文档未根据架构上下文动态调整，默认展示 ARM 版本 / 建议：动态显示架构或明确标注选择说明，优先展示 x86_64 / 影响：用户易下载错误架构的 tar 包，导致无法运行",
+     "anchor": 2
     },
     {
-     "title": "安装文档安装包下载示例 URL 过期失效或重定向到主页。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "tar 包 URL 与官网选项不匹配",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：官网选择\"openEuler 24.03 LTS\"，但文档 URL 显示 `openEuler22.03` / 根因：OBS 只发布 22.03 版本，24.03 版本尚未发布 / 建议：发布 24.03 tar 包或在官网提示暂无 / 影响：用户被迫使用旧版本（22.03）而非目标版本（24.03）",
+     "anchor": 3
     },
     {
-     "title": "安装包下载 URL 格式与命令章节描述不明确，用户难以拼出正确下载地址。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "OBS 无 openEuler 24.03 LTS tar 包",
+     "level": "重要",
+     "source": "https://opengauss.obs.cn-south-1.myhuaweicloud.com/7.0.0-RC3/",
+     "detail": "现象：24.03 x86_64 tar 包 URL 返回 HTTP 403 Forbidden / 根因：OBS 只发布 22.03 版本，24.03 未发布或为私有 / 建议：发布 24.03 tar 包或提供公开 OBS 目录索引 / 影响：无法获取与官网选项匹配的 tar 包版本",
+     "anchor": 4
     },
     {
-     "title": "部分 OS/架构组合的镜像下载返回 403，文档未说明可用资源矩阵。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "版本号与实际包命名、容器名示例不统一，贡献阶段提交接口常被拦截。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "docker load 后镜像名不一致",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：docker load 后镜像名为 `opengauss:7.0.0-RC3`，而文档示例为 `opengauss/opengauss-server:latest` / 根因：tar 包镜像 metadata 与文档描述不一致 / 建议：文档使用实际镜像名 `opengauss:7.0.0-RC3` 或说明先执行 docker images / 影响：用户必须先用 `docker images` 查看实际名再调整命令",
+     "anchor": 5
     }
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-39，docker 极简版安装",
-   "breakpoints": 0,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260523-39.md",
    "build": {},
    "test": {},
@@ -10124,56 +10139,64 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 4
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 27
+     "status": "success",
+     "minutes": 27,
+     "breakpoints": 3
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 14
+     "status": "success",
+     "minutes": 14,
+     "breakpoints": 2
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 50,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "依赖远程仓库强制认证，文档未说明账户注册与获取方式（多次复现，最严重）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "SDK 仅能从应用市场页面下载，无命令行获取方式，无法自动化。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "Docker 环境文档与 manifest 说明断层，Docker 文档完全不提认证配置。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "git clone 默认用 SSH 协议，未说明 HTTPS 可匿名只读克隆。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-06-openubmc-openubmc-manual-report-524.md",
    "build": {},
    "test": {},
@@ -10195,62 +10218,71 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 13
+     "status": "success",
+     "minutes": 13,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 39
+     "status": "success",
+     "minutes": 39,
+     "breakpoints": 3
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 58
+     "status": "success",
+     "minutes": 58,
+     "breakpoints": 2
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 20
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 130,
-   "result": "partial",
+   "result": "failed",
    "defects": [
     {
      "title": "源码安装缺少 CANN toolkit 具体安装命令，文档仅给外链无操作步骤，裸容器内无法执行（最高频、最严重）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "torch_npu 安装示例版本过期（文档 2.7.1rc1 vs 实际 2.7.1.post5），且容器内 pip/wget 无法访问 PyPI 和 gitcode releases（403 Forbidden）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "Python 版本要求与主流基础镜像默认版本冲突（文档要求 3.10 vs Ubuntu 24.04 镜像内置 3.12），未给受限环境处理说明。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "文档命令行示例含换行符 `\\` 后追加 `#` 注释，直接复制粘贴到 Terminal 执行会报错。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "仅提供 wget 从 HuggingFace 下载模型的方式，无国内替代渠道。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，源码安装路径",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-manual-20260524.md",
    "build": {},
    "test": {},
@@ -10272,23 +10304,27 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 20
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 1
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 6
+     "status": "success",
+     "minutes": 6,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 91
+     "status": "success",
+     "minutes": 91,
+     "breakpoints": 5
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 30
+     "status": "success",
+     "minutes": 30,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 147,
@@ -10298,48 +10334,55 @@
      "title": "文档默认从 HuggingFace 获取模型权重，未提供国内替代下载渠道（如 ModelScope），直接导致使用阶段无法取得模型（最严重）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "QUICKSTART 文档路径与实际版本不一致，3.0.0 版本文档给出 2.3.0 版本的目录路径和命令，反映出文档未随版本更新验证。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "docker pull 与 docker run 示例的镜像名不一致，开发者直接粘贴执行会报错。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "文档未说明模型大小与内存等资源需求，用户无法判断硬件是否满足。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "镜像内未预置小模型或验证命令，下载模型前无法验证安装是否可用。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "商业版与社区版镜像功能差异未说明，用户容易选错镜像（如 dev 版缺少 ATB Models）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "ATB Models 获取路径不清晰，官网无安装文档，需提工单咨询才能获得。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，使用阶段仍卡 HuggingFace 模型权重无国内渠道",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-06-mindie-mindie-manual-report-0524.md",
    "build": {},
    "test": {},
@@ -10361,62 +10404,64 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 10
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "partial",
-     "minutes": 45
+     "minutes": 45,
+     "breakpoints": 2
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 75,
    "result": "partial",
    "defects": [
     {
-     "title": "`requirements.txt` 钉死的 `torch-npu==2.7.1` 与 quick_start 推荐 CANN 9.0.0-beta.2 不兼容，`import torch_npu` 报 `undefined symbol: MsprofSysCycleTime`；`installation_guide.md` 实际推荐 `2.7.1.post4`，两处文档不一致（中等）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "requirements.txt torch-npu版本与CANN不兼容",
+     "level": "一般",
+     "source": "requirements.txt + quick_start.md",
+     "detail": "现象：torch-npu==2.7.1导入时报错`undefined symbol: MsprofSysCycleTime` / 根因：requirements.txt版本与CANN 9.0.0-beta.2驱动API不匹配 / 建议：将requirements.txt更新为`torch-npu==2.7.1.post4`，或在quick_start.md说明需使用installation_guide.md版本",
+     "anchor": 1
     },
     {
-     "title": "`source set_env.sh` 在默认 `/bin/sh`(dash) 下报 `source: not found`，文档未说明需 bash 执行（中等）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "source命令需bash执行",
+     "level": "一般",
+     "source": "quick_start.md",
+     "detail": "现象：sh执行source命令报错`sh: 1: source: not found` / 根因：source是bash特有命令，sh不支持 / 建议：文档明确说明需使用bash执行，或提供bash -c命令示例",
+     "anchor": 2
     },
     {
-     "title": "quick_start.md 的 `pip install triton-ascend` 缺少 `--extra-index-url`，与 installation_guide.md 命令格式不一致（低）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "pip安装命令不一致",
+     "level": "提示",
+     "source": "quick_start.md + installation_guide.md",
+     "detail": "现象：quick_start.md缺少`--extra-index-url`参数 / 根因：两处文档安装命令格式不一致 / 建议：统一使用installation_guide.md的完整命令格式",
+     "anchor": 3
     },
     {
-     "title": "容器内 `npu-smi info` 报 `undefined symbol: drvSetDeviceInfo`（镜像内 npu-smi 与宿主机驱动版本不匹配），文档未提示该命令应在宿主机执行或换用 triton 完整镜像（低）。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "开发者编程指南的子文档链条较深，离线集群通过 pip 拉外网大包多次卡死，需改用 triton 完整镜像规避。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "npu-smi在容器内报错",
+     "level": "提示",
+     "source": "quick_start.md",
+     "detail": "现象：容器内npu-smi报错`undefined symbol: drvSetDeviceInfo` / 根因：镜像内npu-smi与宿主机驱动版本不匹配 / 建议：说明验证NPU型号应在宿主机执行，或推荐使用triton完整镜像",
+     "anchor": 4
     }
    ],
    "problems": [],
    "summary": "triton-ascend A2 NPU 安装场景，5/22 代表运行 20260522-04 部分成功（向量加法 max diff 0.0 通过，需绕过 requirements.txt 版本缺陷），4 处文档缺陷",
-   "breakpoints": 0,
+   "breakpoints": 2,
    "reportFile": "reports/user/2026-06-triton-ttfhw-triton-a2-npu-install-20260522-04.md",
    "build": {},
    "test": {},
@@ -10439,67 +10484,77 @@
     {
      "name": "了解",
      "status": "success",
-     "minutes": 15
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
-     "minutes": 45
+     "minutes": 45,
+     "breakpoints": 0
     },
     {
      "name": "使用",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 75,
    "result": "success",
    "defects": [
     {
-     "title": "**README Environment Setup 指定的 CANN 版本与代码实际要求矛盾**（严重）：Setup 章节下载链接指向 CANN 8.3.RC1.alpha002，但该版本 bishengir-compile 不支持 tilelang 代码硬编码的 `--disable-hivm-*` 参数（run -06 实测验证失败）；README News 又声明 \"1/23/2026: TileLang now supports CANN 8.5\"，两处自相矛盾。换 CANN 8.5.2 后验证通过。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "README 版本要求与 News 声明矛盾",
+     "level": "严重",
+     "source": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "detail": "现象：Environment Setup 指定 CANN 8.3.RC1.alpha002，Latest News (1/23/2026) 声明支持 CANN 8.5 / 根因：README 未同步更新版本推荐 / 建议：统一 Environment Setup 与 Latest News 的 CANN 版本推荐；若两者均支持需明确版本选择指引 / 影响：用户可能使用过旧 CANN 版本导致构建失败或功能缺失",
+     "anchor": 1
     },
     {
-     "title": "**README 未列出系统级构建依赖**（重要）：install_npuir.sh 实际需要 patch、ninja≥1.12（apt 版本过旧需 pip 装）、clang、lld、zlib1g-dev、libzstd-dev，README 只列了 pip 包，按文档准备的环境构建必失败。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "README 未列出系统级构建依赖",
+     "level": "重要",
+     "source": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "detail": "现象：README 只列 pip 包，未列 clang lld patch ninja zlib1g-dev libzstd-dev / 根因：README 未完整列出构建脚本实际依赖 / 建议：在 \"Environment Setup\" 或 \"Build\" 章节补充系统依赖列表 / 影响：用户按 README 安装后构建失败",
+     "anchor": 2
     },
     {
-     "title": "**README 未提供受限网络环境指引**（重要）：仅 `git clone github.com` 一种获取方式，无国内镜像/tar 包/预构建包；默认 pypi 源在国内集群仅约 1MB/min（run -02 因此整场超时）；llvm-project 等巨型子模块（递归共 14GB）clone 易断流（run -05 因此失败），README 无任何网络适配建议。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "README 未提供受限网络环境指引",
+     "level": "重要",
+     "source": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "detail": "现象：git clone / pip install 默认使用外网，无国内镜像方案 / 根因：README 默认假设用户有外网直连 / 建议：补充\"国内镜像 / 受限网络环境\"章节 / 影响：国内用户无法完成 clone 或依赖下载，整场超时",
+     "anchor": 3
     },
     {
-     "title": "**README 环境变量设置不完整**（重要）：构建后 import 报 `libhccl.so: cannot open shared object file`，需补 LD_LIBRARY_PATH 生效步骤，README 只提了 set_env.sh 和 ACL_OP_INIT_MODE。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "README 未展示构建脚本内容",
+     "level": "一般",
+     "source": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "detail": "现象：README 只说 bash install_npuir.sh，未展示脚本步骤 / 根因：README 未详细说明构建流程 / 建议：补充构建脚本步骤说明或链接到脚本源码 / 影响：用户无法预判构建耗时和步骤",
+     "anchor": 4
     },
     {
-     "title": "**README 未展示构建脚本内容与耗时预期**（一般）：只说 `bash install_npuir.sh`，未提示这是含 LLVM/MLIR 的重型源码构建（实测 192 核容器 30 分钟、普通机器预计数小时）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "README 环境变量设置不完整",
+     "level": "重要",
+     "source": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "detail": "现象：README 只提到 source set_env.sh 和 ACL_OP_INIT_MODE=1，未提 source ~/.bashrc 和 LD_LIBRARY_PATH / 根因：CANN set_env.sh 设置的 LD_LIBRARY_PATH 未生效 / 建议：补充构建后环境变量设置步骤 / 影响：用户 import tilelang 或 torch_npu 报错",
+     "anchor": 5
     },
     {
-     "title": "**README Quick Start API 与 examples 示例不一致**（一般）：README 用 `T.npuir_add`、examples/vec_add_1d.py 用 `T.vadd`，NPU 设备 ID 也不一致（6 vs 0）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "README Quick Start API 与示例文件不一致",
+     "level": "一般",
+     "source": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "detail": "现象：README 用 T.npuir_add，vec_add_1d.py 用 T.vadd / 根因：两处 API 名称不同 / 建议：统一 API 名称或在文档明确说明两种 API 的区别 / 影响：用户不确定应使用哪个 API",
+     "anchor": 6
     }
    ],
    "problems": [],
    "summary": "**新增社区**：tilelang-mlir-ascend A2 NPU 源码安装场景，6/7 代表运行 20260607-07 **成功**（CANN 8.5.2 + 源码构建 30 分钟，向量加法 NPU 结果与 PyTorch 完全一致）；此前 5 次运行迭代暴露完整断点链（github 直连不通 → 构建脚本强依赖 git repo → CANN 8.3.RC1.alpha002 的 bishengir-compile 参数不兼容），最终按 README News\"supports CANN 8.5\"换 8.5.2 镜像跑通；共 6 处文档缺陷（1 严重 / 3 重要 / 2 一般）",
-   "breakpoints": 0,
+   "breakpoints": 1,
    "reportFile": "reports/user/2026-06-tilelang-ttfhw-tilelang-a2-npu-install-20260607-07.md",
    "build": {},
    "test": {},
@@ -10522,67 +10577,77 @@
     {
      "name": "了解",
      "status": "success",
-     "minutes": 15
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
-     "minutes": 25
+     "minutes": 25,
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "success",
-     "minutes": 5
+     "status": "unknown",
+     "minutes": 5,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
-     "title": "软件包贡献流程文档缺失，对应贡献页面返回 404，贡献阶段无法形成闭环。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "prepare-environment.md 版本过期",
+     "level": "重要",
+     "source": "AtomGit openEuler/community zh/contributors/prepare-environment.md",
+     "detail": "现象：文档使用 openEuler-20.03-LTS，repo 源和 GPG 公钥 URL 都指向过期版本 / 根因：文档未随版本发布同步更新 / 建议：更新为当前稳定版本（24.03 LTS）或添加版本选择说明 / 影响：用户可能使用过期版本，无法获取最新软件包",
+     "anchor": 1
     },
     {
-     "title": "缺少本地 RPM 构建教程（无 rpm-build 安装、spec 规范、rpmbuild 流程说明）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "文档使用 yum 命令而非 dnf",
+     "level": "一般",
+     "source": "prepare-environment.md",
+     "detail": "现象：文档使用 yum 命令，openEuler 默认使用 dnf / 建议：将所有 yum 命令替换为 dnf 命令",
+     "anchor": 2
     },
     {
-     "title": "官方容器镜像需认证（401），文档未说明获取与认证方式。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "openEuler 镜像需要认证",
+     "level": "严重",
+     "source": "prepare-environment.md",
+     "detail": "现象：文档要求使用 openEuler 系统，但 SWR 镜像需认证才能拉取 / 建议：提供公开镜像地址或说明认证流程",
+     "anchor": 3
     },
     {
-     "title": "环境准备文档版本过期，仓库与 GPG 指向旧版本。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "spec 模板不完整",
+     "level": "重要",
+     "source": "packaging.md",
+     "detail": "现象：helloworld.spec 模板缺少 man/pkgconfig/静态库示例 / 建议：扩展模板或添加完整示例",
+     "anchor": 4
     },
     {
-     "title": "文档示例仍用 yum 而非 dnf，spec 模板不完整（缺 man/pkgconfig/静态库示例）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "文档未说明非 rpm 系统处理",
+     "level": "重要",
+     "source": "packaging.md",
+     "detail": "现象：BuildRequires 在 Ubuntu 上无法满足依赖检查 / 建议：明确仅适用 openEuler 或提供跨系统方案",
+     "anchor": 5
     },
     {
-     "title": "缺少构建后验证命令示例，SIG 归属信息不明确。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "无验证命令示例",
+     "level": "一般",
+     "source": "packaging.md",
+     "detail": "现象：未提供构建后验证命令 / 建议：添加 rpm -qpl、rpm -ivh、功能验证示例",
+     "anchor": 6
     }
    ],
    "problems": [],
    "summary": "沿用 0401-0519 期代表运行 20260429-01（本期无新增完整自动运行），本地 RPM 构建场景",
-   "breakpoints": 0,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-05-openeuler-ttfhw-openeuler-rpm-build-20260429-01.md",
    "build": {},
    "test": {},
@@ -10604,86 +10669,99 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 8
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 18
+     "status": "success",
+     "minutes": 18,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 58
+     "status": "success",
+     "minutes": 58,
+     "breakpoints": 4
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 35
+     "status": "success",
+     "minutes": 35,
+     "breakpoints": 7
     }
    ],
    "totalMinutes": 119,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "官方文档未说明 Ubuntu 24.04 需先添加 universe 源才能安装 pip3。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "容器环境驱动映射缺少专用配置说明，导致安装失败。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "linux-headers 安装步骤未区分物理机与容器环境，容器内无法匹配内核版本。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "环境变量脚本路径与实际安装结构不一致，文档路径与真实路径不符。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "文档未提示所用基础镜像缺少 universe 源。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "缺少 pip root 用户警告的预期行为说明。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "**【0524 新增】** 官网组件安装与 gitcode 示例文档镜像路径不一致，增加理解成本。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "**【0524 新增】** `--soc` 参数与芯片型号映射说明不足，编译示例需人工试错才能确定正确参数。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "**【0524 新增】** \"快速开始\"页面未提及对硬件环境的诉求，部分命令可能执行失败。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，组件安装走 gitcode 文档路径，较 0428 自动运行（285 分钟）大幅压缩",
-   "breakpoints": 0,
+   "breakpoints": 11,
    "reportFile": "reports/user/2026-05-cann-cann-manual-20260524-report.md",
    "build": {},
    "test": {},
@@ -10706,67 +10784,56 @@
     {
      "name": "了解",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
-     "minutes": 48
+     "minutes": 48,
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "success",
-     "minutes": 15
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 87,
    "result": "success",
    "defects": [
     {
-     "title": "Ubuntu 24.04 / Python 3.12 的 PEP 668 pip 限制未说明，阻碍用户直接 pip 安装（出现频率最高，连续 20+ 天复现）。",
+     "title": "文档未说明 Ubuntu 24.04 的 PEP 668 限制",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": 1
     },
     {
-     "title": "操作系统支持范围说明过旧，文档仅基于旧版本，未覆盖 24.04。",
+     "title": "文档未说明 ascendhub/ubuntu 需启用 universe 源",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": 2
     },
     {
-     "title": "未说明仅支持 glibc，不兼容 musl libc，多次导致安装失败。",
+     "title": "GCC 版本要求范围过窄",
      "level": "",
      "source": "",
-     "detail": ""
-    },
-    {
-     "title": "Ubuntu universe 源未启用说明缺失，导致无法安装 python3/pip。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "缺少容器化安装指南，Docker 安装文档内容不完整。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "版本信息与安装命令 URL 存在细微不一致。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": 3
     }
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-19，MindSpore 2.9.0 CPU x86_64 安装与验证全程跑通",
-   "breakpoints": 0,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260523-19.md",
    "build": {},
    "test": {},
@@ -10788,68 +10855,71 @@
    "phases": [
     {
      "name": "了解",
-     "status": "success",
-     "minutes": 15
+     "status": "partial",
+     "minutes": 15,
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
-     "minutes": 35
+     "minutes": 35,
+     "breakpoints": 2
     },
     {
      "name": "使用",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 70,
    "result": "success",
    "defects": [
     {
-     "title": "docker load 后镜像名与文档示例不一致，文档示例镜像名无法直接 docker run（最高频，多次定级严重）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "官网登录凭据验证失败",
+     "level": "严重",
+     "source": "https://opengauss.org/zh/download/?version=rc",
+     "detail": "现象：点击下载按钮后弹出登录对话框，使用环境变量注入的官方凭据后返回 HTTP 400 Bad Request，无法获取 tar 包直链 / 根因：服务端拒绝凭据，可能是 secret 过期或认证机制故障 / 建议：检查凭据有效性，更新 secret 或修复认证机制；提供无需登录的公开 OBS 目录 / 影响：无法通过官网下载页获取最新版本 tar 包直链",
+     "anchor": 1
     },
     {
-     "title": "官网下载页登录接口返回受限状态码，无法正常获取安装包下载链接。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "文档示例代码架构不一致",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：示例代码默认显示 ARM 架构 URL（`arm/openGauss-Docker-7.0.0-RC3-aarch64.tar`），x86_64 URL 未突出 / 根因：文档未根据架构上下文动态调整，默认展示 ARM 版本 / 建议：动态显示架构或明确标注选择说明，优先展示 x86_64 / 影响：用户易下载错误架构的 tar 包，导致无法运行",
+     "anchor": 2
     },
     {
-     "title": "安装文档安装包下载示例 URL 过期失效或重定向到主页。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "tar 包 URL 与官网选项不匹配",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：官网选择\"openEuler 24.03 LTS\"，但文档 URL 显示 `openEuler22.03` / 根因：OBS 只发布 22.03 版本，24.03 版本尚未发布 / 建议：发布 24.03 tar 包或在官网提示暂无 / 影响：用户被迫使用旧版本（22.03）而非目标版本（24.03）",
+     "anchor": 3
     },
     {
-     "title": "安装包下载 URL 格式与命令章节描述不明确，用户难以拼出正确下载地址。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "OBS 无 openEuler 24.03 LTS tar 包",
+     "level": "重要",
+     "source": "https://opengauss.obs.cn-south-1.myhuaweicloud.com/7.0.0-RC3/",
+     "detail": "现象：24.03 x86_64 tar 包 URL 返回 HTTP 403 Forbidden / 根因：OBS 只发布 22.03 版本，24.03 未发布或为私有 / 建议：发布 24.03 tar 包或提供公开 OBS 目录索引 / 影响：无法获取与官网选项匹配的 tar 包版本",
+     "anchor": 4
     },
     {
-     "title": "部分 OS/架构组合的镜像下载返回 403，文档未说明可用资源矩阵。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "版本号与实际包命名、容器名示例不统一，贡献阶段提交接口常被拦截。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "docker load 后镜像名不一致",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：docker load 后镜像名为 `opengauss:7.0.0-RC3`，而文档示例为 `opengauss/opengauss-server:latest` / 根因：tar 包镜像 metadata 与文档描述不一致 / 建议：文档使用实际镜像名 `opengauss:7.0.0-RC3` 或说明先执行 docker images / 影响：用户必须先用 `docker images` 查看实际名再调整命令",
+     "anchor": 5
     }
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-39，docker 极简版安装；与 5/3 代表运行口径一致",
-   "breakpoints": 0,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260523-39.md",
    "build": {},
    "test": {},
@@ -10871,56 +10941,64 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 4
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 27
+     "status": "success",
+     "minutes": 27,
+     "breakpoints": 3
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 14
+     "status": "success",
+     "minutes": 14,
+     "breakpoints": 2
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 50,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "依赖远程仓库强制认证，文档未说明账户注册与获取方式（多次复现，最严重）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "SDK 仅能从应用市场页面下载，无命令行获取方式，无法自动化。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "Docker 环境文档与 manifest 说明断层，Docker 文档完全不提认证配置。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "git clone 默认用 SSH 协议，未说明 HTTPS 可匿名只读克隆。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，与 5/9 自动运行（166 分钟）相比因绕过认证步骤显著缩短",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-05-openubmc-openubmc-manual-report-524.md",
    "build": {},
    "test": {},
@@ -10942,62 +11020,71 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 13
+     "status": "success",
+     "minutes": 13,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 39
+     "status": "success",
+     "minutes": 39,
+     "breakpoints": 3
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 58
+     "status": "success",
+     "minutes": 58,
+     "breakpoints": 2
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 20
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 130,
-   "result": "partial",
+   "result": "failed",
    "defects": [
     {
      "title": "源码安装缺少 CANN toolkit 具体安装命令，文档仅给外链无操作步骤，裸容器内无法执行（最高频、最严重）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "torch_npu 安装示例版本过期（文档 2.7.1rc1 vs 实际 2.7.1.post5），且容器内 pip/wget 无法访问 PyPI 和 gitcode releases（403 Forbidden）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "Python 版本要求与主流基础镜像默认版本冲突（文档要求 3.10 vs Ubuntu 24.04 镜像内置 3.12），未给受限环境处理说明。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "文档命令行示例含换行符 `\\` 后追加 `#` 注释，直接复制粘贴到 Terminal 执行会报错。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "仅提供 wget 从 HuggingFace 下载模型的方式，无国内替代渠道。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，源码安装路径，模型适配判断归入安装阶段",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-05-mindspeed-ttfhw-mindspeed-llm-manual-20260524.md",
    "build": {},
    "test": {},
@@ -11019,23 +11106,27 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 20
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 1
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 6
+     "status": "success",
+     "minutes": 6,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 91
+     "status": "success",
+     "minutes": 91,
+     "breakpoints": 5
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 30
+     "status": "success",
+     "minutes": 30,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 147,
@@ -11045,48 +11136,55 @@
      "title": "文档默认从 HuggingFace 获取模型权重，未提供国内替代下载渠道（如 ModelScope），直接导致使用阶段无法取得模型（最严重）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "QUICKSTART 文档路径与实际版本不一致，3.0.0 版本文档给出 2.3.0 版本的目录路径和命令，反映出文档未随版本更新验证。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "docker pull 与 docker run 示例的镜像名不一致，开发者直接粘贴执行会报错。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "文档未说明模型大小与内存等资源需求，用户无法判断硬件是否满足。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "镜像内未预置小模型或验证命令，下载模型前无法验证安装是否可用。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "商业版与社区版镜像功能差异未说明，用户容易选错镜像（如 dev 版缺少 ATB Models）。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "ATB Models 获取路径不清晰，官网无安装文档，需提工单咨询才能获得。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，使用阶段仍卡 HuggingFace 模型权重无国内渠道，整体耗时较 0428（316 分钟）下降",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-05-mindie-mindie-manual-report-0524.md",
    "build": {},
    "test": {},
@@ -11108,62 +11206,64 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 10
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "partial",
-     "minutes": 45
+     "minutes": 45,
+     "breakpoints": 2
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 75,
    "result": "partial",
    "defects": [
     {
-     "title": "`requirements.txt` 钉死的 `torch-npu==2.7.1` 与 quick_start 推荐 CANN 9.0.0-beta.2 不兼容，`import torch_npu` 报 `undefined symbol: MsprofSysCycleTime`；`installation_guide.md` 实际推荐 `2.7.1.post4`，两处文档不一致（中等）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "requirements.txt torch-npu版本与CANN不兼容",
+     "level": "一般",
+     "source": "requirements.txt + quick_start.md",
+     "detail": "现象：torch-npu==2.7.1导入时报错`undefined symbol: MsprofSysCycleTime` / 根因：requirements.txt版本与CANN 9.0.0-beta.2驱动API不匹配 / 建议：将requirements.txt更新为`torch-npu==2.7.1.post4`，或在quick_start.md说明需使用installation_guide.md版本",
+     "anchor": 1
     },
     {
-     "title": "`source set_env.sh` 在默认 `/bin/sh`(dash) 下报 `source: not found`，文档未说明需 bash 执行（中等）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "source命令需bash执行",
+     "level": "一般",
+     "source": "quick_start.md",
+     "detail": "现象：sh执行source命令报错`sh: 1: source: not found` / 根因：source是bash特有命令，sh不支持 / 建议：文档明确说明需使用bash执行，或提供bash -c命令示例",
+     "anchor": 2
     },
     {
-     "title": "quick_start.md 的 `pip install triton-ascend` 缺少 `--extra-index-url`，与 installation_guide.md 命令格式不一致（低）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "pip安装命令不一致",
+     "level": "提示",
+     "source": "quick_start.md + installation_guide.md",
+     "detail": "现象：quick_start.md缺少`--extra-index-url`参数 / 根因：两处文档安装命令格式不一致 / 建议：统一使用installation_guide.md的完整命令格式",
+     "anchor": 3
     },
     {
-     "title": "容器内 `npu-smi info` 报 `undefined symbol: drvSetDeviceInfo`（镜像内 npu-smi 与宿主机驱动版本不匹配），文档未提示该命令应在宿主机执行或换用 triton 完整镜像（低）。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "开发者编程指南（programming_guide/index.md）的子文档链条较深（vector / cube / cv_fusion + installation_guide + requirements.txt），离线集群通过 pip 拉外网大包（triton 3.5.0 159MB、triton-ascend 3.2.1）多次卡死，需改用 triton 完整镜像规避（本期 0523 dev 场景两次运行均未完整跑通 pytest test_fusedattention.py::test_op 验证）。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "npu-smi在容器内报错",
+     "level": "提示",
+     "source": "quick_start.md",
+     "detail": "现象：容器内npu-smi报错`undefined symbol: drvSetDeviceInfo` / 根因：镜像内npu-smi与宿主机驱动版本不匹配 / 建议：说明验证NPU型号应在宿主机执行，或推荐使用triton完整镜像",
+     "anchor": 4
     }
    ],
    "problems": [],
    "summary": "**新增社区**：triton-ascend A2 NPU 安装场景，5/22 代表运行 20260522-04 部分成功（向量加法 max diff 0.0 通过，需绕过 requirements.txt 版本缺陷），4 处文档缺陷",
-   "breakpoints": 0,
+   "breakpoints": 2,
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-install-20260522-04.md",
    "build": {},
    "test": {},
@@ -11185,45 +11285,52 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 45
+     "status": "success",
+     "minutes": 45,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 0
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 65,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "百度搜索无法直接定位 `sqlite` 对应的 SIG，关键信息主要依赖豆包补充。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "社区内已经存在 `src-openeuler/sqlite` 仓库，导致“新增软件包”场景无法形成真实新增 PR。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "构建流程虽然跑通，但原文明确说明构建过程中的问题依赖额外排障工具解决。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
@@ -11250,68 +11357,78 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 9
+     "status": "success",
+     "minutes": 9,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 169
+     "status": "success",
+     "minutes": 169,
+     "breakpoints": 7
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 94
+     "status": "success",
+     "minutes": 94,
+     "breakpoints": 4
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 35
+     "status": "success",
+     "minutes": 35,
+     "breakpoints": 7
     }
    ],
    "totalMinutes": 307,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "快速安装页面设计不合理，同意协议后没有默认版本、产品系列、CPU 架构、操作系统和安装方式。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "`ops-math` 快速入门链接跳转到空页面，版本入口不闭环。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "`--soc` 参数与芯片型号映射说明不足，实际编译时需要反复试错。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "官网文档与 `gitcode` 文档安装方式不一致，增加了理解和执行成本。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "在线仓库缺少 `ascend-cann-A3-ops`，最终只能走离线安装。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "`install_deps.sh` 在 `root` 用户下执行失败，部分依赖在特定系统版本不可用。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "已将原先更接近安装闭环的问题和耗时归并到安装阶段",
-   "breakpoints": 0,
+   "breakpoints": 18,
    "reportFile": "reports/user/2026-04-cann-cann-manual-20260409-report.md",
    "build": {},
    "test": {},
@@ -11333,56 +11450,85 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 11
+     "status": "success",
+     "minutes": 11,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 96
+     "status": "success",
+     "minutes": 96,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 68
+     "status": "success",
+     "minutes": 68,
+     "breakpoints": 8
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 35
+     "status": "success",
+     "minutes": 35,
+     "breakpoints": 7
     }
    ],
    "totalMinutes": 210,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
-     "title": "搜索引擎对官方文档的可发现性较差，多次搜索无结果，最终需要直接访问官网。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "官方镜像缺少 CANN toolkit",
+     "level": "严重",
+     "source": "官方 ascendhub 镜像文档",
+     "detail": "现象：`ascendhub/ubuntu:24.04-base` 仅有 `/usr/local/Ascend/driver`，无 CANN toolkit / 根因：MindSpore 2.8.0 的 `GeneratorOp.__init__(seed, offset)` 需要 `mindspore.Tensor` 类型参数，但 MindNLP 0.5.0 调用 `GeneratorOp()` 无参数 / 建议：在镜像文档中注明 `ascendhub/ubuntu:24.04-base` 不含 CANN，需另行安装；或提供含 CANN 的镜像 / 影响：用户无法使用 Ascend NPU 运行 MindSpore，只能退化到 CPU 模式",
+     "anchor": 1
     },
     {
-     "title": "使用门槛主要集中在昇腾硬件、CANN 和 MindSpore 版本依赖上。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "MindSpore 官方安装命令在 Ubuntu 24.04 上失效",
+     "level": "重要",
+     "source": "https://www.mindspore.cn/install",
+     "detail": "现象：官方命令不含 `--break-system-packages`，在 Ubuntu 24.04 的 PEP 668 限制下安装失败 / 根因：MindSpore 2.8.0 的 `GeneratorOp.__init__(seed, offset)` 需要 `mindspore.Tensor` 类型参数，但 MindNLP 0.5.0 调用 `GeneratorOp()` 无参数 / 建议：安装文档中增加 Ubuntu 24.04 专项说明，或在命令中加入 `--break-system-packages` / 影响：用户在 Ubuntu 24.04 环境下按官方文档操作，MindSpore 安装无法完成",
+     "anchor": 2
     },
     {
-     "title": "推理配置中 `pretrained_model_dir`、并行参数和权重加载验证需要用户自行理解。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "MindNLP 与 MindSpore 2.8.0 兼容性问题无文档说明",
+     "level": "重要",
+     "source": "https://gitee.com/mindspore/mindnlp）、MindSpore",
+     "detail": "现象：`mindtorch._C.Generator` 调用 `GeneratorOp()` 时 API 不兼容 / 根因：MindSpore 2.8.0 的 `GeneratorOp.__init__(seed, offset)` 需要 `mindspore.Tensor` 类型参数，但 MindNLP 0.5.0 调用 `GeneratorOp()` 无参数 / 建议：发布 MindNLP 与 MindSpore 的版本兼容性矩阵；MindNLP 修复 GeneratorOp 调用 / 影响：安装 MindNLP 0.5.0 + MindSpore 2.8.0 后，`import mindnlp` 直接失败",
+     "anchor": 3
     },
     {
-     "title": "贡献阶段已按 7 个文档问题归档，但尚未形成真实社区修复闭环。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "MindNLP 0.5.0 与 HuggingFace transformers 5.x 不兼容",
+     "level": "重要",
+     "source": "MindNLP 0.5.0 安装后自动拉取 transformers 5.5.3",
+     "detail": "现象：mindtorch 不支持 `torch.cuda.CUDAGraph`、`torch.compiler.allow_in_graph`、`mindtorch.distributed.fsdp.CPUOffload` / 建议：MindNLP `setup.py` 中固定 `transformers<5.0.0`，或升级 mindtorch 以支持 PyTorch 2.x API / 影响：安装 MindNLP 后 `from mindnlp.transformers import AutoTokenizer` 失败",
+     "anchor": 4
+    },
+    {
+     "title": "官方镜像缺少 python3-pip",
+     "level": "一般",
+     "source": "`ascendhub/ubuntu:24.04-base` 镜像",
+     "detail": "现象：`apt-get install python3-pip` 提示 `E: Package 'python3-pip' has no installation candidate` / 建议：镜像中预装 python3-pip，或文档中说明替代安装方法 / 影响：需要绕过方式（下载 pip wheel 解压）安装 pip，增加复杂度",
+     "anchor": 5
+    },
+    {
+     "title": "官方镜像缺少 libgomp1",
+     "level": "一般",
+     "source": "`ascendhub/ubuntu:24.04-base` 镜像",
+     "detail": "现象：MindSpore 安装后首次 import 失败 / 建议：镜像预装 libgomp1，或 MindSpore 安装文档中列出 libgomp1 为必要依赖 / 影响：用户需要额外安装 `libgomp1`，官方文档未提及",
+     "anchor": 6
+    },
+    {
+     "title": "MindFormers 文档中 Qwen1.5 已失效但仍可见",
+     "level": "一般",
+     "source": "https://gitee.com/mindspore/mindformers）",
+     "detail": "现象：所有指向 MindFormers 中 Qwen1.5 的文档链接均返回 404；Gitee 仓库中 Qwen1.5 目录不存在 / 建议：移除或标注 Qwen1.5 相关文档为\"已废弃\"，引导用户使用 Qwen2/Qwen2.5 / 影响：用户看到文档中提及 Qwen1.5，但无法找到实际支持",
+     "anchor": 7
     }
    ],
    "problems": [],
    "summary": "已将框架安装与环境准备并入安装阶段，使用阶段聚焦兼容修复与推理验证",
-   "breakpoints": 0,
+   "breakpoints": 15,
    "reportFile": "reports/user/2026-04-mindspore-mindspore-manual-report.md",
    "build": {},
    "test": {},
@@ -11404,56 +11550,57 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 4
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 21
+     "status": "success",
+     "minutes": 21,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 9
+     "status": "success",
+     "minutes": 9,
+     "breakpoints": 1
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 3
     }
    ],
    "totalMinutes": 49,
    "result": "partial",
    "defects": [
     {
-     "title": "镜像维护主体、社区关系和镜像标签规则说明不足。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "验证命令 `su omm` 应为 `su - omm`",
+     "level": "重要",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：按文档执行 `su omm` 后再执行 `gsql`，报错 `bash: gsql: command not found`；进一步尝试使用全路径执行 gsql，报 `libcjson.so.1: cannot open shared object file` / 根因：`su omm` 不加载 omm 用户的登录环境（PATH、LD_LIBRARY_PATH 均未设置）；`su - omm` 才是 login shell，会正确加载 `/usr/local/opengauss/bin` 到 PATH 和 `/usr/local/opengauss/lib` 到 LD_LIBRARY_PATH / 建议：将文档中 `su omm` 修改为 `su - omm`，或直接提供完整非交互式验证命令：`docker exec <容器ID> su - omm -c \"gsql -d postgr",
+     "anchor": 1
     },
     {
-     "title": "`latest` 标签未绑定明确版本，不利于复现。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "容器启动日志 WARNING 无说明",
+     "level": "一般",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：容器启动后 `docker logs` 输出大量 WARNING，包括 `$GAUSSLOG` 未设置、`gscgroup_omm.cfg` 不存在、`gaussdb.version` 文件不存在、HA TCP socket 创建失败等 / 根因：这些 WARNING 在单节点 Docker 容器场景下属于正常现象，是因为容器内省略了集群配置、cgroup、日志目录等企业级特性，但文档对此未做任何说明 / 建议：在文档中增加\"启动日志说明\"一节，明确告知用户上述 WARNING 在单节点 Docker 容器部署下属于正常现象，不影响数据库基本功能使用 / 影响：用户看到大量 WARNING 会误认为安装失败，增加不必要的排查时间和心理负担",
+     "anchor": 2
     },
     {
-     "title": "文档未提前提示 `5432` 端口冲突处理。",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "ARM 架构镜像标签命名规则说明不够清晰。",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "密码占位符 `xxxxxx` 不符合密码复杂度要求",
+     "level": "一般",
+     "source": "https://docs.opengauss.org/zh/docs/latest/installation_guide/installing_the_container_image.html",
+     "detail": "现象：文档中启动命令使用 `-e GS_PASSWORD=xxxxxx`，但 `xxxxxx` 全为小写字母、仅 6 位，不符合同文档规定的密码要求（至少 8 位、含大小写字母+数字+特殊符号），直接复制命令执行会导致容器初始化失败 / 根因：文档示例密码占位符与其自身定义的密码规则相矛盾 / 建议：将密码占位符替换为符合规范的示例（如 `YourPassw0rd#`），或使用尖括号形式明确标注需要替换（如 `<your-strong-password>`） / 影响：初学者直接复制命令会导致容器无法正常启动，产生困惑",
+     "anchor": 3
     }
    ],
    "problems": [],
    "summary": "已按“容器安装完成”为安装阶段结束点，将 SQL 验证归入使用阶段",
-   "breakpoints": 0,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-04-opengauss-opengauss-manual-report.md",
    "build": {},
    "test": {},
@@ -11475,62 +11622,71 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 25
+     "status": "success",
+     "minutes": 25,
+     "breakpoints": 3
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 180
+     "status": "success",
+     "minutes": 180,
+     "breakpoints": 2
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 225,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "安装阶段存在 SSH 公钥未配置到 GitCode 的断点。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "`gitcode.com` 和 `openubmc.cn` 存在网络访问限制，影响代码和 SDK 获取。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "openUBMC 应用市场无法访问，`bmcsdk.zip` 无法直接下载。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "使用阶段主要集中在 CSR 配置、组件构建和仿真验证，网络和权限仍是主要风险点。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "贡献阶段仍依赖 CLA、仓库权限和提交流程确认。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "子报告第三阶段保持为“使用”，与统一口径一致",
-   "breakpoints": 0,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-04-openubmc-openubmc-manual-report.md",
    "build": {},
    "test": {},
@@ -11552,51 +11708,59 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 13
+     "status": "success",
+     "minutes": 13,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 122
+     "status": "success",
+     "minutes": 122,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 130
+     "status": "success",
+     "minutes": 130,
+     "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 22
+     "status": "success",
+     "minutes": 22,
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 287,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "用户指定的 `Qwen3.5-8B` 型号不存在，需要改为社区已支持的 `Qwen3-8B-Base`。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "`Megatron-LM` 依赖 GitHub 下载，网络受限时会卡在安装阶段。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "权重转换和预训练脚本需要手动填写路径，且 TP/PP 参数必须严格匹配。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "使用阶段整体文档较完整，但路径配置、TP/PP 参数匹配和训练资源准备仍有较高门槛。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
@@ -11623,62 +11787,71 @@
    "phases": [
     {
      "name": "了解",
-     "status": "partial",
-     "minutes": 18
+     "status": "success",
+     "minutes": 18,
+     "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "partial",
-     "minutes": 340
+     "status": "success",
+     "minutes": 340,
+     "breakpoints": 18
     },
     {
      "name": "使用",
-     "status": "partial",
-     "minutes": 150
+     "status": "success",
+     "minutes": 150,
+     "breakpoints": 6
     },
     {
      "name": "贡献",
-     "status": "partial",
-     "minutes": 40
+     "status": "success",
+     "minutes": 40,
+     "breakpoints": 8
     }
    ],
    "totalMinutes": 548,
-   "result": "partial",
+   "result": "success",
    "defects": [
     {
      "title": "官方文档未明确说明安装前置条件、ATB Models 获取路径以及镜像方案与独立安装方案的适用边界。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "安装阶段耗时最长，主要卡在 `mindie-service` 安装失败、Python 3.12 与 `gevent` 兼容性、依赖解析冲突，以及 ATB Models 需通过工单和商业版镜像手动提取。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "开发版镜像缺少 `atb models`，镜像差异说明不足，导致首次镜像选择错误后需要重新拉取和排查。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "使用阶段仍存在 `torch_npu` 依赖链补装、动态库符号未定义、`config.json` 参数配置和 `mindieservice_daemon` 启动排障等门槛。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     },
     {
      "title": "贡献阶段已按 8 个问题完成问题归档与记录，但尚未覆盖真实社区修复闭环验证。",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "",
+     "anchor": null
     }
    ],
    "problems": [],
    "summary": "已将原先更接近安装闭环的问题和耗时归并到安装阶段；贡献阶段按 8 个问题统计",
-   "breakpoints": 0,
+   "breakpoints": 32,
    "reportFile": "reports/user/2026-04-mindie-mindie-manual-report.md",
    "build": {},
    "test": {},
