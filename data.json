@@ -25,12 +25,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 15
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 15
     },
     {
      "name": "测试",
@@ -40,14 +40,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 32,
    "build": {
     "status": "failed",
     "command": "",
-    "minutes": 0,
+    "minutes": 15,
     "error": ""
    },
    "test": {
@@ -192,7 +192,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 10
     },
     {
      "name": "编译构建",
@@ -202,15 +202,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 9,
+   "totalMinutes": 23,
    "build": {
     "status": "success",
     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
@@ -345,12 +345,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "测试",
@@ -360,14 +360,14 @@
     {
      "name": "社区CI成功",
      "status": "partial",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 75,
+   "totalMinutes": 9,
    "build": {
     "status": "partial",
     "command": "",
-    "minutes": 0,
+    "minutes": 3,
     "error": ""
    },
    "test": {
@@ -464,7 +464,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 21
     },
     {
      "name": "编译构建",
@@ -474,15 +474,15 @@
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "partial",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 81,
    "build": {
     "status": "partial",
     "command": "cd A-Tune && make",
@@ -647,29 +647,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 16
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 15
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 29,
+   "totalMinutes": 35,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg",
-    "minutes": 0,
+    "minutes": 15,
     "error": ""
    },
    "test": {
@@ -862,7 +862,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 76
     },
     {
      "name": "编译构建",
@@ -872,15 +872,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 9
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 136,
+   "totalMinutes": 101,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1059,7 +1059,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 13
     },
     {
      "name": "编译构建",
@@ -1069,15 +1069,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 15,
+   "totalMinutes": 52,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1256,7 +1256,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 42
     },
     {
      "name": "编译构建",
@@ -1266,15 +1266,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 26
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 52
     }
    ],
-   "totalMinutes": 108,
+   "totalMinutes": 172,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh -DSOC=ascend950 <target>",
@@ -1451,29 +1451,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 11,
    "build": {
     "status": "success",
     "command": "./scripts/smart_build.sh (recommended) OR meson setup builddir && meson compile -C builddir -j $(nproc)",
-    "minutes": 0,
+    "minutes": 3,
     "error": ""
    },
    "test": {
@@ -1685,29 +1685,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
    "totalMinutes": 11,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b [-jN]",
-    "minutes": 0,
+    "minutes": 3,
     "error": ""
    },
    "test": {
@@ -1842,12 +1842,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 17
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 0
+     "minutes": 69
     },
     {
      "name": "测试",
@@ -1857,14 +1857,14 @@
     {
      "name": "社区CI成功",
      "status": "partial",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 84,
+   "totalMinutes": 88,
    "build": {
     "status": "partial",
     "command": "bash build.sh --<pkg_type>",
-    "minutes": 0,
+    "minutes": 69,
     "error": ""
    },
    "test": {
@@ -2010,12 +2010,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 52
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "测试",
@@ -2025,14 +2025,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 52,
+   "totalMinutes": 57,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg",
-    "minutes": 0,
+    "minutes": 3,
     "error": ""
    },
    "test": {
@@ -2178,29 +2178,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 9
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 7,
+   "totalMinutes": 19,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j<thread-num>  OR  bash build.sh -t release",
-    "minutes": 0,
+    "minutes": 3,
     "error": ""
    },
    "test": {
@@ -2369,12 +2369,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 65
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "测试",
@@ -2384,14 +2384,14 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 63,
+   "totalMinutes": 70,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg",
-    "minutes": 0,
+    "minutes": 3,
     "error": ""
    },
    "test": {
@@ -2548,7 +2548,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "编译构建",
@@ -2558,15 +2558,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 10
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 316,
    "build": {
     "status": "success",
     "command": [
@@ -2730,12 +2730,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 35
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 15
     },
     {
      "name": "测试",
@@ -2745,14 +2745,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 48,
+   "totalMinutes": 52,
    "build": {
     "status": "failed",
     "command": "mkdir build && cd build && cmake .. && make -j$(nproc) && make install",
-    "minutes": 0,
+    "minutes": 15,
     "error": "缺少关键依赖 libisula（来自 lcr），lcr 构建失败因为 Ubuntu 标准 lxc 缺少 iSulad 特定 API"
    },
    "test": {
@@ -2936,12 +2936,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 21
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 11
     },
     {
      "name": "测试",
@@ -2951,14 +2951,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 34,
    "build": {
     "status": "failed",
     "command": "sh build.sh --install_path=[KUPL 安装目录]",
-    "minutes": 0,
+    "minutes": 11,
     "error": "MMA 模块需要特定处理器架构支持（armv9-a+sme-f64f64+sve 或 linxicore6100），当前编译器（GCC 10.3.1 和 Clang 15）均不支持"
    },
    "test": {
@@ -3134,12 +3134,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 12
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 5
     },
     {
      "name": "测试",
@@ -3149,14 +3149,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 15,
+   "totalMinutes": 19,
    "build": {
     "status": "failed",
     "command": "meson setup builddir && meson compile -C builddir",
-    "minutes": 0,
+    "minutes": 5,
     "error": ""
    },
    "test": {
@@ -3343,7 +3343,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 6
     },
     {
      "name": "编译构建",
@@ -3353,15 +3353,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 34
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     }
    ],
-   "totalMinutes": 10,
+   "totalMinutes": 237,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -3592,7 +3592,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 14
     },
     {
      "name": "编译构建",
@@ -3602,15 +3602,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 141
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 1
     }
    ],
-   "totalMinutes": 20,
+   "totalMinutes": 219,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE",
@@ -3801,7 +3801,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 54
     },
     {
      "name": "编译构建",
@@ -3811,15 +3811,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 153
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 78,
+   "totalMinutes": 227,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
@@ -4034,29 +4034,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 34
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 8
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 45,
+   "totalMinutes": 49,
    "build": {
     "status": "success",
     "command": "bash build.sh",
-    "minutes": 0,
+    "minutes": 8,
     "error": ""
    },
    "test": {
@@ -4249,25 +4249,25 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 18
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 18
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 11
     },
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 49,
    "build": {
     "status": "failed",
     "command": [
@@ -4275,7 +4275,7 @@
      "cd mindie_motor/python && pip wheel . --no-build-isolation -v (build Python wheel)",
      "pip install mindie_motor*.whl (install wheel)"
     ],
-    "minutes": 0,
+    "minutes": 18,
     "error": "Missing msServiceProfiler/Tracer.h header file from Ascend CANN toolkit. This is a hardware-dependent library that requires Ascend NPU hardware and the CANN toolkit to be installed ($ASCEND_HOME_PATH). The build cannot proceed without this dependency."
    },
    "test": {
@@ -4468,29 +4468,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 44
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 54,
    "build": {
     "status": "success",
     "command": "./build.sh (runs scripts/generate_proto.sh, then python -m pip wheel . --no-deps --use-pep517 -w dist)",
-    "minutes": 0,
+    "minutes": 1,
     "error": ""
    },
    "test": {
@@ -4713,29 +4713,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 16
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 15
     },
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 34,
    "build": {
     "status": "failed",
     "command": "bash build/build.sh (runs python3 setup.py bdist_wheel)",
-    "minutes": 0,
+    "minutes": 1,
     "error": "Build requires Ascend CANN toolkit (ASCEND_TOOLKIT_HOME) which is only available on systems with Ascend NPU hardware. The build_ops.sh script requires msopgen tool from CANN, and build_plugin.sh requires torch_npu and CANN setenv.bash. Neither can be satisfied on a standard x86_64 Ubuntu system."
    },
    "test": {
@@ -4923,12 +4923,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 22
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 9
     },
     {
      "name": "测试",
@@ -4938,14 +4938,14 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     }
    ],
-   "totalMinutes": 90,
+   "totalMinutes": 36,
    "build": {
     "status": "success",
     "command": "",
-    "minutes": 0,
+    "minutes": 9,
     "error": ""
    },
    "test": {
@@ -5114,29 +5114,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 77
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 10
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 85,
+   "totalMinutes": 91,
    "build": {
     "status": "success",
     "command": "python -m build (构建wheel包), pip install -e . (安装项目)",
-    "minutes": 0,
+    "minutes": 10,
     "error": ""
    },
    "test": {
@@ -5321,12 +5321,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 22
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 0
+     "minutes": 10
     },
     {
      "name": "测试",
@@ -5336,14 +5336,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 34,
    "build": {
     "status": "failed",
     "command": "bash build.sh",
-    "minutes": 0,
+    "minutes": 10,
     "error": ""
    },
    "test": {
@@ -5501,7 +5501,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 8
     },
     {
      "name": "编译构建",
@@ -5511,15 +5511,15 @@
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 200
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 218,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh -t release (release) / bash scripts/build.sh -t debug --ut (debug + UT)",
@@ -5738,7 +5738,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 43
     },
     {
      "name": "编译构建",
@@ -5753,10 +5753,10 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 121,
+   "totalMinutes": 105,
    "build": {
     "status": "failed",
     "command": "bash ci/build.sh --python=3.10 --pytorch=v2.7.1-7.3.0",
@@ -5914,7 +5914,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 31
     },
     {
      "name": "编译构建",
@@ -5924,15 +5924,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 6
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 40,
+   "totalMinutes": 44,
    "build": {
     "status": "success",
     "command": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
@@ -6123,12 +6123,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 9
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 12
     },
     {
      "name": "测试",
@@ -6138,14 +6138,14 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 19,
+   "totalMinutes": 23,
    "build": {
     "status": "success",
     "command": "make defconfig && make -j<N>",
-    "minutes": 0,
+    "minutes": 12,
     "error": ""
    },
    "test": {
@@ -6316,7 +6316,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 19
     },
     {
      "name": "编译构建",
@@ -6326,15 +6326,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 1
     }
    ],
-   "totalMinutes": 22,
+   "totalMinutes": 213,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b -j16",
@@ -6515,7 +6515,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 120
     },
     {
      "name": "编译构建",
@@ -6525,15 +6525,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 135,
+   "totalMinutes": 363,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=${soc_version} --ops=${op_name} -j${threads}",
@@ -6658,7 +6658,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 30
     },
     {
      "name": "编译构建",
@@ -6668,15 +6668,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 26
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 3
     }
    ],
-   "totalMinutes": 38,
+   "totalMinutes": 253,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
@@ -6887,7 +6887,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 40
     },
     {
      "name": "编译构建",
@@ -6897,15 +6897,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 21
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 136,
+   "totalMinutes": 160,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
@@ -7074,7 +7074,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     },
     {
      "name": "编译构建",
@@ -7084,15 +7084,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 10
     }
    ],
-   "totalMinutes": 8,
+   "totalMinutes": 66,
    "build": {
     "status": "success",
     "command": "python3 tests/run_cpu.py --clean --verbose",
@@ -7236,7 +7236,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 84
     },
     {
      "name": "编译构建",
@@ -7246,15 +7246,15 @@
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 6
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 104,
+   "totalMinutes": 385,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . (普通模式) 或 python3 -m pip install -e . (开发者模式)",
@@ -7423,7 +7423,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 20
     },
     {
      "name": "编译构建",
@@ -7433,15 +7433,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 108
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 110
     }
    ],
-   "totalMinutes": 39,
+   "totalMinutes": 246,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . --verbose",
@@ -7607,7 +7607,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 26
     },
     {
      "name": "编译构建",
@@ -7617,15 +7617,15 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 181
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     }
    ],
-   "totalMinutes": 110,
+   "totalMinutes": 218,
    "build": {
     "status": "success",
     "command": "source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9",
@@ -7804,12 +7804,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 48
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 7
     },
     {
      "name": "测试",
@@ -7819,14 +7819,14 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 1
     }
    ],
-   "totalMinutes": 54,
+   "totalMinutes": 56,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh",
-    "minutes": 0,
+    "minutes": 7,
     "error": ""
    },
    "test": {
@@ -8017,7 +8017,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "编译构建",
@@ -8027,15 +8027,15 @@
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 9,
+   "totalMinutes": 17,
    "build": {
     "status": "success",
     "command": "cargo build --workspace --bins --release",
@@ -8091,29 +8091,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 68
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 30
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     }
    ],
    "totalMinutes": 108,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake .. && make torchair -j$(nproc)",
-    "minutes": 0,
+    "minutes": 30,
     "error": ""
    },
    "test": {
@@ -8331,7 +8331,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 50
     },
     {
      "name": "编译构建",
@@ -8341,15 +8341,15 @@
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 6
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 6
     }
    ],
-   "totalMinutes": 88,
+   "totalMinutes": 172,
    "build": {
     "status": "success",
     "command": "cd /workspace && bash build.sh",
@@ -8514,7 +8514,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 66
     },
     {
      "name": "编译构建",
@@ -8524,15 +8524,15 @@
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 75,
+   "totalMinutes": 79,
    "build": {
     "status": "success",
     "command": "bash build.sh                # Release构建\nbash build.sh -D             # Debug构建\nbash build.sh -T RelWithDebInfo  # RelWithDebInfo构建\nbash build.sh package        # 构建并打包为RPM",
@@ -8765,7 +8765,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 37
     },
     {
      "name": "编译构建",
@@ -8775,15 +8775,15 @@
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 260,
+   "totalMinutes": 56,
    "build": {
     "status": "success",
     "command": "bash build.sh -t release",
@@ -8992,7 +8992,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 80
     },
     {
      "name": "编译构建",
@@ -9002,15 +9002,15 @@
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 300
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 2
     }
    ],
-   "totalMinutes": 140,
+   "totalMinutes": 502,
    "build": {
     "status": "success",
     "command": "sh build.sh -t release [-p]",
@@ -9247,29 +9247,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 7
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 0
+     "minutes": 4
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
      "status": "partial",
-     "minutes": 0
+     "minutes": 3
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 17,
    "build": {
     "status": "partial",
     "command": "",
-    "minutes": 0,
+    "minutes": 4,
     "error": ""
    },
    "test": {
@@ -9475,29 +9475,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 0
+     "minutes": 22
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 17
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 10
     },
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 0
+     "minutes": 5
     }
    ],
-   "totalMinutes": 52,
+   "totalMinutes": 54,
    "build": {
     "status": "success",
     "command": "git submodule update --init --recursive && dos2unix build.sh && sh build.sh",
-    "minutes": 0,
+    "minutes": 17,
     "error": ""
    },
    "test": {
