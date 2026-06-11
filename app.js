@@ -28,8 +28,8 @@
   const DEFAULT_PALETTE = ["#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de", "#3ba272", "#fc8452", "#9a60b4", "#ea7ccc", "#5470c6"];
 
   Promise.all([
-    fetch("./data.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-    fetch("./vendor/echarts-theme.json").then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("./data.json?t=" + Date.now()).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    fetch("./vendor/echarts-theme.json?v=20260611b").then(r => r.ok ? r.json() : null).catch(() => null),
   ]).then(([data, theme]) => {
     state.data = data;
     if (theme && window.echarts) { try { echarts.registerTheme("m5", theme); state.theme = "m5"; } catch (e) {} state.palette = theme.color || DEFAULT_PALETTE; }
