@@ -113,52 +113,60 @@
   // ── 图表（ECharts + v5.json 主题，渐变/每条不同色） ──────────────────────
   let charts = [];
   function disposeCharts() { charts.forEach(c => { try { c.dispose(); } catch (e) {} }); charts = []; }
-  function grad(color, horizontal) {
-    const lo = (window.echarts && echarts.color) ? echarts.color.lift(color, 0.32) : color;
-    return new echarts.graphic.LinearGradient(0, 0, horizontal ? 1 : 0, horizontal ? 0 : 1, [{ offset: 0, color: lo }, { offset: 1, color: color }]);
+  const PHASE_COLORS = ["#5470c6", "#91cc75", "#fac858", "#ee6666"];   // 四阶段堆叠色（实色，对齐 v5 主题）
+  function phaseLegend(scenario) {
+    if (scenario === "user") return ["了解", "安装", "使用", "贡献"];
+    if (scenario === "developer") return ["获取", "编译构建", "测试", "社区CI"];
+    return ["了解/获取", "安装/构建", "使用/测试", "贡献/CI"];
   }
   function renderCharts(recs) {
     const el = document.getElementById("charts");
     disposeCharts();
     el.innerHTML =
       `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="echart" id="ec-pie"></div></div>` +
-      `<div class="chart-card"><h3>${ico("clock")} 耗时 TOP 10（min）</h3><div class="echart" id="ec-top"></div></div>` +
-      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率<span class="hint">（成功+部分）</span></h3><div class="echart" id="ec-comm"></div></div>`;
+      `<div class="chart-card wide"><h3>${ico("clock")} 全流程耗时 TOP（各阶段堆叠，min）</h3><div class="echart tall" id="ec-top"></div></div>` +
+      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率</h3><div class="echart" id="ec-comm"></div></div>`;
     if (!window.echarts) { el.innerHTML = `<div class="empty">ECharts 资源未加载</div>`; return; }
     const P = state.palette || DEFAULT_PALETTE, th = state.theme;
 
-    // 结果分布 — 环形饼图（语义色 + 渐变）
+    // 结果分布 — 环形饼图（语义实色）
     const cnt = k => recs.filter(r => r.result === k).length;
     const pieData = [["成功", cnt("success"), "#3ba272"], ["部分成功", cnt("partial"), "#fac858"],
       ["失败", cnt("failed"), "#ee6666"], ["未知", recs.length - cnt("success") - cnt("partial") - cnt("failed"), "#c7ccd6"]]
-      .filter(d => d[1] > 0).map(d => ({ name: d[0], value: d[1], itemStyle: { color: grad(d[2], false) } }));
+      .filter(d => d[1] > 0).map(d => ({ name: d[0], value: d[1], itemStyle: { color: d[2] } }));
     const pie = echarts.init(document.getElementById("ec-pie"), th);
     pie.setOption({
       tooltip: { trigger: "item", formatter: "{b}: {c} ({d}%)" },
       legend: { bottom: 0, icon: "circle", itemWidth: 9, itemHeight: 9, textStyle: { fontSize: 12 } },
       series: [{ type: "pie", radius: ["46%", "72%"], center: ["50%", "44%"], avoidLabelOverlap: true,
-        itemStyle: { borderColor: "#fff", borderWidth: 2, borderRadius: 5 },
+        itemStyle: { borderColor: "#fff", borderWidth: 2 },
         label: { show: true, formatter: "{d}%", fontSize: 11, color: "#6E7079" },
         emphasis: { scale: true, scaleSize: 6 }, data: pieData }],
     });
     charts.push(pie);
 
-    // 耗时 TOP10 — 横向柱（每条渐变不同色，可点击进详情）
-    const top = recs.filter(r => r.totalMinutes > 0).sort((a, b) => b.totalMinutes - a.totalMinutes).slice(0, 10).reverse();
+    // 全流程耗时 TOP — 四阶段堆叠横向柱（参考 example_echarts.png）
+    const top = recs.filter(r => r.totalMinutes > 0).sort((a, b) => b.totalMinutes - a.totalMinutes).slice(0, 12).reverse();
+    const names = phaseLegend(state.scenario);
+    const series = names.map((nm, idx) => ({
+      name: nm, type: "bar", stack: "t", barWidth: "62%",
+      itemStyle: { color: PHASE_COLORS[idx], borderColor: "#fff", borderWidth: 0.5 },
+      emphasis: { focus: "series" },
+      data: top.map(r => ({ value: (r.phases[idx] && r.phases[idx].minutes) || 0, id: r.id })),
+    }));
     const topC = echarts.init(document.getElementById("ec-top"), th);
     topC.setOption({
-      grid: { left: 6, right: 46, top: 10, bottom: 6, containLabel: true },
-      tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, formatter: p => `${p[0].name}: <b>${p[0].value}</b> min` },
+      legend: { top: 0, itemWidth: 12, itemHeight: 9, textStyle: { fontSize: 11 }, data: names },
+      grid: { left: 6, right: 52, top: 30, bottom: 4, containLabel: true },
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
       xAxis: { type: "value", axisLabel: { fontSize: 11 } },
       yAxis: { type: "category", data: top.map(r => r.repo), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
-      series: [{ type: "bar", barWidth: "60%", label: { show: true, position: "right", formatter: "{c}", fontSize: 11, color: "#6E7079" },
-        itemStyle: { borderRadius: [0, 5, 5, 0], color: p => grad(P[p.dataIndex % P.length], true) },
-        data: top.map(r => ({ value: r.totalMinutes, id: r.id })) }],
+      series,
     });
     topC.on("click", p => { if (p.data && p.data.id != null) location.hash = "#id=" + p.data.id; });
     charts.push(topC);
 
-    // 各社区通过率 — 横向柱（每条渐变不同色）
+    // 各社区通过率 — 横向柱（每条不同实色）
     const byC = {};
     recs.forEach(r => { (byC[r.community] = byC[r.community] || []).push(r); });
     const rows = Object.entries(byC).map(([c, rs]) => ({ label: c,
@@ -170,8 +178,9 @@
       tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, formatter: p => `${p[0].name}: <b>${p[0].value}%</b>` },
       xAxis: { type: "value", max: 100, axisLabel: { formatter: "{value}%", fontSize: 11 } },
       yAxis: { type: "category", data: rows.map(r => r.label), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
-      series: [{ type: "bar", barWidth: "60%", label: { show: true, position: "right", formatter: "{c}%", fontSize: 11, color: "#6E7079" },
-        itemStyle: { borderRadius: [0, 5, 5, 0], color: p => grad(P[p.dataIndex % P.length], true) },
+      series: [{ type: "bar", barWidth: "60%", colorBy: "data",
+        label: { show: true, position: "right", formatter: "{c}%", fontSize: 11, color: "#6E7079" },
+        itemStyle: { borderRadius: [0, 4, 4, 0], color: p => P[p.dataIndex % P.length] },
         data: rows.map(r => r.value) }],
     });
     charts.push(commC);
