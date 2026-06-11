@@ -25,9 +25,17 @@
 
   const state = { data: null, month: "latest", scenario: "all", result: "all", query: "" };
 
-  fetch("./data.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(d => { state.data = d; init(); })
-    .catch(e => { document.getElementById("content").innerHTML = `<div class="empty">数据加载失败：${e}</div>`; });
+  const DEFAULT_PALETTE = ["#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de", "#3ba272", "#fc8452", "#9a60b4", "#ea7ccc", "#5470c6"];
+
+  Promise.all([
+    fetch("./data.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+    fetch("./vendor/echarts-theme.json").then(r => r.ok ? r.json() : null).catch(() => null),
+  ]).then(([data, theme]) => {
+    state.data = data;
+    if (theme && window.echarts) { try { echarts.registerTheme("m5", theme); state.theme = "m5"; } catch (e) {} state.palette = theme.color || DEFAULT_PALETTE; }
+    else state.palette = DEFAULT_PALETTE;
+    init();
+  }).catch(e => { document.getElementById("content").innerHTML = `<div class="empty">数据加载失败：${e}</div>`; });
 
   function init() {
     const d = state.data;
@@ -41,6 +49,7 @@
     const s = document.getElementById("search");
     s.addEventListener("input", () => { state.query = s.value.trim().toLowerCase(); if (!location.hash.startsWith("#id=")) route(); });
     window.addEventListener("hashchange", route);
+    window.addEventListener("resize", () => charts.forEach(c => { try { c.resize(); } catch (e) {} }));
     route();
   }
   const opt = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; return o; };
@@ -101,44 +110,71 @@
       card("layers", avgBuild ? `${avgBuild}<small> min</small>` : "—", "平均构建时长", `${bmin.length} 仓库有时长`);
   }
 
-  // ── 图表（纯 SVG） ────────────────────────────────────────────────────
+  // ── 图表（ECharts + v5.json 主题，渐变/每条不同色） ──────────────────────
+  let charts = [];
+  function disposeCharts() { charts.forEach(c => { try { c.dispose(); } catch (e) {} }); charts = []; }
+  function grad(color, horizontal) {
+    const lo = (window.echarts && echarts.color) ? echarts.color.lift(color, 0.32) : color;
+    return new echarts.graphic.LinearGradient(0, 0, horizontal ? 1 : 0, horizontal ? 0 : 1, [{ offset: 0, color: lo }, { offset: 1, color: color }]);
+  }
   function renderCharts(recs) {
     const el = document.getElementById("charts");
-    const succ = recs.filter(r => r.result === "success").length, part = recs.filter(r => r.result === "partial").length, fail = recs.filter(r => r.result === "failed").length, unk = recs.length - succ - part - fail;
-    const donut = svgDonut([["success", succ], ["partial", part], ["failed", fail], ["unknown", unk]], recs.length);
-    const top = recs.filter(r => r.totalMinutes > 0).sort((a, b) => b.totalMinutes - a.totalMinutes).slice(0, 10);
-    const topBars = hbars(top.map(r => ({ label: r.repo, value: r.totalMinutes, color: COLOR[r.result], id: r.id })), "min");
-    // 各社区通过率
+    disposeCharts();
+    el.innerHTML =
+      `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="echart" id="ec-pie"></div></div>` +
+      `<div class="chart-card"><h3>${ico("clock")} 耗时 TOP 10（min）</h3><div class="echart" id="ec-top"></div></div>` +
+      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率<span class="hint">（成功+部分）</span></h3><div class="echart" id="ec-comm"></div></div>`;
+    if (!window.echarts) { el.innerHTML = `<div class="empty">ECharts 资源未加载</div>`; return; }
+    const P = state.palette || DEFAULT_PALETTE, th = state.theme;
+
+    // 结果分布 — 环形饼图（语义色 + 渐变）
+    const cnt = k => recs.filter(r => r.result === k).length;
+    const pieData = [["成功", cnt("success"), "#3ba272"], ["部分成功", cnt("partial"), "#fac858"],
+      ["失败", cnt("failed"), "#ee6666"], ["未知", recs.length - cnt("success") - cnt("partial") - cnt("failed"), "#c7ccd6"]]
+      .filter(d => d[1] > 0).map(d => ({ name: d[0], value: d[1], itemStyle: { color: grad(d[2], false) } }));
+    const pie = echarts.init(document.getElementById("ec-pie"), th);
+    pie.setOption({
+      tooltip: { trigger: "item", formatter: "{b}: {c} ({d}%)" },
+      legend: { bottom: 0, icon: "circle", itemWidth: 9, itemHeight: 9, textStyle: { fontSize: 12 } },
+      series: [{ type: "pie", radius: ["46%", "72%"], center: ["50%", "44%"], avoidLabelOverlap: true,
+        itemStyle: { borderColor: "#fff", borderWidth: 2, borderRadius: 5 },
+        label: { show: true, formatter: "{d}%", fontSize: 11, color: "#6E7079" },
+        emphasis: { scale: true, scaleSize: 6 }, data: pieData }],
+    });
+    charts.push(pie);
+
+    // 耗时 TOP10 — 横向柱（每条渐变不同色，可点击进详情）
+    const top = recs.filter(r => r.totalMinutes > 0).sort((a, b) => b.totalMinutes - a.totalMinutes).slice(0, 10).reverse();
+    const topC = echarts.init(document.getElementById("ec-top"), th);
+    topC.setOption({
+      grid: { left: 6, right: 46, top: 10, bottom: 6, containLabel: true },
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, formatter: p => `${p[0].name}: <b>${p[0].value}</b> min` },
+      xAxis: { type: "value", axisLabel: { fontSize: 11 } },
+      yAxis: { type: "category", data: top.map(r => r.repo), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
+      series: [{ type: "bar", barWidth: "60%", label: { show: true, position: "right", formatter: "{c}", fontSize: 11, color: "#6E7079" },
+        itemStyle: { borderRadius: [0, 5, 5, 0], color: p => grad(P[p.dataIndex % P.length], true) },
+        data: top.map(r => ({ value: r.totalMinutes, id: r.id })) }],
+    });
+    topC.on("click", p => { if (p.data && p.data.id != null) location.hash = "#id=" + p.data.id; });
+    charts.push(topC);
+
+    // 各社区通过率 — 横向柱（每条渐变不同色）
     const byC = {};
     recs.forEach(r => { (byC[r.community] = byC[r.community] || []).push(r); });
-    // 通过率 = (成功 + 部分) / 总数（部分成功＝验证通过也计入；失败不计）
-    const commRows = Object.entries(byC).map(([c, rs]) => ({ label: c, value: Math.round(rs.filter(r => r.result === "success" || r.result === "partial").length / rs.length * 100), n: rs.length }))
-      .sort((a, b) => b.value - a.value);
-    const commBars = commRows.map(r => `<div class="pbar-row"><span class="pbar-l">${r.label}</span><span class="pbar-track"><i style="width:${r.value}%;background:${r.value >= 67 ? COLOR.success : r.value >= 34 ? COLOR.partial : COLOR.failed}"></i></span><span class="pbar-v mono">${r.value}%<small>·${r.n}</small></span></div>`).join("");
-    el.innerHTML =
-      `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="donut-wrap">${donut}<div class="donut-legend">
-        ${legend("success", "成功", succ)}${legend("partial", "部分", part)}${legend("failed", "失败", fail)}${unk ? legend("unknown", "未知", unk) : ""}</div></div></div>` +
-      `<div class="chart-card"><h3>${ico("clock")} 耗时 TOP 10（min）</h3><div class="hbars">${topBars}</div></div>` +
-      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率<span class="hint">（成功+部分）</span></h3><div class="pbars">${commBars}</div></div>`;
-    el.querySelectorAll(".hbar[data-id]").forEach(b => b.addEventListener("click", () => { location.hash = "#id=" + b.dataset.id; }));
-  }
-  const legend = (c, t, n) => `<span class="lg"><i style="background:${COLOR[c]}"></i>${t} <b>${n}</b></span>`;
-  function svgDonut(segs, total) {
-    const r = 52, c = 2 * Math.PI * r; let off = 0;
-    const arcs = segs.filter(([, n]) => n > 0).map(([k, n]) => {
-      const len = n / Math.max(1, total) * c, el = `<circle cx="70" cy="70" r="${r}" fill="none" stroke="${COLOR[k]}" stroke-width="16" stroke-dasharray="${len} ${c - len}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;
-      off += len; return el;
-    }).join("");
-    const passRate = total ? Math.round(segs[0][1] / total * 100) : 0;
-    return `<svg viewBox="0 0 140 140" width="140" height="140"><circle cx="70" cy="70" r="${r}" fill="none" stroke="#eef0f3" stroke-width="16"/>${arcs}
-      <text x="70" y="65" text-anchor="middle" font-size="26" font-weight="700" fill="#1a2230">${passRate}%</text>
-      <text x="70" y="84" text-anchor="middle" font-size="11" fill="#8b94a3">通过率 · ${total}</text></svg>`;
-  }
-  function hbars(rows, unit) {
-    const max = Math.max(1, ...rows.map(r => r.value));
-    return rows.map(r => `<div class="hbar" ${r.id != null ? `data-id="${r.id}"` : ""}><span class="hbar-l">${r.label}</span>
-      <span class="hbar-track"><i style="width:${Math.max(3, r.value / max * 100)}%;background:${r.color || "#5470c6"}"></i></span>
-      <span class="hbar-v mono">${r.value}<small> ${unit}</small></span></div>`).join("");
+    const rows = Object.entries(byC).map(([c, rs]) => ({ label: c,
+      value: Math.round(rs.filter(r => r.result === "success" || r.result === "partial").length / rs.length * 100) }))
+      .sort((a, b) => a.value - b.value);
+    const commC = echarts.init(document.getElementById("ec-comm"), th);
+    commC.setOption({
+      grid: { left: 6, right: 44, top: 10, bottom: 6, containLabel: true },
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, formatter: p => `${p[0].name}: <b>${p[0].value}%</b>` },
+      xAxis: { type: "value", max: 100, axisLabel: { formatter: "{value}%", fontSize: 11 } },
+      yAxis: { type: "category", data: rows.map(r => r.label), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
+      series: [{ type: "bar", barWidth: "60%", label: { show: true, position: "right", formatter: "{c}%", fontSize: 11, color: "#6E7079" },
+        itemStyle: { borderRadius: [0, 5, 5, 0], color: p => grad(P[p.dataIndex % P.length], true) },
+        data: rows.map(r => r.value) }],
+    });
+    charts.push(commC);
   }
 
   function scenarioBlock(sc, recs) {
