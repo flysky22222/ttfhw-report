@@ -124,7 +124,7 @@
     disposeCharts();
     el.innerHTML =
       `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="echart" id="ec-pie"></div></div>` +
-      `<div class="chart-card wide"><h3>${ico("clock")} 全流程耗时 TOP（各阶段堆叠，min）</h3><div class="echart tall" id="ec-top"></div></div>` +
+      `<div class="chart-card wide"><h3>${ico("clock")} 全流程耗时 TOP（各阶段堆叠，min）</h3><div class="echart" id="ec-top"></div></div>` +
       `<div class="chart-card"><h3>${ico("repo")} 各社区通过率</h3><div class="echart" id="ec-comm"></div></div>`;
     if (!window.echarts) { el.innerHTML = `<div class="empty">ECharts 资源未加载</div>`; return; }
     const P = state.palette || DEFAULT_PALETTE, th = state.theme;
@@ -145,8 +145,9 @@
     });
     charts.push(pie);
 
-    // 全流程耗时 TOP — 四阶段堆叠横向柱（参考 example_echarts.png）
-    const top = recs.filter(r => r.totalMinutes > 0).sort((a, b) => b.totalMinutes - a.totalMinutes).slice(0, 12).reverse();
+    // 全流程耗时 TOP — 四阶段堆叠横向柱（参考 example_echarts.png）；按可见堆叠总时长排序，多→少 自上而下
+    const psum = r => r.phases.reduce((s, p) => s + (p.minutes || 0), 0);
+    const top = recs.filter(r => psum(r) > 0).sort((a, b) => psum(a) - psum(b)).slice(-10);
     const names = phaseLegend(state.scenario);
     const series = names.map((nm, idx) => ({
       name: nm, type: "bar", stack: "t", barWidth: "62%",
@@ -258,7 +259,7 @@
     sections.push(`<div class="cards">${cards.join("")}</div>`);
 
     if ((r.docFacts || []).length) sections.push(`<div class="section"><h2>${ico("doc")} 文档关键事实</h2>
-      <table class="dtable"><thead><tr><th>项</th><th>文档抽取值</th><th>来源</th></tr></thead><tbody>${
+      <table class="dtable"><colgroup><col style="width:15%"><col style="width:55%"><col style="width:30%"></colgroup><thead><tr><th>项</th><th>文档抽取值</th><th>来源</th></tr></thead><tbody>${
         r.docFacts.map(f => `<tr><td>${esc(f.label)}</td><td>${esc(f.value)}</td><td class="src">${esc(f.source)}</td></tr>`).join("")}</tbody></table></div>`);
 
     if ((r.attempts || []).length) sections.push(`<div class="section"><h2>${ico("list")} 执行记录（${r.attempts.length}）</h2><div class="log-list">${
@@ -267,13 +268,13 @@
 
     const defects = r.defects || [];
     if (defects.length) sections.push(`<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）<span class="hint">点击行跳到下方完整报告对应缺陷</span></h2>
-      <table class="dtable"><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
+      <table class="dtable"><colgroup><col style="width:42%"><col style="width:11%"><col style="width:47%"></colgroup><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
         defects.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
           <td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
 
     const problems = (r.problems || []).filter(p => p.title);
     if (problems.length) sections.push(`<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
-      <table class="dtable"><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
+      <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
         problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
 
     if (r.summary) sections.push(`<div class="section"><h2>${ico("doc")} 结论摘要</h2><div class="summary-text">${esc(r.summary)}</div></div>`);

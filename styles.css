@@ -148,9 +148,9 @@ tbody tr:last-child td { border-bottom: 0; }
 
 .section { margin-bottom: 26px; }
 .section > h2 { font-size: 15px; margin: 0 0 12px; }
-.dtable { width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.dtable { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 13px; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .dtable th { background: var(--bg-soft); text-align: left; padding: 8px 12px; font-size: 12px; color: var(--text-dim); border-bottom: 1px solid var(--border); }
-.dtable td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.dtable td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; white-space: normal; word-break: break-word; overflow-wrap: anywhere; }
 .dtable tr:last-child td { border-bottom: 0; }
 .lvl { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px; }
 .lvl-重要 { color: var(--failed); background: var(--failed-bg); }
@@ -213,7 +213,7 @@ code { background: var(--bg-soft); padding: 1px 5px; border-radius: 4px; font-si
 @media (max-width: 900px) { .charts { grid-template-columns: 1fr; } }
 
 /* ── full report (rendered markdown / json) ── */
-.full-report { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; background: var(--bg); max-height: 620px; overflow: auto; }
+.full-report { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; background: var(--bg); }
 .full-report .md-h { margin: 16px 0 8px; line-height: 1.3; }
 .full-report h1.md-h { font-size: 19px; } .full-report h2.md-h { font-size: 16px; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
 .full-report h3.md-h { font-size: 14px; } .full-report h4.md-h { font-size: 13px; color: var(--text-dim); }
@@ -239,6 +239,6 @@ tr.jumpable td:first-child::after { content: " ↓"; color: var(--accent); font-
 .lvl-严重 { color: #fff; background: var(--failed); }
 
 /* ECharts 容器 */
-.echart { width: 100%; height: 234px; }
+.echart { width: 100%; height: 300px; }
 .charts .chart-card { display: flex; flex-direction: column; }
-.echart.tall { height: 330px; }
+.echart.tall { height: 300px; }

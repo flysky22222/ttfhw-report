@@ -9792,13 +9792,13 @@
     },
     {
      "name": "贡献",
-     "status": "success",
+     "status": "unknown",
      "minutes": 5,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "prepare-environment.md 版本过期",
@@ -10053,7 +10053,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "success",
+     "status": "partial",
      "minutes": 15,
      "breakpoints": 1
     },
@@ -10242,7 +10242,7 @@
     }
    ],
    "totalMinutes": 130,
-   "result": "success",
+   "result": "failed",
    "defects": [
     {
      "title": "源码安装缺少 CANN toolkit 具体安装命令，文档仅给外链无操作步骤，裸容器内无法执行（最高频、最严重）。",
@@ -10328,7 +10328,7 @@
     }
    ],
    "totalMinutes": 147,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "文档默认从 HuggingFace 获取模型权重，未提供国内替代下载渠道（如 ModelScope），直接导致使用阶段无法取得模型（最严重）。",
@@ -10410,7 +10410,7 @@
     },
     {
      "name": "安装",
-     "status": "success",
+     "status": "partial",
      "minutes": 45,
      "breakpoints": 2
     },
@@ -10428,7 +10428,7 @@
     }
    ],
    "totalMinutes": 75,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "requirements.txt torch-npu版本与CANN不兼容",
@@ -10594,13 +10594,13 @@
     },
     {
      "name": "贡献",
-     "status": "success",
+     "status": "unknown",
      "minutes": 5,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "prepare-environment.md 版本过期",
@@ -10855,7 +10855,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "success",
+     "status": "partial",
      "minutes": 15,
      "breakpoints": 1
     },
@@ -11044,7 +11044,7 @@
     }
    ],
    "totalMinutes": 130,
-   "result": "success",
+   "result": "failed",
    "defects": [
     {
      "title": "源码安装缺少 CANN toolkit 具体安装命令，文档仅给外链无操作步骤，裸容器内无法执行（最高频、最严重）。",
@@ -11130,7 +11130,7 @@
     }
    ],
    "totalMinutes": 147,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "文档默认从 HuggingFace 获取模型权重，未提供国内替代下载渠道（如 ModelScope），直接导致使用阶段无法取得模型（最严重）。",
@@ -11212,7 +11212,7 @@
     },
     {
      "name": "安装",
-     "status": "success",
+     "status": "partial",
      "minutes": 45,
      "breakpoints": 2
     },
@@ -11230,7 +11230,7 @@
     }
    ],
    "totalMinutes": 75,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "requirements.txt torch-npu版本与CANN不兼容",
@@ -11574,7 +11574,7 @@
     }
    ],
    "totalMinutes": 49,
-   "result": "success",
+   "result": "partial",
    "defects": [
     {
      "title": "验证命令 `su omm` 应为 `su - omm`",
