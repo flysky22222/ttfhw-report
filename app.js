@@ -30,8 +30,10 @@
   Promise.all([
     fetch("./data.json?t=" + Date.now()).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
     fetch("./vendor/echarts-theme.json?v=20260611b").then(r => r.ok ? r.json() : null).catch(() => null),
-  ]).then(([data, theme]) => {
+    fetch("./issues.json?t=" + Date.now()).then(r => r.ok ? r.json() : []).catch(() => []),
+  ]).then(([data, theme, issues]) => {
     state.data = data;
+    state.issues = issues || [];
     if (theme && window.echarts) { try { echarts.registerTheme("m5", theme); state.theme = "m5"; } catch (e) {} state.palette = theme.color || DEFAULT_PALETTE; }
     else state.palette = DEFAULT_PALETTE;
     init();
@@ -50,6 +52,7 @@
     s.addEventListener("input", () => { state.query = s.value.trim().toLowerCase(); if (!location.hash.startsWith("#id=")) route(); });
     window.addEventListener("hashchange", route);
     window.addEventListener("resize", () => charts.forEach(c => { try { c.resize(); } catch (e) {} }));
+    renderIssues();
     route();
   }
   const opt = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; return o; };
@@ -57,9 +60,37 @@
 
   function route() {
     const m = location.hash.match(/^#id=(\d+)/);
-    const ctrls = document.querySelector(".controls"), stats = document.getElementById("stats"), charts = document.getElementById("charts");
-    if (m) { renderDetail(+m[1]); ctrls.style.display = "none"; stats.style.display = "none"; charts.style.display = "none"; }
-    else { ctrls.style.display = ""; stats.style.display = ""; charts.style.display = ""; renderList(); }
+    const ctrls = document.querySelector(".controls"), stats = document.getElementById("stats"), charts = document.getElementById("charts"), issues = document.getElementById("issues");
+    const show = m ? "none" : "";
+    ctrls.style.display = show; stats.style.display = show; charts.style.display = show;
+    if (issues) issues.style.display = show;
+    if (m) renderDetail(+m[1]); else renderList();
+  }
+
+  // ── 底部：TTFHW 已提交的文档缺陷 Issue 表 ──────────────────────────────
+  function renderIssues() {
+    const el = document.getElementById("issues");
+    if (!el) return;
+    const list = state.issues || [];
+    if (!list.length) { el.innerHTML = ""; return; }
+    const lvlcls = l => ({ "严重": "失败", "重要": "部分", "一般": "" }[l] || "");
+    const st = s => s === "closed"
+      ? `<span class="badge success">已解决</span>`
+      : `<span class="badge partial">待处理</span>`;
+    const rows = list.map(i => `<tr>
+      <td>${esc(i.community)}<span class="scn">${esc(i.repo)}</span></td>
+      <td>${i.level ? `<span class="lvl lvl-${i.level}">${i.level}</span>` : "—"}</td>
+      <td class="issue-title"><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a>
+        <span class="issue-plat">${i.platform}#${i.number}</span></td>
+      <td>${st(i.status)}</td>
+      <td class="issue-sym">${esc(i.symptom || "")}</td>
+      <td class="issue-src">${esc(i.source || "")}</td></tr>`).join("");
+    const open = list.filter(i => i.status !== "closed").length;
+    el.innerHTML = `<div class="issues-head"><h2>${ico("bug")} TTFHW 提交的文档缺陷 Issue</h2>
+      <span class="issues-meta">共 ${list.length} 条 · 待处理 ${open} · 已上报至 gitcode / github 上游仓库</span></div>
+      <div class="tbl-wrap"><table><thead><tr>
+        <th>社区 / 仓库</th><th>级别</th><th>Issue 标题</th><th>状态</th><th>现象（节选）</th><th>来源</th>
+      </tr></thead><tbody>${rows}</tbody></table></div>`;
   }
 
   function selectRecords() {
