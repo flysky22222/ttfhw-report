@@ -243,8 +243,11 @@
         <td><span class="badge ${r.result}">${RES[r.result]}</span></td>${pc}${extra}
         <td class="num">${r.totalMinutes || "·"}</td><td class="num">${dn ? `<span class="defect-n">${dn}</span>` : "·"}</td><td>${r.date}</td><td class="link-arrow">›</td></tr>`;
     }).join("");
+    // 固定列宽：所有社区表用同一套 colgroup，保证跨表上下对齐
+    const cw = ["20%", "9%"].concat(phases.map(() => "7%")).concat(["8%", "9%", "7%", "11%", "4%"]);
+    const colgroup = `<colgroup>${cw.map(w => `<col style="width:${w}">`).join("")}</colgroup>`;
     const t = document.createElement("div"); t.className = "tbl-wrap";
-    t.innerHTML = `<table><thead><tr>${cols}</tr></thead><tbody>${rows}</tbody></table>`;
+    t.innerHTML = `<table class="ctbl">${colgroup}<thead><tr>${cols}</tr></thead><tbody>${rows}</tbody></table>`;
     t.querySelectorAll("tbody tr").forEach(tr => tr.addEventListener("click", () => { location.hash = "#id=" + tr.dataset.id; }));
     wrap.appendChild(t);
     return wrap;

@@ -96,7 +96,9 @@ tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); white-spac
 tbody tr { cursor: pointer; }
 tbody tr:hover { background: var(--accent-soft); }
 tbody tr:last-child td { border-bottom: 0; }
-.repo-cell { font-weight: 600; color: var(--text); }
+.ctbl { table-layout: fixed; }
+.ctbl td, .ctbl th { overflow: hidden; text-overflow: ellipsis; }
+.repo-cell { font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .repo-cell .scn { display: block; font-weight: 400; color: var(--text-faint); font-size: 11px; margin-top: 1px; }
 .phase-cell { font-variant-numeric: tabular-nums; }
 .phase-cell .m { font-weight: 600; }
