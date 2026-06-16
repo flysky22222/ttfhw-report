@@ -78,13 +78,15 @@
       ? `<span class="badge success">已解决</span>`
       : `<span class="badge partial">待处理</span>`;
     const rows = list.map(i => `<tr>
-      <td>${esc(i.community)}<span class="scn">${esc(i.repo)}</span></td>
+      <td class="issue-cr"><span class="issue-comm">${esc(i.community)}</span><span class="issue-sep"> / </span><span class="issue-repo">${esc(i.repo)}</span></td>
       <td>${i.level ? `<span class="lvl lvl-${i.level}">${i.level}</span>` : "—"}</td>
       <td class="issue-title"><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a>
         <span class="issue-plat">${i.platform}#${i.number}</span></td>
       <td>${st(i.status)}</td>
       <td class="issue-sym">${esc(i.symptom || "")}</td>
-      <td class="issue-src">${esc(i.source || "")}</td></tr>`).join("");
+      <td class="issue-src">${i.source_url
+        ? `<a href="${esc(i.source_url)}" target="_blank" rel="noopener">${esc(i.source || "查看")}</a>`
+        : esc(i.source || "")}</td></tr>`).join("");
     const open = list.filter(i => i.status !== "closed").length;
     el.innerHTML = `<div class="issues-head"><h2>${ico("bug")} TTFHW 提交的文档缺陷 Issue</h2>
       <span class="issues-meta">共 ${list.length} 条 · 待处理 ${open} · 已上报至 gitcode / github 上游仓库</span></div>
@@ -155,8 +157,8 @@
     disposeCharts();
     el.innerHTML =
       `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="echart" id="ec-pie"></div></div>` +
-      `<div class="chart-card wide"><h3>${ico("clock")} 全流程耗时 TOP（各阶段堆叠，min）</h3><div class="echart" id="ec-top"></div></div>` +
-      `<div class="chart-card"><h3>${ico("repo")} 各社区通过率</h3><div class="echart" id="ec-comm"></div></div>`;
+      `<div class="chart-card"><h3>${ico("clock")} 使用者场景 · 全流程耗时 TOP（min）</h3><div class="echart" id="ec-top-user"></div></div>` +
+      `<div class="chart-card"><h3>${ico("clock")} 贡献者场景 · 全流程耗时 TOP（min）</h3><div class="echart" id="ec-top-dev"></div></div>`;
     if (!window.echarts) { el.innerHTML = `<div class="empty">ECharts 资源未加载</div>`; return; }
     const P = state.palette || DEFAULT_PALETTE, th = state.theme;
 
@@ -176,46 +178,38 @@
     });
     charts.push(pie);
 
-    // 全流程耗时 TOP — 四阶段堆叠横向柱（参考 example_echarts.png）；按可见堆叠总时长排序，多→少 自上而下
+    // 全流程耗时 TOP — 拆成「使用者场景」「贡献者场景」两图，样式一致；阶段名与下方表格保持一致
+    buildTopChart("ec-top-user", "user", recs);
+    buildTopChart("ec-top-dev", "developer", recs);
+  }
+
+  // 单个「全流程耗时 TOP」堆叠横向柱：按可见堆叠总时长排序，多→少 自上而下
+  function buildTopChart(elId, sc, recs) {
+    const node = document.getElementById(elId);
+    if (!node) return;
+    const th = state.theme;
     const psum = r => r.phases.reduce((s, p) => s + (p.minutes || 0), 0);
-    const top = recs.filter(r => psum(r) > 0).sort((a, b) => psum(a) - psum(b)).slice(-10);
-    const names = phaseLegend(state.scenario);
+    const list = recs.filter(r => r.scenario === sc && psum(r) > 0).sort((a, b) => psum(a) - psum(b)).slice(-10);
+    if (!list.length) { node.innerHTML = `<div class="empty mini">当前筛选下无${SCEN[sc]}耗时数据</div>`; return; }
+    // 阶段名取自数据的 phaseNames，确保与下方对应场景表头完全一致
+    const names = (state.data.phaseNames && state.data.phaseNames[sc]) || phaseLegend(sc);
     const series = names.map((nm, idx) => ({
       name: nm, type: "bar", stack: "t", barWidth: "62%",
       itemStyle: { color: PHASE_COLORS[idx], borderColor: "#fff", borderWidth: 0.5 },
       emphasis: { focus: "series" },
-      data: top.map(r => ({ value: (r.phases[idx] && r.phases[idx].minutes) || 0, id: r.id })),
+      data: list.map(r => ({ value: (r.phases[idx] && r.phases[idx].minutes) || 0, id: r.id })),
     }));
-    const topC = echarts.init(document.getElementById("ec-top"), th, { renderer: "svg" });
-    topC.setOption({
+    const c = echarts.init(node, th, { renderer: "svg" });
+    c.setOption({
       legend: { top: 0, itemWidth: 12, itemHeight: 9, textStyle: { fontSize: 11 }, data: names },
       grid: { left: 6, right: 52, top: 30, bottom: 4, containLabel: true },
       tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
       xAxis: { type: "value", axisLabel: { fontSize: 11 } },
-      yAxis: { type: "category", data: top.map(r => r.repo), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
+      yAxis: { type: "category", data: list.map(r => r.repo), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
       series,
     });
-    topC.on("click", p => { if (p.data && p.data.id != null) location.hash = "#id=" + p.data.id; });
-    charts.push(topC);
-
-    // 各社区通过率 — 横向柱（每条不同实色）
-    const byC = {};
-    recs.forEach(r => { (byC[r.community] = byC[r.community] || []).push(r); });
-    const rows = Object.entries(byC).map(([c, rs]) => ({ label: c,
-      value: Math.round(rs.filter(r => r.result === "success" || r.result === "partial").length / rs.length * 100) }))
-      .sort((a, b) => a.value - b.value);
-    const commC = echarts.init(document.getElementById("ec-comm"), th, { renderer: "svg" });
-    commC.setOption({
-      grid: { left: 6, right: 44, top: 10, bottom: 6, containLabel: true },
-      tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, formatter: p => `${p[0].name}: <b>${p[0].value}%</b>` },
-      xAxis: { type: "value", max: 100, axisLabel: { formatter: "{value}%", fontSize: 11 } },
-      yAxis: { type: "category", data: rows.map(r => r.label), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
-      series: [{ type: "bar", barWidth: "60%", colorBy: "data",
-        label: { show: true, position: "right", formatter: "{c}%", fontSize: 11, color: "#6E7079" },
-        itemStyle: { borderRadius: [0, 4, 4, 0], color: p => P[p.dataIndex % P.length] },
-        data: rows.map(r => r.value) }],
-    });
-    charts.push(commC);
+    c.on("click", p => { if (p.data && p.data.id != null) location.hash = "#id=" + p.data.id; });
+    charts.push(c);
   }
 
   function scenarioBlock(sc, recs) {
