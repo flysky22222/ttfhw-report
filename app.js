@@ -23,7 +23,7 @@
   };
   const ico = (k, cls = "") => `<svg class="ico ${cls}" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${I[k] || ""}</svg>`;
 
-  const state = { data: null, month: "latest", scenario: "all", result: "all", query: "" };
+  const state = { data: null, month: "latest", scenario: "all", result: "all", query: "", issueComm: "all" };
 
   const DEFAULT_PALETTE = ["#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de", "#3ba272", "#fc8452", "#9a60b4", "#ea7ccc", "#5470c6"];
 
@@ -71,8 +71,14 @@
   function renderIssues() {
     const el = document.getElementById("issues");
     if (!el) return;
-    const list = state.issues || [];
-    if (!list.length) { el.innerHTML = ""; return; }
+    const all = state.issues || [];
+    if (!all.length) { el.innerHTML = ""; return; }
+    // 社区下拉选项（去重、按名称排序，含每个社区的条数）
+    const counts = {};
+    all.forEach(i => { counts[i.community] = (counts[i.community] || 0) + 1; });
+    const comms = Object.keys(counts).sort((a, b) => a.localeCompare(b));
+    if (state.issueComm !== "all" && !counts[state.issueComm]) state.issueComm = "all";
+    const list = state.issueComm === "all" ? all : all.filter(i => i.community === state.issueComm);
     const lvlcls = l => ({ "严重": "失败", "重要": "部分", "一般": "" }[l] || "");
     const st = s => s === "closed"
       ? `<span class="badge success">已解决</span>`
@@ -88,11 +94,20 @@
         ? `<a href="${esc(i.source_url)}" target="_blank" rel="noopener">${esc(i.source || "查看")}</a>`
         : esc(i.source || "")}</td></tr>`).join("");
     const open = list.filter(i => i.status !== "closed").length;
+    const commOpts = [`<option value="all">全部社区（${all.length}）</option>`]
+      .concat(comms.map(c => `<option value="${esc(c)}"${c === state.issueComm ? " selected" : ""}>${esc(c)}（${counts[c]}）</option>`))
+      .join("");
     el.innerHTML = `<div class="issues-head"><h2>${ico("bug")} TTFHW 提交的文档缺陷 Issue</h2>
+      <div class="issues-filter">
+        <label for="issueCommSel">社区</label>
+        <select id="issueCommSel" class="select">${commOpts}</select>
+      </div>
       <span class="issues-meta">共 ${list.length} 条 · 待处理 ${open} · 已上报至 gitcode / github 上游仓库</span></div>
       <div class="tbl-wrap"><table><thead><tr>
         <th>社区 / 仓库</th><th>级别</th><th>Issue 标题</th><th>状态</th><th>现象（节选）</th><th>来源</th>
       </tr></thead><tbody>${rows}</tbody></table></div>`;
+    const csel = document.getElementById("issueCommSel");
+    if (csel) csel.addEventListener("change", () => { state.issueComm = csel.value; renderIssues(); });
   }
 
   function selectRecords() {

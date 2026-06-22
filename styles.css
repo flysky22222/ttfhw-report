@@ -249,7 +249,10 @@ tr.jumpable td:first-child::after { content: " ↓"; color: var(--accent); font-
 .issues-section { margin-top: 40px; padding-top: 24px; border-top: 2px solid var(--text); }
 .issues-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
 .issues-head h2 { margin: 0; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 7px; }
-.issues-meta { color: var(--text-faint); font-size: 12.5px; }
+.issues-filter { display: flex; align-items: center; gap: 7px; }
+.issues-filter label { color: var(--text-dim); font-size: 12.5px; font-weight: 600; }
+.issues-filter .select { height: 30px; padding: 0 26px 0 10px; font-size: 12.5px; }
+.issues-meta { color: var(--text-faint); font-size: 12.5px; margin-left: auto; }
 .issues-section table { min-width: 880px; }
 .issues-section .issue-title a { font-weight: 600; }
 .issues-section .issue-plat { display: block; color: var(--text-faint); font-size: 11px; margin-top: 1px; font-variant-numeric: tabular-nums; }
