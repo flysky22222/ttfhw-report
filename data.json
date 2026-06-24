@@ -4468,29 +4468,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 44
+     "minutes": 5
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 8
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 4
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 5
+     "status": "unknown",
+     "minutes": 2
     }
    ],
-   "totalMinutes": 54,
+   "totalMinutes": 15,
    "build": {
     "status": "success",
     "command": "./build.sh (runs scripts/generate_proto.sh, then python -m pip wheel . --no-deps --use-pep517 -w dist)",
-    "minutes": 1,
+    "minutes": 8,
     "error": ""
    },
    "test": {
@@ -4578,7 +4578,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "1",
@@ -4703,8 +4703,8 @@
    "repo": "MindIE-PyMotor",
    "url": "https://gitcode.com/Ascend/MindIE-PyMotor.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE-PyMotor_20260510.json",
    "id": 23
   },
