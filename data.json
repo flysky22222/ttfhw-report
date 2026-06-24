@@ -2730,33 +2730,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 35
-    },
-    {
-     "name": "编译构建",
-     "status": "failed",
      "minutes": 15
     },
     {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 30
+    },
+    {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 5
     }
    ],
-   "totalMinutes": 52,
+   "totalMinutes": 55,
    "build": {
-    "status": "failed",
+    "status": "success",
     "command": "mkdir build && cd build && cmake .. && make -j$(nproc) && make install",
-    "minutes": 15,
+    "minutes": 30,
     "error": "缺少关键依赖 libisula（来自 lcr），lcr 构建失败因为 Ubuntu 标准 lxc 缺少 iSulad 特定 API"
    },
    "test": {
-    "status": "not_run",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -2817,7 +2817,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -2926,8 +2926,8 @@
    "repo": "iSulad",
    "url": "https://gitcode.com/openeuler/iSulad.git",
    "scene": "compile-verify",
-   "date": "2026-05-13",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_iSulad_20260513.json",
    "id": 15
   },
