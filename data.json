@@ -5322,33 +5322,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 22
+     "minutes": 13
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 10
+     "status": "success",
+     "minutes": 38
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "success",
+     "minutes": 18
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 34,
+   "totalMinutes": 69,
    "build": {
-    "status": "failed",
+    "status": "success",
     "command": "bash build.sh",
-    "minutes": 10,
+    "minutes": 38,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "success",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -5421,7 +5421,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -5492,8 +5492,8 @@
    "repo": "oam-tools",
    "url": "https://gitcode.com/cann/oam-tools.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_oam-tools_20260510.json",
    "id": 27
   },
