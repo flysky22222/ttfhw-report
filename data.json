@@ -3801,33 +3801,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 54
+     "minutes": 5
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 18
+     "minutes": 3
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 153
+     "status": "partial",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 1
     }
    ],
-   "totalMinutes": 227,
+   "totalMinutes": 14,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
-    "minutes": 18,
+    "minutes": 3,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "partial",
     "total": 1093,
     "passed": 1093,
     "failed": 0,
@@ -3888,7 +3888,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "1",
@@ -4024,8 +4024,8 @@
    "repo": "memfabric_hybrid",
    "url": "https://gitcode.com/Ascend/memfabric_hybrid.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_memfabric_hybrid_20260511.json",
    "id": 20
   },
