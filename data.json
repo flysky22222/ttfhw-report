@@ -39,11 +39,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 5
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 65,
+   "totalMinutes": 60,
    "build": {
     "status": "failed",
     "command": "",
@@ -206,11 +207,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 5
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 49,
+   "totalMinutes": 44,
    "build": {
     "status": "success",
     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
@@ -359,8 +361,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 45,
@@ -877,11 +880,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 5
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 35,
+   "totalMinutes": 30,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -6317,33 +6321,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 19
+     "minutes": 10
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 191
-    },
-    {
-     "name": "测试",
-     "status": "success",
+     "status": "failed",
      "minutes": 2
     },
     {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 0
+    },
+    {
      "name": "社区CI成功",
-     "status": "success",
+     "status": "failed",
      "minutes": 1
     }
    ],
-   "totalMinutes": 213,
+   "totalMinutes": 13,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh --pkg --soc=ascend910b -j16",
-    "minutes": 191,
+    "minutes": 2,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "not_run",
     "total": 175,
     "passed": 175,
     "failed": 0,
@@ -6410,7 +6414,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -6506,8 +6510,8 @@
    "repo": "ops-cv",
    "url": "https://gitcode.com/cann/ops-cv.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-cv_20260512.json",
    "id": 32
   },
