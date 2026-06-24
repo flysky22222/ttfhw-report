@@ -1256,29 +1256,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 42
+     "minutes": 15
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 52
+     "minutes": 7
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 26
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 52
+     "status": "partial",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 172,
+   "totalMinutes": 27,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh -DSOC=ascend950 <target>",
-    "minutes": 52,
+    "minutes": 7,
     "error": ""
    },
    "test": {
@@ -1343,7 +1343,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -1441,8 +1441,8 @@
    "repo": "atvoss",
    "url": "https://gitcode.com/cann/atvoss.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_atvoss_20260511.json",
    "id": 7
   },
