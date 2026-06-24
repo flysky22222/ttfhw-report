@@ -4034,33 +4034,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 34
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 8
+     "status": "failed",
+     "minutes": 10
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 5
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 49,
+   "totalMinutes": 25,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh",
-    "minutes": 8,
+    "minutes": 10,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "unknown",
     "total": 447,
     "passed": 447,
     "failed": 0,
@@ -4127,7 +4127,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -4239,8 +4239,8 @@
    "repo": "metadef",
    "url": "https://gitcode.com/cann/metadef.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_metadef_20260510.json",
    "id": 21
   },
