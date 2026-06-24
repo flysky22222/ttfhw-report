@@ -3592,33 +3592,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 14
+     "minutes": 5
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 63
+     "minutes": 3
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 141
+     "status": "failed",
+     "minutes": 15
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 1
+     "status": "unknown",
+     "minutes": 2
     }
    ],
-   "totalMinutes": 219,
+   "totalMinutes": 25,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE",
-    "minutes": 63,
+    "minutes": 3,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "failed",
     "total": 154,
     "passed": 154,
     "failed": 0,
@@ -3697,7 +3697,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "container_setup",
@@ -3791,8 +3791,8 @@
    "repo": "memcache",
    "url": "https://gitcode.com/Ascend/memcache.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_memcache_20260511.json",
    "id": 19
   },
