@@ -209,12 +209,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "partial",
+     "minutes": 14,
+     "ciPrSeconds": 834
     }
    ],
-   "totalMinutes": 49,
+   "totalMinutes": 58,
    "build": {
     "status": "success",
     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
@@ -342,7 +342,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_openEuler.json",
-   "id": 1
+   "id": 1,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -363,12 +364,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "success",
+     "minutes": 2,
+     "ciPrSeconds": 145
     }
    ],
-   "totalMinutes": 45,
+   "totalMinutes": 47,
    "build": {
     "status": "failed",
     "command": "",
@@ -462,7 +463,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_Ubuntu_MindSpeed-LLM_20260510.json",
-   "id": 2
+   "id": 2,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -3190,12 +3192,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "failed",
+     "minutes": 1,
+     "ciPrSeconds": 80
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 22,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -3379,7 +3381,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_libipmi_20260510.json",
-   "id": 17
+   "id": 17,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -5579,11 +5582,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 1,
+     "ciPrSeconds": 36
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 1,
    "build": {
     "status": "unknown",
     "command": "bash scripts/build.sh -t release (release) / bash scripts/build.sh -t debug --ut (debug + UT)",
@@ -5795,7 +5799,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_OmniStateStore_20260512.json",
-   "id": 28
+   "id": 28,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -6205,11 +6210,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 9,
+     "ciPrSeconds": 568
     }
    ],
-   "totalMinutes": 28,
+   "totalMinutes": 35,
    "build": {
     "status": "success",
     "command": "make defconfig && make -j<N>",
@@ -6377,7 +6383,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_openeuler-kernel_20260510.json",
-   "id": 31
+   "id": 31,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -7150,7 +7157,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 5
+     "minutes": 11
     },
     {
      "name": "编译构建",
@@ -7160,7 +7167,7 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 7
     },
     {
      "name": "社区CI成功",
@@ -7169,7 +7176,7 @@
      "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 56,
+   "totalMinutes": 67,
    "build": {
     "status": "success",
     "command": "python3 tests/run_cpu.py --clean --verbose",
@@ -7201,7 +7208,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -7303,8 +7310,8 @@
    "repo": "pto-isa",
    "url": "https://gitcode.com/cann/pto-isa.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_pto-isa_20260512.json",
    "id": 36,
    "sampleMinutes": 10
@@ -7502,18 +7509,18 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 20
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 8
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 108
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -7522,15 +7529,15 @@
      "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 136,
+   "totalMinutes": 0,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "python3 -m pip install . --verbose",
-    "minutes": 8,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "unknown",
     "total": 261,
     "passed": 258,
     "failed": 0,
@@ -7566,7 +7573,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -7678,8 +7685,8 @@
    "repo": "pypto",
    "url": "https://gitcode.com/cann/pypto.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_pypto_20260511.json",
    "id": 38,
    "sampleMinutes": 110
@@ -7888,17 +7895,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 48
+     "minutes": 8
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 7
+     "status": "failed",
+     "minutes": 5
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
@@ -7907,15 +7914,15 @@
      "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 55,
+   "totalMinutes": 16,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash scripts/build.sh",
-    "minutes": 7,
+    "minutes": 5,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -7976,7 +7983,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -8092,8 +8099,8 @@
    "repo": "shmem",
    "url": "https://gitcode.com/cann/shmem.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_shmem_20260511.json",
    "id": 40,
    "sampleMinutes": 1
@@ -8103,17 +8110,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 4
+     "minutes": 2
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 9
+     "minutes": 6
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 2
+     "status": "success",
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
@@ -8122,15 +8129,15 @@
      "ciPrSeconds": 177
     }
    ],
-   "totalMinutes": 18,
+   "totalMinutes": 14,
    "build": {
     "status": "success",
     "command": "cargo build --workspace --bins --release",
-    "minutes": 9,
+    "minutes": 6,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "success",
     "total": 256,
     "passed": 241,
     "failed": [
@@ -8159,7 +8166,7 @@
    "defects": [],
    "problems": [],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
@@ -8168,8 +8175,8 @@
    "repo": "stratovirt",
    "url": "https://gitcode.com/openeuler/stratovirt.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_stratovirt_20260512.json",
    "id": 41,
    "sampleMinutes": 2
@@ -8178,18 +8185,18 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 68
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 30
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 5
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -8198,15 +8205,15 @@
      "ciPrSeconds": 143
     }
    ],
-   "totalMinutes": 105,
+   "totalMinutes": 2,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "mkdir build && cd build && cmake .. && make torchair -j$(nproc)",
-    "minutes": 30,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "partial",
+    "status": "unknown",
     "total": 2,
     "passed": 2,
     "failed": 0,
@@ -8410,8 +8417,8 @@
    "repo": "torchair",
    "url": "https://gitcode.host/Ascend/torchair.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_torchair_20260510.json",
    "id": 42,
    "sampleMinutes": 5
@@ -8606,17 +8613,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 66
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 6
+     "status": "failed",
+     "minutes": 15
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 5
+     "status": "not_run",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -8625,15 +8632,15 @@
      "ciPrSeconds": 174
     }
    ],
-   "totalMinutes": 80,
+   "totalMinutes": 33,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh                # Release构建\nbash build.sh -D             # Debug构建\nbash build.sh -T RelWithDebInfo  # RelWithDebInfo构建\nbash build.sh package        # 构建并打包为RPM",
-    "minutes": 6,
+    "minutes": 15,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "not_run",
     "total": 1203,
     "passed": 1189,
     "failed": 1,
@@ -8848,8 +8855,8 @@
    "repo": "ubs-engine",
    "url": "https://gitcode.com/openeuler/ubs-engine.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-engine_20260511.json",
    "id": 44,
    "sampleMinutes": 2
@@ -8873,11 +8880,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0
+     "status": "failed",
+     "minutes": 15,
+     "ciPrSeconds": 897
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 15,
    "build": {
     "status": "unknown",
     "command": "bash build.sh -t release",
@@ -9079,7 +9087,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-io_20260511.json",
-   "id": 45
+   "id": 45,
+   "sampleMinutes": 0
   },
   {
    "phases": [
