@@ -6961,17 +6961,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 40
+     "minutes": 15
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 97
+     "minutes": 8
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 21
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
@@ -6980,11 +6980,11 @@
      "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 158,
+   "totalMinutes": 25,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
-    "minutes": 97,
+    "minutes": 8,
     "error": ""
    },
    "test": {
@@ -7061,7 +7061,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -7139,8 +7139,8 @@
    "repo": "ops-transformer",
    "url": "https://gitcode.com/cann/ops-transformer.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-transformer_20260512.json",
    "id": 35,
    "sampleMinutes": 2
@@ -7314,17 +7314,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 84
+     "minutes": 15
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 293
+     "minutes": 25
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 6
+     "status": "partial",
+     "minutes": 15
     },
     {
      "name": "社区CI成功",
@@ -7333,15 +7333,15 @@
      "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 383,
+   "totalMinutes": 55,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . (普通模式) 或 python3 -m pip install -e . (开发者模式)",
-    "minutes": 293,
+    "minutes": 25,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "partial",
     "total": 306,
     "passed": 19,
     "failed": 286,
@@ -7396,7 +7396,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -7492,8 +7492,8 @@
    "repo": "pyasc",
    "url": "https://gitcode.com/cann/pyasc.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_pyasc_20260512.json",
    "id": 37,
    "sampleMinutes": 2
@@ -8858,34 +8858,34 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 37
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 15
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 56,
+   "totalMinutes": 0,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "bash build.sh -t release",
-    "minutes": 15,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "partial",
+    "status": "unknown",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -9076,8 +9076,8 @@
    "repo": "ubs-io",
    "url": "https://gitcode.com/openeuler/ubs-io.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-io_20260511.json",
    "id": 45
   },
@@ -9085,18 +9085,18 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 80
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 120
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 300
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -9105,15 +9105,15 @@
      "ciPrSeconds": 580
     }
    ],
-   "totalMinutes": 510,
+   "totalMinutes": 10,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "sh build.sh -t release [-p]",
-    "minutes": 120,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "partial",
+    "status": "unknown",
     "total": 646,
     "passed": 645,
     "failed": 1,
@@ -9332,8 +9332,8 @@
    "repo": "ubs-mem",
    "url": "https://gitcode.com/openeuler/ubs-mem.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-mem_20260512.json",
    "id": 46,
    "sampleMinutes": 2
@@ -9342,18 +9342,18 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 7
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "partial",
-     "minutes": 4
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 3
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -9362,15 +9362,15 @@
      "ciPrSeconds": 195
     }
    ],
-   "totalMinutes": 17,
+   "totalMinutes": 3,
    "build": {
-    "status": "partial",
+    "status": "unknown",
     "command": "",
-    "minutes": 4,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "partial",
+    "status": "unknown",
     "total": 267,
     "passed": 265,
     "failed": 2,
@@ -9562,8 +9562,8 @@
    "repo": "ubs-virt",
    "url": "https://gitcode.com/openeuler/ubs-virt.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-virt_20260510.json",
    "id": 47,
    "sampleMinutes": 3
@@ -9572,18 +9572,18 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 22
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 17
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 10
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -9592,15 +9592,15 @@
      "ciPrSeconds": 365
     }
    ],
-   "totalMinutes": 55,
+   "totalMinutes": 6,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "git submodule update --init --recursive && dos2unix build.sh && sh build.sh",
-    "minutes": 17,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "partial",
+    "status": "unknown",
     "total": 829,
     "passed": 827,
     "failed": 2,
@@ -9857,8 +9857,8 @@
    "repo": "ubturbo",
    "url": "https://gitcode.com/openeuler/ubturbo.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubturbo_20260510.json",
    "id": 48,
    "sampleMinutes": 5
