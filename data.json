@@ -41,7 +41,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "无CI数据"
     }
    ],
    "totalMinutes": 60,
@@ -186,7 +187,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_hcomm_20260511.json",
-   "id": 0
+   "id": 0,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -212,7 +214,7 @@
      "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 44,
+   "totalMinutes": 49,
    "build": {
     "status": "success",
     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
@@ -644,7 +646,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_A-Tune_20260514.json",
-   "id": 3
+   "id": 3,
+   "sampleMinutes": 9
   },
   {
    "phases": [
@@ -667,7 +670,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "无CI数据"
     }
    ],
    "totalMinutes": 5,
@@ -860,7 +864,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_AMCT_20260510.json",
-   "id": 4
+   "id": 4,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -881,9 +886,10 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断"
     }
    ],
    "totalMinutes": 30,
@@ -1058,7 +1064,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_asc-devkit_20260511.json",
-   "id": 5
+   "id": 5,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -1081,7 +1088,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "无CI数据"
     }
    ],
    "totalMinutes": 9,
@@ -1256,7 +1264,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_asc-tools_20260511.json",
-   "id": 6
+   "id": 6,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -1279,7 +1288,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 27,
@@ -1452,7 +1462,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_atvoss_20260511.json",
-   "id": 7
+   "id": 7,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -1473,9 +1484,10 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "无CI数据"
     }
    ],
    "totalMinutes": 24,
@@ -1687,7 +1699,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_component_drivers_20260510.json",
-   "id": 8
+   "id": 8,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -1708,9 +1721,10 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 70,
@@ -1845,7 +1859,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_driver_20260511.json",
-   "id": 9
+   "id": 9,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -1866,9 +1881,10 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 0,
@@ -2014,7 +2030,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ge_20260510.json",
-   "id": 10
+   "id": 10,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -2035,9 +2052,10 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 40,
@@ -2183,7 +2201,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_graph-autofusion_20260510.json",
-   "id": 11
+   "id": 11,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -2204,12 +2223,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "failed",
+     "minutes": 5,
+     "ciPrSeconds": 272
     }
    ],
-   "totalMinutes": 12,
+   "totalMinutes": 17,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j<thread-num>  OR  bash build.sh -t release",
@@ -2375,7 +2394,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ham_20260512.json",
-   "id": 12
+   "id": 12,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -2398,7 +2418,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 70,
@@ -2555,7 +2576,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_hccl_20260511.json",
-   "id": 13
+   "id": 13,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -2576,9 +2598,10 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 9,
@@ -2738,7 +2761,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_hixl_20260512.json",
-   "id": 14
+   "id": 14,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -2759,12 +2783,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "success",
+     "minutes": 3,
+     "ciPrSeconds": 189
     }
    ],
-   "totalMinutes": 50,
+   "totalMinutes": 53,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake .. && make -j$(nproc) && make install",
@@ -2945,7 +2969,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_iSulad_20260513.json",
-   "id": 15
+   "id": 15,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -2971,7 +2996,7 @@
      "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 27,
    "build": {
     "status": "success",
     "command": "sh build.sh --install_path=[KUPL 安装目录]",
@@ -3170,7 +3195,7 @@
      "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 21,
+   "totalMinutes": 23,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -3375,12 +3400,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "failed",
+     "minutes": 7,
+     "ciPrSeconds": 443
     }
    ],
-   "totalMinutes": 29,
+   "totalMinutes": 36,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -3604,7 +3629,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_libmcpp_20260512.json",
-   "id": 18
+   "id": 18,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -3627,7 +3653,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "无CI数据"
     }
    ],
    "totalMinutes": 23,
@@ -3814,7 +3841,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_memcache_20260511.json",
-   "id": 19
+   "id": 19,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -3840,7 +3868,7 @@
      "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 14,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
@@ -4071,7 +4099,8 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 25,
@@ -4264,7 +4293,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_metadef_20260510.json",
-   "id": 21
+   "id": 21,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -4285,12 +4315,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "success",
+     "minutes": 6,
+     "ciPrSeconds": 371
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 6,
    "build": {
     "status": "unknown",
     "command": [
@@ -4484,7 +4514,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE-Motor_20260511.json",
-   "id": 22
+   "id": 22,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -4505,12 +4536,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "success",
+     "minutes": 3,
+     "ciPrSeconds": 152
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 16,
    "build": {
     "status": "success",
     "command": "./build.sh (runs scripts/generate_proto.sh, then python -m pip wheel . --no-deps --use-pep517 -w dist)",
@@ -4730,7 +4761,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE-PyMotor_20260510.json",
-   "id": 23
+   "id": 23,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -4751,12 +4783,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "failed",
+     "minutes": 8,
+     "ciPrSeconds": 469
     }
    ],
-   "totalMinutes": 55,
+   "totalMinutes": 63,
    "build": {
     "status": "partial",
     "command": "bash build/build.sh (runs python3 setup.py bdist_wheel)",
@@ -4941,7 +4973,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE-SD_20260511.json",
-   "id": 24
+   "id": 24,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -4962,12 +4995,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "failed",
+     "minutes": 3,
+     "ciPrSeconds": 158
     }
    ],
-   "totalMinutes": 55,
+   "totalMinutes": 58,
    "build": {
     "status": "failed",
     "command": "",
@@ -5133,7 +5166,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE_LLM_20260512.json",
-   "id": 25
+   "id": 25,
+   "sampleMinutes": 5
   },
   {
    "phases": [
@@ -5154,12 +5188,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "success",
+     "minutes": 3,
+     "ciPrSeconds": 170
     }
    ],
-   "totalMinutes": 89,
+   "totalMinutes": 92,
    "build": {
     "status": "success",
     "command": "python -m build (构建wheel包), pip install -e . (安装项目)",
@@ -5341,7 +5375,8 @@
    "date": "2026-05-10",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindSpeed-MM_20260510.json",
-   "id": 26
+   "id": 26,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -5364,7 +5399,7 @@
      "name": "社区CI成功",
      "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
    "totalMinutes": 69,
@@ -5522,7 +5557,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_oam-tools_20260510.json",
-   "id": 27
+   "id": 27,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -5781,7 +5817,8 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2
+     "minutes": 2,
+     "ciPrSeconds": 136
     }
    ],
    "totalMinutes": 105,
@@ -5935,7 +5972,8 @@
    "date": "2026-05-13",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_op-plugin_20260513.json",
-   "id": 29
+   "id": 29,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -5956,11 +5994,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 3
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 18,
+   "totalMinutes": 15,
    "build": {
     "status": "failed",
     "command": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
@@ -6144,7 +6183,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_opbase_20260512.json",
-   "id": 30
+   "id": 30,
+   "sampleMinutes": 3
   },
   {
    "phases": [
@@ -6358,11 +6398,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 1
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 12,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg --soc=ascend910b -j16",
@@ -6536,7 +6577,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-cv_20260512.json",
-   "id": 32
+   "id": 32,
+   "sampleMinutes": 1
   },
   {
    "phases": [
@@ -6557,11 +6599,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 1
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 33,
+   "totalMinutes": 32,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg --soc=${soc_version} --ops=${op_name} -j${threads}",
@@ -6679,7 +6722,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-math_20260512.json",
-   "id": 33
+   "id": 33,
+   "sampleMinutes": 1
   },
   {
    "phases": [
@@ -6700,11 +6744,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 5
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 26,
+   "totalMinutes": 21,
    "build": {
     "status": "unknown",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
@@ -6908,7 +6953,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-nn_20260512.json",
-   "id": 34
+   "id": 34,
+   "sampleMinutes": 5
   },
   {
    "phases": [
@@ -6929,11 +6975,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 160,
+   "totalMinutes": 158,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
@@ -7095,7 +7142,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-transformer_20260512.json",
-   "id": 35
+   "id": 35,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -7116,11 +7164,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 10
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 66,
+   "totalMinutes": 56,
    "build": {
     "status": "success",
     "command": "python3 tests/run_cpu.py --clean --verbose",
@@ -7257,7 +7306,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_pto-isa_20260512.json",
-   "id": 36
+   "id": 36,
+   "sampleMinutes": 10
   },
   {
    "phases": [
@@ -7278,11 +7328,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 385,
+   "totalMinutes": 383,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . (普通模式) 或 python3 -m pip install -e . (开发者模式)",
@@ -7444,7 +7495,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_pyasc_20260512.json",
-   "id": 37
+   "id": 37,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -7465,11 +7517,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 110
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 246,
+   "totalMinutes": 136,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . --verbose",
@@ -7628,7 +7681,8 @@
    "date": "2026-05-11",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_pypto_20260511.json",
-   "id": 38
+   "id": 38,
+   "sampleMinutes": 110
   },
   {
    "phases": [
@@ -7649,11 +7703,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 5
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 218,
+   "totalMinutes": 213,
    "build": {
     "status": "success",
     "command": "source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9",
@@ -7825,7 +7880,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_runtime_20260512.json",
-   "id": 39
+   "id": 39,
+   "sampleMinutes": 5
   },
   {
    "phases": [
@@ -7846,11 +7902,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 1
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "cann CLA 阻断，showcase 无法触发CI"
     }
    ],
-   "totalMinutes": 56,
+   "totalMinutes": 55,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh",
@@ -8038,7 +8095,8 @@
    "date": "2026-05-11",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_shmem_20260511.json",
-   "id": 40
+   "id": 40,
+   "sampleMinutes": 1
   },
   {
    "phases": [
@@ -8060,10 +8118,11 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2
+     "minutes": 3,
+     "ciPrSeconds": 177
     }
    ],
-   "totalMinutes": 17,
+   "totalMinutes": 18,
    "build": {
     "status": "success",
     "command": "cargo build --workspace --bins --release",
@@ -8112,7 +8171,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_stratovirt_20260512.json",
-   "id": 41
+   "id": 41,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -8134,10 +8194,11 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5
+     "minutes": 2,
+     "ciPrSeconds": 143
     }
    ],
-   "totalMinutes": 108,
+   "totalMinutes": 105,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake .. && make torchair -j$(nproc)",
@@ -8352,7 +8413,8 @@
    "date": "2026-05-10",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_torchair_20260510.json",
-   "id": 42
+   "id": 42,
+   "sampleMinutes": 5
   },
   {
    "phases": [
@@ -8373,11 +8435,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 6
+     "status": "failed",
+     "minutes": 18,
+     "ciPrSeconds": 1078
     }
    ],
-   "totalMinutes": 172,
+   "totalMinutes": 184,
    "build": {
     "status": "success",
     "command": "cd /workspace && bash build.sh",
@@ -8535,7 +8598,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-comm_20260512.json",
-   "id": 43
+   "id": 43,
+   "sampleMinutes": 6
   },
   {
    "phases": [
@@ -8556,11 +8620,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 3,
+     "ciPrSeconds": 174
     }
    ],
-   "totalMinutes": 79,
+   "totalMinutes": 80,
    "build": {
     "status": "success",
     "command": "bash build.sh                # Release构建\nbash build.sh -D             # Debug构建\nbash build.sh -T RelWithDebInfo  # RelWithDebInfo构建\nbash build.sh package        # 构建并打包为RPM",
@@ -8786,7 +8851,8 @@
    "date": "2026-05-11",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-engine_20260511.json",
-   "id": 44
+   "id": 44,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -9034,11 +9100,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 10,
+     "ciPrSeconds": 580
     }
    ],
-   "totalMinutes": 502,
+   "totalMinutes": 510,
    "build": {
     "status": "success",
     "command": "sh build.sh -t release [-p]",
@@ -9268,7 +9335,8 @@
    "date": "2026-05-12",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-mem_20260512.json",
-   "id": 46
+   "id": 46,
+   "sampleMinutes": 2
   },
   {
    "phases": [
@@ -9289,8 +9357,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 3
+     "status": "failed",
+     "minutes": 3,
+     "ciPrSeconds": 195
     }
    ],
    "totalMinutes": 17,
@@ -9496,7 +9565,8 @@
    "date": "2026-05-10",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-virt_20260510.json",
-   "id": 47
+   "id": 47,
+   "sampleMinutes": 3
   },
   {
    "phases": [
@@ -9517,11 +9587,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 5
+     "status": "failed",
+     "minutes": 6,
+     "ciPrSeconds": 365
     }
    ],
-   "totalMinutes": 54,
+   "totalMinutes": 55,
    "build": {
     "status": "success",
     "command": "git submodule update --init --recursive && dos2unix build.sh && sh build.sh",
@@ -9789,7 +9860,8 @@
    "date": "2026-05-10",
    "month": "2026-05",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubturbo_20260510.json",
-   "id": 48
+   "id": 48,
+   "sampleMinutes": 5
   },
   {
    "scenario": "user",
