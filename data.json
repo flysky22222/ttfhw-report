@@ -464,33 +464,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 21
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "partial",
-     "minutes": 56
+     "status": "success",
+     "minutes": 10
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
+     "status": "unknown",
      "minutes": 2
     }
    ],
-   "totalMinutes": 81,
+   "totalMinutes": 32,
    "build": {
-    "status": "partial",
+    "status": "success",
     "command": "cd A-Tune && make",
-    "minutes": 56,
+    "minutes": 10,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -637,8 +637,8 @@
    "repo": "A-Tune",
    "url": "https://gitcode.com/openeuler/A-Tune.git",
    "scene": "compile-verify",
-   "date": "2026-05-14",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_A-Tune_20260514.json",
    "id": 3
   },
