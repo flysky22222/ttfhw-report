@@ -4962,11 +4962,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 5
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 60,
+   "totalMinutes": 55,
    "build": {
     "status": "failed",
     "command": "",
@@ -5153,11 +5154,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 91,
+   "totalMinutes": 89,
    "build": {
     "status": "success",
     "command": "python -m build (构建wheel包), pip install -e . (安装项目)",
@@ -5360,8 +5362,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 0
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 69,
@@ -6540,33 +6543,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 120
+     "minutes": 12
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 240
+     "status": "failed",
+     "minutes": 20
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 1
+     "status": "failed",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 1
     }
    ],
-   "totalMinutes": 363,
+   "totalMinutes": 33,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh --pkg --soc=${soc_version} --ops=${op_name} -j${threads}",
-    "minutes": 240,
+    "minutes": 20,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "failed",
     "total": 788,
     "passed": 788,
     "failed": 0,
@@ -6596,7 +6599,7 @@
     }
    ],
    "summary": "ops-math项目完整验证成功：\n1. 文档提供完整CANN toolkit下载地址\n2. cmake初始化成功\n3. add_example算子编译打包成功\n4. UT测试788/788全部通过\n5. 样例运行因版本配套问题未执行（文档已说明配套关系）",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -6673,8 +6676,8 @@
    "repo": "ops-math",
    "url": "https://gitcode.com/cann/ops-math.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-math_20260512.json",
    "id": 33
   },
@@ -6683,33 +6686,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 30
+     "minutes": 8
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 194
+     "status": "unknown",
+     "minutes": 3
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 26
+     "status": "unknown",
+     "minutes": 10
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 3
+     "status": "unknown",
+     "minutes": 5
     }
    ],
-   "totalMinutes": 253,
+   "totalMinutes": 26,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
-    "minutes": 194,
+    "minutes": 3,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "unknown",
     "total": 3,
     "passed": 3,
     "failed": 0,
@@ -6776,7 +6779,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -6902,8 +6905,8 @@
    "repo": "ops-nn",
    "url": "https://gitcode.com/cann/ops-nn.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ops-nn_20260512.json",
    "id": 34
   },
