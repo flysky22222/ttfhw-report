@@ -4713,33 +4713,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 16
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 1
+     "status": "partial",
+     "minutes": 30
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 15
+     "status": "success",
+     "minutes": 10
     },
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2
+     "minutes": 5
     }
    ],
-   "totalMinutes": 34,
+   "totalMinutes": 60,
    "build": {
-    "status": "failed",
+    "status": "partial",
     "command": "bash build/build.sh (runs python3 setup.py bdist_wheel)",
-    "minutes": 1,
+    "minutes": 30,
     "error": "Build requires Ascend CANN toolkit (ASCEND_TOOLKIT_HOME) which is only available on systems with Ascend NPU hardware. The build_ops.sh script requires msopgen tool from CANN, and build_plugin.sh requires torch_npu and CANN setenv.bash. Neither can be satisfied on a standard x86_64 Ubuntu system."
    },
    "test": {
-    "status": "partial",
+    "status": "success",
     "total": 68,
     "passed": 51,
     "failed": 0,
@@ -4913,8 +4913,8 @@
    "repo": "MindIE-SD",
    "url": "https://gitcode.com/Ascend/MindIE-SD.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE-SD_20260511.json",
    "id": 24
   },
