@@ -1059,33 +1059,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 13
+     "minutes": 5
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 36
+     "status": "failed",
+     "minutes": 3
     },
     {
      "name": "测试",
-     "status": "success",
+     "status": "unknown",
      "minutes": 1
     },
     {
      "name": "社区CI成功",
-     "status": "success",
+     "status": "unknown",
      "minutes": 2
     }
    ],
-   "totalMinutes": 52,
+   "totalMinutes": 11,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
-    "minutes": 36,
+    "minutes": 3,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "unknown",
     "total": 20,
     "passed": 20,
     "failed": 0,
@@ -1134,7 +1134,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -1246,8 +1246,8 @@
    "repo": "asc-tools",
    "url": "https://gitcode.com/cann/asc-tools.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_asc-tools_20260511.json",
    "id": 6
   },
