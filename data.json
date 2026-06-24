@@ -4923,12 +4923,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 22
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 9
+     "status": "failed",
+     "minutes": 40
     },
     {
      "name": "测试",
@@ -4937,15 +4937,15 @@
     },
     {
      "name": "社区CI成功",
-     "status": "success",
+     "status": "unknown",
      "minutes": 5
     }
    ],
-   "totalMinutes": 36,
+   "totalMinutes": 60,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "",
-    "minutes": 9,
+    "minutes": 40,
     "error": ""
    },
    "test": {
@@ -4991,7 +4991,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -5104,8 +5104,8 @@
    "repo": "MindIE_LLM",
    "url": "https://gitcode.com/Ascend/MindIE-LLM.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE_LLM_20260512.json",
    "id": 25
   },
