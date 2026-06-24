@@ -30,7 +30,7 @@
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 15
+     "minutes": 45
     },
     {
      "name": "测试",
@@ -40,14 +40,14 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2
+     "minutes": 5
     }
    ],
-   "totalMinutes": 32,
+   "totalMinutes": 65,
    "build": {
     "status": "failed",
     "command": "",
-    "minutes": 15,
+    "minutes": 45,
     "error": ""
    },
    "test": {
@@ -182,8 +182,8 @@
    "repo": "hcomm",
    "url": "https://gitcode.com/cann/hcomm.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_hcomm_20260511.json",
    "id": 0
   },
@@ -862,33 +862,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 76
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 14
+     "status": "failed",
+     "minutes": 10
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 9
+     "status": "unknown",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 5
     }
    ],
-   "totalMinutes": 101,
+   "totalMinutes": 35,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
-    "minutes": 14,
+    "minutes": 10,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "unknown",
     "total": 174,
     "passed": 174,
     "failed": 0,
@@ -943,7 +943,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -1049,8 +1049,8 @@
    "repo": "asc-devkit",
    "url": "https://gitcode.com/cann/asc-devkit.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_asc-devkit_20260511.json",
    "id": 5
   },
