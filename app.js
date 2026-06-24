@@ -248,18 +248,19 @@
     head.innerHTML = `<span class="name">${comm}</span><span class="count">${items.length} 仓库</span><span class="mini"><span class="s-succ">●</span>${dist.success} <span class="s-part">●</span>${dist.partial} <span class="s-fail">●</span>${dist.failed}</span>`;
     wrap.appendChild(head);
     const isDev = sc === "developer";
-    const cols = `<th>仓库</th><th>结果</th>` + phases.map(p => `<th class="num">${p}</th>`).join("") + (isDev ? `<th class="num">UT</th>` : `<th class="num">断点</th>`) + `<th class="num">总时长</th><th class="num">缺陷</th><th>日期</th><th></th>`;
+    const cols = `<th>仓库</th><th>结果</th>` + phases.map(p => `<th class="num">${p}</th>`).join("") + (isDev ? `<th class="num">UT</th>` : `<th class="num">断点</th>`) + `<th class="num">总时长</th>` + (isDev ? `<th class="num" title="样例运行时间（原“CI”列实为 sample）">Sample</th>` : "") + `<th class="num">缺陷</th><th>日期</th><th></th>`;
     const rows = items.map(r => {
       const pc = r.phases.map(p => `<td class="num phase-cell ${p.status}"><span class="m ${p.minutes ? "" : "zero"}">${p.minutes || "·"}</span></td>`).join("");
       const t = r.test || {};
       const extra = isDev ? (t.total ? `<td class="num"><span class="ut-pass">${t.passed || 0}</span>/${t.total}</td>` : `<td class="num">—</td>`) : `<td class="num">${r.breakpoints || 0}</td>`;
+      const sampleCell = isDev ? `<td class="num">${r.sampleMinutes != null ? (r.sampleMinutes || "·") : "·"}</td>` : "";
       const dn = (r.defects || []).length;
       return `<tr data-id="${r.id}"><td class="repo-cell">${r.repo}${r.scene && r.scene !== "compile-verify" ? `<span class="scn">${r.scene}</span>` : ""}</td>
         <td><span class="badge ${r.result}">${RES[r.result]}</span></td>${pc}${extra}
-        <td class="num">${r.totalMinutes || "·"}</td><td class="num">${dn ? `<span class="defect-n">${dn}</span>` : "·"}</td><td>${r.date}</td><td class="link-arrow">›</td></tr>`;
+        <td class="num">${r.totalMinutes || "·"}</td>${sampleCell}<td class="num">${dn ? `<span class="defect-n">${dn}</span>` : "·"}</td><td>${r.date}</td><td class="link-arrow">›</td></tr>`;
     }).join("");
     // 固定列宽：所有社区表用同一套 colgroup，保证跨表上下对齐
-    const cw = ["20%", "9%"].concat(phases.map(() => "7%")).concat(["8%", "9%", "7%", "11%", "4%"]);
+    const cw = ["20%", "9%"].concat(phases.map(() => "7%")).concat(isDev ? ["8%", "8%", "7%", "6%", "10%", "4%"] : ["8%", "9%", "7%", "11%", "4%"]);
     const colgroup = `<colgroup>${cw.map(w => `<col style="width:${w}">`).join("")}</colgroup>`;
     const t = document.createElement("div"); t.className = "tbl-wrap";
     t.innerHTML = `<table class="ctbl">${colgroup}<thead><tr>${cols}</tr></thead><tbody>${rows}</tbody></table>`;
