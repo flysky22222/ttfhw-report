@@ -5914,33 +5914,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 31
+     "minutes": 10
     },
     {
      "name": "编译构建",
-     "status": "success",
+     "status": "failed",
      "minutes": 5
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 6
+     "status": "not_run",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 3
     }
    ],
-   "totalMinutes": 44,
+   "totalMinutes": 18,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
     "minutes": 5,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "not_run",
     "total": 957,
     "passed": 957,
     "failed": 0,
@@ -6001,7 +6001,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -6113,8 +6113,8 @@
    "repo": "opbase",
    "url": "https://gitcode.com/cann/opbase.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_opbase_20260512.json",
    "id": 30
   },
