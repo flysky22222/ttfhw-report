@@ -3134,33 +3134,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 12
-    },
-    {
-     "name": "编译构建",
-     "status": "failed",
      "minutes": 5
     },
     {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 15
+    },
+    {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "partial",
      "minutes": 2
     }
    ],
-   "totalMinutes": 19,
+   "totalMinutes": 23,
    "build": {
-    "status": "failed",
+    "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
-    "minutes": 5,
+    "minutes": 15,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "success",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -3226,7 +3226,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "1",
@@ -3333,8 +3333,8 @@
    "repo": "libipmi",
    "url": "https://gitcode.com/openUBMC/libipmi.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_libipmi_20260510.json",
    "id": 17
   },
