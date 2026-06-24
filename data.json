@@ -2178,29 +2178,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 9
+     "minutes": 8
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 4
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 5
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 19,
+   "totalMinutes": 12,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j<thread-num>  OR  bash build.sh -t release",
-    "minutes": 3,
+    "minutes": 4,
     "error": ""
    },
    "test": {
@@ -2265,7 +2265,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "container_setup",
@@ -2359,8 +2359,8 @@
    "repo": "ham",
    "url": "https://gitcode.com/openeuler/ham.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ham_20260512.json",
    "id": 12
   },
