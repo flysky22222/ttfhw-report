@@ -5500,34 +5500,34 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 8
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 8
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 200
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 218,
+   "totalMinutes": 0,
    "build": {
-    "status": "success",
+    "status": "unknown",
     "command": "bash scripts/build.sh -t release (release) / bash scripts/build.sh -t debug --ut (debug + UT)",
-    "minutes": 8,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "unknown",
     "total": 296,
     "passed": 295,
     "failed": 1,
@@ -5594,7 +5594,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "container_setup",
@@ -5728,8 +5728,8 @@
    "repo": "OmniStateStore",
    "url": "https://gitcode.com/openeuler/OmniStateStore.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_OmniStateStore_20260512.json",
    "id": 28
   },
