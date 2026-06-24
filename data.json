@@ -1451,33 +1451,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 4
+     "minutes": 2
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 3
+     "status": "failed",
+     "minutes": 20
     },
     {
      "name": "测试",
-     "status": "failed",
+     "status": "unknown",
      "minutes": 2
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 1
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 25,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": "./scripts/smart_build.sh (recommended) OR meson setup builddir && meson compile -C builddir -j $(nproc)",
-    "minutes": 3,
+    "minutes": 20,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "unknown",
     "total": 142,
     "passed": 136,
     "failed": 6,
@@ -1675,8 +1675,8 @@
    "repo": "component_drivers",
    "url": "https://gitcode.com/openUBMC/component_drivers.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_component_drivers_20260510.json",
    "id": 8
   },
