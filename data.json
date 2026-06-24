@@ -1685,29 +1685,29 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 4
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 3
+     "status": "partial",
+     "minutes": 45
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 10
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "failed",
+     "minutes": 5
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 75,
    "build": {
-    "status": "success",
+    "status": "partial",
     "command": "bash build.sh --pkg --soc=ascend910b [-jN]",
-    "minutes": 3,
+    "minutes": 45,
     "error": ""
    },
    "test": {
@@ -1760,7 +1760,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -1832,8 +1832,8 @@
    "repo": "driver",
    "url": "https://gitcode.com/cann/driver.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_driver_20260511.json",
    "id": 9
   },
