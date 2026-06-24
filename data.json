@@ -478,11 +478,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 2
+     "status": "success",
+     "minutes": 9,
+     "ciPrSeconds": 550
     }
    ],
-   "totalMinutes": 32,
+   "totalMinutes": 39,
    "build": {
     "status": "success",
     "command": "cd A-Tune && make",
