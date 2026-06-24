@@ -3343,33 +3343,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 6
+     "minutes": 5
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 192
+     "minutes": 23
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 34
+     "status": "partial",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 5
+     "status": "failed",
+     "minutes": 2
     }
    ],
-   "totalMinutes": 237,
+   "totalMinutes": 31,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
-    "minutes": 192,
+    "minutes": 23,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "partial",
     "total": 2,
     "passed": 2,
     "failed": 0,
@@ -3442,7 +3442,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "container_setup",
@@ -3582,8 +3582,8 @@
    "repo": "libmcpp",
    "url": "https://gitcode.com/openUBMC/libmcpp.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_libmcpp_20260512.json",
    "id": 18
   },
