@@ -2936,33 +2936,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 21
+     "minutes": 5
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 11
+     "status": "success",
+     "minutes": 17
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "unknown",
      "minutes": 2
     }
    ],
-   "totalMinutes": 34,
+   "totalMinutes": 27,
    "build": {
-    "status": "failed",
+    "status": "success",
     "command": "sh build.sh --install_path=[KUPL 安装目录]",
-    "minutes": 11,
+    "minutes": 17,
     "error": "MMA 模块需要特定处理器架构支持（armv9-a+sme-f64f64+sve 或 linxicore6100），当前编译器（GCC 10.3.1 和 Clang 15）均不支持"
    },
    "test": {
-    "status": "not_run",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -3029,7 +3029,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -3124,8 +3124,8 @@
    "repo": "kupl",
    "url": "https://gitcode.com/kunpengcompute/kupl.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_kupl_20260511.json",
    "id": 16
   },
