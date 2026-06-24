@@ -1841,34 +1841,34 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 17
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "partial",
-     "minutes": 69
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "not_run",
+     "status": "unknown",
      "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 88,
+   "totalMinutes": 0,
    "build": {
-    "status": "partial",
+    "status": "unknown",
     "command": "bash build.sh --<pkg_type>",
-    "minutes": 69,
+    "minutes": 0,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "unknown",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -2000,8 +2000,8 @@
    "repo": "ge",
    "url": "https://gitcode.com/cann/ge.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ge_20260510.json",
    "id": 10
   },
