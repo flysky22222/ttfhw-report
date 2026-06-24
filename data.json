@@ -2548,38 +2548,38 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 4
+     "minutes": 3
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 300
+     "status": "failed",
+     "minutes": 5
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 10
+     "status": "not_run",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
-     "status": "success",
+     "status": "failed",
      "minutes": 2
     }
    ],
-   "totalMinutes": 316,
+   "totalMinutes": 11,
    "build": {
-    "status": "success",
+    "status": "failed",
     "command": [
      "bash build.sh",
      "bash build.sh -j<N> (设置并发数)",
      "bash build.sh --examples (编译样例和基准测试)",
      "bash build.sh --cann_3rd_lib_path=<PATH> (指定第三方依赖路径)"
     ],
-    "minutes": 300,
+    "minutes": 5,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "not_run",
     "total": 290,
     "passed": 290,
     "failed": 0,
@@ -2628,7 +2628,7 @@
     }
    ],
    "summary": "HIXL项目在安装CANN Toolkit 9.0.0后，构建和单元测试全部成功通过。项目代码结构清晰，测试覆盖完整，可用于昇腾集群环境下的高效点对点数据传输。",
-   "result": "success",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -2720,8 +2720,8 @@
    "repo": "hixl",
    "url": "https://gitcode.com/cann/hixl.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_hixl_20260512.json",
    "id": 14
   },
