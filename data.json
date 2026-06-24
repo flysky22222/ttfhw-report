@@ -192,33 +192,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 10
+     "minutes": 25
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 9
+     "minutes": 14
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
-     "status": "success",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 5
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 49,
    "build": {
     "status": "success",
     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
-    "minutes": 9,
+    "minutes": 14,
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "partial",
     "total": null,
     "passed": null,
     "failed": null,
@@ -290,7 +290,7 @@
    ],
    "problems": [],
    "summary": "使用 openEuler 22.03 LTS SP3 镜像成功验证 bishengjdk-8 仓库的完整构建流程。所有依赖已正确安装，configure 配置成功，完整构建成功完成（总耗时 9 分 3 秒）。构建的 JDK 已通过全面功能验证：java、javac、jps、jmap 等工具均正常工作，示例程序（JTop 等）编译并运行成功。构建产物位于 /workspace/build/linux-aarch64-normal-server-release/jdk。",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "安装依赖",
@@ -335,8 +335,8 @@
    "repo": "bishengjdk-8",
    "url": "https://gitcode.com/openeuler/bishengjdk-8.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_openEuler.json",
    "id": 1
   },
@@ -345,33 +345,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 4
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "partial",
-     "minutes": 3
+     "status": "failed",
+     "minutes": 30
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 9,
+   "totalMinutes": 45,
    "build": {
-    "status": "partial",
+    "status": "failed",
     "command": "",
-    "minutes": 3,
+    "minutes": 30,
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": null,
     "passed": null,
     "failed": null,
@@ -424,7 +424,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "failed",
    "attempts": [],
    "artifacts": [
     {
@@ -454,8 +454,8 @@
    "repo": "MindSpeed-LLM",
    "url": "https://gitcode.host/Ascend/MindSpeed-LLM.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_Ubuntu_MindSpeed-LLM_20260510.json",
    "id": 2
   },
