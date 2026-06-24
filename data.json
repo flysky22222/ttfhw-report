@@ -2010,33 +2010,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 52
+     "minutes": 15
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 3
+     "minutes": 20
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "unknown",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2
+     "minutes": 10
     }
    ],
-   "totalMinutes": 57,
+   "totalMinutes": 50,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg",
-    "minutes": 3,
+    "minutes": 20,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "unknown",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -2168,8 +2168,8 @@
    "repo": "graph-autofusion",
    "url": "https://gitcode.com/cann/graph-autofusion.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_graph-autofusion_20260510.json",
    "id": 11
   },
