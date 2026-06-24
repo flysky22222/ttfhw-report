@@ -647,33 +647,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 16
+     "minutes": 3
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 15
+     "status": "unknown",
+     "minutes": 2
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 2
+     "status": "not_run",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 1
     }
    ],
-   "totalMinutes": 35,
+   "totalMinutes": 6,
    "build": {
-    "status": "failed",
+    "status": "unknown",
     "command": "bash build.sh --pkg",
-    "minutes": 15,
+    "minutes": 2,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -751,7 +751,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "repository_clone",
@@ -852,8 +852,8 @@
    "repo": "AMCT",
    "url": "https://gitcode.com/cann/amct.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_AMCT_20260510.json",
    "id": 4
   },
