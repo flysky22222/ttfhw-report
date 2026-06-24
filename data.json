@@ -665,11 +665,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 1
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 6,
+   "totalMinutes": 5,
    "build": {
     "status": "unknown",
     "command": "bash build.sh --pkg",
@@ -1078,11 +1079,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 9,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1275,8 +1277,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 0
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 27,
@@ -1470,11 +1473,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 1
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 24,
    "build": {
     "status": "failed",
     "command": "./scripts/smart_build.sh (recommended) OR meson setup builddir && meson compile -C builddir -j $(nproc)",
@@ -1704,11 +1708,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 5
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 75,
+   "totalMinutes": 70,
    "build": {
     "status": "partial",
     "command": "bash build.sh --pkg --soc=ascend910b [-jN]",
@@ -1861,8 +1866,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 0,
@@ -2029,11 +2035,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 10
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 50,
+   "totalMinutes": 40,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg",
@@ -2197,8 +2204,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 0
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 12,
@@ -2388,11 +2396,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 5
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 75,
+   "totalMinutes": 70,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg",
@@ -2567,11 +2576,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 9,
    "build": {
     "status": "failed",
     "command": [
@@ -2749,11 +2759,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 5
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 55,
+   "totalMinutes": 50,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake .. && make -j$(nproc) && make install",
@@ -2955,11 +2966,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 27,
+   "totalMinutes": 25,
    "build": {
     "status": "success",
     "command": "sh build.sh --install_path=[KUPL 安装目录]",
@@ -3153,11 +3165,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 2
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 21,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -3362,11 +3375,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 31,
+   "totalMinutes": 29,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -3611,11 +3625,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 23,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE",
@@ -3820,11 +3835,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 1
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 14,
+   "totalMinutes": 13,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
@@ -4053,8 +4069,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 0
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 25,
@@ -4268,8 +4285,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
    "totalMinutes": 0,
@@ -4487,11 +4505,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 15,
+   "totalMinutes": 13,
    "build": {
     "status": "success",
     "command": "./build.sh (runs scripts/generate_proto.sh, then python -m pip wheel . --no-deps --use-pep517 -w dist)",
@@ -4732,11 +4751,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 5
+     "status": "branch_fail",
+     "minutes": 0,
+     "ciPrSeconds": 0
     }
    ],
-   "totalMinutes": 60,
+   "totalMinutes": 55,
    "build": {
     "status": "partial",
     "command": "bash build/build.sh (runs python3 setup.py bdist_wheel)",
@@ -6128,33 +6148,33 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 9
+     "minutes": 8
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 12
+     "minutes": 15
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
-     "status": "success",
+     "status": "unknown",
      "minutes": 2
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 28,
    "build": {
     "status": "success",
     "command": "make defconfig && make -j<N>",
-    "minutes": 12,
+    "minutes": 15,
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "success",
     "total": null,
     "passed": null,
     "failed": null,
@@ -6311,8 +6331,8 @@
    "repo": "kernel",
    "url": "https://gitcode.com/openeuler/kernel.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_openeuler-kernel_20260510.json",
    "id": 31
   },
