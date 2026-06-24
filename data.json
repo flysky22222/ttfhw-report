@@ -4248,38 +4248,38 @@
    "phases": [
     {
      "name": "获取",
-     "status": "success",
-     "minutes": 18
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 18
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 11
+     "status": "unknown",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 0
     }
    ],
-   "totalMinutes": 49,
+   "totalMinutes": 0,
    "build": {
-    "status": "failed",
+    "status": "unknown",
     "command": [
      "env -u LD_LIBRARY_PATH bash build/build.sh -d 3rd -b 3rd (download and build third-party)",
      "cd mindie_motor/python && pip wheel . --no-build-isolation -v (build Python wheel)",
      "pip install mindie_motor*.whl (install wheel)"
     ],
-    "minutes": 18,
+    "minutes": 0,
     "error": "Missing msServiceProfiler/Tracer.h header file from Ascend CANN toolkit. This is a hardware-dependent library that requires Ascend NPU hardware and the CANN toolkit to be installed ($ASCEND_HOME_PATH). The build cannot proceed without this dependency."
    },
    "test": {
-    "status": "failed",
+    "status": "unknown",
     "total": 5,
     "passed": 0,
     "failed": 5,
@@ -4369,7 +4369,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "1",
@@ -4458,8 +4458,8 @@
    "repo": "MindIE-Motor",
    "url": "https://gitcode.com/Ascend/MindIE-Motor.git",
    "scene": "compile-verify",
-   "date": "2026-05-11",
-   "month": "2026-05",
+   "date": "2026-06-24",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindIE-Motor_20260511.json",
    "id": 22
   },
