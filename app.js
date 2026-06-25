@@ -304,12 +304,13 @@
       const ci = (r.phases || []).find(p => /社区CI/.test(p.name || ""));
       if (ci) {
         const sec = ci.ciPrSeconds;
-        const pass = ci.status === "success" ? "✅ 通过"
+        const pass = ci.ciFailExpected ? "✅ 实测通过（仅 issue 关联/CLA 等测试型门禁项未过，非文档缺陷）"
+          : ci.status === "success" ? "✅ 通过"
           : ci.status === "failed" ? "❌ 未通过"
           : ci.status === "no_ci" ? "— 未触发 CI"
           : (ci.status === "partial" || ci.status === "timeout") ? "⏳ 未出最终结论（近似计时）" : "—";
         cards.push(dcard("clock", "社区CI成功", [
-          ["状态", badge(ci.status)],
+          ["状态", badge(ci.ciFailExpected ? "success" : ci.status)],
           ["耗时", ci.minutes ? `${ci.minutes} min${sec ? `（${sec}s）` : ""}` : (sec ? `${sec}s` : "—")],
           ["是否通过", pass],
           ["PR 地址", ci.ciPr
@@ -341,6 +342,26 @@
     if (problems.length) sections.push(`<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
       <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
         problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
+
+    // 社区CI 门禁检查项明细（放在详情后段）：列每项 ✅/❌/⚠，并说明测试型项失败属正常
+    const ciP = (r.phases || []).find(p => /社区CI/.test(p.name || ""));
+    if (ciP && (ciP.ciChecks || []).length) {
+      const artifact = n => /issue.?associate|cla|sign.?off|package_license|check_pr|needs-issue/i.test(n);
+      const icoOf = res => res === "OK" ? "✅" : res === "FAIL" ? "❌" : res === "WARN" ? "⚠️" : "·";
+      const rows = ciP.ciChecks.map(c => {
+        const art = artifact(c.name) || c.result === "WARN";
+        const note = c.result === "OK" ? "" : art
+          ? "测试型/环境门禁项（本计时 PR 为一行 no-op 改动且不关联 issue，必然不过）— 不算文档缺陷"
+          : "构建/测试类门禁项";
+        return `<tr><td><code>${esc(c.name)}</code></td><td>${icoOf(c.result)} ${esc(c.result)}</td><td>${note}</td></tr>`;
+      }).join("");
+      const verdict = ciP.ciFailExpected
+        ? `<div class="ci-verdict ok">实测结论：<b>通过</b>。构建/测试类门禁项全部通过；仅 <code>check_issue_associate</code> / CLA 等测试型项未过，这是本计时测试方法（no-op PR、未关联 issue、noreply 邮箱）必然产生的，<b>不算文档缺陷、不判失败</b>。</div>`
+        : "";
+      sections.push(`<div class="section"><h2>${ico("flask")} 社区CI 门禁检查项（${ciP.ciChecks.length}）</h2>${verdict}
+        <table class="dtable"><colgroup><col style="width:30%"><col style="width:14%"><col style="width:56%"></colgroup>
+        <thead><tr><th>检查项</th><th>结果</th><th>说明</th></tr></thead><tbody>${rows}</tbody></table></div>`);
+    }
 
     if (r.summary) sections.push(`<div class="section"><h2>${ico("doc")} 结论摘要</h2><div class="summary-text">${esc(r.summary)}</div></div>`);
 
