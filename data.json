@@ -8563,17 +8563,17 @@
    "phases": [
     {
      "name": "获取",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 8
     },
     {
      "name": "编译构建",
-     "status": "unknown",
-     "minutes": 0
+     "status": "failed",
+     "minutes": 15
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -8583,15 +8583,15 @@
      "ciNote": "上游 pre-receive hook 拒绝建 PR（DCO/格式校验），无侵入无法触发门禁"
     }
    ],
-   "totalMinutes": 0,
+   "totalMinutes": 23,
    "build": {
-    "status": "unknown",
+    "status": "failed",
     "command": "python3 -m pip install . --verbose",
-    "minutes": 0,
+    "minutes": 15,
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 261,
     "passed": 258,
     "failed": 0,
@@ -8627,7 +8627,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -8739,7 +8739,7 @@
    "repo": "pypto",
    "url": "https://gitcode.com/cann/pypto.git",
    "scene": "compile-verify",
-   "date": "2026-06-24",
+   "date": "2026-06-25",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_pypto_20260511.json",
    "id": 38,
