@@ -211,7 +211,9 @@
      "name": "社区CI成功",
      "status": "partial",
      "minutes": 14,
-     "ciPrSeconds": 834
+     "ciPrSeconds": 834,
+     "ciPr": "openeuler/bishengjdk-8#332",
+     "ciPrUrl": "https://gitcode.com/openeuler/bishengjdk-8/pull/332"
     }
    ],
    "totalMinutes": 58,
@@ -366,7 +368,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 2,
-     "ciPrSeconds": 145
+     "ciPrSeconds": 145,
+     "ciPr": "Ascend/MindSpeed-LLM#4640",
+     "ciPrUrl": "https://gitcode.com/Ascend/MindSpeed-LLM/pull/4640"
     }
    ],
    "totalMinutes": 47,
@@ -487,7 +491,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 9,
-     "ciPrSeconds": 550
+     "ciPrSeconds": 550,
+     "ciPr": "openeuler/A-Tune#801",
+     "ciPrUrl": "https://gitcode.com/openeuler/A-Tune/pull/801"
     }
    ],
    "totalMinutes": 39,
@@ -2227,7 +2233,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 5,
-     "ciPrSeconds": 272
+     "ciPrSeconds": 272,
+     "ciPr": "openeuler/ham#13",
+     "ciPrUrl": "https://gitcode.com/openeuler/ham/pull/13"
     }
    ],
    "totalMinutes": 17,
@@ -2787,7 +2795,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 189
+     "ciPrSeconds": 189,
+     "ciPr": "openeuler/iSulad#2641",
+     "ciPrUrl": "https://gitcode.com/openeuler/iSulad/pull/2641"
     }
    ],
    "totalMinutes": 53,
@@ -3194,7 +3204,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 1,
-     "ciPrSeconds": 80
+     "ciPrSeconds": 80,
+     "ciPr": "openUBMC/libipmi#63",
+     "ciPrUrl": "https://gitcode.com/openUBMC/libipmi/pull/63"
     }
    ],
    "totalMinutes": 22,
@@ -3405,7 +3417,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 7,
-     "ciPrSeconds": 443
+     "ciPrSeconds": 443,
+     "ciPr": "openUBMC/libmcpp#581",
+     "ciPrUrl": "https://gitcode.com/openUBMC/libmcpp/pull/581"
     }
    ],
    "totalMinutes": 36,
@@ -4320,7 +4334,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 6,
-     "ciPrSeconds": 371
+     "ciPrSeconds": 371,
+     "ciPr": "Ascend/MindIE-Motor#215",
+     "ciPrUrl": "https://gitcode.com/Ascend/MindIE-Motor/pull/215"
     }
    ],
    "totalMinutes": 6,
@@ -4541,7 +4557,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 152
+     "ciPrSeconds": 152,
+     "ciPr": "Ascend/MindIE-PyMotor#341",
+     "ciPrUrl": "https://gitcode.com/Ascend/MindIE-PyMotor/pull/341"
     }
    ],
    "totalMinutes": 16,
@@ -4788,7 +4806,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 8,
-     "ciPrSeconds": 469
+     "ciPrSeconds": 469,
+     "ciPr": "Ascend/MindIE-SD#379",
+     "ciPrUrl": "https://gitcode.com/Ascend/MindIE-SD/pull/379"
     }
    ],
    "totalMinutes": 63,
@@ -5000,7 +5020,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 3,
-     "ciPrSeconds": 158
+     "ciPrSeconds": 158,
+     "ciPr": "Ascend/MindIE-LLM#1076",
+     "ciPrUrl": "https://gitcode.com/Ascend/MindIE-LLM/pull/1076"
     }
    ],
    "totalMinutes": 58,
@@ -5193,7 +5215,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 170
+     "ciPrSeconds": 170,
+     "ciPr": "Ascend/MindSpeed-MM#2718",
+     "ciPrUrl": "https://gitcode.com/Ascend/MindSpeed-MM/pull/2718"
     }
    ],
    "totalMinutes": 92,
@@ -5584,7 +5608,9 @@
      "name": "社区CI成功",
      "status": "partial",
      "minutes": 1,
-     "ciPrSeconds": 36
+     "ciPrSeconds": 36,
+     "ciPr": "openeuler/OmniStateStore#105",
+     "ciPrUrl": "https://gitcode.com/openeuler/OmniStateStore/pull/105"
     }
    ],
    "totalMinutes": 1,
@@ -5823,7 +5849,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 2,
-     "ciPrSeconds": 136
+     "ciPrSeconds": 136,
+     "ciPr": "Ascend/op-plugin#5262",
+     "ciPrUrl": "https://gitcode.com/Ascend/op-plugin/pull/5262"
     }
    ],
    "totalMinutes": 105,
@@ -6212,7 +6240,9 @@
      "name": "社区CI成功",
      "status": "partial",
      "minutes": 9,
-     "ciPrSeconds": 568
+     "ciPrSeconds": 568,
+     "ciPr": "openeuler/kernel#24186",
+     "ciPrUrl": "https://gitcode.com/openeuler/kernel/pull/24186"
     }
    ],
    "totalMinutes": 35,
@@ -8126,7 +8156,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 177
+     "ciPrSeconds": 177,
+     "ciPr": "openeuler/stratovirt#1964",
+     "ciPrUrl": "https://gitcode.com/openeuler/stratovirt/pull/1964"
     }
    ],
    "totalMinutes": 14,
@@ -8202,7 +8234,9 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 2,
-     "ciPrSeconds": 143
+     "ciPrSeconds": 143,
+     "ciPr": "Ascend/torchair#3255",
+     "ciPrUrl": "https://gitcode.com/Ascend/torchair/pull/3255"
     }
    ],
    "totalMinutes": 2,
@@ -8444,7 +8478,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 18,
-     "ciPrSeconds": 1078
+     "ciPrSeconds": 1078,
+     "ciPr": "openeuler/ubs-comm#876",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-comm/pull/876"
     }
    ],
    "totalMinutes": 184,
@@ -8629,7 +8665,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 3,
-     "ciPrSeconds": 174
+     "ciPrSeconds": 174,
+     "ciPr": "openeuler/ubs-engine#1004",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-engine/pull/1004"
     }
    ],
    "totalMinutes": 33,
@@ -8882,7 +8920,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 15,
-     "ciPrSeconds": 897
+     "ciPrSeconds": 897,
+     "ciPr": "openeuler/ubs-io#183",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-io/pull/183"
     }
    ],
    "totalMinutes": 15,
@@ -9111,7 +9151,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 10,
-     "ciPrSeconds": 580
+     "ciPrSeconds": 580,
+     "ciPr": "openeuler/ubs-mem#67",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-mem/pull/67"
     }
    ],
    "totalMinutes": 10,
@@ -9368,7 +9410,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 3,
-     "ciPrSeconds": 195
+     "ciPrSeconds": 195,
+     "ciPr": "openeuler/ubs-virt#212",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-virt/pull/212"
     }
    ],
    "totalMinutes": 3,
@@ -9598,7 +9642,9 @@
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 6,
-     "ciPrSeconds": 365
+     "ciPrSeconds": 365,
+     "ciPr": "openeuler/ubturbo#264",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubturbo/pull/264"
     }
    ],
    "totalMinutes": 6,

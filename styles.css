@@ -203,6 +203,8 @@ code { background: var(--bg-soft); padding: 1px 5px; border-radius: 4px; font-si
 .detail-head .dh-id h1 { display: flex; align-items: center; gap: 8px; }
 .dtable .src { color: var(--text-faint); font-size: 12px; }
 .timeline .tl-row { grid-template-columns: 96px 64px 1fr 72px; }
+.timeline .tl-row .ci-pr { grid-column: 2 / -1; justify-self: start; margin-top: 2px; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--accent, #2f6feb); text-decoration: none; }
+.timeline .tl-row .ci-pr:hover { text-decoration: underline; }
 .log-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .log-row { display: flex; gap: 11px; padding: 10px 14px; border-bottom: 1px solid var(--border); }
 .log-row:last-child { border-bottom: 0; }

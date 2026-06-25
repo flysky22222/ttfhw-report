@@ -277,7 +277,8 @@
     const phases = state.data.phaseNames[r.scenario] || [];
     const maxMin = Math.max(1, ...r.phases.map(p => p.minutes));
     const tl = r.phases.map(p => `<div class="tl-row"><span class="tl-name">${p.name}</span><span class="tl-min mono">${p.minutes ? p.minutes + " min" : "—"}</span>
-      <span class="tl-bar"><i class="bar-${p.status}" style="width:${Math.max(4, p.minutes / maxMin * 100)}%"></i></span><span class="badge ${p.status}">${RES[p.status]}</span></div>`).join("");
+      <span class="tl-bar"><i class="bar-${p.status}" style="width:${Math.max(4, p.minutes / maxMin * 100)}%"></i></span><span class="badge ${p.status}">${RES[p.status]}</span>${
+        p.ciPr ? `<a class="ci-pr" href="${esc(p.ciPrUrl)}" target="_blank" rel="noopener" title="跑出该 CI 时间的 PR">CI PR：${esc(p.ciPr)} ↗</a>` : ""}</div>`).join("");
 
     const cards = [];
     cards.push(dcard("layers", "结果概览", [["场景", SCEN[r.scenario]], ["社区", r.community], ["阶段", phases.join(" · ")],
