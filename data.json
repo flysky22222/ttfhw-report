@@ -5850,12 +5850,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 77
+     "minutes": 15
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 10
+     "status": "partial",
+     "minutes": 9
     },
     {
      "name": "测试",
@@ -5871,11 +5871,11 @@
      "ciPrUrl": "https://gitcode.com/Ascend/MindSpeed-MM/pull/2718"
     }
    ],
-   "totalMinutes": 92,
+   "totalMinutes": 29,
    "build": {
-    "status": "success",
+    "status": "partial",
     "command": "python -m build (构建wheel包), pip install -e . (安装项目)",
-    "minutes": 10,
+    "minutes": 9,
     "error": ""
    },
    "test": {
@@ -5939,7 +5939,7 @@
     }
    ],
    "summary": "MindSpeed-MM 是华为昇腾多模态大模型训练套件，专为 Ascend NPU 硬件设计。在标准 x86_64 CPU 环境下，python -m build 构建成功，31 个单元测试通过。完整验证需要 torch_npu 和 MindSpeed 包，这需要昇腾 NPU 硬件支持。",
-   "result": "partial",
+   "result": "failed",
    "attempts": [
     {
      "step": "",
@@ -6050,8 +6050,8 @@
    "repo": "MindSpeed-MM",
    "url": "https://gitcode.com/Ascend/MindSpeed-MM.git",
    "scene": "compile-verify",
-   "date": "2026-05-10",
-   "month": "2026-05",
+   "date": "2026-06-25",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_MindSpeed-MM_20260510.json",
    "id": 26,
    "sampleMinutes": 0
@@ -6550,16 +6550,16 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 43
+     "minutes": 10
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 60
+     "minutes": 5
     },
     {
      "name": "测试",
-     "status": "not_run",
+     "status": "unknown",
      "minutes": 0
     },
     {
@@ -6571,15 +6571,15 @@
      "ciPrUrl": "https://gitcode.com/Ascend/op-plugin/pull/5262"
     }
    ],
-   "totalMinutes": 105,
+   "totalMinutes": 17,
    "build": {
     "status": "failed",
     "command": "bash ci/build.sh --python=3.10 --pytorch=v2.7.1-7.3.0",
-    "minutes": 60,
+    "minutes": 5,
     "error": ""
    },
    "test": {
-    "status": "not_run",
+    "status": "unknown",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -6719,8 +6719,8 @@
    "repo": "op-plugin",
    "url": "https://gitcode.com/Ascend/op-plugin.git",
    "scene": "compile-verify",
-   "date": "2026-05-13",
-   "month": "2026-05",
+   "date": "2026-06-25",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_op-plugin_20260513.json",
    "id": 29,
    "sampleMinutes": 2
@@ -8578,8 +8578,9 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "上游 pre-receive hook 拒绝建 PR（DCO/格式校验），无侵入无法触发门禁"
     }
    ],
    "totalMinutes": 0,
@@ -8749,23 +8750,22 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 26
+     "minutes": 2
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 6
+     "minutes": 35
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 181
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
      "status": "success",
      "minutes": 4,
-     "ciNote": "cann CLA 阻断，showcase 无法触发CI",
      "ciPrSeconds": 246,
      "ciPr": "cann/runtime#3104",
      "ciPrUrl": "https://gitcode.com/cann/runtime/pull/3104",
@@ -8819,11 +8819,11 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 217,
+   "totalMinutes": 43,
    "build": {
     "status": "success",
     "command": "source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9",
-    "minutes": 6,
+    "minutes": 35,
     "error": ""
    },
    "test": {
@@ -8882,7 +8882,7 @@
     }
    ],
    "summary": "",
-   "result": "success",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -8988,8 +8988,8 @@
    "repo": "runtime",
    "url": "https://gitcode.com/cann/runtime.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-25",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_runtime_20260512.json",
    "id": 39,
    "sampleMinutes": 5
@@ -9535,17 +9535,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 50
+     "minutes": 15
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 110
+     "minutes": 16
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 6
+     "status": "success",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
@@ -9556,15 +9556,15 @@
      "ciPrUrl": "https://gitcode.com/openeuler/ubs-comm/pull/876"
     }
    ],
-   "totalMinutes": 184,
+   "totalMinutes": 54,
    "build": {
     "status": "success",
     "command": "cd /workspace && bash build.sh",
-    "minutes": 110,
+    "minutes": 16,
     "error": ""
    },
    "test": {
-    "status": "failed",
+    "status": "success",
     "total": 306,
     "passed": 304,
     "failed": 2,
@@ -9631,7 +9631,7 @@
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -9711,8 +9711,8 @@
    "repo": "ubs-comm",
    "url": "https://gitcode.com/openeuler/ubs-comm.git",
    "scene": "compile-verify",
-   "date": "2026-05-12",
-   "month": "2026-05",
+   "date": "2026-06-25",
+   "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_ubs-comm_20260512.json",
    "id": 43,
    "sampleMinutes": 6
