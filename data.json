@@ -8588,14 +8588,14 @@
     "status": "failed",
     "command": "python3 -m pip install . --verbose",
     "minutes": 15,
-    "error": ""
+    "error": "编译被 OOM 杀掉（command terminated with exit code 137）。默认 -j128 并行编译在 8Gi 内存 OOM；增至 32Gi 内存并限制并行数到 4（CMAKE_BUILD_PARALLEL_LEVEL=4 / -j1）仍 exit 137。编译反复失败耗尽 claude step 25min 超时，阶段三/四未执行。"
    },
    "test": {
     "status": "not_run",
     "total": 261,
     "passed": 258,
     "failed": 0,
-    "note": ""
+    "note": "编译未通过，未执行测试"
    },
    "env": {
     "os": "Ubuntu 24.04.4 LTS",
@@ -8605,28 +8605,41 @@
     "image": "ubuntu:24.04"
    },
    "depsCount": 0,
-   "defects": [],
-   "problems": [
+   "defects": [
     {
-     "title": "PyTorch 未在文档依赖中明确列出为运行时必需依赖",
+     "title": "文档未说明编译所需内存大小与并行度建议；默认并行编译在 8Gi 甚至 32Gi 内存均 OOM(exit 137)",
+     "level": "high",
+     "source": "README.md / pyproject.toml",
+     "detail": "需在文档注明最低内存与 CMAKE_BUILD_PARALLEL_LEVEL 建议"
+    },
+    {
+     "title": "缺少受限内存/单机环境的编译指引",
      "level": "medium",
-     "source": "运行时错误信息: ModuleNotFoundError: No module named 'torch'",
-     "detail": "通过 pip 安装 torch CPU 版本"
-    },
-    {
-     "title": "pip 安装时需要 --break-system-packages 参数",
-     "level": "low",
-     "source": "Ubuntu 24.04 PEP 668 外部管理环境限制",
-     "detail": "使用 pip3 install --break-system-packages 参数安装"
-    },
-    {
-     "title": "pypto 模块没有 __version__ 属性",
-     "level": "low",
-     "source": "运行时检查",
-     "detail": "已验证模块可正常导入和使用"
+     "source": "",
+     "detail": "限制并行后仍 OOM，文档无低资源构建说明"
     }
    ],
-   "summary": "",
+   "problems": [
+    {
+     "title": "编译 OOM：command terminated with exit code 137",
+     "level": "",
+     "source": "pip install . (cmake 并行编译)",
+     "detail": "8Gi→32Gi、-j128→-j4 均 OOM"
+    },
+    {
+     "title": "架构/环境：TARGET_ENV=k8s-x86 实际调度到 ARM64 节点",
+     "level": "",
+     "source": "Pod 镜像为 ARM64",
+     "detail": "x86 节点报 exec format error，改用 ARM64 节点（环境配置问题，非文档缺陷）"
+    },
+    {
+     "title": "claude step 25min(1500s) wrapped timeout 被 kill",
+     "level": "",
+     "source": "workflow timeout",
+     "detail": "编译反复失败耗时，阶段三/四未启动，报告为终止断点报告"
+    }
+   ],
+   "summary": "pypto 真实结论：构建未通过。阶段一了解成功(约8min，依赖装好)；阶段二编译 pip install . 被 OOM 杀掉(exit 137)——文档未给编译内存/并行度要求，默认 -j128 在 8Gi OOM，加到 32Gi 内存+限制并行到 4 仍 OOM；编译反复失败耗尽 claude 25min step 超时，阶段三(使用)/四(贡献)未执行。社区CI 因上游 pre-receive hook 拒绝建 PR 无法非侵入触发(no_ci)。来源：终止断点报告 ttfhw-cann-dev-build-verify-20260625-93。",
    "result": "failed",
    "attempts": [
     {
