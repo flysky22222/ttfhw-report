@@ -299,6 +299,26 @@
     const artCard = arts.length ? dcard("pkg", `构建产物（${arts.length}）`, arts.map(a => [a.name, a.size || "—"])) : "";
     if (artCard) cards.push(artCard);
 
+    // 社区CI 卡片：紧跟构建产物之后，展示状态 / 耗时 / 是否通过 / PR 地址（仅开发者场景）
+    if (r.scenario === "developer") {
+      const ci = (r.phases || []).find(p => /社区CI/.test(p.name || ""));
+      if (ci) {
+        const sec = ci.ciPrSeconds;
+        const pass = ci.status === "success" ? "✅ 通过"
+          : ci.status === "failed" ? "❌ 未通过"
+          : ci.status === "no_ci" ? "— 未触发 CI"
+          : (ci.status === "partial" || ci.status === "timeout") ? "⏳ 未出最终结论（近似计时）" : "—";
+        cards.push(dcard("clock", "社区CI成功", [
+          ["状态", badge(ci.status)],
+          ["耗时", ci.minutes ? `${ci.minutes} min${sec ? `（${sec}s）` : ""}` : (sec ? `${sec}s` : "—")],
+          ["是否通过", pass],
+          ["PR 地址", ci.ciPr
+            ? `<a href="${esc(ci.ciPrUrl)}" target="_blank" rel="noopener">${esc(ci.ciPr)} ↗</a>`
+            : (ci.ciNote ? esc(ci.ciNote) : "—")],
+        ]));
+      }
+    }
+
     const sections = [];
     sections.push(`<div class="section"><h2>${ico("clock")} 四阶段耗时</h2><div class="timeline">${tl}</div></div>`);
     sections.push(`<div class="cards">${cards.join("")}</div>`);
