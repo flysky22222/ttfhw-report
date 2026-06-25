@@ -8609,8 +8609,8 @@
     {
      "title": "文档未说明编译所需内存大小与并行度建议；默认并行编译在 8Gi 甚至 32Gi 内存均 OOM(exit 137)",
      "level": "high",
-     "source": "README.md / pyproject.toml",
-     "detail": "需在文档注明最低内存与 CMAKE_BUILD_PARALLEL_LEVEL 建议"
+     "source": "https://gitcode.com/cann/pypto/issues/2431",
+     "detail": "需在文档注明最低内存与 CMAKE_BUILD_PARALLEL_LEVEL 建议 已提交 issue cann/pypto#2431。"
     },
     {
      "title": "缺少受限内存/单机环境的编译指引",
@@ -8639,7 +8639,7 @@
      "detail": "编译反复失败耗时，阶段三/四未启动，报告为终止断点报告"
     }
    ],
-   "summary": "pypto 真实结论：构建未通过。阶段一了解成功(约8min，依赖装好)；阶段二编译 pip install . 被 OOM 杀掉(exit 137)——文档未给编译内存/并行度要求，默认 -j128 在 8Gi OOM，加到 32Gi 内存+限制并行到 4 仍 OOM；编译反复失败耗尽 claude 25min step 超时，阶段三(使用)/四(贡献)未执行。社区CI 因上游 pre-receive hook 拒绝建 PR 无法非侵入触发(no_ci)。来源：终止断点报告 ttfhw-cann-dev-build-verify-20260625-93。",
+   "summary": "pypto 真实结论：构建未通过。阶段一了解成功(约8min，依赖装好)；阶段二编译 pip install . 被 OOM 杀掉(exit 137)——文档未给编译内存/并行度要求，默认 -j128 在 8Gi OOM，加到 32Gi 内存+限制并行到 4 仍 OOM；编译反复失败耗尽 claude 25min step 超时，阶段三(使用)/四(贡献)未执行。社区CI 因上游 pre-receive hook 拒绝建 PR 无法非侵入触发(no_ci)。来源：终止断点报告 ttfhw-cann-dev-build-verify-20260625-93。已就「编译内存/并行度未说明」缺陷向上游提交 issue：https://gitcode.com/cann/pypto/issues/2431。",
    "result": "failed",
    "attempts": [
     {
