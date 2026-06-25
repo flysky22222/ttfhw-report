@@ -39,13 +39,102 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0,
-     "ciNote": "无CI数据"
+     "status": "success",
+     "minutes": 22,
+     "ciPrSeconds": 1298,
+     "ciPr": "cann/hcomm#3050",
+     "ciPrUrl": "https://gitcode.com/cann/hcomm/pull/3050",
+     "ciChecks": [
+      {
+       "name": "SCA",
+       "result": "OK"
+      },
+      {
+       "name": "antipoison",
+       "result": "OK"
+      },
+      {
+       "name": "Check_Pr",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM",
+       "result": "OK"
+      },
+      {
+       "name": "pre_comment",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_codespell_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_link_validity_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_resource_existence_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_tag_closed_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_markdownlint",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test",
+       "result": "OK"
+      },
+      {
+       "name": "API_Check",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_style",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test",
+       "result": "OK"
+      },
+      {
+       "name": "precommit",
+       "result": "WARN"
+      },
+      {
+       "name": "PreSmoke_A900_npupool",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A3_npupool",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 60,
+   "totalMinutes": 82,
    "build": {
     "status": "failed",
     "command": "",
@@ -677,21 +766,21 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 128,
+     "minutes": 5,
+     "ciPrSeconds": 317,
      "ciPr": "cann/amct#182",
      "ciPrUrl": "https://gitcode.com/cann/amct/pull/182",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -699,19 +788,19 @@
        "result": "FAIL"
       },
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
@@ -719,19 +808,19 @@
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_torch/>>>>>",
+       "name": "Compile_Ascend_X86_torch",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_torch_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_torch_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_torch/>>>>>",
+       "name": "Compile_Ascend_ARM_torch",
        "result": "OK"
       },
       {
@@ -759,7 +848,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 7,
+   "totalMinutes": 10,
    "build": {
     "status": "unknown",
     "command": "bash build.sh --pkg",
@@ -972,25 +1061,25 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2,
-     "ciPrSeconds": 148,
+     "minutes": 4,
+     "ciPrSeconds": 264,
      "ciPr": "cann/asc-devkit#3548",
      "ciPrUrl": "https://gitcode.com/cann/asc-devkit/pull/3548",
      "ciChecks": [
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "PreSmoke_A900_npupool/>>>>>",
+       "name": "PreSmoke_A900_npupool",
        "result": "OK"
       }
      ],
@@ -998,7 +1087,7 @@
      "ciRealStatus": "failed"
     }
    ],
-   "totalMinutes": 32,
+   "totalMinutes": 34,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1193,25 +1282,25 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 126,
+     "minutes": 8,
+     "ciPrSeconds": 475,
      "ciPr": "cann/asc-tools#350",
      "ciPrUrl": "https://gitcode.com/cann/asc-tools/pull/350",
      "ciChecks": [
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
@@ -1235,15 +1324,15 @@
        "result": "OK"
       },
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -1251,15 +1340,15 @@
        "result": "OK"
       },
       {
-       "name": "UT_Test/>>>>>",
+       "name": "UT_Test",
        "result": "OK"
       },
       {
-       "name": "UT_Test_Python/>>>>>",
+       "name": "UT_Test_Python",
        "result": "OK"
       },
       {
-       "name": "API_Check/>>>>>",
+       "name": "API_Check",
        "result": "OK"
       },
       {
@@ -1279,7 +1368,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 17,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1474,17 +1563,17 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 137,
+     "minutes": 9,
+     "ciPrSeconds": 543,
      "ciPr": "cann/atvoss#60",
      "ciPrUrl": "https://gitcode.com/cann/atvoss/pull/60",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -1492,23 +1581,23 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
@@ -1516,7 +1605,7 @@
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "WARN"
       },
       {
@@ -1532,7 +1621,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 29,
+   "totalMinutes": 36,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh -DSOC=ascend950 <target>",
@@ -1962,21 +2051,21 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 132,
+     "minutes": 10,
+     "ciPrSeconds": 624,
      "ciPr": "cann/driver#97",
      "ciPrUrl": "https://gitcode.com/cann/driver/pull/97",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -1984,23 +2073,23 @@
        "result": "FAIL"
       },
       {
-       "name": "Compile_Ascend_X86_driver_ubuntu_24_04_npu_910b/>>>>>",
+       "name": "Compile_Ascend_X86_driver_ubuntu_24_04_npu_910b",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_driver_ubuntu_24_04_npu_910_93/>>>>>",
+       "name": "Compile_Ascend_X86_driver_ubuntu_24_04_npu_910_93",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_driver_npu_910_93/>>>>>",
+       "name": "Compile_Ascend_ARM_driver_npu_910_93",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_driver_npu_910b/>>>>>",
+       "name": "Compile_Ascend_ARM_driver_npu_910b",
        "result": "OK"
       },
       {
-       "name": "API_Check/>>>>>",
+       "name": "API_Check",
        "result": "OK"
       },
       {
@@ -2008,11 +2097,11 @@
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "WARN"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       }
      ],
@@ -2020,7 +2109,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 72,
+   "totalMinutes": 80,
    "build": {
     "status": "partial",
     "command": "bash build.sh --pkg --soc=ascend910b [-jN]",
@@ -2176,7 +2265,7 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 4,
-     "ciPrSeconds": 236,
+     "ciPrSeconds": 253,
      "ciPr": "cann/ge#3705",
      "ciPrUrl": "https://gitcode.com/cann/ge/pull/3705",
      "ciChecks": [
@@ -2185,23 +2274,23 @@
        "result": "FAIL"
       },
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "codecheck_dt/>>>>>",
+       "name": "codecheck_dt",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit/>>>>>",
+       "name": "codecheck_precommit",
        "result": "WARN"
       },
       {
@@ -2395,37 +2484,37 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 144,
+     "minutes": 12,
+     "ciPrSeconds": 729,
      "ciPr": "cann/graph-autofusion#1046",
      "ciPrUrl": "https://gitcode.com/cann/graph-autofusion/pull/1046",
      "ciChecks": [
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_ARM_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "API_Check/>>>>>",
+       "name": "API_Check",
        "result": "OK"
       },
       {
-       "name": "PreSmoke_A900_npupool/>>>>>",
+       "name": "PreSmoke_A900_npupool",
        "result": "OK"
       }
      ],
@@ -2433,7 +2522,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 42,
+   "totalMinutes": 52,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg",
@@ -2794,17 +2883,17 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 130,
+     "minutes": 15,
+     "ciPrSeconds": 879,
      "ciPr": "cann/hccl#1517",
      "ciPrUrl": "https://gitcode.com/cann/hccl/pull/1517",
      "ciChecks": [
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -2812,23 +2901,23 @@
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_ARM_ubuntu24",
        "result": "OK"
       },
       {
@@ -2852,43 +2941,43 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_monitor/>>>>>",
+       "name": "Compile_Ascend_X86_monitor",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_monitor/>>>>>",
+       "name": "Compile_Ascend_ARM_monitor",
        "result": "OK"
       },
       {
-       "name": "UT_Test/>>>>>",
+       "name": "UT_Test",
        "result": "OK"
       },
       {
-       "name": "API_Check/>>>>>",
+       "name": "API_Check",
        "result": "OK"
       },
       {
-       "name": "ST_Test/>>>>>",
+       "name": "ST_Test",
        "result": "OK"
       },
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "OK"
       },
       {
-       "name": "codecheck_codestyle/>>>>>",
+       "name": "codecheck_codestyle",
        "result": "OK"
       },
       {
-       "name": "PreSmoke_A900_npupool/>>>>>",
+       "name": "PreSmoke_A900_npupool",
        "result": "OK"
       },
       {
-       "name": "PreSmoke_A3_npupool/>>>>>",
+       "name": "PreSmoke_A3_npupool",
        "result": "OK"
       }
      ],
@@ -2896,7 +2985,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 72,
+   "totalMinutes": 85,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg",
@@ -3072,12 +3161,66 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "success",
+     "minutes": 6,
+     "ciPrSeconds": 330,
+     "ciPr": "cann/hixl#672",
+     "ciPrUrl": "https://gitcode.com/cann/hixl/pull/672",
+     "ciChecks": [
+      {
+       "name": "codecheck",
+       "result": "OK"
+      },
+      {
+       "name": "SCA",
+       "result": "OK"
+      },
+      {
+       "name": "antipoison",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_Check_Pr",
+       "result": "OK"
+      },
+      {
+       "name": "pre_comment",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_codespell_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_link_validity_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_resource_existence_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_tag_closed_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_markdownlint",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_style",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_precommit",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 15,
    "build": {
     "status": "failed",
     "command": [
@@ -3882,7 +4025,39 @@
      "minutes": 7,
      "ciPrSeconds": 443,
      "ciPr": "openUBMC/libmcpp#581",
-     "ciPrUrl": "https://gitcode.com/openUBMC/libmcpp/pull/581"
+     "ciPrUrl": "https://gitcode.com/openUBMC/libmcpp/pull/581",
+     "ciChecks": [
+      {
+       "name": "precommit检查",
+       "result": "OK"
+      },
+      {
+       "name": "静态检查",
+       "result": "OK"
+      },
+      {
+       "name": "防投毒检查",
+       "result": "OK"
+      },
+      {
+       "name": "开源合规检查",
+       "result": "OK"
+      },
+      {
+       "name": "编译构建",
+       "result": "OK"
+      },
+      {
+       "name": "ut",
+       "result": "OK"
+      },
+      {
+       "name": "header",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "failed"
     }
    ],
    "totalMinutes": 36,
@@ -4578,17 +4753,17 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 3,
-     "ciPrSeconds": 175,
+     "minutes": 5,
+     "ciPrSeconds": 291,
      "ciPr": "cann/metadef#377",
      "ciPrUrl": "https://gitcode.com/cann/metadef/pull/377",
      "ciChecks": [
       {
-       "name": "UT_Test/>>>>>",
+       "name": "UT_Test",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       }
      ],
@@ -4596,7 +4771,7 @@
      "ciRealStatus": "failed"
     }
    ],
-   "totalMinutes": 28,
+   "totalMinutes": 30,
    "build": {
     "status": "failed",
     "command": "bash build.sh",
@@ -5901,21 +6076,21 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 141,
+     "minutes": 6,
+     "ciPrSeconds": 331,
      "ciPr": "cann/oam-tools#340",
      "ciPrUrl": "https://gitcode.com/cann/oam-tools/pull/340",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -5923,19 +6098,19 @@
        "result": "FAIL"
       },
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
@@ -5943,7 +6118,7 @@
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "OK"
       },
       {
@@ -5971,7 +6146,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 71,
+   "totalMinutes": 75,
    "build": {
     "status": "success",
     "command": "bash build.sh",
@@ -6570,21 +6745,21 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 125,
+     "minutes": 5,
+     "ciPrSeconds": 316,
      "ciPr": "cann/opbase#557",
      "ciPrUrl": "https://gitcode.com/cann/opbase/pull/557",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -6592,15 +6767,15 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
@@ -6608,11 +6783,11 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_ARM_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
@@ -6636,15 +6811,15 @@
        "result": "OK"
       },
       {
-       "name": "codecheck_style/>>>>>",
+       "name": "codecheck_style",
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "WARN"
       },
       {
-       "name": "API_Check/>>>>>",
+       "name": "API_Check",
        "result": "OK"
       }
      ],
@@ -6652,7 +6827,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 17,
+   "totalMinutes": 20,
    "build": {
     "status": "failed",
     "command": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
@@ -7257,20 +7432,20 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 5,
-     "ciPrSeconds": 299,
+     "ciPrSeconds": 317,
      "ciPr": "cann/ops-math#3533",
      "ciPrUrl": "https://gitcode.com/cann/ops-math/pull/3533",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -7298,11 +7473,11 @@
        "result": "OK"
       },
       {
-       "name": "codecheck_codestyle/>>>>>",
+       "name": "codecheck_codestyle",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit/>>>>>",
+       "name": "codecheck_precommit",
        "result": "OK"
       }
      ],
@@ -7452,16 +7627,16 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 4,
-     "ciPrSeconds": 244,
+     "ciPrSeconds": 262,
      "ciPr": "cann/ops-nn#6508",
      "ciPrUrl": "https://gitcode.com/cann/ops-nn/pull/6508",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -7489,15 +7664,15 @@
        "result": "OK"
       },
       {
-       "name": "codecheck_style/>>>>>",
+       "name": "codecheck_style",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit/>>>>>",
+       "name": "codecheck_precommit",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       }
      ],
@@ -7731,11 +7906,62 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 4,
+     "ciPrSeconds": 270,
+     "ciPr": "cann/ops-transformer#7505",
+     "ciPrUrl": "https://gitcode.com/cann/ops-transformer/pull/7505",
+     "ciChecks": [
+      {
+       "name": "codecheck",
+       "result": "OK"
+      },
+      {
+       "name": "SCA",
+       "result": "OK"
+      },
+      {
+       "name": "antipoison",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_style",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_codespell_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_link_validity_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_resource_existence_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_tag_closed_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_markdownlint",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_checkpr",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_precommit",
+       "result": "WARN"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 29,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
@@ -7920,21 +8146,21 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 2,
-     "ciPrSeconds": 95,
+     "minutes": 6,
+     "ciPrSeconds": 382,
      "ciPr": "cann/pto-isa#1183",
      "ciPrUrl": "https://gitcode.com/cann/pto-isa/pull/1183",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -7942,11 +8168,11 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86/>>>>>",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM/>>>>>",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
@@ -7954,11 +8180,11 @@
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
@@ -7966,15 +8192,15 @@
        "result": "OK"
       },
       {
-       "name": "precommit/>>>>>",
+       "name": "precommit",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_A5/>>>>>",
+       "name": "Compile_Ascend_ARM_A5",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_A5_ubuntu24/>>>>>",
+       "name": "Compile_Ascend_X86_A5_ubuntu24",
        "result": "OK"
       },
       {
@@ -7986,7 +8212,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 69,
+   "totalMinutes": 73,
    "build": {
     "status": "success",
     "command": "python3 tests/run_cpu.py --clean --verbose",
@@ -8146,21 +8372,21 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2,
-     "ciPrSeconds": 143,
+     "minutes": 3,
+     "ciPrSeconds": 184,
      "ciPr": "cann/pyasc#134",
      "ciPrUrl": "https://gitcode.com/cann/pyasc/pull/134",
      "ciChecks": [
       {
-       "name": "UT_Test/>>>>>",
+       "name": "UT_Test",
        "result": "OK"
       },
       {
-       "name": "UT_Test_Python/>>>>>",
+       "name": "UT_Test_Python",
        "result": "OK"
       },
       {
-       "name": "pre_comment/>>>>>",
+       "name": "pre_comment",
        "result": "OK"
       }
      ],
@@ -8168,7 +8394,7 @@
      "ciRealStatus": "failed"
     }
    ],
-   "totalMinutes": 57,
+   "totalMinutes": 58,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . (普通模式) 或 python3 -m pip install -e . (开发者模式)",
@@ -8540,20 +8766,20 @@
      "status": "success",
      "minutes": 4,
      "ciNote": "cann CLA 阻断，showcase 无法触发CI",
-     "ciPrSeconds": 228,
+     "ciPrSeconds": 246,
      "ciPr": "cann/runtime#3104",
      "ciPrUrl": "https://gitcode.com/cann/runtime/pull/3104",
      "ciChecks": [
       {
-       "name": "codecheck/>>>>>",
+       "name": "codecheck",
        "result": "OK"
       },
       {
-       "name": "SCA/>>>>>",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "antipoison/>>>>>",
+       "name": "antipoison",
        "result": "OK"
       },
       {
@@ -8561,11 +8787,11 @@
        "result": "OK"
       },
       {
-       "name": "codecheck_style/>>>>>",
+       "name": "codecheck_style",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit/>>>>>",
+       "name": "codecheck_precommit",
        "result": "OK"
       },
       {
