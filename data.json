@@ -14112,6 +14112,272 @@
    "artifacts": [],
    "docFacts": [],
    "id": 72
+  },
+  {
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 12
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 9
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 2
+    },
+    {
+     "name": "社区CI成功",
+     "status": "partial",
+     "minutes": 0,
+     "ciNote": "构建对齐CI，测试缺NPU/CANN环境断点"
+    }
+   ],
+   "totalMinutes": 23,
+   "build": {
+    "status": "success",
+    "minutes": 9,
+    "command": "按文档构建 triton-ascend",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": "缺NPU/CANN，测试环境断点"
+   },
+   "env": {},
+   "depsCount": 0,
+   "defects": [
+    {
+     "title": "installation_guide.md 测试环境镜像要求未说明",
+     "level": "high",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "构建环境变量默认值未说明",
+     "level": "medium",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "未区分编译环境与测试环境镜像要求",
+     "level": "medium",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "triton-ascend：获取+编译对齐社区CI成功；测试因缺 NPU/CANN 环境断点未对齐。环境准备(Pod/gh-proxy/clone/换源/依赖)时间已按本次实际运行约23min校正。来源 dev-build-verify-20260626-94。",
+   "result": "partial",
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "scenario": "developer",
+   "community": "Triton",
+   "repo": "triton-ascend",
+   "url": "https://github.com/triton-lang/triton-ascend",
+   "scene": "compile-verify",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "id": 73,
+   "sampleMinutes": 0
+  },
+  {
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 18
+    },
+    {
+     "name": "编译构建",
+     "status": "partial",
+     "minutes": 15
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 5
+    },
+    {
+     "name": "社区CI成功",
+     "status": "failed",
+     "minutes": 3,
+     "ciNote": "缺CANN/CUDA，安装超时"
+    }
+   ],
+   "totalMinutes": 41,
+   "build": {
+    "status": "partial",
+    "minutes": 15,
+    "command": "按文档安装 sglang",
+    "error": "安装超时 / 缺 CANN"
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": "安装未完成"
+   },
+   "env": {},
+   "depsCount": 0,
+   "defects": [
+    {
+     "title": "sglang 安装文档缺 Ascend NPU 章节/资源需求",
+     "level": "high",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "sglang：克隆成功，安装超时、缺 CANN，构建受阻。环境准备时间按本次实际约41min校正。正用修正后口径重跑精确化。",
+   "result": "failed",
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "scenario": "developer",
+   "community": "SGLang",
+   "repo": "sglang",
+   "url": "https://github.com/sgl-project/sglang",
+   "scene": "compile-verify",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "id": 74,
+   "sampleMinutes": 0
+  },
+  {
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 18
+    },
+    {
+     "name": "编译构建",
+     "status": "failed",
+     "minutes": 15
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 5
+    },
+    {
+     "name": "社区CI成功",
+     "status": "failed",
+     "minutes": 2,
+     "ciNote": "缺CANN/CUDA(nvcc)"
+    }
+   ],
+   "totalMinutes": 40,
+   "build": {
+    "status": "failed",
+    "minutes": 15,
+    "command": "make build (sgl-kernel)",
+    "error": "CMake: Failed to find nvcc；缺 CANN/CUDA"
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": "构建失败无法测试"
+   },
+   "env": {},
+   "depsCount": 0,
+   "defects": [
+    {
+     "title": "sgl-kernel/README.md 缺少 Ascend NPU 构建指南（只写 CUDA）",
+     "level": "high",
+     "source": "sgl-kernel/README.md",
+     "detail": "新开发者上手重大障碍"
+    },
+    {
+     "title": "CMake 版本要求与实际不符（文档3.31 vs 实际3.28）",
+     "level": "medium",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "sgl-kernel-npu：缺 NPU 构建文档、缺 CANN/CUDA 构建受阻。环境准备时间按实际约40min校正。注：首轮因 env 传参误 clone 了 sglang，已用准确 URL 重跑精确化中。",
+   "result": "failed",
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "scenario": "developer",
+   "community": "SGLang",
+   "repo": "sgl-kernel-npu",
+   "url": "https://github.com/sgl-project/sgl-kernel-npu",
+   "scene": "compile-verify",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "id": 75,
+   "sampleMinutes": 0
+  },
+  {
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 18
+    },
+    {
+     "name": "编译构建",
+     "status": "unknown",
+     "minutes": 20
+    },
+    {
+     "name": "测试",
+     "status": "unknown",
+     "minutes": 5
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 2
+    }
+   ],
+   "totalMinutes": 45,
+   "build": {
+    "status": "unknown",
+    "minutes": 20,
+    "command": "按文档构建 tilelang-mlir-ascend",
+    "error": ""
+   },
+   "test": {
+    "status": "unknown",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {},
+   "depsCount": 0,
+   "defects": [],
+   "problems": [],
+   "summary": "tilelang-mlir-ascend：首轮 run 成功但报告未落库（flaky push），真实运行约45min。正用修正后口径重跑生成准确报告。",
+   "result": "partial",
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "scenario": "developer",
+   "community": "TileLang",
+   "repo": "tilelang-mlir-ascend",
+   "url": "https://github.com/tile-ai/tilelang-mlir-ascend",
+   "scene": "compile-verify",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "id": 76,
+   "sampleMinutes": 0
   }
  ]
 }
