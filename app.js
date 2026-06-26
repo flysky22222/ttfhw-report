@@ -307,16 +307,20 @@
         const pass = ci.ciFailExpected ? "✅ 实测通过（仅 issue 关联/CLA 等测试型门禁项未过，非文档缺陷）"
           : ci.status === "success" ? "✅ 通过"
           : ci.status === "failed" ? "❌ 未通过"
-          : ci.status === "no_ci" ? "— 未触发 CI"
+          : ci.status === "no_ci" ? "— 无门禁数据"
           : (ci.status === "partial" || ci.status === "timeout") ? "⏳ 未出最终结论（近似计时）" : "—";
-        cards.push(dcard("clock", "社区CI成功", [
+        // 耗时只有"真实门禁 PR 计时"(ciPrSeconds)才显示，否则 —（如 GitHub 仓无 gitcode 门禁）
+        const rows = [
           ["状态", badge(ci.ciFailExpected ? "success" : ci.status)],
-          ["耗时", ci.minutes ? `${ci.minutes} min${sec ? `（${sec}s）` : ""}` : (sec ? `${sec}s` : "—")],
+          ["耗时", sec ? `${Math.max(1, Math.round(sec / 60))} min（${sec}s）` : "—"],
           ["是否通过", pass],
+          // PR 地址只放真实 PR 链接，没有就 —（绝不把说明文字塞进 PR 地址栏）
           ["PR 地址", ci.ciPr
             ? `<a href="${esc(ci.ciPrUrl)}" target="_blank" rel="noopener">${esc(ci.ciPr)} ↗</a>`
-            : (ci.ciNote ? esc(ci.ciNote) : "—")],
-        ]));
+            : "—"],
+        ];
+        if (ci.ciNote) rows.push(["说明", esc(ci.ciNote)]);
+        cards.push(dcard("clock", "社区CI成功", rows));
       }
     }
 
