@@ -14134,7 +14134,7 @@
      "name": "社区CI成功",
      "status": "partial",
      "minutes": 0,
-     "ciNote": "构建对齐CI，测试缺NPU/CANN环境断点"
+     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；本阶段＝本地构建是否复现仓库 CI 配置：构建已对齐，测试因缺 NPU/CANN 环境断点未对齐。无 PR 计时。"
     }
    ],
    "totalMinutes": 23,
@@ -14209,11 +14209,11 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 3,
-     "ciNote": "缺CANN/CUDA，安装超时"
+     "minutes": 0,
+     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；本地未复现 CI（缺 CANN、安装超时）。无 PR 计时。"
     }
    ],
-   "totalMinutes": 41,
+   "totalMinutes": 38,
    "build": {
     "status": "partial",
     "minutes": 15,
@@ -14273,11 +14273,11 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 2,
-     "ciNote": "缺CANN/CUDA(nvcc)"
+     "minutes": 0,
+     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；本地未复现 CI（缺 CANN/CUDA、README 缺 NPU 构建说明）。无 PR 计时。"
     }
    ],
-   "totalMinutes": 40,
+   "totalMinutes": 38,
    "build": {
     "status": "failed",
     "minutes": 15,
@@ -14343,10 +14343,11 @@
     {
      "name": "社区CI成功",
      "status": "unknown",
-     "minutes": 2
+     "minutes": 0,
+     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；重型构建窗口内未完成，无法判定复现。无 PR 计时。"
     }
    ],
-   "totalMinutes": 45,
+   "totalMinutes": 43,
    "build": {
     "status": "unknown",
     "minutes": 20,
