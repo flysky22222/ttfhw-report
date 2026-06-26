@@ -1860,7 +1860,7 @@
      "status": "no_ci",
      "minutes": 0,
      "ciPrSeconds": 0,
-     "ciNote": "无CI数据"
+     "ciNote": "openUBMC 机器人未处理该 PR（无任何门禁标签/评论），疑该仓 PR 无自动门禁"
     }
    ],
    "totalMinutes": 24,
@@ -4658,12 +4658,13 @@
     },
     {
      "name": "社区CI成功",
-     "status": "branch_fail",
+     "status": "no_ci",
      "minutes": 0,
-     "ciPrSeconds": 0
+     "ciPrSeconds": 0,
+     "ciNote": "fork 创建持续失败（已存在但不可达的异步异常状态，多次重试均失败），无侵入无法建 PR 触发门禁"
     }
    ],
-   "totalMinutes": 14,
+   "totalMinutes": 13,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
@@ -4871,7 +4872,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_memfabric_hybrid_20260511.json",
-   "id": 20
+   "id": 20,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -7442,11 +7444,62 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 1
+     "status": "success",
+     "minutes": 5,
+     "ciPrSeconds": 316,
+     "ciPr": "cann/ops-cv#1051",
+     "ciPrUrl": "https://gitcode.com/cann/ops-cv/pull/1051",
+     "ciChecks": [
+      {
+       "name": "codecheck",
+       "result": "OK"
+      },
+      {
+       "name": "SCA",
+       "result": "OK"
+      },
+      {
+       "name": "antipoison",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_checkpr",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_codespell_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_link_validity_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_resource_existence_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_tag_closed_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_markdownlint",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_codestyle",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_precommit",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 17,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg --soc=ascend910b -j16",
@@ -9238,11 +9291,12 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 2
+     "status": "no_ci",
+     "minutes": 0,
+     "ciNote": "/compile 已评论但编译流水线未触发（cann/shmem 门禁有额外前置，仅出 Linking Issue Notice），无侵入拿不到门禁结果"
     }
    ],
-   "totalMinutes": 18,
+   "totalMinutes": 16,
    "build": {
     "status": "failed",
     "command": "bash scripts/build.sh",
