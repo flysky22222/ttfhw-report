@@ -40,10 +40,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 22,
-     "ciPrSeconds": 1298,
-     "ciPr": "cann/hcomm#3050",
-     "ciPrUrl": "https://gitcode.com/cann/hcomm/pull/3050",
+     "minutes": 12,
+     "ciPrSeconds": 697,
+     "ciPr": "cann/hcomm#3100",
+     "ciPrUrl": "https://gitcode.com/cann/hcomm/pull/3100",
      "ciChecks": [
       {
        "name": "SCA",
@@ -134,7 +134,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 82,
+   "totalMinutes": 72,
    "build": {
     "status": "failed",
     "command": "",
@@ -300,7 +300,7 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 34,
-     "ciPrSeconds": 2049,
+     "ciPrSeconds": 2017,
      "ciPr": "openeuler/bishengjdk-8#332",
      "ciPrUrl": "https://gitcode.com/openeuler/bishengjdk-8/pull/332",
      "ciChecks": [
@@ -599,8 +599,8 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 9,
-     "ciPrSeconds": 550,
+     "minutes": 8,
+     "ciPrSeconds": 477,
      "ciPr": "openeuler/A-Tune#801",
      "ciPrUrl": "https://gitcode.com/openeuler/A-Tune/pull/801",
      "ciChecks": [
@@ -629,7 +629,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 39,
+   "totalMinutes": 38,
    "build": {
     "status": "success",
     "command": "cd A-Tune && make",
@@ -810,10 +810,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5,
-     "ciPrSeconds": 317,
-     "ciPr": "cann/amct#182",
-     "ciPrUrl": "https://gitcode.com/cann/amct/pull/182",
+     "minutes": 8,
+     "ciPrSeconds": 458,
+     "ciPr": "cann/amct#190",
+     "ciPrUrl": "https://gitcode.com/cann/amct/pull/190",
      "ciChecks": [
       {
        "name": "codecheck",
@@ -829,7 +829,7 @@
       },
       {
        "name": "Check_Pr",
-       "result": "FAIL"
+       "result": "OK"
       },
       {
        "name": "Compile_Ascend_X86",
@@ -869,7 +869,7 @@
       },
       {
        "name": "StaticCheck_codespell_check",
-       "result": "OK"
+       "result": "WARN"
       },
       {
        "name": "StaticCheck_link_validity_check",
@@ -885,14 +885,22 @@
       },
       {
        "name": "StaticCheck_markdownlint",
+       "result": "WARN"
+      },
+      {
+       "name": "UT_Test",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
        "result": "OK"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 10,
+   "totalMinutes": 13,
    "build": {
     "status": "unknown",
     "command": "bash build.sh --pkg",
@@ -1104,18 +1112,26 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 4,
-     "ciPrSeconds": 264,
-     "ciPr": "cann/asc-devkit#3548",
-     "ciPrUrl": "https://gitcode.com/cann/asc-devkit/pull/3548",
+     "status": "success",
+     "minutes": 2,
+     "ciPrSeconds": 138,
+     "ciPr": "cann/asc-devkit#3639",
+     "ciPrUrl": "https://gitcode.com/cann/asc-devkit/pull/3639",
      "ciChecks": [
       {
-       "name": "Compile_Ascend_X86",
+       "name": "SCA",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM",
+       "name": "antipoison",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_Pr",
        "result": "OK"
       },
       {
@@ -1123,15 +1139,39 @@
        "result": "OK"
       },
       {
-       "name": "PreSmoke_A900_npupool",
+       "name": "StaticCheck_codespell_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_link_validity_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_resource_existence_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_tag_closed_check",
+       "result": "OK"
+      },
+      {
+       "name": "StaticCheck_markdownlint",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_codestyle",
+       "result": "OK"
+      },
+      {
+       "name": "codecheck_precommit",
        "result": "OK"
       }
      ],
      "ciFailExpected": false,
-     "ciRealStatus": "failed"
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 34,
+   "totalMinutes": 32,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1326,8 +1366,8 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 8,
-     "ciPrSeconds": 475,
+     "minutes": 6,
+     "ciPrSeconds": 336,
      "ciPr": "cann/asc-tools#350",
      "ciPrUrl": "https://gitcode.com/cann/asc-tools/pull/350",
      "ciChecks": [
@@ -1412,7 +1452,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 17,
+   "totalMinutes": 15,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg -p <CANN_PATH>",
@@ -1607,8 +1647,8 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 9,
-     "ciPrSeconds": 543,
+     "minutes": 7,
+     "ciPrSeconds": 393,
      "ciPr": "cann/atvoss#60",
      "ciPrUrl": "https://gitcode.com/cann/atvoss/pull/60",
      "ciChecks": [
@@ -1665,7 +1705,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 36,
+   "totalMinutes": 34,
    "build": {
     "status": "success",
     "command": "bash scripts/build.sh -DSOC=ascend950 <target>",
@@ -1857,13 +1897,46 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0,
-     "ciNote": "openUBMC 机器人未处理该 PR（无任何门禁标签/评论），疑该仓 PR 无自动门禁"
+     "status": "success",
+     "minutes": 6,
+     "ciPrSeconds": 340,
+     "ciPr": "openUBMC/component_drivers#796",
+     "ciPrUrl": "https://gitcode.com/openUBMC/component_drivers/pull/796",
+     "ciChecks": [
+      {
+       "name": "precommit检查",
+       "result": "OK"
+      },
+      {
+       "name": "静态检查",
+       "result": "OK"
+      },
+      {
+       "name": "防投毒检查",
+       "result": "OK"
+      },
+      {
+       "name": "开源合规检查",
+       "result": "OK"
+      },
+      {
+       "name": "编译构建",
+       "result": "OK"
+      },
+      {
+       "name": "UT测试",
+       "result": "OK"
+      },
+      {
+       "name": "头文件检查",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 24,
+   "totalMinutes": 30,
    "build": {
     "status": "failed",
     "command": "./scripts/smart_build.sh (recommended) OR meson setup builddir && meson compile -C builddir -j $(nproc)",
@@ -2095,10 +2168,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 10,
-     "ciPrSeconds": 624,
-     "ciPr": "cann/driver#97",
-     "ciPrUrl": "https://gitcode.com/cann/driver/pull/97",
+     "minutes": 13,
+     "ciPrSeconds": 802,
+     "ciPr": "cann/driver#95",
+     "ciPrUrl": "https://gitcode.com/cann/driver/pull/95",
      "ciChecks": [
       {
        "name": "codecheck",
@@ -2114,7 +2187,7 @@
       },
       {
        "name": "Check_Pr",
-       "result": "FAIL"
+       "result": "OK"
       },
       {
        "name": "Compile_Ascend_X86_driver_ubuntu_24_04_npu_910b",
@@ -2147,13 +2220,17 @@
       {
        "name": "pre_comment",
        "result": "OK"
+      },
+      {
+       "name": "UT_Test",
+       "result": "OK"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 80,
+   "totalMinutes": 83,
    "build": {
     "status": "partial",
     "command": "bash build.sh --pkg --soc=ascend910b [-jN]",
@@ -2308,61 +2385,161 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 4,
-     "ciPrSeconds": 253,
-     "ciPr": "cann/ge#3705",
-     "ciPrUrl": "https://gitcode.com/cann/ge/pull/3705",
+     "minutes": 13,
+     "ciPrSeconds": 791,
+     "ciPr": "cann/ge#3730",
+     "ciPrUrl": "https://gitcode.com/cann/ge/pull/3730",
      "ciChecks": [
       {
-       "name": "codecheck_Pr",
-       "result": "FAIL"
-      },
-      {
-       "name": "codecheck",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "antipoison",
+       "name": "Compile_X86_compiler",
        "result": "OK"
       },
       {
-       "name": "SCA",
+       "name": "Compile_X86_executor",
        "result": "OK"
       },
       {
-       "name": "codecheck_dt",
+       "name": "Compile_X86_dflow",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit",
-       "result": "WARN"
-      },
-      {
-       "name": "StaticCheck_codespell_check",
+       "name": "UT_Test_dflow",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_link_validity_check",
+       "name": "UT_Test_ge_common",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_resource_existence_check",
+       "name": "UT_Test_parser",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_tag_closed_check",
+       "name": "UT_Test_python",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_markdownlint",
+       "name": "UT_Test_rt",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_acl",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_autofuse",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_executor",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_autofuse_ascendc_api",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_dflow",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_ge_common",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_parser",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_python",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_rt",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_autofuse",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_executor",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_hetero",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_autofuse_ascendc_api",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_autofuse_e2e",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_fe",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_tefusion",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_fe",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_tefusion",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_ge_common_atc",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Report_graphengine",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Report_ge_executor_c",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Report_ge_autofuse",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_Report_graphengine",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_Report_ge_executor_c",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_Report_ge_autofuse",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Report_fe",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_Report_fe",
        "result": "OK"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 4,
+   "totalMinutes": 13,
    "build": {
     "status": "unknown",
     "command": "bash build.sh --<pkg_type>",
@@ -2528,37 +2705,45 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 12,
-     "ciPrSeconds": 729,
-     "ciPr": "cann/graph-autofusion#1046",
-     "ciPrUrl": "https://gitcode.com/cann/graph-autofusion/pull/1046",
+     "minutes": 11,
+     "ciPrSeconds": 680,
+     "ciPr": "cann/graph-autofusion#1071",
+     "ciPrUrl": "https://gitcode.com/cann/graph-autofusion/pull/1071",
      "ciChecks": [
       {
-       "name": "Compile_Ascend_X86",
+       "name": "UT_Test_Python_superkernel",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM",
+       "name": "ST_Test_Python_superkernel",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24",
+       "name": "UT_Test_superkernel",
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_ARM_ubuntu24",
+       "name": "UT_Test_autofuse_framework",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_autofuse_framework",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_autofuse_ascendc_api",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_autofuse_ascendc_api",
+       "result": "OK"
+      },
+      {
+       "name": "ST_Test_autofuse_e2e",
        "result": "OK"
       },
       {
        "name": "pre_comment",
-       "result": "OK"
-      },
-      {
-       "name": "API_Check",
-       "result": "OK"
-      },
-      {
-       "name": "PreSmoke_A900_npupool",
        "result": "OK"
       }
      ],
@@ -2566,7 +2751,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 52,
+   "totalMinutes": 51,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg",
@@ -2732,10 +2917,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5,
-     "ciPrSeconds": 272,
-     "ciPr": "openeuler/ham#13",
-     "ciPrUrl": "https://gitcode.com/openeuler/ham/pull/13",
+     "minutes": 1,
+     "ciPrSeconds": 89,
+     "ciPr": "openeuler/ham#12",
+     "ciPrUrl": "https://gitcode.com/openeuler/ham/pull/12",
      "ciChecks": [
       {
        "name": "check_sca",
@@ -2770,11 +2955,11 @@
        "result": "FAIL"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 17,
+   "totalMinutes": 13,
    "build": {
     "status": "success",
     "command": "mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j<thread-num>  OR  bash build.sh -t release",
@@ -2963,10 +3148,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 15,
-     "ciPrSeconds": 879,
-     "ciPr": "cann/hccl#1517",
-     "ciPrUrl": "https://gitcode.com/cann/hccl/pull/1517",
+     "minutes": 4,
+     "ciPrSeconds": 244,
+     "ciPr": "cann/hccl#1556",
+     "ciPrUrl": "https://gitcode.com/cann/hccl/pull/1556",
      "ciChecks": [
       {
        "name": "SCA",
@@ -2993,14 +3178,6 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_ubuntu24",
-       "result": "OK"
-      },
-      {
-       "name": "Compile_Ascend_ARM_ubuntu24",
-       "result": "OK"
-      },
-      {
        "name": "StaticCheck_codespell_check",
        "result": "OK"
       },
@@ -3021,19 +3198,7 @@
        "result": "OK"
       },
       {
-       "name": "Compile_Ascend_X86_monitor",
-       "result": "OK"
-      },
-      {
-       "name": "Compile_Ascend_ARM_monitor",
-       "result": "OK"
-      },
-      {
        "name": "UT_Test",
-       "result": "OK"
-      },
-      {
-       "name": "API_Check",
        "result": "OK"
       },
       {
@@ -3046,7 +3211,7 @@
       },
       {
        "name": "precommit",
-       "result": "OK"
+       "result": "WARN"
       },
       {
        "name": "codecheck_codestyle",
@@ -3065,7 +3230,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 85,
+   "totalMinutes": 74,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg",
@@ -3242,10 +3407,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 6,
-     "ciPrSeconds": 330,
-     "ciPr": "cann/hixl#672",
-     "ciPrUrl": "https://gitcode.com/cann/hixl/pull/672",
+     "minutes": 2,
+     "ciPrSeconds": 129,
+     "ciPr": "cann/hixl#682",
+     "ciPrUrl": "https://gitcode.com/cann/hixl/pull/682",
      "ciChecks": [
       {
        "name": "codecheck",
@@ -3300,7 +3465,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 15,
+   "totalMinutes": 11,
    "build": {
     "status": "failed",
     "command": [
@@ -3481,7 +3646,7 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 189,
+     "ciPrSeconds": 169,
      "ciPr": "openeuler/iSulad#2641",
      "ciPrUrl": "https://gitcode.com/openeuler/iSulad/pull/2641",
      "ciChecks": [
@@ -3919,15 +4084,15 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 4,
-     "ciPrSeconds": 260,
-     "ciPr": "openUBMC/libipmi#63",
-     "ciPrUrl": "https://gitcode.com/openUBMC/libipmi/pull/63",
+     "ciPrSeconds": 259,
+     "ciPr": "openUBMC/libipmi#65",
+     "ciPrUrl": "https://gitcode.com/openUBMC/libipmi/pull/65",
      "ciChecks": [
       {
        "name": "precommit检查",
-       "result": "FAIL"
+       "result": "OK"
       },
       {
        "name": "静态检查",
@@ -3951,7 +4116,7 @@
       }
      ],
      "ciFailExpected": false,
-     "ciRealStatus": "failed"
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 25,
@@ -4160,11 +4325,11 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 7,
-     "ciPrSeconds": 443,
-     "ciPr": "openUBMC/libmcpp#581",
-     "ciPrUrl": "https://gitcode.com/openUBMC/libmcpp/pull/581",
+     "ciPrSeconds": 396,
+     "ciPr": "openUBMC/libmcpp#590",
+     "ciPrUrl": "https://gitcode.com/openUBMC/libmcpp/pull/590",
      "ciChecks": [
       {
        "name": "precommit检查",
@@ -4187,16 +4352,16 @@
        "result": "OK"
       },
       {
-       "name": "ut",
+       "name": "UT测试",
        "result": "OK"
       },
       {
-       "name": "header",
-       "result": "FAIL"
+       "name": "头文件检查",
+       "result": "OK"
       }
      ],
      "ciFailExpected": false,
-     "ciRealStatus": "failed"
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 36,
@@ -4446,13 +4611,13 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5,
-     "ciPrSeconds": 273,
-     "ciPr": "Ascend/memcache#330",
-     "ciPrUrl": "https://gitcode.com/Ascend/memcache/pull/330"
+     "minutes": 14,
+     "ciPrSeconds": 845,
+     "ciPr": "Ascend/memcache#331",
+     "ciPrUrl": "https://gitcode.com/Ascend/memcache/pull/331"
     }
    ],
-   "totalMinutes": 28,
+   "totalMinutes": 37,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE",
@@ -4658,13 +4823,14 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0,
-     "ciNote": "fork 创建持续失败（已存在但不可达的异步异常状态，多次重试均失败），无侵入无法建 PR 触发门禁"
+     "status": "success",
+     "minutes": 12,
+     "ciPrSeconds": 735,
+     "ciPr": "Ascend/memfabric_hybrid#883",
+     "ciPrUrl": "https://gitcode.com/Ascend/memfabric_hybrid/pull/883"
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 25,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
@@ -4894,26 +5060,42 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 5,
-     "ciPrSeconds": 291,
-     "ciPr": "cann/metadef#377",
-     "ciPrUrl": "https://gitcode.com/cann/metadef/pull/377",
+     "status": "success",
+     "minutes": 2,
+     "ciPrSeconds": 119,
+     "ciPr": "cann/metadef#381",
+     "ciPrUrl": "https://gitcode.com/cann/metadef/pull/381",
      "ciChecks": [
       {
-       "name": "UT_Test",
+       "name": "Compile_Ascend_X86",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
        "name": "pre_comment",
        "result": "OK"
+      },
+      {
+       "name": "API_Check",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900_npupool",
+       "result": "OK"
       }
      ],
      "ciFailExpected": false,
-     "ciRealStatus": "failed"
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 30,
+   "totalMinutes": 27,
    "build": {
     "status": "failed",
     "command": "bash build.sh",
@@ -6218,10 +6400,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 6,
-     "ciPrSeconds": 331,
-     "ciPr": "cann/oam-tools#340",
-     "ciPrUrl": "https://gitcode.com/cann/oam-tools/pull/340",
+     "minutes": 9,
+     "ciPrSeconds": 526,
+     "ciPr": "cann/oam-tools#358",
+     "ciPrUrl": "https://gitcode.com/cann/oam-tools/pull/358",
      "ciChecks": [
       {
        "name": "codecheck",
@@ -6237,7 +6419,7 @@
       },
       {
        "name": "Check_Pr",
-       "result": "FAIL"
+       "result": "OK"
       },
       {
        "name": "Compile_Ascend_X86",
@@ -6245,10 +6427,6 @@
       },
       {
        "name": "Compile_Ascend_ARM",
-       "result": "OK"
-      },
-      {
-       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
@@ -6261,7 +6439,7 @@
       },
       {
        "name": "precommit",
-       "result": "OK"
+       "result": "WARN"
       },
       {
        "name": "StaticCheck_codespell_check",
@@ -6282,13 +6460,29 @@
       {
        "name": "StaticCheck_markdownlint",
        "result": "OK"
+      },
+      {
+       "name": "UT_Test_asys",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_msaicerr",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_msprof",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 75,
+   "totalMinutes": 78,
    "build": {
     "status": "success",
     "command": "bash build.sh",
@@ -6466,10 +6660,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 31,
-     "ciPrSeconds": 1871,
-     "ciPr": "openeuler/OmniStateStore#105",
-     "ciPrUrl": "https://gitcode.com/openeuler/OmniStateStore/pull/105",
+     "minutes": 5,
+     "ciPrSeconds": 288,
+     "ciPr": "openeuler/OmniStateStore#106",
+     "ciPrUrl": "https://gitcode.com/openeuler/OmniStateStore/pull/106",
      "ciChecks": [
       {
        "name": "check_code",
@@ -6508,7 +6702,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 31,
+   "totalMinutes": 5,
    "build": {
     "status": "unknown",
     "command": "bash scripts/build.sh -t release (release) / bash scripts/build.sh -t debug --ut (debug + UT)",
@@ -6923,10 +7117,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5,
-     "ciPrSeconds": 316,
-     "ciPr": "cann/opbase#557",
-     "ciPrUrl": "https://gitcode.com/cann/opbase/pull/557",
+     "minutes": 3,
+     "ciPrSeconds": 204,
+     "ciPr": "cann/opbase#566",
+     "ciPrUrl": "https://gitcode.com/cann/opbase/pull/566",
      "ciChecks": [
       {
        "name": "codecheck",
@@ -7005,7 +7199,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 20,
+   "totalMinutes": 18,
    "build": {
     "status": "failed",
     "command": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
@@ -7212,10 +7406,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 24,
-     "ciPrSeconds": 1442,
-     "ciPr": "openeuler/kernel#24186",
-     "ciPrUrl": "https://gitcode.com/openeuler/kernel/pull/24186",
+     "minutes": 31,
+     "ciPrSeconds": 1856,
+     "ciPr": "openeuler/kernel#24241",
+     "ciPrUrl": "https://gitcode.com/openeuler/kernel/pull/24241",
      "ciChecks": [
       {
        "name": "check_package_license",
@@ -7247,14 +7441,14 @@
       },
       {
        "name": "riscv64",
-       "result": "OK"
+       "result": "WARN"
       }
      ],
      "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 50,
+   "totalMinutes": 57,
    "build": {
     "status": "success",
     "command": "make defconfig && make -j<N>",
@@ -7445,53 +7639,109 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5,
-     "ciPrSeconds": 316,
+     "minutes": 8,
+     "ciPrSeconds": 466,
      "ciPr": "cann/ops-cv#1051",
      "ciPrUrl": "https://gitcode.com/cann/ops-cv/pull/1051",
      "ciChecks": [
       {
-       "name": "codecheck",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "SCA",
+       "name": "Compile_Ascend_X86_mobile_station",
        "result": "OK"
       },
       {
-       "name": "antipoison",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "codecheck_checkpr",
+       "name": "Compile_Ascend_X86_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_codespell_check",
+       "name": "Compile_Ascend_ARM_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_link_validity_check",
+       "name": "Compile_Ascend_X86_A5",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_resource_existence_check",
+       "name": "Compile_Ascend_ARM_A5",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_tag_closed_check",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_markdownlint",
+       "name": "Compile_Pre",
        "result": "OK"
       },
       {
-       "name": "codecheck_codestyle",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit",
+       "name": "Compile_Ascend_X86_mobile_station_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_experimental_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_A5_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_experimental_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_A5_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_910b",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_910c",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_950",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_classify",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
+      },
+      {
+       "name": "API_Check",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_ATK_Test_A2",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_report_lcov",
        "result": "OK"
       }
      ],
@@ -7499,7 +7749,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 17,
+   "totalMinutes": 20,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg --soc=ascend910b -j16",
@@ -7696,53 +7946,85 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 5,
-     "ciPrSeconds": 317,
-     "ciPr": "cann/ops-math#3533",
-     "ciPrUrl": "https://gitcode.com/cann/ops-math/pull/3533",
+     "minutes": 7,
+     "ciPrSeconds": 421,
+     "ciPr": "cann/ops-math#3566",
+     "ciPrUrl": "https://gitcode.com/cann/ops-math/pull/3566",
      "ciChecks": [
       {
-       "name": "codecheck",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "SCA",
+       "name": "Compile_Ascend_X86_mobile_station",
        "result": "OK"
       },
       {
-       "name": "antipoison",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "codecheck_Pr",
+       "name": "Compile_Ascend_X86_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_codespell_check",
+       "name": "Compile_Ascend_ARM_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_link_validity_check",
+       "name": "Compile_Ascend_single",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_resource_existence_check",
+       "name": "Compile_Ascend_X86_A5",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_tag_closed_check",
+       "name": "Compile_Ascend_ARM_A5",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_markdownlint",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "codecheck_codestyle",
+       "name": "Compile_harmony-infer",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit",
+       "name": "Compile_X86_monitor_910b",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_910c",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_950",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_harmony-infer-chs-math",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_experimental",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_kernel",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_ATK_Test_A2",
        "result": "OK"
       }
      ],
@@ -7750,7 +8032,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 37,
+   "totalMinutes": 39,
    "build": {
     "status": "failed",
     "command": "bash build.sh --pkg --soc=${soc_version} --ops=${op_name} -j${threads}",
@@ -7891,61 +8173,129 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 4,
-     "ciPrSeconds": 262,
-     "ciPr": "cann/ops-nn#6508",
-     "ciPrUrl": "https://gitcode.com/cann/ops-nn/pull/6508",
+     "minutes": 11,
+     "ciPrSeconds": 662,
+     "ciPr": "cann/ops-nn#6605",
+     "ciPrUrl": "https://gitcode.com/cann/ops-nn/pull/6605",
      "ciChecks": [
       {
-       "name": "codecheck",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "antipoison",
+       "name": "Compile_Ascend_X86_mobile_station",
        "result": "OK"
       },
       {
-       "name": "codecheck_checkpr",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_codespell_check",
+       "name": "Compile_Ascend_single",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_link_validity_check",
+       "name": "Compile_Ascend_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_resource_existence_check",
+       "name": "Compile_Ascend_X86_950",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_tag_closed_check",
+       "name": "Compile_Ascend_ARM_950",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_markdownlint",
+       "name": "Compile_Pre",
        "result": "OK"
       },
       {
-       "name": "codecheck_style",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "SCA",
+       "name": "Compile_Ascend_X86_mobile_station_ubuntu24",
        "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_950_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_single_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_experimental_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_950_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_910b",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_910c",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_X86_monitor_950",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_classify",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_ophost",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_opapi",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_kernel",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_opgraph",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
+      },
+      {
+       "name": "API_Check",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_ATK_Test_A2",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_report_lcov",
+       "result": "WARN"
       }
      ],
      "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 32,
    "build": {
     "status": "unknown",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
@@ -8172,61 +8522,77 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 4,
-     "ciPrSeconds": 270,
-     "ciPr": "cann/ops-transformer#7505",
-     "ciPrUrl": "https://gitcode.com/cann/ops-transformer/pull/7505",
+     "minutes": 17,
+     "ciPrSeconds": 1041,
+     "ciPr": "cann/ops-transformer#7603",
+     "ciPrUrl": "https://gitcode.com/cann/ops-transformer/pull/7603",
      "ciChecks": [
       {
-       "name": "codecheck",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "SCA",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "antipoison",
+       "name": "Compile_Ascend_X86_mobile_station",
        "result": "OK"
       },
       {
-       "name": "codecheck_style",
+       "name": "Compile_Ascend_X86_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_codespell_check",
+       "name": "Compile_Ascend_ARM_experimental",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_link_validity_check",
+       "name": "Compile_Pre",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_resource_existence_check",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_tag_closed_check",
+       "name": "Compile_X86_monitor_910b",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_markdownlint",
+       "name": "Compile_X86_monitor_910c",
        "result": "OK"
       },
       {
-       "name": "codecheck_checkpr",
+       "name": "Compile_X86_monitor_950",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit",
-       "result": "WARN"
+       "name": "Compile_Ascend_X86_experimental_950",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_experimental_950",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_ATK_Test_A2",
+       "result": "OK"
       }
      ],
      "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 29,
+   "totalMinutes": 42,
    "build": {
     "status": "success",
     "command": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
@@ -8411,10 +8777,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 6,
-     "ciPrSeconds": 382,
-     "ciPr": "cann/pto-isa#1183",
-     "ciPrUrl": "https://gitcode.com/cann/pto-isa/pull/1183",
+     "minutes": 4,
+     "ciPrSeconds": 269,
+     "ciPr": "cann/pto-isa#1193",
+     "ciPrUrl": "https://gitcode.com/cann/pto-isa/pull/1193",
      "ciChecks": [
       {
        "name": "codecheck",
@@ -8458,7 +8824,7 @@
       },
       {
        "name": "precommit",
-       "result": "OK"
+       "result": "WARN"
       },
       {
        "name": "Compile_Ascend_ARM_A5",
@@ -8477,7 +8843,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 73,
+   "totalMinutes": 71,
    "build": {
     "status": "success",
     "command": "python3 tests/run_cpu.py --clean --verbose",
@@ -8636,30 +9002,42 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 3,
-     "ciPrSeconds": 184,
-     "ciPr": "cann/pyasc#134",
-     "ciPrUrl": "https://gitcode.com/cann/pyasc/pull/134",
+     "status": "success",
+     "minutes": 14,
+     "ciPrSeconds": 867,
+     "ciPr": "cann/pyasc#132",
+     "ciPrUrl": "https://gitcode.com/cann/pyasc/pull/132",
      "ciChecks": [
       {
-       "name": "UT_Test",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "UT_Test_Python",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
        "name": "pre_comment",
        "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
       }
      ],
      "ciFailExpected": false,
-     "ciRealStatus": "failed"
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 58,
+   "totalMinutes": 69,
    "build": {
     "status": "success",
     "command": "python3 -m pip install . (普通模式) 或 python3 -m pip install -e . (开发者模式)",
@@ -8843,12 +9221,74 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciNote": "上游 pre-receive hook 拒绝建 PR（DCO/格式校验），无侵入无法触发门禁"
+     "status": "success",
+     "minutes": 32,
+     "ciPrSeconds": 1931,
+     "ciPr": "cann/pypto#4326",
+     "ciPrUrl": "https://gitcode.com/cann/pypto/pull/4326",
+     "ciChecks": [
+      {
+       "name": "Compile_Ascend_X86",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_X86_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM",
+       "result": "OK"
+      },
+      {
+       "name": "Compile_Ascend_ARM_ubuntu24",
+       "result": "OK"
+      },
+      {
+       "name": "pre_comment",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Py3_ninja_simulation",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Py3_ninja",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Cpp_make_clang",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Cpp_make_gnu",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Cpp_make_gnu_part_1",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Cpp_make_gnu_part_2",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_Cpp_make_gnu_part_3",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_report",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 55,
    "build": {
     "status": "failed",
     "command": "python3 -m pip install . --verbose",
@@ -9043,53 +9483,117 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 4,
-     "ciPrSeconds": 246,
-     "ciPr": "cann/runtime#3104",
-     "ciPrUrl": "https://gitcode.com/cann/runtime/pull/3104",
+     "minutes": 21,
+     "ciPrSeconds": 1258,
+     "ciPr": "cann/runtime#3161",
+     "ciPrUrl": "https://gitcode.com/cann/runtime/pull/3161",
      "ciChecks": [
       {
-       "name": "codecheck",
+       "name": "Compile_Ascend_X86",
        "result": "OK"
       },
       {
-       "name": "SCA",
+       "name": "Compile_Ascend_ARM",
        "result": "OK"
       },
       {
-       "name": "antipoison",
+       "name": "pre_comment",
        "result": "OK"
       },
       {
-       "name": "codecheck_Check_Pr",
+       "name": "Compile_Ascend_X86_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "codecheck_style",
+       "name": "Compile_Ascend_ARM_ubuntu24",
        "result": "OK"
       },
       {
-       "name": "codecheck_precommit",
+       "name": "UT_Test_acl",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_codespell_check",
+       "name": "UT_Test_rts_v201",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_link_validity_check",
+       "name": "UT_Test_rts_c",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_resource_existence_check",
+       "name": "UT_Test_rts_david",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_tag_closed_check",
+       "name": "UT_Test_rts_910b",
        "result": "OK"
       },
       {
-       "name": "StaticCheck_markdownlint",
+       "name": "UT_Test_rts_common",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_platform",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_qs",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_aicpusd",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_tsd",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_error_manager",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_slog",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_atrace",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_msprof_part1",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_msprof_part2",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_adump",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_mmpa",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_camodel_check",
+       "result": "OK"
+      },
+      {
+       "name": "API_Check",
+       "result": "OK"
+      },
+      {
+       "name": "PreSmoke_A900_npupool",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_rts_report",
+       "result": "OK"
+      },
+      {
+       "name": "UT_Test_msprof_report",
        "result": "OK"
       }
      ],
@@ -9097,7 +9601,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 43,
+   "totalMinutes": 60,
    "build": {
     "status": "success",
     "command": "source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9",
@@ -9508,7 +10012,7 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 177,
+     "ciPrSeconds": 159,
      "ciPr": "openeuler/stratovirt#1964",
      "ciPrUrl": "https://gitcode.com/openeuler/stratovirt/pull/1964",
      "ciChecks": [
@@ -9853,10 +10357,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 18,
-     "ciPrSeconds": 1078,
-     "ciPr": "openeuler/ubs-comm#876",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-comm/pull/876",
+     "minutes": 14,
+     "ciPrSeconds": 828,
+     "ciPr": "openeuler/ubs-comm#884",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-comm/pull/884",
      "ciChecks": [
       {
        "name": "check_sca",
@@ -9888,14 +10392,14 @@
       },
       {
        "name": "check_issue_associate",
-       "result": "FAIL"
+       "result": "OK"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 54,
+   "totalMinutes": 50,
    "build": {
     "status": "success",
     "command": "cd /workspace && bash build.sh",
@@ -10076,10 +10580,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 3,
-     "ciPrSeconds": 174,
-     "ciPr": "openeuler/ubs-engine#1004",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-engine/pull/1004",
+     "minutes": 16,
+     "ciPrSeconds": 958,
+     "ciPr": "openeuler/ubs-engine#1022",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-engine/pull/1022",
      "ciChecks": [
       {
        "name": "check_sca",
@@ -10118,7 +10622,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 33,
+   "totalMinutes": 46,
    "build": {
     "status": "failed",
     "command": "bash build.sh                # Release构建\nbash build.sh -D             # Debug构建\nbash build.sh -T RelWithDebInfo  # RelWithDebInfo构建\nbash build.sh package        # 构建并打包为RPM",
@@ -10367,10 +10871,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 15,
-     "ciPrSeconds": 897,
-     "ciPr": "openeuler/ubs-io#183",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-io/pull/183",
+     "minutes": 10,
+     "ciPrSeconds": 588,
+     "ciPr": "openeuler/ubs-io#185",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-io/pull/185",
      "ciChecks": [
       {
        "name": "check_sca",
@@ -10402,14 +10906,14 @@
       },
       {
        "name": "check_issue_associate",
-       "result": "FAIL"
+       "result": "OK"
       }
      ],
      "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 15,
+   "totalMinutes": 10,
    "build": {
     "status": "unknown",
     "command": "bash build.sh -t release",
@@ -10634,8 +11138,8 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 10,
-     "ciPrSeconds": 580,
+     "minutes": 9,
+     "ciPrSeconds": 558,
      "ciPr": "openeuler/ubs-mem#67",
      "ciPrUrl": "https://gitcode.com/openeuler/ubs-mem/pull/67",
      "ciChecks": [
@@ -10676,7 +11180,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 10,
+   "totalMinutes": 9,
    "build": {
     "status": "unknown",
     "command": "sh build.sh -t release [-p]",
@@ -10930,7 +11434,7 @@
      "name": "社区CI成功",
      "status": "success",
      "minutes": 3,
-     "ciPrSeconds": 195,
+     "ciPrSeconds": 178,
      "ciPr": "openeuler/ubs-virt#212",
      "ciPrUrl": "https://gitcode.com/openeuler/ubs-virt/pull/212",
      "ciChecks": [
@@ -11197,10 +11701,10 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 6,
-     "ciPrSeconds": 365,
-     "ciPr": "openeuler/ubturbo#264",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubturbo/pull/264",
+     "minutes": 7,
+     "ciPrSeconds": 408,
+     "ciPr": "openeuler/ubturbo#263",
+     "ciPrUrl": "https://gitcode.com/openeuler/ubturbo/pull/263",
      "ciChecks": [
       {
        "name": "check_sca",
@@ -11232,14 +11736,14 @@
       },
       {
        "name": "check_issue_associate",
-       "result": "FAIL"
+       "result": "OK"
       }
      ],
-     "ciFailExpected": true,
+     "ciFailExpected": false,
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 6,
+   "totalMinutes": 7,
    "build": {
     "status": "unknown",
     "command": "git submodule update --init --recursive && dos2unix build.sh && sh build.sh",
