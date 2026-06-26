@@ -298,14 +298,34 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 14,
-     "ciPrSeconds": 834,
+     "status": "success",
+     "minutes": 34,
+     "ciPrSeconds": 2049,
      "ciPr": "openeuler/bishengjdk-8#332",
-     "ciPrUrl": "https://gitcode.com/openeuler/bishengjdk-8/pull/332"
+     "ciPrUrl": "https://gitcode.com/openeuler/bishengjdk-8/pull/332",
+     "ciChecks": [
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "OK"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 58,
+   "totalMinutes": 78,
    "build": {
     "status": "success",
     "command": "./configure --with-boot-jdk=/usr/lib/jvm/java-1.8.0-openjdk",
@@ -582,7 +602,31 @@
      "minutes": 9,
      "ciPrSeconds": 550,
      "ciPr": "openeuler/A-Tune#801",
-     "ciPrUrl": "https://gitcode.com/openeuler/A-Tune/pull/801"
+     "ciPrUrl": "https://gitcode.com/openeuler/A-Tune/pull/801",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 39,
@@ -2687,11 +2731,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 5,
      "ciPrSeconds": 272,
      "ciPr": "openeuler/ham#13",
-     "ciPrUrl": "https://gitcode.com/openeuler/ham/pull/13"
+     "ciPrUrl": "https://gitcode.com/openeuler/ham/pull/13",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": true,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 17,
@@ -3403,7 +3483,35 @@
      "minutes": 3,
      "ciPrSeconds": 189,
      "ciPr": "openeuler/iSulad#2641",
-     "ciPrUrl": "https://gitcode.com/openeuler/iSulad/pull/2641"
+     "ciPrUrl": "https://gitcode.com/openeuler/iSulad/pull/2641",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "OK"
+      },
+      {
+       "name": "check_anti_poisoning",
+       "result": "OK"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 53,
@@ -3609,12 +3717,14 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0
+     "status": "failed",
+     "minutes": 3,
+     "ciPrSeconds": 166,
+     "ciPr": "kunpengcompute/kupl#31",
+     "ciPrUrl": "https://gitcode.com/kunpengcompute/kupl/pull/31"
     }
    ],
-   "totalMinutes": 27,
+   "totalMinutes": 28,
    "build": {
     "status": "success",
     "command": "sh build.sh --install_path=[KUPL 安装目录]",
@@ -3787,7 +3897,8 @@
    "date": "2026-06-24",
    "month": "2026-06",
    "reportFile": "data-src/dev-report/verification_report_WSL_kupl_20260511.json",
-   "id": 16
+   "id": 16,
+   "sampleMinutes": 0
   },
   {
    "phases": [
@@ -3809,13 +3920,41 @@
     {
      "name": "社区CI成功",
      "status": "failed",
-     "minutes": 1,
-     "ciPrSeconds": 80,
+     "minutes": 4,
+     "ciPrSeconds": 260,
      "ciPr": "openUBMC/libipmi#63",
-     "ciPrUrl": "https://gitcode.com/openUBMC/libipmi/pull/63"
+     "ciPrUrl": "https://gitcode.com/openUBMC/libipmi/pull/63",
+     "ciChecks": [
+      {
+       "name": "precommit检查",
+       "result": "FAIL"
+      },
+      {
+       "name": "静态检查",
+       "result": "OK"
+      },
+      {
+       "name": "防投毒检查",
+       "result": "OK"
+      },
+      {
+       "name": "开源合规检查",
+       "result": "OK"
+      },
+      {
+       "name": "编译构建",
+       "result": "OK"
+      },
+      {
+       "name": "UT测试",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "failed"
     }
    ],
-   "totalMinutes": 22,
+   "totalMinutes": 25,
    "build": {
     "status": "success",
     "command": "meson setup builddir && meson compile -C builddir",
@@ -4306,13 +4445,14 @@
     },
     {
      "name": "社区CI成功",
-     "status": "no_ci",
-     "minutes": 0,
-     "ciPrSeconds": 0,
-     "ciNote": "无CI数据"
+     "status": "success",
+     "minutes": 5,
+     "ciPrSeconds": 273,
+     "ciPr": "Ascend/memcache#330",
+     "ciPrUrl": "https://gitcode.com/Ascend/memcache/pull/330"
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 28,
    "build": {
     "status": "success",
     "command": "bash script/build_and_pack_run.sh --build_mode RELEASE",
@@ -5207,13 +5347,13 @@
     {
      "name": "社区CI成功",
      "status": "success",
-     "minutes": 3,
-     "ciPrSeconds": 152,
+     "minutes": 10,
+     "ciPrSeconds": 604,
      "ciPr": "Ascend/MindIE-PyMotor#341",
      "ciPrUrl": "https://gitcode.com/Ascend/MindIE-PyMotor/pull/341"
     }
    ],
-   "totalMinutes": 16,
+   "totalMinutes": 23,
    "build": {
     "status": "success",
     "command": "./build.sh (runs scripts/generate_proto.sh, then python -m pip wheel . --no-deps --use-pep517 -w dist)",
@@ -5455,7 +5595,7 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 8,
      "ciPrSeconds": 469,
      "ciPr": "Ascend/MindIE-SD#379",
@@ -5669,14 +5809,14 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 3,
-     "ciPrSeconds": 158,
+     "status": "success",
+     "minutes": 19,
+     "ciPrSeconds": 1129,
      "ciPr": "Ascend/MindIE-LLM#1076",
      "ciPrUrl": "https://gitcode.com/Ascend/MindIE-LLM/pull/1076"
     }
    ],
-   "totalMinutes": 58,
+   "totalMinutes": 74,
    "build": {
     "status": "failed",
     "command": "",
@@ -6323,14 +6463,50 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 1,
-     "ciPrSeconds": 36,
+     "status": "success",
+     "minutes": 31,
+     "ciPrSeconds": 1871,
      "ciPr": "openeuler/OmniStateStore#105",
-     "ciPrUrl": "https://gitcode.com/openeuler/OmniStateStore/pull/105"
+     "ciPrUrl": "https://gitcode.com/openeuler/OmniStateStore/pull/105",
+     "ciChecks": [
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "check_anti_poisoning",
+       "result": "OK"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 1,
+   "totalMinutes": 31,
    "build": {
     "status": "unknown",
     "command": "bash scripts/build.sh -t release (release) / bash scripts/build.sh -t debug --ut (debug + UT)",
@@ -7033,14 +7209,50 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 9,
-     "ciPrSeconds": 568,
+     "status": "success",
+     "minutes": 24,
+     "ciPrSeconds": 1442,
      "ciPr": "openeuler/kernel#24186",
-     "ciPrUrl": "https://gitcode.com/openeuler/kernel/pull/24186"
+     "ciPrUrl": "https://gitcode.com/openeuler/kernel/pull/24186",
+     "ciChecks": [
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "ppc",
+       "result": "OK"
+      },
+      {
+       "name": "ppc64",
+       "result": "OK"
+      },
+      {
+       "name": "loongarch",
+       "result": "OK"
+      },
+      {
+       "name": "arm",
+       "result": "OK"
+      },
+      {
+       "name": "riscv64",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 35,
+   "totalMinutes": 50,
    "build": {
     "status": "success",
     "command": "make defconfig && make -j<N>",
@@ -9244,7 +9456,31 @@
      "minutes": 3,
      "ciPrSeconds": 177,
      "ciPr": "openeuler/stratovirt#1964",
-     "ciPrUrl": "https://gitcode.com/openeuler/stratovirt/pull/1964"
+     "ciPrUrl": "https://gitcode.com/openeuler/stratovirt/pull/1964",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 14,
@@ -9562,11 +9798,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 18,
      "ciPrSeconds": 1078,
      "ciPr": "openeuler/ubs-comm#876",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-comm/pull/876"
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-comm/pull/876",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": true,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 54,
@@ -9749,11 +10021,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 3,
      "ciPrSeconds": 174,
      "ciPr": "openeuler/ubs-engine#1004",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-engine/pull/1004"
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-engine/pull/1004",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 33,
@@ -10004,11 +10312,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 15,
      "ciPrSeconds": 897,
      "ciPr": "openeuler/ubs-io#183",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-io/pull/183"
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-io/pull/183",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 15,
@@ -10235,11 +10579,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 10,
      "ciPrSeconds": 580,
      "ciPr": "openeuler/ubs-mem#67",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-mem/pull/67"
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-mem/pull/67",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 10,
@@ -10494,11 +10874,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 3,
      "ciPrSeconds": 195,
      "ciPr": "openeuler/ubs-virt#212",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubs-virt/pull/212"
+     "ciPrUrl": "https://gitcode.com/openeuler/ubs-virt/pull/212",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "OK"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": false,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 3,
@@ -10726,11 +11142,47 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
+     "status": "success",
      "minutes": 6,
      "ciPrSeconds": 365,
      "ciPr": "openeuler/ubturbo#264",
-     "ciPrUrl": "https://gitcode.com/openeuler/ubturbo/pull/264"
+     "ciPrUrl": "https://gitcode.com/openeuler/ubturbo/pull/264",
+     "ciChecks": [
+      {
+       "name": "check_sca",
+       "result": "OK"
+      },
+      {
+       "name": "check_code",
+       "result": "OK"
+      },
+      {
+       "name": "check_package_license",
+       "result": "WARN"
+      },
+      {
+       "name": "x86_64",
+       "result": "OK"
+      },
+      {
+       "name": "aarch64",
+       "result": "OK"
+      },
+      {
+       "name": "DT",
+       "result": "OK"
+      },
+      {
+       "name": "pre-commit",
+       "result": "OK"
+      },
+      {
+       "name": "check_issue_associate",
+       "result": "FAIL"
+      }
+     ],
+     "ciFailExpected": true,
+     "ciRealStatus": "success"
     }
    ],
    "totalMinutes": 6,
