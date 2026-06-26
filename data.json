@@ -14174,7 +14174,7 @@
     }
    ],
    "problems": [],
-   "summary": "triton-ascend：获取+编译对齐社区CI成功；测试因缺 NPU/CANN 环境断点未对齐。环境准备(Pod/gh-proxy/clone/换源/依赖)时间已按本次实际运行约23min校正。来源 dev-build-verify-20260626-94。",
+   "summary": "triton-ascend：获取+编译对齐社区CI成功，测试因缺 NPU/CANN 环境断点。环境准备(Pod/gh-proxy/clone/换源/依赖)时间已按实际运行约23min校正。",
    "result": "partial",
    "attempts": [],
    "artifacts": [],
@@ -14238,7 +14238,7 @@
     }
    ],
    "problems": [],
-   "summary": "sglang：克隆成功，安装超时、缺 CANN，构建受阻。环境准备时间按本次实际约41min校正。正用修正后口径重跑精确化。",
+   "summary": "sglang：克隆成功，安装超时、缺 CANN，构建受阻。环境准备时间按实际约41min校正。重跑确认该重型仓在90min窗口+无CANN预装镜像下无法完整构建。",
    "result": "failed",
    "attempts": [],
    "artifacts": [],
@@ -14308,7 +14308,7 @@
     }
    ],
    "problems": [],
-   "summary": "sgl-kernel-npu：缺 NPU 构建文档、缺 CANN/CUDA 构建受阻。环境准备时间按实际约40min校正。注：首轮因 env 传参误 clone 了 sglang，已用准确 URL 重跑精确化中。",
+   "summary": "sgl-kernel-npu：缺 NPU 构建文档(README只写CUDA)、缺 CANN/CUDA 构建受阻。环境准备时间按实际约40min校正。重跑指向正确独立仓确认问题依旧。",
    "result": "failed",
    "attempts": [],
    "artifacts": [],
@@ -14364,7 +14364,7 @@
    "depsCount": 0,
    "defects": [],
    "problems": [],
-   "summary": "tilelang-mlir-ascend：首轮 run 成功但报告未落库（flaky push），真实运行约45min。正用修正后口径重跑生成准确报告。",
+   "summary": "tilelang-mlir-ascend：重型 MLIR/编译器仓，重跑(指向正确仓)在90min窗口内构建未完成而终止。环境准备等真实运行约45min，需 CANN 预装镜像才能完整编译。",
    "result": "partial",
    "attempts": [],
    "artifacts": [],
