@@ -14258,57 +14258,73 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 18
+     "minutes": 10
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 15
+     "minutes": 8
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 5
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
      "status": "failed",
      "minutes": 0,
-     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；本地未复现 CI（缺 CANN/CUDA、README 缺 NPU 构建说明）。无 PR 计时。"
+     "ciNote": "GitHub仓无gitcode门禁，无PR；本地构建未复现CI：缺CANN toolkit，build.sh 报 Cannot find Ascend toolkit。"
     }
    ],
-   "totalMinutes": 38,
+   "totalMinutes": 18,
    "build": {
     "status": "failed",
-    "minutes": 15,
-    "command": "make build (sgl-kernel)",
-    "error": "CMake: Failed to find nvcc；缺 CANN/CUDA"
+    "minutes": 8,
+    "command": "bash build.sh",
+    "error": "Cannot find Ascend toolkit installation —— /usr/local/Ascend 仅有 driver，缺 ascend-toolkit；build.sh 检测 SOC=Ascend910_9382(A2) 后因找不到 CANN toolkit 退出(exit=1)"
    },
    "test": {
     "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": "构建失败无法测试"
+    "note": "构建未完成，未执行UT"
    },
-   "env": {},
+   "env": {
+    "os": "openEuler 24.03 (LTS)",
+    "arch": "aarch64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+    "npu": "Ascend910 A2 ×8（/dev/davinci0~7，NPU驱动在）"
+   },
    "depsCount": 0,
    "defects": [
     {
-     "title": "sgl-kernel/README.md 缺少 Ascend NPU 构建指南（只写 CUDA）",
+     "title": "README/构建文档未说明 CANN ascend-toolkit 的安装方法与版本，外部新手按文档无法搭建构建环境",
      "level": "high",
-     "source": "sgl-kernel/README.md",
-     "detail": "新开发者上手重大障碍"
+     "source": "README.md / build.sh",
+     "detail": "文档仅链接 CANN 官方开发指南，未给「在 openEuler 上装 CANN 8.x toolkit」的步骤；新手 clone 后 bash build.sh 直接卡在缺 toolkit"
     },
     {
-     "title": "CMake 版本要求与实际不符（文档3.31 vs 实际3.28）",
+     "title": "build.sh 直接假设 CANN 已装在 /usr/local/Ascend/ascend-toolkit，无前置检查与友好提示",
      "level": "medium",
-     "source": "",
-     "detail": ""
+     "source": "build.sh",
+     "detail": "只在找不到时报错退出，未提示如何安装/设置 ASCEND_HOME"
     }
    ],
-   "problems": [],
-   "summary": "sgl-kernel-npu：缺 NPU 构建文档(README只写CUDA)、缺 CANN/CUDA 构建受阻。环境准备时间按实际约40min校正。重跑指向正确独立仓确认问题依旧。",
+   "problems": [
+    {
+     "title": "从零 openEuler 装工具链成功",
+     "source": "dnf install cmake gcc gcc-c++ make python3 python3-pip python3-devel",
+     "detail": "cmake 3.27.9 / gcc 12.3.1 / python 3.11，均 openEuler 原生 dnf 包"
+    },
+    {
+     "title": "构建受阻：缺 CANN toolkit",
+     "source": "bash build.sh",
+     "detail": "NPU 驱动在、8张卡在，但无 ascend-toolkit；CANN 非 dnf 包，文档未给安装指引"
+    }
+   ],
+   "summary": "真实测试（openEuler 直跑·k8s NPU Pod·hub.oepkgs.net/openeuler/openeuler:24.03-lts·8张昇腾A2）：从零 dnf 装好 cmake/gcc/python 工具链；克隆仓库成功；按 build.sh 构建时因缺 CANN ascend-toolkit 失败（环境只有 NPU 驱动）。README/build 文档未给外部开发者 CANN 安装方法与版本，新手到此即卡——真实 onboarding/文档缺陷。",
    "result": "failed",
    "attempts": [],
    "artifacts": [],
