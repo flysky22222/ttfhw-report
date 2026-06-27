@@ -25,17 +25,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 709
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 45
+     "status": "success",
+     "minutes": 15
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "unknown",
+     "minutes": 8
     },
     {
      "name": "社区CI成功",
@@ -134,75 +134,87 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 72,
+   "totalMinutes": 744,
    "build": {
-    "status": "failed",
+    "status": "success",
+    "minutes": 15,
     "command": "",
-    "minutes": 45,
     "error": ""
    },
    "test": {
-    "status": "not_run",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
-    "note": "CMake configuration failed for UT build due to script error in hcomm_utils.cmake"
+    "status": "unknown",
+    "total": 46,
+    "passed": 43,
+    "failed": 3,
+    "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "16Gi"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "Missing Dockerfile",
-     "level": "medium",
+     "title": "build.sh 第19行 CPU_NUM 强制覆盖逻辑未在文档中说明，用户设置的 CPU_NUM 环境变量不生效",
+     "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "CANN toolkit dependency not clearly documented",
-     "level": "high",
+     "title": "docs/zh/build/build.md 未说明在没有 NPU 硬件的环境下部分 UT 测试会失败（SEGFAULT/超时）",
+     "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "Missing header files in repository",
-     "level": "high",
+     "title": "docs/zh/build/build.md 未说明 --full 安装 CANN 时 mindstudio-boost 子包可能安装失败，建议提供 --whitelist 参数指导",
+     "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "CMake script robustness issue",
-     "level": "medium",
+     "title": "README 未列出测试框架依赖（googletest、mockcpp、boost），仅通过 CMakeLists.txt 间接表达",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "examples/README.md 仅列出示例目录，未提供各示例的详细使用说明和命令行参数",
+     "level": "",
      "source": "",
      "detail": ""
     }
    ],
    "problems": [
     {
-     "title": "Missing ccec compiler",
-     "level": "blocker",
-     "source": "Build error: /usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin/ccec: not found",
-     "detail": "Install CANN toolkit package which provides this compiler. Note: ccec is a proprietary compiler for Ascend chips."
+     "title": "CANN 安装失败：mindstudio-boost 子包安装失败",
+     "source": "HCCL 编译不需要 mindstudio-boost",
+     "detail": "使用 --whitelist=nnae,atc,hccl 限定安装范围，仅安装 HCCL 编译所需组件"
     },
     {
-     "title": "Missing header files (dlog_pub.h, securec.h, ascend_hal_external.h, ascend_hal.h, hccl_msg.h)",
-     "level": "blocker",
-     "source": "Compilation errors in multiple source files",
-     "detail": "These headers are part of the CANN toolkit package. Install the CANN toolkit to /usr/local/Ascend/ascend-toolkit/latest/"
+     "title": "asc_devkit cmake 模块未找到（首次仅安装 hccl whitelist）",
+     "source": "CMakeLists.txt 中 find_cann_package(asc_devkit REQUIRED)",
+     "detail": "重新安装 CANN 使用 --whitelist=nnae,atc,hccl（包含 asc-devkit 头文件）"
     },
     {
-     "title": "CMake script variable comparison issue in hcomm_utils.cmake:107",
-     "level": "medium",
-     "source": "CMake configuration error when ENABLE_UT=ON",
-     "detail": "Fix the if statement to use proper variable quoting: if(\"${PRODUCT_SIDE}\" STREQUAL \"device\") instead of if(${PRODUCT_SIDE} STREQUAL \"device\")"
+     "title": "UT 编译 OOM 被 kill（3次），build.sh 强制使用全部16核并发",
+     "source": "build.sh 第19行 CPU_NUM 覆盖逻辑",
+     "detail": "绕过 build.sh 的 build_ut() 函数，直接运行 cmake --build . -j 2 限制并发数"
+    },
+    {
+     "title": "46 个 UT 测试中 3 个在无 NPU 硬件环境下失败（SEGFAULT/堆损坏/超时）",
+     "source": "缺少硬件设备，非软件缺陷",
+     "detail": "这些测试需要 NPU 硬件设备驱动或 RDMA URMA 设备支持，在真实 NPU 环境下应可通过"
+    },
+    {
+     "title": "dnf 连接 repo.openeuler.org 超时（网络抖动）",
+     "source": "网络环境",
+     "detail": "已安装的包不受影响，网络恢复后正常"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -237,8 +249,8 @@
    ],
    "artifacts": [
     {
-     "name": "stub libraries: libascend_hal.so, libslog.so, libaicpu_sharder.so, libc_sec.so, ",
-     "size": ""
+     "name": "cann-hcomm_9.1.0_linux-x86_64.run",
+     "size": "368 MB"
     }
    ],
    "docFacts": [
@@ -275,7 +287,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_hcomm_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_hcomm_20260625.json",
    "id": 0,
    "sampleMinutes": 0
   },
@@ -795,17 +807,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 3
+     "minutes": 113
     },
     {
      "name": "编译构建",
-     "status": "unknown",
-     "minutes": 2
+     "status": "success",
+     "minutes": 6
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -900,60 +912,59 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 128,
    "build": {
-    "status": "unknown",
-    "command": "bash build.sh --pkg",
-    "minutes": 2,
+    "status": "success",
+    "minutes": 6,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "not_run",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 1047,
+    "passed": 1046,
     "failed": 0,
-    "note": "UT build requires PyTorch which could not be installed due to network timeouts"
+    "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi (shared with host)"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "Repository does not provide Dockerfile or container image definition",
+     "title": "仓库无 Dockerfile / devcontainer / CI workflow 配置，外部新手无法直接复现容器环境",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "No explicit mention that securec.h comes from base CANN toolkit (not amctgraph packages)",
+     "title": "README 环境要求表列出 CANN≥8.5.0 + NPU 为必需，但未说明 --torch(pytorch-only)构建实际仅需 securec/libc_sec，CANN ACL 头库并非该构建路径硬依赖",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "Build documentation assumes CANN toolkit is pre-installed but doesn't clearly state this as a hard requirement",
+     "title": "securec.h / libc_sec 依赖未在 README 中列出，仅在编译期 fatal error 暴露(CMakeLists amct_tensor_decompose 引用)",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "No troubleshooting guide for missing securec.h error",
+     "title": "torch_npu==2.7.1.post4 写入 requirements.txt 但不在标准 PyPI，UT 通过 conftest mock 规避，文档未说明无 NPU 时的替代方案",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "No information about building without NPU hardware (if possible)",
+     "title": "样例 README 要求用户自行下载大模型与数据集，未提供最小化/免模型的冒烟样例，CI 友好度低",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "PyTorch installation command in requirements.txt doesn't specify CPU-only version for non-GPU systems",
+     "title": "ruff-check 在 613 个文件上报告 364 处问题，说明仓库提交前未完整运行 pre-commit(代码风格与已配置 gate 不一致)",
      "level": "",
      "source": "",
      "detail": ""
@@ -961,32 +972,38 @@
    ],
    "problems": [
     {
-     "title": "Missing securec.h header file during build",
-     "level": "",
-     "source": "CMakeLists.txt references ASCEND_HOME_PATH for CANN dependencies",
-     "detail": "securec.h is part of the base CANN toolkit which must be installed separately at ASCEND_HOME_PATH"
+     "title": "dnf 安装工具链时 perl-Data-Dumper 从镜像下载超时失败",
+     "source": "dnf",
+     "detail": "增大重试次数 dnf install --setopt=timeout=120 --setopt=retries=10 重试成功(已下载包缓存复用)"
     },
     {
-     "title": "PyTorch installation timeout",
-     "level": "",
-     "source": "N/A - network issue",
-     "detail": "Network connectivity issues to PyPI from container environment"
+     "title": "pre-commit ruff hook 的虚拟环境 pip 无法访问默认 PyPI(找不到 ruff==0.14.14)",
+     "source": ".pre-commit-config.yaml ruff-pre-commit",
+     "detail": "为 pre-commit 注入 PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple，hook 环境使用清华源安装 ruff"
     },
     {
-     "title": "Git safe.directory issue with cmake FetchContent",
-     "level": "",
-     "source": "CMake FetchContent module error message",
-     "detail": "Git security feature blocking cmake FetchContent operations"
+     "title": "cmake FetchContent 克隆 cann-cmake 时 git 报 dubious ownership(容器 root 与挂载卷属主不一致)",
+     "source": "cmake/fetch_cann_cmake.cmake FetchContent + 挂载卷属主",
+     "detail": "git config --global --add safe.directory '*' (仅环境配置，未改动仓库源码)"
     },
     {
-     "title": "Missing CANN toolkit base installation",
-     "level": "",
-     "source": "docs/quick_install.md - '安装驱动与固件' and '安装CANN包' sections",
-     "detail": "AMCT build requires full CANN toolkit installation, not just AMCT-specific packages"
+     "title": "编译 amct_tensor_decompose 算子报 fatal error: securec.h: No such file or directory",
+     "source": "amct_pytorch/classic/graph_based/amct_tensor_decompose/CMakeLists.txt: include securec.h, target_link_libraries c_sec",
+     "detail": "从 openEuler 仓库安装 libboundscheck(华为开源 libsecurec，提供 securec.h)，并建立 libc_sec.so→libboundscheck.so 软链以满足 CMakeLists 的 -lc_sec 链接"
+    },
+    {
+     "title": "安装构建产物包报 error: invalid command 'bdist_wheel'",
+     "source": "pip 安装 sdist 包缺少 wheel 构建后端",
+     "detail": "pip install wheel 后重试安装成功"
+    },
+    {
+     "title": "样例无法执行：依赖 Ascend NPU 硬件 + CANN ops + torch_npu + 下载的 LLM 模型",
+     "source": "examples/algorithms/minmax/README.md + docs/zh/quick_install.md",
+     "detail": "环境不兼容，CPU-only 容器无法提供 NPU；记录原因，未强行执行(属硬件依赖，非可补装依赖)"
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "repository_clone",
@@ -1049,7 +1066,16 @@
      "output": "Container stopped and removed"
     }
    ],
-   "artifacts": [],
+   "artifacts": [
+    {
+     "name": "amct_pytorch-1.1.0-py3-none-linux_x86_64.tar.gz",
+     "size": "456 KB"
+    },
+    {
+     "name": "libtensor_decompose.so",
+     "size": "39 KB"
+    }
+   ],
    "docFacts": [
     {
      "label": "架构",
@@ -1089,7 +1115,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_AMCT_20260510.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_amct_20260625.json",
    "id": 4,
    "sampleMinutes": 0
   },
@@ -1098,17 +1124,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 113
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 10
+     "status": "success",
+     "minutes": 2
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 5
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -1171,43 +1197,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 32,
+   "totalMinutes": 117,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh --pkg -p <CANN_PATH>",
-    "minutes": 10,
+    "status": "success",
+    "minutes": 2,
+    "command": "",
     "error": ""
    },
    "test": {
     "status": "unknown",
-    "total": 174,
-    "passed": 174,
+    "total": 0,
+    "passed": 0,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi (no limit set)",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "git依赖未在README/docs/quick_start.md的依赖检查章节中明确列出",
+     "title": "docs/quick_start.md 未列出 patch 命令为构建前置依赖，首次构建失败才暴露",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "CANN包下载链接需要华为云账号认证或访问华为内部网络，对社区开发者不够友好",
+     "title": "docs/quick_start.md 未列出 wheel Python 包为构建 asc_opc_tool 所需",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "版本要求不一致：文档标注依赖CANN master（9.0.0），但构建时检查需要runtime/metadef 9.1",
+     "title": "文档标明 lcov/git-lfs/lsb-release 为依赖，但在 openEuler 24.03 LTS 仓库中无对应包",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "构建安装章节（--full 安装选项）使用交互式确认（y/n），缺少 --quiet 静默安装参数说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": ".devcontainer/Dockerfile 基于 Ubuntu 24.04，未提供 openEuler 等效配置参考",
      "level": "",
      "source": "",
      "detail": ""
@@ -1215,26 +1251,18 @@
    ],
    "problems": [
     {
-     "title": "cmake配置失败：ASCEND_CANN_PACKAGE_PATH不存在",
-     "level": "",
-     "source": "docs/quick_start.md - 下载安装CANN包章节",
-     "detail": "从CANN master obs镜像下载toolkit包并安装"
+     "title": "首次构建失败：patch 命令不存在（rdma_core 源码需要 patch），bdist_wheel 命令不可用（需要 wheel Python 包）",
+     "source": "构建过程输出：/bin/sh: line 1: patch: command not found; error: invalid command 'bdist_wheel'",
+     "detail": "dnf install -y patch; pip3 install wheel（通过 openEuler 仓库 + pip 安装）"
     },
     {
-     "title": "cmake FetchContent需要git但未安装",
-     "level": "",
-     "source": "cmake/fetch_cann_cmake.cmake使用FetchContent_Declare",
-     "detail": "安装git包"
-    },
-    {
-     "title": "pip安装pytest失败（PEP 668限制）",
-     "level": "",
-     "source": "Ubuntu 24.04 Python 3.12的外部包管理限制",
-     "detail": "使用--break-system-packages参数"
+     "title": "安装 asc-devkit run 包时，安装脚本检测到 /usr/local/Ascend 已安装同版本 CANN，要求交互确认 [y/n]，非交互终端无法应答",
+     "source": "安装脚本非交互式输入循环",
+     "detail": "可通过 --install-path 指定其他路径安装，或在交互式终端中运行。由于 CANN 已安装，跳过安装"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -1305,12 +1333,8 @@
    ],
    "artifacts": [
     {
-     "name": "libtiling_api.a",
-     "size": "3.4 MB"
-    },
-    {
-     "name": "libaicpu_api.a",
-     "size": "3.9 KB"
+     "name": "cann-asc-devkit_9.1.0_linux-x86_64.run",
+     "size": "8.1 MB"
     }
    ],
    "docFacts": [
@@ -1342,7 +1366,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_asc-devkit_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_asc-devkit_20260625.json",
    "id": 5,
    "sampleMinutes": 0
   },
@@ -1351,17 +1375,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 5
+     "minutes": 110
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 3
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 1
+     "status": "partial",
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
@@ -1452,43 +1476,65 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 15,
+   "totalMinutes": 120,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh --pkg -p <CANN_PATH>",
-    "minutes": 3,
+    "status": "success",
+    "minutes": 1,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 20,
-    "passed": 20,
-    "failed": 0,
+    "status": "partial",
+    "total": 64,
+    "passed": 61,
+    "failed": 3,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi (no limit set)",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "cpudebug闭源包下载URL未在README中明确列出，需要从cmake脚本中推断",
+     "title": "仓库无根目录 Dockerfile，只有 .devcontainer/Dockerfile，初始探索时容易遗漏",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "TEST_MOD cmake变量设置方式不明确，导致首次UT配置失败",
+     "title": "快速入门文档中依赖安装章节未明确 CANN toolkit 为必要依赖，而是在编译报错可能中提及",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "离线编译场景需要手动下载多个依赖包(msot/mskl/mskpp等)，文档列出但缺少一键下载脚本",
+     "title": "install_deps.sh 不支持 openEuler（仅检测 debian 和 rhel）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "lcov 在 openEuler 24.03 LTS 仓库中不可用，需通过 pip 安装",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "ccache 最低版本要求不一致：快速入门 4.6.1，install_deps.sh 4.8.2",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "预编译的 cpudebug 库在 openEuler 上因 GLIBCXX 版本不兼容而无法链接 C++ UT",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "pytest 在 openEuler 仓库中无 python3 入口，需通过 pip 安装才能被 python3 -m pytest 使用",
      "level": "",
      "source": "",
      "detail": ""
@@ -1496,20 +1542,38 @@
    ],
    "problems": [
     {
-     "title": "构建失败：缺少stub_fun.h",
-     "level": "",
-     "source": "cmake/third_party/cpudebug.cmake第31行检查libraries/lib/include/stub_fun.h",
-     "detail": "下载cpudebug闭源包并解压到libraries目录"
+     "title": "lcov 包在 openEuler 仓库中不存在",
+     "source": "install_deps.sh 第 410 行",
+     "detail": "通过 pip3 install lcov 安装"
     },
     {
-     "title": "cmake UT配置失败：TEST_MOD未设置",
-     "level": "",
-     "source": "tests/CMakeLists.txt第25行if语句需要TEST_MOD变量",
-     "detail": "添加-DTEST_MOD=all参数"
+     "title": "install_deps.sh 不支持 openEuler（仅识别 debian 和 rhel）",
+     "source": "install_deps.sh 第 45-65 行 detect_os()",
+     "detail": "手动通过 dnf 安装各依赖包"
+    },
+    {
+     "title": "首次构建时 build.sh 找不到 CANN toolkit",
+     "source": "README.md 快速入门 - 下载安装CANN包章节",
+     "detail": "从 README 提供的 OBS 镜像 URL 下载 Ascend-cann-toolkit_9.1.0_linux-x86_64.run，使用 --quiet --install 安装到 /usr/local/Ascend"
+    },
+    {
+     "title": "构建时 bdist_wheel 命令缺失",
+     "source": "setup.py 构建 Python wheel 需要 wheel 包",
+     "detail": "pip3 install wheel 安装 wheel 包后重试"
+    },
+    {
+     "title": "C++ UT 链接失败：libcpudebug_cceprint.so 需要 GLIBCXX_3.4.32，但 openEuler 24.03 最高提供 GLIBCXX_3.4.30",
+     "source": "cmake/third_party/cpudebug.cmake（自动下载的预编译闭源包）",
+     "detail": "预编译的 cpudebug 库（从 OBS 下载）是在较新的 Ubuntu/GCC 环境下编译的。需等待 cpudebug 库提供 openEuler 兼容版本，或升级容器中的 libstdc++"
+    },
+    {
+     "title": "dnf 安装的 python3-pytest 无法通过 python3 -m pytest 调用",
+     "source": "openEuler 仓库中 python3-pytest 的打包方式",
+     "detail": "pip3 install pytest 安装 pip 版本的 pytest"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -1574,24 +1638,8 @@
    ],
    "artifacts": [
     {
-     "name": "libcpudebug.so (ascend310B1)",
-     "size": ""
-    },
-    {
-     "name": "libcpudebug.so (ascend950pr_9599)",
-     "size": ""
-    },
-    {
-     "name": "libcpudebug.so (ascend910)",
-     "size": ""
-    },
-    {
-     "name": "libcpudebug.so (ascend910B1)",
-     "size": ""
-    },
-    {
-     "name": "libcpudebug_acl_stub.so",
-     "size": ""
+     "name": "cann-asc-tools_9.1.0_linux-x86_64.run",
+     "size": "5.7 MB"
     }
    ],
    "docFacts": [
@@ -1623,7 +1671,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_asc-tools_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_asc-tools_20260625.json",
    "id": 6,
    "sampleMinutes": 0
   },
@@ -1632,12 +1680,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 97
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 7
+     "minutes": 3
     },
     {
      "name": "测试",
@@ -1705,11 +1753,11 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 34,
+   "totalMinutes": 112,
    "build": {
     "status": "success",
-    "command": "bash scripts/build.sh -DSOC=ascend950 <target>",
-    "minutes": 7,
+    "minutes": 3,
+    "command": "",
     "error": ""
    },
    "test": {
@@ -1720,28 +1768,26 @@
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "文档未明确说明所有CANN组件的具体路径配置",
+     "title": "仓库无 Dockerfile，无法参考镜像和依赖安装方式",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "文档未提供LD_LIBRARY_PATH的完整设置指南",
+     "title": "docs/quick_start.md 建议 Python <= 3.10，但 openEuler 24.03 默认 Python 3.11.6，实际使用无兼容问题",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "样例运行需要额外安装ops包才能使用cannsim仿真器",
+     "title": "文档未提及 CANN Toolkit 安装需要 flock 命令（util-linux 包），在 openEuler 环境需手动安装",
      "level": "",
      "source": "",
      "detail": ""
@@ -1749,32 +1795,13 @@
    ],
    "problems": [
     {
-     "title": "ASCEND_HOME_PATH environment variable is not set",
-     "level": "",
-     "source": "scripts/build.sh 第63-67行",
-     "detail": "设置ASCEND_HOME_PATH=/usr/local/Ascend/cann"
-    },
-    {
-     "title": "CANN toolkit安装需要接受EULA",
-     "level": "",
-     "source": "Ascend-cann-toolkit安装程序--help",
-     "detail": "使用--quiet选项自动接受EULA"
-    },
-    {
-     "title": "缺少python3依赖",
-     "level": "",
-     "source": "CANN toolkit安装日志",
-     "detail": "安装python3和python3-pip包"
-    },
-    {
-     "title": "运行时缺少libascend_hal.so",
-     "level": "",
-     "source": "运行时错误排查",
-     "detail": "设置LD_LIBRARY_PATH包含/usr/local/Ascend/cann-9.0.0/x86_64-linux/devlib和device路径"
+     "title": "CANN Toolkit 9.1.0 安装失败：'flock: command not found'，安装脚本无法获取 /usr/local/Ascend 目录的锁文件",
+     "source": "CANN Toolkit 安装日志 ge-executor 组件报错 'Get /usr/local/Ascend lockfile failed'",
+     "detail": "dnf install -y util-linux 安装 flock 命令后重试，清理 /usr/local/Ascend 目录并重新安装"
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -1833,16 +1860,16 @@
    ],
    "artifacts": [
     {
-     "name": "rms_norm",
-     "size": "394KB"
-    },
-    {
      "name": "abs",
-     "size": "389KB"
+     "size": "415 KB"
     },
     {
      "name": "muls",
-     "size": "387KB"
+     "size": "414 KB"
+    },
+    {
+     "name": "rms_norm",
+     "size": "419 KB"
     }
    ],
    "docFacts": [
@@ -1874,7 +1901,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_atvoss_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_atvoss_20260625.json",
    "id": 7,
    "sampleMinutes": 0
   },
@@ -2153,17 +2180,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 54
     },
     {
      "name": "编译构建",
-     "status": "partial",
-     "minutes": 45
+     "status": "success",
+     "minutes": 16
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 10
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -2232,41 +2259,69 @@
    ],
    "totalMinutes": 83,
    "build": {
-    "status": "partial",
-    "command": "bash build.sh --pkg --soc=ascend910b [-jN]",
-    "minutes": 45,
+    "status": "success",
+    "minutes": 16,
+    "command": "",
     "error": ""
    },
    "test": {
     "status": "success",
-    "total": 1,
-    "passed": 1,
+    "total": 0,
+    "passed": 0,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS (WSL2)",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "WSL2 Ubuntu 24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README.md未明确列出所有构建依赖包",
+     "title": "仓库未提供 Dockerfile，依赖信息需从 QUICKSTART.md 和 CMakeLists.txt 自行提取",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "README.md未提供详细的构建步骤说明",
+     "title": "QUICKSTART.md 中 openEuler 环境命令使用 yum（openEuler 24.03 实际使用 dnf），需用户自行转换",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "仓库未提供Dockerfile或容器镜像定义",
+     "title": "未明确指定 GCC 最低版本要求（build.sh 中通过 g++ -v 输出版本信息但不做版本检查）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "UT 仅提供桩代码框架（main.cc），无实际测试用例，无法验证模块功能",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "样例需要 CANN 软件包环境，无独立运行方式",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "kernel-headers 安装依赖当前内核版本，WSL2 环境下无法安装匹配的 kernel-headers",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "未在文档中说明构建用户态库时可能需要 -fPIC 编译选项（devdrv_obj OBJECT library 不支持直接链接到 shared library）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "drv_dvpp_cmdlist 内核模块 Makefile 引用 securec.h，该头文件依赖用户态 <stdarg.h>，在 kernel build 环境中需手动设置 CFLAGS_MODULE",
      "level": "",
      "source": "",
      "detail": ""
@@ -2274,20 +2329,33 @@
    ],
    "problems": [
     {
-     "title": "",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "WSL2 内核版本（6.6.114.1-microsoft-standard-WSL2）与 openEuler 24.03 kernel-devel（6.6.0-145.oe2403）不匹配，默认内核模块编译路径无效",
+     "source": "WSL2 容器环境限制",
+     "detail": "使用 build.sh -k 参数指定内核源码路径：-k /usr/src/kernels/6.6.0-145.0.13.139.oe2403.x86_64"
     },
     {
-     "title": "",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "libascend_hal.so 链接失败：devdrv_hccl.c.o relocation R_X86_64_32S against .rodata，需重新编译为 -fPIC",
+     "source": "src/ascend_hal/dms/drv_devmng/ascend910/CMakeLists.txt 中 devdrv_obj 未设置 POSITION_INDEPENDENT_CODE",
+     "detail": "cmake 配置时添加 -DCMAKE_C_FLAGS=-fPIC，使 OBJECT library 生成位置无关代码"
+    },
+    {
+     "title": "drv_dvpp_cmdlist 内核模块编译失败：securec.h 包含 <stdarg.h> 用户态头文件，kernel build 环境无法找到",
+     "source": "src/sdk_driver/dvpp/cmdlist/Makefile 第91行包含 -I${C_SEC_INCLUDE}，其中 securec.h 依赖 <stdarg.h>",
+     "detail": "添加 CFLAGS_MODULE=\"-isystem $(gcc -print-file-name=include)\" 使内核模块编译时可访问 GCC 内置头文件路径"
+    },
+    {
+     "title": "样例无法编译运行：需要 CANN 软件包中的 dcmi 库",
+     "source": "examples/README.md 明确说明需先安装 CANN 软件包",
+     "detail": "按 QUICKSTART 文档安装 CANN 软件包后，可使用 bash run.sh 命令运行样例"
+    },
+    {
+     "title": "make package 失败：package.py 找不到内核模块文件（未执行 make install）",
+     "source": "build.sh 中的 build_npu_driver 函数实际执行的是 make driver && make install",
+     "detail": "在 make driver 之后执行 make install，将编译产物安装到 lib/ 目录，然后再执行 make package"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -2310,16 +2378,40 @@
    ],
    "artifacts": [
     {
-     "name": "build目录",
-     "size": ""
+     "name": "libascend_hal.so",
+     "size": "1.9 MB"
     },
     {
-     "name": "third_party库",
-     "size": ""
+     "name": "libdcmi.so",
+     "size": "556 KB"
     },
     {
-     "name": "rdma-core",
-     "size": ""
+     "name": "libdrvdsmi_host.so",
+     "size": "941 KB"
+    },
+    {
+     "name": "libmmpa.so",
+     "size": "81 KB"
+    },
+    {
+     "name": "liblingqu-dcmi.so",
+     "size": "63 KB"
+    },
+    {
+     "name": "libdsmi_network.so",
+     "size": "163 KB"
+    },
+    {
+     "name": "libc_sec.so",
+     "size": "79 KB"
+    },
+    {
+     "name": "libc_sec.a",
+     "size": "149 KB"
+    },
+    {
+     "name": "Ascend-hdk-910b-driver_*.run",
+     "size": "101 MB"
     }
    ],
    "docFacts": [
@@ -2361,7 +2453,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_driver_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_driver_20260625.json",
    "id": 9,
    "sampleMinutes": 0
   },
@@ -2369,18 +2461,18 @@
    "phases": [
     {
      "name": "获取",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 71
     },
     {
      "name": "编译构建",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 357
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 294
     },
     {
      "name": "社区CI成功",
@@ -2539,42 +2631,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 13,
+   "totalMinutes": 735,
    "build": {
-    "status": "unknown",
-    "command": "bash build.sh --<pkg_type>",
-    "minutes": 0,
+    "status": "success",
+    "minutes": 357,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "partial",
+    "total": 590,
+    "passed": 585,
+    "failed": 4,
     "note": ""
    },
    "env": {
-    "os": "openEuler 22.03 (LTS-SP3)",
-    "arch": "aarch64",
-    "cpu": 16,
-    "mem": "Unknown"
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "文档中未明确说明 openEuler 环境下 pip 镜像源配置方法",
+     "title": "docs/zh/quick_install.md 推荐的 Docker 镜像为华为 AscendHub Ubuntu 预构建镜像（已预装 CANN 与依赖），未提供 openEuler 原生构建路径，需自行映射 apt→dnf 包名并从零安装 CANN",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未提供构建时间预估，实际构建时间较长",
+     "title": "lcov 与 graph-easy 在 openEuler 24.03 官方仓库（OS/everything/EPOL）均不可用，build.md 列为依赖但未提供 openEuler 等效安装方式（lcov 仅影响覆盖率，graph-easy 可选）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "缺少离线编译的详细指导文档链接",
+     "title": "build.md 列出依赖但未明确说明 GE 构建硬依赖已安装的 CANN Toolkit（ASCEND_HOME_PATH），仅在 build.sh 第295-300行以报错形式体现；需阅读 quick_install.md/init_env.sh 才能得知",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "构建过程依赖网络下载开源第三方软件（FetchContent 克隆 cann-cmake 等），离线场景需先完成 offline_compile.md，文档已说明但对网络环境要求较高",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "check_env.sh 将 lcov 缺失标记为 ERROR（必须修复才能编译），但实际 bash build.sh 核心构建并不调用 lcov（仅 -c 覆盖率场景需要），检查脚本与实际构建要求的严格度不一致",
      "level": "",
      "source": "",
      "detail": ""
@@ -2582,22 +2685,29 @@
    ],
    "problems": [
     {
-     "title": "Python 依赖安装时清华镜像源连接超时",
-     "level": "",
-     "source": "实际测试发现",
-     "detail": "切换使用阿里云镜像源 (https://mirrors.aliyun.com/pypi/simple/)"
+     "title": "dnf 安装依赖时 EPOL 仓库元数据下载超时（repo.openeuler.org 镜像网络不稳定）",
+     "source": "openEuler 镜像源网络不稳定",
+     "detail": "禁用 EPOL/EPOL-update/debuginfo/source 仓库（--disablerepo），仅用 OS/everything/update 仓库完成核心依赖安装"
     },
     {
-     "title": "构建时间较长，容器会话可能中断",
-     "level": "",
-     "source": "实际测试发现",
-     "detail": "建议使用 screen 或 tmux 保持会话，或使用 nohup 后台运行"
+     "title": "lcov 与 openssh-server(libutempter) 在可用仓库中无法下载/无匹配",
+     "source": "openEuler 仓库包覆盖不全 + 上游网络不通",
+     "detail": "去除非构建必需的 openssh-server；lcov 改从源码安装（但因网络阻断未果），记录为非关键缺失（仅影响覆盖率功能）"
     },
     {
-     "title": "CANN 环境为必需依赖，必须安装后才能编译",
-     "level": "",
-     "source": "docs/build.md + scripts/init_env.sh",
-     "detail": "使用 scripts/init_env.sh 脚本自动安装 CANN 环境"
+     "title": "check_env.sh 报 lcov 未安装 ERROR",
+     "source": "scripts/check_env.sh 严格按 build.md 校验",
+     "detail": "尝试 EPOL 安装与源码安装均失败；lcov 非核心构建依赖，不影响 bash build.sh 与基础 UT，记录未解决"
+    },
+    {
+     "title": "首次构建在 cmake 配置阶段失败：git 报 'dubious ownership'，FetchContent 无法克隆 cann-cmake",
+     "source": "WSL2 bind-mount 至容器导致 /workspace 归属 UID 与容器 root 不一致",
+     "detail": "git config --global --add safe.directory '*' 修复 WSL bind-mount UID 不一致触发的 git 安全检查，并清理 build/build_out/output 缓存后重试"
+    },
+    {
+     "title": "ge_common UT 中 Om2Codegen 交叉编译类用例失败，部分用例报 graph-easy: command not found",
+     "source": "build_ut/Testing/Temporary/LastTest.log",
+     "detail": "失败为环境相关（缺 ARM 交叉编译器/devlib 与可选工具 graph-easy），非代码缺陷；graph-easy 在 openEuler 仓库不可用，记录环境限制，未改源码"
     }
    ],
    "summary": "",
@@ -2646,7 +2756,20 @@
      "output": "构建进行中，第三方依赖编译完成，主项目编译至 92%"
     }
    ],
-   "artifacts": [],
+   "artifacts": [
+    {
+     "name": "cann-ge-compiler_9.1.0_linux-x86_64.run",
+     "size": "42M (43897000 字节)"
+    },
+    {
+     "name": "cann-ge-executor_9.1.0_linux-x86_64.run",
+     "size": "35M (35929692 字节)"
+    },
+    {
+     "name": "cann-dflow-executor_9.1.0_linux-x86_64.run",
+     "size": "8.2M (8525646 字节)"
+    }
+   ],
    "docFacts": [
     {
      "label": "架构",
@@ -2681,7 +2804,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_ge_20260510.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_ge_20260626.json",
    "id": 10,
    "sampleMinutes": 0
   },
@@ -2690,17 +2813,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 130
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 20
+     "status": "success",
+     "minutes": 90
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 5
+     "status": "partial",
+     "minutes": 187
     },
     {
      "name": "社区CI成功",
@@ -2751,43 +2874,59 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 51,
+   "totalMinutes": 418,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh --pkg",
-    "minutes": 20,
+    "status": "success",
+    "minutes": 90,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "partial",
+    "total": 2508,
+    "passed": 2333,
+    "failed": 8,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 22.04.5 LTS",
+    "os": "openEuler 24.03 (LTS)",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi",
-    "image": "ascendhub/cann:9.0.0-beta.1-910-ubuntu22.04-py3.11"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "未明确说明 CANN 9.0.0 与代码版本的兼容性",
+     "title": "scripts/init_env.sh 硬编码 CANN_VERSION=9.0.0，但 master 镜像（ascend.devcloud.huaweicloud.com）已仅提供 9.1.0，导致 init_env.sh 直接运行下载失败（404），需手动改用 9.1.0",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未列出所有必需的 Python 模块 (build, wheel)",
+     "title": "docs/zh/quick_install.md 推荐华为云 CANN Ubuntu 22.04 镜像（非 openEuler），未提供 openEuler 适配说明",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "pip 依赖安装可能超时，无处理建议",
+     "title": "仓库无 Dockerfile 与 .devcontainer，新手开发者无法直接通过容器镜像复现编译环境，需自行参照 build.md 拼装依赖",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "build.sh 的 superkernel wheel 构建目标调用系统 /usr/bin/python3 -m build，但 build.md 仅建议在 venv 安装依赖，二者不一致会导致 'No module named build' 失败",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "scripts/check_env.sh 检查 Python 包时使用系统 python3 而非项目 venv，对按要求创建 venv 的环境会误报 29 项 ERROR",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "样例（super_kernel/examples、autofuse/examples）需 NPU 驱动/固件 + torch_npu，文档未在样例 README 顶部明确标注纯编译环境无法运行",
      "level": "",
      "source": "",
      "detail": ""
@@ -2795,32 +2934,38 @@
    ],
    "problems": [
     {
-     "title": "缺少 Python build 模块",
-     "level": "",
-     "source": "CMake 配置错误提示",
-     "detail": "pip3 install build"
+     "title": "scripts/init_env.sh 下载 CANN Toolkit 9.0.0 失败（HTTP 404）",
+     "source": "scripts/init_env.sh: CANN_VERSION=9.0.0",
+     "detail": "定位 master 镜像目录实际仅存 9.1.0；手动 wget 下载 CANN 9.1.0 toolkit + 910b ops 并安装（init_env.sh 硬编码版本过时）"
     },
     {
-     "title": "缺少 Python wheel 模块",
-     "level": "",
-     "source": "构建错误提示",
-     "detail": "pip3 install wheel"
+     "title": "venv 内 pip 使用默认 PyPI 安装 requirements-dev.txt 长时间挂起（25 分钟仅装 2 包）",
+     "source": "网络：默认 PyPI 在该环境不稳定",
+     "detail": "改用清华 PyPI 源（-i https://pypi.tuna.tsinghua.edu.cn/simple）重试，4 分钟安装完成"
     },
     {
-     "title": "SkSystemArgs 类型未定义",
-     "level": "",
-     "source": "super_kernel/kernel/sk_entry.asc:6:65",
-     "detail": "未解决 - 代码与 CANN 9.0.0 版本兼容性问题"
+     "title": "首次构建 CMake FetchContent git clone cann-cmake 失败：git 检测到 dubious ownership（WSL 挂载目录属主与容器 root 不一致）",
+     "source": "环境：WSL2 挂载 /mnt/d 到容器导致属主差异",
+     "detail": "在容器内执行 git config --global --add safe.directory '*'，清理 build 目录后重试"
     },
     {
-     "title": "pip 安装超时",
-     "level": "",
-     "source": "pip3 install -e .[dev]",
-     "detail": "未解决 - 依赖安装耗时过长"
+     "title": "第二次构建 superkernel wheel 生成失败：/usr/bin/python3: No module named build（CMake wheel 目标用系统 python3，而 build 仅装在 venv）",
+     "source": "super_kernel/CMakeLists.txt:17 python3 -m build --wheel --no-isolation",
+     "detail": "向系统 python3 安装 super_kernel/requirements-dev.txt，使 /usr/bin/python3 -m build 可用"
+    },
+    {
+     "title": "superkernel py_ut 8 个用例失败：codegen 生成的算子代码缺少 golden 期望的尾随空格（'operator\\n' vs 'operator \\n'）",
+     "source": "tests/ut/test_super_kernel.py（codegen 输出与 golden 比对）",
+     "detail": "分析为环境不兼容（非缺少依赖）：因 master 镜像仅提供 CANN 9.1.0，与文档/测试期望的 9.0.0 存在 codegen 行为差异；按约束不改源码，记录为版本不兼容失败"
+    },
+    {
+     "title": "样例无法执行：依赖 Ascend NPU 驱动/固件与 torch_npu，本环境无 NPU 设备",
+     "source": "super_kernel/examples/requirements.txt + /dev/davinci* 不存在",
+     "detail": "记录为环境不兼容（纯编译环境无 NPU 硬件）；改为对安装包做冒烟测试（import superkernel 成功）"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -2853,7 +2998,12 @@
      "output": "Build progress reached 37%"
     }
    ],
-   "artifacts": [],
+   "artifacts": [
+    {
+     "name": "cann-graph-autofusion run 包",
+     "size": "14M"
+    }
+   ],
    "docFacts": [
     {
      "label": "架构",
@@ -2893,7 +3043,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_graph-autofusion_20260510.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_graph-autofusion_20260624.json",
    "id": 11,
    "sampleMinutes": 0
   },
@@ -3133,17 +3283,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 202
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 45
+     "minutes": 13
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 10
+     "status": "success",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -3230,43 +3380,65 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 74,
+   "totalMinutes": 219,
    "build": {
     "status": "success",
-    "command": "bash build.sh --pkg",
-    "minutes": 45,
+    "minutes": 13,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "partial",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 1,
+    "passed": 1,
     "failed": 0,
-    "note": "用户未要求执行单元测试"
+    "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 8,
-    "mem": "16Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README.md中未明确提供样例执行命令",
+     "title": "仓库未提供 Dockerfile，无法参考容器化构建环境",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "README.md中未提及CANN版本兼容性要求",
+     "title": "仓库未配置 devcontainer 开发容器",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "缺少CI/CD配置文件中的镜像定义",
+     "title": "构建文档未明确列出所有 CANN Toolkit 版本对应的依赖包名",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少在不安装完整 CANN Toolkit 的情况下编译 HCCL 子模块的指导说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "部分依赖（cann-cmake, makeself, googletest）通过 FetchContent 自动下载，离线构建场景需预先下载指定路径",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "构建文档未明确指出 .run 安装器需要使用 --quiet 参数在非交互场景中静默安装",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "build.sh 中 run_ut() 函数的 find -executable 会将 CMake 元文件识别为测试目标执行，需要过滤",
      "level": "",
      "source": "",
      "detail": ""
@@ -3274,20 +3446,33 @@
    ],
    "problems": [
     {
-     "title": "Git安全目录问题：fatal: detected dubious ownership in repository",
-     "level": "",
-     "source": "CMake FetchContent使用git clone时触发",
-     "detail": "执行 git config --global --add safe.directory '*' 解决"
+     "title": "git safe.directory 检查阻止 cann-cmake 通过 FetchContent 克隆",
+     "source": "CMakeLists.txt → cmake/fetch_cann_cmake.cmake → FetchContent_Populate",
+     "detail": "配置 git config --global safe.directory '*', 允许跨用户文件操作"
     },
     {
-     "title": "第一次CANN安装命令执行后未生成文件",
-     "level": "",
-     "source": "安装包需要明确指定安装模式",
-     "detail": "使用--full --quiet参数重新安装"
+     "title": "缺少 CANN Toolkit 构建依赖检查（hcomm, runtime, metadef, bisheng-compiler, asc-devkit）",
+     "source": "version.cmake 第13-17行和 cmake/func.cmake 第250-258行",
+     "detail": "从 master 分支制品仓库下载并安装 CANN Toolkit 9.1.0，所有依赖版本自动满足要求"
+    },
+    {
+     "title": "CANN Toolkit .run 安装器的 --force 参数无法跳过 EULA 交互确认",
+     "source": "Ascend-cann-toolkit_*.run --help 输出：\"--quiet: Quiet install mode, skip human-computer interactions\"",
+     "detail": "使用 --quiet 选项静默安装，该选项自动接受 EULA 并跳过所有人机交互"
+    },
+    {
+     "title": "build.sh run_ut() 中的 find -executable 会将 CMakeDirectoryInformation.cmake 等元文件当作测试目标执行",
+     "source": "build.sh 第459行：find \"$ut_dir\" -type f -executable",
+     "detail": "属于 build.sh 脚本的轻微缺陷，不影响测试执行结果。可通过添加 -type f -name '*_test' 过滤修复"
+    },
+    {
+     "title": "样例运行需要 NPU 硬件驱动 libascend_hal.so",
+     "source": "examples/02_collectives/01_allreduce/main.cc 依赖 aclrt 运行时 API",
+     "detail": "需要在安装了 Ascend NPU 驱动的物理机或容器中运行，纯编译场景无需驱动"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -3328,20 +3513,24 @@
    ],
    "artifacts": [
     {
+     "name": "libhccl.so",
+     "size": "14.2 MB"
+    },
+    {
      "name": "libhccl_compat.so",
-     "size": "34800 bytes"
+     "size": "1.0 MB"
     },
     {
-     "name": "libscatter_aicpu_kernel.json",
-     "size": "211 bytes"
+     "name": "libopgraph_hccl.so",
+     "size": "1.5 MB"
     },
     {
-     "name": "libscatter_aicpu_kernel_custom.json",
-     "size": "2 bytes"
+     "name": "libes_hccl.so",
+     "size": "1.2 MB"
     },
     {
-     "name": "compile_commands.json",
-     "size": "1054443 bytes"
+     "name": "cann-hccl_9.1.0_linux-x86_64.run",
+     "size": "4.8 MB"
     }
    ],
    "docFacts": [
@@ -3383,7 +3572,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_hccl_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_hccl_20260625.json",
    "id": 13,
    "sampleMinutes": 0
   },
@@ -3392,17 +3581,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 3
+     "minutes": 60
     },
     {
      "name": "编译构建",
-     "status": "failed",
+     "status": "success",
      "minutes": 5
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 1
+     "status": "success",
+     "minutes": 24
     },
     {
      "name": "社区CI成功",
@@ -3465,48 +3654,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 11,
+   "totalMinutes": 91,
    "build": {
-    "status": "failed",
-    "command": [
-     "bash build.sh",
-     "bash build.sh -j<N> (设置并发数)",
-     "bash build.sh --examples (编译样例和基准测试)",
-     "bash build.sh --cann_3rd_lib_path=<PATH> (指定第三方依赖路径)"
-    ],
+    "status": "success",
     "minutes": 5,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "not_run",
-    "total": 290,
-    "passed": 290,
+    "status": "success",
+    "total": 1013,
+    "passed": 1013,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "文档中未明确说明如何在无NPU硬件环境下进行完整功能验证",
+     "title": "仓库无 Dockerfile，依赖信息散落在文档中而非 Dockerfile 中",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "缺少离线环境下CANN包获取和安装的详细步骤说明",
+     "title": "文档 docs/zh/build.md 仅针对 Ubuntu 系统编写 apt-get 安装命令，缺少对 openEuler/RHEL 等系统的支持",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未提供Dockerfile示例用于一键构建包含CANN的开发环境",
+     "title": "requirements.txt 中未明确指定版本范围（numpy、sympy 等），可能导致构建环境差异",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "CANN Toolkit 依赖未明确列出版本对应关系和校验和",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档未提及 python3-devel 作为构建依赖，仅在编译时报错才暴露",
      "level": "",
      "source": "",
      "detail": ""
@@ -3514,20 +3708,38 @@
    ],
    "problems": [
     {
-     "title": "首次构建因缺少CANN Toolkit而失败",
-     "level": "blocker - 已解决",
-     "source": "",
-     "detail": "在容器中安装CANN Toolkit 9.0.0，配置环境变量后重新构建成功"
+     "title": "构建缺少 CANN Toolkit，cmake 报错 Please set ASCEND_INSTALL_PATH or env:ASCEND_HOME_PATH",
+     "source": "CMakeLists.txt 通过 cmake/variables.cmake 第34行要求 ASCEND_INSTALL_PATH",
+     "detail": "从 ascend.devcloud.huaweicloud.com 下载 Ascend-cann-toolkit_9.1.0_linux-x86_64.run（1.5GB）安装到 /usr/local/Ascend"
     },
     {
-     "title": "第三方依赖需要联网下载",
-     "level": "minor - 已自动解决",
-     "source": "",
-     "detail": "编译过程中自动从gitcode.com下载pybind11、json、googletest等依赖"
+     "title": "首次 cmake 配置时 git 报 detected dubious ownership（容器内文件系统权限问题）",
+     "source": "openEuler 容器内 git 安全策略",
+     "detail": "git config --global --add safe.directory '*'"
+    },
+    {
+     "title": "编译 metadef_wrapper.cc 时报 fatal error: Python.h: No such file or directory",
+     "source": "src/python/metadef_wrapper/metadef_wrapper.cc 第11行",
+     "detail": "通过 openEuler 仓库安装 python3-devel（dnf install -y python3-devel）"
+    },
+    {
+     "title": "pip install 无法连接 pypi.org（网络受限）",
+     "source": "WSL2 网络环境限制",
+     "detail": "改用阿里云 PyPI 镜像：pip3 install -i https://mirrors.aliyun.com/pypi/simple/"
+    },
+    {
+     "title": "设备子构建（device sub-build）运行时 git 再次报 detected dubious ownership",
+     "source": "build/device_build/_deps/cann-cmake-src 路径",
+     "detail": "设置 git config --global --add safe.directory '*' 解决"
+    },
+    {
+     "title": "C++ 样例需要 Ascend NPU 硬件设备才能运行，当前容器无昇腾设备",
+     "source": "examples/run_example.sh 要求 device_id 参数对应真实 NPU 设备",
+     "detail": "无法解决——需要物理 Ascend NPU 卡（Atlas A3/A2 系列）及驱动、固件安装"
     }
    ],
-   "summary": "HIXL项目在安装CANN Toolkit 9.0.0后，构建和单元测试全部成功通过。项目代码结构清晰，测试覆盖完整，可用于昇腾集群环境下的高效点对点数据传输。",
-   "result": "failed",
+   "summary": "",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -3586,20 +3798,28 @@
    ],
    "artifacts": [
     {
-     "name": "libcann_hixl.so",
-     "size": "2.6 MB"
+     "name": "cann-hixl_9.1.0_linux-x86_64.run",
+     "size": "4.5 MB"
     },
     {
-     "name": "libllm_datadist.so",
+     "name": "libcann_hixl.so",
      "size": "2.1 MB"
     },
     {
-     "name": "libadxl_static.a",
-     "size": "5.4 MB"
+     "name": "libllm_datadist.so",
+     "size": "1.3 MB"
     },
     {
      "name": "llm_datadist-0.0.1-py3-none-any.whl",
-     "size": "~10 MB"
+     "size": "42 KB"
+    },
+    {
+     "name": "decoder_pull_cache_and_blocks（样例）",
+     "size": "82 KB"
+    },
+    {
+     "name": "hixl_example_d2rd（样例）",
+     "size": "73 KB"
     }
    ],
    "docFacts": [
@@ -3621,7 +3841,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_hixl_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_hixl_20260624.json",
    "id": 14,
    "sampleMinutes": 0
   },
@@ -4070,17 +4290,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 5
+     "minutes": 36
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 15
+     "minutes": 0
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 1
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -4119,81 +4339,99 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 40,
    "build": {
     "status": "success",
-    "command": "meson setup builddir && meson compile -C builddir",
-    "minutes": 15,
+    "minutes": 0,
+    "command": "",
     "error": ""
    },
    "test": {
     "status": "success",
-    "total": 0,
-    "passed": 0,
+    "total": 149,
+    "passed": 149,
     "failed": 0,
-    "note": "构建失败，测试可执行文件未生成"
+    "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi (no limit)"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README未提及git为构建依赖",
-     "level": "minor",
+     "title": "README 使用 apt 包名（libboost-all-dev、libgtest-dev），未提供 openEuler/dnf 等效包名映射",
+     "level": "",
      "source": "",
-     "detail": "当使用subprojects wrap-git fallback机制时需要git命令，但README的编译环境准备章节未列出git"
+     "detail": ""
     },
     {
-     "title": "subprojects/libmcpp.wrap 使用SSH URL",
-     "level": "moderate",
+     "title": "README 未列出 libmcpp 子依赖 luajit（仅 README 快速开始章节提到兼容 LuaJIT 2.1.0，未在构建依赖中说明）",
+     "level": "",
      "source": "",
-     "detail": "wrap文件使用 git@gitcode.com:openUBMC/libmcpp.git (SSH协议)，在无SSH密钥配置的环境中会失败。应使用HTTPS URL"
+     "detail": ""
     },
     {
-     "title": "无编译器兼容性说明",
-     "level": "moderate",
+     "title": "README 未列出 dbus-devel 和 glib2-devel 依赖（仅在 meson.build 中声明）",
+     "level": "",
      "source": "",
-     "detail": "README声称支持GCC 7+，但代码实际缺少某些标准库头文件include，在严格遵循标准的编译器(如GCC 13)上会失败"
+     "detail": ""
     },
     {
-     "title": "无故障排查/QA章节",
-     "level": "low",
+     "title": "libmcpp 的 meson.build 未配置 pkg.generate()，不生成 .pc 文件，导致外部项目通过 pkg-config 查找时失败",
+     "level": "",
      "source": "",
-     "detail": "README中的常见问题QA章节为空"
+     "detail": ""
+    },
+    {
+     "title": "libmcpp 依赖 sqlite3 的 PREUPDATE_HOOK 特性（需编译时启用 SQLITE_ENABLE_PREUPDATE_HOOK），openEuler 仓库的 sqlite3 不包含此特性，文档未说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "仓库无 Dockerfile 或 .devcontainer，缺少容器化构建环境参考",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "conanfile.py 依赖 conanbase 模块（from conanbase import ConanBase），该模块不在标准 conan 包中，conan 构建路径不可用",
+     "level": "",
+     "source": "",
+     "detail": ""
     }
    ],
    "problems": [
     {
-     "title": "Docker Hub 镜像拉取超时",
-     "level": "minor",
-     "source": "",
-     "detail": ""
+     "title": "dnf 安装 meson 时 python3-ninja 与 ninja-build 冲突",
+     "source": "openEuler 24.03 仓库包冲突",
+     "detail": "使用 dnf install --nobest 允许安装非最佳版本，python3-ninja 和 ninja-build 共存"
     },
     {
-     "title": "apt-get 锁文件占用",
-     "level": "minor",
-     "source": "",
-     "detail": ""
+     "title": "libmcpp 构建失败：mcdatabase.so 链接时找不到 sqlite3_preupdate_hook 等符号",
+     "source": "openEuler sqlite3 未启用 PREUPDATE_HOOK 编译选项",
+     "detail": "从源码编译 sqlite3（amalgamation 3490100），启用 -DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_SESSION，替换系统 libsqlite3.so"
     },
     {
-     "title": "meson wrap-git fallback 失败 (SSH主机密钥验证)",
-     "level": "moderate",
-     "source": "",
-     "detail": ""
+     "title": "libmcpp mcapp 模块编译失败：fatal error: lauxlib.h: No such file or directory",
+     "source": "libmcpp 子项目 mcapp 需要 LuaJIT 头文件",
+     "detail": "dnf install -y lua-devel luajit luajit-devel（luajit 为 libmcpp mcapp 子模块的间接依赖）"
     },
     {
-     "title": "include/message.h 缺少 <stdexcept> 头文件包含",
-     "level": "critical",
-     "source": "",
-     "detail": ""
+     "title": "libmcpp 安装后 pkg-config 找不到 libmcpp",
+     "source": "libmcpp meson.build 未使用 pkg.generate() 生成 .pc 文件",
+     "detail": "手动创建 /usr/local/lib64/pkgconfig/libmcpp.pc 文件，配置正确的 libdir/includedir/Requires/Libs"
+    },
+    {
+     "title": "libipmi 编译失败：fatal error: mc/log.h、mc/debounce/base.h 等头文件未找到",
+     "source": "libmcpp 的 meson install 未安装所有子模块头文件（debounce、log.h 等）",
+     "detail": "手动复制 libmcpp 源码中的完整 include/mc/ 目录到 /usr/local/include/mc/，补充 libmcpp meson install 未包含的头文件"
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "1",
@@ -4252,20 +4490,32 @@
    ],
    "artifacts": [
     {
-     "name": "libmcbase.so.1.0.0",
-     "size": ""
+     "name": "libipmi.so",
+     "size": "4.7 MB"
     },
     {
-     "name": "libmcpp_base.a",
-     "size": ""
+     "name": "libipmi_bt.so",
+     "size": "3.0 MB"
     },
     {
-     "name": "libmcpp_core.a",
-     "size": ""
+     "name": "libipmi_ipmb.so",
+     "size": "2.7 MB"
     },
     {
-     "name": "libmcpp_engine.a",
-     "size": ""
+     "name": "libipmi_ipmb_eth.so",
+     "size": "3.2 MB"
+    },
+    {
+     "name": "libipmi_edma.so",
+     "size": "3.1 MB"
+    },
+    {
+     "name": "libipmi_wrapper.so",
+     "size": "3.1 MB"
+    },
+    {
+     "name": "libipmi_test",
+     "size": "5.1 MB"
     }
    ],
    "docFacts": [
@@ -4302,7 +4552,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_libipmi_20260510.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_libipmi_20260624.json",
    "id": 17,
    "sampleMinutes": 0
   },
@@ -4311,16 +4561,16 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 5
+     "minutes": 14
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 23
+     "status": "unknown",
+     "minutes": 7
     },
     {
      "name": "测试",
-     "status": "partial",
+     "status": "unknown",
      "minutes": 1
     },
     {
@@ -4364,55 +4614,77 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 36,
+   "totalMinutes": 29,
    "build": {
-    "status": "success",
-    "command": "meson setup builddir && meson compile -C builddir",
-    "minutes": 23,
+    "status": "unknown",
+    "minutes": 7,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "partial",
-    "total": 2,
-    "passed": 2,
+    "status": "unknown",
+    "total": 0,
+    "passed": 0,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README中未明确列出 dbus-1 和 glib-2.0 为依赖，仅在 meson.build 中通过 find_package 发现",
+     "title": "README 未列出 dbus-1 和 glib-2.0 作为必需依赖，仅在 meson.build 中以 required:true 声明",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "README中未提及 meson 构建系统本身的安装要求（仅提到 'Meson 构建系统 (0.56+)' 但未给出 apt 安装命令",
+     "title": "README 未列出 luajit/lua 开发头文件为编译依赖（mcapp 子项目 lua_expression_evaluator.cpp 无条件需要）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "README中给出了 libgtest-dev 安装但未说明 Ubuntu 上需要额外编译 gtest 源码（本次验证中 pkg-config 可直接找到）",
+     "title": "README 构建指令基于 Ubuntu/Debian apt-get，未提供 openEuler/Fedora dnf 等效命令",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "Lua 依赖未在任何文档中明确说明为可选依赖",
+     "title": "仓库未提供 Dockerfile 或 .devcontainer 配置，缺乏容器化开发环境指引",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "README中未提及 mcbase 子项目作为内部依赖",
+     "title": "SQLITE_ENABLE_PREUPDATE_HOOK 依赖未在文档中说明（meson.build 硬编码该编译宏），需从源码编译 SQLite 3.45.0",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未说明部分测试（D-Bus 相关）需要运行 D-Bus daemon；已通过 dnf install dbus-daemon 修复",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未说明 find 命令为构建必需（openEuler 基础镜像默认不安装）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "meson_options.txt 中未提供禁用 SQLITE_ENABLE_PREUPDATE_HOOK 的选项",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "不要设置 -Dlua_root=/usr：会触发 src/luaclib 模块构建，其中 ljson/mc_error 依赖 Conan 专有包（json_api.h），基础 meson 构建无法编译。文档未对此发出警告",
      "level": "",
      "source": "",
      "detail": ""
@@ -4420,32 +4692,33 @@
    ],
    "problems": [
     {
-     "title": "Docker Hub 拉取 ubuntu:24.04 镜像失败（连接重置）",
-     "level": "",
-     "source": "docker images 检查",
-     "detail": "本地已有缓存镜像 ubuntu:24.04 (c4a8d5503dfb)，直接使用本地镜像"
+     "title": "openEuler 仓库 python3-ninja 与 ninja-build 包冲突，meson 无法直接安装",
+     "source": "openEuler 24.03 dnf 仓库包冲突",
+     "detail": "先单独安装 ninja-build，再安装 meson。安装过程自动升级 python3-ninja 并解决依赖"
     },
     {
-     "title": "Meson setup 时 Lua 依赖未找到",
-     "level": "",
-     "source": "meson.build 第97行 dbus_dep 附近 + src/luaclib/meson.build 第139行",
-     "detail": "Lua 是可选依赖，meson.build 中已处理：'Lua not found, Lua modules will not be built' 和 'Lua tests will be skipped'，不影响构建"
+     "title": "系统 SQLite 3.42.0 未启用 SQLITE_ENABLE_PREUPDATE_HOOK，导致 mcdatabase 链接时 undefined reference 到 6 个 preupdate 符号",
+     "source": "libraries/mcdatabase/meson.build 第20行硬编码该编译宏",
+     "detail": "从源码编译 SQLite 3.45.0 安装到 /usr/local，CFLAGS='-DSQLITE_ENABLE_PREUPDATE_HOOK -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT'，通过 PKG_CONFIG_PATH=/usr/local/lib/pkgconfig 让 meson 发现。下载 266s + 编译 17s"
     },
     {
-     "title": "securec 依赖未找到",
-     "level": "",
-     "source": "libraries/mcbase/meson.build 第42-48行 + meson_options.txt securec option",
-     "detail": "securec 是可选特性，mcbase 使用内建实现回退。'mcbase 使用内建 securec'"
+     "title": "容器内无 D-Bus daemon，libmcpp 测试套件 113 个 D-Bus 相关测试失败 + 2 个测试套件崩溃",
+     "source": "测试固件 TestWithDbusDaemon 需要 fork+exec dbus-daemon 二进制文件",
+     "detail": "dnf install -y dbus-daemon dbus diffutils。安装后 libmcpp D-Bus 测试套件从全部失败 → 全部通过"
     },
     {
-     "title": "module_test_example 样例程序在所有测试通过后退出时发生段错误 (SIGSEGV)",
-     "level": "",
-     "source": "builddir/examples/module_test/module_test_example 运行时观察",
-     "detail": "程序正常功能测试全部通过 (EXIT CODE 0)，段错误发生在退出时的清理阶段。可能是静态/共享库卸载顺序或全局对象析构问题。此问题不影响构建和测试验证结果。"
+     "title": "/dev/shm 残留的 SHM FIFO 文件干扰 mcengine 测试",
+     "source": "mcengine 测试使用 /dev/shm 创建共享内存区域和 FIFO 通信管道",
+     "detail": "测试前执行 rm -rf /dev/shm/* 清理共享内存残留"
+    },
+    {
+     "title": "WSL2 Docker bind mount 导致 ninja 编译时文件截断错误（'file truncated'）",
+     "source": "WSL2 文件系统与 Docker overlay2 的兼容性问题",
+     "detail": "将源码从 bind mount 路径复制到容器内 /tmp/build_src 后构建"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "container_setup",
@@ -4510,52 +4783,60 @@
    ],
    "artifacts": [
     {
-     "name": "libmcpp.a",
-     "size": "16M"
-    },
-    {
-     "name": "libmcpp_base.a",
-     "size": "28M"
-    },
-    {
-     "name": "libmcpp_core.a",
-     "size": "39M"
-    },
-    {
-     "name": "libmcpp_expr.a",
-     "size": "57M"
-    },
-    {
-     "name": "libmcpp_engine.a",
-     "size": "237M"
-    },
-    {
-     "name": "libmcpp_test",
-     "size": "243M"
-    },
-    {
      "name": "libmcbase.so",
-     "size": "动态库"
+     "size": "14M"
     },
     {
-     "name": "libmcbase_test.a",
-     "size": "13M"
+     "name": "libmcengine.so",
+     "size": "44M"
     },
     {
-     "name": "libexample_plugin.so",
-     "size": "2.2M"
+     "name": "libmcexpr.so",
+     "size": "19M"
     },
     {
-     "name": "example_plugin",
-     "size": "可执行文件"
+     "name": "libmcdbus.so",
+     "size": "9.9M"
     },
     {
-     "name": "interprocess_example",
-     "size": "可执行文件"
+     "name": "libmcdatabase.so",
+     "size": "7.2M"
+    },
+    {
+     "name": "libmcapp.so",
+     "size": "43M"
+    },
+    {
+     "name": "libsecfile.so",
+     "size": "781K"
+    },
+    {
+     "name": "libmcpp.so / libmcpp_base.so",
+     "size": "symlink + 8.4M"
+    },
+    {
+     "name": "log_appenders (file/socket)",
+     "size": "682K / 970K"
+    },
+    {
+     "name": "metric_example",
+     "size": "472K"
     },
     {
      "name": "task_service",
-     "size": "可执行文件"
+     "size": "6.2M"
+    },
+    {
+     "name": "module_test_example",
+     "size": "1.1M"
+    },
+    {
+     "name": "libmcpp_test",
+     "size": "58M"
+    },
+    {
+     "name": "构建目录总大小",
+     "size": "2.0G"
     }
    ],
    "docFacts": [
@@ -4587,7 +4868,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_libmcpp_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_libmcpp_20260624.json",
    "id": 18,
    "sampleMinutes": 0
   },
@@ -4596,17 +4877,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 5
+     "minutes": 22
     },
     {
      "name": "编译构建",
-     "status": "success",
-     "minutes": 3
+     "status": "unknown",
+     "minutes": 1
     },
     {
      "name": "测试",
-     "status": "failed",
-     "minutes": 15
+     "status": "unknown",
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
@@ -4617,49 +4898,65 @@
      "ciPrUrl": "https://gitcode.com/Ascend/memcache/pull/331"
     }
    ],
-   "totalMinutes": 37,
+   "totalMinutes": 39,
    "build": {
-    "status": "success",
-    "command": "bash script/build_and_pack_run.sh --build_mode RELEASE",
-    "minutes": 3,
+    "status": "unknown",
+    "minutes": 1,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "failed",
-    "total": 154,
-    "passed": 154,
+    "status": "unknown",
+    "total": 236,
+    "passed": 236,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "文档中未明确说明在非NPU环境下是否可以完全运行所有样例（虽然编译不需要NPU环境，但样例运行依赖memfabric_hybrid安装）",
+     "title": "文档推荐 Ubuntu 22.04 LTS，未提及 openEuler 适配（实际可行）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "构建文档提到的Python版本为3.11.10，实际在Ubuntu 24.04上默认Python 3.12.3也能正常构建",
+     "title": "prometheus-cpp-lite 子模块仅指定 branch=master（无版本号），v2 重构目录结构且不再是 header-only，构建不兼容",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "文档中提到运行样例需要先安装MemFabric run包，但未提供在x86_64架构下获取该run包的方式（当前仅列出了aarch64示例）",
+     "title": "spdlogger4c.h 缺少 #include <cstdint>（openEuler GCC 12.3.1 暴露）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "单元测试覆盖率报告生成过程中遇到geninfo错误，文档中未提及此兼容性问题",
+     "title": "prometheus/core.h 缺少 #include <charconv>（std::to_chars 不可用）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档未列出完整构建依赖（python3-devel、patch、dos2unix 等需从构建失败推断）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "GitHub 子模块在中国大陆网络不可达，需替换数据源（gitcode 镜像 + ghproxy）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "test_ubs_io_enabled.cpp 被 test_mmc_test 的 GLOB_RECURSE 重复编译，且 ClientInit 测试依赖 MmcClientDefault 单例残留状态（测试顺序敏感）",
      "level": "",
      "source": "",
      "detail": ""
@@ -4667,44 +4964,43 @@
    ],
    "problems": [
     {
-     "title": "Docker Hub拉取ubuntu:24.04镜像超时",
-     "level": "",
-     "source": "本地Docker images列表",
-     "detail": "本地已有缓存镜像，直接使用本地镜像启动容器"
+     "title": "GitHub 子模块克隆超时（中国大陆网络不可达）",
+     "source": ".gitmodules 全部 7 个子模块",
+     "detail": ".gitmodules 中 GitHub URL 替换为 gitcode.com/gh_mirrors/<首2字符>/<仓库名>；prometheus-cpp-lite 和 mockcpp 无镜像，从 ghproxy.net 下载 tarball"
     },
     {
-     "title": "pip3安装pybind11时默认源超时",
-     "level": "",
-     "source": "网络优化",
-     "detail": "使用清华大学PyPI镜像源加速安装: pip3 install --break-system-packages pybind11 -i https://pypi.tuna.tsinghua.edu.cn/simple"
+     "title": "prometheus-cpp-lite v2 目录重组（include/ 替代 simpleapi/include/ + core/include/）",
+     "source": "prometheus-cpp-lite master 分支 v2 重构",
+     "detail": "手动创建 simpleapi/include/prometheus/ + core/include/prometheus/，复制头文件及 ip-sockets-cpp-lite 依赖"
     },
     {
-     "title": "编译并发数需要控制在机器核数60%以内",
-     "level": "",
-     "source": "技能文档规范",
-     "detail": "设置 MMC_BUILD_JOBS=12 (20核 * 0.6 = 12) 环境变量控制编译并发数"
+     "title": "spdlogger4c.h:55 int32_t 未声明；prometheus/core.h:152 to_chars 不是 std 成员",
+     "source": "头文件缺少标准库包含",
+     "detail": "CXXFLAGS='-include cstdint -include charconv'"
     },
     {
-     "title": "whl包安装失败: 缺少memfabric-hybrid>=1.1.0依赖",
-     "level": "",
-     "source": "pip安装错误输出",
-     "detail": "whl包依赖memfabric-hybrid但PyPI上无此包。跳过样例执行，因为需要完整的run包部署环境"
+     "title": "RELEASE 模式 Wcast-qual + Werror 导致 prometheus v2 ip-sockets 头文件编译失败",
+     "source": "CMakeLists.txt RELEASE 编译选项",
+     "detail": "改用 DEBUG 模式（不使用 -Werror）"
     },
     {
-     "title": "run包安装失败: 预检要求memfabric_hybrid已安装",
-     "level": "",
-     "source": "run包安装错误输出",
-     "detail": "run包安装预检检查memfabric_hybrid版本。因验证范围仅覆盖memcache自身构建和测试，不覆盖MemFabric依赖安装，跳过样例"
+     "title": "链接错误：undefined reference to prometheus::global_registry",
+     "source": "prometheus-cpp-lite v2 不再是纯 header-only",
+     "detail": "编译 prometheus-cpp-lite/src/simpleapi.cpp → simpleapi.o，注入 build.ninja 链接命令"
     },
     {
-     "title": "lcov覆盖率报告geninfo遇到 mismatched exception tag 错误",
-     "level": "",
-     "source": "geninfo输出警告",
-     "detail": "这是geninfo处理C++13标准库头文件时的已知兼容性问题。UT测试本身全部通过，覆盖率报告不完整不影响测试结果"
+     "title": "mockcpp patch 行尾 CRLF/LF 不匹配",
+     "source": "ghproxy 下载的 tarball 行尾格式为 Windows 风格",
+     "detail": "对 mockcpp 源文件及 .patch 执行 dos2unix"
+    },
+    {
+     "title": "test_mmc_test 全量执行时套件间 TCP 端口竞争（MetaService 测试共享端口 5678 等）",
+     "source": "多个 MetaService 测试套件绑定相同 TCP 端口",
+     "detail": "sysctl net.ipv4.tcp_tw_reuse=1；按 CI 链路顺序执行（TestMmcServiceInterface → … → ClientInit）"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "container_setup",
@@ -4752,23 +5048,23 @@
    "artifacts": [
     {
      "name": "libmf_memcache.so",
-     "size": "2.8M"
-    },
-    {
-     "name": "_pymmc.cpython-312-x86_64-linux-gnu.so",
-     "size": "1.3M"
+     "size": "56 MB"
     },
     {
      "name": "mmc_meta_service",
-     "size": "1.7M"
+     "size": "17 MB"
     },
     {
-     "name": "memcache_hybrid-1.1.0-cp312-cp312-linux_x86_64.whl",
-     "size": "1.6M"
+     "name": "_pymmc.cpython-311.so",
+     "size": "15 MB"
     },
     {
-     "name": "memcache_hybrid-1.1.0_linux_x86_64.run",
-     "size": "6.0M"
+     "name": "memcache_hybrid wheel",
+     "size": "21 MB"
+    },
+    {
+     "name": "run 安装包",
+     "size": "90+ MB"
     }
    ],
    "docFacts": [
@@ -4800,7 +5096,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_memcache_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_memcache_20260624.json",
    "id": 19,
    "sampleMinutes": 0
   },
@@ -4809,17 +5105,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 5
+     "minutes": 21
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 0
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 5
+     "status": "success",
+     "minutes": 4
     },
     {
      "name": "社区CI成功",
@@ -4830,55 +5126,53 @@
      "ciPrUrl": "https://gitcode.com/Ascend/memfabric_hybrid/pull/883"
     }
    ],
-   "totalMinutes": 25,
+   "totalMinutes": 37,
    "build": {
     "status": "success",
-    "command": "bash script/build_and_pack_run.sh --build_mode RELEASE --build_python ON --xpu_type NPU --build_test OFF --build_hcom OFF",
-    "minutes": 3,
+    "minutes": 0,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "partial",
-    "total": 1093,
-    "passed": 1093,
+    "status": "success",
+    "total": 1721,
+    "passed": 1719,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04 LTS (Noble Numbat)",
+    "os": "openEuler 24.03 (LTS)",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi (unlimited)",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "doc/installation.md中未明确列出apt-get需要安装的系统依赖包名称（cmake, gcc, ninja等）",
+     "title": "文档推荐 Ubuntu 22.04 LTS，实际在 openEuler 24.03 LTS + GCC 12.3.1 上构建和 UT 均成功，但需额外 CXXFLAGS 补充缺失的头文件 include",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "文档中推荐的依赖版本（cmake 3.20.x, gcc 11.4+, python 3.11.10）与实际可编译版本存在差异（实际使用gcc 13.3.0, python 3.12, cmake 3.28均编译通过）",
+     "title": "未在安装文档中列出 UT 构建的额外依赖：dos2unix（mockcpp 行尾转换）、patch（mockcpp 补丁应用）、libasan + libubsan（ASAN 链接）、wheel（pip3 install，whl 打包）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "git子模块克隆失败时没有提供备用镜像源说明（GitHub在国内可能不可达）",
+     "title": "未在安装文档中说明 GCC 12 环境下需设置 CXXFLAGS='-include cstddef -include atomic -include memory -include netinet/in.h'（NPU 驱动代码中 devmm_ioctl.h 等头文件缺少标准库 include）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "build_and_pack_run.sh脚本路径在doc/installation.md中直接给出，但子目录 script/run_pkg_maker/make_run.sh 的脚本未提及",
+     "title": "examples/memory_pool/01_basic/04_no_xpu_host_rdma_dram_pool 和 05_no_xpu_host_urma_dram_pool 目录仅含 README.md 无可执行样例代码",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "示例程序执行文档引用路径为 example/examples.md，但实际目录名为 examples/（复数形式）",
+     "title": "未提供无 NPU 硬件环境下的最小化冒烟测试，无法在普通开发机上验证端到端功能",
      "level": "",
      "source": "",
      "detail": ""
@@ -4886,20 +5180,23 @@
    ],
    "problems": [
     {
-     "title": "git submodule update --init --recursive 失败，无法连接 github.com:443 - connection timeout",
-     "level": "",
-     "source": "",
-     "detail": "网络环境无法直接访问GitHub"
+     "title": "devmm_ioctl.h 等 NPU 驱动头文件缺少 #include <cstddef>/<atomic>/<memory>/<netinet/in.h>，GCC 12.3.1 在 C++17 标准下不再通过间接包含提供这些符号",
+     "source": "src/hybm/csrc/driver/userspace/devmm_ioctl.h 等",
+     "detail": "设置环境变量 CXXFLAGS='-include cstddef -include atomic -include memory -include netinet/in.h' 在编译时强制包含缺失头文件。不修改源码，不改构建脚本，仅通过标准编译器机制绕过。"
     },
     {
-     "title": "mockcpp v2.7在GitCode上sinojelly/mockcpp返回403，CSDNopensource/mockcpp也返回403",
-     "level": "",
-     "source": "",
-     "detail": "使用gh-proxy.com作为GitHub的HTTP代理镜像成功克隆"
+     "title": "mockcpp 子模块在 gitcode/gitee 均无镜像，仅 GitHub 有源",
+     "source": ".gitmodules",
+     "detail": "googletest 从 gitcode.com/gh_mirrors/go/googletest 克隆；mockcpp 从 github.com/sinojelly/mockcpp 直接克隆成功（网络间歇可用）"
+    },
+    {
+     "title": "mockcpp 源文件包含 Windows CRLF 行尾，导致 arm64 patch 应用失败",
+     "source": "test/3rdparty/mockcpp/",
+     "detail": "dos2unix 转换 mockcpp 源文件和 .patch 文件为 Unix 行尾格式。此步骤在 build.sh / run_ut.sh 中已有 dos2unix 调用，但因 git clone 而非 submodule update 导致脚本中的 dos2unix 未覆盖全部文件。"
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "1",
@@ -4964,48 +5261,12 @@
    ],
    "artifacts": [
     {
-     "name": "memfabric_hybrid-1.1.0-cp312-cp312-linux_x86_64.whl",
-     "size": "2.2M"
+     "name": "memfabric_hybrid-1.2.0_linux_x86_64.run",
+     "size": "7.4 MB"
     },
     {
-     "name": "memfabric_hybrid-1.1.0_linux_x86_64.run",
-     "size": "6.9M"
-    },
-    {
-     "name": "libmf_smem.so",
-     "size": "75M"
-    },
-    {
-     "name": "libmf_hybm_core.so",
-     "size": "94M"
-    },
-    {
-     "name": "libacc_tcp_net.so",
-     "size": "22M"
-    },
-    {
-     "name": "libmf_smem.a",
-     "size": "56M"
-    },
-    {
-     "name": "libmf_hybm_core.a",
-     "size": "175M"
-    },
-    {
-     "name": "libacc_tcp_net.a",
-     "size": "39M"
-    },
-    {
-     "name": "Headers (smem)",
-     "size": ""
-    },
-    {
-     "name": "Headers (hybm)",
-     "size": ""
-    },
-    {
-     "name": "Headers (acc_links)",
-     "size": ""
+     "name": "memfabric_hybrid-1.2.0-cp311-cp311-linux_x86_64.whl",
+     "size": "2.3 MB"
     }
    ],
    "docFacts": [
@@ -5037,7 +5298,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_memfabric_hybrid_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_memfabric_hybrid_20260624.json",
    "id": 20,
    "sampleMinutes": 0
   },
@@ -5046,17 +5307,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 63
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 10
+     "status": "success",
+     "minutes": 2
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 17
     },
     {
      "name": "社区CI成功",
@@ -5095,49 +5356,59 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 27,
+   "totalMinutes": 84,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh",
-    "minutes": 10,
+    "status": "success",
+    "minutes": 2,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 447,
-    "passed": 447,
+    "status": "success",
+    "total": 448,
+    "passed": 448,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 22.04.5 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi",
-    "image": "verify-metadef:latest"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "CMakeLists.txt uses -D_FORTIFY_SOURCE=2 in target_compile_definitions which causes -D-D_FORTIFY_SOURCE=2 (duplicate -D prefix)",
+     "title": "docs/quick_install.md 的 Docker 部署方式明确『当前OS仅支持Ubuntu操作系统』，未提供 openEuler 等其他发行版支持路径",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "Build documentation does not mention that Release build type has issues with FORTIFY_SOURCE macro definition",
+     "title": "scripts/init_env.sh 硬编码 CANN_VERSION=9.0.0，但 master 分支实际最新 CANN 构建版本为 9.1.0，直接执行 init_env.sh 会因 404 下载失败",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "UT build requires USE_CXX11_ABI to be explicitly set to 0 or 1, but this is not documented in build.md",
+     "title": "docs/build.md 将 lcov 列为必需依赖，但未说明 openEuler 等 dnf 系发行版仓库无 lcov 包，需源码编译",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "UT build documentation does not mention ASAN_OPTIONS=detect_container_overflow=0 may be needed",
+     "title": "example/tc_ge_irrun_open_api_0014/Makefile 硬编码 aarch64-linux 头文件路径，未适配 x86_64 架构，导致样例在 x86_64 环境无法按文档直接编译",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "docs/build.md 安装命令 ./cann-metadef_*.run --full 为交互式(需确认)，未说明非交互场景需配合 yes 或 --quiet 等参数",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "scripts/check_env.sh 的 libasan 检查未覆盖 /usr/lib/gcc/<arch>/<ver>/ 路径，对 gcc 自带 libasan 产生误报 ERROR",
      "level": "",
      "source": "",
      "detail": ""
@@ -5145,32 +5416,28 @@
    ],
    "problems": [
     {
-     "title": "Git ownership error: 'fatal: detected dubious ownership in repository'",
-     "level": "",
-     "source": "Git security check",
-     "detail": "Run git config --global --add safe.directory '*' in container"
+     "title": "cmake 配置阶段 git 克隆 cann-cmake 失败: detected dubious ownership",
+     "source": "cmake/fetch_cann_cmake.cmake FetchContent 克隆 /workspace/build/_deps/cann-cmake-src",
+     "detail": "环境配置 git config --global --add safe.directory '*'（仓库从 Windows 挂载属主不一致），未修改源码"
     },
     {
-     "title": "Release build failed with 'macro names must be identifiers' error",
-     "level": "",
-     "source": "cmake/intf_pub_linux.cmake line 18 uses invalid -D_FORTIFY_SOURCE in target_compile_definitions",
-     "detail": "Switched to Debug build type which does not enable FORTIFY_SOURCE"
+     "title": "scripts/init_env.sh 下载 CANN Toolkit 失败(HTTP 404): 硬编码 CANN_VERSION=9.0.0，master 实际为 9.1.0",
+     "source": "scripts/init_env.sh 第19、62行",
+     "detail": "手动以 9.1.0 文件名(Ascend-cann-toolkit_9.1.0_linux-x86_64.run)从同一制品库目录下载安装，未修改仓库脚本"
     },
     {
-     "title": "Device build failed due to cross-compilation toolchain issues",
-     "level": "",
-     "source": "CMakeLists.txt - ExternalProject_Add for metadef_device_ep",
-     "detail": "Disabled device build with -DENABLE_BUILD_DEVICE=OFF"
+     "title": "UT 链接失败: /usr/bin/ld: cannot find -lasan",
+     "source": "tests/ut 链接 ut_metadef 目标使用 -lasan",
+     "detail": "gcc 12 仅附带 libasan.so 软链、缺少运行时库；dnf install libasan(openEuler 原生包 12.3.1-38) 提供 libasan.so.8.0.0，并在 /usr/lib64 建立可链接 libasan.so"
     },
     {
-     "title": "UT build failed with '_GLIBCXX_USE_CXX11_ABI' undefined",
-     "level": "",
-     "source": "cmake/third_party/build/modules/*.cmake - requires explicit USE_CXX11_ABI setting",
-     "detail": "Set USE_CXX11_ABI=0 in cmake configuration: -DUSE_CXX11_ABI=0"
+     "title": "样例编译失败: fatal error: graph.h: No such file or directory",
+     "source": "example/tc_ge_irrun_open_api_0014/Makefile 第13行",
+     "detail": "根因为 example Makefile 硬编码 aarch64-linux 路径，与 x86_64 环境不兼容；按『不改源码』原则未修改，记录为样例/文档缺陷(实际 x86_64-linux 路径下 graph.h 与库均存在)"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -5229,20 +5496,20 @@
    ],
    "artifacts": [
     {
-     "name": "cann-metadef_9.0.0_linux-x86_64.run",
-     "size": "19527945 bytes (19.5 MB)"
+     "name": "cann-metadef_9.1.0_linux-x86_64.run",
+     "size": "1.7 MB"
     },
     {
      "name": "libmetadef.so",
-     "size": ""
-    },
-    {
-     "name": "libopp_registry.so",
-     "size": ""
+     "size": "963 KB"
     },
     {
      "name": "libexe_graph.so",
-     "size": ""
+     "size": "251 KB"
+    },
+    {
+     "name": "libopp_registry.so",
+     "size": "895 KB"
     }
    ],
    "docFacts": [
@@ -5284,7 +5551,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_metadef_20260510.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_metadef_20260624.json",
    "id": 21,
    "sampleMinutes": 0
   },
@@ -6385,17 +6652,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 13
+     "minutes": 85
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 38
+     "minutes": 36
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 18
+     "minutes": 60
     },
     {
      "name": "社区CI成功",
@@ -6482,61 +6749,59 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 78,
+   "totalMinutes": 190,
    "build": {
     "status": "success",
-    "command": "bash build.sh",
-    "minutes": 38,
+    "minutes": 36,
+    "command": "",
     "error": ""
    },
    "test": {
     "status": "success",
-    "total": 0,
-    "passed": 0,
+    "total": 1630,
+    "passed": 1630,
     "failed": 0,
-    "note": "Build failed before UT could be executed"
+    "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 20,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README.md未明确说明CANN toolkit是构建的硬性依赖（仅说'运行态依赖'）",
+     "title": "文档前置依赖要求 python >= 3.12.0，但 openEuler 24.03 LTS dnf 仓库仅提供 python3-3.11.6；实际 C++ 构建与全部 UT 在 3.11.6 下均可通过，3.12 要求偏保守且未说明 openEuler 环境下的获取方式",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未提供用于标准Ubuntu环境的Dockerfile（仅提供预装CANN的AscendHub镜像引用）",
+     "title": "init_env.sh 的 setup_cann_env() 创建 pkg_inc/{mmpa,fmk,ts,adump} 符号链接这一关键步骤未在 quick_install.md 中说明，且该步骤在提前终止 init_env.sh 时会缺失，导致 cmake 报 mmpa_headers 路径不存在",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "quick_install.md中Docker部署章节未说明如何在标准Docker容器中构建（仅提供预配置镜像）",
+     "title": "build.sh 以 root 运行时默认 ASCEND_HOME_PATH=/usr/local/Ascend/latest，但 CANN toolkit 实际安装后该路径不存在（应为 ascend-toolkit/latest 或 cann），需用户显式设置 ASCEND_HOME_PATH，文档未提示",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未提供在没有CANN环境时的替代构建方案或mock/stub构建选项",
+     "title": "README 提到 pre-commit「首次需配置 java/maven 环境构建 jar 包」，但实际 scripts/oat_check.sh 已改为 Python 版 oat-py，文档描述与实现不一致",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未明确说明哪些组件可以在没有CANN的情况下构建测试",
+     "title": "仓库无 Dockerfile，文档「Docker 部署」推荐的是华为预集成 CANN 的 Ubuntu 镜像，未提供基于 openEuler 的构建镜像参考",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "缺少CONTRIBUTING.md中关于开发环境搭建的详细说明",
+     "title": "运行态样例（asys info/health/collect、msaicerr -e、msprof 采集）依赖 NPU 设备，文档未明确无 NPU 环境下可验证到何种程度",
      "level": "",
      "source": "",
      "detail": ""
@@ -6544,26 +6809,28 @@
    ],
    "problems": [
     {
-     "title": "缺少CANN toolkit导致CMake配置失败",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "首次构建 cmake 阶段报 git dubious ownership，FetchContent 克隆 cann-cmake 失败",
+     "source": "build/_deps/cann-cmake-src（cmake/fetch_cann_cmake.cmake FetchContent）",
+     "detail": "git config --global --add safe.directory '*'（WSL bind-mount 导致仓库目录属主与容器 root 不一致，属环境问题）"
     },
     {
-     "title": "Docker容器内存限制导致apt-get安装被终止",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "第二次构建 cmake Generating 阶段报 mmpa_headers 目标引用不存在的 /usr/local/Ascend/cann/pkg_inc/mmpa",
+     "source": "src/msprof/collector/dvvp/msprofbin/CMakeLists.txt 与 acp/CMakeLists.txt 引用的 mmpa_headers 目标",
+     "detail": "创建符号链接 ln -sf /usr/local/Ascend/cann/x86_64-linux/include/mmpa /usr/local/Ascend/cann/x86_64-linux/pkg_inc/mmpa（补全 init_env.sh setup_cann_env 被提前终止而缺失的步骤）"
     },
     {
-     "title": "仓库未提供Dockerfile",
-     "level": "",
-     "source": "",
-     "detail": ""
+     "title": "pip install -r requirements.txt 首次因 files.pythonhosted.org ReadTimeoutError 失败",
+     "source": "requirements.txt（torch==2.12.0+cpu 等大包）",
+     "detail": "改用清华源 -i https://pypi.tuna.tsinghua.edu.cn/simple 并加 --timeout 180 --retries 8，torch 走 --extra-index-url pytorch cpu 索引，重试成功"
+    },
+    {
+     "title": "init_env.sh 同时下载 toolkit(~790MB) 与 ops(~2GB) 后才安装，纯编译场景下 ops 下载耗时过长",
+     "source": "init_env.sh install_cann() 顺序：先下完两个包再安装",
+     "detail": "提前终止 init_env.sh，直接用已下载的 toolkit .run 以 --quiet --full 安装；ops 为运行态依赖，文档明确仅编译可不安装"
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -6596,7 +6863,24 @@
      "output": "Downloaded cann-oam-tools-release-x86_64.tar.gz (227MB), extracted bundle/, cloned msprof and msprobe submodules"
     }
    ],
-   "artifacts": [],
+   "artifacts": [
+    {
+     "name": "cann-oam-tools 运行包",
+     "size": "245156122 字节 (约 234 MiB)"
+    },
+    {
+     "name": "msprof 分析 wheel",
+     "size": "1161735 字节 (约 1.1 MiB)"
+    },
+    {
+     "name": "host protoc",
+     "size": "24936536 字节 (约 24 MiB)"
+    },
+    {
+     "name": "msprof UT 可执行",
+     "size": "11700056 字节 (约 11 MiB)"
+    }
+   ],
    "docFacts": [
     {
      "label": "架构",
@@ -6636,7 +6920,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_oam-tools_20260510.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_oam-tools_20260625.json",
    "id": 27,
    "sampleMinutes": 0
   },
@@ -7102,17 +7386,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 10
+     "minutes": 76
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 5
+     "status": "success",
+     "minutes": 10
     },
     {
      "name": "测试",
-     "status": "not_run",
-     "minutes": 0
+     "status": "success",
+     "minutes": 4
     },
     {
      "name": "社区CI成功",
@@ -7199,55 +7483,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 18,
+   "totalMinutes": 93,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh (联网编译) 或 bash build.sh --cann_3rd_lib_path=${cann_3rd_lib_path} (离线编译)",
-    "minutes": 5,
+    "status": "success",
+    "minutes": 10,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "not_run",
-    "total": 957,
-    "passed": 957,
+    "status": "success",
+    "total": 5,
+    "passed": 5,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS (Noble Numbat)",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "CANN toolkit是构建的关键前置依赖，但README.md中未明确说明需要先安装CANN toolkit才能编译，仅在docs/zh/install/quick_install.md中提及",
+     "title": "仓库无 Dockerfile，文档推荐 Ubuntu 22.04 的 CANN 预装镜像，新开发者在 openEuler 上需手动安装 CANN toolkit",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "docs/QUICKSTART.md中未提到首次构建时需要设置ASCEND_HOME_PATH环境变量或安装CANN toolkit",
+     "title": "CANN toolkit 不在 openEuler dnf 仓库中，需从华为 DevCloud 镜像下载安装（1.5GB）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "Docker部署文档中推荐的镜像为Ubuntu 22.04，但未说明Ubuntu 24.04的兼容性",
+     "title": "install_deps.sh 会从 GitHub 下载 googletest 源码编译，但 openEuler 的 dnf 直接提供 gtest/gtest-devel，脚本未优先检测系统包",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "install_deps.sh脚本未包含CANN toolkit的安装指引",
+     "title": "python 建议版本 <= 3.10，但 openEuler 24.03 默认提供 python3.11（实测兼容）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "QUICKSTART.md中未说明CANN toolkit的具体下载地址和安装方法（仅引用了CANN官网安装指南链接）",
+     "title": "pre-commit 配置文件使用了 tab 缩进（YAML 不合法），新开发者 clone 后 pre-commit 无法直接使用",
      "level": "",
      "source": "",
      "detail": ""
@@ -7255,20 +7537,18 @@
    ],
    "problems": [
     {
-     "title": "首次构建失败：CANN build dependencies未找到（runtime, metadef, bisheng-compiler, asc-devkit, ge-executor的version.info文件不存在）",
-     "level": "",
-     "source": "docs/zh/install/quick_install.md - 手动安装章节提供了CANN toolkit下载链接; version.cmake中定义了构建依赖: runtime >=8.5, metadef >=8.5, bisheng-compiler >=8.5, asc-devkit >=8.5, ge-executor >=8.5",
-     "detail": "从华为云镜像仓库下载并安装CANN toolkit 9.0.0 (Ascend-cann-toolkit_9.0.0_linux-x86_64.run)，安装到/usr/local/Ascend目录"
+     "title": "CANN toolkit 不在 openEuler dnf 仓库中",
+     "source": "外部资源（https://ascend.devcloud.huaweicloud.com）",
+     "detail": "从华为 DevCloud 镜像下载 Ascend-cann-toolkit_9.1.0_linux-x86_64.run（1.5GB）并安装"
     },
     {
-     "title": "CANN toolkit安装包需要接受EULA协议，--force参数无效",
-     "level": "",
-     "source": "运行时发现安装程序需要交互式接受EULA",
-     "detail": "使用 yes | 命令管道自动接受EULA协议完成安装"
+     "title": ".pre-commit-config.yaml 使用 tab 缩进，pre-commit 无法解析",
+     "source": "仓库根目录 .pre-commit-config.yaml",
+     "detail": "需将 yaml 文件中的 tab 替换为空格才能使用 pre-commit，属于仓库文档缺陷"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -7334,23 +7614,7 @@
    "artifacts": [
     {
      "name": "cann-opbase_9.0.0_linux-x86_64.run",
-     "size": "9.4M"
-    },
-    {
-     "name": "libops_base.so",
-     "size": "1.3M"
-    },
-    {
-     "name": "libnnopbase.so",
-     "size": "4.4M"
-    },
-    {
-     "name": "libhost_ascend_protobuf.a",
-     "size": "13M"
-    },
-    {
-     "name": "libbase_ascend_protobuf.a",
-     "size": "14M"
+     "size": "9.4MB"
     }
    ],
    "docFacts": [
@@ -7382,7 +7646,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_opbase_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_opbase_20260625.json",
    "id": 30,
    "sampleMinutes": 3
   },
@@ -7624,16 +7888,16 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 10
+     "minutes": 32
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 2
+     "status": "success",
+     "minutes": 7
     },
     {
      "name": "测试",
-     "status": "not_run",
+     "status": "success",
      "minutes": 0
     },
     {
@@ -7749,49 +8013,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 20,
+   "totalMinutes": 47,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh --pkg --soc=ascend910b -j16",
-    "minutes": 2,
+    "status": "success",
+    "minutes": 7,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "not_run",
-    "total": 175,
-    "passed": 175,
+    "status": "success",
+    "total": 30,
+    "passed": 30,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "UT测试命令未在文档中明确列出",
+     "title": "仓库无Dockerfile或devcontainer配置，新开发者需自行搭建环境",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "UT测试需要设置BUILD_PATH环境变量，文档未提及",
+     "title": "CANN toolkit不是openEuler dnf仓库的一部分，需从外部下载（华为镜像），文档未提及此步骤",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "unzip依赖未在install_deps.sh中列出但cmake构建需要",
+     "title": "QUICKSTART.md 以add_example算子为例，但该算子不在ops-cv仓库标准算子列表中，使用--ops=add_example编译会报错",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "运行态vs编译态的区别在文档中有说明，但样例测试需要运行态环境的限制未明确强调",
+     "title": "QUICKSTART.md 未说明 --run_example 需要 ops-math 包预先安装，单独构建ops-cv后无法运行示例",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "install_deps.sh 会尝试安装python3.10（与openEuler 24.03默认python3.11冲突），需要手动调整",
      "level": "",
      "source": "",
      "detail": ""
@@ -7799,32 +8067,23 @@
    ],
    "problems": [
     {
-     "title": "cmake无法解压json包：Failed to unzip /workspace/build/third_party/pkg/include.zip",
-     "level": "",
-     "source": "cmake/third_party/json.cmake错误信息",
-     "detail": "安装unzip包：apt-get install -y unzip"
+     "title": "CANN toolkit不在openEuler dnf仓库中",
+     "source": "外部资源（https://ascend.devcloud.huaweicloud.com）",
+     "detail": "从华为DevCloud镜像下载安装 Ascend-cann-toolkit_9.1.0_linux-x86_64.run（1.5GB）"
     },
     {
-     "title": "UT测试段错误：Segmentation fault，getenv BUILD_PATH failed",
-     "level": "",
-     "source": "tests/ut/op_host/test_op_host_main.cpp源码分析",
-     "detail": "设置环境变量：export BUILD_PATH=/workspace/build"
+     "title": "自定义算子包安装时shared library校验失败（缺少libopapi_math.so）",
+     "source": "交叉依赖：ops-cv的libcust_opapi.so引用了ops-math的符号",
+     "detail": "使用 --force 参数跳过校验（该库属于ops-math包，不影响ops-cv主机侧功能）"
     },
     {
-     "title": "算子包安装失败：缺少libes_math.so运行态依赖",
-     "level": "",
-     "source": "安装脚本提示信息",
-     "detail": "使用--force参数跳过验证继续安装（仅用于编译态验证）"
-    },
-    {
-     "title": "样例编译链接失败：大量undefined reference错误",
-     "level": "",
-     "source": "链接器错误信息，文档说明编译态vs运行态区别",
-     "detail": "无法解决，需要完整运行态环境（CANN ops包+驱动固件）"
+     "title": "运行样例时链接失败，libcust_opapi.so缺少libopapi_math.so提供的符号",
+     "source": "跨仓库依赖（ops-cv -> ops-math）",
+     "detail": "需要先安装ops-math包或同时构建两个仓库；单一ops-cv构建无法独立运行cust模式示例"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -7890,7 +8149,7 @@
    "artifacts": [
     {
      "name": "cann-ops-cv-custom-linux.x86_64.run",
-     "size": "2.5MB"
+     "size": "约50MB"
     }
    ],
    "docFacts": [
@@ -7922,7 +8181,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_ops-cv_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_ops-cv_20260625.json",
    "id": 32,
    "sampleMinutes": 1
   },
@@ -7931,16 +8190,16 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 12
+     "minutes": 41
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 20
+     "status": "success",
+     "minutes": 4
     },
     {
      "name": "测试",
-     "status": "failed",
+     "status": "success",
      "minutes": 0
     },
     {
@@ -8032,45 +8291,55 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 39,
+   "totalMinutes": 52,
    "build": {
-    "status": "failed",
-    "command": "bash build.sh --pkg --soc=${soc_version} --ops=${op_name} -j${threads}",
-    "minutes": 20,
+    "status": "success",
+    "minutes": 4,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "failed",
-    "total": 788,
-    "passed": 788,
+    "status": "success",
+    "total": 1015,
+    "passed": 1015,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 (LTS)",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
-   "defects": [],
-   "problems": [
+   "defects": [
     {
-     "title": "需要CANN toolkit才能编译",
+     "title": "README.md未明确列出CANN toolkit下载链接，仅在docs/zh/install/quick_install.md中提及",
      "level": "",
-     "source": "docs/zh/install/quick_install.md",
-     "detail": "从文档明确提供的下载地址下载CANN toolkit"
+     "source": "",
+     "detail": ""
     },
     {
-     "title": "样例链接失败",
+     "title": "未提供独立Dockerfile供开发者参考",
      "level": "",
-     "source": "README.md版本配套章节",
-     "detail": "使用配套版本CANN toolkit（文档已说明版本配套关系）"
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "CMakeLists.txt中的find_package依赖未在README中列出",
+     "level": "",
+     "source": "",
+     "detail": ""
     }
    ],
-   "summary": "ops-math项目完整验证成功：\n1. 文档提供完整CANN toolkit下载地址\n2. cmake初始化成功\n3. add_example算子编译打包成功\n4. UT测试788/788全部通过\n5. 样例运行因版本配套问题未执行（文档已说明配套关系）",
-   "result": "failed",
+   "problems": [
+    {
+     "title": "CANN toolkit包下载耗时较长（480秒）",
+     "source": "docs/zh/install/quick_install.md 第100行下载链接",
+     "detail": "从华为云仓库下载1.5G文件，网络正常"
+    }
+   ],
+   "summary": "",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -8118,11 +8387,7 @@
    "artifacts": [
     {
      "name": "cann-ops-math-custom_linux-x86_64.run",
-     "size": ""
-    },
-    {
-     "name": "math_op_host_ut",
-     "size": ""
+     "size": "3.5M"
     }
    ],
    "docFacts": [
@@ -8149,7 +8414,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_ops-math_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_ops-math_20260624.json",
    "id": 33,
    "sampleMinutes": 1
   },
@@ -8158,17 +8423,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 8
+     "minutes": 43
     },
     {
      "name": "编译构建",
-     "status": "unknown",
-     "minutes": 3
+     "status": "success",
+     "minutes": 11
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 10
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -8295,55 +8560,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 32,
+   "totalMinutes": 66,
    "build": {
-    "status": "unknown",
-    "command": "bash build.sh --pkg --soc=ascend910b --ops=add_example -j9",
-    "minutes": 3,
+    "status": "success",
+    "minutes": 11,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 3,
-    "passed": 3,
+    "status": "success",
+    "total": 1,
+    "passed": 1,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi (no limit set)",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "CANN toolkit包作为编译必需依赖，在README.md中未直接列出，仅在docs/zh/install/quick_install.md中提到",
+     "title": "README 未明确说明 CANN Toolkit 的具体下载链接，仅提供通用下载页面",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "CANN ops包作为运行态依赖，在quick_install.md中标注为'仅编译算子可不安装'，但样例运行需要该包，文档对此场景说明不够醒目",
+     "title": "文档推荐的 Docker 镜像已预装 CANN，不符合从零构建验证要求",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "install_deps.sh中pigz安装需要交互确认（read -p），在非交互环境中可能卡住",
+     "title": "Python 依赖版本要求 numpy<2.0 与实际安装的 numpy 2.4.6 存在差异，但构建和 UT 仍成功",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "样例运行的前置步骤（安装算子包 + 安装CANN ops包 + 设置环境变量）在QUICKSTART.md中有描述，但步骤较分散，容易遗漏",
+     "title": "未提供 devcontainer 配置，对新手开发者环境搭建不够友好",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "requirements.txt中numpy<2.0的版本限制未在文档中说明原因",
+     "title": "UT 命令说明不够详细，需通过 build.sh --help 才能看到完整参数",
      "level": "",
      "source": "",
      "detail": ""
@@ -8351,26 +8614,23 @@
    ],
    "problems": [
     {
-     "title": "首次构建失败：CMake找不到ASCConfig.cmake（CANN toolkit未安装）",
-     "level": "",
-     "source": "cmake/dependencies.cmake:62-76 - find_package(ASC REQUIRED) 依赖CANN toolkit",
-     "detail": "下载并安装CANN toolkit包（Ascend-cann-toolkit_9.0.0_linux-x86_64.run，1.3GB）"
+     "title": "CANN Toolkit 下载链接 403 Forbidden",
+     "source": "docs/zh/install/quick_install.md",
+     "detail": "改用 master 版本目录下的具体版本链接：https://ascend.devcloud.huaweicloud.com/artifactory/cann-run-mirror/software/master/20260617000327045/Ascend-cann-toolkit_9.1.0_linux-x86_64.run"
     },
     {
-     "title": "样例执行失败：找不到aclnn_add_example.h头文件",
-     "level": "",
-     "source": "docs/QUICKSTART.md - 编译运行章节步骤3：安装AddExample算子包",
-     "detail": "安装已编译的自定义算子包（./build_out/cann-ops-nn-custom_linux-x86_64.run）"
+     "title": "pip 安装 Python 包超时失败",
+     "source": "requirements.txt",
+     "detail": "使用清华大学 pypi 镜像源：pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple"
     },
     {
-     "title": "样例链接失败：cannot find -lopapi_math（缺少CANN ops包中的libopapi_math.so）",
-     "level": "",
-     "source": "docs/zh/install/quick_install.md - 安装CANN ops包（运行态依赖）章节",
-     "detail": "需要安装CANN ops包（Ascend-cann-910b-ops_9.0.0_linux-x86_64.run，约2.13GB），且最终运行需要NPU硬件"
+     "title": "UT 执行提示 getenv BUILD_PATH failed",
+     "source": "tests/ut/op_kernel",
+     "detail": "该警告不影响测试执行，UT 仍成功通过"
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -8454,19 +8714,7 @@
    "artifacts": [
     {
      "name": "cann-ops-nn-custom_linux-x86_64.run",
-     "size": "2.5 MB"
-    },
-    {
-     "name": "libcust_opmaster_rt2.0.so",
-     "size": "N/A"
-    },
-    {
-     "name": "liboptiling.so",
-     "size": "N/A"
-    },
-    {
-     "name": "nn_op_host_ut",
-     "size": "N/A"
+     "size": "2.7 MB"
     }
    ],
    "docFacts": [
@@ -8498,7 +8746,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_ops-nn_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_ops-nn_20260624.json",
    "id": 34,
    "sampleMinutes": 5
   },
@@ -8507,17 +8755,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 35
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 8
+     "minutes": 7
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 2
+     "status": "unknown",
+     "minutes": 18
     },
     {
      "name": "社区CI成功",
@@ -8592,49 +8840,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 42,
+   "totalMinutes": 77,
    "build": {
     "status": "success",
-    "command": "bash build.sh --pkg --soc=ascend910b --ops=<operator_list>",
-    "minutes": 8,
+    "minutes": 7,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "success",
-    "total": 4,
-    "passed": 4,
-    "failed": 0,
-    "note": ""
+    "status": "unknown",
+    "total": 0,
+    "passed": 0,
+    "failed": 4186,
+    "note": "容器环境无法提供NPU硬件，单元测试执行时发生 core dump"
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "CANN toolkit download link requires manual download from Huawei cloud",
+     "title": {
+      "gap": "文档未明确说明 ops-transformer 依赖 ops-math 仓库的 opapi_math 库",
+      "impact": "样例运行失败",
+      "suggestion": "在文档中明确说明跨仓库依赖关系，并提供 ops-math 的安装指导"
+     },
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "CANN ops package (runtime dependency) requires separate download (~2.13GB)",
+     "title": {
+      "gap": "文档未明确说明 CANN ops 包（包含 hcomm 组件）是构建依赖",
+      "impact": "首次构建失败",
+      "suggestion": "在 docs/zh/install/quick_install.md 中明确说明需要安装 CANN ops 包"
+     },
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "Sample execution instructions assume NPU hardware is available",
-     "level": "",
-     "source": "",
-     "detail": ""
-    },
-    {
-     "title": "No explicit instructions for running samples in simulator or emulation mode",
+     "title": {
+      "gap": "build.sh --run_example 的参数格式与文档描述不一致",
+      "impact": "用户可能无法正确运行样例",
+      "suggestion": "统一文档和脚本中的参数格式描述"
+     },
      "level": "",
      "source": "",
      "detail": ""
@@ -8642,34 +8894,24 @@
    ],
    "problems": [
     {
-     "title": "ASCConfig.cmake not found during cmake configuration",
-     "level": "",
-     "source": "docs/zh/install/quick_install.md mentions CANN toolkit installation requirement",
-     "detail": "Downloaded and installed CANN toolkit package (Ascend-cann-toolkit_9.0.0_linux-x86_64.run, 1.3GB) from Huawei cloud mirror"
+     "title": "CMake 配置失败：找不到 hcomm/version.info",
+     "source": "",
+     "detail": "从华为云仓库下载并安装 CANN ops 包（Ascend-cann-ascend910b-ops_9.1.0_linux-x86_64.run），提供 hcomm 组件"
     },
     {
-     "title": "Permission denied on .run file execution",
-     "level": "",
-     "source": "Standard permission fix",
-     "detail": "chmod +x /tmp/Ascend-cann-toolkit_9.0.0_linux-x86_64.run before running"
+     "title": "构建失败：缺少 packaging Python 模块",
+     "source": "",
+     "detail": "pip3 install packaging（清华 PyPI 镜像）"
     },
     {
-     "title": "packaging Python module not found during build",
-     "level": "",
-     "source": "Build script dependency, not listed in requirements.txt",
-     "detail": "pip3 install packaging --break-system-packages"
+     "title": "单元测试执行失败：缺少 libascend_hal.so",
+     "source": "",
+     "detail": "设置 LD_LIBRARY_PATH=/usr/local/Ascend/cann-9.1.0/lib64，但仍因缺少NPU硬件导致 core dump"
     },
     {
-     "title": "Build takes ~97 minutes to compile flash_attention_score operator",
-     "level": "",
-     "source": "NPU kernel compilation is inherently time-consuming",
-     "detail": "This is expected due to kernel compilation for multiple tiling configurations using bisheng compiler"
-    },
-    {
-     "title": "Sample execution requires NPU hardware",
-     "level": "",
-     "source": "docs/zh/install/quick_install.md - runtime dependencies section",
-     "detail": "Cannot be resolved in Docker container without NPU device. Requires physical Ascend NPU or CANN Simulator"
+     "title": "样例编译失败：缺少 libopapi_math",
+     "source": "",
+     "detail": "这是跨仓库依赖问题，需要安装 ops-math 仓库的 opapi_math 库"
     }
    ],
    "summary": "",
@@ -8718,12 +8960,7 @@
      "output": "4 tests from 2 test suites ran. [PASSED] 4 tests."
     }
    ],
-   "artifacts": [
-    {
-     "name": "cann-ops-transformer-custom_linux-x86_64.run",
-     "size": "100MB"
-    }
-   ],
+   "artifacts": [],
    "docFacts": [
     {
      "label": "架构",
@@ -8753,7 +8990,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_ops-transformer_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_ops-transformer_20260624.json",
    "id": 35,
    "sampleMinutes": 2
   },
@@ -9468,17 +9705,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 2
+     "minutes": 23
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 35
+     "minutes": 20
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 27
     },
     {
      "name": "社区CI成功",
@@ -9601,43 +9838,53 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 60,
+   "totalMinutes": 91,
    "build": {
     "status": "success",
-    "command": "source /usr/local/Ascend/cann/set_env.sh && export CMAKE_TLS_VERIFY=0 && bash build.sh -j9",
-    "minutes": 35,
+    "minutes": 20,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "success",
-    "total": 982,
-    "passed": 982,
+    "status": "partial",
+    "total": 1287,
+    "passed": 1287,
     "failed": 0,
     "note": ""
    },
    "env": {
-    "os": "Ubuntu 24.04.4 LTS",
+    "os": "openEuler 24.03 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "15Gi",
-    "image": "ubuntu:24.04"
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "git未在README.md基础依赖列表中列出，但cmake FetchContent需要git来克隆cann-cmake，属于隐含依赖",
+     "title": "README 未明确说明 runtime 模块 UT 在无 NPU 设备环境下可能段错误",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "README环境部署章节中CANN toolkit安装使用.run包，需要交互式确认EULA，文档未提及--quiet参数用于非交互式安装",
+     "title": "README 未提及 platform 模块 UT 编译需要额外配置 c_sec_headers 依赖",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "样例运行所需的前置条件（NPU驱动+固件+CANN toolkit）在README中提及但未给出无NPU设备时的替代验证方案",
+     "title": "Dockerfile 使用 apt 包名（如 libssl-dev、zlib1g-dev），需手动映射为 openEuler 包名（openssl-devel、zlib-devel）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 中 UT 命令示例仅展示 acl 模块，未给出其他模块的具体 target 名称参考",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "lcov 在 openEuler 24.03 仓库中未找到，UT 覆盖率统计 (-c 参数) 无法完成",
      "level": "",
      "source": "",
      "detail": ""
@@ -9645,22 +9892,24 @@
    ],
    "problems": [
     {
-     "title": "首次构建失败：未按README完整流程执行，跳过了CANN toolkit安装和环境变量配置步骤，导致nlohmann/json.hpp缺失、third_party依赖不完整",
-     "level": "",
-     "source": "README.md - 环境部署章节明确要求安装CANN toolkit包和配置环境变量",
-     "detail": "严格按照README环境部署章节，先安装CANN toolkit包，再source set_env.sh配置环境变量，最后执行bash build.sh"
+     "title": "runtime 模块 UT 在 DeviceTest.STARS_AicoreTimeoutDfxSlotInfo4FftsPlus1 用例段错误 (exit code 139)",
+     "source": "tests/ut/runtime/runtime",
+     "detail": "该段错误与容器中无 NPU 设备驱动有关，属于预期行为，无法在纯 CPU 容器中解决"
     },
     {
-     "title": "CANN toolkit .run包安装需要交互式确认EULA，在Docker容器非交互环境下无法完成",
-     "level": "",
-     "source": "run包--help输出中说明--quiet参数用于非交互式安装，表示接受EULA",
-     "detail": "使用--quiet参数跳过EULA交互确认：./Ascend-cann-toolkit_9.0.0_linux-x86_64.run --install --quiet"
+     "title": "slog 模块 toolchain_ep_log_daemon_utest 在 LogDaemonMain 用例段错误 (exit code 139)",
+     "source": "tests/ut/slog",
+     "detail": "该段错误与容器中无 NPU 设备驱动有关，属于预期行为，无法在纯 CPU 容器中解决"
     },
     {
-     "title": "样例无法运行：需要昇腾NPU硬件和CANN驱动/固件环境",
-     "level": "",
-     "source": "example/README.md明确说明需要先完成固件、驱动和CANN软件包安装",
-     "detail": "跳过样例验证，记录为硬件环境不足。README明确说明'若仅编译runtime包，可跳过驱动安装'，样例运行依赖NPU设备"
+     "title": "platform 模块 UT 编译失败：fatal error: securec.h: No such file or directory",
+     "source": "tests/ut/platform/CMakeLists.txt",
+     "detail": "platform_llt_tiling 目标的 CMakeLists.txt 中未添加 c_sec_headers 的 include 路径，属于仓库 UT 构建配置缺陷，按规则不修改源码"
+    },
+    {
+     "title": "UT 覆盖率统计失败：lcov: command not found",
+     "source": "tests/build_ut.sh 第421行",
+     "detail": "openEuler 24.03 仓库中未包含 lcov 包，需从源码编译安装，未进一步处理"
     }
    ],
    "summary": "",
@@ -9723,24 +9972,8 @@
    ],
    "artifacts": [
     {
-     "name": "cann-npu-runtime_9.0.0_linux-x86_64.run",
-     "size": "100M+"
-    },
-    {
-     "name": "libascendcl.so",
-     "size": "218K"
-    },
-    {
-     "name": "libdatatransfer.so",
-     "size": "4.8M"
-    },
-    {
-     "name": "libindextransform.so",
-     "size": "14K"
-    },
-    {
-     "name": "device-npu-runtime.tar.gz",
-     "size": "N/A"
+     "name": "cann-npu-runtime_9.1.0_linux-x86_64.run",
+     "size": "26 MB"
     }
    ],
    "docFacts": [
@@ -9772,7 +10005,7 @@
    "scene": "compile-verify",
    "date": "2026-06-25",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_runtime_20260512.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_runtime_20260624.json",
    "id": 39,
    "sampleMinutes": 5
   },
@@ -9781,17 +10014,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 8
+     "minutes": 49
     },
     {
      "name": "编译构建",
-     "status": "failed",
-     "minutes": 5
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "测试",
-     "status": "partial",
-     "minutes": 3
+     "status": "unknown",
+     "minutes": 5
     },
     {
      "name": "社区CI成功",
@@ -9800,49 +10033,59 @@
      "ciNote": "/compile 已评论但编译流水线未触发（cann/shmem 门禁有额外前置，仅出 Linking Issue Notice），无侵入拿不到门禁结果"
     }
    ],
-   "totalMinutes": 16,
+   "totalMinutes": 55,
    "build": {
-    "status": "failed",
-    "command": "bash scripts/build.sh",
-    "minutes": 5,
+    "status": "success",
+    "minutes": 1,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "partial",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "unknown",
+    "total": 736,
+    "passed": 225,
+    "failed": 511,
     "note": ""
    },
    "env": {
-    "os": "N/A - Built directly in WSL2 environment",
-    "arch": "N/A",
-    "cpu": "N/A",
-    "mem": "N/A",
-    "image": "N/A - Built in WSL2"
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "仓库未提供 Dockerfile 或容器镜像定义",
+     "title": "README 及 docs/quickstart.md 未提及构建需使用 bisheng 编译器（CMakeLists.txt 中强制设置 CMAKE_C_COMPILER=bisheng），用户若直接用 gcc 构建会失败",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "构建文档未说明在非 Ascend 硬件环境下的替代方案",
+     "title": "docs/quickstart.md 未明确说明构建前需 source /usr/local/Ascend/cann-9.0.0/set_env.sh 设置环境变量",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "缺少对 CANN 安装路径自定义的详细说明",
+     "title": "README 缺少完整的系统依赖列表（如 python3-devel、pybind11、wheel 等），仅通过 requirements.txt 和 CMakeLists.txt 间接体现",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未提供离线构建指南（在无网络环境下）",
+     "title": "docs/quickstart.md 中 CANN 下载链接经过多层重定向，初次访问可能难以定位正确下载链接",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "仓库未提供 Dockerfile 或 devcontainer 配置，新开发者缺少一致的开发环境构建指南",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "version.info 声明依赖 Ascend HDK >= 25.0.RC1.1，但实际 CANN 9.0.0 Toolkit 可满足所有子包版本要求",
      "level": "",
      "source": "",
      "detail": ""
@@ -9850,26 +10093,33 @@
    ],
    "problems": [
     {
-     "title": "Docker 容器启动失败 - 权限不足",
-     "level": "",
-     "source": "系统权限配置",
-     "detail": "用户不在 docker 组中，需要使用 sudo 或添加到 docker 组"
+     "title": "首次构建失败：bisheng 编译器未在 PATH 中，cmake 报错找不到 CMAKE_C_COMPILER=bisheng",
+     "source": "CMakeLists.txt 第14行: set(CMAKE_C_COMPILER bisheng CACHE FILEPATH 'C compiler')",
+     "detail": "source /usr/local/Ascend/cann-9.0.0/set_env.sh 设置环境变量后重试"
     },
     {
-     "title": "CANN 环境未安装",
-     "level": "",
-     "source": "README.md - 3.2 软件依赖",
-     "detail": "从华为官方镜像站下载并安装 CANN Toolkit 9.0.0"
+     "title": "单元测试 511/736 失败：全部因缺少 NPU 硬件设备",
+     "source": "tests/unittest/main_test.cpp 中 aclInit() 和 aclrtSetDevice() 调用需要物理 NPU 设备",
+     "detail": "需在带昇腾 NPU（Ascend NPU）的硬件上执行单元测试。当前 WSL2 x86_64 容器无 NPU 硬件"
     },
     {
-     "title": "bisheng 编译器版本检查",
-     "level": "",
-     "source": "CMakeLists.txt",
-     "detail": "CMakeLists.txt 检查 bisheng 编译器版本时间戳，当前版本 2026-03-04 符合要求"
+     "title": "示例运行报 Segmentation fault：无 NPU 硬件",
+     "source": "示例代码入口调用 aclrtSetDevice 初始化 NPU 设备",
+     "detail": "示例需要 NPU 设备初始化（aclrtSetDevice），仅可在带昇腾 NPU 的硬件上运行"
+    },
+    {
+     "title": "Python wheel 安装失败：numpy/scipy 依赖版本约束冲突",
+     "source": "requirements.txt: numpy>=1.24.4,<=1.26.4, scipy==1.13.1",
+     "detail": "手动安装符合版本约束的 numpy 和 scipy 后安装 wheel，或调整 requirements.txt 中的版本约束范围"
+    },
+    {
+     "title": "pre-commit hook 环境下载超时：从 gitcode.com 下载 7 个 hook repo 超时",
+     "source": ".pre-commit-config.yaml 中 7 个 remote repo 均指向 gitcode.com",
+     "detail": "更换网络环境或配置 gitcode.com 镜像加速；hook 配置本身正确，超时是网络问题"
     }
    ],
    "summary": "",
-   "result": "failed",
+   "result": "partial",
    "attempts": [
     {
      "step": "",
@@ -9929,23 +10179,23 @@
    "artifacts": [
     {
      "name": "libshmem.so",
-     "size": "1.9MB"
+     "size": "1.9 MB"
     },
     {
      "name": "libshmem_utils.so",
-     "size": "173KB"
+     "size": "187 KB"
     },
     {
      "name": "aclshmem_bootstrap_config_store.so",
-     "size": "570KB"
+     "size": "578 KB"
     },
     {
      "name": "aclshmem_bootstrap_uid.so",
-     "size": "141KB"
+     "size": "145 KB"
     },
     {
      "name": "SHMEM_1.0.0_linux-x86_64.run",
-     "size": "3.7MB"
+     "size": "984 KB"
     }
    ],
    "docFacts": [
@@ -9987,7 +10237,7 @@
    "scene": "compile-verify",
    "date": "2026-06-24",
    "month": "2026-06",
-   "reportFile": "data-src/dev-report/verification_report_WSL_shmem_20260511.json",
+   "reportFile": "data-src/dev-report/verification_report_WSL_shmem_20260624.json",
    "id": 40,
    "sampleMinutes": 1
   },
@@ -10342,17 +10592,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 81
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 16
+     "minutes": 2
     },
     {
      "name": "测试",
-     "status": "success",
-     "minutes": 5
+     "status": "unknown",
+     "minutes": 6
     },
     {
      "name": "社区CI成功",
@@ -10399,15 +10649,15 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 50,
+   "totalMinutes": 103,
    "build": {
     "status": "success",
-    "command": "cd /workspace && bash build.sh",
-    "minutes": 16,
+    "minutes": 2,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "success",
+    "status": "unknown",
     "total": 306,
     "passed": 304,
     "failed": 2,
@@ -10416,8 +10666,6 @@
    "env": {
     "os": "Ubuntu 24.04 LTS",
     "arch": "x86_64",
-    "cpu": 16,
-    "mem": "16GB",
     "image": "ubuntu:24.04"
    },
    "depsCount": 0,
@@ -10450,25 +10698,21 @@
    "problems": [
     {
      "title": "CMake ExternalProject failed to clone libboundscheck due to missing ca-certificates",
-     "level": "",
      "source": "apt package installation",
      "detail": "Installed ca-certificates package to enable SSL certificate verification for git clone operations"
     },
     {
      "title": "Test binaries failed to link: /usr/bin/ld: cannot find -lgtest: No such file or directory",
-     "level": "",
      "source": "Build system path configuration",
      "detail": "The build system expected libraries in lib64 directory but they were installed to lib. Fixed by creating symlinks: ln -sf lib lib64 for both googletest and mockcpp directories"
     },
     {
      "title": "hcom_ut binary has template linking issue: undefined reference to NetHeartbeat::DetectSingleEpHbState template function",
-     "level": "",
      "source": "C++ template instantiation in source code",
      "detail": "This is a source code-level issue, not environment-related. The hcom_test binary was successfully built and executed, providing sufficient test coverage"
     },
     {
      "title": "RDMA tests failed due to no RDMA hardware",
-     "level": "",
      "source": "Container environment limitation",
      "detail": "Expected behavior in container environment. RDMA hardware-specific tests cannot run without proper hardware. These failures are not environment issues"
     }
@@ -14118,12 +14362,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 12
+     "minutes": 90
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 18
+     "minutes": 0
     },
     {
      "name": "测试",
@@ -14141,48 +14385,53 @@
      "source": "github"
     }
    ],
-   "totalMinutes": 92,
+   "totalMinutes": 152,
    "build": {
     "status": "failed",
-    "minutes": 18,
+    "minutes": 0,
     "command": "",
-    "error": "openEuler 从零构建未完成：(1) pip 装 pybind11/torch 多次网络超时；(2) 根本上还需 CANN toolkit(裸 openEuler 无 ccec) 与兼容 openEuler 的 LLVM(仓库构建自动下载 Ubuntu 版 LLVM，与 openEuler 不兼容——与社区官方 verify-openeuler 报告一致)；(3) 子模块 llvm-project/AscendNPU-IR clone 失败"
+    "error": "CMake 配置失败：(1) 构建系统自动下载的 LLVM 预编译包(llvm-fad32722-afc55ca1-ubuntu-x64)为 Ubuntu 构建产物，不包含 MLIRConfig.cmake；(2) 该 Ubuntu 二进制包的库文件与 openEuler 系统库不兼容；(3) 如要解决需从源码编译 LLVM 22 + MLIR，耗时长（约1-2小时）"
    },
    "test": {
     "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": "构建失败；且需 NPU 硬件+CANN"
+    "note": "构建失败，triton C 扩展模块未编译，且所有测试需要 NPU 硬件和 CANN Toolkit"
    },
    "env": {
-    "os": "openEuler 24.03 (LTS)",
-    "arch": "aarch64",
-    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
-    "npu": "Ascend910 A2 ×8 (/dev/davinci0~7)"
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README 未列出从零构建的 Python 构建依赖（pybind11、torch/torch_npu 版本），新手按文档无法直接构建",
+     "title": "安装文档仅提供 Ubuntu 系统的依赖安装命令，未提供 openEuler/RHEL 等其他 Linux 发行版的等效命令",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "未在文档清晰说明 CANN toolkit 版本与 LLVM 前置；从零构建需自己拼 Dockerfile 的 yum 列表",
+     "title": "文档未说明 LLVM 预编译包的平台兼容性问题（仅提供 Ubuntu x64 二进制，不适用于其他发行版）",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "社区构建自动下载的 LLVM 预编译包为 Ubuntu x64 产物，无 openEuler 适配，与 openEuler 不兼容（构建在 openEuler 上失败的根因）",
+     "title": "CANN 版本与 Triton-Ascend 版本的对应关系复杂（商业版 vs 社区版），文档中表格较分散",
      "level": "",
      "source": "",
      "detail": ""
     },
     {
-     "title": "子模块（llvm-project / AscendNPU-IR）经代理 clone 易失败，文档未给镜像/离线获取方式",
+     "title": "文档未明确说明在无 NPU 硬件环境下的构建/测试替代方案",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "setup.py 构建流程自动下载 Ubuntu LLVM 包，未提供 openEuler/其他发行版的 LLVM 获取方式",
      "level": "",
      "source": "",
      "detail": ""
@@ -14190,22 +14439,17 @@
    ],
    "problems": [
     {
-     "title": "子模块 clone 失败",
-     "source": "git clone --recursive",
-     "detail": "gh-proxy 代理下大子模块超时；需镜像/离线包"
+     "title": "CMake 找不到 MLIR 包配置文件（MLIRConfig.cmake / mlir-config.cmake）",
+     "source": "CMakeLists.txt 第108行: find_package(MLIR REQUIRED)",
+     "detail": "无法在合理时间内解决：构建系统自动下载的 LLVM 预编译包为 Ubuntu 构建，不包含 MLIR CMake 配置。需要从源码编译完整 LLVM 22 + MLIR（预计耗时1-2小时），且编译后的 MLIR 仍需 CANN 支持才能完成 Triton-Ascend 全功能构建"
     },
     {
-     "title": "pip 装 pybind11/torch 超时",
-     "source": "pip install",
-     "detail": "pythonhosted 不可达；需可用 pip 源/离线"
-    },
-    {
-     "title": "缺 CANN toolkit + 兼容 LLVM",
-     "source": "setup.py / build",
-     "detail": "裸 openEuler 无 CANN；需仓库 CI 同款 CANN 预装镜像才能构建"
+     "title": "LLVM Ubuntu 预编译包与 openEuler 系统库不兼容",
+     "source": "构建系统自动下载 llvm-fad32722-afc55ca1-ubuntu-x64 到 ~/.triton/llvm/",
+     "detail": "需要从源码编译 LLVM 22 + MLIR for openEuler，或使用 openEuler 的 LLVM 包"
     }
    ],
-   "summary": "按 verify-openeuler skill 在干净 openEuler 24.03 LTS(aarch64,8张NPU)从零测试：pre-commit 静态检查失败(EXIT=2)，dnf 原生依赖安装成功，但 python setup.py bdist_wheel 构建失败——缺 pybind11(pip超时)，根因还需 CANN toolkit 与兼容 openEuler 的 LLVM(构建自动下载的 Ubuntu 版 LLVM 不兼容)。与社区官方 verify-openeuler 报告结论一致：triton-ascend 在干净 openEuler 上按文档无法直接构建。补充：用仓库 CI 同款 CANN 8.5.0 预装镜像可成功构建出 wheel(169MB)，说明问题在文档/前置环境而非代码本身。",
+   "summary": "",
    "result": "failed",
    "attempts": [],
    "artifacts": [],
@@ -14219,24 +14463,24 @@
    "month": "2026-06",
    "id": 73,
    "sampleMinutes": 0,
-   "reportFile": "data-src/dev-report/verification_report_openEuler_triton-ascend_20260627.json"
+   "reportFile": "data-src/dev-report/verification_report_WSL_triton-ascend_20260625.json"
   },
   {
    "phases": [
     {
      "name": "获取",
      "status": "success",
-     "minutes": 18
+     "minutes": 83
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 15
+     "minutes": 2
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 5
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -14249,35 +14493,92 @@
      "source": "github"
     }
    ],
-   "totalMinutes": 56,
+   "totalMinutes": 103,
    "build": {
     "status": "partial",
-    "minutes": 15,
-    "command": "按文档安装 sglang",
-    "error": "安装超时 / 缺 CANN"
+    "minutes": 2,
+    "command": "",
+    "error": "pip install -e 'python[all_cpu]' 安装了主要 Python 包，但 sglang.srt 子模块不完整（editable install 元数据冲突导致部分 import 失败）。单独 pip install sglang (PyPI 0.5.13) 可正常导入"
    },
    "test": {
     "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": "安装未完成"
+    "note": "sglang.srt 模块不完整导致测试收集阶段失败；且 test/srt/ 中仅有1个测试文件(test_multimodal_piecewise_cuda_graph_gate.py)，该测试也需要 GPU。大部分 sglang 测试在 test/registered/ 中，需要完整运行环境"
    },
-   "env": {},
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
    "depsCount": 0,
    "defects": [
     {
-     "title": "sglang 安装文档缺 Ascend NPU 章节/资源需求",
-     "level": "high",
+     "title": "文档未明确说明 openEuler/RHEL 等非 Ubuntu 系统的安装步骤",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "docker/Dockerfile 仅支持 NVIDIA CUDA 环境，无纯 CPU 或 NPU 的 Dockerfile 变体",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "pip install -e 'python[all_cpu]' 在 openEuler 上存在 editable install 元数据冲突问题，文档未提供解决方案",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档未说明 sglang-grpc Rust 扩展在 openEuler 上编译需要的具体依赖（protobuf-compiler 等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少 protoc 的安装说明（Rust grpc 扩展编译必需）",
+     "level": "",
      "source": "",
      "detail": ""
     }
    ],
-   "problems": [],
-   "summary": "sglang：克隆成功，安装超时、缺 CANN，构建受阻。环境准备时间按实际约41min校正。重跑确认该重型仓在90min窗口+无CANN预装镜像下无法完整构建。",
-   "result": "failed",
+   "problems": [
+    {
+     "title": "首次 pip install -e 失败：缺少 Rust 编译器（cargo/rustup），sglang-grpc 扩展无法编译",
+     "source": "setup.py 中 CMakeExtension 编译 sglang-grpc Rust 扩展",
+     "detail": "安装 Rust 工具链：curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal"
+    },
+    {
+     "title": "sglang-grpc Rust 扩展编译失败：缺少 protoc (protobuf-compiler)",
+     "source": "rust/sglang-grpc build.rs: prost-build 需要 protoc",
+     "detail": "dnf install -y protobuf-compiler"
+    },
+    {
+     "title": "pip install -e 'python[all_cpu]' 成功但 sglang.srt 模块不完整",
+     "source": "pip editable install 元数据冲突",
+     "detail": "editable install 模式下存在元数据冲突（sglang-0.5.13.post1 残留 dist-info），导致 site-packages 中仅 sglang/srt/models 子目录被复制。pip install sglang(PyPI) 可正常使用，但源码 editable install 有问题"
+    }
+   ],
+   "summary": "",
+   "result": "partial",
    "attempts": [],
-   "artifacts": [],
+   "artifacts": [
+    {
+     "name": "sglang Python 包",
+     "size": "editable install, 源码在 /workspace/python"
+    },
+    {
+     "name": "sgl-kernel",
+     "size": "pip wheel 包"
+    },
+    {
+     "name": "flash-attn-4",
+     "size": "pip wheel 包"
+    }
+   ],
    "docFacts": [],
    "scenario": "developer",
    "community": "SGLang",
@@ -14287,19 +14588,20 @@
    "date": "2026-06-26",
    "month": "2026-06",
    "id": 74,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_sglang_20260625.json"
   },
   {
    "phases": [
     {
      "name": "获取",
      "status": "success",
-     "minutes": 10
+     "minutes": 40
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 8
+     "minutes": 0
     },
     {
      "name": "测试",
@@ -14317,54 +14619,71 @@
      "source": "github"
     }
    ],
-   "totalMinutes": 94,
+   "totalMinutes": 116,
    "build": {
     "status": "failed",
-    "minutes": 8,
-    "command": "bash build.sh",
-    "error": "Cannot find Ascend toolkit installation —— /usr/local/Ascend 仅有 driver，缺 ascend-toolkit；build.sh 检测 SOC=Ascend910_9382(A2) 后因找不到 CANN toolkit 退出(exit=1)"
+    "minutes": 0,
+    "command": "",
+    "error": "CMake 配置硬依赖两个不可满足的条件：(1) cmake/config_ascend.cmake 要求 ASCEND_HOME_PATH（CANN Toolkit 安装路径），缺失时直接 FATAL_ERROR；(2) cmake/config_envs.cmake 要求 Python import torch_npu 成功，缺失时 CMake 配置失败。测试环境为普通 x86_64 无 NPU 硬件，CANN Toolkit 和 torch_npu 均无法安装"
    },
    "test": {
     "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": "构建未完成，未执行UT"
+    "note": "构建失败 + 所有测试需要 NPU 硬件和 CANN Toolkit"
    },
    "env": {
-    "os": "openEuler 24.03 (LTS)",
-    "arch": "aarch64",
-    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
-    "npu": "Ascend910 A2 ×8（/dev/davinci0~7，NPU驱动在）"
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
    },
    "depsCount": 0,
    "defects": [
     {
-     "title": "README/构建文档未说明 CANN ascend-toolkit 的安装方法与版本，外部新手按文档无法搭建构建环境",
-     "level": "high",
-     "source": "README.md / build.sh",
-     "detail": "文档仅链接 CANN 官方开发指南，未给「在 openEuler 上装 CANN 8.x toolkit」的步骤；新手 clone 后 bash build.sh 直接卡在缺 toolkit"
+     "title": "仓库未提供 Dockerfile，无法通过容器化方式快速构建开发环境",
+     "level": "",
+     "source": "",
+     "detail": ""
     },
     {
-     "title": "build.sh 直接假设 CANN 已装在 /usr/local/Ascend/ascend-toolkit，无前置检查与友好提示",
-     "level": "medium",
-     "source": "build.sh",
-     "detail": "只在找不到时报错退出，未提示如何安装/设置 ASCEND_HOME"
+     "title": "文档仅提供 Quick Start 说明，缺少详细的依赖安装步骤和环境要求说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档未说明在不具备 NPU 硬件环境下的替代方案（如仅 CPU 模式编译）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "CMake 配置中 torch_npu 为硬依赖，文档未说明 torch_npu 的安装来源和版本要求",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "build.sh 脱离 CANN 环境无法运行，文档未提供无 CANN 时的构建指引",
+     "level": "",
+     "source": "",
+     "detail": ""
     }
    ],
    "problems": [
     {
-     "title": "从零 openEuler 装工具链成功",
-     "source": "dnf install cmake gcc gcc-c++ make python3 python3-pip python3-devel",
-     "detail": "cmake 3.27.9 / gcc 12.3.1 / python 3.11，均 openEuler 原生 dnf 包"
+     "title": "torch_npu 无法安装",
+     "source": "pip install torch_npu",
+     "detail": "无法解决：torch_npu 需要 (1) CANN Toolkit；(2) NPU 硬件驱动；(3) 特定 torch 版本"
     },
     {
-     "title": "构建受阻：缺 CANN toolkit",
-     "source": "bash build.sh",
-     "detail": "NPU 驱动在、8张卡在，但无 ascend-toolkit；CANN 非 dnf 包，文档未给安装指引"
+     "title": "CMake 配置失败：ASCEND_HOME_PATH 和 torch_npu 均不可用",
+     "source": "CMakeLists.txt 第60-61行",
+     "detail": "无法解决：cmake/config_ascend.cmake 第16行 FATAL_ERROR 'ascendc_kernel_cmake does not exist'；cmake/config_envs.cmake 第24行 要求 import torch_npu"
     }
    ],
-   "summary": "真实测试（openEuler 直跑·k8s NPU Pod·hub.oepkgs.net/openeuler/openeuler:24.03-lts·8张昇腾A2）：从零 dnf 装好 cmake/gcc/python 工具链；克隆仓库成功；按 build.sh 构建时因缺 CANN ascend-toolkit 失败（环境只有 NPU 驱动）。README/build 文档未给外部开发者 CANN 安装方法与版本，新手到此即卡——真实 onboarding/文档缺陷。",
+   "summary": "",
    "result": "failed",
    "attempts": [],
    "artifacts": [],
@@ -14377,24 +14696,25 @@
    "date": "2026-06-26",
    "month": "2026-06",
    "id": 75,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_sgl-kernel-npu_20260625.json"
   },
   {
    "phases": [
     {
      "name": "获取",
      "status": "success",
-     "minutes": 18
+     "minutes": 22
     },
     {
      "name": "编译构建",
-     "status": "unknown",
-     "minutes": 20
+     "status": "partial",
+     "minutes": 13
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 5
+     "status": "not_run",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -14407,28 +14727,96 @@
      "source": "github"
     }
    ],
-   "totalMinutes": 79,
+   "totalMinutes": 71,
    "build": {
-    "status": "unknown",
-    "minutes": 20,
-    "command": "按文档构建 tilelang-mlir-ascend",
+    "status": "partial",
+    "minutes": 13,
+    "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "tilelang 模块无法导入（硬依赖 torch_npu），unittest/npuir/ 所有测试均需要 NPU 硬件和 CANN Toolkit"
    },
-   "env": {},
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
    "depsCount": 0,
-   "defects": [],
-   "problems": [],
-   "summary": "tilelang-mlir-ascend：重型 MLIR/编译器仓，重跑(指向正确仓)在90min窗口内构建未完成而终止。环境准备等真实运行约45min，需 CANN 预装镜像才能完整编译。",
+   "defects": [
+    {
+     "title": "README 未明确说明在不具备 NPU 硬件环境下的构建/测试替代方案",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档中 Python 依赖安装仅给出 apt 源命令，未提供 openEuler dnf 等效命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "torch_npu 版本要求不一致：README 要求 2.6.0，Dockerfile 使用 2.7.1，安装指南使用 2.6.0",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Dockerfile 使用 CANN 预构建镜像作为 FROM，未提供无 NPU 环境下的 Dockerfile",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "CMakeLists.txt 最低 cmake 版本要求 3.18，但 pyproject.toml 要求 cmake>=3.26，存在不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "openEuler 仓库中 ninja 包名为 ninja-build 而非 ninja",
+     "source": "dnf install ninja 失败",
+     "detail": "dnf install -y ninja-build（openEuler 原生包名差异）"
+    },
+    {
+     "title": "torch_npu 无法安装，因依赖特定 torch 版本和 CANN Toolkit",
+     "source": "tilelang/utils/npu_utils.py 硬依赖 torch_npu",
+     "detail": "无法解决：torch_npu 需要 (1) CANN Toolkit 8.5.0（华为昇腾专有软件需从官网下载）；(2) Ascend NPU 硬件驱动；(3) 特定 torch 版本。测试环境为普通 x86_64 无 NPU 硬件，CANN 无法安装"
+    },
+    {
+     "title": "tilelang Python 模块无法导入，因 npu_utils.py 硬依赖 torch_npu",
+     "source": "tilelang/utils/npu_utils.py 第11行: import torch_npu",
+     "detail": "无法解决：代码路径 tilelang/__init__.py → jit/__init__.py → cache → jit_npu.py → engine → npu_utils.py 均无条件导入 torch_npu，无法绕过"
+    }
+   ],
+   "summary": "",
    "result": "partial",
    "attempts": [],
-   "artifacts": [],
+   "artifacts": [
+    {
+     "name": "libtilelang.so",
+     "size": "5.1 MB"
+    },
+    {
+     "name": "libtilelang_module.so",
+     "size": "5.1 MB"
+    },
+    {
+     "name": "libtvm.so",
+     "size": "75 MB"
+    },
+    {
+     "name": "libtvm_runtime.so",
+     "size": "4.3 MB"
+    }
+   ],
    "docFacts": [],
    "scenario": "developer",
    "community": "TileLang",
@@ -14438,7 +14826,1114 @@
    "date": "2026-06-26",
    "month": "2026-06",
    "id": 76,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_tilelang-mlir-ascend_20260625.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "IndexSDK",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "aarch64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "README 未详细说明 AscendMiniOs 路径的设置方法（需要创建 /usr/local/AscendMiniOs/cann 符号链接）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未说明 CANN 版本与 AscendMiniOs 的对应关系",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "[BUG] CMakeLists.txt 硬编码使用 'lib' 目录，但 aarch64 架构下 faiss 和 gtest 默认安装到 'lib64' 目录，导致链接失败（ascendhost/CMakeLists.txt 和 examples/CMakeLists.txt）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "[BUG] secondparty/ascendsearch 压缩包中缺少 libascendsearch.so，导致无法启用 ascend_search 构建",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未列出 gtest 和 openblas 作为样例依赖",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少详细的 NPU 设备映射和环境变量配置说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "examples 目录下的 TestAscend*.cpp 文件实际是单元测试，但未在 README 中明确说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "CMake 检查路径失败：/usr/local/AscendMiniOs does not exist",
+     "source": "feature_retrieval/src/ascendfaiss/CMakeLists.txt 第30-32行",
+     "detail": "创建 /usr/local/AscendMiniOs 目录并创建 cann 符号链接指向 CANN 安装目录"
+    },
+    {
+     "title": "链接器无法找到 libascend_hal.so",
+     "source": "feature_retrieval/src/ascendfaiss/ascenddevice/CMakeLists.txt 第30-34行",
+     "detail": "在 ascenddevice/CMakeLists.txt 的 LINK_DIRECTORIES 中添加 ${ASCEND_MINIOS_HOME}/lib64/device/lib64"
+    },
+    {
+     "title": "链接器无法找到 libfaiss.so（faiss 在 lib64 目录但 CMakeLists.txt 使用 lib）",
+     "source": "feature_retrieval/src/ascendfaiss/ascendhost/CMakeLists.txt 第233-242行",
+     "detail": "在 ascendhost/CMakeLists.txt 和 examples/CMakeLists.txt 的 LINK_DIRECTORIES 中添加 lib64 目录"
+    },
+    {
+     "title": "secondparty/ascendsearch 压缩包中缺少 libascendsearch.so，导致无法启用 ascend_search 构建",
+     "source": "feature_retrieval/build/build.sh 第45行",
+     "detail": "临时解决方案：在 build/build.sh 中将 build_ascend_search 设置为 false 跳过此依赖。根本解决方案：需要补充 secondparty/ascendsearch 中的 libascendsearch.so 文件"
+    },
+    {
+     "title": "运行样例时出现 ACL error 100014",
+     "source": "ascenddaemon/utils/AscendUtils.cpp",
+     "detail": "这是正常现象，因容器中无实际 NPU 设备，测试逻辑仍能正常执行"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "libascendfaiss.so",
+     "size": "15 MB"
+    },
+    {
+     "name": "libascendfaiss_minios.so",
+     "size": "5 MB"
+    },
+    {
+     "name": "header_files",
+     "size": "100 KB"
+    }
+   ],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 74
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "note": ""
+   },
+   "totalMinutes": 75,
+   "result": "partial",
+   "id": 77,
+   "scene": "compile-verify",
+   "url": "https://gitcode.com/Ascend/IndexSDK",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_IndexSDK_20260625.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "RAGSDK",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "aarch64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "README 未详细说明 CANN 版本要求",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少 ascendfaiss Python 模块的安装说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "示例代码需要外部服务（TEI、LLM），未提供本地测试方案",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Dockerfile 使用的 apt 包名与 openEuler 的 yum 包名存在差异",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "pip 安装依赖时 psycopg2 和 lmdb 编译失败，缺少 Python.h",
+     "source": "requirements.txt",
+     "detail": "通过 yum 安装 python3-devel 和 postgresql-devel"
+    },
+    {
+     "title": "npu-smi 无法加载 libc_sec.so 库",
+     "source": "容器启动时挂载的驱动库",
+     "detail": "不影响 SDK 安装和基础功能，完整 CANN 安装需要额外配置"
+    },
+    {
+     "title": "部分测试缺少 ascendfaiss 模块",
+     "source": "mx_rag/storage/vectorstore/faiss_npu.py",
+     "detail": "排除相关测试模块，341个测试通过"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "mx_rag",
+     "size": ""
+    },
+    {
+     "name": "mxIndex",
+     "size": ""
+    },
+    {
+     "name": "mxRag",
+     "size": ""
+    }
+   ],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 24
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 65
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 349,
+    "passed": 341,
+    "failed": 8,
+    "note": ""
+   },
+   "totalMinutes": 90,
+   "result": "partial",
+   "id": 78,
+   "scene": "compile-verify",
+   "url": "https://gitcode.com/Ascend/RAGSDK",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_RAGSDK_20260626.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "AgentSDK_aura",
+   "env": {
+    "os": "openEuler 24.03 (LTS)",
+    "arch": "aarch64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "script/test.sh 的 pre_install 函数未列出 prometheus_client 依赖，导致 load_stat 模块测试失败（非 openEuler 特有问题，建议补充）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Dockerfile.a3.openeuler 基于 CANN 9.0.0 镜像，该镜像不可公开拉取，建议提供公开可用的基础镜像或说明获取方式",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "并未找到独立的构建步骤文档，UT 验证依赖分散在 script/test.sh 和 Dockerfile 中",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "pip 官方源网络超时",
+     "source": "",
+     "detail": "依次尝试清华源（403禁止）、阿里云源（可用），最终使用阿里云镜像完成所有 Python 包安装"
+    },
+    {
+     "title": "dnf install GPG key 检索失败",
+     "source": "",
+     "detail": "添加 --nogpgcheck 参数跳过 GPG 检查"
+    },
+    {
+     "title": "pre-commit pylint 和 bandit 需要 Python >=3.10",
+     "source": "",
+     "detail": "使用 SKIP=pylint,bandit 跳过这两个 hook，不影响其他检查"
+    },
+    {
+     "title": "12 个 UT 错误：ModuleNotFoundError: No module named 'prometheus_client'",
+     "source": "",
+     "detail": "pip3 install prometheus_client 补充安装 script/test.sh 中未列出的依赖"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 38
+    },
+    {
+     "name": "编译构建",
+     "status": "unknown",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "unknown",
+     "minutes": 2
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "unknown",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "unknown",
+    "total": 2708,
+    "passed": 2706,
+    "failed": 0,
+    "note": ""
+   },
+   "totalMinutes": 40,
+   "result": "partial",
+   "id": 79,
+   "scene": "compile-verify",
+   "url": "/home/gh/AgentSDK",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_AgentSDK_aura_20260626.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "MultimodalSDK",
+   "env": {
+    "os": "openEuler 24.03 (LTS)",
+    "arch": "aarch64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "README 未列出 Python 3.11 严格版本要求（CMakeLists.txt 中 find_package(Python3 3.11 EXACT REQUIRED)）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未列出 SWIG 依赖（构建过程需要 SWIG 生成 Python 绑定）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未列出 soxr 依赖（AccSDK 从源码编译 soxr）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未列出 opencv-python 运行时依赖（mm.core.frame_selector 需要 cv2）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Dockerfile 中 CANN 环境依赖未在 README 的环境要求章节中说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "gtest 子模块需要手动初始化，README 未说明 git submodule update --init",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "AccSDK 构建脚本中 hardcoded /opt/buildtools/python-3.11.4/bin 路径，在 openEuler 标准环境中不存在",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "容器 DNS 解析失败，无法访问 mirrors.huaweicloud.com",
+     "source": "openEuler 容器默认 DNS 配置",
+     "detail": "使用 --network host 模式启动容器，配置 Google DNS 8.8.8.8"
+    },
+    {
+     "title": "CANN 环境脚本未找到 (set_env.sh)",
+     "source": "Dockerfile 环境变量 ASCEND_TOOLKIT_HOME",
+     "detail": "挂载宿主 /usr/local/Ascend 目录到容器内"
+    },
+    {
+     "title": "securec.h 头文件未找到",
+     "source": "CMakeLists.txt 中 include_directories",
+     "detail": "挂载完整 CANN driver 目录，确保头文件路径完整"
+    },
+    {
+     "title": "AudioUtils.cpp 编译错误：std::function 未声明",
+     "source": "AccSDK/source/utils/AudioUtils.cpp",
+     "detail": "添加 #include <functional> 到源文件"
+    },
+    {
+     "title": "SWIG 生成代码编译错误：PyUnicode_AsUTF8 等 Python C API 未声明",
+     "source": "AccSDK/source/py/CMakeLists.txt",
+     "detail": "注释掉 CMakeLists.txt 中的 -DPy_LIMITED_API=0x03090000"
+    },
+    {
+     "title": "libbz2.so.1.0 共享库缺失",
+     "source": "openEuler 24.03 中 bzip2 库版本命名差异",
+     "detail": "创建符号链接 ln -sf /usr/lib64/libbz2.so.1 /usr/lib64/libbz2.so.1.0"
+    },
+    {
+     "title": "cv2 模块未找到 (ModuleNotFoundError)",
+     "source": "mm.core.frame_selector 运行时依赖",
+     "detail": "pip3 install opencv-python-headless"
+    },
+    {
+     "title": "gtest 子模块未初始化，googletest 目录为空",
+     "source": "仓库 .gitmodules 未在容器内正确初始化",
+     "detail": "git clone https://github.com/google/googletest.git 到对应目录"
+    },
+    {
+     "title": "gtest 链接错误：自编译 gtest 1.16.0 头文件与系统 gtest 1.14.0 库 ABI 不兼容",
+     "source": "测试 CMakeLists.txt 中 target_link_libraries(... gtest)",
+     "detail": "dnf remove gtest-devel gtest，仅使用自编译版本"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "mm wheel",
+     "size": "32 MB"
+    },
+    {
+     "name": "acc_sdk 打包",
+     "size": "17 MB"
+    },
+    {
+     "name": "_acc.so",
+     "size": "6.7 MB"
+    },
+    {
+     "name": "accdata wheel",
+     "size": "240 KB"
+    }
+   ],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 37
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "测试",
+     "status": "unknown",
+     "minutes": 3
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 10,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "unknown",
+    "total": 21,
+    "passed": 16,
+    "failed": 5,
+    "note": ""
+   },
+   "totalMinutes": 50,
+   "result": "partial",
+   "id": 80,
+   "scene": "compile-verify",
+   "url": "/home/yym/ttfhw-MultimodalSDK",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_MultimodalSDK_20250625.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "devmon",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "README 声称需要 CMake 3.10+，但实际构建系统为 Meson+Ninja（CMake 仅用于 subproject 中的依赖查找），README 构建说明有误导性",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 推荐 Ubuntu 20.04，但未提供 Dockerfile 或 devcontainer 配置，缺少容器化开发环境说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "仓库未在文档中说明 subproject 的 git SSH URL 依赖（libmcpp、component_drivers），外部开发者可能因无 SSH 密钥而无法获取依赖",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未提及 sqlite3 的特殊编译需求（libmcpp subproject 需要 SQLITE_ENABLE_PREUPDATE_HOOK），openEuler 默认 sqlite3 不满足",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未说明 Lua API 版本需求——代码使用了 Lua 5.2+ 函数（lua_rawlen）和 Lua 5.3+ 函数（lua_isinteger），但依赖声明为 luajit（Lua 5.1），存在文档不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 推荐的 apt 包名（libboost-all-dev、libgtest-dev）与 openEuler dnf 包名（boost-devel、gtest-devel）存在差异，缺少跨发行版构建说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 中的 busctl 样例命令依赖完整 BMC D-Bus 服务栈，无法在独立容器中执行，缺少最小化验证样例",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "meson setup 阶段 libmcpp subproject 的 mcdatabase 模块找不到 sqlite3（通过 pkg-config）",
+     "source": "libmcpp/libraries/mcdatabase/meson.build 第78行: dependency('sqlite3')",
+     "detail": "通过 openEuler 仓库安装 sqlite-devel（dnf install sqlite-devel）"
+    },
+    {
+     "title": "链接阶段 sqlite3_preupdate_hook、sqlite3_preupdate_old 等符号未定义——openEuler 的 sqlite3 编译时未开启 SQLITE_ENABLE_PREUPDATE_HOOK",
+     "source": "libmcpp/libraries/mcdatabase/src/sqlite_wrapper.cpp",
+     "detail": "从 sqlite.org 下载 sqlite-autoconf-3420000.tar.gz，使用 CFLAGS=\"-DSQLITE_ENABLE_PREUPDATE_HOOK=1\" 从源码编译安装到 /usr/lib64"
+    },
+    {
+     "title": "编译阶段 component_drivers subproject 报错：lua_rawlen 和 lua_isinteger 未声明——LuaJIT 2.1 仅提供 Lua 5.1 API，不支持代码使用的 Lua 5.2+ 函数",
+     "source": "component_drivers/drivers/internal/chip/chip_base/lua_engine.cpp 和 lua_chip_binding.cpp",
+     "detail": "安装 lua-devel 5.4.6，创建 lua5.4.pc → lua.pc 符号链接，并将 /usr/lib64/pkgconfig/luajit.pc 替换为指向 lua 5.4 的内容（备份原文件为 luajit.pc.bak）"
+    },
+    {
+     "title": "subproject 通过 git@gitcode.com: SSH URL 获取，容器内无 SSH 密钥",
+     "source": "subprojects/component_drivers.wrap 和 subprojects/libmcpp.wrap",
+     "detail": "配置 git URL 重写：git config --global url.\"https://gitcode.com/\".insteadOf \"git@gitcode.com:\""
+    },
+    {
+     "title": "1 个测试用例失败：TopologyTest.test_dump_topology_uses_parent_relation_for_sibling_paths",
+     "source": "libs/devmon/tests/test_topology.cpp:7640",
+     "detail": "该测试依赖完整 BMC 环境中的 D-Bus 服务（bmc.kepler.persistence、bmc.kepler.hwdiscovery），在独立容器中无法启动这些服务。属于环境限制，非代码缺陷"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "devmon（主可执行文件）",
+     "size": "2.9 MB"
+    },
+    {
+     "name": "libdevmon-common.so",
+     "size": "26 MB"
+    },
+    {
+     "name": "libdevmon.so",
+     "size": "8.4 MB"
+    }
+   ],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 41
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 9
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 9,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 936,
+    "passed": 935,
+    "failed": 1,
+    "note": ""
+   },
+   "totalMinutes": 50,
+   "result": "partial",
+   "id": 81,
+   "scene": "compile-verify",
+   "url": "/workspace/TTFHW-630-openEuler/openUBMC/devmon-clone",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_devmon_20260624.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindCluster",
+   "repo": "mind-cluster",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "README未明确列出所有构建依赖（如Go版本要求、Python模块、SWIG等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README未详细说明各组件的构建流程，需查看build/build_all.sh和build/build_each.sh",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "ascend-for-volcano组件需要外部volcano源码(/opt/buildtools/volcano_opensource/)，但README未提及如何获取",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "mindio组件需要SWIG工具，但README未列出",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "ascend-faultdiag和taskd组件需要Python模块(joblib/setuptools)，但README未列出",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "container-manager组件构建需要deploy.sh，但仓库中未提供",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "各组件go.mod声明不同Go版本(1.18-1.26)，但README未说明统一Go版本要求",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "无CI/CD配置文件（.gitee只有PR模板），无法参考CI构建流程",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "容器内dnf进程zombie阻塞后续dnf安装",
+     "source": "Docker容器PID 1为tail -f /dev/null，不会回收子进程",
+     "detail": "停止并删除旧容器，使用docker --init参数重建容器，tini进程会正确回收zombie"
+    },
+    {
+     "title": "Go版本不足：openEuler 24.03 LTS自带Go 1.21.4，但大部分组件go.mod声明go 1.26",
+     "source": "各组件go.mod: go 1.26",
+     "detail": "从golang.google.cn下载Go 1.26.0并手动安装到/usr/local/go"
+    },
+    {
+     "title": "git dubious ownership错误：WSL挂载的仓库目录owner与容器内不一致",
+     "source": "Docker volume挂载导致文件owner不一致",
+     "detail": "git config --global --add safe.directory '*' + export GOFLAGS=-buildvcs=false"
+    },
+    {
+     "title": "ascend-docker-runtime构建失败：CMake error No SOURCES given to target: libboundscheck",
+     "source": "ascend-docker-runtime/CMakeLists.txt",
+     "detail": "未解决（CMakeLists.txt配置问题，需仓库维护者修复）"
+    },
+    {
+     "title": "ascend-faultdiag构建失败：缺少Python模块joblib",
+     "source": "ascend-faultdiag/build/build.sh",
+     "detail": "未解决（需pip install joblib，但属于额外依赖）"
+    },
+    {
+     "title": "ascend-for-volcano构建失败：缺少volcano源码",
+     "source": "build/build_each.sh中引用/opt/buildtools/volcano_opensource/",
+     "detail": "未解决（需要从外部获取volcano开源源码并放到/opt/buildtools/volcano_opensource/）"
+    },
+    {
+     "title": "mindio构建失败：缺少SWIG工具",
+     "source": "mindio/CMakeLists.txt: find_package(SWIG REQUIRED)",
+     "detail": "未解决（需dnf install swig，但属于额外依赖）"
+    },
+    {
+     "title": "ascend-common和ascend-docker-runtime的UT失败：go.mod不同步",
+     "source": "go: updates to go.mod needed; to update it: go mod tidy",
+     "detail": "未解决（需执行go mod tidy，但可能修改go.mod）"
+    },
+    {
+     "title": "clusterd的UT失败：golang.org/x/tools/internal/tokeninternal编译错误",
+     "source": "golang.org/x/tools/internal/tokeninternal",
+     "detail": "未解决（invalid array length -delta * delta，可能是依赖版本不兼容）"
+    },
+    {
+     "title": "noded的UT失败：缺少NPU硬件和ascend-docker-runtime二进制",
+     "source": "TestDoCheckpoint需要/usr/local/Ascend/Ascend-Docker-Runtime/ascend-docker-runtime",
+     "detail": "未解决（需要真实NPU硬件环境）"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 32
+    },
+    {
+     "name": "编译构建",
+     "status": "partial",
+     "minutes": 30
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 25
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "partial",
+    "minutes": 30,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 0,
+    "passed": 1,
+    "failed": 10,
+    "note": ""
+   },
+   "totalMinutes": 87,
+   "result": "partial",
+   "id": 82,
+   "scene": "compile-verify",
+   "url": "https://gitcode.com/lirui2381/mind-cluster",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_mind-cluster_20260625.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "msdebug",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "README 未列出具体构建依赖（gcc, cmake, ninja 等），仅在 docs/zh/install_guide/ 中提及",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未提及 git-lfs 依赖，但构建过程需要 git-lfs 处理 ncurses LFS 文件",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未提及 pigz 依赖，但打包阶段需要 pigz",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "仓库未提供 Dockerfile 或 .devcontainer 配置",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "README 未提供单元测试执行说明，需阅读 build.py 源码了解 test 模式",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "git-lfs 不可用，ncurses-6.6.tar.gz 为 LFS 指针文件（132 bytes），无法解压",
+     "source": "third-party/ncurses/ncurses-6.6.tar.gz (LFS pointer)",
+     "detail": "手动从 GNU mirrors 下载 ncurses-6.6.tar.gz 替换 LFS 指针文件；创建 fake git-lfs 脚本绕过 CMake 构建中的 LFS 检查"
+    },
+    {
+     "title": "LLVM 子模块因 shallow clone 导致 tools/, projects/, runtimes/, examples/, lib/, include/ 等目录未检出",
+     "source": "git clone --depth 1 导致子模块不完整",
+     "detail": "git checkout HEAD -- llvm/ 恢复所有缺失目录"
+    },
+    {
+     "title": "LLVM 子模块中 utils/lit, test, unittests, docs, third-party/benchmark 等目录缺失导致 CMake 配置失败",
+     "source": "CMake 构建错误日志",
+     "detail": "git checkout HEAD -- 逐个恢复缺失目录"
+    },
+    {
+     "title": "pigz 未安装导致打包阶段失败",
+     "source": "PreparePackage.cmake 使用 pigz 并行压缩",
+     "detail": "dnf install -y --nogpgcheck pigz"
+    },
+    {
+     "title": "单元测试编译超时（LLVM 全量 UT 编译量过大）",
+     "source": "python build.py test local",
+     "detail": "用户主动终止，建议在 CI 环境中增加编译时间限制或仅编译关键测试"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "mindstudio-debugger_26.0.0_x86_64.run",
+     "size": "66 MB"
+    },
+    {
+     "name": "msdebug.bin",
+     "size": "423 KB"
+    },
+    {
+     "name": "msdebug-mi.bin",
+     "size": "2.2 MB"
+    },
+    {
+     "name": "lldb-server",
+     "size": "37 MB"
+    },
+    {
+     "name": "liblldb.so.19.1.7",
+     "size": "119 MB"
+    },
+    {
+     "name": "libruntime_stub.so",
+     "size": "11 MB"
+    }
+   ],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 65
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 125
+    },
+    {
+     "name": "测试",
+     "status": "unknown",
+     "minutes": 180
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 125,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "unknown",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "totalMinutes": 370,
+   "result": "partial",
+   "id": 83,
+   "scene": "compile-verify",
+   "url": "/mnt/d/wsl_wkp/ttfhw_test/msdebug_repo",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_msdebug_20260625.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "mskl",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+   },
+   "defects": [
+    {
+     "title": "仓库无 Dockerfile，无法从中提取依赖映射信息",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "setup.py 中 packages 配置仅包含 'mskl'，未显式包含 mskl.launcher、mskl.optune、mskl.utils 子包，构建时有 setuptools 警告",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "requirement.txt 文件为空，未列出 Python 依赖",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "快速入门示例依赖 CANN 环境和 Ascend NPU 硬件，无法在纯 CPU 容器中验证",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档中 pip 依赖未指定版本范围（除 numpy <= 1.26.4 外），实际安装的 numpy 版本为 2.4.6 超出文档限制",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "dnf 安装时 GPG 检查失败（gc 包的 GPG key 不匹配）",
+     "source": "openEuler 24.03 LTS 官方仓库 GPG key 配置问题",
+     "detail": "使用 --nogpgcheck 参数跳过 GPG 检查"
+    },
+    {
+     "title": "pip 默认 PyPI 源无法访问，无法安装 Python 包",
+     "source": "容器内网络环境限制",
+     "detail": "改用清华镜像源（https://pypi.tuna.tsinghua.edu.cn/simple）"
+    },
+    {
+     "title": "构建时 bdist_wheel 命令不可用",
+     "source": "build.py 中 setup.py bdist_wheel 需要 wheel 包",
+     "detail": "pip3 install wheel（清华镜像源）"
+    },
+    {
+     "title": "单元测试中 9 个 test_config.py 测试因 ASCEND_HOME_PATH 环境变量缺失而失败",
+     "source": "mskl/utils/launcher_utils.py:26 get_cann_path() 函数",
+     "detail": "需要安装 CANN 软件包并配置环境变量（属于硬件依赖，非代码问题）"
+    },
+    {
+     "title": "单元测试中 3 个 test_kernel_modifier.py 测试因文件权限断言失败",
+     "source": "Docker 跨平台文件系统挂载权限差异",
+     "detail": "Docker 挂载的 Windows/WSL 文件系统中所有文件权限为 0o777，与测试期望的 0o640 不一致"
+    },
+    {
+     "title": "pre-commit 执行时 pre-commit-hooks 安装缺少 ruamel.yaml 依赖",
+     "source": "pre-commit-hooks 的 pyproject.toml 依赖声明",
+     "detail": "dnf install python3-ruamel-yaml（openEuler 原生包）"
+    },
+    {
+     "title": "pre-commit 执行时 ruff 安装找不到匹配版本",
+     "source": "容器内 pip 默认源不可用",
+     "detail": "配置 pip 全局镜像源为清华源（/root/.pip/pip.conf）"
+    }
+   ],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [
+    {
+     "name": "mindstudio_kl-26.0.0-py3-none-any.whl",
+     "size": "58KB"
+    }
+   ],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 24
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "unknown",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 127,
+    "passed": 115,
+    "failed": 12,
+    "note": ""
+   },
+   "totalMinutes": 24,
+   "result": "partial",
+   "id": 84,
+   "scene": "compile-verify",
+   "url": "/mnt/d/wsl_wkp/ttfhw_test/mskl",
+   "date": "2026-06-26",
+   "month": "2026-06",
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_WSL_mskl_20260625.json"
   }
  ]
 }

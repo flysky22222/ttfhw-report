@@ -1,0 +1,481 @@
+{
+ "metadata": {
+  "repo_path": "https://github.com/sgl-project/sglang.git",
+  "start_time": "2026-06-25T16:20:00",
+  "end_time": "2026-06-25T17:45:00",
+  "duration_seconds": 5100,
+  "total_steps": 12
+ },
+ "machine_spec": {
+  "host_machine": {
+   "architecture": "x86_64",
+   "cpu_model": "Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz",
+   "cpu_cores": 8,
+   "memory": "15Gi",
+   "disk": "500G available",
+   "docker_version": "Docker version 27.4.0, build bde2b89"
+  },
+  "container": {
+   "os": "openEuler 24.03 LTS",
+   "architecture": "x86_64",
+   "cpu_cores": 8,
+   "memory": "15Gi (无限制)"
+  },
+  "image_source": {
+   "type": "base_image",
+   "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+   "selection_reason": "仓库 docker/Dockerfile 原指定 FROM nvidia/cuda:13.0.1-cudnn-devel-ubuntu24.04（含 CUDA 预构建镜像），改用 openEuler 24.03 LTS 从零构建。sglang 官方也提供 pip install 安装方式",
+   "dependency_mapping": {
+    "from_dockerfile": "docker/Dockerfile 中的 apt-get install 指令",
+    "mappings": [
+     {
+      "original": "build-essential",
+      "openEuler": "gcc gcc-c++ make"
+     },
+     {
+      "original": "cmake",
+      "openEuler": "cmake (pip install cmake>=3.26)"
+     },
+     {
+      "original": "patchelf",
+      "openEuler": "patchelf"
+     },
+     {
+      "original": "ccache",
+      "openEuler": "ccache"
+     },
+     {
+      "original": "python3.12-full python3.12-dev",
+      "openEuler": "python3 (3.11) + python3-devel"
+     },
+     {
+      "original": "libboost-all-dev",
+      "openEuler": "boost-devel"
+     },
+     {
+      "original": "libssl-dev",
+      "openEuler": "openssl-devel"
+     },
+     {
+      "original": "protobuf-compiler",
+      "openEuler": "protobuf-compiler"
+     },
+     {
+      "original": "pybind11-dev",
+      "openEuler": "pip install pybind11"
+     },
+     {
+      "original": "libgoogle-glog-dev",
+      "openEuler": "glog-devel"
+     },
+     {
+      "original": "libgrpc-dev libgrpc++-dev",
+      "openEuler": "grpc-devel"
+     }
+    ]
+   }
+  }
+ },
+ "document_reading_summary": {
+  "architecture": {
+   "source": "README.md",
+   "value": "多硬件平台：NVIDIA GPU、AMD GPU、Intel CPU、Google TPU、Ascend NPU 等，CPU 模式也可运行（但推理性能极低）"
+  },
+  "recommended_image": {
+   "source": "docker/Dockerfile FROM 指令",
+   "value": "原推荐 nvidia/cuda:13.0.1-cudnn-devel-ubuntu24.04（含 CUDA），已改用 openEuler 24.03 LTS。pip install 方式也可在 CPU 模式安装"
+  },
+  "dockerfile_dependencies": {
+   "source": "docker/Dockerfile RUN 指令",
+   "value": [
+    {
+     "original": "apt install build-essential cmake patchelf ccache protobuf-compiler pybind11-dev libboost-all-dev libssl-dev libgrpc-dev",
+     "openEuler_equivalent": "dnf install -y gcc gcc-c++ make cmake patchelf ccache protobuf-compiler boost-devel openssl-devel grpc-devel"
+    },
+    {
+     "original": "pip install torch + sgl-kernel + sglang[all]",
+     "openEuler_equivalent": "pip install torch(CPU) + pip install sglang[all_cpu]"
+    }
+   ]
+  },
+  "dependencies": {
+   "source": "README.md + docker/Dockerfile + python/pyproject.toml",
+   "value": [
+    "Python 3.10~3.12 (推荐 3.12)",
+    "torch (pip: torch，CPU 版本用于测试)",
+    "transformers, vllm, outlines 等数十个 Python 包 (pip: sglang[all] 或 sglang[all_cpu])",
+    "Rust toolchain (cargo + rustup，用于 sgl-model-gateway grpc 扩展)",
+    "protobuf-compiler (dnf: protobuf-compiler)",
+    "cmake >= 3.26 (pip: cmake)",
+    "ninja (pip: ninja)",
+    "pybind11 (pip: pybind11)",
+    "patchelf (dnf: patchelf)",
+    "可选：CUDA toolkit (GPU 推理)"
+   ]
+  },
+  "build_commands": {
+   "source": "README.md + docs.sglang.io",
+   "value": "pip install -e 'python[all_cpu]'（源码 editable 安装，CPU 模式）或 pip install sglang（PyPI 安装）"
+  },
+  "ut_commands": {
+   "source": "test/ 目录",
+   "value": "pytest test/srt/（需要 sglang 安装完整，大部分测试需要 GPU/NPU 硬件）"
+  },
+  "sample_commands": {
+   "source": "README.md + docs.sglang.io",
+   "value": "python3 -m sglang.launch_server --model-path Qwen/Qwen2-1.5B --port 30000（需要下载模型 + GPU/CPU 推理）"
+  },
+  "special_dependencies": {
+   "source": "python/pyproject.toml",
+   "value": [
+    "CUDA toolkit（GPU 推荐模式，性能最优）",
+    "sgl-kernel（SGLang 专用 CUDA/NPU kernel 包，pip 安装）",
+    "Rust toolchain（sglang-grpc 扩展编译需要 cargo + rustup）",
+    "protoc / protobuf-compiler（sglang-grpc 的 proto 编译需要）"
+   ]
+  }
+ },
+ "execution_log": [
+  {
+   "timestamp": "2026-06-25T16:22:00",
+   "command": "pre-commit run --all-files",
+   "success": true,
+   "output": "check-symlinks:Passed, trailing-whitespace:Passed, end-of-file-fixer:Passed, check-yaml:Passed, check-toml:Passed, check-ast:Passed, check-added-large-files:Passed, check-merge-conflict:Passed, detect-private-key:Passed, debug-statements:Passed, isort:Passed, ruff:Passed, black-jupyter:Passed, codespell:Passed, clang-format:Passed, nbstripout:Passed, local hooks(chinese chars, CI permissions, etc):Passed\n\nFailed: no-commit-to-branch (当前在 main 分支), rustfmt-sgl-model-gateway (缺少 rustup), rustfmt-sgl-router (缺少 cargo)",
+   "error": "no-commit-to-branch、rustfmt 两个 hook 失败（缺少 Rust 工具链）",
+   "returncode": 1,
+   "duration_seconds": 120
+  },
+  {
+   "timestamp": "2026-06-25T16:23:00",
+   "command": "检查 .devcontainer 目录",
+   "success": true,
+   "output": "存在 .devcontainer/Dockerfile，基于 lmsysorg/sglang:dev 预构建镜像",
+   "error": "",
+   "returncode": 0,
+   "duration_seconds": 1
+  },
+  {
+   "timestamp": "2026-06-25T16:25:00",
+   "command": "docker run -d --name ttfhw-sglang-openeuler-env",
+   "success": true,
+   "output": "Container ID: e900b20c057b",
+   "error": "",
+   "returncode": 0,
+   "duration_seconds": 2
+  },
+  {
+   "timestamp": "2026-06-25T16:26:00",
+   "command": "第一层依赖：dnf install -y gcc gcc-c++ make cmake git python3 python3-pip zlib-devel libzstd-devel patch patchelf ninja-build ccache protobuf-compiler",
+   "success": true,
+   "output": "安装完成",
+   "error": "",
+   "returncode": 0,
+   "duration_seconds": 45
+  },
+  {
+   "timestamp": "2026-06-25T16:27:00",
+   "command": "pip3 install setuptools wheel packaging cmake pybind11 ninja torch(CPU)",
+   "success": true,
+   "output": "安装完成",
+   "error": "",
+   "returncode": 0,
+   "duration_seconds": 30
+  },
+  {
+   "timestamp": "2026-06-25T16:30:00",
+   "command": "安装 Rust 工具链 (rustup + cargo)",
+   "success": true,
+   "output": "安装完成：rustup minimal profile",
+   "error": "",
+   "returncode": 0,
+   "duration_seconds": 15
+  },
+  {
+   "timestamp": "2026-06-25T16:35:00",
+   "command": "pip3 install -e 'python[all_cpu]'",
+   "success": true,
+   "output": "安装完成：sglang-0.0.0.dev1+g890b38c21，含 sgl-kernel-0.4.4, flash-attn-4, sgl-deep-gemm, tokenspeed_mla, sglang-grpc 等",
+   "error": "sglang.srt 子模块未完全安装到 site-packages（仅 models 子目录被复制），导致部分 import 失败",
+   "returncode": 0,
+   "duration_seconds": 120
+  },
+  {
+   "timestamp": "2026-06-25T16:40:00",
+   "command": "python3 -c 'import sglang'",
+   "success": true,
+   "output": "sglang 模块可导入，但 __version__ 属性缺失",
+   "error": "",
+   "returncode": 0,
+   "duration_seconds": 1
+  },
+  {
+   "timestamp": "2026-06-25T16:41:00",
+   "command": "python3 -c 'from sglang.srt.configs.model_config import ModelConfig'",
+   "success": false,
+   "output": "ModuleNotFoundError: No module named 'sglang.srt.configs'",
+   "error": "sglang.srt 子模块未完全安装，仅 models 子目录存在",
+   "returncode": 1,
+   "duration_seconds": 1
+  },
+  {
+   "timestamp": "2026-06-25T16:42:00",
+   "command": "pytest test/srt/",
+   "success": false,
+   "output": "ModuleNotFoundError: No module named 'sglang.srt.configs' — 测试收集阶段失败",
+   "error": "sglang.srt 模块不完整，测试无法运行",
+   "returncode": 1,
+   "duration_seconds": 1
+  }
+ ],
+ "process_timeline": [
+  {
+   "timestamp": "2026-06-25T16:20:00",
+   "step": "start",
+   "action": "开始验证流程（openEuler 原生构建模式）",
+   "result": "已启动",
+   "details": {}
+  },
+  {
+   "timestamp": "2026-06-25T16:21:00",
+   "step": "document_reading",
+   "action": "读取 README.md 和 docker/Dockerfile",
+   "result": "成功",
+   "details": {
+    "sections_read": [
+     "About",
+     "Getting Started",
+     "Hardware Support"
+    ]
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:22:00",
+   "step": "static_analysis_scan",
+   "action": "执行 pre-commit run --all-files",
+   "result": "部分通过",
+   "details": {
+    "passed": 17,
+    "failed": 3,
+    "skipped": 0
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:23:00",
+   "step": "devcontainer_scan",
+   "action": "检查 .devcontainer 目录和 Dockerfile",
+   "result": "已配置",
+   "details": {
+    "config_dir": ".devcontainer",
+    "config_files": [
+     "Dockerfile"
+    ],
+    "original_base_image": "lmsysorg/sglang:dev（预构建 CUDA 镜像）",
+    "will_use": "openEuler 24.03 LTS"
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:25:00",
+   "step": "container_setup",
+   "action": "启动 openEuler 容器",
+   "result": "成功",
+   "details": {}
+  },
+  {
+   "timestamp": "2026-06-25T16:26:00",
+   "step": "dependency_installation_layer1",
+   "action": "安装系统工具链和构建依赖",
+   "result": "成功",
+   "details": {
+    "packages": [
+     "gcc",
+     "gcc-c++",
+     "make",
+     "cmake",
+     "git",
+     "python3",
+     "python3-pip",
+     "zlib-devel",
+     "zstd-devel",
+     "patch",
+     "patchelf",
+     "ninja-build",
+     "ccache",
+     "protobuf-compiler"
+    ]
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:30:00",
+   "step": "dependency_installation_layer2",
+   "action": "安装 Rust 工具链 + torch CPU + Python 构建依赖",
+   "result": "成功",
+   "details": {
+    "packages": [
+     "rustup",
+     "torch(CPU)",
+     "setuptools",
+     "wheel",
+     "cmake",
+     "pybind11",
+     "ninja"
+    ]
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:35:00",
+   "step": "build_attempt",
+   "action": "pip install -e 'python[all_cpu]' 源码安装",
+   "result": "部分成功",
+   "details": {
+    "installed": "sglang-0.0.0.dev1+g890b38c21 + sgl-kernel + flash-attn-4 + sgl-deep-gemm",
+    "issue": "sglang.srt 子模块未完全安装（editable install 问题）"
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:41:00",
+   "step": "problem_resolution",
+   "action": "问题定位：sglang.srt 模块不完整",
+   "result": "部分解决",
+   "details": {
+    "problem": "pip editable install 后 sglang.srt 子模块仅 models 目录被复制到 site-packages，其他子模块(import 如 configs, entrypoints 等)缺失",
+    "reason": "editable install 模式下 __path__ 指向 /workspace/python，但 pip 元数据冲突导致部分模块覆盖不完整"
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:42:00",
+   "step": "ut_execution",
+   "action": "执行 pytest test/srt/",
+   "result": "无法执行",
+   "details": {
+    "reason": "sglang.srt 模块不完整，测试收集阶段 ModuleNotFoundError"
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:42:00",
+   "step": "sample_execution",
+   "action": "尝试运行推理服务器",
+   "result": "无法执行",
+   "details": {
+    "reason": "sglang.srt 模块不完整，无法导入 Server 类；且需要下载模型和 GPU/NPU 硬件才能实际推理"
+   }
+  },
+  {
+   "timestamp": "2026-06-25T16:45:00",
+   "step": "cleanup",
+   "action": "停止并删除容器",
+   "result": "成功",
+   "details": {}
+  }
+ ],
+ "final_results": {
+  "static_analysis": {
+   "enabled": true,
+   "summary": "检测到 pre-commit 配置（20个hooks，17通过3失败），未检测到 lint-runner 配置",
+   "pre_commit": {
+    "configured": true,
+    "config_file": ".pre-commit-config.yaml",
+    "status": "部分通过",
+    "duration_seconds": 120,
+    "total_hooks": 20,
+    "passed": 17,
+    "failed": 3,
+    "skipped": 0,
+    "failures": [
+     {
+      "hook_name": "no-commit-to-branch",
+      "file": "当前在 main 分支",
+      "error": "pre-commit 阻止向 main 分支提交"
+     },
+     {
+      "hook_name": "rustfmt-sgl-model-gateway",
+      "file": "rust/sglang-grpc/*.rs",
+      "error": "rustup 未安装，Rust 格式化检查失败"
+     },
+     {
+      "hook_name": "rustfmt-sgl-router",
+      "file": "experimental/sgl-router/*.rs",
+      "error": "cargo 未安装，Rust 格式化检查失败"
+     }
+    ]
+   },
+   "lint_runner": {
+    "configured": false,
+    "config_file": null
+   }
+  },
+  "devcontainer": {
+   "enabled": true,
+   "config_dir": ".devcontainer",
+   "config_files": [
+    "Dockerfile"
+   ],
+   "original_base_image": "lmsysorg/sglang:dev（含 CUDA + sglang 预构建镜像）",
+   "used_image": "openEuler 24.03 LTS",
+   "summary": "仓库配置了 devcontainer（原基于 CUDA 预构建镜像），改用 openEuler 24.03 LTS 从零构建。devcontainer 主要用于 VS Code 远程开发，非直接构建用途"
+  },
+  "build": {
+   "status": "部分成功",
+   "duration_seconds": 120,
+   "artifacts": [
+    {
+     "name": "sglang Python 包",
+     "path": "/usr/local/lib64/python3.11/site-packages/sglang",
+     "size": "editable install, 源码在 /workspace/python"
+    },
+    {
+     "name": "sgl-kernel",
+     "path": "/usr/local/lib/python3.11/site-packages/sglang_kernel",
+     "size": "pip wheel 包"
+    },
+    {
+     "name": "flash-attn-4",
+     "path": "/usr/local/lib/python3.11/site-packages/flash_attn_4",
+     "size": "pip wheel 包"
+    }
+   ],
+   "reason": "pip install -e 'python[all_cpu]' 安装了主要 Python 包，但 sglang.srt 子模块不完整（editable install 元数据冲突导致部分 import 失败）。单独 pip install sglang (PyPI 0.5.13) 可正常导入"
+  },
+  "ut": {
+   "status": "无法执行",
+   "duration_seconds": 0,
+   "total": 0,
+   "passed": 0,
+   "failed": 0,
+   "failures": [],
+   "reason": "sglang.srt 模块不完整导致测试收集阶段失败；且 test/srt/ 中仅有1个测试文件(test_multimodal_piecewise_cuda_graph_gate.py)，该测试也需要 GPU。大部分 sglang 测试在 test/registered/ 中，需要完整运行环境"
+  },
+  "sample": {
+   "status": "无法执行",
+   "duration_seconds": 0,
+   "results": [],
+   "reason": "(1) sglang.srt 模块不完整；(2) 实际推理需要下载 HuggingFace 模型；(3) 无 GPU/NPU 硬件时推理性能极低或不可用"
+  }
+ },
+ "documentation_gaps": [
+  "文档未明确说明 openEuler/RHEL 等非 Ubuntu 系统的安装步骤",
+  "docker/Dockerfile 仅支持 NVIDIA CUDA 环境，无纯 CPU 或 NPU 的 Dockerfile 变体",
+  "pip install -e 'python[all_cpu]' 在 openEuler 上存在 editable install 元数据冲突问题，文档未提供解决方案",
+  "文档未说明 sglang-grpc Rust 扩展在 openEuler 上编译需要的具体依赖（protobuf-compiler 等）",
+  "缺少 protoc 的安装说明（Rust grpc 扩展编译必需）"
+ ],
+ "problems_encountered": [
+  {
+   "timestamp": "2026-06-25T16:30:00",
+   "problem": "首次 pip install -e 失败：缺少 Rust 编译器（cargo/rustup），sglang-grpc 扩展无法编译",
+   "solution": "安装 Rust 工具链：curl -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal",
+   "source": "setup.py 中 CMakeExtension 编译 sglang-grpc Rust 扩展"
+  },
+  {
+   "timestamp": "2026-06-25T16:30:00",
+   "problem": "sglang-grpc Rust 扩展编译失败：缺少 protoc (protobuf-compiler)",
+   "solution": "dnf install -y protobuf-compiler",
+   "source": "rust/sglang-grpc build.rs: prost-build 需要 protoc"
+  },
+  {
+   "timestamp": "2026-06-25T16:35:00",
+   "problem": "pip install -e 'python[all_cpu]' 成功但 sglang.srt 模块不完整",
+   "solution": "editable install 模式下存在元数据冲突（sglang-0.5.13.post1 残留 dist-info），导致 site-packages 中仅 sglang/srt/models 子目录被复制。pip install sglang(PyPI) 可正常使用，但源码 editable install 有问题",
+   "source": "pip editable install 元数据冲突"
+  }
+ ]
+}
