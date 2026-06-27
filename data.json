@@ -14208,7 +14208,8 @@
    "date": "2026-06-26",
    "month": "2026-06",
    "id": 73,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "reportFile": "data-src/dev-report/verification_report_NPU_triton-ascend_20260627.json"
   },
   {
    "phases": [
