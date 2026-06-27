@@ -14132,12 +14132,16 @@
     },
     {
      "name": "社区CI成功",
-     "status": "partial",
-     "minutes": 0,
-     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；本阶段＝本地构建是否复现仓库 CI 配置：构建已对齐，测试因缺 NPU/CANN 环境断点未对齐。无 PR 计时。"
+     "status": "success",
+     "minutes": 62,
+     "ciNote": "GitHub Actions 门禁（社区CI）：triton-lang/triton-ascend#828 全绿，端到端约 62min（5 个 check）",
+     "ciPr": "triton-lang/triton-ascend#828",
+     "ciPrUrl": "https://github.com/triton-lang/triton-ascend/pull/828",
+     "ciPrSeconds": 3747,
+     "source": "github"
     }
    ],
-   "totalMinutes": 23,
+   "totalMinutes": 85,
    "build": {
     "status": "success",
     "minutes": 9,
@@ -14208,12 +14212,16 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 0,
-     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；本地未复现 CI（缺 CANN、安装超时）。无 PR 计时。"
+     "status": "success",
+     "minutes": 18,
+     "ciNote": "GitHub Actions 门禁（社区CI）：sgl-project/sglang#29460 全绿，端到端约 18min（3 个 check）",
+     "ciPr": "sgl-project/sglang#29460",
+     "ciPrUrl": "https://github.com/sgl-project/sglang/pull/29460",
+     "ciPrSeconds": 1108,
+     "source": "github"
     }
    ],
-   "totalMinutes": 38,
+   "totalMinutes": 56,
    "build": {
     "status": "partial",
     "minutes": 15,
@@ -14272,12 +14280,16 @@
     },
     {
      "name": "社区CI成功",
-     "status": "failed",
-     "minutes": 0,
-     "ciNote": "GitHub仓无gitcode门禁，无PR；本地构建未复现CI：缺CANN toolkit，build.sh 报 Cannot find Ascend toolkit。"
+     "status": "success",
+     "minutes": 76,
+     "ciNote": "GitHub Actions 门禁（社区CI）：sgl-project/sgl-kernel-npu#573 全绿，端到端约 76min（15 个 check）",
+     "ciPr": "sgl-project/sgl-kernel-npu#573",
+     "ciPrUrl": "https://github.com/sgl-project/sgl-kernel-npu/pull/573",
+     "ciPrSeconds": 4559,
+     "source": "github"
     }
    ],
-   "totalMinutes": 18,
+   "totalMinutes": 94,
    "build": {
     "status": "failed",
     "minutes": 8,
@@ -14358,12 +14370,16 @@
     },
     {
      "name": "社区CI成功",
-     "status": "unknown",
-     "minutes": 0,
-     "ciNote": "GitHub 仓（非 gitcode 门禁，无门禁 PR）；重型构建窗口内未完成，无法判定复现。无 PR 计时。"
+     "status": "success",
+     "minutes": 36,
+     "ciNote": "GitHub Actions 门禁（社区CI）：tile-ai/tilelang-mlir-ascend#122 全绿，端到端约 36min（9 个 check）",
+     "ciPr": "tile-ai/tilelang-mlir-ascend#122",
+     "ciPrUrl": "https://github.com/tile-ai/tilelang-mlir-ascend/pull/122",
+     "ciPrSeconds": 2156,
+     "source": "github"
     }
    ],
-   "totalMinutes": 43,
+   "totalMinutes": 79,
    "build": {
     "status": "unknown",
     "minutes": 20,
