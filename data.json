@@ -12370,19 +12370,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 38,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 4
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 7
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 55,
@@ -12454,7 +12454,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，组件安装走 gitcode 文档路径",
-   "breakpoints": 11,
+   "breakpoints": 8,
    "reportFile": "reports/user/2026-06-cann-cann-manual-20260524-report.md",
    "build": {},
    "test": {},
@@ -12463,7 +12463,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 50
+   "id": 50,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -12636,7 +12637,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
@@ -12691,7 +12692,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果",
-   "breakpoints": 6,
+   "breakpoints": 7,
    "reportFile": "reports/user/2026-06-openubmc-openubmc-manual-report-524.md",
    "build": {},
    "test": {},
@@ -12700,7 +12701,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 53
+   "id": 53,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -12786,7 +12788,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 54
+   "id": 54,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -12807,7 +12810,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -12819,7 +12822,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 28,
-     "breakpoints": 0
+     "breakpoints": 8
     }
    ],
    "totalMinutes": 130,
@@ -12877,7 +12880,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，使用阶段仍卡 HuggingFace 模型权重无国内渠道",
-   "breakpoints": 6,
+   "breakpoints": 19,
    "reportFile": "reports/user/2026-06-mindie-mindie-manual-report-0524.md",
    "build": {},
    "test": {},
@@ -12886,7 +12889,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 55
+   "id": 55,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -13172,19 +13176,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 18,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 58,
-     "breakpoints": 4
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 35,
-     "breakpoints": 7
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 119,
@@ -13256,7 +13260,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，组件安装走 gitcode 文档路径，较 0428 自动运行（285 分钟）大幅压缩",
-   "breakpoints": 11,
+   "breakpoints": 8,
    "reportFile": "reports/user/2026-05-cann-cann-manual-20260524-report.md",
    "build": {},
    "test": {},
@@ -13265,7 +13269,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 59
+   "id": 59,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -13438,7 +13443,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
@@ -13493,7 +13498,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，与 5/9 自动运行（166 分钟）相比因绕过认证步骤显著缩短",
-   "breakpoints": 6,
+   "breakpoints": 7,
    "reportFile": "reports/user/2026-05-openubmc-openubmc-manual-report-524.md",
    "build": {},
    "test": {},
@@ -13502,7 +13507,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 62
+   "id": 62,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -13588,7 +13594,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 63
+   "id": 63,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -13609,7 +13616,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -13621,7 +13628,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 30,
-     "breakpoints": 0
+     "breakpoints": 8
     }
    ],
    "totalMinutes": 147,
@@ -13679,7 +13686,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，使用阶段仍卡 HuggingFace 模型权重无国内渠道，整体耗时较 0428（316 分钟）下降",
-   "breakpoints": 6,
+   "breakpoints": 19,
    "reportFile": "reports/user/2026-05-mindie-mindie-manual-report-0524.md",
    "build": {},
    "test": {},
@@ -13688,7 +13695,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 64
+   "id": 64,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -13839,7 +13847,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 66
+   "id": 66,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -13860,19 +13869,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 169,
-     "breakpoints": 7
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 94,
-     "breakpoints": 4
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 35,
-     "breakpoints": 7
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 307,
@@ -13923,7 +13932,7 @@
    ],
    "problems": [],
    "summary": "已将原先更接近安装闭环的问题和耗时归并到安装阶段",
-   "breakpoints": 18,
+   "breakpoints": 7,
    "reportFile": "reports/user/2026-04-cann-cann-manual-20260409-report.md",
    "build": {},
    "test": {},
@@ -13932,7 +13941,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 67
+   "id": 67,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -14032,7 +14042,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 68
+   "id": 68,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -14104,7 +14115,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 69
+   "id": 69,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -14190,7 +14202,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 70
+   "id": 70,
+   "manual": true
   },
   {
    "scenario": "user",
@@ -14290,19 +14303,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 340,
-     "breakpoints": 18
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 150,
-     "breakpoints": 6
+     "breakpoints": 2
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 40,
-     "breakpoints": 8
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 548,
@@ -14346,7 +14359,7 @@
    ],
    "problems": [],
    "summary": "已将原先更接近安装闭环的问题和耗时归并到安装阶段；贡献阶段按 8 个问题统计",
-   "breakpoints": 32,
+   "breakpoints": 8,
    "reportFile": "reports/user/2026-04-mindie-mindie-manual-report.md",
    "build": {},
    "test": {},
@@ -14355,7 +14368,8 @@
    "attempts": [],
    "artifacts": [],
    "docFacts": [],
-   "id": 72
+   "id": 72,
+   "manual": true
   },
   {
    "phases": [

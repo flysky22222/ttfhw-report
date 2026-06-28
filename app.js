@@ -255,7 +255,7 @@
       const extra = isDev ? (t.total ? `<td class="num"><span class="ut-pass">${t.passed || 0}</span>/${t.total}</td>` : `<td class="num">—</td>`) : `<td class="num">${r.breakpoints || 0}</td>`;
       const sampleCell = isDev ? `<td class="num">${r.sampleMinutes != null ? (r.sampleMinutes || "·") : "·"}</td>` : "";
       const dn = (r.defects || []).length;
-      return `<tr data-id="${r.id}"><td class="repo-cell">${r.repo}${r.scene && r.scene !== "compile-verify" ? `<span class="scn">${r.scene}</span>` : ""}</td>
+      return `<tr data-id="${r.id}"><td class="repo-cell">${r.repo}${r.manual ? `<span class="scn manual" title="人工撰写报告">人工</span>` : ""}${r.scene && r.scene !== "compile-verify" ? `<span class="scn">${r.scene}</span>` : ""}</td>
         <td><span class="badge ${r.result}">${RES[r.result]}</span></td>${pc}${extra}
         <td class="num">${r.totalMinutes || "·"}</td>${sampleCell}<td class="num">${dn ? `<span class="defect-n">${dn}</span>` : "·"}</td><td>${r.date}</td><td class="link-arrow">›</td></tr>`;
     }).join("");
@@ -278,6 +278,7 @@
     const maxMin = Math.max(1, ...r.phases.map(p => p.minutes));
     const tl = r.phases.map(p => `<div class="tl-row"><span class="tl-name">${p.name}</span><span class="tl-min mono">${p.minutes ? p.minutes + " min" : "—"}</span>
       <span class="tl-bar"><i class="bar-${p.status}" style="width:${Math.max(4, p.minutes / maxMin * 100)}%"></i></span><span class="badge ${p.status}">${RES[p.status]}</span>${
+        p.breakpoints ? `<span class="tl-bp" title="该阶段发现的问题数（数据源：标准 JSON）">${p.breakpoints} 问题</span>` : ""}${
         p.ciPr ? `<a class="ci-pr" href="${esc(p.ciPrUrl)}" target="_blank" rel="noopener" title="跑出该 CI 时间的 PR">CI PR：${esc(p.ciPr)} ↗</a>` : ""}</div>`).join("");
 
     const cards = [];
@@ -378,7 +379,7 @@
 
     content.innerHTML = `<div class="detail"><a class="back" href="#">‹ 返回总览</a>
       <div class="detail-head"><div class="dh-id"><h1>${ico("repo")} ${r.repo}</h1>
-        <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span><span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div></div>
+        <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div></div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
     content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { location.hash = "#id=" + h.dataset.id; }));
     content.querySelectorAll("tr.jumpable").forEach(tr => tr.addEventListener("click", () => {
