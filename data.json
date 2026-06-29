@@ -25,17 +25,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 52
+     "minutes": 709
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 184
+     "minutes": 15
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 499
+     "minutes": 8
     },
     {
      "name": "社区CI成功",
@@ -134,7 +134,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 747,
+   "totalMinutes": 744,
    "build": {
     "status": "success",
     "minutes": 15,
@@ -807,17 +807,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 30
+     "minutes": 113
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 11
+     "minutes": 6
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 80
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -912,7 +912,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 129,
+   "totalMinutes": 128,
    "build": {
     "status": "success",
     "minutes": 6,
@@ -1124,17 +1124,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 77
+     "minutes": 113
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 34
+     "minutes": 2
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 5
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -1197,7 +1197,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 118,
+   "totalMinutes": 117,
    "build": {
     "status": "success",
     "minutes": 2,
@@ -1375,17 +1375,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 73
+     "minutes": 110
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 39
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 2
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
@@ -1680,17 +1680,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 30
+     "minutes": 89
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 3
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 70
+     "minutes": 13
     },
     {
      "name": "社区CI成功",
@@ -2180,17 +2180,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 25
+     "minutes": 54
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 35
+     "minutes": 16
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 30
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -2257,7 +2257,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 103,
+   "totalMinutes": 83,
    "build": {
     "status": "success",
     "minutes": 16,
@@ -2462,17 +2462,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 60
+     "minutes": 71
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 365
+     "minutes": 357
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 297
+     "minutes": 294
     },
     {
      "name": "社区CI成功",
@@ -2813,17 +2813,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 96
+     "minutes": 130
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 102
+     "minutes": 90
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 209
+     "minutes": 187
     },
     {
      "name": "社区CI成功",
@@ -3283,17 +3283,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 23
+     "minutes": 202
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 21
+     "minutes": 13
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 57
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -3380,7 +3380,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 105,
+   "totalMinutes": 219,
    "build": {
     "status": "success",
     "minutes": 13,
@@ -3581,17 +3581,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 10
+     "minutes": 60
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 17
+     "minutes": 5
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 62
+     "minutes": 24
     },
     {
      "name": "社区CI成功",
@@ -4290,7 +4290,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 35
+     "minutes": 36
     },
     {
      "name": "编译构建",
@@ -4300,7 +4300,7 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 1
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -4561,7 +4561,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 10
+     "minutes": 14
     },
     {
      "name": "编译构建",
@@ -4571,7 +4571,7 @@
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 5
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -4877,17 +4877,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 12
+     "minutes": 22
     },
     {
      "name": "编译构建",
      "status": "unknown",
-     "minutes": 4
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 8
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
@@ -4898,7 +4898,7 @@
      "ciPrUrl": "https://gitcode.com/Ascend/memcache/pull/331"
     }
    ],
-   "totalMinutes": 38,
+   "totalMinutes": 39,
    "build": {
     "status": "unknown",
     "minutes": 1,
@@ -5105,17 +5105,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 14
+     "minutes": 21
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 0
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 9
+     "minutes": 4
     },
     {
      "name": "社区CI成功",
@@ -5307,17 +5307,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 41
+     "minutes": 63
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 2
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 36
+     "minutes": 17
     },
     {
      "name": "社区CI成功",
@@ -6652,17 +6652,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 38
+     "minutes": 85
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 82
+     "minutes": 36
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 66
+     "minutes": 61
     },
     {
      "name": "社区CI成功",
@@ -6749,7 +6749,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 195,
+   "totalMinutes": 191,
    "build": {
     "status": "success",
     "minutes": 36,
@@ -7386,7 +7386,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 24
+     "minutes": 76
     },
     {
      "name": "编译构建",
@@ -7396,7 +7396,7 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 56
+     "minutes": 4
     },
     {
      "name": "社区CI成功",
@@ -7888,17 +7888,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 31
+     "minutes": 32
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 8
+     "minutes": 7
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -8013,7 +8013,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 49,
+   "totalMinutes": 48,
    "build": {
     "status": "success",
     "minutes": 7,
@@ -8190,17 +8190,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 35
+     "minutes": 41
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 7
+     "minutes": 4
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 3
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -8423,17 +8423,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 40
+     "minutes": 43
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 13
+     "minutes": 11
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -8755,17 +8755,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 24
+     "minutes": 35
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 33
+     "minutes": 7
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 2
+     "minutes": 18
     },
     {
      "name": "社区CI成功",
@@ -8840,7 +8840,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 76,
+   "totalMinutes": 77,
    "build": {
     "status": "success",
     "minutes": 7,
@@ -9705,17 +9705,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 16
+     "minutes": 23
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 24
+     "minutes": 20
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 30
+     "minutes": 27
     },
     {
      "name": "社区CI成功",
@@ -10014,17 +10014,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 22
+     "minutes": 48
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 24
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 10
+     "minutes": 6
     },
     {
      "name": "社区CI成功",
@@ -10033,7 +10033,7 @@
      "ciNote": "/compile 已评论但编译流水线未触发（cann/shmem 门禁有额外前置，仅出 Linking Issue Notice），无侵入拿不到门禁结果"
     }
    ],
-   "totalMinutes": 56,
+   "totalMinutes": 55,
    "build": {
     "status": "success",
     "minutes": 1,
@@ -10592,17 +10592,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 50
+     "minutes": 75
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 38
+     "minutes": 2
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 6
+     "minutes": 11
     },
     {
      "name": "社区CI成功",
@@ -10649,7 +10649,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 108,
+   "totalMinutes": 102,
    "build": {
     "status": "success",
     "minutes": 2,
@@ -14376,17 +14376,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 20
+     "minutes": 90
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 10
+     "minutes": 0
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 60
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -14484,17 +14484,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 83
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 7
+     "minutes": 2
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 63
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -14610,12 +14610,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 9
+     "minutes": 40
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 60
+     "minutes": 0
     },
     {
      "name": "测试",
@@ -14633,7 +14633,7 @@
      "source": "github"
     }
    ],
-   "totalMinutes": 145,
+   "totalMinutes": 116,
    "build": {
     "status": "failed",
     "minutes": 0,
@@ -14718,17 +14718,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 12
+     "minutes": 22
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 21
+     "minutes": 13
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 3
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -14741,7 +14741,7 @@
      "source": "github"
     }
    ],
-   "totalMinutes": 72,
+   "totalMinutes": 71,
    "build": {
     "status": "partial",
     "minutes": 13,
@@ -14945,17 +14945,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 57
+     "minutes": 74
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 17
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -14976,7 +14976,7 @@
     "failed": 0,
     "note": ""
    },
-   "totalMinutes": 76,
+   "totalMinutes": 75,
    "result": "partial",
    "id": 77,
    "scene": "compile-verify",
@@ -15060,17 +15060,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 95
+     "minutes": 24
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 10
+     "minutes": 1
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 15
+     "minutes": 65
     },
     {
      "name": "社区CI成功",
@@ -15091,7 +15091,7 @@
     "failed": 8,
     "note": ""
    },
-   "totalMinutes": 120,
+   "totalMinutes": 90,
    "result": "partial",
    "id": 78,
    "scene": "compile-verify",
@@ -15161,17 +15161,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 19
+     "minutes": 38
     },
     {
      "name": "编译构建",
      "status": "unknown",
-     "minutes": 2
+     "minutes": 0
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 19
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
@@ -15328,17 +15328,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 25
+     "minutes": 37
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 16
+     "minutes": 10
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 9
+     "minutes": 3
     },
     {
      "name": "社区CI成功",
@@ -15471,17 +15471,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 9
+     "minutes": 41
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 21
+     "minutes": 9
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 20
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -15632,12 +15632,12 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 27
+     "minutes": 32
     },
     {
      "name": "编译构建",
      "status": "partial",
-     "minutes": 35
+     "minutes": 30
     },
     {
      "name": "测试",
@@ -15775,17 +15775,17 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 42
+     "minutes": 65
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 148
+     "minutes": 125
     },
     {
      "name": "测试",
      "status": "unknown",
-     "minutes": 473
+     "minutes": 180
     },
     {
      "name": "社区CI成功",
@@ -15806,7 +15806,7 @@
     "failed": 0,
     "note": ""
    },
-   "totalMinutes": 663,
+   "totalMinutes": 370,
    "result": "partial",
    "id": 83,
    "scene": "compile-verify",
@@ -15918,7 +15918,7 @@
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 1
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -15939,7 +15939,7 @@
     "failed": 12,
     "note": ""
    },
-   "totalMinutes": 25,
+   "totalMinutes": 24,
    "result": "partial",
    "id": 84,
    "scene": "compile-verify",
