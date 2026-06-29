@@ -114,7 +114,12 @@
     let recs = state.data.records.slice();
     if (state.month !== "latest") recs = recs.filter(r => r.month === state.month);
     const g = new Map();
-    for (const r of recs) { const k = `${r.scenario}|${r.community}|${r.repo}`; const c = g.get(k); if (!c || r.date > c.date) g.set(k, r); }
+    // 用户场景：每个社区只保留最新日期一行（repo 是冗长的产品描述、按 repo 分会炸出几十行）；
+    // 开发者场景：仍按 社区|仓库 保留每仓最新一次。
+    for (const r of recs) {
+      const k = r.scenario === "user" ? `user|${r.community}` : `${r.scenario}|${r.community}|${r.repo}`;
+      const c = g.get(k); if (!c || r.date > c.date) g.set(k, r);
+    }
     let out = [...g.values()];
     if (state.scenario !== "all") out = out.filter(r => r.scenario === state.scenario);
     if (state.result !== "all") out = out.filter(r => r.result === state.result);
@@ -370,7 +375,7 @@
 
     if (r.summary) sections.push(`<div class="section"><h2>${ico("doc")} 结论摘要</h2><div class="summary-text">${esc(r.summary)}</div></div>`);
 
-    const hist = state.data.records.filter(x => x.scenario === r.scenario && x.community === r.community && x.repo === r.repo).sort((a, b) => b.date.localeCompare(a.date));
+    const hist = state.data.records.filter(x => x.scenario === r.scenario && x.community === r.community && (r.scenario === "user" || x.repo === r.repo)).sort((a, b) => b.date.localeCompare(a.date));
     if (hist.length > 1) sections.push(`<div class="section"><h2>${ico("chart")} 历史记录（${hist.length} 次）</h2><div class="history-list">${
       hist.map(h => `<div class="hist" data-id="${h.id}"><span>${h.date}</span><span class="badge ${h.result}">${RES[h.result]}</span>
         <span class="src">${h.scene && h.scene !== "compile-verify" ? h.scene : ""}</span><span class="num mono" style="text-align:right">${h.totalMinutes ? h.totalMinutes + " min" : "—"}</span></div>`).join("")}</div></div>`);
