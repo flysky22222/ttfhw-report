@@ -156,59 +156,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 PRODUCT_SIDE/ENABLE_BUILD_DEVICE/ENABLE_BUILD_AARCH 的 host 编译路径无 README 文档说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 PRODUCT_SIDE/ENABLE_BUILD_DEVICE/ENABLE_BUILD_AARCH 的 host 编译路径无 README 文档说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "version.cmake 中 Bisheng-compiler / asc-devkit 等运行时依赖未在 README 中说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "version.cmake 中 Bisheng-compiler / asc-devkit 等运行时依赖未在 README 中说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.md 仅说明如何安装完整 CANN 软件包，未说明 host 包构建的最小化环境要求 (如 python3-wheel)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.md 仅说明如何安装完整 CANN 软件包，未说明 host 包构建的最小化环境要求 (如 python3-wheel)"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/Makefile 链接的 -lhccl -lascendcl 在 CANN 9.1.0 toolkit 中 libhccl.so 依赖 NPU 驱动 drv*/hal* 符号（远端 192.168.9.114 无 NPU 卡即缺），且 example 仍使用 HcclAllReduce 等 V1 API，与 CANN 9.x master 不兼容；examples 目录代码与 master 分支的 libhccl/libhcomm 接口存在版本错位",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/Makefile 链接的 -lhccl -lascendcl 在 CANN 9.1.0 toolkit 中 libhccl.so 依赖 NPU 驱动 drv*/hal* 符号（远端 192.168.9.114 无 NPU 卡即缺），且 example 仍使用 HcclAllReduce 等 V1 API，与 CANN 9.x master 不兼容；examples 目录代码与 master 分支的 libhccl/libhcomm 接口存在版本错位"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "openEuler 24.03 仓库提供 clang-format v17，但 .pre-commit-config.yaml 锁定 v16.0.0，存在版本锁定过严的问题",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "openEuler 24.03 仓库提供 clang-format v17，但 .pre-commit-config.yaml 锁定 v16.0.0，存在版本锁定过严的问题"
     }
    ],
    "problems": [
@@ -384,59 +359,34 @@
    "depsCount": 20,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库 README 仅链接到 GitCode Wiki 构建说明，未在 README 中提供具体的构建命令和依赖列表",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库 README 仅链接到 GitCode Wiki 构建说明，未在 README 中提供具体的构建命令和依赖列表"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未提供源码构建的环境要求（仅链接到 wiki）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未提供源码构建的环境要求（仅链接到 wiki）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库不含 Dockerfile（OpenJDK 8 上游仓库未提供），依赖全部来自 doc/building.md 通用文档",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库不含 Dockerfile（OpenJDK 8 上游仓库未提供），依赖全部来自 doc/building.md 通用文档"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "doc/building.md 推荐 Bootstrap JDK 为 JDK 7u7+，但 openEuler 24.03 仓库已不提供 JDK 7（仅 JDK 8），使用 JDK 8 作为 Bootstrap 实际可行但需要放开 BOOT_JDK_VERSION 检测限制",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "doc/building.md 推荐 Bootstrap JDK 为 JDK 7u7+，但 openEuler 24.03 仓库已不提供 JDK 7（仅 JDK 8），使用 JDK 8 作为 Bootstrap 实际可行但需要放开 BOOT_JDK_VERSION 检测限制"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "测试章节明确需要 jtreg，但未提供 jtreg 安装说明或下载链接",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "测试章节明确需要 jtreg，但未提供 jtreg 安装说明或下载链接"
     }
    ],
    "problems": [
@@ -569,59 +519,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 仅提供高层文档，未列出对 aarch64 架构的强制要求（仅在 install_guide.md 中提及「最新镜像仅支持aarch64架构」）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 仅提供高层文档，未列出对 aarch64 架构的强制要求（仅在 install_guide.md 中提及「最新镜像仅支持aarch64架构」）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Dockerfile 使用 ARG 机制选择 BASE_IMAGE（CANN 镜像），但未说明若使用基础 openEuler 镜像时如何手动补齐 CANN 工具链",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Dockerfile 使用 ARG 机制选择 BASE_IMAGE（CANN 镜像），但未说明若使用基础 openEuler 镜像时如何手动补齐 CANN 工具链"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "requirements.txt 列出 22 个 Python 依赖，但实际安装时必须配合 MindSpeed + Megatron-LM 两个独立 git 仓库的源码（未在 requirements.txt 中体现）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "requirements.txt 列出 22 个 Python 依赖，但实际安装时必须配合 MindSpeed + Megatron-LM 两个独立 git 仓库的源码（未在 requirements.txt 中体现）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tests/ut/ 下的测试严重依赖 torch.distributed 和具体模型权重（/data/ci/models/...），README 未说明如何在 CI 之外独立运行 UT",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tests/ut/ 下的测试严重依赖 torch.distributed 和具体模型权重（/data/ci/models/...），README 未说明如何在 CI 之外独立运行 UT"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "pre-commit 配置存在但执行通过率仅 50%，未在 README 中说明是否需要在 PR 前本地执行 pre-commit",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "pre-commit 配置存在但执行通过率仅 50%，未在 README 中说明是否需要在 PR 前本地执行 pre-commit"
     }
    ],
    "problems": [
@@ -761,70 +686,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "2026-07-02T10:55:30",
-      "title": "README 未明确指定构建镜像",
-      "body": "README-zh.md 仅说明支持 openEuler 20.03 LTS 及以上版本，但未在文档中给出推荐构建镜像或 Dockerfile。仓库仅提供 Dockerfile-atune-engine（用于构建 atune-engine Python 微服务），不覆盖主项目（A-Tune Go 服务）的构建。开发者需要自行组合 golang + 系统包 + Python 包。",
-      "source": "README-zh.md 缺失 + Dockerfile-atune-engine 不适用主项目"
-     },
+     "title": "README 未明确指定构建镜像",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README-zh.md 缺失 + Dockerfile-atune-engine 不适用主项目",
+     "detail": "README-zh.md 仅说明支持 openEuler 20.03 LTS 及以上版本，但未在文档中给出推荐构建镜像或 Dockerfile。仓库仅提供 Dockerfile-atune-engine（用于构建 atune-engine Python 微服务），不覆盖主项目（A-Tune Go 服务）的构建。开发者需要自行组合 golang + 系统包 + Python 包。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:55:30",
-      "title": "README 方法二依赖列表不完整",
-      "body": "README 方法二 yum install 命令未列出 sqlite-devel（go-sqlite3 CGO 必需）和 gcc/g++/make（CGO 编译必需），开发者按照 README 步骤在最小 openEuler 容器中直接 'yum install -y golang-bin python3 perf sysstat hwloc-gui lshw && make' 会在 'go build' 阶段因 CGO 找不到 sqlite3 头文件而失败。",
-      "source": "README-zh.md 方法二第 1 步"
-     },
+     "title": "README 方法二依赖列表不完整",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README-zh.md 方法二第 1 步",
+     "detail": "README 方法二 yum install 命令未列出 sqlite-devel（go-sqlite3 CGO 必需）和 gcc/g++/make（CGO 编译必需），开发者按照 README 步骤在最小 openEuler 容器中直接 'yum install -y golang-bin python3 perf sysstat hwloc-gui lshw && make' 会在 'go build' 阶段因 CGO 找不到 sqlite3 头文件而失败。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:55:30",
-      "title": "hwloc-gui 在 openEuler 24.03 仓库不可用",
-      "body": "README 要求安装 hwloc-gui，但 openEuler 24.03 LTS 仓库仅提供 hwloc，没有 hwloc-gui 包。文档未提示此差异。",
-      "source": "README-zh.md 方法二第 1 步 vs dnf search hwloc"
-     },
+     "title": "hwloc-gui 在 openEuler 24.03 仓库不可用",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README-zh.md 方法二第 1 步 vs dnf search hwloc",
+     "detail": "README 要求安装 hwloc-gui，但 openEuler 24.03 LTS 仓库仅提供 hwloc，没有 hwloc-gui 包。文档未提示此差异。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:55:30",
-      "title": "go-sqlite3 CGO 警告未在文档中说明",
-      "body": "go build atuned 时 CGO 编译 sqlite3-binding.c 输出 'function may return address of local variable' 警告（-Wreturn-local-addr），构建仍成功。这是上游 mattn/go-sqlite3 v1.11.0 已知问题，但 README/Makefile 未提示开发者可安全忽略。",
-      "source": "go.sum github.com/mattn/go-sqlite3 v1.11.0"
-     },
+     "title": "go-sqlite3 CGO 警告未在文档中说明",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "go.sum github.com/mattn/go-sqlite3 v1.11.0",
+     "detail": "go build atuned 时 CGO 编译 sqlite3-binding.c 输出 'function may return address of local variable' 警告（-Wreturn-local-addr），构建仍成功。这是上游 mattn/go-sqlite3 v1.11.0 已知问题，但 README/Makefile 未提示开发者可安全忽略。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:55:30",
-      "title": "init.sql 与较新 sqlite3 不兼容",
-      "body": "database/init.sql 大量使用双引号 \"...\" 作为字符串字面量，在 openEuler 24.03 自带 sqlite 3.42.0（及 SQLite 3.23+ 默认行为）严格模式下被解析为 identifier，导致 'no such column: encryption_AES' 等错误。仓库未提供 SQL 兼容性说明或替代 schema 加载方式（Python/Go loader）。",
-      "source": "database/init.sql + Makefile line 58: sqlite3 database/atuned.db \".read database/init.sql\""
-     },
+     "title": "init.sql 与较新 sqlite3 不兼容",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "database/init.sql + Makefile line 58: sqlite3 database/atuned.db \".read database/init.sql\"",
+     "detail": "database/init.sql 大量使用双引号 \"...\" 作为字符串字面量，在 openEuler 24.03 自带 sqlite 3.42.0（及 SQLite 3.23+ 默认行为）严格模式下被解析为 identifier，导致 'no such column: encryption_AES' 等错误。仓库未提供 SQL 兼容性说明或替代 schema 加载方式（Python/Go loader）。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:55:30",
-      "title": "测试用例几乎全部依赖 atuned 守护进程",
-      "body": "tests/ 目录下 24 个 test_*.sh 集成测试中，除 test_atune-adm_help.sh 和 test_atune-adm_version.sh 外，其余 22 个都需要 (1) systemctl 管理的 atuned 服务运行；(2) /etc/atuned/atuned.cnf 已配置；(3) /var/run/atuned/atuned.sock socket 文件存在。在无 systemd 的容器/Docker 环境中无法直接执行 run_tests.sh。仓库未提供 atuned 单元测试（go test ./...）或独立二进制冒烟测试。",
-      "source": "tests/test_lib.sh (check_service_started), tests/run_tests.sh"
-     },
+     "title": "测试用例几乎全部依赖 atuned 守护进程",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "tests/test_lib.sh (check_service_started), tests/run_tests.sh",
+     "detail": "tests/ 目录下 24 个 test_*.sh 集成测试中，除 test_atune-adm_help.sh 和 test_atune-adm_version.sh 外，其余 22 个都需要 (1) systemctl 管理的 atuned 服务运行；(2) /etc/atuned/atuned.cnf 已配置；(3) /var/run/atuned/atuned.sock socket 文件存在。在无 systemd 的容器/Docker 环境中无法直接执行 run_tests.sh。仓库未提供 atuned 单元测试（go test ./...）或独立二进制冒烟测试。"
     }
    ],
    "problems": [
@@ -1081,37 +976,22 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库无 Dockerfile，依赖需从 build.sh 和 requirements.txt 推断",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库无 Dockerfile，依赖需从 build.sh 和 requirements.txt 推断"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "amct_pytorch/classic/graph_based/amct_pytorch/proto 下的 .proto 文件需手动编译为 _pb2.py 才能在测试环境使用",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "amct_pytorch/classic/graph_based/amct_pytorch/proto 下的 .proto 文件需手动编译为 _pb2.py 才能在测试环境使用"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "torch_npu 需 NPU 硬件，CPU 环境无法实际运行量化推理样例",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "torch_npu 需 NPU 硬件，CPU 环境无法实际运行量化推理样例"
     }
    ],
    "problems": [
@@ -1345,81 +1225,46 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库 cmake/version_info.cmake 中 set_cann_package(asc-devkit VERSION 9.1.0) 表明 master 分支需要 CANN Toolkit 9.1.0+，但 README.md / docs/quick_start.md 中未明确写出 CANN Toolkit 版本要求，只说'使用华为 Ascend 官方 CANN Docker 镜像'",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库 cmake/version_info.cmake 中 set_cann_package(asc-devkit VERSION 9.1.0) 表明 master 分支需要 CANN Toolkit 9.1.0+，但 README.md / docs/quick_start.md 中未明确写出 CANN Toolkit 版本要求，只说'使用华为 Ascend 官方 CANN Docker 镜像'"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".devcontainer/Dockerfile 基于 ubuntu:24.04 + miniconda py312，docs/quick_start.md 同时推荐使用 CANN Docker 镜像，两种方式未在 README 统一说明选择依据",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".devcontainer/Dockerfile 基于 ubuntu:24.04 + miniconda py312，docs/quick_start.md 同时推荐使用 CANN Docker 镜像，两种方式未在 README 统一说明选择依据"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 -p / --cann_path 参数文档未明示默认安装路径（/usr/local/Ascend/cann 仅对 root 用户有效，非 root 用户为 $HOME/Ascend/cann），-j 并发参数选择策略未给出",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 -p / --cann_path 参数文档未明示默认安装路径（/usr/local/Ascend/cann 仅对 root 用户有效，非 root 用户为 $HOME/Ascend/cann），-j 并发参数选择策略未给出"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/README.md 未明确说明样例运行必须依赖真实 Ascend NPU 硬件 + 驱动/固件 + CANN ops 包；CI 环境下无法直接执行样例",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/README.md 未明确说明样例运行必须依赖真实 Ascend NPU 硬件 + 驱动/固件 + CANN ops 包；CI 环境下无法直接执行样例"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh -t 默认会运行全部 ascendc_ut_* gtest 目标，但未提供 --gtest_filter / --gtest_output 等选项透传，导致卡死的 single gtest binary 会阻塞整个构建过程",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh -t 默认会运行全部 ascendc_ut_* gtest 目标，但未提供 --gtest_filter / --gtest_output 等选项透传，导致卡死的 single gtest binary 会阻塞整个构建过程"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".pre-commit-config.yaml 中 markdown-link-check hook 需要 lychee v0.23.0，但 .devcontainer/requirements.txt 未包含 lychee（仅列 python 包）；README 缺失 lychee 安装说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".pre-commit-config.yaml 中 markdown-link-check hook 需要 lychee v0.23.0，但 .devcontainer/requirements.txt 未包含 lychee（仅列 python 包）；README 缺失 lychee 安装说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "首次执行 ./ascendc_ut_* 二进制测试时，HcclSymbolLoader 通过 dlopen libruntime.so 需要 libascend_hal.so 等 NPU HAL 依赖；CMake 测试配置未说明必须在 source set_env.sh 后运行，否则会因 LD_LIBRARY_PATH 未正确设置导致 6 个 hccl 用例失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "首次执行 ./ascendc_ut_* 二进制测试时，HcclSymbolLoader 通过 dlopen libruntime.so 需要 libascend_hal.so 等 NPU HAL 依赖；CMake 测试配置未说明必须在 source set_env.sh 后运行，否则会因 LD_LIBRARY_PATH 未正确设置导致 6 个 hccl 用例失败"
     }
    ],
    "problems": [
@@ -1719,59 +1564,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 的 -j 51 形式（-j 后接空格再接数字）被 -j*) 模式优先匹配并把 THREAD_NUM 设为空，触发 -j only support positive integers；建议修复 set_options 的 case 顺序，把 -j) 提前到 -j*) 之前",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 的 -j 51 形式（-j 后接空格再接数字）被 -j*) 模式优先匹配并把 THREAD_NUM 设为空，触发 -j only support positive integers；建议修复 set_options 的 case 顺序，把 -j) 提前到 -j*) 之前"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "文档未说明 CANN toolkit 9.0.0 与 asc-tools 9.1.0 之间的 version.info 检查为何报 WARNING（仅 WARNING 不阻断，但 README/quick_start 未提及）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "文档未说明 CANN toolkit 9.0.0 与 asc-tools 9.1.0 之间的 version.info 检查为何报 WARNING（仅 WARNING 不阻断，但 README/quick_start 未提及）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/00_quick_start.md 提到 UT 需闭源 cpudebug 调试版包（aarch64 链接 403 Forbidden），但未提供备选来源（华为 CDN 当前不开放）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/00_quick_start.md 提到 UT 需闭源 cpudebug 调试版包（aarch64 链接 403 Forbidden），但未提供备选来源（华为 CDN 当前不开放）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/ 下的样例（show_kernel_debug_data / cpudebug / msopgen / msobjdump）README 未注明 CPU 仿真环境下能否运行，实际仅能在带 NPU 的环境运行",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/ 下的样例（show_kernel_debug_data / cpudebug / msopgen / msobjdump）README 未注明 CPU 仿真环境下能否运行，实际仅能在带 NPU 的环境运行"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".devcontainer 配置的 Ubuntu 24.04 镜像与 CANN 9.0.0 镜像不匹配，文档没有给出一致的推荐环境说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".devcontainer 配置的 Ubuntu 24.04 镜像与 CANN 9.0.0 镜像不匹配，文档没有给出一致的推荐环境说明"
     }
    ],
    "problems": [
@@ -2029,59 +1849,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 与 docs/quick_start.md 未声明示例/UT 必须依赖真实 NPU 设备或等效 simulator，仅笼统说 '运行算子时必须安装驱动与固件'",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 与 docs/quick_start.md 未声明示例/UT 必须依赖真实 NPU 设备或等效 simulator，仅笼统说 '运行算子时必须安装驱动与固件'"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "示例执行流程依赖 cannsim 工具与 CANN runtime 配合，但 quick_start.md 仅一笔带过 'cannsim record ./run.sh -s Ascend950 --gen-report'，缺少 cannprof 安装提示",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "示例执行流程依赖 cannsim 工具与 CANN runtime 配合，但 quick_start.md 仅一笔带过 'cannsim record ./run.sh -s Ascend950 --gen-report'，缺少 cannprof 安装提示"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "cmake/CMakeASCEND.cmake 假设的 ${ASCEND_HOME_PATH}/compiler/ascendc/impl/aicore/basic_api 路径在 CANN 9.1.0 安装中并不存在（已通过 wrapper 软链占位），需要随 CANN 版本同步 CMakeASCEND",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "cmake/CMakeASCEND.cmake 假设的 ${ASCEND_HOME_PATH}/compiler/ascendc/impl/aicore/basic_api 路径在 CANN 9.1.0 安装中并不存在（已通过 wrapper 软链占位），需要随 CANN 版本同步 CMakeASCEND"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/build.sh 中 ASCEND_HOME_PATH 未设置即报错退出，未提供默认值（默认 /usr/local/Ascend/ascend-toolkit/latest），对 openEuler + cann-9.1.0 安装路径不友好",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/build.sh 中 ASCEND_HOME_PATH 未设置即报错退出，未提供默认值（默认 /usr/local/Ascend/ascend-toolkit/latest），对 openEuler + cann-9.1.0 安装路径不友好"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "无 Dockerfile 提供环境复现路径，本次验证依赖宿主 /home/wangsike/Ascend 中的 CANN 9.1.0 安装",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "无 Dockerfile 提供环境复现路径，本次验证依赖宿主 /home/wangsike/Ascend 中的 CANN 9.1.0 安装"
     }
    ],
    "problems": [
@@ -2573,48 +2368,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "QUICKSTART.md 推荐 kernel-headers-$(uname -r) 与 kernel-devel-$(uname -r)，但容器内 uname -r (宿主机的 4.19.90) 与 dnf 仓库中可安装的 kernel-devel 版本 (6.6.0-145.0.13.139.oe2403) 不一致。/lib/modules/<uname> 软链目标目录不含 Makefile，需要显式传 -k /usr/src/kernels/<ver> 指向真实 kernel-devel 路径；建议 README 或 QUICKSTART 增加容器场景的 -k 用法说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "QUICKSTART.md 推荐 kernel-headers-$(uname -r) 与 kernel-devel-$(uname -r)，但容器内 uname -r (宿主机的 4.19.90) 与 dnf 仓库中可安装的 kernel-devel 版本 (6.6.0-145.0.13.139.oe2403) 不一致。/lib/modules/<uname> 软链目标目录不含 Makefile，需要显式传 -k /usr/src/kernels/<ver> 指向真实 kernel-devel 路径；建议 README 或 QUICKSTART 增加容器场景的 -k 用法说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/README.md 与 examples/dcmi/dcmi/run.sh 均假设 /usr/local/dcmi/ 和 /usr/local/Ascend/driver/lib64/driver 已存在，但没有文档说明这两个路径如何在 CI/验证环境中预置；样例本身还需要 libdpa_host.so / libhdc_host.so / libdms_host.so 等 CANN runtime 库，缺少 '本样例必须在安装完整 CANN 后运行' 的明确警告",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/README.md 与 examples/dcmi/dcmi/run.sh 均假设 /usr/local/dcmi/ 和 /usr/local/Ascend/driver/lib64/driver 已存在，但没有文档说明这两个路径如何在 CI/验证环境中预置；样例本身还需要 libdpa_host.so / libhdc_host.so / libdms_host.so 等 CANN runtime 库，缺少 '本样例必须在安装完整 CANN 后运行' 的明确警告"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 顶部说 '推荐OS版本使用linux v5.4、linux v5.10或linux v6.8'，但 QUICKSTART 中又提到 ascend950 --ube 模式必须 openEuler 24.03 LTS SP4，两段叙述存在版本不一致的潜在歧义",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 顶部说 '推荐OS版本使用linux v5.4、linux v5.10或linux v6.8'，但 QUICKSTART 中又提到 ascend950 --ube 模式必须 openEuler 24.03 LTS SP4，两段叙述存在版本不一致的潜在歧义"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".pre-commit-config.yaml 中 clang-format 来自 gitcode.com 镜像仓库，企业内网环境可能无法访问该镜像源；当前验证未实际执行 pre-commit",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".pre-commit-config.yaml 中 clang-format 来自 gitcode.com 镜像仓库，企业内网环境可能无法访问该镜像源；当前验证未实际执行 pre-commit"
     }
    ],
    "problems": [
@@ -2910,59 +2685,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未列出 CANN Toolkit 9.1.0 强依赖，必须通过 docs/zh/build.md 的环境检查脚本才发现",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未列出 CANN Toolkit 9.1.0 强依赖，必须通过 docs/zh/build.md 的环境检查脚本才发现"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/env/Dockerfile 基于 ubuntu:18.04，与推荐的 CANN 软件栈版本不一致；当前推荐方案是基于 scripts/init_env.sh 自动安装 CANN",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/env/Dockerfile 基于 ubuntu:18.04，与推荐的 CANN 软件栈版本不一致；当前推荐方案是基于 scripts/init_env.sh 自动安装 CANN"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/build.md 第 4.2 节提到的 libasan4（gcc 7.5.0 对应版本），未明确说明更高 GCC 版本对应的 asan 包名；openEuler 24.03 仓库中 libasan 是标准包名",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/build.md 第 4.2 节提到的 libasan4（gcc 7.5.0 对应版本），未明确说明更高 GCC 版本对应的 asan 包名；openEuler 24.03 仓库中 libasan 是标准包名"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "lcov 与 graph-easy 在 openEuler 24.03 仓库中不可用，docs/zh/build.md 未说明这些依赖是可选的（实际 lcov 仅覆盖率统计需要、graph-easy 仅生成 DOT 图需要）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "lcov 与 graph-easy 在 openEuler 24.03 仓库中不可用，docs/zh/build.md 未说明这些依赖是可选的（实际 lcov 仅覆盖率统计需要、graph-easy 仅生成 DOT 图需要）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 默认 make -j$(nproc) 对小内存机器不友好，未提供 60% 并发限制的官方建议",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 默认 make -j$(nproc) 对小内存机器不友好，未提供 60% 并发限制的官方建议"
     }
    ],
    "problems": [
@@ -3176,70 +2926,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库不提供 Dockerfile，环境准备完全依赖 docs/zh/build.md + scripts/init_env.sh",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库不提供 Dockerfile，环境准备完全依赖 docs/zh/build.md + scripts/init_env.sh"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/init_env.sh 默认 CANN_VERSION=9.0.0，但 9.0.0 已在华为云镜像下架；用户需手动改为 9.1.0（实际最新版）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/init_env.sh 默认 CANN_VERSION=9.0.0，但 9.0.0 已在华为云镜像下架；用户需手动改为 9.1.0（实际最新版）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 THREAD_NUM 默认使用 nproc (256)，高并发编译可能 OOM（本次用 -j 51 即 CPU 20%）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 THREAD_NUM 默认使用 nproc (256)，高并发编译可能 OOM（本次用 -j 51 即 CPU 20%）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CMake ExternalProject_Add 大量从 gitcode.com/cann-src-third-party/ 与华为云 OBS 下载第三方源码，企业内网需配置 http_proxy/https_proxy",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CMake ExternalProject_Add 大量从 gitcode.com/cann-src-third-party/ 与华为云 OBS 下载第三方源码，企业内网需配置 http_proxy/https_proxy"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "mockcpp-2.7-h5.patch 必须与 mockcpp-2.7.tar.gz 同时准备，离线编译易遗漏",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "mockcpp-2.7-h5.patch 必须与 mockcpp-2.7.tar.gz 同时准备，离线编译易遗漏"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ST 的 autofuse e2e_v2 编译目标多（84% 处有 ~30+ target 未完成），单轮 build.sh -s 在 1h 内无法跑完",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ST 的 autofuse e2e_v2 编译目标多（84% 处有 ~30+ target 未完成），单轮 build.sh -s 在 1h 内无法跑完"
     }
    ],
    "problems": [
@@ -3437,70 +3157,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未提供 Dockerfile，依赖信息散落在 ham.spec / build.sh / Developer_Tutorial.md 中",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未提供 Dockerfile，依赖信息散落在 ham.spec / build.sh / Developer_Tutorial.md 中"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "libboundscheck 在 openEuler dnf 仓库中无 -devel 包，需通过 3rdparty 子模块源码构建，README 未明确说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "libboundscheck 在 openEuler dnf 仓库中无 -devel 包，需通过 3rdparty 子模块源码构建，README 未明确说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Developer_Tutorial.md 未提及 mockcpp 在 aarch64 上需要打 mockcpp_support_arm64.patch",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Developer_Tutorial.md 未提及 mockcpp 在 aarch64 上需要打 mockcpp_support_arm64.patch"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ham.spec 写明 ExclusiveArch=arm64，但仓库无 README 显式声明这一架构限制",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ham.spec 写明 ExclusiveArch=arm64，但仓库无 README 显式声明这一架构限制"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "样例 demo 仅描述 C 代码片段，未提供可编译运行的样例二进制",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "样例 demo 仅描述 C 代码片段，未提供可编译运行的样例二进制"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "UT 失败原因未在 README 中说明与 HCCS/OBMM 内核模块的依赖关系",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "UT 失败原因未在 README 中说明与 HCCS/OBMM 内核模块的依赖关系"
     }
    ],
    "problems": [
@@ -3756,59 +3446,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "HCCL master 分支依赖 CANN Toolkit 9.5+（含 GenerateEsPackage cmake 模块），但 docs/zh/build/build.md 仅说 CANN 8.5.0 起步，未明确 master 分支所需的 CANN 版本下限",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "HCCL master 分支依赖 CANN Toolkit 9.5+（含 GenerateEsPackage cmake 模块），但 docs/zh/build/build.md 仅说 CANN 8.5.0 起步，未明确 master 分支所需的 CANN 版本下限"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 未传递 ASCEND_HOME_PATH 环境变量，需要手动 export；标准做法是在 /usr/local/Ascend/cann 安装完整 CANN Toolkit",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 未传递 ASCEND_HOME_PATH 环境变量，需要手动 export；标准做法是在 /usr/local/Ascend/cann 安装完整 CANN Toolkit"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "AIV/CCU 内核编译路径假设 /tools/ccec_compiler 和 /tools/tikcpp 在 CANN 安装下，与实际 CANN 9.1.0 布局（/tools/bisheng_compiler、/tikcpp）不一致，需要软链修复",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "AIV/CCU 内核编译路径假设 /tools/ccec_compiler 和 /tools/tikcpp 在 CANN 安装下，与实际 CANN 9.1.0 布局（/tools/bisheng_compiler、/tikcpp）不一致，需要软链修复"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ST 测试 cmake 未链接 libhcomm.so，导致 ST 构建失败；测试 CMakeLists.txt 需补全 link libraries",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ST 测试 cmake 未链接 libhcomm.so，导致 ST 构建失败；测试 CMakeLists.txt 需补全 link libraries"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/build/build.md 提及 ST 测试需 MPI + 8 卡 NPU，但 test/st/algorithm/build.sh 仅做构建不执行测试",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/build/build.md 提及 ST 测试需 MPI + 8 卡 NPU，但 test/st/algorithm/build.sh 仅做构建不执行测试"
     }
    ],
    "problems": [
@@ -4050,59 +3715,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根目录未提供 Dockerfile，依赖信息散落在 docs/zh/build.md、build.sh、CMakeLists.txt、cmake/find_cann_packages.cmake 等多文件中",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根目录未提供 Dockerfile，依赖信息散落在 docs/zh/build.md、build.sh、CMakeLists.txt、cmake/find_cann_packages.cmake 等多文件中"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/build.md 推荐的构建镜像为 swr.cn-north-4.myhuaweicloud.com/ci_cann/ubuntu24.04_{x86,arm}:lv6_v1.1039（基于 Ubuntu），与 openEuler 容器环境的差异需要在 README 中明确说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/build.md 推荐的构建镜像为 swr.cn-north-4.myhuaweicloud.com/ci_cann/ubuntu24.04_{x86,arm}:lv6_v1.1039（基于 Ubuntu），与 openEuler 容器环境的差异需要在 README 中明确说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CMakeLists.txt 默认链接 CANN 运行时库（acl_rt/hccl/runtime/metadef/error_manager 等），无 CANN Toolkit 时无法构建；测试模式（ENABLE_TEST=ON）才能仅依赖头文件构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CMakeLists.txt 默认链接 CANN 运行时库（acl_rt/hccl/runtime/metadef/error_manager 等），无 CANN Toolkit 时无法构建；测试模式（ENABLE_TEST=ON）才能仅依赖头文件构建"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明确列出 securec 库的安装位置要求（cann-cmake Findsecurec.cmake 在 ASCEND_INSTALL_PATH/lib64/ 下查找，但 CANN Toolkit 9.1.0 默认放置在 aarch64-linux/lib64/）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明确列出 securec 库的安装位置要求（cann-cmake Findsecurec.cmake 在 ASCEND_INSTALL_PATH/lib64/ 下查找，但 CANN Toolkit 9.1.0 默认放置在 aarch64-linux/lib64/）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "测试（tests/run_test.sh）中默认 CMAKE_BUILD_TYPE=DT，但 cmake 配置变量 ENABLE_TEST 在 dt 模式下不应用 DT_COMMON_COMPILE_OPTION 的 -Werror 标记；若用户手动 -D CMAKE_BUILD_TYPE=Release 会触发大量 stub.cc 编译失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "测试（tests/run_test.sh）中默认 CMAKE_BUILD_TYPE=DT，但 cmake 配置变量 ENABLE_TEST 在 dt 模式下不应用 DT_COMMON_COMPILE_OPTION 的 -Werror 标记；若用户手动 -D CMAKE_BUILD_TYPE=Release 会触发大量 stub.cc 编译失败"
     }
    ],
    "problems": [
@@ -4320,70 +3960,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "iSulad.spec 中 BuildRequires 列出 libisula-devel > 2.1.5-0 但 < 2.1.6-0，openEuler 24.03 LTS 仅提供 2.1.4，且 lcr v2.1.5 tag 也未合入 isula_fopen 函数（commit 8b049bc 仅在 master），文档未提示用户需要从 gitcode/openeuler/lcr master 分支源码构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "iSulad.spec 中 BuildRequires 列出 libisula-devel > 2.1.5-0 但 < 2.1.6-0，openEuler 24.03 LTS 仅提供 2.1.4，且 lcr v2.1.5 tag 也未合入 isula_fopen 函数（commit 8b049bc 仅在 master），文档未提示用户需要从 gitcode/openeuler/lcr master 分支源码构建"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "iSulad.spec 列出 lib-shim-v2-devel 但未注明版本下限；openEuler 24.03 LTS 仅 0.0.1（缺 struct Stats/shim_v2_stats），需要 master 或更新版本（含 Rust cargo 编译）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "iSulad.spec 列出 lib-shim-v2-devel 但未注明版本下限；openEuler 24.03 LTS 仅 0.0.1（缺 struct Stats/shim_v2_stats），需要 master 或更新版本（含 Rust cargo 编译）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Dockerfile 与 README 文档均未提及 cmake 3.27+ CMP0145=NEW 移除 Dart 模块导致的 include(Dart) 失败问题，需自定义 stub Dart.cmake 注入 CMAKE_MODULE_PATH",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Dockerfile 与 README 文档均未提及 cmake 3.27+ CMP0145=NEW 移除 Dart 模块导致的 include(Dart) 失败问题，需自定义 stub Dart.cmake 注入 CMAKE_MODULE_PATH"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CMakeLists.txt cmake_minimum_required 设为 2.8...4.0，未锁定具体 CMake 最低版本，对新版 cmake 的兼容性问题无法快速定位",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CMakeLists.txt cmake_minimum_required 设为 2.8...4.0，未锁定具体 CMake 最低版本，对新版 cmake 的兼容性问题无法快速定位"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 文档仅说 dnf builddep iSulad.spec，但该命令在裸 openEuler 容器中需要先生成 .src.rpm 才能 builddep，文档未给出具体步骤",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 文档仅说 dnf builddep iSulad.spec，但该命令在裸 openEuler 容器中需要先生成 .src.rpm 才能 builddep，文档未给出具体步骤"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "isulad 主程序启动时强制依赖 en_US.UTF-8 locale（set_locale），openEuler 24.03 LTS 基础镜像缺少 glibc-all-langpacks 时无法正常输出，文档未提示需安装该包",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "isulad 主程序启动时强制依赖 en_US.UTF-8 locale（set_locale），openEuler 24.03 LTS 基础镜像缺少 glibc-all-langpacks 时无法正常输出，文档未提示需安装该包"
     }
    ],
    "problems": [
@@ -4599,70 +4209,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 中 '编译 KUPL' 步骤仅给出 'sh build.sh --install_path=...'，但未提及 MMA 模块需要 GCC 13+ 才能识别 sme-f64f64 指令；现有 GCC 12.3.1 编译默认会失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 中 '编译 KUPL' 步骤仅给出 'sh build.sh --install_path=...'，但未提及 MMA 模块需要 GCC 13+ 才能识别 sme-f64f64 指令；现有 GCC 12.3.1 编译默认会失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 自动检测 CPU 型号启用 MMA：cputype==0x48-0xd22 (Kunpeng 920) 时启用，但 CPU implementer 0x48 + part 0xd01 (Kunpeng 920S) 同样会启用；启用后 GCC 12.3.1 编译直接失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 自动检测 CPU 型号启用 MMA：cputype==0x48-0xd22 (Kunpeng 920) 时启用，但 CPU implementer 0x48 + part 0xd01 (Kunpeng 920S) 同样会启用；启用后 GCC 12.3.1 编译直接失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/functest/mma/CMakeLists.txt 与 test/fuzz/mma/CMakeLists.txt 同样硬编码 -march=armv9-a+sme-f64f64+sve，未受 ENABLE_KUPL_MMA 控制",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/functest/mma/CMakeLists.txt 与 test/fuzz/mma/CMakeLists.txt 同样硬编码 -march=armv9-a+sme-f64f64+sve，未受 ENABLE_KUPL_MMA 控制"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 check_glibc 函数在 GLIBC 2.38 环境下会因 __isoc23_strtol 等符号退出码 1，导致 build_kind=test 阶段后续步骤全部跳过；README 未提及此兼容性检查",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 check_glibc 函数在 GLIBC 2.38 环境下会因 __isoc23_strtol 等符号退出码 1，导致 build_kind=test 阶段后续步骤全部跳过；README 未提及此兼容性检查"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README '编译运行测试程序' 章节未提供 googletest 安装指引，假设用户通过 HPCKit 中的 BiSheng 模块自带 gtest；非 HPCKit 环境需要额外 dnf install gtest-devel",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README '编译运行测试程序' 章节未提供 googletest 安装指引，假设用户通过 HPCKit 中的 BiSheng 模块自带 gtest；非 HPCKit 环境需要额外 dnf install gtest-devel"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未提供 Dockerfile；build.sh 隐式依赖 module load + HPCKit 的环境，非 HPCKit 环境需要手动映射 dnf 包",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未提供 Dockerfile；build.sh 隐式依赖 module load + HPCKit 的环境，非 HPCKit 环境需要手动映射 dnf 包"
     }
    ],
    "problems": [
@@ -4923,59 +4503,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "2026-07-01T19:25:00",
-      "title": "README 推荐 openUBMC bingo 工具链未在 openEuler 仓库提供",
-      "body": "README 系统要求章节强制使用 bingo + conan 工具链，并链接到 openUBMC/manifest 仓库的 init.py。但 bingo 工具本身未在 openEuler 仓库提供，且 init.py 设计上仅支持 Ubuntu。新手按 README 操作无法在 openEuler 上完成构建。",
-      "source": "README.md 系统要求 + 环境依赖章节"
-     },
+     "title": "README 推荐 openUBMC bingo 工具链未在 openEuler 仓库提供",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 系统要求 + 环境依赖章节",
+     "detail": "README 系统要求章节强制使用 bingo + conan 工具链，并链接到 openUBMC/manifest 仓库的 init.py。但 bingo 工具本身未在 openEuler 仓库提供，且 init.py 设计上仅支持 Ubuntu。新手按 README 操作无法在 openEuler 上完成构建。"
     },
     {
-     "title": {
-      "time": "2026-07-01T19:25:00",
-      "title": "subprojects/libmcpp.wrap 使用 SSH 协议需凭据",
-      "body": "仓库的 libmcpp subproject wrap 文件 url=git@gitcode.com:openUBMC/libmcpp.git，使用 SSH 协议拉取依赖。CI 环境通常不会预置 gitcode.com 凭据，导致 meson 拉取子项目失败。仓库未提供 HTTPS 备选方案或文档说明。",
-      "source": "subprojects/libmcpp.wrap"
-     },
+     "title": "subprojects/libmcpp.wrap 使用 SSH 协议需凭据",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "subprojects/libmcpp.wrap",
+     "detail": "仓库的 libmcpp subproject wrap 文件 url=git@gitcode.com:openUBMC/libmcpp.git，使用 SSH 协议拉取依赖。CI 环境通常不会预置 gitcode.com 凭据，导致 meson 拉取子项目失败。仓库未提供 HTTPS 备选方案或文档说明。"
     },
     {
-     "title": {
-      "time": "2026-07-01T19:28:30",
-      "title": "mcdatabase 子项目硬依赖 SQLITE_ENABLE_PREUPDATE_HOOK 宏",
-      "body": "subprojects/libmcpp/libraries/mcdatabase/meson.build:21 硬编码 -DSQLITE_ENABLE_PREUPDATE_HOOK，但 openEuler 仓库提供的 sqlite-devel 编译时未启用该宏，导致链接时缺少 sqlite3_preupdate_* 符号。README 与 conanfile.py 均未提示该约束，新手在 openEuler 上需要从源码编译 sqlite。",
-      "source": "subprojects/libmcpp/libraries/mcdatabase/meson.build:21 + conanfile.py"
-     },
+     "title": "mcdatabase 子项目硬依赖 SQLITE_ENABLE_PREUPDATE_HOOK 宏",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "subprojects/libmcpp/libraries/mcdatabase/meson.build:21 + conanfile.py",
+     "detail": "subprojects/libmcpp/libraries/mcdatabase/meson.build:21 硬编码 -DSQLITE_ENABLE_PREUPDATE_HOOK，但 openEuler 仓库提供的 sqlite-devel 编译时未启用该宏，导致链接时缺少 sqlite3_preupdate_* 符号。README 与 conanfile.py 均未提示该约束，新手在 openEuler 上需要从源码编译 sqlite。"
     },
     {
-     "title": {
-      "time": "2026-07-01T19:23:30",
-      "title": "用户输入分支名与默认分支不一致",
-      "body": "用户指定分支 master，但仓库默认分支为 main（refs/heads/main）。git ls-remote 仅返回 main 引用，git clone --branch master 报 fatal: Remote branch master not found。README 未注明默认分支。",
-      "source": "git ls-remote https://gitcode.com/openUBMC/libipmi.git"
-     },
+     "title": "用户输入分支名与默认分支不一致",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "git ls-remote https://gitcode.com/openUBMC/libipmi.git",
+     "detail": "用户指定分支 master，但仓库默认分支为 main（refs/heads/main）。git ls-remote 仅返回 main 引用，git clone --branch master 报 fatal: Remote branch master not found。README 未注明默认分支。"
     },
     {
-     "title": {
-      "time": "2026-07-01T19:38:30",
-      "title": "README 测试章节未说明可绕过 bingo 的替代命令",
-      "body": "README 测试章节仅提供 'bingo test -ut -jit'，但 bingo 在 openEuler 上不可用。meson 实际生成的 gtest 二进制 ./build/tests/libipmi_test 可以独立运行并输出 PASSED/FAILED，但 README 未提供此备选命令。",
-      "source": "README.md 测试章节 + tests/meson.build"
-     },
+     "title": "README 测试章节未说明可绕过 bingo 的替代命令",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 测试章节 + tests/meson.build",
+     "detail": "README 测试章节仅提供 'bingo test -ut -jit'，但 bingo 在 openEuler 上不可用。meson 实际生成的 gtest 二进制 ./build/tests/libipmi_test 可以独立运行并输出 PASSED/FAILED，但 README 未提供此备选命令。"
     }
    ],
    "problems": [
@@ -5212,59 +4767,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 强烈声明'本组件仅支持 Ubuntu 24.04 LTS，openEuler、CentOS、Debian 等其他系统均不支持'，但通过 meson 直接构建（绕过 Conan）+ 源码编译带 SQLITE_ENABLE_PREUPDATE_HOOK 的 sqlite3，验证表明 openEuler 24.03 LTS 上 7 个子项目均能成功编译。建议 README 补充非 Ubuntu 环境的可行性说明或明确不支持的具体技术原因。",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 强烈声明'本组件仅支持 Ubuntu 24.04 LTS，openEuler、CentOS、Debian 等其他系统均不支持'，但通过 meson 直接构建（绕过 Conan）+ 源码编译带 SQLITE_ENABLE_PREUPDATE_HOOK 的 sqlite3，验证表明 openEuler 24.03 LTS 上 7 个子项目均能成功编译。建议 README 补充非 Ubuntu 环境的可行性说明或明确不支持的具体技术原因。"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "meson.build 顶层 add_project_arguments('-DSQLITE_ENABLE_PREUPDATE_HOOK') 假定系统 sqlite3 已启用该特性，但 openEuler 24.03 / Ubuntu 24.04 官方 sqlite3-devel 均未启用。建议在 meson.build / README 中显式声明：需要 SQLITE_ENABLE_PREUPDATE_HOOK 编译的 sqlite3（Conan 自动提供 Conan 包级别的 sqlite3 时启用此特性），或允许 meson 自动 fallback 编译 sqlite3 amalgamation。",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "meson.build 顶层 add_project_arguments('-DSQLITE_ENABLE_PREUPDATE_HOOK') 假定系统 sqlite3 已启用该特性，但 openEuler 24.03 / Ubuntu 24.04 官方 sqlite3-devel 均未启用。建议在 meson.build / README 中显式声明：需要 SQLITE_ENABLE_PREUPDATE_HOOK 编译的 sqlite3（Conan 自动提供 Conan 包级别的 sqlite3 时启用此特性），或允许 meson 自动 fallback 编译 sqlite3 amalgamation。"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 提供的 'bingo build' 流程依赖 init.py 自动安装 Conan 和 bingo 工具链，但本次验证环境无网络访问 Conan 远程仓库的凭据，因此改用 meson 直接构建。文档未提供 bingo 不可用时的 fallback 路径。",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 提供的 'bingo build' 流程依赖 init.py 自动安装 Conan 和 bingo 工具链，但本次验证环境无网络访问 Conan 远程仓库的凭据，因此改用 meson 直接构建。文档未提供 bingo 不可用时的 fallback 路径。"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/task_service 启动需要运行中的 DBus daemon 和持久化服务（bmc.kepler.persistence），但 examples/README 目录未列出运行时依赖清单。",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/task_service 启动需要运行中的 DBus daemon 和持久化服务（bmc.kepler.persistence），但 examples/README 目录未列出运行时依赖清单。"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "libraries/mcapp/tests 失败用例涉及 Lua evaluator + discovery 集成，但 docs/ 未明确说明 Lua evaluator 在 use_shm=true (新架构) 下的预期行为差异。",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "libraries/mcapp/tests 失败用例涉及 Lua evaluator + discovery 集成，但 docs/ 未明确说明 Lua evaluator 在 use_shm=true (新架构) 下的预期行为差异。"
     }
    ],
    "problems": [
@@ -5505,59 +5035,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "2026-07-02T13:00:00",
-      "title": "MemCache 主仓库缺少 Dockerfile，编译工具链版本依赖完全靠 README 文字描述",
-      "body": "doc/install_run.md 列出 cmake 3.20.x / gcc 11.4+ / python 3.11.10 / pybind11 2.10.3 / make 4.3 / ninja 1.10.1，但仓库根无任何 Dockerfile，新开发者拿到代码后必须自己拼装 openEuler 24.03 + Python 3.11 + pybind11 + 第三方依赖的镜像。",
-      "source": "doc/install_run.md + 仓库根目录"
-     },
+     "title": "MemCache 主仓库缺少 Dockerfile，编译工具链版本依赖完全靠 README 文字描述",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "doc/install_run.md + 仓库根目录",
+     "detail": "doc/install_run.md 列出 cmake 3.20.x / gcc 11.4+ / python 3.11.10 / pybind11 2.10.3 / make 4.3 / ninja 1.10.1，但仓库根无任何 Dockerfile，新开发者拿到代码后必须自己拼装 openEuler 24.03 + Python 3.11 + pybind11 + 第三方依赖的镜像。"
     },
     {
-     "title": {
-      "time": "2026-07-02T13:30:00",
-      "title": "prometheus-cpp-lite include 路径与子模块目录结构不一致",
-      "body": "src/memcache/csrc/CMakeLists.txt 写死 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/simpleapi/include 与 core/include，但实际子模块目录结构只有 include/prometheus/*.h（无 simpleapi/include 或 core/include 子目录）。这导致默认配置下编译直接失败，需手工改为 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/include。",
-      "source": "src/memcache/csrc/CMakeLists.txt + 3rdparty/prometheus-cpp-lite/include/prometheus/"
-     },
+     "title": "prometheus-cpp-lite include 路径与子模块目录结构不一致",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "src/memcache/csrc/CMakeLists.txt + 3rdparty/prometheus-cpp-lite/include/prometheus/",
+     "detail": "src/memcache/csrc/CMakeLists.txt 写死 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/simpleapi/include 与 core/include，但实际子模块目录结构只有 include/prometheus/*.h（无 simpleapi/include 或 core/include 子目录）。这导致默认配置下编译直接失败，需手工改为 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/include。"
     },
     {
-     "title": {
-      "time": "2026-07-02T13:35:00",
-      "title": "父 CMakeLists.txt 在 add_subdirectory(3rdparty) 之前引用子模块变量",
-      "body": "顶层 CMakeLists.txt line 200 在 add_subdirectory(3rdparty/memfabric_hybrid) 之前调用 include_directories(${PROJECT_SMEM_SRC_BASE}/include/host ${PROJECT_UTIL_SRC_BASE})，但这两个变量在 memfabric_hybrid 的 CMakeLists.txt 中才 set()，导致在父作用域里为空，最终 include 变成 /include/host /csrc/common 等绝对无效路径。需在 add_subdirectory 之前提前 set() 这 4 个变量。",
-      "source": "CMakeLists.txt line 200-210 + 3rdparty/memfabric_hybrid/CMakeLists.txt line 120-130"
-     },
+     "title": "父 CMakeLists.txt 在 add_subdirectory(3rdparty) 之前引用子模块变量",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "CMakeLists.txt line 200-210 + 3rdparty/memfabric_hybrid/CMakeLists.txt line 120-130",
+     "detail": "顶层 CMakeLists.txt line 200 在 add_subdirectory(3rdparty/memfabric_hybrid) 之前调用 include_directories(${PROJECT_SMEM_SRC_BASE}/include/host ${PROJECT_UTIL_SRC_BASE})，但这两个变量在 memfabric_hybrid 的 CMakeLists.txt 中才 set()，导致在父作用域里为空，最终 include 变成 /include/host /csrc/common 等绝对无效路径。需在 add_subdirectory 之前提前 set() 这 4 个变量。"
     },
     {
-     "title": {
-      "time": "2026-07-02T13:45:00",
-      "title": "prometheus-cpp-lite 的 std::to_chars 使用与 _GLIBCXX_USE_CXX11_ABI=0 不兼容",
-      "body": "core.h 第 152 行 std::to_chars 路径在 -D_GLIBCXX_USE_CXX11_ABI=0 + -O2 组合下声明消失，编译报 to_chars is not a member of std。仓库顶层未提供任何 snprintf 兜底开关，需手工改 core.h 把 #if __cpp_lib_to_chars >= 201611L 改为 #if 0。",
-      "source": "3rdparty/prometheus-cpp-lite/include/prometheus/core.h + 顶层 CMakeLists.txt line 105"
-     },
+     "title": "prometheus-cpp-lite 的 std::to_chars 使用与 _GLIBCXX_USE_CXX11_ABI=0 不兼容",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "3rdparty/prometheus-cpp-lite/include/prometheus/core.h + 顶层 CMakeLists.txt line 105",
+     "detail": "core.h 第 152 行 std::to_chars 路径在 -D_GLIBCXX_USE_CXX11_ABI=0 + -O2 组合下声明消失，编译报 to_chars is not a member of std。仓库顶层未提供任何 snprintf 兜底开关，需手工改 core.h 把 #if __cpp_lib_to_chars >= 201611L 改为 #if 0。"
     },
     {
-     "title": {
-      "time": "2026-07-02T14:00:00",
-      "title": "prometheus-cpp-lite 全局对象 (global_registry 等) 缺少编译入口",
-      "body": "src/simpleapi.cpp 定义了 prometheus::global_registry / file_saver / http_pusher / http_server 等全局对象，但仓库 3rdparty/CMakeLists.txt 中 add_subdirectory(memfabric_hybrid) 之后未对 prometheus-cpp-lite 做任何 add_subdirectory 或 target_link 调用，simpleapi.cpp 从未编译进 libmf_memcache.so。链接时未定义引用错误。",
-      "source": "3rdparty/CMakeLists.txt + 3rdparty/prometheus-cpp-lite/src/simpleapi.cpp"
-     },
+     "title": "prometheus-cpp-lite 全局对象 (global_registry 等) 缺少编译入口",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "3rdparty/CMakeLists.txt + 3rdparty/prometheus-cpp-lite/src/simpleapi.cpp",
+     "detail": "src/simpleapi.cpp 定义了 prometheus::global_registry / file_saver / http_pusher / http_server 等全局对象，但仓库 3rdparty/CMakeLists.txt 中 add_subdirectory(memfabric_hybrid) 之后未对 prometheus-cpp-lite 做任何 add_subdirectory 或 target_link 调用，simpleapi.cpp 从未编译进 libmf_memcache.so。链接时未定义引用错误。"
     }
    ],
    "problems": [
@@ -5767,78 +5272,58 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库无 Dockerfile，需用 dnf install 列表代替 apt 安装指令",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库无 Dockerfile，需用 dnf install 列表代替 apt 安装指令"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "script/build.sh 硬编码 MF_BUILD_JOBS=32，未与 CPU 核数联动（强制约束要求 20%）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "script/build.sh 硬编码 MF_BUILD_JOBS=32，未与 CPU 核数联动（强制约束要求 20%）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/memory_pool/ 仅是设计文档目录，承诺的样例代码尚未合并",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/memory_pool/ 仅是设计文档目录，承诺的样例代码尚未合并"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/installation.md 推荐 Ubuntu 22.04 + GCC 11.4，openEuler 24.03 自带 GCC 12.3 可能触发 ABI 兼容问题，需 BUILD_OPEN_ABI=ON",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/installation.md 推荐 Ubuntu 22.04 + GCC 11.4，openEuler 24.03 自带 GCC 12.3 可能触发 ABI 兼容问题，需 BUILD_OPEN_ABI=ON"
     }
    ],
    "problems": [
     {
-     "title": "",
+     "title": "github.com 不可达",
      "source": "",
      "detail": ""
     },
     {
-     "title": "",
+     "title": "mockcpp 行尾格式不匹配导致 mockcpp_support_arm64.patch 失败",
      "source": "",
      "detail": ""
     },
     {
-     "title": "",
+     "title": "/tmp/memfabric_hybrid-verify 残留目录无法删除",
      "source": "",
      "detail": ""
     },
     {
-     "title": "",
+     "title": "1713 个测试用例中绝大部分依赖 NPU/RDMA 硬件",
      "source": "",
      "detail": ""
     },
     {
-     "title": "",
+     "title": "NetworkEndpointUtilTest 1 failed + 2 skipped",
      "source": "",
      "detail": ""
     },
     {
-     "title": "",
+     "title": "样例需 NPU/torch_npu 硬件",
      "source": "",
      "detail": ""
     }
@@ -6039,70 +5524,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库 README 推荐 Ubuntu/CentOS 构建系统，未提供 openEuler 推荐；本验证通过 openEuler 24.03 LTS (aarch64) 从零构建验证兼容",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库 README 推荐 Ubuntu/CentOS 构建系统，未提供 openEuler 推荐；本验证通过 openEuler 24.03 LTS (aarch64) 从零构建验证兼容"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/build.md § 4.2 仅列出 ccache/asan/patch/lcov/graph-easy 等依赖，但构建脚本 build.sh 强制要求 ASCEND_HOME_PATH/CANN toolkit（文档对 CANN toolkit 安装步骤隐式依赖 init_env.sh）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/build.md § 4.2 仅列出 ccache/asan/patch/lcov/graph-easy 等依赖，但构建脚本 build.sh 强制要求 ASCEND_HOME_PATH/CANN toolkit（文档对 CANN toolkit 安装步骤隐式依赖 init_env.sh）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "example/run_example.sh 假设 CANN ops 包已安装，但 docs/build.md 未明确说明样例需要 ops 包（nonlinear_fuc_ops.h 等头文件来自 Ascend-cann-910b-ops 包）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "example/run_example.sh 假设 CANN ops 包已安装，但 docs/build.md 未明确说明样例需要 ops 包（nonlinear_fuc_ops.h 等头文件来自 Ascend-cann-910b-ops 包）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未提供 Dockerfile，依赖信息散落在 docs/build.md、scripts/check_env.sh、scripts/init_env.sh、build.sh 多个文件中",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未提供 Dockerfile，依赖信息散落在 docs/build.md、scripts/check_env.sh、scripts/init_env.sh、build.sh 多个文件中"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未配置 .devcontainer，无法直接使用容器化开发环境",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未配置 .devcontainer，无法直接使用容器化开发环境"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "示例样例 tc_ge_irrun_open_api_0014 使用已弃用头文件（nn_calculation_ops.h/array_ops.h 等）触发 -Wcpp #warning，文档未提及迁移计划",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "示例样例 tc_ge_irrun_open_api_0014 使用已弃用头文件（nn_calculation_ops.h/array_ops.h 等）触发 -Wcpp #warning，文档未提及迁移计划"
     }
    ],
    "problems": [
@@ -6290,48 +5745,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build_guide.md does not mention that torch must be pre-installed (needed for ABI detection and LD_LIBRARY_PATH)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build_guide.md does not mention that torch must be pre-installed (needed for ABI detection and LD_LIBRARY_PATH)"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "DT test CMakeLists expects googletest pre-installed at third_party/install/googletest/ but build.sh -d 3rd only downloads source to third_party/src/googletest/ (no install step for gtest)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "DT test CMakeLists expects googletest pre-installed at third_party/install/googletest/ but build.sh -d 3rd only downloads source to third_party/src/googletest/ (no install step for gtest)"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "C++ llt tests (mindie_motor/src/test/llt/) are outdated and reference non-existent source paths",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "C++ llt tests (mindie_motor/src/test/llt/) are outdated and reference non-existent source paths"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh unconditionally sets NUM_PROC=$(nproc), making --parallel the only way to limit concurrency; setup.py calls build.sh without --parallel",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh unconditionally sets NUM_PROC=$(nproc), making --parallel the only way to limit concurrency; setup.py calls build.sh without --parallel"
     }
    ],
    "problems": [
@@ -6528,59 +5963,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "setup.py install_requires 为空, 实际依赖全部写在 requirements.txt (虽然构建脚本 pip wheel --no-deps 不影响), 但调用方 pip install 时拿不到任何依赖元数据, 不符合 PEP 最佳实践",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "setup.py install_requires 为空, 实际依赖全部写在 requirements.txt (虽然构建脚本 pip wheel --no-deps 不影响), 但调用方 pip install 时拿不到任何依赖元数据, 不符合 PEP 最佳实践"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Dockerfile 集成 CANN 推理镜像 (quay.nju.edu.cn/ascend/vllm-ascend), 仓库本身未提供适用于通用 openEuler 24.03 LTS 的 Dockerfile, 通用验证需自行映射 pip 依赖",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Dockerfile 集成 CANN 推理镜像 (quay.nju.edu.cn/ascend/vllm-ascend), 仓库本身未提供适用于通用 openEuler 24.03 LTS 的 Dockerfile, 通用验证需自行映射 pip 依赖"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Dockerfile 未指定 PEM-encoded host key 验证, build.sh 也未做此校验 (依赖 grpcio-tools 生成的代码不被运行时签名校验, 适合内部组件但不建议对外暴露 .proto schema)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Dockerfile 未指定 PEM-encoded host key 验证, build.sh 也未做此校验 (依赖 grpcio-tools 生成的代码不被运行时签名校验, 适合内部组件但不建议对外暴露 .proto schema)"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 缺少最小可运行示例指引, examples/ 主要是 K8s 部署工具和监控集成, 无 standalone Python 示例",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 缺少最小可运行示例指引, examples/ 主要是 K8s 部署工具和监控集成, 无 standalone Python 示例"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "requirements.txt 缺少 Pillow/tqdm 等真实运行时依赖, 仅在测试中被引用 (从 motor.common.utils.image_utils 等模块可见运行时也需要)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "requirements.txt 缺少 Pillow/tqdm 等真实运行时依赖, 仅在测试中被引用 (从 motor.common.utils.image_utils 等模块可见运行时也需要)"
     }
    ],
    "problems": [
@@ -6800,59 +6210,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "requirements.txt 中 triton-ascend==3.2.1 在华为云 PyPI 镜像仅有 3.2.0，安装需降级或换源",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "requirements.txt 中 triton-ascend==3.2.1 在华为云 PyPI 镜像仅有 3.2.0，安装需降级或换源"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CANN TBE 编译器（msopgen/tbe）隐含依赖 decorator/scipy/attrs，docs/zh/installation.md 未列出这些 Python 包",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CANN TBE 编译器（msopgen/tbe）隐含依赖 decorator/scipy/attrs，docs/zh/installation.md 未列出这些 Python 包"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/dummy_run/requirements.txt 要求 diffusers==0.38.0/transformers==5.2.0，与主 requirements.txt 的 0.29.0/4.44.2 冲突，需单独升级",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/dummy_run/requirements.txt 要求 diffusers==0.38.0/transformers==5.2.0，与主 requirements.txt 的 0.29.0/4.44.2 冲突，需单独升级"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "容器内 npu-smi 需要 driver lib64 子目录（common/driver/inner）加入 LD_LIBRARY_PATH，Dockerfile 未说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "容器内 npu-smi 需要 driver lib64 子目录（common/driver/inner）加入 LD_LIBRARY_PATH，Dockerfile 未说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/installation.md 列出 CANN 9.0.0，实际验证使用 9.0.0 toolkit + 910b-ops，版本一致",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/installation.md 列出 CANN 9.0.0，实际验证使用 9.0.0 toolkit + 910b-ops，版本一致"
     }
    ],
    "problems": [
@@ -7253,81 +6638,46 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 未明确列出完整的 Python 依赖列表，依赖信息分散在 pyproject.toml 和 docker/Dockerfile 中",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 未明确列出完整的 Python 依赖列表，依赖信息分散在 pyproject.toml 和 docker/Dockerfile 中"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 未提供 CPU 环境下的 build/UT 步骤说明，仅描述 NPU 训练启动方式",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 未提供 CPU 环境下的 build/UT 步骤说明，仅描述 NPU 训练启动方式"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Dockerfile 默认使用 swr.cn-south-1.myhuaweicloud.com 镜像源（昇腾专用），非 NPU 环境下难以复用",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Dockerfile 默认使用 swr.cn-south-1.myhuaweicloud.com 镜像源（昇腾专用），非 NPU 环境下难以复用"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "pyproject.toml [project.dependencies] 中 torch 钉版本为 2.7.1，但未声明 torch-npu 依赖（仅在 docker/scripts/model_install/install_verl_qwen3vl.sh 中显式安装）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "pyproject.toml [project.dependencies] 中 torch 钉版本为 2.7.1，但未声明 torch-npu 依赖（仅在 docker/scripts/model_install/install_verl_qwen3vl.sh 中显式安装）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tests/ut/ 目录下的 7 个测试文件（test_mask_utils.py/test_weight_convert.py/test_lora_utils.py 等）直接 from mindspeed_mm.xxx import (...) 会触发 __init__.py → megatron 依赖，仅 3 个文件（test_aspect_ratio.py/test_ema.py/test_ut_demo.py）使用 importlib 隔离模式可 CPU 运行；建议所有测试统一改用 importlib 模式以便 CI 在无 NPU 环境也能跑全量 UT",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tests/ut/ 目录下的 7 个测试文件（test_mask_utils.py/test_weight_convert.py/test_lora_utils.py 等）直接 from mindspeed_mm.xxx import (...) 会触发 __init__.py → megatron 依赖，仅 3 个文件（test_aspect_ratio.py/test_ema.py/test_ut_demo.py）使用 importlib 隔离模式可 CPU 运行；建议所有测试统一改用 importlib 模式以便 CI 在无 NPU 环境也能跑全量 UT"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "decord==0.6.0 虽在 docker/Dockerfile 中安装但未在 pyproject.toml 中声明，且无 aarch64 wheel",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "decord==0.6.0 虽在 docker/Dockerfile 中安装但未在 pyproject.toml 中声明，且无 aarch64 wheel"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples/ 目录下的样例脚本均依赖 torch_npu，但无 NPU 不可执行的明确提示",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples/ 目录下的样例脚本均依赖 torch_npu，但无 NPU 不可执行的明确提示"
     }
    ],
    "problems": [
@@ -7609,125 +6959,70 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/quick_install.md 推荐 docker 镜像 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.0-910b-ubuntu22.04-py3.10，但未说明如何在 openEuler 或其他发行版上安装 CANN toolkit；init_env.sh 仅在 Ubuntu 上 yum 模拟（无 openEuler 适配）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/quick_install.md 推荐 docker 镜像 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.0-910b-ubuntu22.04-py3.10，但未说明如何在 openEuler 或其他发行版上安装 CANN toolkit；init_env.sh 仅在 Ubuntu 上 yum 模拟（无 openEuler 适配）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 假定 bundle/ 子目录已存在（install_bundle.sh 已下载），但未说明当 bundle 已存在时如何强制重新下载；本验证流程中 install_bundle.sh 因 bundle/ 已存在而跳过，导致首次 cmake configure 时 protobuf 与 abseil 缺少部分 source 文件",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 假定 bundle/ 子目录已存在（install_bundle.sh 已下载），但未说明当 bundle 已存在时如何强制重新下载；本验证流程中 install_bundle.sh 因 bundle/ 已存在而跳过，导致首次 cmake configure 时 protobuf 与 abseil 缺少部分 source 文件"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build_msprof_analysis 在 build.sh 内调用 populate_submodule，但 populate_submodule 的 CANN_3RD_LIB_PATH 默认是 ./third_party 而非 bundle/，导致子仓默认从 gitcode clone；本验证通过 gitcode 直连成功，但文档未说明 msprof/msprobe 子仓的 gitcode 访问凭证要求",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build_msprof_analysis 在 build.sh 内调用 populate_submodule，但 populate_submodule 的 CANN_3RD_LIB_PATH 默认是 ./third_party 而非 bundle/，导致子仓默认从 gitcode clone；本验证通过 gitcode 直连成功，但文档未说明 msprof/msprobe 子仓的 gitcode 访问凭证要求"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/run_tests.sh 的 component 列表（asys / msaicerr / msprof / install / upgrade / uninstall）缺少与 docs/zh/quick_install.md 的交叉索引，新用户难以将文档中的依赖说明与测试脚本对应",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/run_tests.sh 的 component 列表（asys / msaicerr / msprof / install / upgrade / uninstall）缺少与 docs/zh/quick_install.md 的交叉索引，新用户难以将文档中的依赖说明与测试脚本对应"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/run_tests.sh 中 install_st / upgrade_st / uninstall_st 三个 ST 测试需要先执行 cmake install 与生成的 install_stub，但脚本未自动按顺序执行，开发者容易直接跑 pytest 失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/run_tests.sh 中 install_st / upgrade_st / uninstall_st 三个 ST 测试需要先执行 cmake install 与生成的 install_stub，但脚本未自动按顺序执行，开发者容易直接跑 pytest 失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "src/asys/common/chip_handler.py.in 是 cmake configure 阶段的模板文件（@ASYS_CHIP_HANDLER_IMPORT_STR@ 与 @ASYS_CHIP_HANDLER_LIST_STR@ 占位符），但仓库文档未说明该文件何时/如何生成；本次验证 cmake configure 阶段会自动生成 chip_handler.py，但 run_tests.sh 的内部逻辑依赖于该文件已生成",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "src/asys/common/chip_handler.py.in 是 cmake configure 阶段的模板文件（@ASYS_CHIP_HANDLER_IMPORT_STR@ 与 @ASYS_CHIP_HANDLER_LIST_STR@ 占位符），但仓库文档未说明该文件何时/如何生成；本次验证 cmake configure 阶段会自动生成 chip_handler.py，但 run_tests.sh 的内部逻辑依赖于该文件已生成"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "make package 阶段需要先 cp msprof-0.0.1-py3-none-any.whl 到 src/msprof/collector/dvvp/msprofbin/，但 build.sh 未自动执行此步骤（依赖 build_msprof_analysis 内部完成；本验证因 sub-make 先后顺序问题导致 wheel 未拷贝到 install 目标）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "make package 阶段需要先 cp msprof-0.0.1-py3-none-any.whl 到 src/msprof/collector/dvvp/msprofbin/，但 build.sh 未自动执行此步骤（依赖 build_msprof_analysis 内部完成；本验证因 sub-make 先后顺序问题导致 wheel 未拷贝到 install 目标）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "openEuler 24.03 默认 Python 3.11.6 低于 docs/zh/quick_install.md 前置依赖章节要求的 Python >= 3.12.0；本验证在 Python 3.11.6 上跑通 pytest UT，但未确认 3.12+ 专属语法未在代码中使用",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "openEuler 24.03 默认 Python 3.11.6 低于 docs/zh/quick_install.md 前置依赖章节要求的 Python >= 3.12.0；本验证在 Python 3.11.6 上跑通 pytest UT，但未确认 3.12+ 专属语法未在代码中使用"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "pre-commit 的 incremental-codecheck hook（scripts/incremental_codecheck.py）依赖 pylint + ruff 双重检查，但 .pre-commit-config.yaml 中 pylint 关闭了 C/R/import-error 等多项规则，与文档中提到的华为 codecheck 规则覆盖度未对齐",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "pre-commit 的 incremental-codecheck hook（scripts/incremental_codecheck.py）依赖 pylint + ruff 双重检查，但 .pre-commit-config.yaml 中 pylint 关闭了 C/R/import-error 等多项规则，与文档中提到的华为 codecheck 规则覆盖度未对齐"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库无 Dockerfile（虽然 docs/zh/quick_install.md 方式2 提到 Docker 部署，但仅引用昇腾 hub 预构建镜像，仓库本身未提供可复现的 Dockerfile），导致 CI/CD 与本地开发环境存在差异",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库无 Dockerfile（虽然 docs/zh/quick_install.md 方式2 提到 Docker 部署，但仅引用昇腾 hub 预构建镜像，仓库本身未提供可复现的 Dockerfile），导致 CI/CD 与本地开发环境存在差异"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/run_tests.sh 中 msprof_ut 需要 msprof_ut_targets.txt manifest 文件，但该 manifest 由 cmake 构建阶段在 build/msprof_ut_targets.txt 生成，文档未明确说明该文件的来源",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/run_tests.sh 中 msprof_ut 需要 msprof_ut_targets.txt manifest 文件，但该 manifest 由 cmake 构建阶段在 build/msprof_ut_targets.txt 生成，文档未明确说明该文件的来源"
     }
    ],
    "problems": [
@@ -7942,59 +7237,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未提供 Dockerfile，依赖信息散落在 docs/zh/quick_start.md 与 CMakeLists.txt 中",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未提供 Dockerfile，依赖信息散落在 docs/zh/quick_start.md 与 CMakeLists.txt 中"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/llt/CMakeLists.txt 链接 libaio (异步 I/O)，但 docs/zh/installation_guide.md / docs/zh/quick_start.md 均未列出 libaio-devel 为构建依赖，需查 CMakeLists.txt 才能发现",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/llt/CMakeLists.txt 链接 libaio (异步 I/O)，但 docs/zh/installation_guide.md / docs/zh/quick_start.md 均未列出 libaio-devel 为构建依赖，需查 CMakeLists.txt 才能发现"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/build.sh 依赖 CI_BUILD=1 环境变量跳过 submodule 自动 init，但 README/docs 未明确说明 depth=1 clone 后必须手动 git submodule update --init --recursive",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/build.sh 依赖 CI_BUILD=1 环境变量跳过 submodule 自动 init，但 README/docs 未明确说明 depth=1 clone 后必须手动 git submodule update --init --recursive"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/quick_start.md 仅指定 JDK 1.8.0_432，但 openEuler 仓库最新 1.8.0.462 兼容可用；未说明 JDK 11 不兼容（JNI 头文件结构差异）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/quick_start.md 仅指定 JDK 1.8.0_432，但 openEuler 仓库最新 1.8.0.462 兼容可用；未说明 JDK 11 不兼容（JNI 头文件结构差异）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build_all 目标包含 4 个 Flink 版本 Maven 构建，单次 build.sh 完整执行需下载大量 Flink 依赖（首次 ~30 min），文档未提示网络/时间成本",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build_all 目标包含 4 个 Flink 版本 Maven 构建，单次 build.sh 完整执行需下载大量 Flink 依赖（首次 ~30 min），文档未提示网络/时间成本"
     }
    ],
    "problems": [
@@ -8215,48 +7485,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "2026-06-30T23:36:00",
-      "title": "install.md 未说明 torchgen 依赖来源",
-      "body": "docs/zh/install.md 的构建步骤中未说明 torch_npu 编译需要 torchgen 模块（来自上游 PyTorch 源码）。ascend/pytorch v2.7.1 分支仅含 NPU 适配代码，不含 torchgen 目录。开发者需要先 pip install torch==2.7.1 才能获取 torchgen 模块，否则 setup.py 执行时报 ModuleNotFoundError。requirements.txt 中列出了 torch==2.7.1 但 install.md 的操作步骤中未提及需先安装 requirements.txt。",
-      "source": "docs/zh/install.md 操作步骤 + requirements.txt"
-     },
+     "title": "install.md 未说明 torchgen 依赖来源",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "docs/zh/install.md 操作步骤 + requirements.txt",
+     "detail": "docs/zh/install.md 的构建步骤中未说明 torch_npu 编译需要 torchgen 模块（来自上游 PyTorch 源码）。ascend/pytorch v2.7.1 分支仅含 NPU 适配代码，不含 torchgen 目录。开发者需要先 pip install torch==2.7.1 才能获取 torchgen 模块，否则 setup.py 执行时报 ModuleNotFoundError。requirements.txt 中列出了 torch==2.7.1 但 install.md 的操作步骤中未提及需先安装 requirements.txt。"
     },
     {
-     "title": {
-      "time": "2026-06-30T23:39:00",
-      "title": "install.md 未列出 python3-devel 依赖",
-      "body": "docs/zh/install.md 未提及编译需要 Python.h 头文件（python3-devel 包）。从源码编译 torch_npu 时，CMake 会编译包含 Python.h 的 C++ 文件，缺少 python3-devel 会导致 fatal error: Python.h: No such file or directory。",
-      "source": "docs/zh/install.md 安装依赖章节"
-     },
+     "title": "install.md 未列出 python3-devel 依赖",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "docs/zh/install.md 安装依赖章节",
+     "detail": "docs/zh/install.md 未提及编译需要 Python.h 头文件（python3-devel 包）。从源码编译 torch_npu 时，CMake 会编译包含 Python.h 的 C++ 文件，缺少 python3-devel 会导致 fatal error: Python.h: No such file or directory。"
     },
     {
-     "title": {
-      "time": "2026-06-30T23:26:00",
-      "title": "CANN 版本与 NPU 硬件/驱动兼容性未明确标注",
-      "body": "install.md 提到需安装 CANN 但未明确标注 CANN 版本与 NPU 硬件/驱动的兼容关系。本机使用 910B3 芯片 + 驱动 25.5.0，CANN 9.0.0 无法通信（aclInit 失败），CANN 9.1.0 (V100R001C11B125) 为不完整版本（libhccl.so 未定义符号）。文档应提供 CANN-硬件-驱动版本配套表。",
-      "source": "docs/zh/install.md 软件配套表"
-     },
+     "title": "CANN 版本与 NPU 硬件/驱动兼容性未明确标注",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "docs/zh/install.md 软件配套表",
+     "detail": "install.md 提到需安装 CANN 但未明确标注 CANN 版本与 NPU 硬件/驱动的兼容关系。本机使用 910B3 芯片 + 驱动 25.5.0，CANN 9.0.0 无法通信（aclInit 失败），CANN 9.1.0 (V100R001C11B125) 为不完整版本（libhccl.so 未定义符号）。文档应提供 CANN-硬件-驱动版本配套表。"
     },
     {
-     "title": {
-      "time": "2026-06-30T23:26:00",
-      "title": "仓库无 Dockerfile",
-      "body": "op-plugin 仓库不包含 Dockerfile，文档建议使用 torch_npu 提供的 docker 镜像但未在仓库内提供镜像构建文件。这增加了新开发者构建环境准备的门槛。",
-      "source": "仓库根目录"
-     },
+     "title": "仓库无 Dockerfile",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "仓库根目录",
+     "detail": "op-plugin 仓库不包含 Dockerfile，文档建议使用 torch_npu 提供的 docker 镜像但未在仓库内提供镜像构建文件。这增加了新开发者构建环境准备的门槛。"
     }
    ],
    "problems": [
@@ -8500,59 +7750,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库无 Dockerfile，依赖信息分散在 install_deps.sh（仅列依赖名，未指定版本来源映射）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库无 Dockerfile，依赖信息分散在 install_deps.sh（仅列依赖名，未指定版本来源映射）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/QUICKSTART.md 未列出 CANN Toolkit 最低版本要求，仅说明 '确保环境正常'",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/QUICKSTART.md 未列出 CANN Toolkit 最低版本要求，仅说明 '确保环境正常'"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 与 QUICKSTART.md 未说明编译并发与 CPU 核数的关系（build.sh 默认 THREAD_NUM=8，CLI 可 -j<N> 覆盖）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 与 QUICKSTART.md 未说明编译并发与 CPU 核数的关系（build.sh 默认 THREAD_NUM=8，CLI 可 -j<N> 覆盖）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未提供样例（sample/）目录，QUICKSTART.md 未提及样例执行（项目定位为基础框架库，故合理）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未提供样例（sample/）目录，QUICKSTART.md 未提及样例执行（项目定位为基础框架库，故合理）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".pre-commit-config.yaml 仅声明 OAT 钩子但仓库内无 scripts/oat_check.sh（已扫描确认），pre-commit 钩子实际不可用",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".pre-commit-config.yaml 仅声明 OAT 钩子但仓库内无 scripts/oat_check.sh（已扫描确认），pre-commit 钩子实际不可用"
     }
    ],
    "problems": [
@@ -8760,48 +7985,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "scripts/package/kernel.spec 未列出 dwarves (pahole) 依赖，但启用 CONFIG_DEBUG_INFO_BTF=y 时必装（本次预装齐备，未触发）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "scripts/package/kernel.spec 未列出 dwarves (pahole) 依赖，但启用 CONFIG_DEBUG_INFO_BTF=y 时必装（本次预装齐备，未触发）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "samples/Makefile 使用 obj-y 而非 obj-m，编译为 built-in 而非可独立加载模块；README 未给出用户态运行示例",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "samples/Makefile 使用 obj-y 而非 obj-m，编译为 built-in 而非可独立加载模块；README 未给出用户态运行示例"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Documentation/process/changes.rst 未列出 kmod/depmod 在 modules_install 阶段的必要性（本次预装齐备，未触发）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Documentation/process/changes.rst 未列出 kmod/depmod 在 modules_install 阶段的必要性（本次预装齐备，未触发）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "本次 OLK-6.6 头 c8b3ebe 修复了 dt-bindings 头文件 dtc 解析的语法问题（与历史报告 20260629 相比，dtbs 本次 248 个全部生成成功）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "本次 OLK-6.6 头 c8b3ebe 修复了 dt-bindings 头文件 dtc 解析的语法问题（与历史报告 20260629 相比，dtbs 本次 248 个全部生成成功）"
     }
    ],
    "problems": [
@@ -9089,48 +8294,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 ENABLE_RUN_EXAMPLE 与 ENABLE_CUSTOM 互斥（run_example 会强制设 ENABLE_CUSTOM=FALSE），导致 --run_example 在 --pkg 模式下无法正常编译示例",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 ENABLE_RUN_EXAMPLE 与 ENABLE_CUSTOM 互斥（run_example 会强制设 ENABLE_CUSTOM=FALSE），导致 --run_example 在 --pkg 模式下无法正常编译示例"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "文档明确推荐使用 CANN 官方 Docker 镜像（cann:9.1.0-beta.1-910b-openeuler24.03-py3.12-devel），但未提供在无 Ascend NPU 硬件环境下的 simulator 验证路径",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "文档明确推荐使用 CANN 官方 Docker 镜像（cann:9.1.0-beta.1-910b-openeuler24.03-py3.12-devel），但未提供在无 Ascend NPU 硬件环境下的 simulator 验证路径"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "UT 编译需要 python3-devel，但 install_deps.sh 仅在 debian 分支安装 python3-dev；rhel 分支漏装，导致首次 UT 编译失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "UT 编译需要 python3-devel，但 install_deps.sh 仅在 debian 分支安装 python3-dev；rhel 分支漏装，导致首次 UT 编译失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "cmake 配置需要 ASCEND_INSTALL_PATH 显式参数；set_env.sh 中 ASCEND_HOME_PATH 未被 cmake 自动识别，需要用户手动指定",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "cmake 配置需要 ASCEND_INSTALL_PATH 显式参数；set_env.sh 中 ASCEND_HOME_PATH 未被 cmake 自动识别，需要用户手动指定"
     }
    ],
    "problems": [
@@ -9422,48 +8607,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未提供 Dockerfile（推荐 CANN 预构建 Docker 镜像，但跳过技能规则的预构建镜像约束）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未提供 Dockerfile（推荐 CANN 预构建 Docker 镜像，但跳过技能规则的预构建镜像约束）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "未明确说明第三方依赖（json/makeself/eigen/protobuf/abseil-cpp/opbase/cann-cmake）的最低版本要求（在编译文档中提及但未列出 URL 离线场景）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "未明确说明第三方依赖（json/makeself/eigen/protobuf/abseil-cpp/opbase/cann-cmake）的最低版本要求（在编译文档中提及但未列出 URL 离线场景）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "构建命令中未提及 patch、ccache 等系统工具的前置依赖（构建第三方 abseil-cpp 需要 patch）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "构建命令中未提及 patch、ccache 等系统工具的前置依赖（构建第三方 abseil-cpp 需要 patch）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CANN 工具链版本与 ops-math 仓库版本配套关系未在 README 中显式给出（master 分支对应 CANN 版本需自行查询 release 仓库）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CANN 工具链版本与 ops-math 仓库版本配套关系未在 README 中显式给出（master 分支对应 CANN 版本需自行查询 release 仓库）"
     }
    ],
    "problems": [
@@ -9728,70 +8893,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 simulator 路径 dav_${SOC_TO_ARCH[unit]} 与 CANN 8.5.2 镜像中实际目录 Ascend910B1 命名不一致（dav_2201 vs Ascend910B1），无对应说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 simulator 路径 dav_${SOC_TO_ARCH[unit]} 与 CANN 8.5.2 镜像中实际目录 Ascend910B1 命名不一致（dav_2201 vs Ascend910B1），无对应说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 中 vendored operator 路径 ${ASCEND_HOME_PATH}/opp/vendors/${VENDOR_NAME}_nn/op_api/include 在标准 CANN 安装中为 /usr/local/Ascend/opp/... 而非 CANN_HOME 子目录下，文档未明确",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 中 vendored operator 路径 ${ASCEND_HOME_PATH}/opp/vendors/${VENDOR_NAME}_nn/op_api/include 在标准 CANN 安装中为 /usr/local/Ascend/opp/... 而非 CANN_HOME 子目录下，文档未明确"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ops-nn CMakeLists.txt 声明依赖 CANN runtime >= 8.5，但 master 分支实际使用 CANN 8.5.2 中未提供的 ge::GetSanitizedName 符号（说明 8.5.2 不兼容），需要更高版本 CANN",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ops-nn CMakeLists.txt 声明依赖 CANN runtime >= 8.5，但 master 分支实际使用 CANN 8.5.2 中未提供的 ge::GetSanitizedName 符号（说明 8.5.2 不兼容），需要更高版本 CANN"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/QUICKSTART.md 推荐使用 CANNLab 或 Docker，但未给出最小 CANN 版本号（master 分支实际需要更新版本）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/QUICKSTART.md 推荐使用 CANNLab 或 Docker，但未给出最小 CANN 版本号（master 分支实际需要更新版本）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "pre-commit 配置中未启用 hooks 的并行度限制，对 17000+ 文件仓库首次扫描性能不可接受（>20 分钟），未提供分批执行说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "pre-commit 配置中未启用 hooks 的并行度限制，对 17000+ 文件仓库首次扫描性能不可接受（>20 分钟），未提供分批执行说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "未提供 .devcontainer 配置（其他 CANN 仓库有），但 CANN 项目强烈需要标准化的开发容器",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "未提供 .devcontainer 配置（其他 CANN 仓库有），但 CANN 项目强烈需要标准化的开发容器"
     }
    ],
    "problems": [
@@ -10070,70 +9205,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/install/quick_install.md 建议使用 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:<ver>-910b-openeuler24.03-py3.12-devel 镜像，但未提供具体镜像 tag 与 --soc 配套关系（ascend910b/950/310p 各自对应哪个 tag）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/install/quick_install.md 建议使用 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:<ver>-910b-openeuler24.03-py3.12-devel 镜像，但未提供具体镜像 tag 与 --soc 配套关系（ascend910b/950/310p 各自对应哪个 tag）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 与 docs/zh/install/build.md 均未明确说明 bisheng 编译器必须随 CANN toolkit 一同安装，以及在 build.sh 中如何通过 which bisheng 校验",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 与 docs/zh/install/build.md 均未明确说明 bisheng 编译器必须随 CANN toolkit 一同安装，以及在 build.sh 中如何通过 which bisheng 校验"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "install_deps.sh 自动安装流程未覆盖 CANN toolkit 本身的安装（仅覆盖基础工具链 + Python 包），且 README 未在主流程文档里显著提示用户必须先安装 CANN",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "install_deps.sh 自动安装流程未覆盖 CANN toolkit 本身的安装（仅覆盖基础工具链 + Python 包），且 README 未在主流程文档里显著提示用户必须先安装 CANN"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "UT 执行文档缺失：tests/test_config.yaml 与 test_soc_config.yaml 的调用约定、PR 触发规则未在 README/docs 中说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "UT 执行文档缺失：tests/test_config.yaml 与 test_soc_config.yaml 的调用约定、PR 触发规则未在 README/docs 中说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "样例运行文档缺失：examples/ 下样例必须链接 vendored libopapi_math 与 libascendcl，文档未明确标注依赖路径",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "样例运行文档缺失：examples/ 下样例必须链接 vendored libopapi_math 与 libascendcl，文档未明确标注依赖路径"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "OAT hook 在 pre-commit run 时不触发（stages=[commit]），但 .pre-commit-config.yaml 未注释说明这一限制，导致 CI 与本地 pre-commit run 结果不一致",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "OAT hook 在 pre-commit run 时不触发（stages=[commit]），但 .pre-commit-config.yaml 未注释说明这一限制，导致 CI 与本地 pre-commit run 结果不一致"
     }
    ],
    "problems": [
@@ -10352,48 +9457,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根目录无 Dockerfile, 仅在 docs/getting-started.md 描述环境配置",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根目录无 Dockerfile, 仅在 docs/getting-started.md 描述环境配置"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/getting-started.md 未明确指定 GCC 最低版本 (实际通过 tests/run_cpu.py 强制要求 g++ >= 13 / clang++ >= 15)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/getting-started.md 未明确指定 GCC 最低版本 (实际通过 tests/run_cpu.py 强制要求 g++ >= 13 / clang++ >= 15)"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CMakeLists.txt 默认使用系统 gtest, 但 openEuler 24.03 LTS 的 gtest 1.14.0 包符号不完整 (缺 GetBoolAssertionFailureMessage), 需要用户主动设置 PTO_CPU_SIM_PREFER_FETCH_GTEST=ON",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CMakeLists.txt 默认使用系统 gtest, 但 openEuler 24.03 LTS 的 gtest 1.14.0 包符号不完整 (缺 GetBoolAssertionFailureMessage), 需要用户主动设置 PTO_CPU_SIM_PREFER_FETCH_GTEST=ON"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tests/cpu/st/testcase/tcvt/gen_data.py 第 9 个元素 (case9) 与 main.cpp 第 132 行 (TEST_F(TCVTTest, case9)) 参数不匹配, 上游仓库 bug",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tests/cpu/st/testcase/tcvt/gen_data.py 第 9 个元素 (case9) 与 main.cpp 第 132 行 (TEST_F(TCVTTest, case9)) 参数不匹配, 上游仓库 bug"
     }
    ],
    "problems": [
@@ -10619,59 +9704,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/quick_start.md 未明确说明 pyasc Python 包内含 _C 子模块，pytest 必须在安装包后从非源码根目录运行才能命中已安装的 .so（从 /workspace/python 直接运行 pytest 会命中源码树中的空 libpyasc/ 占位目录，导致 ImportError）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/quick_start.md 未明确说明 pyasc Python 包内含 _C 子模块，pytest 必须在安装包后从非源码根目录运行才能命中已安装的 .so（从 /workspace/python 直接运行 pytest 会命中源码树中的空 libpyasc/ 占位目录，导致 ImportError）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/quick_start.md 未列出 python3-devel 显式依赖，CMake find_package(Python3) 在最小化 openEuler 镜像下会因缺少 Development.Module 失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/quick_start.md 未列出 python3-devel 显式依赖，CMake find_package(Python3) 在最小化 openEuler 镜像下会因缺少 Development.Module 失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/quick_start.md 未说明 LLVM 19.1.7 预编译包不含 clang-format，而 .pre-commit-config.yaml 依赖该工具",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/quick_start.md 未说明 LLVM 19.1.7 预编译包不含 clang-format，而 .pre-commit-config.yaml 依赖该工具"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 列出的 CANN 8.5.0.alpha001+ 版本表只覆盖到 v1.1.1，本验证安装的 CANN 9.1.0 兼容性需额外确认（实际运行 build/UT/sample 均通过）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 列出的 CANN 8.5.0.alpha001+ 版本表只覆盖到 v1.1.1，本验证安装的 CANN 9.1.0 兼容性需额外确认（实际运行 build/UT/sample 均通过）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tutorials 默认 RUN_MODE 是仿真器但未在 README 标注需设置 LD_PRELOAD=libruntime_camodel.so 和 LD_LIBRARY_PATH，缺这两个变量会报 'Runtime library is not available'",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tutorials 默认 RUN_MODE 是仿真器但未在 README 标注需设置 LD_PRELOAD=libruntime_camodel.so 和 LD_LIBRARY_PATH，缺这两个变量会报 'Runtime library is not available'"
     }
    ],
    "problems": [
@@ -10929,70 +9989,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 没有指向 BUILD_WITH_CANN=OFF 的开关说明；CMakeLists.txt 默认 BUILD_WITH_CANN=ON，强制要求 CANN toolkit 才能构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 没有指向 BUILD_WITH_CANN=OFF 的开关说明；CMakeLists.txt 默认 BUILD_WITH_CANN=ON，强制要求 CANN toolkit 才能构建"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/install/prepare_environment.md 仅提供 CANN .run 包下载指引，但缺少 CANN 包镜像源列表（实际可用 ascend.devcloud.huaweicloud.com 或 quay.io 集成镜像）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/install/prepare_environment.md 仅提供 CANN .run 包下载指引，但缺少 CANN 包镜像源列表（实际可用 ascend.devcloud.huaweicloud.com 或 quay.io 集成镜像）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/zh/install/docker_environment.md 推荐使用 quay.io/ascend/cann 集成镜像（已预装 CANN），但未提供在裸 openEuler 基础镜像上手工安装 CANN 的步骤",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/zh/install/docker_environment.md 推荐使用 quay.io/ascend/cann 集成镜像（已预装 CANN），但未提供在裸 openEuler 基础镜像上手工安装 CANN 的步骤"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build_ci.py 提供了完整 CI 入口，但 README.md 未直接引用 build_ci.py 的命令行参数（仅提及 build_ci.py 存在）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build_ci.py 提供了完整 CI 入口，但 README.md 未直接引用 build_ci.py 的命令行参数（仅提及 build_ci.py 存在）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "python/tests/ut/ 目录的测试需要 --forked 才能稳定运行（pypto_impl 全局状态问题），但 pytest.ini 未配置 addopts=-p no:cacheprovider 或 --forked；新开发者运行 pytest 会卡死",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "python/tests/ut/ 目录的测试需要 --forked 才能稳定运行（pypto_impl 全局状态问题），但 pytest.ini 未配置 addopts=-p no:cacheprovider 或 --forked；新开发者运行 pytest 会卡死"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "示例 examples/00_hello_world + examples/01_beginner/ 在无 NPU 环境下需 --run_mode sim 才能运行，但 README.md 没有明确标注 sim vs npu 模式的硬件前提",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "示例 examples/00_hello_world + examples/01_beginner/ 在无 NPU 环境下需 --run_mode sim 才能运行，但 README.md 没有明确标注 sim vs npu 模式的硬件前提"
     }
    ],
    "problems": [
@@ -11350,103 +10380,58 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明确列出 symlink 依赖（仓库中 11 个 git symlink 在浅 clone 时退化为普通文本文件），导致首次编译失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明确列出 symlink 依赖（仓库中 11 个 git symlink 在浅 clone 时退化为普通文本文件），导致首次编译失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未说明在 master 分支下运行时编译的最低 CANN Toolkit 版本（本验证环境通过 --build_host_only 绕开 device 编译需求；完整 device 编译需 Toolkit ≥ 9.0）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未说明在 master 分支下运行时编译的最低 CANN Toolkit 版本（本验证环境通过 --build_host_only 绕开 device 编译需求；完整 device 编译需 Toolkit ≥ 9.0）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 不自动 download_3rd_party，需用户先单独运行 python3 download_3rd_party.py 或 download 后再编译",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 不自动 download_3rd_party，需用户先单独运行 python3 download_3rd_party.py 或 download 后再编译"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 默认 ASCEND_INSTALL_PATH=/usr/local/Ascend/cann，但未提供检测逻辑（如果 CANN 装在非默认路径需手动 --ascend_install_path）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 默认 ASCEND_INSTALL_PATH=/usr/local/Ascend/cann，但未提供检测逻辑（如果 CANN 装在非默认路径需手动 --ascend_install_path）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".devcontainer/Dockerfile 基于 ubuntu:22.04，未提供 openEuler 等效版本（无 dnf 镜像可用），与 ttfhw-verify-openeuler 强制 openEuler 镜像策略冲突",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".devcontainer/Dockerfile 基于 ubuntu:22.04，未提供 openEuler 等效版本（无 dnf 镜像可用），与 ttfhw-verify-openeuler 强制 openEuler 镜像策略冲突"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tests/build_ut.sh 缺少对 src/platform/acl_platform.cpp 等文件的 securec.h include 路径设置，tests/ut/platform/platform_llt_tiling 与 src/platform/platform 主 target 不同（后者通过 target_link_libraries(... c_sec) 拿到 include 路径，前者未链 c_sec）；该 bug 需在仓库 CMakeLists.txt 中补 target_include_directories(... ${CMAKE_BINARY_DIR}/libc_sec/source/include)",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tests/build_ut.sh 缺少对 src/platform/acl_platform.cpp 等文件的 securec.h include 路径设置，tests/ut/platform/platform_llt_tiling 与 src/platform/platform 主 target 不同（后者通过 target_link_libraries(... c_sec) 拿到 include 路径，前者未链 c_sec）；该 bug 需在仓库 CMakeLists.txt 中补 target_include_directories(... ${CMAKE_BINARY_DIR}/libc_sec/source/include)"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tests/build_ut.sh 缺少可靠的 gtest 超时机制；当前 build_ut.sh 的 --ut_timeout 仅包装外层 timeout 命令，对 gtest 内部多线程挂起无能为力（已挂起的用例需手动 pkill）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tests/build_ut.sh 缺少可靠的 gtest 超时机制；当前 build_ut.sh 的 --ut_timeout 仅包装外层 timeout 命令，对 gtest 内部多线程挂起无能为力（已挂起的用例需手动 pkill）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "example/run.sh 不区分 host-only 模式与 device-required 模式，所有样例都尝试调用 aclInit → 依赖 NPU 设备",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "example/run.sh 不区分 host-only 模式与 device-required 模式，所有样例都尝试调用 aclInit → 依赖 NPU 设备"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 未提供 --enable-ut 一体化构建入口，需独立运行 tests/build_ut.sh 才能编译与执行 UT",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 未提供 --enable-ut 一体化构建入口，需独立运行 tests/build_ut.sh 才能编译与执行 UT"
     }
    ],
    "problems": [
@@ -11615,59 +10600,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根目录未提供 Dockerfile，依赖信息散落在 docs/quickstart.md",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根目录未提供 Dockerfile，依赖信息散落在 docs/quickstart.md"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CMakeLists.txt 强制使用 bisheng 编译器但未在 README 中显式说明；bisheng 包含在 CANN toolkit 中，需要先安装 CANN toolkit 才能构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CMakeLists.txt 强制使用 bisheng 编译器但未在 README 中显式说明；bisheng 包含在 CANN toolkit 中，需要先安装 CANN toolkit 才能构建"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/quickstart.md 提到 UT 运行需 scripts/run.sh，但 scripts/run.sh 默认要求 NPU 硬件，本环境无法验证 UT/samples 运行时表现",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/quickstart.md 提到 UT 运行需 scripts/run.sh，但 scripts/run.sh 默认要求 NPU 硬件，本环境无法验证 UT/samples 运行时表现"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "examples 默认依赖 catlass 第三方库 (从 gitcode 克隆)，但 README 未提及 catlass 依赖",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "examples 默认依赖 catlass 第三方库 (从 gitcode 克隆)，但 README 未提及 catlass 依赖"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "UT 编译自动克隆 googletest v1.14.x，但 README 未提及 googletest 依赖",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "UT 编译自动克隆 googletest v1.14.x，但 README 未提及 googletest 依赖"
     }
    ],
    "problems": [
@@ -11883,59 +10843,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 与 docs/build_guide.md 声明 Rust 最低版本为 1.64.0，但 master 分支（提交 0357344）实际使用 is_multiple_of（Rust 1.87+ 稳定），文档与代码不同步",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 与 docs/build_guide.md 声明 Rust 最低版本为 1.64.0，但 master 分支（提交 0357344）实际使用 is_multiple_of（Rust 1.87+ 稳定），文档与代码不同步"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tools/build_stratovirt_static/Dockerfile 指定 openeuler 22.03-lts-sp2 基础镜像，未提供 24.03 LTS 对应版本",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tools/build_stratovirt_static/Dockerfile 指定 openeuler 22.03-lts-sp2 基础镜像，未提供 24.03 LTS 对应版本"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "Makefile yum-deps target 假设使用 yum 而非 dnf（openEuler 22.03 → 24.03 包管理器迁移）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "Makefile yum-deps target 假设使用 yum 而非 dnf（openEuler 22.03 → 24.03 包管理器迁移）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "docs/test.md 提及 mod_test 需先编译 virtiofsd，但未提供一键安装脚本",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "docs/test.md 提及 mod_test 需先编译 virtiofsd，但未提供一键安装脚本"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "示例启动命令需要外部 Linux 内核镜像和 rootfs，但仓库未提供下载脚本（仅给链接）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "示例启动命令需要外部 Linux 内核镜像和 rootfs，但仓库未提供下载脚本（仅给链接）"
     }
    ],
    "problems": [
@@ -12025,59 +10960,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "2026-07-02T03:05:00",
-      "title": "README 未指定基础镜像/Dockerfile",
-      "body": "README 安装章节未提供 Dockerfile 或推荐的基础镜像，仅说明需要 Ascend NPU 设备与 CANN 工具链。新手开发者从 README 入手时无法快速获得可复现的构建环境，本次验证需自行确定使用 openEuler 24.03 LTS 并用 pip 安装 torch CPU 版作为 fallback。",
-      "source": "README.md 安装与卸载章节"
-     },
+     "title": "README 未指定基础镜像/Dockerfile",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 安装与卸载章节",
+     "detail": "README 安装章节未提供 Dockerfile 或推荐的基础镜像，仅说明需要 Ascend NPU 设备与 CANN 工具链。新手开发者从 README 入手时无法快速获得可复现的构建环境，本次验证需自行确定使用 openEuler 24.03 LTS 并用 pip 安装 torch CPU 版作为 fallback。"
     },
     {
-     "title": {
-      "time": "2026-07-02T03:15:00",
-      "title": "configure.py 在 CI 模式下需手动设置环境变量",
-      "body": "build.sh 在 -c (CI build) 选项下会内部 export NO_ASCEND_SDK=1，但若直接调用 configure.py 必须显式设置该变量；文档未明确说明此行为，导致首次运行可能卡在交互式 'Specify the location of ascend sdk' 提示。",
-      "source": "build.sh 第 96-104 行 + configure.py main() 函数"
-     },
+     "title": "configure.py 在 CI 模式下需手动设置环境变量",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "build.sh 第 96-104 行 + configure.py main() 函数",
+     "detail": "build.sh 在 -c (CI build) 选项下会内部 export NO_ASCEND_SDK=1，但若直接调用 configure.py 必须显式设置该变量；文档未明确说明此行为，导致首次运行可能卡在交互式 'Specify the location of ascend sdk' 提示。"
     },
     {
-     "title": {
-      "time": "2026-07-02T03:17:00",
-      "title": "构建未声明 wheel/setuptools 为必需依赖",
-      "body": "构建脚本通过 setup.py bdist_wheel 生成 wheel 包，但 openEuler 24.03 LTS 的 python3-pip 包默认不安装 wheel/setuptools；首次构建会在最后打包阶段失败 'invalid command bdist_wheel'。建议在 README 或 build.sh 中加入 'pip install wheel setuptools' 前置步骤。",
-      "source": "build/CMakeFiles/torchair.dir/build.make 内部 setup.py 调用 + openEuler python3-pip 包内容"
-     },
+     "title": "构建未声明 wheel/setuptools 为必需依赖",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "build/CMakeFiles/torchair.dir/build.make 内部 setup.py 调用 + openEuler python3-pip 包内容",
+     "detail": "构建脚本通过 setup.py bdist_wheel 生成 wheel 包，但 openEuler 24.03 LTS 的 python3-pip 包默认不安装 wheel/setuptools；首次构建会在最后打包阶段失败 'invalid command bdist_wheel'。建议在 README 或 build.sh 中加入 'pip install wheel setuptools' 前置步骤。"
     },
     {
-     "title": {
-      "time": "2026-07-02T03:18:00",
-      "title": "冒烟测试失败的根因未在 README 说明",
-      "body": "pip install 生成的 wheel 后 'import torchair' 会立即报 libge_runner.so 找不到；README 仅说明 '未指定 Ascend SDK 路径时无法执行 CPU 调试'，未说明连 import 都会失败 (因为 stub 库含未定义符号)。",
-      "source": "README.md 快速上手章节 + torchair/_ge_concrete_graph/compat_ir.py:5"
-     },
+     "title": "冒烟测试失败的根因未在 README 说明",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 快速上手章节 + torchair/_ge_concrete_graph/compat_ir.py:5",
+     "detail": "pip install 生成的 wheel 后 'import torchair' 会立即报 libge_runner.so 找不到；README 仅说明 '未指定 Ascend SDK 路径时无法执行 CPU 调试'，未说明连 import 都会失败 (因为 stub 库含未定义符号)。"
     },
     {
-     "title": {
-      "time": "2026-07-02T03:23:00",
-      "title": "tests/ut/testcases/ 缺少实际测试用例",
-      "body": "仓库仅在 tests/ut/testcases/ 保留 example.cpp (空 GTest main 模板)，无任何实际单元测试；UT 子系统实际处于占位状态，开发者无法通过本仓库的 UT 验证代码改动。",
-      "source": "tests/ut/testcases/example.cpp"
-     },
+     "title": "tests/ut/testcases/ 缺少实际测试用例",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "tests/ut/testcases/example.cpp",
+     "detail": "仓库仅在 tests/ut/testcases/ 保留 example.cpp (空 GTest main 模板)，无任何实际单元测试；UT 子系统实际处于占位状态，开发者无法通过本仓库的 UT 验证代码改动。"
     }
    ],
    "problems": [
@@ -12342,48 +11252,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "示例构建路径",
-      "body": "README 第 5 章提到 perf_test 性能用例与示例，但仓内缺失 build/build_example_perf.sh；HCOM_BUILD_EXAMPLE=on 后 build.sh 会因找不到脚本静默跳过 pingpong 等示例；新手用户按 README 操作会得到 '示例未编译' 的结果",
-      "source": ""
-     },
+     "title": "示例构建路径",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 第 5 章提到 perf_test 性能用例与示例，但仓内缺失 build/build_example_perf.sh；HCOM_BUILD_EXAMPLE=on 后 build.sh 会因找不到脚本静默跳过 pingpong 等示例；新手用户按 README 操作会得到 '示例未编译' 的结果"
     },
     {
-     "title": {
-      "time": "",
-      "title": "Linux 容器内 git 安全",
-      "body": "build/make_software_package.sh 强依赖 git rev-parse HEAD；容器 bind-mount 源码时，容器内 git 因 dubious ownership 拒绝读取 HEAD，build.sh 直接 EXIT=128 而无清晰错误；建议 build.sh 在执行 make_software_package.sh 前调用 git config --global --add safe.directory '*' 或在 spec 阶段 fix",
-      "source": ""
-     },
+     "title": "Linux 容器内 git 安全",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build/make_software_package.sh 强依赖 git rev-parse HEAD；容器 bind-mount 源码时，容器内 git 因 dubious ownership 拒绝读取 HEAD，build.sh 直接 EXIT=128 而无清晰错误；建议 build.sh 在执行 make_software_package.sh 前调用 git config --global --add safe.directory '*' 或在 spec 阶段 fix"
     },
     {
-     "title": {
-      "time": "",
-      "title": "UB / UMQ 传输",
-      "body": "README 第 1 章未说明 umdk-urma-devel 在 openEuler 24.03 默认仓库存在性；本次验证默认 HCOM_BUILD_UB=off 仅走 RDMA/SOCK/SHM，未验证 UB 端到端传输",
-      "source": ""
-     },
+     "title": "UB / UMQ 传输",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 第 1 章未说明 umdk-urma-devel 在 openEuler 24.03 默认仓库存在性；本次验证默认 HCOM_BUILD_UB=off 仅走 RDMA/SOCK/SHM，未验证 UB 端到端传输"
     },
     {
-     "title": {
-      "time": "",
-      "title": "LLT 端到端测试",
-      "body": "README 第 6 章描述 UT 编译与 generate_gtest_report.sh，但 hcom_test (LLT) 的端到端测试需要 RDMA 网卡/集群环境；本验证仅编译通过，未执行端到端用例",
-      "source": ""
-     },
+     "title": "LLT 端到端测试",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 第 6 章描述 UT 编译与 generate_gtest_report.sh，但 hcom_test (LLT) 的端到端测试需要 RDMA 网卡/集群环境；本验证仅编译通过，未执行端到端用例"
     }
    ],
    "problems": [
@@ -12582,70 +11472,40 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "2026-07-02T04:33:30",
-      "title": "openEuler 24.03-lts-sp3 仓库 ubs-comm-devel 版本不符合 spec 要求",
-      "body": "docs/build_install/构建指导.md 提到 ubs-comm-devel 仅发布在 24.03 LTS SP3/SP4，但 24.03-lts-sp3 仓库实际只提供 1.0.0-26（低于 spec >= 1.0.1-7），需通过 src-openeuler 源码构建 1.0.1-10。文档未直接说明 24.03-lts-sp3 仓库版本可能滞后于 spec 要求。",
-      "source": "docs/build_install/构建指导.md 2.1.1 / 2.2.2 节 + ubs-engine.spec BuildRequires"
-     },
+     "title": "openEuler 24.03-lts-sp3 仓库 ubs-comm-devel 版本不符合 spec 要求",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "docs/build_install/构建指导.md 2.1.1 / 2.2.2 节 + ubs-engine.spec BuildRequires",
+     "detail": "docs/build_install/构建指导.md 提到 ubs-comm-devel 仅发布在 24.03 LTS SP3/SP4，但 24.03-lts-sp3 仓库实际只提供 1.0.0-26（低于 spec >= 1.0.1-7），需通过 src-openeuler 源码构建 1.0.1-10。文档未直接说明 24.03-lts-sp3 仓库版本可能滞后于 spec 要求。"
     },
     {
-     "title": {
-      "time": "2026-07-02T04:40:47",
-      "title": "首次编译因依赖版本不足失败（无清晰提示）",
-      "body": "用 24.03-lts-sp3 仓库默认 ubs-comm-devel 1.0.0-26 首次编译失败时报错 'UBSHcomService has no member named SetActiveBackup'，但错误信息未指向 ubs-comm 版本过旧，用户需自行关联；建议在 dnf builddep 失败时显式提示需升级 ubs-comm。",
-      "source": "ubs-com-engine.cpp:607 编译错误"
-     },
+     "title": "首次编译因依赖版本不足失败（无清晰提示）",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "ubs-com-engine.cpp:607 编译错误",
+     "detail": "用 24.03-lts-sp3 仓库默认 ubs-comm-devel 1.0.0-26 首次编译失败时报错 'UBSHcomService has no member named SetActiveBackup'，但错误信息未指向 ubs-comm 版本过旧，用户需自行关联；建议在 dnf builddep 失败时显式提示需升级 ubs-comm。"
     },
     {
-     "title": {
-      "time": "2026-07-02T04:47:27",
-      "title": "build.sh ut target 把单测编译和运行合为 ninja target，单测失败阻塞后续测试编译/执行",
-      "body": "ut target 通过 add_independent_exec_ut 宏为每个 gtest 二进制注册一个 custom target 并 add_dependencies ut。但 cmake 在 ninja 中会按依赖顺序触发，ubs-engine_ucache_plugin_ut 阶段 gtest 失败导致 ninja 终止 [897/946] 后续测试无法完成编译。文档未提供单 test 二进制编译模式。",
-      "source": "scripts/cmake/utils.cmake add_independent_exec_ut 宏 + CMakeLists.txt"
-     },
+     "title": "build.sh ut target 把单测编译和运行合为 ninja target，单测失败阻塞后续测试编译/执行",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "scripts/cmake/utils.cmake add_independent_exec_ut 宏 + CMakeLists.txt",
+     "detail": "ut target 通过 add_independent_exec_ut 宏为每个 gtest 二进制注册一个 custom target 并 add_dependencies ut。但 cmake 在 ninja 中会按依赖顺序触发，ubs-engine_ucache_plugin_ut 阶段 gtest 失败导致 ninja 终止 [897/946] 后续测试无法完成编译。文档未提供单 test 二进制编译模式。"
     },
     {
-     "title": {
-      "time": "2026-07-02T05:37:00",
-      "title": "example/c 中 3 个示例代码引用已移除的 SDK API",
-      "body": "example/c/{ubse_sdk_fd_example.c, ubse_sdk_numa_example.c, ubse_mem_share_example.c, ubse_mem_fault_common.c} 引用 ubs_mem_numa_fault_register / ubs_mem_fd_fault_register / ubs_mem_shm_fault_register 等函数，但 /usr/include/ubse/ubs_engine_mem.h 仅有部分对应函数（ubs_mem_shm_fault_register 存在但 numa/fd 变体已移除），导致编译失败。仓库侧未同步更新 example 代码。",
-      "source": "example/c/*.c vs /usr/include/ubse/ubs_engine_mem.h"
-     },
+     "title": "example/c 中 3 个示例代码引用已移除的 SDK API",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "example/c/*.c vs /usr/include/ubse/ubs_engine_mem.h",
+     "detail": "example/c/{ubse_sdk_fd_example.c, ubse_sdk_numa_example.c, ubse_mem_share_example.c, ubse_mem_fault_common.c} 引用 ubs_mem_numa_fault_register / ubs_mem_fd_fault_register / ubs_mem_shm_fault_register 等函数，但 /usr/include/ubse/ubs_engine_mem.h 仅有部分对应函数（ubs_mem_shm_fault_register 存在但 numa/fd 变体已移除），导致编译失败。仓库侧未同步更新 example 代码。"
     },
     {
-     "title": {
-      "time": "2026-07-02T05:00:00",
-      "title": "test/UT 中大量用例使用 mockcpp 但 mock 不完整导致 SIGSEGV/terminate",
-      "body": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp 中 InitTest 首次调用 dlopen() 期望返回 nullptr（libubturbo_client.so 不存在），但 mockcpp 拦截下 dlopen 返回非空指针，导致 EXPECT_EQ(UCACHE_ERR) 失败；多个 TestUbseLcne* 用例在容器内无 systemd-hostnamed / 无 LCNE 配置下 clusterIpList 解析失败触发 SIGSEGV；test_libvirt_helper.cpp 在 /var/run/libvirt/libvirt-sock 缺失时部分 mock stub 不生效。文档未提示这些用例对环境的要求。",
-      "source": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp + test/UT/adapter_plugins/mti/test_ubse_lcne_module.cpp + test/UT/exclusive_executable/virt_agent/export/test_libvirt_helper.cpp"
-     },
+     "title": "test/UT 中大量用例使用 mockcpp 但 mock 不完整导致 SIGSEGV/terminate",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp + test/UT/adapter_plugins/mti/test_ubse_lcne_module.cpp + test/UT/exclusive_executable/virt_agent/export/test_libvirt_helper.cpp",
+     "detail": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp 中 InitTest 首次调用 dlopen() 期望返回 nullptr（libubturbo_client.so 不存在），但 mockcpp 拦截下 dlopen 返回非空指针，导致 EXPECT_EQ(UCACHE_ERR) 失败；多个 TestUbseLcne* 用例在容器内无 systemd-hostnamed / 无 LCNE 配置下 clusterIpList 解析失败触发 SIGSEGV；test_libvirt_helper.cpp 在 /var/run/libvirt/libvirt-sock 缺失时部分 mock stub 不生效。文档未提示这些用例对环境的要求。"
     },
     {
-     "title": {
-      "time": "2026-07-02T05:35:00",
-      "title": "build.sh ut target 未提供 GTestTest 测试完整通过的覆盖率报告路径",
-      "body": "README 中提到 'bash build.sh ut -C' 可生成覆盖率报告，但实际要求所有单测通过率 100%。本次 1/5 单测二进制完整通过，无法生成完整覆盖率。文档未提供部分通过的降级方案。",
-      "source": "README.md 4.2 开发者测试章节"
-     },
+     "title": "build.sh ut target 未提供 GTestTest 测试完整通过的覆盖率报告路径",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 4.2 开发者测试章节",
+     "detail": "README 中提到 'bash build.sh ut -C' 可生成覆盖率报告，但实际要求所有单测通过率 100%。本次 1/5 单测二进制完整通过，无法生成完整覆盖率。文档未提供部分通过的降级方案。"
     }
    ],
    "problems": [
@@ -12936,103 +11796,58 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根目录无 Dockerfile，构建/运行依赖通过 ubsio-boostio/build.sh + CMakeLists.txt 隐式表达，新人接入成本高",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根目录无 Dockerfile，构建/运行依赖通过 ubsio-boostio/build.sh + CMakeLists.txt 隐式表达，新人接入成本高"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 仅给出高层简介（'bash build.sh -t release' + 'cd test/llt && bash run_dt.sh'），未说明 build.sh --ut 自动调用 install_test_tools.sh 会从 Huawei Cloud codehub.devcloud.cn 拉取 googletest，且该源在 openEuler/公网环境不可达",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 仅给出高层简介（'bash build.sh -t release' + 'cd test/llt && bash run_dt.sh'），未说明 build.sh --ut 自动调用 install_test_tools.sh 会从 Huawei Cloud codehub.devcloud.cn 拉取 googletest，且该源在 openEuler/公网环境不可达"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 未说明 build.sh 内部 make install 实际仅使用 16 个并发（hardcode），与 README 推荐的 nproc 计算值不一致",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 未说明 build.sh 内部 make install 实际仅使用 16 个并发（hardcode），与 README 推荐的 nproc 计算值不一致"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 调用 FetchContent 拉取的 ubs-comm 子项目（CMakeLists.txt 中无 install 步骤）需要手动 cmake --install 才能被上层 src/CMakeLists.txt 引用，文档未提示",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 调用 FetchContent 拉取的 ubs-comm 子项目（CMakeLists.txt 中无 install 步骤）需要手动 cmake --install 才能被上层 src/CMakeLists.txt 引用，文档未提示"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "dependence/三方依赖.txt 仅列出 spdlog/ubs-comm/libboundscheck 三个，未提及 RDMA verbs / librados / libaio / lcov 等运行时关键依赖",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "dependence/三方依赖.txt 仅列出 spdlog/ubs-comm/libboundscheck 三个，未提及 RDMA verbs / librados / libaio / lcov 等运行时关键依赖"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/llt/run_dt.sh 假设 test1/test2 是 touch 创建的空文件，但实际上 BDM 内部打开使用 O_DIRECT，要求 backing file 大小 ≥ 512MiB 且所在文件系统支持 O_DIRECT（overlayfs/部分 tmpfs 不支持），文档未说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/llt/run_dt.sh 假设 test1/test2 是 touch 创建的空文件，但实际上 BDM 内部打开使用 O_DIRECT，要求 backing file 大小 ≥ 512MiB 且所在文件系统支持 O_DIRECT（overlayfs/部分 tmpfs 不支持），文档未说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/llt/unit-tests/main.cpp 调用 BioInitialize(WorkerMode::CONVERGENCE, nullptr) 需要预先运行 ZooKeeper，且 bio.cm.zk_host 必须可连接，文档未提示",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/llt/unit-tests/main.cpp 调用 BioInitialize(WorkerMode::CONVERGENCE, nullptr) 需要预先运行 ZooKeeper，且 bio.cm.zk_host 必须可连接，文档未提示"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "bio.conf 中 bio.cm.initial.nodes_count=2 表示 BoostIO 是多节点系统，但 README 未明确最少需要 2 个节点才能跑通完整业务流",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "bio.conf 中 bio.cm.initial.nodes_count=2 表示 BoostIO 是多节点系统，但 README 未明确最少需要 2 个节点才能跑通完整业务流"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 提到 rpm_install.sh 可以生成 RPM，但 rpmbuild -ba ubs-io.spec 需要 ~/rpmbuild 树 + 完整的 ubs-io.tar.gz 源目录结构，无自动化入口",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 提到 rpm_install.sh 可以生成 RPM，但 rpmbuild -ba ubs-io.spec 需要 ~/rpmbuild 树 + 完整的 ubs-io.tar.gz 源目录结构，无自动化入口"
     }
    ],
    "problems": [
@@ -13288,59 +12103,34 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 软件要求章节列出 ubs-comm-lib 与 spec 中 BuildRequires 列出 ubs-comm-devel，但 openEuler 24.03 LTS 仓库中无此包，文档未提供备用获取方式",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 软件要求章节列出 ubs-comm-lib 与 spec 中 BuildRequires 列出 ubs-comm-devel，但 openEuler 24.03 LTS 仓库中无此包，文档未提供备用获取方式"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未列出构建所需的 hcom 内部通信库（cmake/3rdparty/CMakeLists.txt 中 TARGET_HCOM / TARGET_HCOM_HEADER_ONLY 隐式依赖 /usr/include/hcom），外部新手开发者无法仅依据 README 一次性凑齐构建环境",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未列出构建所需的 hcom 内部通信库（cmake/3rdparty/CMakeLists.txt 中 TARGET_HCOM / TARGET_HCOM_HEADER_ONLY 隐式依赖 /usr/include/hcom），外部新手开发者无法仅依据 README 一次性凑齐构建环境"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ubs-mem.spec Requires 包含 ubs-engine 与 ubs-engine-client-libs 两个运行时依赖，文档未提示这些为华为内部组件",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ubs-mem.spec Requires 包含 ubs-engine 与 ubs-engine-client-libs 两个运行时依赖，文档未提示这些为华为内部组件"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库内未提供 Dockerfile，新手开发者无法直接复制文档依赖映射为容器化构建步骤",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库内未提供 Dockerfile，新手开发者无法直接复制文档依赖映射为容器化构建步骤"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "构建产物 ubsmd.service 默认依赖 ubse.service 启动支持（README 安装部署章节 + ubs-mem.spec %post），文档未提示 ubse 同样为内部包",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "构建产物 ubsmd.service 默认依赖 ubse.service 启动支持（README 安装部署章节 + ubs-mem.spec %post），文档未提示 ubse 同样为内部包"
     }
    ],
    "problems": [
@@ -13562,103 +12352,58 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根 README.md 仅给出 4 个子模块的高层简介，未列出整体编译步骤与依赖矩阵",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根 README.md 仅给出 4 个子模块的高层简介，未列出整体编译步骤与依赖矩阵"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库无顶层 Dockerfile / docker-compose / Makefile（顶层 build.sh 是 placeholder 脚本，无实际构建逻辑）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库无顶层 Dockerfile / docker-compose / Makefile（顶层 build.sh 是 placeholder 脚本，无实际构建逻辑）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "各子模块 .spec 文件未声明对 mockcpp / gtest / gmock 的运行时依赖（实际通过 FetchContent 在 CMake 时下载）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "各子模块 .spec 文件未声明对 mockcpp / gtest / gmock 的运行时依赖（实际通过 FetchContent 在 CMake 时下载）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ubs-virt-ovs README 仅给出 ./build/build.sh 入口，但内部依赖 rpmbuild + ninja-build 严格包名匹配；openEuler 24.03 默认源只提供 python3-ninja 而非独立 ninja-build 包，需 --enablerepo=everything 才能安装",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ubs-virt-ovs README 仅给出 ./build/build.sh 入口，但内部依赖 rpmbuild + ninja-build 严格包名匹配；openEuler 24.03 默认源只提供 python3-ninja 而非独立 ninja-build 包，需 --enablerepo=everything 才能安装"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "virt-awaresched README 未说明 UT 必须在 libvirtd 运行的环境中执行，无 mock 隔离层；大量测试套件硬依赖 virConnectOpen / Unix socket / cap_set_proc 等环境，标准容器内无法运行",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "virt-awaresched README 未说明 UT 必须在 libvirtd 运行的环境中执行，无 mock 隔离层；大量测试套件硬依赖 virConnectOpen / Unix socket / cap_set_proc 等环境，标准容器内无法运行"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "virt-optimizer README 未说明必须使用宿主机内核的 /sys/kernel/btf/vmlinux 才能构建（不可在普通容器内编译）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "virt-optimizer README 未说明必须使用宿主机内核的 /sys/kernel/btf/vmlinux 才能构建（不可在普通容器内编译）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "vcann-rt README 详细描述了 NPU 环境要求，但与仓库其他子模块无统一构建入口（每个子模块单独 build.sh / make_build.sh）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "vcann-rt README 详细描述了 NPU 环境要求，但与仓库其他子模块无统一构建入口（每个子模块单独 build.sh / make_build.sh）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根 .pre-commit-config.yaml 中 run-build hook 直接调用各子模块 build.sh，若任意子模块无法构建（如 URMA SDK 缺失），整个 pre-commit 流程会卡死；建议改为可选构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根 .pre-commit-config.yaml 中 run-build hook 直接调用各子模块 build.sh，若任意子模块无法构建（如 URMA SDK 缺失），整个 pre-commit 流程会卡死；建议改为可选构建"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库无 .devcontainer 目录",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库无 .devcontainer 目录"
     }
    ],
    "problems": [
@@ -13886,48 +12631,28 @@
    "depsCount": 0,
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未提供 Dockerfile，依赖信息仅通过 ubturbo.spec BuildRequires 字段推断",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未提供 Dockerfile，依赖信息仅通过 ubturbo.spec BuildRequires 字段推断"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "测试运行入口 build.sh ut 引用 ./test/run_dt.sh 但实际文件为 run_ut.sh，构建脚本存在笔误",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "测试运行入口 build.sh ut 引用 ./test/run_dt.sh 但实际文件为 run_ut.sh，构建脚本存在笔误"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/run_ut.sh 依赖 lcov/genhtml 生成覆盖率报告，openEuler 24.03 LTS 官方仓库未提供 lcov 软件包",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/run_ut.sh 依赖 lcov/genhtml 生成覆盖率报告，openEuler 24.03 LTS 官方仓库未提供 lcov 软件包"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "sample 守护进程依赖外部 SMAP 服务和 /var/log/ubturbo 目录，但 README 未明确说明容器化运行所需的最低运行时环境",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "sample 守护进程依赖外部 SMAP 服务和 /var/log/ubturbo 目录，但 README 未明确说明容器化运行所需的最低运行时环境"
     }
    ],
    "problems": [
@@ -17250,92 +15975,52 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 第一段明确声明 '本组件仅支持 Ubuntu 24.04 LTS，openEuler、CentOS、Debian 等其他系统均不支持，不要尝试使用其他镜像替代'，但 skill 强制 openEuler 镜像；本次在 openEuler 上成功绕过限制，但 README 与实际代码兼容性存在偏差",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 第一段明确声明 '本组件仅支持 Ubuntu 24.04 LTS，openEuler、CentOS、Debian 等其他系统均不支持，不要尝试使用其他镜像替代'，但 skill 强制 openEuler 镜像；本次在 openEuler 上成功绕过限制，但 README 与实际代码兼容性存在偏差"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 推荐使用 bingo (openUBMC 私有构建工具) + conan 作为构建入口，但实际纯 meson 路径也可成功；bingo/conan 的环境初始化流程文档未公开",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 推荐使用 bingo (openUBMC 私有构建工具) + conan 作为构建入口，但实际纯 meson 路径也可成功；bingo/conan 的环境初始化流程文档未公开"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "构建要求 x86-64 架构，README 系统要求表中明确声明；本次在 aarch64 (openEuler 24.03 LTS) 上成功构建，证明架构限制非绝对，但需手动修复 sqlite preupdate + lua 5.4 路径",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "构建要求 x86-64 架构，README 系统要求表中明确声明；本次在 aarch64 (openEuler 24.03 LTS) 上成功构建，证明架构限制非绝对，但需手动修复 sqlite preupdate + lua 5.4 路径"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "无 Dockerfile、无 .devcontainer，新人无法直接获得可复现的构建环境",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "无 Dockerfile、无 .devcontainer，新人无法直接获得可复现的构建环境"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 测试章节只描述 bingo test 命令，不提及纯 meson 路径（meson test -C builddir）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 测试章节只描述 bingo test 命令，不提及纯 meson 路径（meson test -C builddir）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": ".pre-commit-config.yaml 引用 openUBMC 私有 hook 仓库 (https://gitcode.com/openUBMC/pre-commit-hooks)，外部贡献者无法安装运行",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": ".pre-commit-config.yaml 引用 openUBMC 私有 hook 仓库 (https://gitcode.com/openUBMC/pre-commit-hooks)，外部贡献者无法安装运行"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "meson_options.txt 中的 'unidev' 选项与 component_drivers/meson_options.txt 中的同名选项未联动，需手动 -Dcomponent_drivers:unidev=true 同步",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "meson_options.txt 中的 'unidev' 选项与 component_drivers/meson_options.txt 中的同名选项未联动，需手动 -Dcomponent_drivers:unidev=true 同步"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "本次提交（b80d5fb2）: 'bingo test 命令必须加 -jit 参数' 修正了 README 错误，但未在文档中说明 meson 测试路径",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "本次提交（b80d5fb2）: 'bingo test 命令必须加 -jit 参数' 修正了 README 错误，但未在文档中说明 meson 测试路径"
     }
    ],
    "problems": [
@@ -36064,48 +34749,28 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "2026-07-02T10:39:00",
-      "title": "构建依赖 CANN/torch_npu/atb_llm 来源散落在多个 .run/whl 下载",
-      "body": "README 仅给出文档中心链接，未在仓库内列明 CANN/torch_npu/atb_llm 等 Ascend 私发包的具体下载步骤；新开发者按 README 找不到 .run 文件来源，必须结合 docker/Dockerfile 反向推导 downloads/ 目录布局。",
-      "source": "README.md + docker/Dockerfile Stage 3-4"
-     },
+     "title": "构建依赖 CANN/torch_npu/atb_llm 来源散落在多个 .run/whl 下载",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md + docker/Dockerfile Stage 3-4",
+     "detail": "README 仅给出文档中心链接，未在仓库内列明 CANN/torch_npu/atb_llm 等 Ascend 私发包的具体下载步骤；新开发者按 README 找不到 .run 文件来源，必须结合 docker/Dockerfile 反向推导 downloads/ 目录布局。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:40:00",
-      "title": "CANN 版本兼容性表只覆盖 2.3.0 + 8.5.0 一组",
-      "body": "README「版本说明」章节只列 2.3.0 + CANN 8.5.0；其他 MindIE-LLM 版本与 CANN 8.0/8.1/8.3 是否兼容未在 README 中说明，需要查 docker/Dockerfile build-arg 才能反推。",
-      "source": "README.md 版本说明章节"
-     },
+     "title": "CANN 版本兼容性表只覆盖 2.3.0 + 8.5.0 一组",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 版本说明章节",
+     "detail": "README「版本说明」章节只列 2.3.0 + CANN 8.5.0；其他 MindIE-LLM 版本与 CANN 8.0/8.1/8.3 是否兼容未在 README 中说明，需要查 docker/Dockerfile build-arg 才能反推。"
     },
     {
-     "title": {
-      "time": "2026-07-02T10:50:00",
-      "title": "build.sh 第三方构建对 xz/openssl ABI 兼容性无前置校验",
-      "body": "首次执行 build.sh 3rd 在 tar.xz 解压阶段失败（容器无 xz 工具）；后续在 gRPC 阶段又因 openEuler 24.03 的 libldap 2.6.5 与项目自编译 OpenSSL 3.0.9 符号不兼容而失败。build.sh 与 cmake/open_source_build/*.cmake 均未做 OS/distro 探测与降级处理。",
-      "source": "build.sh + cmake/open_source_build/openssl.cmake + cmake/open_source_build/grpc.cmake"
-     },
+     "title": "build.sh 第三方构建对 xz/openssl ABI 兼容性无前置校验",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "build.sh + cmake/open_source_build/openssl.cmake + cmake/open_source_build/grpc.cmake",
+     "detail": "首次执行 build.sh 3rd 在 tar.xz 解压阶段失败（容器无 xz 工具）；后续在 gRPC 阶段又因 openEuler 24.03 的 libldap 2.6.5 与项目自编译 OpenSSL 3.0.9 符号不兼容而失败。build.sh 与 cmake/open_source_build/*.cmake 均未做 OS/distro 探测与降级处理。"
     },
     {
-     "title": {
-      "time": "2026-07-02T11:30:00",
-      "title": "examples 目录硬件要求散落、未在 README 顶层强调",
-      "body": "examples/atb_models/README.md 才写明硬件清单（Atlas 800I A3/A2/300I DUO）；README.md 顶层「快速入门」只链接到文档站，未提示必须有 NPU 设备才能跑示例。",
-      "source": "README.md 快速入门 + examples/atb_models/README.md 依赖版本章节"
-     },
+     "title": "examples 目录硬件要求散落、未在 README 顶层强调",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 快速入门 + examples/atb_models/README.md 依赖版本章节",
+     "detail": "examples/atb_models/README.md 才写明硬件清单（Atlas 800I A3/A2/300I DUO）；README.md 顶层「快速入门」只链接到文档站，未提示必须有 NPU 设备才能跑示例。"
     }
    ],
    "problems": [
@@ -36202,48 +34867,28 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "2026-07-02T02:42:00",
-      "title": "pre-commit 完整运行依赖国内镜像（gitcode.com 速度慢）",
-      "body": ".pre-commit-config.yaml 中所有 hook repo 都指向 gitcode.com 镜像（pre-commit-hooks/ruff-pre-commit/codespell/pylint/bandit/typos/clang-format 等），在受限网络下 pip install hook 速度极慢（10 分钟仍未完成首个 hook），且在非 gitcode.com 网络环境下无法自动 fallback 到 GitHub 源。文档未说明此问题。",
-      "source": ".pre-commit-config.yaml repo: 字段"
-     },
+     "title": "pre-commit 完整运行依赖国内镜像（gitcode.com 速度慢）",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": ".pre-commit-config.yaml repo: 字段",
+     "detail": ".pre-commit-config.yaml 中所有 hook repo 都指向 gitcode.com 镜像（pre-commit-hooks/ruff-pre-commit/codespell/pylint/bandit/typos/clang-format 等），在受限网络下 pip install hook 速度极慢（10 分钟仍未完成首个 hook），且在非 gitcode.com 网络环境下无法自动 fallback 到 GitHub 源。文档未说明此问题。"
     },
     {
-     "title": {
-      "time": "2026-07-02T02:50:00",
-      "title": "Dockerfile 与 openEuler 24.03-lts 基础镜像不兼容",
-      "body": "Dockerfile FROM swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-beta.2-910b-openeuler24.03-py3.11，该镜像已集成 CANN 9.0.0 + torch_npu 26.0.0（昇腾 NPU 全栈）；在仅含 openEuler 24.03-lts（无 NPU/CANN 工具链）的基础镜像中无法直接执行 pip install -e . 后的 import，需要先安装 CANN 9.0.0（Toolkit + ops + NNAL）以及 torch_npu 的 aarch64 wheel。文档未提供非 NPU 环境的最小验证流程。",
-      "source": "docker/Dockerfile FROM 指令 + install_guide.md"
-     },
+     "title": "Dockerfile 与 openEuler 24.03-lts 基础镜像不兼容",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "docker/Dockerfile FROM 指令 + install_guide.md",
+     "detail": "Dockerfile FROM swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-beta.2-910b-openeuler24.03-py3.11，该镜像已集成 CANN 9.0.0 + torch_npu 26.0.0（昇腾 NPU 全栈）；在仅含 openEuler 24.03-lts（无 NPU/CANN 工具链）的基础镜像中无法直接执行 pip install -e . 后的 import，需要先安装 CANN 9.0.0（Toolkit + ops + NNAL）以及 torch_npu 的 aarch64 wheel。文档未提供非 NPU 环境的最小验证流程。"
     },
     {
-     "title": {
-      "time": "2026-07-02T03:00:00",
-      "title": "requirements.txt 缺少 torch_npu 显式声明",
-      "body": "requirements.txt 中只列了 pybind11/ninja/wheel/numpy 等通用 Python 包，未显式声明 torch==2.7.1 和 torch_npu==2.7.1.post4；这两个关键依赖只能从 Dockerfile/InstallGuide 推断。在 pip install -e . 时，setup.py 的 install_requires 解析自 requirements.txt，因此不会自动安装 torch/torch_npu，新开发者容易踩坑。",
-      "source": "requirements.txt vs Dockerfile 第72行 + install_guide.md 第2节"
-     },
+     "title": "requirements.txt 缺少 torch_npu 显式声明",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "requirements.txt vs Dockerfile 第72行 + install_guide.md 第2节",
+     "detail": "requirements.txt 中只列了 pybind11/ninja/wheel/numpy 等通用 Python 包，未显式声明 torch==2.7.1 和 torch_npu==2.7.1.post4；这两个关键依赖只能从 Dockerfile/InstallGuide 推断。在 pip install -e . 时，setup.py 的 install_requires 解析自 requirements.txt，因此不会自动安装 torch/torch_npu，新开发者容易踩坑。"
     },
     {
-     "title": {
-      "time": "2026-07-02T03:10:00",
-      "title": "README 缺少 megatron_adaptor 的 import 失败排查指引",
-      "body": "快速上手章节只说在 pretrain_gpt.py 中增加一行 import mindspeed.megatron_adaptor，但未告知该 import 会触发 torch_npu + Megatron-LM 的 import chain，缺少这些前置依赖时 import 失败信息不够友好（直接抛 ModuleNotFoundError，没有 '是否已安装 CANN/torch_npu' 的提示）。",
-      "source": "README.md 快速上手章节 + mindspeed/megatron_adaptor.py 第11行"
-     },
+     "title": "README 缺少 megatron_adaptor 的 import 失败排查指引",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 快速上手章节 + mindspeed/megatron_adaptor.py 第11行",
+     "detail": "快速上手章节只说在 pretrain_gpt.py 中增加一行 import mindspeed.megatron_adaptor，但未告知该 import 会触发 torch_npu + Megatron-LM 的 import chain，缺少这些前置依赖时 import 失败信息不够友好（直接抛 ModuleNotFoundError，没有 '是否已安装 CANN/torch_npu' 的提示）。"
     }
    ],
    "problems": [
@@ -36334,92 +34979,52 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "用户指定 master 分支，但 hmpi 仓库不存在 master 分支；默认分支为 v26.1.x（README 也未说明分支策略）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "用户指定 master 分支，但 hmpi 仓库不存在 master 分支；默认分支为 v26.1.x（README 也未说明分支策略）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 编译流程假设 --with-ucx 和 --with-ucg 依赖外部 HPCKit 商业软件包 + hucx + xucg 开源仓库；本次验证跳过这两个可选依赖，使用 Open MPI 默认 PML/MTL 构建，仍然成功生成可运行的 libmpi.so",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 编译流程假设 --with-ucx 和 --with-ucg 依赖外部 HPCKit 商业软件包 + hucx + xucg 开源仓库；本次验证跳过这两个可选依赖，使用 Open MPI 默认 PML/MTL 构建，仍然成功生成可运行的 libmpi.so"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 系统规格章节列出多个支持 OS，但未明确各 OS 的推荐版本和补丁级别（如 openEuler 22.03 LTS 有 SP1/SP2/SP3/SP4 多个小版本，未说明差异）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 系统规格章节列出多个支持 OS，但未明确各 OS 的推荐版本和补丁级别（如 openEuler 22.03 LTS 有 SP1/SP2/SP3/SP4 多个小版本，未说明差异）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "HACKING 文件要求 GNU Autoconf/Automake/Libtool 较新版本，但未给出最低版本号；本次 openEuler 24.03 仓库提供 autoconf 2.71 + automake 1.16.5 + libtool 2.4.7 满足 autogen.pl 要求",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "HACKING 文件要求 GNU Autoconf/Automake/Libtool 较新版本，但未给出最低版本号；本次 openEuler 24.03 仓库提供 autoconf 2.71 + automake 1.16.5 + libtool 2.4.7 满足 autogen.pl 要求"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "文档未提供独立可执行的 sample 程序，仅在 README 第6节推荐 OSU Micro Benchmarks 外部工具；本次验证自编写 hello_mpi.c + sendrecv_mpi.c 验证基本 MPI 功能",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "文档未提供独立可执行的 sample 程序，仅在 README 第6节推荐 OSU Micro Benchmarks 外部工具；本次验证自编写 hello_mpi.c + sendrecv_mpi.c 验证基本 MPI 功能"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/runtime/ 目录下的单元测试需要先启动 orted --seed 持久守护进程，README 和 HACKING 未说明此步骤；本次跳过 test/runtime 测试套件",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/runtime/ 目录下的单元测试需要先启动 orted --seed 持久守护进程，README 和 HACKING 未说明此步骤；本次跳过 test/runtime 测试套件"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 提到 ASan/Valgrind/Debug 构建模式（README 中提到 --enable-debug 配置），但 configure --help 中未直接显示 enable-debug 选项；本次使用 --disable-picky 关闭开发者严格警告，未启用 debug 构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 提到 ASan/Valgrind/Debug 构建模式（README 中提到 --enable-debug 配置），但 configure --help 中未直接显示 enable-debug 选项；本次使用 --disable-picky 关闭开发者严格警告，未启用 debug 构建"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "HACKING 文件提及 VPATH 构建支持，但本次验证采用 in-tree 构建（configure 直接在源码树执行），未尝试 VPATH 构建",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "HACKING 文件提及 VPATH 构建支持，但本次验证采用 in-tree 构建（configure 直接在源码树执行），未尝试 VPATH 构建"
     }
    ],
    "problems": [
@@ -36546,70 +35151,40 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 5.3 节给出的 ./contrib/configure-opt 参数 --disable-numa 与 --enable-inc 不被当前 configure.ac 识别（configure: WARNING: unrecognized options），文档与实际配置脚本不同步",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 5.3 节给出的 ./contrib/configure-opt 参数 --disable-numa 与 --enable-inc 不被当前 configure.ac 识别（configure: WARNING: unrecognized options），文档与实际配置脚本不同步"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 仅提及 HPCKit 工具链依赖，未提供 openEuler 仓库 dnf install 完整命令清单，新手需自行推断需安装 gcc/g++/gfortran/cmake/flex/autoconf/automake/libtool/pkg-config",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 仅提及 HPCKit 工具链依赖，未提供 openEuler 仓库 dnf install 完整命令清单，新手需自行推断需安装 gcc/g++/gfortran/cmake/flex/autoconf/automake/libtool/pkg-config"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 5.5 节提示编译流程需配合 xucg（./contrib/configure-opt --with-ucg），但未明确说明 hucx 单独构建时是否需要此选项（autogen.sh 提示 --with-ucg 用于 fetch UCG submodule）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 5.5 节提示编译流程需配合 xucg（./contrib/configure-opt --with-ucg），但未明确说明 hucx 单独构建时是否需要此选项（autogen.sh 提示 --with-ucg 用于 fetch UCG submodule）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 列出的 ucx.spec.in 仅打包 RPM 路径，未提供 openEuler RPM 构建/打包详细命令",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 列出的 ucx.spec.in 仅打包 RPM 路径，未提供 openEuler RPM 构建/打包详细命令"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库根目录无 Dockerfile，无 .devcontainer/cpu、.devcontainer/npu 等容器化配置",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库根目录无 Dockerfile，无 .devcontainer/cpu、.devcontainer/npu 等容器化配置"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README.md 第 6 节测试方法主要是 OSU Micro-Benchmark 性能测试，未给出单元测试 (test/gtest) 的具体执行命令",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README.md 第 6 节测试方法主要是 OSU Micro-Benchmark 性能测试，未给出单元测试 (test/gtest) 的具体执行命令"
     }
    ],
    "problems": [
@@ -36701,59 +35276,34 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "2026-07-01T10:45:00",
-      "title": "README 未说明需要使用 BiSheng 编译器",
-      "body": "README 第4节说明需 `module load bisheng/compiler5.1.0.2/bishengmodule`，但未提示 system gcc 会因不识别 -stdlib=libstdc++ 而构建失败；新开发者若跳过 HPCKit 直接用 openEuler 24.03 系统 gcc 构建会立即报错",
-      "source": "README.md 第4-5节 + setup.py CFLAGS 解析路径"
-     },
+     "title": "README 未说明需要使用 BiSheng 编译器",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 第4-5节 + setup.py CFLAGS 解析路径",
+     "detail": "README 第4节说明需 `module load bisheng/compiler5.1.0.2/bishengmodule`，但未提示 system gcc 会因不识别 -stdlib=libstdc++ 而构建失败；新开发者若跳过 HPCKit 直接用 openEuler 24.03 系统 gcc 构建会立即报错"
     },
     {
-     "title": {
-      "time": "2026-07-01T10:50:00",
-      "title": "README 未列出 PyTorch 编译版与 pip 版的差异",
-      "body": "README 第5节要求 PyTorch 必须按 requirements_install.md 用 BLAS=KML/USE_CUDA=0 等从源码编译并打 thirdparty 补丁；本验证受时间窗口限制改用 PyPI aarch64 torch==2.5.0 wheel，但运行时 kpex._C 因链接的 libkudnn.so 强依赖 libsdma_dk.so 而无法加载——README 未明确提示：'pip 版 torch + 编译版 kpex 组合会因 libsdma_dk.so 缺失而 import 失败'",
-      "source": "README.md 第5节 + requirements_install.md + ldd 验证"
-     },
+     "title": "README 未列出 PyTorch 编译版与 pip 版的差异",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 第5节 + requirements_install.md + ldd 验证",
+     "detail": "README 第5节要求 PyTorch 必须按 requirements_install.md 用 BLAS=KML/USE_CUDA=0 等从源码编译并打 thirdparty 补丁；本验证受时间窗口限制改用 PyPI aarch64 torch==2.5.0 wheel，但运行时 kpex._C 因链接的 libkudnn.so 强依赖 libsdma_dk.so 而无法加载——README 未明确提示：'pip 版 torch + 编译版 kpex 组合会因 libsdma_dk.so 缺失而 import 失败'"
     },
     {
-     "title": {
-      "time": "2026-07-01T11:17:00",
-      "title": "README 未列出 libsdma_dk.so 这一关键运行时依赖",
-      "body": "libkudnn.so 在 ELF NEEDED 段声明强依赖 libsdma_dk.so，但 README/requirements_install.md/HPCKit 安装指南 均未列出该库。该库属于鲲鹏 NPU 用户态驱动（典型 rpm 名 kunpeng-npu-driver / libkpnpu），openEuler 24.03 与 20.03 仓库均不自带；本验证因此无法完成 `import kpex` 冒烟测试。",
-      "source": "readelf -d libkudnn.so.1 + ldd 输出 + HPCKit /opt/HPCKit/HPCKit/26.0.RC1 全盘搜索"
-     },
+     "title": "README 未列出 libsdma_dk.so 这一关键运行时依赖",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "readelf -d libkudnn.so.1 + ldd 输出 + HPCKit /opt/HPCKit/HPCKit/26.0.RC1 全盘搜索",
+     "detail": "libkudnn.so 在 ELF NEEDED 段声明强依赖 libsdma_dk.so，但 README/requirements_install.md/HPCKit 安装指南 均未列出该库。该库属于鲲鹏 NPU 用户态驱动（典型 rpm 名 kunpeng-npu-driver / libkpnpu），openEuler 24.03 与 20.03 仓库均不自带；本验证因此无法完成 `import kpex` 冒烟测试。"
     },
     {
-     "title": {
-      "time": "2026-07-01T11:18:00",
-      "title": "README 缺少运行时 LD_LIBRARY_PATH 配置示例",
-      "body": "安装成功后用户运行 `import kpex` 还需要 LD_LIBRARY_PATH 包含 HPCKit 全部 lib 目录（kutacc/kudnn/kupl/hmpi/kml）+ 编译器 lib（提供 libomp.so）+ numactl/memkind（系统 dnf）；README 未提供完整的 export 命令",
-      "source": "README.md 第6节（仅要求 `import kpex` 无报错）"
-     },
+     "title": "README 缺少运行时 LD_LIBRARY_PATH 配置示例",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "README.md 第6节（仅要求 `import kpex` 无报错）",
+     "detail": "安装成功后用户运行 `import kpex` 还需要 LD_LIBRARY_PATH 包含 HPCKit 全部 lib 目录（kutacc/kudnn/kupl/hmpi/kml）+ 编译器 lib（提供 libomp.so）+ numactl/memkind（系统 dnf）；README 未提供完整的 export 命令"
     },
     {
-     "title": {
-      "time": "2026-07-01T10:35:00",
-      "title": "仓库无独立单元测试套件",
-      "body": "仓库根与 csrc/ 均未发现 test/ 目录、CMakeLists.txt 的 ctest 段、GoogleTest 引用或 pytest/tox 配置；README 第6节仅以 `import kpex` 作为唯一冒烟测试；这意味着仓库的'UT'实际上等同于 C++ 扩展能否被 Python 加载，颗粒度过粗",
-      "source": "全仓搜索 test/ ctest gtest googletest Catch2"
-     },
+     "title": "仓库无独立单元测试套件",
      "level": "",
-     "source": "",
-     "detail": ""
+     "source": "全仓搜索 test/ ctest gtest googletest Catch2",
+     "detail": "仓库根与 csrc/ 均未发现 test/ 目录、CMakeLists.txt 的 ctest 段、GoogleTest 引用或 pytest/tox 配置；README 第6节仅以 `import kpex` 作为唯一冒烟测试；这意味着仓库的'UT'实际上等同于 C++ 扩展能否被 Python 加载，颗粒度过粗"
     }
    ],
    "problems": [
@@ -36854,48 +35404,28 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未说明运行所需的精确 CPU 型号，只说\"鲲鹏 920 专业版\"，未在文档中提示普通 Kunpeng 920 (0xd01) 与 Pro (0xd22) 的差异",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未说明运行所需的精确 CPU 型号，只说\"鲲鹏 920 专业版\"，未在文档中提示普通 Kunpeng 920 (0xd01) 与 Pro (0xd22) 的差异"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未列出 googletest 的备用镜像（仅文档中以\"如果下载失败\"的方式提及 gitcode 镜像），对新用户不够直观",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未列出 googletest 的备用镜像（仅文档中以\"如果下载失败\"的方式提及 gitcode 镜像），对新用户不够直观"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "CMakeLists.txt 中 -march=armv9.2-a+...+sve2+sme 编译选项未在 README 中显式说明，调试时容易忽视 CPU 兼容性问题",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "CMakeLists.txt 中 -march=armv9.2-a+...+sve2+sme 编译选项未在 README 中显式说明，调试时容易忽视 CPU 兼容性问题"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build/pre_env_kudnn.sh 直接 git clone GitHub，未提供重试机制或镜像优先级列表",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build/pre_env_kudnn.sh 直接 git clone GitHub，未提供重试机制或镜像优先级列表"
     }
    ],
    "problems": [
@@ -36981,59 +35511,34 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 声明支持鲲鹏 920 (0xd22)，但宿主实际为 0xd01（lscpu 报 Kunpeng-920 但 Features 无 sve），需补充 CPU part 兼容说明",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 声明支持鲲鹏 920 (0xd22)，但宿主实际为 0xd01（lscpu 报 Kunpeng-920 但 Features 无 sve），需补充 CPU part 兼容说明"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 编译章节只描述 module load 方式，但 HPCKit setvars.sh 是 setvars.sh 模式，新手难以发现可用的环境加载路径",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 编译章节只描述 module load 方式，但 HPCKit setvars.sh 是 setvars.sh 模式，新手难以发现可用的环境加载路径"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/build.sh 强校验 cputype == 0xd22，其他 CPU 直接跳过而没有失败提示，且未提供 0xd01 等其他鲲鹏变体的 fallback 路径",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/build.sh 强校验 cputype == 0xd22，其他 CPU 直接跳过而没有失败提示，且未提供 0xd01 等其他鲲鹏变体的 fallback 路径"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/build.sh 存在脚本错误：export LD_LIBRARY_PATH=\"$ABS_PATH:...\" 引用了未定义的 ABS_PATH 变量，应为 LIB_ABS_PATH，导致即便 cputype 匹配也会因 LD_LIBRARY_PATH 为空而运行失败",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/build.sh 存在脚本错误：export LD_LIBRARY_PATH=\"$ABS_PATH:...\" 引用了未定义的 ABS_PATH 变量，应为 LIB_ABS_PATH，导致即便 cputype 匹配也会因 LD_LIBRARY_PATH 为空而运行失败"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "未提供 Dockerfile，新手难以在 openEuler 上从零构建；CMakeLists.txt KUNPENG_ARCH 选项仅有 SVE512/SVE256/其他三种分支，generic 分支不设置 SVEBITS 宏，必须依赖 SVE 路径才能让代码编译通过",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "未提供 Dockerfile，新手难以在 openEuler 上从零构建；CMakeLists.txt KUNPENG_ARCH 选项仅有 SVE512/SVE256/其他三种分支，generic 分支不设置 SVEBITS 宏，必须依赖 SVE 路径才能让代码编译通过"
     }
    ],
    "problems": [
@@ -37125,59 +35630,34 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "项目 README 未提供 Dockerfile，依赖关系分散在 README/build.sh/CMakeLists.txt 与 HPCKit modulefiles 中",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "项目 README 未提供 Dockerfile，依赖关系分散在 README/build.sh/CMakeLists.txt 与 HPCKit modulefiles 中"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明确说明 if(SVE/bf16 not available) 的降级编译选项；编译标志 -march=armv8.2-a+bf16+sve -msve-vector-bits=512 硬编码（src/CMakeLists.txt 第31-32行）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明确说明 if(SVE/bf16 not available) 的降级编译选项；编译标志 -march=armv8.2-a+bf16+sve -msve-vector-bits=512 硬编码（src/CMakeLists.txt 第31-32行）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 推荐运行平台只写 '鲲鹏 920 专业版'，未细化到具体 SVE vector-bits 与 bf16 强制要求，环境核查需靠 /proc/cpuinfo Features 字段",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 推荐运行平台只写 '鲲鹏 920 专业版'，未细化到具体 SVE vector-bits 与 bf16 强制要求，环境核查需靠 /proc/cpuinfo Features 字段"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "test/test_all.sh 默认 world_size=2 num_threads=64，在单核/单 socket 容器中未做适配逻辑",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "test/test_all.sh 默认 world_size=2 num_threads=64，在单核/单 socket 容器中未做适配逻辑"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh 默认编译器 clang 在大多数环境找不到时直接退出，未尝试 gcc 回退",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh 默认编译器 clang 在大多数环境找不到时直接退出，未尝试 gcc 回退"
     }
    ],
    "problems": [
@@ -37286,81 +35766,46 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未列出 bingo 工具链的 Conan 包名引用（需通过 dockerfile 或 openUBMC APT 仓库推断 openubmc-bingo 包）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未列出 bingo 工具链的 Conan 包名引用（需通过 dockerfile 或 openUBMC APT 仓库推断 openubmc-bingo 包）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明确说明 manifest 仓与 28 个 app/<submodule> 子仓的版本同步流程（仅描述 bingo build -t personal 触发整体集成）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明确说明 manifest 仓与 28 个 app/<submodule> 子仓的版本同步流程（仅描述 bingo build -t personal 触发整体集成）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明示 aarch64 / Kunpeng 架构的实际支持时间表（仅写 '预计 26 年底提供'）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明示 aarch64 / Kunpeng 架构的实际支持时间表（仅写 '预计 26 年底提供'）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "init.py 的 environ_check() 直接 read /etc/issue 首行判定 OS，未采用 /etc/os-release VERSION_ID 等更稳健的发行版检测方式，对容器化场景不友好",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "init.py 的 environ_check() 直接 read /etc/issue 首行判定 OS，未采用 /etc/os-release VERSION_ID 等更稳健的发行版检测方式，对容器化场景不友好"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "openUBMC APT 仓库（openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com）仅提供 binary-amd64，binary-arm64 返回 404，与 README 1.1 节 'Kunpeng 处理器支持正在规划中' 自相矛盾（规划中应至少有预览包）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "openUBMC APT 仓库（openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com）仅提供 binary-amd64，binary-arm64 返回 404，与 README 1.1 节 'Kunpeng 处理器支持正在规划中' 自相矛盾（规划中应至少有预览包）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "manifest.yml 中 platform.conan=ibmc_sdk/5.14.00.01.b001@openubmc/stable + openubmc_sdk.conan=openubmc_sdk/latest@openubmc/latest 使用了 latest 标签（不可重现构建的常见反模式）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "manifest.yml 中 platform.conan=ibmc_sdk/5.14.00.01.b001@openubmc/stable + openubmc_sdk.conan=openubmc_sdk/latest@openubmc/latest 使用了 latest 标签（不可重现构建的常见反模式）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "dockerfile 中 wget + dpkg -i 安装 gcm-linux_amd64.2.6.1.deb 流程未将 .deb 文件名参数化（25.x 与 26.06 版本文件名可能不同）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "dockerfile 中 wget + dpkg -i 安装 gcm-linux_amd64.2.6.1.deb 流程未将 .deb 文件名参数化（25.x 与 26.06 版本文件名可能不同）"
     }
    ],
    "problems": [
@@ -37457,59 +35902,34 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明确指出 master 分支对应的 torch nightly 兼容版本范围（实测需要 2.13.0.dev20260515+cpu 这种特定的 nightly 版本才能同时支持 Dimname 和 2.12+ features）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明确指出 master 分支对应的 torch nightly 兼容版本范围（实测需要 2.13.0.dev20260515+cpu 这种特定的 nightly 版本才能同时支持 Dimname 和 2.12+ features）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "ci/docker/ARM/Dockerfile 仍使用 torch==2.7.1+cpu（与 README 版本匹配表 master=2.13.0 不一致），实际构建需要更新 Dockerfile 中的 torch 版本",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "ci/docker/ARM/Dockerfile 仍使用 torch==2.7.1+cpu（与 README 版本匹配表 master=2.13.0 不一致），实际构建需要更新 Dockerfile 中的 torch 版本"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "build.sh SUPPORTED_TORCH_VERSION=(2.10.0 2.11.0 2.12.0 2.13.0) 中未说明哪些是 release 版本哪些是 nightly 版本",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "build.sh SUPPORTED_TORCH_VERSION=(2.10.0 2.11.0 2.12.0 2.13.0) 中未说明哪些是 release 版本哪些是 nightly 版本"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "未在 README 中说明 CANN toolkit 的具体安装位置和版本要求（需要 /usr/local/Ascend/ascend-toolkit/set_env.sh）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "未在 README 中说明 CANN toolkit 的具体安装位置和版本要求（需要 /usr/local/Ascend/ascend-toolkit/set_env.sh）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "torch_npu/csrc/aten/npu_native_functions.yaml 第 79 行仍使用 Dimname 类型（master=2.13.0 编译时的 torch nightly 2.13.0.dev20260611+ 已不再支持 Dimname 解析，op-plugin 子模块的 addmm.dtype 又需要 2.10+ 才有，造成 master 分支有版本不兼容窗口）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "torch_npu/csrc/aten/npu_native_functions.yaml 第 79 行仍使用 Dimname 类型（master=2.13.0 编译时的 torch nightly 2.13.0.dev20260611+ 已不再支持 Dimname 解析，op-plugin 子模块的 addmm.dtype 又需要 2.10+ 才有，造成 master 分支有版本不兼容窗口）"
     }
    ],
    "problems": [
@@ -37607,103 +36027,58 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 明确声明 webui 仅支持 Ubuntu 24.04 LTS（amd64 架构），未提供任何 openEuler / 其他发行版的适配路径；本验证使用 openEuler 24.03 LTS aarch64 容器验证成功，证明 Node.js 跨平台可工作",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 明确声明 webui 仅支持 Ubuntu 24.04 LTS（amd64 架构），未提供任何 openEuler / 其他发行版的适配路径；本验证使用 openEuler 24.03 LTS aarch64 容器验证成功，证明 Node.js 跨平台可工作"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未提供独立可执行的样例或 quick start（仅说明 npm run dev 启动开发服务器），对自动化验证不够友好",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未提供独立可执行的样例或 quick start（仅说明 npm run dev 启动开发服务器），对自动化验证不够友好"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "conanfile.py 中 _add_echarts_gl_to_dev() 和 build_webvnc_enabled_configure() 等动态依赖注入逻辑隐藏在 build() 方法中，不在 package.json 中显式声明；脱离 Conan 直接走 npm 流程会遇到 echarts-gl 缺失等问题（本次验证首次构建因此失败）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "conanfile.py 中 _add_echarts_gl_to_dev() 和 build_webvnc_enabled_configure() 等动态依赖注入逻辑隐藏在 build() 方法中，不在 package.json 中显式声明；脱离 Conan 直接走 npm 流程会遇到 echarts-gl 缺失等问题（本次验证首次构建因此失败）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 中提到的 openUBMC 构建指导书（manifest 仓库）未在本仓库提供 inline 文档，导致构建流程分散在两个仓库",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 中提到的 openUBMC 构建指导书（manifest 仓库）未在本仓库提供 inline 文档，导致构建流程分散在两个仓库"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "仓库未配置 .pre-commit-config.yaml，无法通过标准 pre-commit 工具进行静态检查",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "仓库未配置 .pre-commit-config.yaml，无法通过标准 pre-commit 工具进行静态检查"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tests/unit/utils/date.spec.ts 中存在时区硬编码测试（依赖 UTC+8），未使用 vi.setSystemTime 隔离时区，影响跨时区 CI 一致性",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tests/unit/utils/date.spec.ts 中存在时区硬编码测试（依赖 UTC+8），未使用 vi.setSystemTime 隔离时区，影响跨时区 CI 一致性"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "tsconfig.json 使用 TypeScript 5.5 已弃用的 suppressImplicitAnyIndexErrors 选项，未升级到 ignoreDeprecations 或迁移到更现代写法",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "tsconfig.json 使用 TypeScript 5.5 已弃用的 suppressImplicitAnyIndexErrors 选项，未升级到 ignoreDeprecations 或迁移到更现代写法"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "vite.config.ts 未配置 manualChunks，导致 vendor.js 单 chunk 2.69MB（超过 vite 默认 chunk size warning 500KB）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "vite.config.ts 未配置 manualChunks，导致 vendor.js 单 chunk 2.69MB（超过 vite 默认 chunk size warning 500KB）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "package.json 中 dependencies 和 devDependencies 混杂：echarts-gl 应在 conan build 阶段注入，但脱离 conan 后缺失",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "package.json 中 dependencies 和 devDependencies 混杂：echarts-gl 应在 conan build 阶段注入，但脱离 conan 后缺失"
     }
    ],
    "problems": [
@@ -37812,48 +36187,28 @@
    },
    "defects": [
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未明确说明 xucg 自身单元测试方法（推荐 UCG_BUILD_TESTS=OFF）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未明确说明 xucg 自身单元测试方法（推荐 UCG_BUILD_TESTS=OFF）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 未提供 xucg 工具（ucg_info/ucg_perf）的直接使用示例（仅描述 OSU 基准测试在 hmpi 上的运行）",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 未提供 xucg 工具（ucg_info/ucg_perf）的直接使用示例（仅描述 OSU 基准测试在 hmpi 上的运行）"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "README 编译步骤未提及 hucx 依赖的 #else 分支返回类型 bug，构建需先打补丁",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "README 编译步骤未提及 hucx 依赖的 #else 分支返回类型 bug，构建需先打补丁"
     },
     {
-     "title": {
-      "time": "",
-      "title": "",
-      "body": "未提供 Dockerfile，依赖以 README 文档为准",
-      "source": ""
-     },
+     "title": "",
      "level": "",
      "source": "",
-     "detail": ""
+     "detail": "未提供 Dockerfile，依赖以 README 文档为准"
     }
    ],
    "problems": [
