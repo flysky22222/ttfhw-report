@@ -12890,7 +12890,8 @@
    "artifacts": [],
    "docFacts": [],
    "id": 55,
-   "manual": true
+   "manual": true,
+   "rep": true
   },
   {
    "scenario": "user",
@@ -16145,7 +16146,8 @@
    "reportFile": "reports/user/2026-06-cann-ttfhw-cann-a2-offline-install-20260617-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3
+   "breakpoints": 3,
+   "rep": true
   },
   {
    "scenario": "user",
@@ -18811,30 +18813,30 @@
     {
      "name": "了解",
      "status": "success",
-     "minutes": 8,
+     "minutes": 11,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
-     "minutes": 10,
+     "status": "success",
+     "minutes": 37,
      "breakpoints": 2
     },
     {
      "name": "使用",
-     "status": "not_run",
-     "minutes": 0,
+     "status": "success",
+     "minutes": 59,
      "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 2,
+     "minutes": 19,
      "breakpoints": 0
     }
    ],
-   "totalMinutes": 20,
-   "result": "failed",
+   "totalMinutes": 126,
+   "result": "success",
    "id": 122,
    "scene": "llm-install",
    "date": "2026-06-27",
@@ -18842,7 +18844,8 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260627-54.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3
+   "breakpoints": 3,
+   "rep": true
   },
   {
    "scenario": "user",
@@ -24522,7 +24525,8 @@
    "reportFile": "reports/user/2026-06-openeuler-ttfhw-openeuler-rpm-build-20260617-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 0,
+   "rep": true
   },
   {
    "scenario": "user",
@@ -29014,7 +29018,8 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260616-63.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 1,
+   "rep": true
   },
   {
    "scenario": "user",
@@ -33089,7 +33094,8 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260616-44.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 0,
+   "rep": true
   },
   {
    "scenario": "user",

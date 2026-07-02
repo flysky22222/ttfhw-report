@@ -118,7 +118,10 @@
     // 开发者场景：仍按 社区|仓库 保留每仓最新一次。
     for (const r of recs) {
       const k = r.scenario === "user" ? `user|${r.community}` : `${r.scenario}|${r.community}|${r.repo}`;
-      const c = g.get(k); if (!c || r.date > c.date) g.set(k, r);
+      const c = g.get(k);
+      // 使用者场景优先"月度权威代表"(rep=来自 final_reports 总汇)，其次比日期；开发者场景纯按日期
+      const better = !c || (r.rep && !c.rep) || (Boolean(r.rep) === Boolean(c.rep) && r.date > c.date);
+      if (better) g.set(k, r);
     }
     let out = [...g.values()];
     if (state.scenario !== "all") out = out.filter(r => r.scenario === state.scenario);
@@ -250,7 +253,9 @@
     const dist = { success: 0, partial: 0, failed: 0 };
     items.forEach(r => dist[r.result] !== undefined && dist[r.result]++);
     const head = document.createElement("div"); head.className = "community-head";
-    head.innerHTML = `<span class="name">${comm}</span><span class="count">${items.length} 仓库</span><span class="mini"><span class="s-succ">●</span>${dist.success} <span class="s-part">●</span>${dist.partial} <span class="s-fail">●</span>${dist.failed}</span>`;
+    // 使用者场景以社区为维度（每社区一行），不显示"N 仓库"计数；开发者场景才显示仓库数
+    const countHtml = sc === "developer" ? `<span class="count">${items.length} 仓库</span>` : "";
+    head.innerHTML = `<span class="name">${comm}</span>${countHtml}<span class="mini"><span class="s-succ">●</span>${dist.success} <span class="s-part">●</span>${dist.partial} <span class="s-fail">●</span>${dist.failed}</span>`;
     wrap.appendChild(head);
     const isDev = sc === "developer";
     const cols = `<th>仓库</th><th>结果</th>` + phases.map(p => `<th class="num">${p}</th>`).join("") + (isDev ? `<th class="num">UT</th>` : `<th class="num">断点</th>`) + `<th class="num">总时长</th>` + (isDev ? `<th class="num" title="样例运行时间（原“CI”列实为 sample）">Sample</th>` : "") + `<th class="num">缺陷</th><th>日期</th><th></th>`;
