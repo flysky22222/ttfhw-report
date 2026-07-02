@@ -25,7 +25,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 99
+     "minutes": 84
     },
     {
      "name": "编译构建",
@@ -34,8 +34,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 15
     },
     {
      "name": "社区CI成功",
@@ -142,10 +142,10 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "partial",
+    "total": 48,
+    "passed": 13,
+    "failed": 35,
     "note": ""
    },
    "env": {
@@ -296,7 +296,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 59
+     "minutes": 60
     },
     {
      "name": "编译构建",
@@ -305,8 +305,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 1
+     "status": "not_run",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -345,7 +345,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -628,7 +628,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -672,7 +672,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 24,
     "passed": 2,
     "failed": 22,
@@ -849,7 +849,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 88
+     "minutes": 87
     },
     {
      "name": "编译构建",
@@ -858,8 +858,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -962,9 +962,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 1047,
+    "passed": 1046,
     "failed": 0,
     "note": ""
    },
@@ -1012,7 +1012,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "repository_clone",
@@ -1450,7 +1450,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 1
     },
     {
@@ -1550,7 +1550,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -2029,7 +2029,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -2081,10 +2081,10 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "partial",
+    "total": 85,
+    "passed": 84,
+    "failed": 1,
     "note": ""
    },
    "env": {
@@ -2358,7 +2358,7 @@
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "test/ut/common/main.cc 为占位符，无具体测试用例。编译并执行了 npu_driver_utest 可执行文件，输出 'Testcase run success'。"
    },
    "env": {
     "os": "openEuler 24.03 (LTS)",
@@ -2503,7 +2503,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 26
     },
     {
@@ -2671,7 +2671,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 13,
     "passed": 11,
     "failed": 2,
@@ -2843,7 +2843,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 206
+     "minutes": 202
     },
     {
      "name": "编译构建",
@@ -2852,8 +2852,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 4
     },
     {
      "name": "社区CI成功",
@@ -2912,7 +2912,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -3336,7 +3336,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -3432,11 +3432,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "partial",
+    "total": 1,
+    "passed": 1,
     "failed": 0,
-    "note": ""
+    "note": "仓库 test/ut/ 仅含 prepare_ut_env 一个测试（用于准备 UT LLT 环境）；UT 执行通过。完整的 LLT 用例（open_hccl_test/executor_hccl_test 等）需要 ENABLE_UT=on 配合 build.sh --t all，且需在 NPU 环境下运行。"
    },
    "env": {
     "os": "openEuler 24.03 LTS",
@@ -3620,7 +3620,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 51
+     "minutes": 49
     },
     {
      "name": "编译构建",
@@ -3629,8 +3629,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
@@ -3701,9 +3701,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "partial",
+    "total": 287,
+    "passed": 287,
     "failed": 0,
     "note": ""
    },
@@ -4175,7 +4175,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 5
     },
     {
@@ -4195,7 +4195,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 282,
     "passed": 257,
     "failed": 20,
@@ -4441,7 +4441,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "success",
      "minutes": 0
     },
     {
@@ -4489,9 +4489,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 149,
+    "passed": 149,
     "failed": 0,
     "note": ""
    },
@@ -4561,7 +4561,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "1",
@@ -4701,7 +4701,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -4753,10 +4753,10 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "partial",
+    "total": 5655,
+    "passed": 5543,
+    "failed": 12,
     "note": ""
    },
    "env": {
@@ -5022,7 +5022,7 @@
    },
    "test": {
     "status": "success",
-    "total": 0,
+    "total": 236,
     "passed": 236,
     "failed": 0,
     "note": ""
@@ -5229,7 +5229,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 52
+     "minutes": 51
     },
     {
      "name": "编译构建",
@@ -5238,8 +5238,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -5258,7 +5258,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -5453,7 +5453,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 3
+     "minutes": 4
     },
     {
      "name": "编译构建",
@@ -5502,7 +5502,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 19,
+   "totalMinutes": 20,
    "build": {
     "status": "success",
     "minutes": 10,
@@ -5702,7 +5702,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 74
+     "minutes": 55
     },
     {
      "name": "编译构建",
@@ -5711,8 +5711,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 19
     },
     {
      "name": "社区CI成功",
@@ -5731,9 +5731,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "partial",
+    "total": 57,
+    "passed": 57,
     "failed": 0,
     "note": ""
    },
@@ -5920,7 +5920,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 15
+     "minutes": 16
     },
     {
      "name": "编译构建",
@@ -5929,8 +5929,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 2
+     "status": "partial",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -5949,7 +5949,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 2095,
     "passed": 2092,
     "failed": 2,
@@ -6167,7 +6167,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 38
+     "minutes": 37
     },
     {
      "name": "编译构建",
@@ -6176,8 +6176,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -6196,11 +6196,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 34,
+    "passed": 34,
     "failed": 0,
-    "note": ""
+    "note": "真实 NPU 环境（非 CPU mock），torch_npu 2.9.0.post1 + CANN 9.0.0; triton-ascend 3.2.0<3.2.1 警告（SparseLinearAttention disabled）不影响 UT"
    },
    "env": {
     "os": "openEuler 24.03 LTS",
@@ -6273,7 +6273,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -6849,7 +6849,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 3
     },
     {
@@ -6945,11 +6945,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 1518,
     "passed": 1361,
     "failed": 1,
-    "note": ""
+    "note": "本次验证执行了 asys + msaicerr 两个 python-only 组件（--component 参数跳过 C++ 编译，直接 run_tests.sh）；msprof gtest 未单独执行（msprof_ut 需 cmake ENABLE_UT=on 全量编译 msprofbin 二进制，编译时间过长；本次验证范围：构建成功 + UT 主体通过 + 样例安装 + 样例 smoke）"
    },
    "env": {
     "os": "openEuler 24.03 (LTS)",
@@ -7158,7 +7158,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 120
+     "minutes": 114
     },
     {
      "name": "编译构建",
@@ -7167,8 +7167,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 6
     },
     {
      "name": "社区CI成功",
@@ -7223,10 +7223,10 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
+    "status": "partial",
+    "total": 296,
+    "passed": 295,
+    "failed": 1,
     "note": ""
    },
    "env": {
@@ -7451,7 +7451,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -7471,11 +7471,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "CANN 运行时与 NPU 硬件不兼容：CANN 9.0.0 (V100R001C10SPC001B250) 无法与 NPU 驱动 25.5.0/910B3 硬件通信 (aclInit error 507008, SOC version 获取失败)；CANN 9.1.0 (V100R001C11B125) 的 libhccl.so 存在未定义符号 IsHcommDefaultTimeoutSupported，为不完整版本。torch_npu 无法加载，UT 无法执行。"
    },
    "env": {
     "os": "openEuler 24.03 LTS",
@@ -7915,8 +7915,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 1
+     "status": "partial",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -7963,7 +7963,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 105,
+   "totalMinutes": 104,
    "build": {
     "status": "success",
     "minutes": 9,
@@ -7971,11 +7971,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 4,
     "passed": 2,
     "failed": 2,
-    "note": ""
+    "note": "本次重点验证 kernel 仓库的核心构建产物 (vmlinux/Image/modules/dtbs/samples)；selftest 仅冒烟测试构建与运行通路，不计入 build 状态判定"
    },
    "env": {
     "os": "openEuler 24.03 LTS",
@@ -8147,7 +8147,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 42
+     "minutes": 43
     },
     {
      "name": "编译构建",
@@ -8157,7 +8157,7 @@
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 2
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -8484,7 +8484,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 95
+     "minutes": 64
     },
     {
      "name": "编译构建",
@@ -8493,8 +8493,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 31
     },
     {
      "name": "社区CI成功",
@@ -8593,9 +8593,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 1039,
+    "passed": 1039,
     "failed": 0,
     "note": ""
    },
@@ -8649,7 +8649,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -8734,7 +8734,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 49
+     "minutes": 59
     },
     {
      "name": "编译构建",
@@ -8743,8 +8743,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 10
+     "status": "not_run",
+     "minutes": 0
     },
     {
      "name": "社区CI成功",
@@ -8879,7 +8879,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -9102,12 +9102,12 @@
     },
     {
      "name": "编译构建",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -9185,13 +9185,13 @@
    ],
    "totalMinutes": 71,
    "build": {
-    "status": "unknown",
+    "status": "not_run",
     "minutes": 0,
     "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -9363,7 +9363,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 6
     },
     {
@@ -9443,11 +9443,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 0,
     "passed": 114,
     "failed": 1,
-    "note": ""
+    "note": "114/115 测试通过; tcvt case9 是上游仓库测试数据生成脚本 bug, 不影响其他 114 个测试用例的通过状态"
    },
    "env": {
     "os": "openEuler 24.03 LTS",
@@ -9643,7 +9643,7 @@
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 1
     },
     {
      "name": "社区CI成功",
@@ -9682,7 +9682,7 @@
      "ciRealStatus": "success"
     }
    ],
-   "totalMinutes": 229,
+   "totalMinutes": 228,
    "build": {
     "status": "success",
     "minutes": 183,
@@ -9886,7 +9886,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 61
+     "minutes": 59
     },
     {
      "name": "编译构建",
@@ -9895,8 +9895,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "success",
+     "minutes": 2
     },
     {
      "name": "社区CI成功",
@@ -9975,9 +9975,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 387,
+    "passed": 382,
     "failed": 0,
     "note": ""
    },
@@ -10053,7 +10053,7 @@
     }
    ],
    "summary": "",
-   "result": "partial",
+   "result": "success",
    "attempts": [
     {
      "step": "",
@@ -10225,7 +10225,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 88
+     "minutes": 73
     },
     {
      "name": "编译构建",
@@ -10234,8 +10234,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 0
+     "status": "partial",
+     "minutes": 15
     },
     {
      "name": "社区CI成功",
@@ -10366,7 +10366,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -10568,7 +10568,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -10586,11 +10586,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "UT 二进制 (aclshmem_unittest, 15MB) 已成功编译 (googletest v1.14.x 框架 + 88 个测试用例源文件)，但运行时即段错误 (exit_code=139)。根本原因：验证环境无 Ascend NPU 硬件 (无 /dev/davinci* 设备、无昇腾驱动)，ascendcl runtime 无法初始化 aclrtSetDevice/aclInit。在具备 Atlas 800I A2/A3 NPU 的物理机上运行 bash scripts/run.sh 即可执行 UT"
    },
    "env": {
     "os": "openEuler 24.03 LTS",
@@ -10785,7 +10785,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -10829,7 +10829,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -10926,7 +10926,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -10946,7 +10946,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -11242,7 +11242,7 @@
     "total": 940,
     "passed": 940,
     "failed": 0,
-    "note": ""
+    "note": "940/940 全部通过；hcom_ut result 0；hcom_test (LLT) 已构建但本环境无 RDMA 硬件，端到端 socket/rdma 用例未运行（构建即证明编译期依赖、链接、mock 桩全通过）"
    },
    "env": {
     "os": "openEuler 24.03 (LTS)",
@@ -11393,7 +11393,7 @@
     {
      "name": "获取",
      "status": "success",
-     "minutes": 60
+     "minutes": 61
     },
     {
      "name": "编译构建",
@@ -11402,8 +11402,8 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
-     "minutes": 11
+     "status": "partial",
+     "minutes": 10
     },
     {
      "name": "社区CI成功",
@@ -11458,11 +11458,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
+    "status": "partial",
+    "total": 6772,
     "passed": 858,
     "failed": 205,
-    "note": ""
+    "note": "1 个 UT 二进制完整通过 (process_mem_ut 312/312)，4 个 UT 二进制存在用例失败 + 运行期崩溃（mockcpp 未完全 mock 边界场景 + libvirt/uturbo 库环境缺失 + thread / null pointer 边界触发 abort）。所有 gtest crash 前未调用 gtest_shutdown() 写 XML，因此仅 process_mem 有 XML 输出。本次与 20260626 验证结果基本一致：1 个二进制 100% 通过，4 个二进制 crash 模式相同。"
    },
    "env": {
     "os": "openEuler 24.03 (LTS-SP3)",
@@ -11726,7 +11726,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -11782,11 +11782,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 326,
     "passed": 320,
     "failed": 6,
-    "note": ""
+    "note": "实际通过 320 个用例，覆盖了 bio_server / cm / common / net / underfs / wcache / htracer / bio_sdk 等所有非 BDM 子模块；6 个失败全部集中在 TestDisk 套件（BDM 真块设备相关），与构建产物本身无关，属于测试环境约束"
    },
    "env": {
     "os": "openEuler 24.03 (LTS)",
@@ -12033,7 +12033,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -12089,11 +12089,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "构建失败，UT 二进制 mxmd_ut 未生成，无法执行；test/run_dt.sh 入口依赖的 ubsmd 主二进制不存在"
    },
    "env": {
     "os": "openEuler 24.03 (LTS)",
@@ -12277,12 +12277,12 @@
     },
     {
      "name": "编译构建",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 20
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -12332,13 +12332,13 @@
    ],
    "totalMinutes": 67,
    "build": {
-    "status": "unknown",
+    "status": "partial",
     "minutes": 20,
     "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 243,
     "passed": 210,
     "failed": 33,
@@ -16097,7 +16097,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "success",
      "minutes": 0
     },
     {
@@ -16113,9 +16113,9 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 943,
+    "passed": 943,
     "failed": 0,
     "note": ""
    },
@@ -34818,12 +34818,12 @@
     },
     {
      "name": "编译构建",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -34833,13 +34833,13 @@
     }
    ],
    "build": {
-    "status": "unknown",
+    "status": "not_run",
     "minutes": 0,
     "command": "",
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 352,
     "passed": 337,
     "failed": 11,
@@ -34935,7 +34935,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -34951,7 +34951,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -35127,7 +35127,7 @@
     "total": 39,
     "passed": 38,
     "failed": 0,
-    "note": ""
+    "note": "test/runtime 目录的单元测试需要先启动 orted --seed 持久守护进程，本次未运行；test/{support,monitoring,spc} 在 make check 中无测试目标"
    },
    "totalMinutes": 72,
    "result": "partial",
@@ -35232,7 +35232,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -35248,7 +35248,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -35360,7 +35360,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -35376,7 +35376,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -35467,7 +35467,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "failed",
      "minutes": 0
     },
     {
@@ -35483,14 +35483,14 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "failed",
     "total": 0,
     "passed": 0,
-    "failed": 0,
+    "failed": null,
     "note": ""
    },
    "totalMinutes": 515,
-   "result": "partial",
+   "result": "failed",
    "id": 327,
    "scene": "compile-verify",
    "url": "/tmp/kudnn-verify",
@@ -35586,7 +35586,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "success",
      "minutes": 0
     },
     {
@@ -35602,11 +35602,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
-    "total": 0,
-    "passed": 0,
+    "status": "success",
+    "total": 1,
+    "passed": 1,
     "failed": 0,
-    "note": ""
+    "note": "需要设置 OMPI_MCA_plm_rsh_agent=/bin/false 以绕过 orte 单例模式对 ssh plm 的硬依赖；test/build.sh 内置 cputype==0xd22 检查会跳过 0xd01 平台，本次直接用 mpicxx 编译跳过该检查"
    },
    "totalMinutes": 11,
    "result": "partial",
@@ -35853,12 +35853,12 @@
     },
     {
      "name": "编译构建",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -35868,13 +35868,13 @@
     }
    ],
    "build": {
-    "status": "unknown",
+    "status": "not_run",
     "minutes": 0,
     "command": "",
     "error": "环境硬性不兼容：manifest 仓 README 1.1 节 + dockerfile FROM + init.py:environ_check() 三处均硬性要求 Ubuntu 24.04 LTS amd64；本验证环境（远程机器 192.168.9.114 + openEuler 24.03 容器 manifest-ttfhw）均为 aarch64 架构，且 init.py 在 environ_check() 阶段读取 /etc/issue 首行硬性校验 'Ubuntu 24.04' 前缀，openEuler 容器内该文件内容为 '\\S'，直接抛出 Exception。即使绕过 OS 校验，openUBMC APT 仓库（openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com）仅提供 binary-amd64（实测 binary-arm64 返回 404），gcm-linux_amd64.2.6.1.deb / bmc_sdk.tar.gz / bmc-studio / openubmc-bmc-sdk 等工具链均为 amd64-only，aarch64 容器无法 dpkg 安装。无任何可降级路径：Ubuntu 24.04 amd64 是 init.py 拒绝非该系统的唯一硬约束 + openUBMC Conan 私有仓库登录需要 openUBMC 社区账号凭据（usercenter.openubmc.cn 注册），本验证无可用社区凭据"
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
@@ -35983,7 +35983,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -35999,11 +35999,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "test/ 目录下共 716 个 test_*.py 文件，全部依赖 torch_npu._C；构建成功产出了 wheel，但 torch_npu 包加载时 libtorch_npu.so 引用 17 个未解析的 CANN 符号（libhccl.so / libascendcl.so / libacl_op_compiler.so / libge_runner.so / libgraph.so / libc10.so / libtorch_python.so / libtorch.so / libtorch_cpu.so 等），容器内未安装 CANN toolkit，包无法导入。需要在已部署 CANN runtime 的环境（带 NPU 设备的 Atlas 服务器）才能执行 UT。"
    },
    "totalMinutes": 40,
    "result": "partial",
@@ -36143,7 +36143,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "partial",
      "minutes": 0
     },
     {
@@ -36159,7 +36159,7 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "partial",
     "total": 211,
     "passed": 210,
     "failed": 1,
@@ -36268,7 +36268,7 @@
     },
     {
      "name": "测试",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0
     },
     {
@@ -36284,11 +36284,11 @@
     "error": ""
    },
    "test": {
-    "status": "unknown",
+    "status": "not_run",
     "total": 0,
     "passed": 0,
     "failed": 0,
-    "note": ""
+    "note": "README 推荐构建配置 UCG_BUILD_TESTS=OFF，未提供 xucg 自身 UT 命令。尝试启用 UCG_BUILD_TESTS=ON 时 FetchContent 下载 googletest 成功（223s），但 tests/gtest/stub.cpp:132 存在 -Werror 编译错误（'params' may be used uninitialized），按 skill 规则无法修改目标仓库源码（xucg 本身），故 UT 标记 not_run"
    },
    "totalMinutes": 26,
    "result": "partial",
