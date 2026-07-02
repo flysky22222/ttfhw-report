@@ -34069,20 +34069,16 @@
     "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
     "npu": "A2/910B（/dev/davinci* 已挂）"
    },
-   "defects": [],
-   "problems": [
+   "defects": [
     {
-     "title": "无集群级权限部署 MindCluster(DaemonSet@kube-system/CRD/ClusterRole)",
-     "source": "kubectl auth can-i",
-     "detail": "当前 kubeconfig 是 ttfhw namespace 级 serviceaccount；MindCluster 需 cluster-admin。属环境权限限制，非文档缺陷"
-    },
-    {
-     "title": "测试 Pod 内 npu-smi 缺 libc_sec.so",
-     "source": "npu-smi info",
-     "detail": "privileged 仅挂 /dev/davinci* 设备，需额外挂宿主机 /usr/local/Ascend/driver 驱动库；属环境配置，非文档缺陷"
+     "title": "npu-exporter go.mod 要求 Go 1.26（较新），openEuler dnf 仓库版本不够，文档/build.sh 未说明 Go 版本获取方式，用户需自行从镜像站下载 Go 1.26",
+     "level": "",
+     "source": "",
+     "detail": ""
     }
    ],
-   "summary": "按使用者场景在 A2(910B) NPU Pod（openeuler-a2，经跳转机 139.9.248.39）测试 MindCluster：了解阶段成功——clone 官方仓库、读懂 MindCluster 是 NPU 集群系统软件，经 helm-deploy-tool 把 device-plugin/volcano/clusterd/npu-exporter 等部署到集群。安装/使用阶段受环境限制无法完成：①当前 kubeconfig 是 ttfhw 命名空间级 serviceaccount，实测无集群级权限(create daemonsets@kube-system/customresourcedefinitions/clusterroles 均 can-i=no)，而 MindCluster 是集群级软件必须 cluster-admin 部署；②测试 Pod 仅 privileged 挂了 /dev/davinci* 设备、未挂宿主机昇腾驱动运行时库(npu-smi 缺 libc_sec.so)。以上均为环境权限/驱动限制，按环境断点记，不计入文档缺陷、不判失败。结论：了解成功；安装/使用受限于环境(需 cluster-admin + 多节点 NPU 集群 + 节点驱动)，未发现文档缺陷。",
+   "problems": [],
+   "summary": "按使用者场景在 A2(910B) NPU Pod（openEuler 24.03 aarch64，经跳转机 139.9.248.39）对 MindCluster 做轻量级测试（单组件构建+运行，不做整套集群部署）：了解→安装→使用三阶段跑通。选 npu-exporter（NPU 指标采集组件）为目标：装 Go 1.26.0(aliyun 镜像)+gcc 后 `bash build/build.sh` 从源码 cgo 构建成功（26MB aarch64 二进制）；运行 `./npu-exporter --help` 打印 EULA 与完整 CLI 参数，二进制可用。完整采集 NPU 指标需运行时 dlopen 昇腾驱动 libdcmi.so（本 Pod 未挂驱动，故未起采集服务）。结论：轻量级构建+运行验证成功；发现 1 处文档可补充点（go.mod 需 Go 1.26 但未说明 Go 获取方式）。",
    "depsCount": 0,
    "attempts": [],
    "artifacts": [],
@@ -34091,38 +34087,38 @@
     {
      "name": "了解",
      "status": "success",
-     "minutes": 5,
+     "minutes": 4,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "not_run",
-     "minutes": 15,
-     "breakpoints": 2
+     "status": "success",
+     "minutes": 12,
+     "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "not_run",
-     "minutes": 0,
+     "status": "success",
+     "minutes": 1,
      "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
-     "minutes": 5,
+     "minutes": 3,
      "breakpoints": 0
     }
    ],
-   "totalMinutes": 25,
-   "result": "partial",
+   "totalMinutes": 20,
+   "result": "success",
    "id": 321,
-   "scene": "user-k8s",
+   "scene": "user-k8s-lite",
    "date": "2026-07-02",
    "month": "2026-07",
-   "reportFile": "reports/user/2026-07-mindcluster-ttfhw-mindcluster-user-k8s-20260702.md",
+   "reportFile": "reports/user/2026-07-mindcluster-ttfhw-mindcluster-user-k8s-lite-20260702.md",
    "url": "https://gitcode.com/Ascend/mind-cluster (README + docs/zh 用户指南)",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 0,
    "rep": true
   }
  ]
