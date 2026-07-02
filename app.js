@@ -49,7 +49,7 @@
     document.getElementById("scenarioTabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (!b) return; state.scenario = b.dataset.scenario; setActive("#scenarioTabs .tab", b); route(); });
     document.getElementById("resultChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; state.result = b.dataset.result; setActive("#resultChips .chip", b); route(); });
     const s = document.getElementById("search");
-    s.addEventListener("input", () => { state.query = s.value.trim().toLowerCase(); if (!location.hash.startsWith("#id=")) route(); });
+    s.addEventListener("input", () => { state.query = s.value.trim().toLowerCase(); if (!/^#(id=|report\/|json-org\/)/.test(location.hash)) route(); });
     window.addEventListener("hashchange", route);
     window.addEventListener("resize", () => charts.forEach(c => { try { c.resize(); } catch (e) {} }));
     renderIssues();
