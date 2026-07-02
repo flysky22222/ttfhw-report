@@ -389,7 +389,8 @@
 
     content.innerHTML = `<div class="detail"><a class="back" href="#">‹ 返回总览</a>
       <div class="detail-head"><div class="dh-id"><h1>${ico("repo")} ${r.repo}</h1>
-        <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}${r.jsonUrl ? `<a href="${esc(r.jsonUrl)}" target="_blank" rel="noopener" title="原始 JSON 验证报告">JSON 报告 ↗</a>` : ""}</div></div>
+        <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div>${
+  r.jsonUrl ? `<div class="json-path">JSON 报告：<a href="${esc(r.jsonUrl)}" target="_blank" rel="noopener" title="点击打开原始 JSON（computing-TTFHW/ttfhw-report）"><code>${esc(r.jsonPath || r.jsonUrl)}</code> ↗</a></div>` : ""}</div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
     content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { location.hash = "#id=" + h.dataset.id; }));
     content.querySelectorAll("tr.jumpable").forEach(tr => tr.addEventListener("click", () => {
