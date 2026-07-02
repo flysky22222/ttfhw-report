@@ -33986,6 +33986,144 @@
    "url": "",
    "sampleMinutes": 0,
    "breakpoints": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "openGauss",
+   "env": {
+    "os": "openGauss 官方镜像(基于 openEuler)",
+    "arch": "x86_64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/base_image/opengauss-server:latest"
+   },
+   "defects": [
+    {
+     "title": "官方 docker 安装文档未标注镜像架构（opengauss-server:latest 为 x86_64 单架构），在含 aarch64/ARM 或 NPU 节点的多架构 k8s 集群里不指定调度会 exec format error",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档以单机 docker run 为主，未给 k8s/Pod 部署时的节点选择/资源建议",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [
+    {
+     "title": "Pod exec format error",
+     "source": "kubectl logs",
+     "detail": "镜像 x86 单架构、被调度到 aarch64 NPU 节点；加 nodeSelector os.architecture=amd64 调度到 x86 节点后成功"
+    }
+   ],
+   "summary": "按使用者场景在 k8s（ttfhw 命名空间，经跳转机 139.9.248.39）内真实部署 openGauss：了解→安装→使用→贡献四阶段跑通。安装阶段发现官方容器镜像为 x86_64 单架构且文档未标注，在含 ARM/NPU 节点的多架构集群里需显式 nodeSelector 调度到 x86 节点（记为文档缺陷，非环境失败）；调度到 x86 节点后部署成功，gsql `select 'hello openGauss'` 返回成功、`select version()` 返回 openGauss 7.0.0-RC1。整体结论：成功，发现 2 处文档缺陷。",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 9,
+     "breakpoints": 1
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 1
+    }
+   ],
+   "totalMinutes": 19,
+   "result": "success",
+   "id": 320,
+   "scene": "user-k8s",
+   "date": "2026-07-02",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-user-k8s-20260702.md",
+   "url": "https://docs.opengauss.org/zh/docs/latest/docs/InstallationGuide/使用docker安装.html",
+   "sampleMinutes": 0,
+   "breakpoints": 2
+  },
+  {
+   "scenario": "user",
+   "community": "MindCluster",
+   "repo": "MindCluster",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "aarch64",
+    "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+    "npu": "A2/910B（/dev/davinci* 已挂）"
+   },
+   "defects": [],
+   "problems": [
+    {
+     "title": "无集群级权限部署 MindCluster(DaemonSet@kube-system/CRD/ClusterRole)",
+     "source": "kubectl auth can-i",
+     "detail": "当前 kubeconfig 是 ttfhw namespace 级 serviceaccount；MindCluster 需 cluster-admin。属环境权限限制，非文档缺陷"
+    },
+    {
+     "title": "测试 Pod 内 npu-smi 缺 libc_sec.so",
+     "source": "npu-smi info",
+     "detail": "privileged 仅挂 /dev/davinci* 设备，需额外挂宿主机 /usr/local/Ascend/driver 驱动库；属环境配置，非文档缺陷"
+    }
+   ],
+   "summary": "按使用者场景在 A2(910B) NPU Pod（openeuler-a2，经跳转机 139.9.248.39）测试 MindCluster：了解阶段成功——clone 官方仓库、读懂 MindCluster 是 NPU 集群系统软件，经 helm-deploy-tool 把 device-plugin/volcano/clusterd/npu-exporter 等部署到集群。安装/使用阶段受环境限制无法完成：①当前 kubeconfig 是 ttfhw 命名空间级 serviceaccount，实测无集群级权限(create daemonsets@kube-system/customresourcedefinitions/clusterroles 均 can-i=no)，而 MindCluster 是集群级软件必须 cluster-admin 部署；②测试 Pod 仅 privileged 挂了 /dev/davinci* 设备、未挂宿主机昇腾驱动运行时库(npu-smi 缺 libc_sec.so)。以上均为环境权限/驱动限制，按环境断点记，不计入文档缺陷、不判失败。结论：了解成功；安装/使用受限于环境(需 cluster-admin + 多节点 NPU 集群 + 节点驱动)，未发现文档缺陷。",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "not_run",
+     "minutes": 15,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "not_run",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 25,
+   "result": "partial",
+   "id": 321,
+   "scene": "user-k8s",
+   "date": "2026-07-02",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindcluster-ttfhw-mindcluster-user-k8s-20260702.md",
+   "url": "https://gitcode.com/Ascend/mind-cluster (README + docs/zh 用户指南)",
+   "sampleMinutes": 0,
+   "breakpoints": 2,
+   "rep": true
   }
  ]
 }
