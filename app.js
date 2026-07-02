@@ -58,13 +58,24 @@
   const opt = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; return o; };
   const setActive = (sel, btn) => { document.querySelectorAll(sel).forEach(x => x.classList.remove("active")); btn.classList.add("active"); };
 
+  // 报告 URL：贡献者场景用 report/WSL_<repo>（对齐官方 computing 站的干净路径）；
+  // 其余(使用者场景等)回退 id=<n>。也兼容旧的 #json-org/.../xxx.json 与 #id=。
+  const recById = id => (state.data.records || []).find(r => r.id === +id);
+  const reportHash = r => "#" + (r && r.scenario === "developer" ? "report/WSL_" + r.repo : "id=" + (r ? r.id : ""));
+  const gotoReport = id => { const r = recById(id); if (r) location.hash = reportHash(r); };
+
   function route() {
-    const m = location.hash.match(/^#id=(\d+)/);
+    const h = decodeURIComponent(location.hash.replace(/^#/, ""));
+    const recs = state.data.records || [];
+    let rec = null, m;
+    if ((m = h.match(/^report\/WSL_(.+)$/))) rec = recs.find(r => r.scenario === "developer" && r.repo.toLowerCase() === m[1].toLowerCase());
+    else if ((m = h.match(/^id=(\d+)/))) rec = recById(m[1]);
+    else if (h.startsWith("json-org/")) rec = recs.find(r => r.jsonPath === h);
     const ctrls = document.querySelector(".controls"), stats = document.getElementById("stats"), charts = document.getElementById("charts"), issues = document.getElementById("issues");
-    const show = m ? "none" : "";
+    const show = rec ? "none" : "";
     ctrls.style.display = show; stats.style.display = show; charts.style.display = show;
     if (issues) issues.style.display = show;
-    if (m) renderDetail(+m[1]); else renderList();
+    if (rec) renderDetail(rec.id); else renderList();
   }
 
   // ── 底部：TTFHW 已提交的文档缺陷 Issue 表 ──────────────────────────────
@@ -231,7 +242,7 @@
       yAxis: { type: "category", data: list.map(r => r.repo), axisLabel: { fontSize: 11 }, axisTick: { show: false } },
       series,
     });
-    c.on("click", p => { if (p.data && p.data.id != null) location.hash = "#id=" + p.data.id; });
+    c.on("click", p => { if (p.data && p.data.id != null) gotoReport(p.data.id); });
     charts.push(c);
   }
 
@@ -274,7 +285,7 @@
     const colgroup = `<colgroup>${cw.map(w => `<col style="width:${w}">`).join("")}</colgroup>`;
     const t = document.createElement("div"); t.className = "tbl-wrap";
     t.innerHTML = `<table class="ctbl">${colgroup}<thead><tr>${cols}</tr></thead><tbody>${rows}</tbody></table>`;
-    t.querySelectorAll("tbody tr").forEach(tr => tr.addEventListener("click", () => { location.hash = "#id=" + tr.dataset.id; }));
+    t.querySelectorAll("tbody tr").forEach(tr => tr.addEventListener("click", () => { gotoReport(tr.dataset.id); }));
     wrap.appendChild(t);
     return wrap;
   }
@@ -392,7 +403,7 @@
         <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div>${
   r.jsonUrl ? `<div class="json-path">JSON 报告：<a href="${esc(r.jsonUrl)}" target="_blank" rel="noopener" title="点击打开原始 JSON（computing-TTFHW/ttfhw-report）"><code>${esc(r.jsonPath || r.jsonUrl)}</code> ↗</a></div>` : ""}</div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
-    content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { location.hash = "#id=" + h.dataset.id; }));
+    content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { gotoReport(h.dataset.id); }));
     content.querySelectorAll("tr.jumpable").forEach(tr => tr.addEventListener("click", () => {
       const el = document.getElementById(tr.dataset.anchor);
       if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1600); }

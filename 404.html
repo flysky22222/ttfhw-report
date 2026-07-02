@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8"><title>TTFHW</title>
+<script>
+// GitHub Pages SPA 回退：把干净路径 /report/WSL_xxx 或 /json-org/... 转成 #hash 路由
+(function () {
+  var p = location.pathname.replace(/^\/+/, "");
+  var proj = "";
+  if (p.indexOf("ttfhw-report/") === 0) { proj = "ttfhw-report/"; p = p.slice(proj.length); }
+  location.replace("/" + proj + "#" + p + location.search);
+})();
+</script></head><body>Redirecting…</body></html>
