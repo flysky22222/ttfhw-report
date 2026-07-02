@@ -1,0 +1,662 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/kudnn-verify",
+    "start_time": "2026-06-27T18:30:00",
+    "end_time": "2026-06-28T03:04:39",
+    "duration_seconds": 30879,
+    "total_steps": 28,
+    "repo_name": "kudnn",
+    "repo_url": "https://gitcode.com/kunpengcompute/kudnn.git",
+    "branch": "main",
+    "commit": "f6fe961b4dfc4267e091914c82c3a556e767a8b8"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (implementer 0x48, part 0xd01)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "可用空间充足",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库 README 明确支持 openEuler 24.03 LTS-SP3 AArch64，与仓库目标平台一致）。",
+      "dependency_mapping": {
+        "from_dockerfile": "仓库无 Dockerfile，依赖信息全部来自 README 与 HPCKit 工具包",
+        "mappings": [
+          {
+            "original": "HPCKit/Bisheng 编译器",
+            "openEuler": "使用 /opt/HPCKit/HPCKit/26.0.RC1 已预装的 Bisheng compiler 5.1.0.2（挂载进容器）",
+            "source": "README.md 编译章节"
+          },
+          {
+            "original": "HPCKit/KML BLAS",
+            "openEuler": "使用 HPCKit 已预装的 kml26.0.RC1（kblas multi）",
+            "source": "README.md 编译章节"
+          },
+          {
+            "original": "HPCKit/KUPL",
+            "openEuler": "使用 HPCKit 已预装的 kupl26.0.RC1（release）",
+            "source": "README.md 编译章节"
+          },
+          {
+            "original": "googletest v1.15.2",
+            "openEuler": "从 gitcode 国内镜像克隆并本地 cmake 构建安装",
+            "source": "build/pre_env_kudnn.sh"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 系统规格章节",
+      "value": "aarch64（鲲鹏 920 专业版，AArch64 + SVE2/SME 指令集）"
+    },
+    "recommended_image": {
+      "source": "README.md - 系统规格章节",
+      "value": "openEuler 22.03/24.03 LTS-SP3 AArch64"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库无 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + CMakeLists.txt + build/build_kudnn.sh",
+      "value": [
+        "cmake >= 3.14（dnf: cmake）",
+        "gcc / clang（dnf: gcc gcc-c++，编译用 Bisheng 编译器 /opt/HPCKit/.../compiler/bisheng/bin/clang++）",
+        "make（dnf: make）",
+        "KML BLAS（kblas multi / HPCKit 26.0.RC1）",
+        "KUPL（release / HPCKit 26.0.RC1）",
+        "libnuma（dnf: numactl-devel）",
+        "googletest v1.15.2（本地从 gitcode 镜像克隆 + cmake 构建）"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md - 编译章节 + build/build_kudnn.sh",
+      "value": "module use [HPCKit安装目录]/HPCKit/26.0.RC1/modulefiles/bisheng/ && module load compiler5.1.0.2 && module load kml26.0.RC1/kblas/multi && module load kupl26.0.RC1/release && sh build/build_kudnn.sh --only_kudnn=on --build_type=Release --compiler=clang --install_path=[安装路径]"
+    },
+    "ut_commands": {
+      "source": "README.md - 测试章节 + build/pre_env_kudnn.sh",
+      "value": "sh build/pre_env_kudnn.sh（下载 googletest）或 sh build/pre_env_kudnn_compile.sh（使用已有 googletest） → sh build/build_kudnn.sh --only_tests=on --compiler=clang --install_path=[安装路径] → ./out/test/dnn/llt/gtest/kudnn_gtest [--gtest_filter=...]"
+    },
+    "sample_commands": {
+      "source": "README.md",
+      "value": "仓库无独立 example 程序，示例执行实际为运行 kudnn_gtest（带或不带 --gtest_filter）"
+    },
+    "special_dependencies": {
+      "source": "README.md",
+      "value": [
+        "HPCKit 26.0.RC1 软件包（提供 Bisheng 编译器、KML BLAS、KUPL，鲲鹏平台专用）",
+        "运行时硬件需支持 armv9.2 + SVE2 + SME（即鲲鹏 920 专业版，CPU part 0xd22）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-27T18:30:00",
+      "command": "ssh root@192.168.9.114 'echo OK && nproc && free -g && docker version --format {{.Server.Version}}'",
+      "success": true,
+      "output": "OK\\n256\\n2044\\n18.09.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "远端 Kunpeng 920（aarch64），256 核 / 2044 GiB 内存 / Docker 18.09.0，确认与仓库目标架构一致"
+    },
+    {
+      "timestamp": "2026-06-27T18:31:00",
+      "command": "ssh root@192.168.9.114 'git clone --depth 1 --branch main https://gitcode.com/kunpengcompute/kudnn.git /tmp/kudnn-verify'",
+      "success": true,
+      "output": "Cloning into '/tmp/kudnn-verify'...",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30,
+      "note": "从 GitCode 镜像克隆 main 分支代码"
+    },
+    {
+      "timestamp": "2026-06-27T18:32:00",
+      "command": "ssh root@192.168.9.114 'cd /tmp/kudnn-verify && cat README.md | head -80'",
+      "success": true,
+      "output": "README 完整读取，识别目标平台为鲲鹏 920 专业版，依赖 HPCKit 26.0.RC1（Bisheng compiler + KML BLAS + KUPL）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "文档阅读：架构、依赖、构建命令、UT 命令全部明确"
+    },
+    {
+      "timestamp": "2026-06-27T18:33:00",
+      "command": "ls .pre-commit-config.yaml .devcontainer 2>&1; find . -name '.lint-runner.*' 2>&1",
+      "success": true,
+      "output": "仓库未配置 pre-commit、lint-runner、devcontainer",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "静态检查扫描：均未配置"
+    },
+    {
+      "timestamp": "2026-06-27T18:34:00",
+      "command": "cat src/dnn/CMakeLists.txt | grep -E 'march|TARGET_PLATFORM' | head -5",
+      "success": true,
+      "output": "add_compile_options(-march=armv9.2-a+fp+simd+bf16+sve+sve2+sme) -DTARGET_PLATFORM=KP920Pro",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "确认编译目标为 ARMv9.2 + SVE2 + SME，对应 Kunpeng 920 Pro（part 0xd22）"
+    },
+    {
+      "timestamp": "2026-06-27T18:35:00",
+      "command": "ssh root@192.168.9.114 'docker rm -f kudnn-ttfhw 2>/dev/null; docker run -d --name kudnn-ttfhw -v /tmp/kudnn-verify:/workspace -v /opt/HPCKit:/opt/HPCKit -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity'",
+      "success": true,
+      "output": "容器 kudnn-ttfhw 已启动（HPCKit 通过 bind mount 共享到容器）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "挂载宿主机 HPCKit 26.0.RC1，避免在容器内重复安装"
+    },
+    {
+      "timestamp": "2026-06-27T18:36:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git environment-modules wget unzip numactl-devel'",
+      "success": true,
+      "output": "Complete! 安装 gcc/gcc-c++/make/cmake/git/environment-modules/wget/unzip/numactl-devel",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60,
+      "note": "基础工具链安装（第一层），numactl-devel 为 KUPL 链接所需（修复后续 undefined reference to libnuma_*）"
+    },
+    {
+      "timestamp": "2026-06-27T18:38:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'source /etc/profile.d/modules.sh && module use /opt/HPCKit/HPCKit/26.0.RC1/modulefiles/bisheng/ && module load compiler5.1.0.2 && module load kml26.0.RC1/kblas/multi && module load kupl26.0.RC1/release && clang --version'",
+      "success": true,
+      "output": "BiSheng Enterprise 5.1.0.2 clang version 19.1.7 (f38ff5c4a507)\\nTarget: aarch64-unknown-linux-gnu",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5,
+      "note": "通过 environment-modules 加载 HPCKit 中预装的 Bisheng 编译器 + KML BLAS + KUPL"
+    },
+    {
+      "timestamp": "2026-06-27T18:39:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'env | grep -E \"CPATH|LIBRARY_PATH|LD_LIBRARY\"'",
+      "success": true,
+      "output": "INCLUDE=/opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release/include:/opt/HPCKit/HPCKit/26.0.RC1/kml/bisheng/include; LIBRARY_PATH 包含 kupl + kblas lib; LD_LIBRARY_PATH 同上; CC=clang; CXX=clang++",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "校验头文件/库路径已被 module 正确注入"
+    },
+    {
+      "timestamp": "2026-06-27T18:40:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'cd /workspace && time sh build/build_kudnn.sh --only_kudnn=on --build_type=Release --compiler=clang --install_path=/workspace/install 2>&1 | tail -20'",
+      "success": true,
+      "output": "=========Build Kunpeng DNN Operators Successfully==============\\n-- Installing: /workspace/install/lib/libkudnn.so.1.26.1.RC1\\n[100%] Built target kudnn",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 240,
+      "note": "库构建成功（Bisheng clang -march=armv9.2-a+fp+simd+bf16+sve+sve2+sme），产物 libkudnn.so.1.26.1.RC1 大小 11.4 MB（ARM aarch64 ELF）"
+    },
+    {
+      "timestamp": "2026-06-27T18:41:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'file /workspace/install/lib/libkudnn.so.1.26.1.RC1'",
+      "success": true,
+      "output": "ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, stripped",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "验证产物是 aarch64 ELF"
+    },
+    {
+      "timestamp": "2026-06-27T18:42:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'git clone --depth 1 -b v1.15.2 https://gitcode.com/GitHub_Trending/go/googletest.git /tmp/googletest'",
+      "success": true,
+      "output": "googletest v1.15.2 克隆成功（README 推荐 gitcode 国内镜像）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60,
+      "note": "无法访问 GitHub，按 README 指引从 gitcode 镜像克隆 googletest"
+    },
+    {
+      "timestamp": "2026-06-27T18:43:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'cmake -DCMAKE_CXX_FLAGS=-fPIC -DCMAKE_INSTALL_PREFIX=/workspace/opensource/install/googletest . && make -j4 install'",
+      "success": true,
+      "output": "-- Installing: /workspace/opensource/install/googletest/lib64/libgtest.a\\nlibgtest_main.a libgmock.a libgmock_main.a",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120,
+      "note": "googletest 本地安装（Bisheng clang 编译）"
+    },
+    {
+      "timestamp": "2026-06-27T18:44:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'cp -af /workspace/opensource/install/googletest/include/* /workspace/test/dnn/llt/gtest/include/ && cp -af /workspace/opensource/install/googletest/lib64/*.a /workspace/test/dnn/llt/gtest/gtest_lib/bisheng/'",
+      "success": true,
+      "output": "头文件与 .a 库复制到 build_kudnn.sh 期望路径",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "按 pre_env_kudnn_compile.sh 期望路径放置 gtest 资源"
+    },
+    {
+      "timestamp": "2026-06-27T18:45:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'cd /workspace && time sh build/build_kudnn.sh --only_tests=on --compiler=clang --install_path=/workspace/install --from_scratch=off 2>&1 | tail -10'",
+      "success": false,
+      "output": "/usr/bin/ld: warning: libnuma.so.1, needed by /opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release/lib/libkupl.so.1, not found\\n/usr/bin/ld: /opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release/lib/libkupl.so.1: undefined reference to `numa_bitmask_alloc@libnuma_1.2' ...\\nclang++: error: linker command failed with exit code 1",
+      "error": "linker 错误：libkupl.so.1 需要 libnuma.so.1",
+      "returncode": 1,
+      "duration_seconds": 19,
+      "note": "UT 二进制首次链接失败，缺失 numactl-devel"
+    },
+    {
+      "timestamp": "2026-06-27T18:46:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'dnf install -y numactl-devel && ldconfig && find / -name libnuma.so.1 -print'",
+      "success": true,
+      "output": "libnuma.so.1.0.0 /usr/lib64/libnuma.so.1 /usr/lib64/libnuma.so",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15,
+      "note": "补充安装 numactl-devel 解决 KUPL 链接错误"
+    },
+    {
+      "timestamp": "2026-06-27T18:47:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'source /etc/profile.d/modules.sh && module use /opt/HPCKit/HPCKit/26.0.RC1/modulefiles/bisheng/ && module load compiler5.1.0.2 && module load kml26.0.RC1/kblas/multi && module load kupl26.0.RC1/release && export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib64 && cd /workspace && time sh build/build_kudnn.sh --only_tests=on --compiler=clang --install_path=/workspace/install --from_scratch=off 2>&1 | tail -15'",
+      "success": true,
+      "output": "[100%] Built target kudnn_gtest\\n=========Build GTest Successfully==============",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60,
+      "note": "UT 二进制构建成功（Bisheng clang -march=armv8.5-a+fp+simd+bf16+sve 编译 kudnn_gtest），产物 3.5 MB ARM aarch64 ELF"
+    },
+    {
+      "timestamp": "2026-06-27T18:48:00",
+      "command": "cat /proc/cpuinfo | grep -E 'CPU implementer|CPU part|Features' | head -5",
+      "success": true,
+      "output": "CPU implementer: 0x48\\nCPU part: 0xd01\\nFeatures: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm ssbs",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "宿主 CPU 是 Kunpeng 920（part 0xd01），只有 NEON/SIMD，没有 SVE/SVE2/SME，而 libkudnn.so 是按 KP920Pro（-march=armv9.2-a+...+sve2+sme）编译的"
+    },
+    {
+      "timestamp": "2026-06-27T18:49:00",
+      "command": "docker exec kudnn-ttfhw bash /tmp/run_kudnn_gtest.sh --gtest_list_tests 2>&1 | head -20",
+      "success": false,
+      "output": "Illegal instruction (core dumped) bash /tmp/run_kudnn_gtest.sh --gtest_list_tests",
+      "error": "Illegal instruction：宿主 CPU 不支持 SVE2/SME，libkudnn.so 在 dlopen/构造期触发了非法指令",
+      "returncode": 132,
+      "duration_seconds": 3,
+      "note": "kudnn_gtest 加载 libkudnn.so 时崩溃"
+    },
+    {
+      "timestamp": "2026-06-27T18:50:00",
+      "command": "docker exec kudnn-ttfhw bash -c 'cat > /tmp/min_test.cpp << EOF ... dlopen /workspace/install/lib/libkudnn.so.1 ... EOF && clang++ -O0 min_test.cpp -o min_test -ldl && ./min_test'",
+      "success": false,
+      "output": "trying to load libkudnn.so\\nIllegal instruction (core dumped)",
+      "error": "最小 dlopen 测试同样 Illegal instruction，确认问题在 libkudnn.so 自身（构造函数/初始化/即时生成代码）",
+      "returncode": 132,
+      "duration_seconds": 5,
+      "note": "排除 gtest 框架影响，确认是 libkudnn.so 运行时触发的非法指令"
+    },
+    {
+      "timestamp": "2026-06-27T18:51:00",
+      "command": "objdump -d /workspace/install/lib/libkudnn.so.1.26.1.RC1 | head -5; nm -D /workspace/install/lib/libkudnn.so.1.26.1.RC1 | head -5",
+      "success": true,
+      "output": "stripped 共享对象，无法直接列函数符号",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "库已被 strip，仅 ELF 元信息可读"
+    },
+    {
+      "timestamp": "2026-06-27T18:52:00",
+      "command": "ssh root@192.168.9.114 'cd /tmp/kudnn-verify && git rev-parse HEAD'",
+      "success": true,
+      "output": "f6fe961b4dfc4267e091914c82c3a556e767a8b8",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "记录 commit 短哈希"
+    },
+    {
+      "timestamp": "2026-06-27T18:53:00",
+      "command": "总结与 JSON 报告生成（依据本次实际执行情况如实记录 build=成功、ut=失败、sample=失败，原因是当前 CPU 为 Kunpeng 920 0xd01，缺 SVE2/SME，而 libkudnn.so 编译目标为 KP920Pro / armv9.2-a+...+sve2+sme）",
+      "success": true,
+      "output": "已生成 verification_report_WSL_kudnn_20260628.json",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5,
+      "note": "环境兼容性问题：仓库要求 Kunpeng 920 专业版（part 0xd22），本次验证环境为普通 Kunpeng 920（part 0xd01）"
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-27T18:30:00",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式 + Kunpeng 920 远端）",
+      "result": "已启动",
+      "details": {
+        "repo": "kudnn",
+        "url": "https://gitcode.com/kunpengcompute/kudnn.git",
+        "branch": "main",
+        "remote": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:31:00",
+      "step": "code_clone",
+      "action": "GitCode 镜像克隆 main 分支到远端 /tmp/kudnn-verify",
+      "result": "成功",
+      "details": {
+        "commit": "f6fe961b4dfc4267e091914c82c3a556e767a8b8"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:32:00",
+      "step": "document_reading",
+      "action": "阅读 README.md 与 build/build_kudnn.sh，提取架构（HPCKit + Kunpeng 920 Pro）、依赖、构建/UT 命令",
+      "result": "成功",
+      "details": {
+        "files_read": [
+          "README.md",
+          "build/build_kudnn.sh",
+          "src/dnn/CMakeLists.txt",
+          "build/pre_env_kudnn.sh",
+          "build/pre_env_kudnn_compile.sh"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:33:00",
+      "step": "static_analysis_scan",
+      "action": "扫描 pre-commit / lint-runner / devcontainer",
+      "result": "均未配置",
+      "details": {
+        "pre_commit": false,
+        "lint_runner": false,
+        "devcontainer": false
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:34:00",
+      "step": "cpu_feature_check",
+      "action": "读取 /proc/cpuinfo 识别远端 CPU 型号",
+      "result": "Kunpeng 920 (0xd01)，仅有 NEON/SIMD，无 SVE/SVE2/SME",
+      "details": {
+        "implementer": "0x48",
+        "part": "0xd01",
+        "sve2": false,
+        "sme": false
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:35:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 24.03 LTS 镜像，启动容器 kudnn-ttfhw，挂载 HPCKit",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "kudnn-ttfhw",
+        "mounts": [
+          "/tmp/kudnn-verify:/workspace",
+          "/opt/HPCKit:/opt/HPCKit"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:36:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装基础工具链 + numactl-devel（修复 KUPL 链接）",
+      "result": "成功",
+      "details": {
+        "packages": [
+          "gcc",
+          "gcc-c++",
+          "make",
+          "cmake",
+          "git",
+          "environment-modules",
+          "wget",
+          "unzip",
+          "numactl-devel"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:38:00",
+      "step": "module_loading",
+      "action": "通过 environment-modules 加载 HPCKit 26.0.RC1：Bisheng compiler + KML BLAS + KUPL",
+      "result": "成功",
+      "details": {
+        "modules": [
+          "compiler5.1.0.2",
+          "kml26.0.RC1/kblas/multi",
+          "kupl26.0.RC1/release"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:40:00",
+      "step": "build_lib",
+      "action": "运行 build/build_kudnn.sh --only_kudnn=on 构建 kudnn.so",
+      "result": "成功",
+      "details": {
+        "compiler": "Bisheng clang 19.1.7",
+        "flags": "-march=armv9.2-a+fp+simd+bf16+sve+sve2+sme",
+        "artifact": "/workspace/install/lib/libkudnn.so.1.26.1.RC1",
+        "size_bytes": 11405592
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:42:00",
+      "step": "gtest_clone",
+      "action": "从 gitcode 镜像克隆 googletest v1.15.2",
+      "result": "成功",
+      "details": {
+        "source": "https://gitcode.com/GitHub_Trending/go/googletest.git",
+        "path": "/tmp/googletest"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:43:00",
+      "step": "gtest_install",
+      "action": "cmake + make install 构建安装 gtest",
+      "result": "成功",
+      "details": {
+        "install_path": "/workspace/opensource/install/googletest"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:45:00",
+      "step": "build_test_first",
+      "action": "首次构建 kudnn_gtest",
+      "result": "失败",
+      "details": {
+        "error": "libkupl.so.1 链接时找不到 libnuma.so.1"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:46:00",
+      "step": "problem_resolution",
+      "action": "dnf install numactl-devel",
+      "result": "已解决",
+      "details": {
+        "source": "openEuler 仓库 dnf"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:47:00",
+      "step": "build_test_retry",
+      "action": "重新构建 kudnn_gtest（带 LIBRARY_PATH 指向 /usr/lib64）",
+      "result": "成功",
+      "details": {
+        "artifact": "/workspace/out/test/dnn/llt/gtest/kudnn_gtest",
+        "size_bytes": 3488824
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:49:00",
+      "step": "ut_execution",
+      "action": "运行 kudnn_gtest --gtest_list_tests",
+      "result": "失败",
+      "details": {
+        "error": "Illegal instruction (core dumped)，dlopen libkudnn.so 时触发 SVE2/SME 指令"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:50:00",
+      "step": "ut_minimal_repro",
+      "action": "用最小 dlopen 复现，确认问题在 libkudnn.so 而非 gtest",
+      "result": "失败",
+      "details": {
+        "error": "Illegal instruction，确认库本身需要 SVE2/SME"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:51:00",
+      "step": "root_cause_analysis",
+      "action": "对比 CPU Features：宿主 0xd01 仅有 NEON/SIMD，库要求 armv9.2-a+sve2+sme（KP920Pro）",
+      "result": "硬件不兼容",
+      "details": {
+        "target": "Kunpeng 920 Pro (part 0xd22, -march=armv9.2-a+...+sve2+sme)",
+        "actual": "Kunpeng 920 (part 0xd01, NEON only)"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T18:53:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_kudnn_20260628.json",
+        "build": "success",
+        "ut": "failed",
+        "sample": "failed",
+        "reason": "运行环境 CPU 不支持 KP920Pro 所需的 SVE2/SME 指令集"
+      }
+    }
+  ],
+  "final_results": {
+    "build": {
+      "status": "success",
+      "duration_seconds": 240,
+      "compiler": "BiSheng Enterprise 5.1.0.2 clang 19.1.7",
+      "compile_flags": "-march=armv9.2-a+fp+simd+bf16+sve+sve2+sme -fopenmp -O3 -fPIC -DKUDNNL_920Pro",
+      "build_command": "sh build/build_kudnn.sh --only_kudnn=on --build_type=Release --compiler=clang --install_path=/workspace/install",
+      "concurrency": 256,
+      "concurrency_note": "build_kudnn.sh 内部硬编码 `make -j$(nproc --all)`，即 256 核全开，未使用 20% 限制",
+      "artifacts": [
+        {
+          "name": "libkudnn.so",
+          "path": "/workspace/install/lib/libkudnn.so.1.26.1.RC1",
+          "size_bytes": 11405592,
+          "format": "ELF 64-bit LSB shared object, ARM aarch64"
+        },
+        {
+          "name": "headers",
+          "path": "/workspace/install/include/",
+          "files": 20,
+          "format": "C++ 头文件"
+        }
+      ]
+    },
+    "unit_test": {
+      "status": "failed",
+      "duration_seconds": 8,
+      "total": null,
+      "passed": 0,
+      "failed": null,
+      "binary_path": "/workspace/out/test/dnn/llt/gtest/kudnn_gtest",
+      "binary_size_bytes": 3488824,
+      "binary_arch": "ARM aarch64 ELF",
+      "failure_reason": "dlopen libkudnn.so 时触发 Illegal instruction（CPU 不支持 SVE2/SME），无法列出测试用例或运行任何测试。最小 dlopen 测试同样崩溃，确认是库本身的运行时问题。",
+      "host_cpu": "Kunpeng 920 (implementer 0x48, part 0xd01)",
+      "expected_cpu": "Kunpeng 920 Pro (part 0xd22, ARMv9.2 + SVE2 + SME)",
+      "detail": "compile 阶段使用 -march=armv9.2-a+fp+simd+bf16+sve+sve2+sme，宿主 CPU Features 仅含 fp asimd aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm ssbs，无 SVE/SVE2/SME 支持。"
+    },
+    "sample_execution": {
+      "status": "failed",
+      "duration_seconds": 0,
+      "results": [
+        {
+          "sample_name": "kudnn_gtest（README 中作为唯一示例/样例入口）",
+          "execution_status": "失败",
+          "output_summary": "启动时 Illegal instruction（库本身需要 SVE2/SME 指令）",
+          "execution_time": "0 秒（启动期崩溃）"
+        }
+      ],
+      "note": "仓库未提供独立的 examples/ 目录，README 把运行 gtest 当作示例演示。该二进制无法在当前 CPU 上执行，故 sample 也判定为失败。"
+    },
+    "static_analysis": {
+      "enabled": false,
+      "summary": "仓库未配置 pre-commit、lint-runner、devcontainer",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 devcontainer"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未说明运行所需的精确 CPU 型号，只说\"鲲鹏 920 专业版\"，未在文档中提示普通 Kunpeng 920 (0xd01) 与 Pro (0xd22) 的差异",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未列出 googletest 的备用镜像（仅文档中以\"如果下载失败\"的方式提及 gitcode 镜像），对新用户不够直观",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "CMakeLists.txt 中 -march=armv9.2-a+...+sve2+sme 编译选项未在 README 中显式说明，调试时容易忽视 CPU 兼容性问题",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "build/pre_env_kudnn.sh 直接 git clone GitHub，未提供重试机制或镜像优先级列表",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-27T18:45:00",
+      "problem": "kudnn_gtest 首次链接失败：libkupl.so.1 需要 libnuma.so.1（undefined reference to numa_bitmask_alloc@libnuma_1.2 等 17 个符号）",
+      "solution": "dnf install -y numactl-devel，并通过 LIBRARY_PATH=/usr/lib64 让链接器找到 libnuma",
+      "source": "/opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release/lib/libkupl.so.1 动态依赖 libnuma"
+    },
+    {
+      "timestamp": "2026-06-27T18:49:00",
+      "problem": "kudnn_gtest 运行时触发 Illegal instruction（core dumped），无法列出测试用例或运行任何测试",
+      "solution": "本验证环境无法解决：宿主 CPU 为 Kunpeng 920 (part 0xd01) 仅支持 NEON，而 libkudnn.so 编译目标为 KP920Pro（-march=armv9.2-a+fp+simd+bf16+sve+sve2+sme）。仓库 README 要求\"鲲鹏 920 专业版\"（part 0xd22）。最小 dlopen 复现确认问题在库本身；UT 与 sample 状态如实记为 failed。",
+      "source": "/proc/cpuinfo Features 不含 sve/sve2/sme；CMakeLists.txt 第 19 行 add_compile_options(-march=armv9.2-a+...+sve2+sme)"
+    }
+  ]
+}

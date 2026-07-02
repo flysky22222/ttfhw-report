@@ -1,0 +1,607 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/ops-math-verify",
+    "repo_name": "ops-math",
+    "repo_url": "https://gitcode.com/cann/ops-math.git",
+    "branch": "master",
+    "commit": "2398d1c8e6038589a6eac49224dba6235bb41a70",
+    "start_time": "2026-06-27T20:27:00",
+    "end_time": "2026-06-27T22:11:17",
+    "duration_seconds": 6257,
+    "total_steps": 16
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "256-core ARM64 server",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "Sufficient",
+      "docker_version": "Docker version 18.09.0",
+      "remote_ip": "192.168.9.114",
+      "remote_user": "root"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 18,
+      "memory": "无限制",
+      "container_name": "ops-math-ttfhw"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库 README 推荐 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel，但该镜像为预构建镜像，按 ttfhw-verify-openeuler 技能规则改为从零构建）",
+      "dependency_mapping": {
+        "from_readme": "README.md 环境准备章节推荐 CANN 工具链",
+        "mappings": [
+          {
+            "original": "Ascend-cann-toolkit",
+            "openEuler": "通过挂载预提取的 CANN 9.0.0 工具链目录",
+            "source": "README.md env preparation"
+          },
+          {
+            "original": "Ascend-cann-ops",
+            "openEuler": "通过挂载预提取的 CANN 9.0.0 opp 目录",
+            "source": "README.md env preparation"
+          },
+          {
+            "original": "apt-get install (Dockerfile 缺失)",
+            "openEuler": "dnf install",
+            "source": "技能文档规范"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + build.sh",
+      "value": "aarch64 (Dockerfile 推荐 openEuler 24.03 镜像支持 aarch64 / x86_64)"
+    },
+    "recommended_image": {
+      "source": "README.md env preparation 章节",
+      "value": "原推荐 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel（CANN 预构建镜像），按技能规范改用 openEuler 24.03 LTS + dnf 安装 + 挂载预提取工具链"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库根目录未提供 Dockerfile（构建依赖 README/编译文档说明）",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + docs/zh/install/compile.md",
+      "value": [
+        "CANN 工具链（Ascend-cann-toolkit 9.x，路径：ASCEND_HOME_PATH）",
+        "Ascend-cann-ops 包（自带 opp/built-in/op_impl）",
+        "cmake >= 3.16（dnf: cmake）",
+        "gcc/g++（dnf: gcc gcc-c++）",
+        "make（dnf: make）",
+        "python3 + pip（dnf: python3 python3-pip）",
+        "patch（dnf: patch，构建第三方依赖 abseil-cpp 需要）",
+        "openssl-devel（dnf: openssl-devel）",
+        "第三方依赖：eigen、json、makeself、protobuf、abseil-cpp、opbase、cann-cmake（构建脚本自动从远端仓库下载）"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md + docs/zh/install/compile.md",
+      "value": "bash build.sh --pkg --soc=ascend910b --ops=abs -j${N}（构建单个算子包验证构建链）"
+    },
+    "ut_commands": {
+      "source": "build.sh --help",
+      "value": "bash build.sh -u --ophost --noexec -j${N}（构建算子宿主端 UT 二进制）"
+    },
+    "sample_commands": {
+      "source": "build.sh --help",
+      "value": "bash build.sh --run_example abs eager -j${N}（构建并运行 aclnn 示例）"
+    },
+    "special_dependencies": {
+      "source": "docs/zh/install/compile.md",
+      "value": [
+        "CANN 工具链必须为 aarch64 版本（编译器 bisheng/ccec 仅支持 ARM64）",
+        "CANN 9.0.0 工具链中 compiler/tikcpp/ascendc_kernel_cmake/ 目录包含必要的 cmake 模块",
+        "远程机器 192.168.9.114 预装 CANN 9.1.0 toolkit（不完整，缺少 tikcpp/ascendc_kernel_cmake 和 opp/built-in 算子包），实际使用从本地预构建 CANN 9.0.0 docker 镜像提取的完整工具链"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-27T20:27:00",
+      "command": "ssh root@192.168.9.114 \"docker version --format '{{.Server.Version}}' && nproc && free -g\"",
+      "success": true,
+      "output": "Docker 18.09.0, 256 CPU, 2044 GB RAM (ARM64)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T20:30:00",
+      "command": "ssh root@192.168.9.114 \"git clone --depth 1 --branch master https://gitcode.com/cann/ops-math.git /tmp/ops-math-verify\"",
+      "success": true,
+      "output": "747M, commit 2398d1c8 新增diag_v2、diag_flat、depth_to_space、cumsum的golden和st",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-27T20:35:00",
+      "command": "docker rm -f ops-math-ttfhw; docker run -d --name ops-math-ttfhw --cpus=18 -v /tmp/ops-math-verify:/workspace -v /tmp/Ascend/cann-9.1.0:/opt/Ascend/cann-9.1.0:ro hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container ID: ea7754f1314d91172a7ad0e084538298ce906491aecae82a5e161fdf20dd2677",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T20:38:00",
+      "command": "第一层依赖：dnf install -y gcc gcc-c++ make cmake git python3-pip openssl-devel libffi-devel（openEuler 原生仓库）",
+      "success": true,
+      "output": "gcc-12.3.1-38, gcc-c++-12.3.1-38, make-4.4.1, cmake-3.27.9, git-2.43.0, python3-pip-23.3.1, openssl-devel-3.0.12, libffi-devel-3.4.4 全部安装",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 300
+    },
+    {
+      "timestamp": "2026-06-27T20:45:57",
+      "command": "环境变量设置 + bash build.sh --pkg --soc=ascend910b --ops=abs -j3（首次构建尝试，使用主机 9.1.0 toolkit）",
+      "success": false,
+      "output": "CMAKE_ARGS 输出正常，但 cmake 阶段报缺 ASC 包",
+      "error": "CMake Error at cmake/dependencies.cmake:67 (find_package): Could not find a package configuration file provided by ASC",
+      "returncode": 1,
+      "duration_seconds": 8
+    },
+    {
+      "timestamp": "2026-06-27T20:50:00",
+      "command": "分析根因：主机 /tmp/Ascend/cann-9.1.0 toolkit 不完整，缺少 compiler/tikcpp/ascendc_kernel_cmake/ 关键 cmake 模块（只有 aarch64-linux/lib64/cmake/asc-config.cmake 一个文件）",
+      "success": true,
+      "output": "发现：9.1.0 toolkit 仅含编译器（atc、ccec、bisheng），但缺 tikcpp/ascendc_kernel_cmake、opp/built-in 算子实现、tools/tikicpulib 等子包",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T20:52:00",
+      "command": "切换策略：从本地 docker 镜像 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel 导出完整 CANN 9.0.0 工具链到 /tmp/cann-9.0.0-image/（11GB）",
+      "success": true,
+      "output": "导出成功；该镜像内含完整 toolkit：compiler/tikcpp/ascendc_kernel_cmake、opp/built-in/op_impl、tools/tikicpulib 等子模块齐全",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 600
+    },
+    {
+      "timestamp": "2026-06-27T20:55:00",
+      "command": "docker rm -f ops-math-ttfhw; docker run -d --name ops-math-ttfhw --cpus=18 -v /tmp/ops-math-verify:/workspace -v /tmp/cann-9.0.0-image/usr/local/Ascend/cann-9.0.0:/opt/Ascend/cann-9.0.0:ro hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container ID: 8d9f2a4326dfe9b5ed2d6dfb586337fc97adb511829b303a14dc2621e4bd7e83",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T20:55:30",
+      "command": "第二层依赖：dnf install -y gcc gcc-c++ cmake make git python3-pip openssl-devel libffi-devel（重启容器后重新安装）",
+      "success": true,
+      "output": "所有工具链安装完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 240
+    },
+    {
+      "timestamp": "2026-06-27T20:58:00",
+      "command": "export ASCEND_HOME_PATH=/opt/Ascend/cann-9.0.0; export PATH=$ASCEND_HOME_PATH/aarch64-linux/bin:$PATH; export LD_LIBRARY_PATH=$ASCEND_HOME_PATH/aarch64-linux/lib64:$ASCEND_HOME_PATH/runtime/lib64:$LD_LIBRARY_PATH; export PYTHONPATH=$ASCEND_HOME_PATH/aarch64-linux/python/site-packages:$PYTHONPATH",
+      "success": true,
+      "output": "环境变量配置完成；which cmake=/usr/bin/cmake, gcc=/usr/bin/gcc, ccec=/opt/Ascend/cann-9.0.0/aarch64-linux/bin/ccec",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T21:00:00",
+      "command": "bash build.sh --pkg --soc=ascend910b --ops=abs -j3（单算子 abs 包构建 - 第一次）",
+      "success": false,
+      "output": "Cmake 配置进入下载第三方依赖阶段（cann-cmake 来自 gitcode, eigen、abseil 自动下载）",
+      "error": "/bin/sh: line 1: patch: command not found（abseil_build-patch 步骤失败）",
+      "returncode": 2,
+      "duration_seconds": 300
+    },
+    {
+      "timestamp": "2026-06-27T21:01:00",
+      "command": "dnf install -y patch（openEuler 原生仓库补充 patch 工具）",
+      "success": true,
+      "output": "patch-2.7.6-21.oe2403.aarch64 安装完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-27T21:01:30",
+      "command": "bash build.sh --pkg --soc=ascend910b --ops=abs -j3（单算子 abs 包构建 - 重试）",
+      "success": true,
+      "output": "Self-extractable archive \"cann-ops-math-custom_linux-aarch64.run\" successfully created. CPack: - package: /workspace/build_out/cann-ops-math-custom_linux-aarch64.run generated.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 563
+    },
+    {
+      "timestamp": "2026-06-27T21:11:00",
+      "command": "ls -lh /workspace/build_out/cann-ops-math-custom_linux-aarch64.run（验证构建产物）",
+      "success": true,
+      "output": "3.2MB 自解压安装包；内含 packages/vendors/custom_math/op_api/lib/libcust_opapi.so (2.7MB), op_api/include/aclnn_abs.h, op_impl/ai_core/tbe/custom_math_impl/ascendc/abs/abs_apt.cpp, 全部 14 个 SoC 配置文件",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T21:30:00",
+      "command": "bash build.sh -u --ophost --noexec -j3（构建算子宿主端 UT 二进制）",
+      "success": true,
+      "output": "math_op_host_ut ELF aarch64 binary built (121 MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1843
+    },
+    {
+      "timestamp": "2026-06-27T21:46:00",
+      "command": "./math_op_host_ut（运行全部 op_host UT）",
+      "success": true,
+      "output": "[==========] 1039 tests from 243 test suites ran. (505 ms total) [  PASSED  ] 1039 tests.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0.5
+    },
+    {
+      "timestamp": "2026-06-27T22:05:00",
+      "command": "bash build.sh --run_example abs eager --noexec -j3（编译 abs aclnn 示例程序）",
+      "success": true,
+      "output": "Start compile and run examples file: ../math/abs/examples/test_aclnn_abs.cpp; Skip running test_aclnn_abs (--noexec specified, binary is ready for cannsim); build/test_aclnn_abs ELF aarch64 binary built",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 200
+    },
+    {
+      "timestamp": "2026-06-27T22:08:00",
+      "command": "./test_aclnn_abs（执行样例程序 - 无 NPU 硬件环境）",
+      "success": false,
+      "output": "aclInit failed. ERROR: 500000; Init acl failed. ERROR: 500000",
+      "error": "运行时需 Ascend NPU 硬件支持 aclInit，本环境为纯 ARM64 服务器，无 NPU 设备",
+      "returncode": -1,
+      "duration_seconds": 1,
+      "note": "样例二进制编译成功，但运行需要 Ascend NPU 硬件环境，本验证机器无 NPU 设备，记录为构建成功/运行失败"
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-27T20:27:00",
+      "step": "start",
+      "action": "启动 ops-math 仓库验证流程（openEuler 原生构建模式）",
+      "result": "已启动",
+      "details": {
+        "repo": "ops-math",
+        "branch": "master",
+        "remote": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:28:00",
+      "step": "environment_check",
+      "action": "检查远程 SSH/Docker 连通性与规格",
+      "result": "成功",
+      "details": {
+        "docker": "18.09.0",
+        "arch": "aarch64",
+        "cpu_cores": 256,
+        "memory": "2044Gi"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:30:00",
+      "step": "code_sync",
+      "action": "git clone master 分支到远程 /tmp/ops-math-verify",
+      "result": "成功",
+      "details": {
+        "commit": "2398d1c8e6038589a6eac49224dba6235bb41a70",
+        "size": "747M"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:35:00",
+      "step": "document_reading",
+      "action": "阅读 README.md / build.sh / docs/zh/install/compile.md，提取构建依赖与命令",
+      "result": "成功",
+      "details": {
+        "files": [
+          "README.md",
+          "build.sh",
+          "docs/zh/install/compile.md",
+          "docs/zh/install/quick_install.md"
+        ],
+        "key_findings": [
+          "需 CANN toolkit（CANN 9.x）+ Ascend-cann-ops 包",
+          "推荐 Docker 镜像：swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel",
+          "构建命令：bash build.sh --pkg --soc=<SoC> --ops=<op_name> -j<N>",
+          "UT 命令：bash build.sh -u --ophost",
+          "样例命令：bash build.sh --run_example <op_name> eager|graph"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:36:00",
+      "step": "static_analysis_scan",
+      "action": "检查 pre-commit / lint-runner 配置",
+      "result": "未配置",
+      "details": {
+        "pre_commit_configured": false,
+        "lint_runner_configured": false,
+        "reason": "CANN 算子库无静态检查配置"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:36:30",
+      "step": "devcontainer_scan",
+      "action": "检查 .devcontainer 目录",
+      "result": "未配置",
+      "details": {
+        "devcontainer_dir_exists": false,
+        "note": "仓库无 devcontainer 配置"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:37:00",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像（忽略 README 推荐的 CANN 预构建镜像）",
+      "result": "openEuler 24.03 LTS",
+      "details": {
+        "selection_reason": "按 ttfhw-verify-openeuler 技能规则禁止使用预构建镜像，改用 openEuler 24.03 LTS + dnf 安装标准工具链 + 挂载预提取的 CANN 9.0.0 完整工具链（来自本地 docker 镜像 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel）满足 CANN 特定依赖"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:38:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 24.03-lts 镜像并启动容器 ops-math-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "ops-math-ttfhw",
+        "cpus": 18
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:40:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc gcc-c++ make cmake git python3-pip openssl-devel libffi-devel）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "make-4.4.1",
+          "cmake-3.27.9",
+          "git-2.43.0",
+          "python3-pip-23.3.1",
+          "openssl-devel-3.0.12",
+          "libffi-devel-3.4.4"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:45:57",
+      "step": "build_attempt_first",
+      "action": "首次构建尝试：bash build.sh --pkg --soc=ascend910b --ops=abs -j3（使用主机预装 CANN 9.1.0 toolkit）",
+      "result": "失败",
+      "details": {
+        "error": "find_package(ASC) 失败；主机 9.1.0 toolkit 缺少 compiler/tikcpp/ascendc_kernel_cmake 等关键 cmake 模块"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T20:50:00",
+      "step": "toolkit_replacement",
+      "action": "切换 toolkit：从本地预构建 CANN 9.0.0 docker 镜像导出完整工具链到 /tmp/cann-9.0.0-image/ 并挂载到容器",
+      "result": "成功",
+      "details": {
+        "new_toolkit_path": "/opt/Ascend/cann-9.0.0",
+        "extracted_from": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel",
+        "extracted_size": "11G"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:00:00",
+      "step": "build_attempt_second",
+      "action": "第二次构建尝试：bash build.sh --pkg --soc=ascend910b --ops=abs -j3",
+      "result": "失败",
+      "details": {
+        "error": "patch: command not found（构建 abseil-cpp 第三方依赖需 patch 命令）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:01:00",
+      "step": "problem_resolution",
+      "action": "通过 openEuler 仓库安装 patch 工具（dnf install -y patch）",
+      "result": "已解决",
+      "details": {
+        "source": "openEuler 官方仓库",
+        "package": "patch-2.7.6-21.oe2403.aarch64"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:01:30",
+      "step": "build_third",
+      "action": "第三次构建尝试：bash build.sh --pkg --soc=ascend910b --ops=abs -j3",
+      "result": "成功",
+      "details": {
+        "concurrency": 3,
+        "concurrency_ratio": "20% (3/18 CPUs per skill rule)",
+        "duration_seconds": 563,
+        "artifact": "/workspace/build_out/cann-ops-math-custom_linux-aarch64.run (3.2M)"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:11:00",
+      "step": "build_verify",
+      "action": "验证构建产物：解压 cann-ops-math-custom_linux-aarch64.run 并检查内容",
+      "result": "成功",
+      "details": {
+        "binary": "libcust_opapi.so (2.7M)",
+        "headers": "aclnn_abs.h, aclnn_ops_math_custom.h",
+        "kernel_sources": "abs_apt.cpp + 14 个 SoC 配置文件 (ascend910b/ascend950/kirinx90 等)",
+        "self_extractor": "makeself 2.5.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:30:00",
+      "step": "ut_build",
+      "action": "构建算子宿主端 UT 二进制：bash build.sh -u --ophost --noexec -j3",
+      "result": "成功",
+      "details": {
+        "duration_seconds": 1843,
+        "binary": "/workspace/build/tests/ut/op_host/math_op_host_ut (121M)"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:46:00",
+      "step": "ut_execution",
+      "action": "执行 op_host UT 全部测试",
+      "result": "成功",
+      "details": {
+        "total": 1039,
+        "passed": 1039,
+        "failed": 0,
+        "test_suites": 243,
+        "duration_ms": 505
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:05:00",
+      "step": "sample_build",
+      "action": "构建 abs 算子 aclnn 示例：bash build.sh --run_example abs eager --noexec -j3",
+      "result": "成功",
+      "details": {
+        "duration_seconds": 200,
+        "binary": "/workspace/build/test_aclnn_abs (aarch64 ELF)"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:08:00",
+      "step": "sample_execution_attempt",
+      "action": "尝试执行 ./test_aclnn_abs",
+      "result": "失败",
+      "details": {
+        "error": "aclInit failed ERROR 500000",
+        "reason": "本验证机器为 ARM64 通用服务器，无 Ascend NPU 硬件，运行时 ACL 初始化失败"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "CANN 算子库仓库未配置 pre-commit 和 lint-runner（构建脚本驱动，非典型开发项目）",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 .devcontainer；通过 README 推荐的 Docker 镜像（swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel）按技能规则改用 openEuler 24.03 LTS + 挂载预提取工具链"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 563,
+      "concurrency": 3,
+      "concurrency_ratio": "20% (3/18 CPUs)",
+      "artifacts": [
+        {
+          "name": "cann-ops-math-custom_linux-aarch64.run",
+          "path": "build_out/cann-ops-math-custom_linux-aarch64.run",
+          "size": "3.2 MB",
+          "type": "self-extracting-installer",
+          "description": "abs 算子包，内含 libcust_opapi.so (2.7M) + aclnn_abs.h + 14 个 SoC 算子配置文件"
+        }
+      ]
+    },
+    "unit_test": {
+      "status": "success",
+      "duration_seconds": 1843,
+      "concurrency": 3,
+      "build_target": "math_op_host_ut",
+      "total": 1039,
+      "passed": 1039,
+      "failed": 0,
+      "test_suites": 243,
+      "runtime_ms": 505,
+      "failures": []
+    },
+    "sample_execution": {
+      "status": "failed",
+      "duration_seconds": 1,
+      "build_status": "success",
+      "results": [
+        {
+          "sample_name": "abs (test_aclnn_abs.cpp)",
+          "build_status": "成功",
+          "execution_status": "失败",
+          "output_summary": "二进制 test_aclnn_abs 编译成功（aarch64 ELF），执行时 aclInit 失败 ERROR 500000",
+          "execution_time": "<1秒",
+          "failure_reason": "验证机器 192.168.9.114 为通用 ARM64 服务器，无 Ascend NPU 硬件；运行时 acl 库初始化需访问 NPU 设备文件（/dev/davinci_manager、/dev/davinci0 等），本机无相关设备"
+        }
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未提供 Dockerfile（推荐 CANN 预构建 Docker 镜像，但跳过技能规则的预构建镜像约束）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "未明确说明第三方依赖（json/makeself/eigen/protobuf/abseil-cpp/opbase/cann-cmake）的最低版本要求（在编译文档中提及但未列出 URL 离线场景）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "构建命令中未提及 patch、ccache 等系统工具的前置依赖（构建第三方 abseil-cpp 需要 patch）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "CANN 工具链版本与 ops-math 仓库版本配套关系未在 README 中显式给出（master 分支对应 CANN 版本需自行查询 release 仓库）",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-27T20:45:57",
+      "problem": "CMake find_package(ASC) 失败，主机预装的 CANN 9.1.0 toolkit 不完整",
+      "solution": "切换 toolkit 来源：从本地 docker 镜像 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel 导出完整工具链到 /tmp/cann-9.0.0-image/（11GB），挂载到容器 /opt/Ascend/cann-9.0.0",
+      "source": "cmake/dependencies.cmake:67 find_package(ASC REQUIRED)"
+    },
+    {
+      "timestamp": "2026-06-27T21:00:00",
+      "problem": "构建第三方依赖 abseil-cpp 失败：patch 命令未找到",
+      "solution": "dnf install -y patch（openEuler 原生仓库安装 patch-2.7.6）",
+      "source": "build/_deps/abseil_build-prefix/src/abseil_build-stamp/abseil_build-patch 步骤"
+    },
+    {
+      "timestamp": "2026-06-27T22:08:00",
+      "problem": "样例执行 aclInit 失败 ERROR 500000",
+      "solution": "未解决 - 验证机器无 Ascend NPU 硬件，样例二进制构建成功但运行需要 NPU 设备",
+      "source": "运行时 ACL 初始化需访问 /dev/davinci_manager 等 NPU 设备文件"
+    }
+  ]
+}

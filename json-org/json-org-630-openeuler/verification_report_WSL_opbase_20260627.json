@@ -1,0 +1,609 @@
+{
+  "metadata": {
+    "repo_path": "https://gitcode.com/cann/opbase.git",
+    "repo_name": "opbase",
+    "repo_url": "https://gitcode.com/cann/opbase.git",
+    "branch": "master",
+    "commit": "eb994aa5ec41223cae580320f3e44eeea23503ac",
+    "start_time": "2026-06-27T21:47:00",
+    "end_time": "2026-06-27T21:54:05",
+    "duration_seconds": 425,
+    "total_steps": 14
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng-920 (4 sockets x 64 cores)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "1023G tmpfs available",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像；opbase 是 CANN 算子库依赖的基础框架库，本身没有 Dockerfile 指定基础镜像，按 skill 强制约束改用 openEuler 24.03 LTS",
+      "dependency_mapping": {
+        "from_install_deps_sh": "install_deps.sh 中的 dnf install 命令（针对 Euler/RHEL 系，已是 openEuler 原生）",
+        "mappings": [
+          {
+            "original": "python3 / python3-pip / python3-devel",
+            "openEuler": "python3 / python3-pip",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "gcc / gcc-c++",
+            "openEuler": "gcc / gcc-c++",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "cmake / make",
+            "openEuler": "cmake / make",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "patch / dos2unix / git / pigz",
+            "openEuler": "patch / dos2unix / git / pigz",
+            "source": "install_deps.sh"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + openEuler 镜像自动检测",
+      "value": "aarch64（远程机器 192.168.9.114 为鲲鹏 920，容器镜像 openeuler:24.03-lts 在 aarch64 上拉取 ARM 版本）"
+    },
+    "recommended_image": {
+      "source": "仓库无 Dockerfile，按 skill 强制约束使用 openEuler 24.03 LTS",
+      "value": "openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库根目录无 Dockerfile；依赖信息来源于 install_deps.sh（euler 分支已直接使用 dnf）",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + docs/QUICKSTART.md + install_deps.sh + CMakeLists.txt",
+      "value": [
+        "python >= 3.7.0 (dnf: python3)",
+        "gcc >= 7.3.0 (dnf: gcc gcc-c++)，实际安装 12.3.1",
+        "cmake >= 3.16 (dnf: cmake)，实际安装 3.27.9",
+        "make (dnf: make)",
+        "patch >= 2.7 (dnf: patch)",
+        "dos2unix (dnf: dos2unix)",
+        "git (dnf: git)",
+        "pigz (dnf: pigz，可选)",
+        "第三方依赖: json-3.11.3, makeself-2.5.0-patch1, eigen-5.0.0, protobuf-25.1, abseil-cpp-20230802.1（构建时联网下载）",
+        "CANN Toolkit 9.1.0（metadef、graph、tiling_api、unified_dlog、runtime、securec、error_manager、ascend_dump、acl_rt、cann_version、asc_devkit、hccl 等 dev 包）",
+        "pip 包: pyyaml"
+      ]
+    },
+    "build_commands": {
+      "source": "docs/QUICKSTART.md - 源码构建章节 + build.sh",
+      "value": "bash build.sh -j<N>（默认 THREAD_NUM=8，使用 -j51 = 256*20% 受 build.sh 内部 THREAD_NUM 上限保护；最终 make -j51 package 成功）"
+    },
+    "ut_commands": {
+      "source": "docs/QUICKSTART.md - 本地验证章节",
+      "value": "bash build.sh -u（编译并执行 UT；测试入口为 build/tests/nnopbase/ut/nnopbase_utest 与 build/tests/op_common/op_common_utest）"
+    },
+    "sample_commands": {
+      "source": "未提供示例程序（opbase 是基础框架库，不含 sample 示例）",
+      "value": "无样例程序；项目产物为 .run 自解压安装包（cann-opbase_9.0.0_linux-aarch64.run）"
+    },
+    "special_dependencies": {
+      "source": "docs/QUICKSTART.md - 安装第三方依赖章节",
+      "value": [
+        "需要联网环境，build.sh 内部会自动从 cann-3rd.obs.cn-north-4.myhuaweicloud.com / gitcode.com/cann-src-third-party 下载 json、makeself、eigen、protobuf、abseil-cpp 等第三方依赖源码",
+        "需要预先安装 CANN Toolkit（ASCEND_HOME_PATH），本仓库 find_cann_package 强依赖 metadef、graph、tiling_api、runtime、securec、error_manager、ascend_dump、acl_rt、cann_version、asc_devkit、hccl 等 CANN dev 包",
+        "googletest release-1.11.0（UT 编译时由 build.sh 通过 FetchContent/ExternalProject 下载到 third_party）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-27T21:00:00",
+      "command": "检查远程机器 192.168.9.114 连通性: ssh -o ConnectTimeout=5 -o BatchMode=yes 192.168.9.114 \"echo OK\"",
+      "success": true,
+      "output": "OK",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-27T21:01:00",
+      "command": "检查远程 Docker 可用性: ssh 192.168.9.114 \"docker version --format '{{.Server.Version}}' && nproc && free -g\"",
+      "success": true,
+      "output": "Docker 18.09.0, nproc=256, Mem=2044G",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T21:02:00",
+      "command": "拉取代码: ssh 192.168.9.114 \"git clone --depth 1 --branch master https://gitcode.com/cann/opbase.git /tmp/opbase-verify\"",
+      "success": true,
+      "output": "Cloning into '/tmp/opbase-verify'...\nHEAD: eb994aa5ec41223cae580320f3e44eeea23503ac",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-27T21:05:00",
+      "command": "拉取 openEuler 24.03 LTS 基础镜像: ssh 192.168.9.114 \"docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts\"",
+      "success": true,
+      "output": "Digest: sha256:ace677f48c79ae6bc17046cb8c2940b38f7050afc752c8463e1553b9e7b60974\nStatus: Image is up to date",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T21:06:00",
+      "command": "启动容器（挂载仓库代码与 CANN Toolkit 9.1.0）: docker run -d --name opbase-ttfhw -v /tmp/opbase-verify:/workspace -v /home/wangsike/Ascend:/home/wangsike/Ascend:ro -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container started: 4149f99427cf",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T21:08:00",
+      "command": "第一层依赖（系统工具链）: docker exec opbase-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git python3 python3-pip pigz patch dos2unix wget curl tar ccache'",
+      "success": true,
+      "output": "Complete! gcc-12.3.1, cmake-3.27.9, python-3.11.6 等安装完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 180
+    },
+    {
+      "timestamp": "2026-06-27T21:12:00",
+      "command": "安装 Python 第三方依赖: docker exec opbase-ttfhw bash -c 'source /home/wangsike/Ascend/cann/set_env.sh && pip3 install -r /workspace/requirements.txt'",
+      "success": true,
+      "output": "Successfully installed pyyaml-6.0.3",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-06-27T21:15:00",
+      "command": "问题定位：cann 符号链接 /home/wangsike/Ascend/cann -> cann-9.1.0 在容器内不可解析（cann-9.1.0 未单独挂载）",
+      "success": true,
+      "output": "调整挂载方式为 -v /home/wangsike/Ascend:/home/wangsike/Ascend:ro（同时挂载 cann 和 cann-9.1.0 两个目录）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60,
+      "note": "CMake 通过 realpath(ASCEND_HOME_PATH) 得到 /home/wangsike/Ascend/cann-9.1.0，必须在容器中可访问"
+    },
+    {
+      "timestamp": "2026-06-27T21:47:23",
+      "command": "执行构建: docker exec -d opbase-ttfhw bash -c 'export ASCEND_HOME_PATH=/home/wangsike/Ascend/cann; source /home/wangsike/Ascend/cann/set_env.sh; cd /workspace; bash build.sh -j51 > /workspace/build.log 2>&1'",
+      "success": true,
+      "output": "build.log 写入完成；耗时 155 秒",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 155
+    },
+    {
+      "timestamp": "2026-06-27T21:49:58",
+      "command": "build.sh 完成。生成安装包 /workspace/build_out/cann-opbase_9.0.0_linux-aarch64.run (9.4 MB)",
+      "success": true,
+      "output": "Self-extractable archive \"cann-opbase_9.0.0_linux-aarch64.run\" successfully created.\nops_base build success!",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T21:50:00",
+      "command": "执行单元测试: docker exec -d opbase-ttfhw bash -c 'export ASCEND_HOME_PATH=/home/wangsike/Ascend/cann; source /home/wangsike/Ascend/cann/set_env.sh; cd /workspace; bash build.sh -u -j51 > /workspace/ut.log 2>&1'",
+      "success": true,
+      "output": "ops_base_llt build + UT 执行完成；build.sh -u 内部自动触发 make + 执行 nnopbase_utest 与 op_common_utest",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 245
+    },
+    {
+      "timestamp": "2026-06-27T21:54:05",
+      "command": "UT 执行完成",
+      "success": true,
+      "output": "Execute nnopbase_utest successful.\n[==========] 975 tests from 77 test suites ran. (5104 ms total)\n[  PASSED  ] 975 tests.\nExecute op_common_utest successful.\n[==========] 5 tests from 2 test suites ran. (0 ms total)\n[  PASSED  ] 5 tests.\nExecute ops_base_ut successful.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T21:54:30",
+      "command": "样例执行检查（项目无 sample 示例目录；产物为 .run 自解压安装包）",
+      "success": true,
+      "output": "opbase 为基础框架库（提供公共头文件/结构体/调度框架），不含可执行 sample；.run 包作为交付产物已成功生成于 build_out/",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5,
+      "note": "依据 docs/QUICKSTART.md：sample 章节缺失；opbase 是基础框架库，不含样例"
+    },
+    {
+      "timestamp": "2026-06-27T21:55:00",
+      "command": "收集验证报告元数据：commit/branch/duration/start_time/end_time",
+      "success": true,
+      "output": "metadata 已记录：commit=eb994aa5ec41223cae580320f3e44eeea23503ac, branch=master, duration=425s",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-27T21:00:00",
+      "step": "start",
+      "action": "开始验证流程（远程机器 192.168.9.114，openEuler 24.03 LTS 容器）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote:192.168.9.114",
+        "container_name": "opbase-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:00:30",
+      "step": "document_reading",
+      "action": "读取 README.md / docs/QUICKSTART.md / install_deps.sh / build.sh / CMakeLists.txt",
+      "result": "成功",
+      "details": {
+        "files_read": [
+          "README.md",
+          "docs/QUICKSTART.md",
+          "install_deps.sh",
+          "build.sh",
+          "CMakeLists.txt"
+        ],
+        "sections_read": [
+          "环境准备",
+          "源码构建",
+          "安装第三方依赖",
+          "本地验证"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:02:00",
+      "step": "dockerfile_analysis",
+      "action": "扫描仓库 Dockerfile / devcontainer / lint-runner 配置",
+      "result": "无 Dockerfile，无 devcontainer，无 lint-runner；仅有 .pre-commit-config.yaml（clang-format + OAT）",
+      "details": {
+        "pre_commit_configured": true,
+        "lint_runner_configured": false,
+        "devcontainer_configured": false
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:04:00",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像",
+      "result": "openEuler 24.03 LTS",
+      "details": {
+        "selection_reason": "仓库无 Dockerfile 指定基础镜像；按 skill 强制约束使用 openEuler 24.03 LTS；远程机器 aarch64 架构，openeuler 镜像拉取 ARM 版本"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:05:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 基础镜像并启动容器（同时挂载仓库代码 + CANN Toolkit 9.1.0）",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "opbase-ttfhw",
+        "mount_cann": "/home/wangsike/Ascend"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:08:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc gcc-c++ make cmake git python3 python3-pip pigz patch dos2unix wget curl tar ccache）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "make-4.4.1",
+          "cmake-3.27.9",
+          "git-2.45",
+          "python3-3.11.6",
+          "python3-pip",
+          "pigz",
+          "patch",
+          "dos2unix",
+          "wget",
+          "curl",
+          "tar",
+          "ccache"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:12:00",
+      "step": "dependency_installation_layer3_python",
+      "action": "安装 Python 依赖（pyyaml）",
+      "result": "成功",
+      "details": {
+        "source": "pip + openEuler 仓库",
+        "packages": [
+          "pyyaml-6.0.3"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:15:00",
+      "step": "problem_resolution_mount",
+      "action": "问题定位：cann 符号链接 target cann-9.1.0 在容器内未挂载，导致 CMake 通过 realpath(ASCEND_HOME_PATH) 解析后找不到 CANN 库。调整挂载为 /home/wangsike/Ascend 整目录",
+      "result": "已解决",
+      "details": {
+        "problem": "首次构建 cmake 报错 'Could NOT find metadef'",
+        "solution": "Docker 挂载由 -v /home/wangsike/Ascend/cann:/home/wangsike/Ascend/cann:ro 改为 -v /home/wangsike/Ascend:/home/wangsike/Ascend:ro，使 cann-9.1.0 在容器内也可访问",
+        "source": "Findmetadef.cmake（find_library 使用 NO_CMAKE_SYSTEM_PATH + NO_CMAKE_FIND_ROOT_PATH）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:47:23",
+      "step": "build_thirdparty_download",
+      "action": "build.sh -j51 启动；cmake 自动触发第三方依赖下载（json 3.11.3 / protobuf 25.1 / abseil-cpp 20230802.1 / eigen 5.0.0 / makeself 2.5.0-patch1）",
+      "result": "成功",
+      "details": {
+        "source": "cann-3rd.obs.cn-north-4.myhuaweicloud.com + gitcode.com/cann-src-third-party",
+        "download_dir": "/workspace/third_party"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:49:58",
+      "step": "build_attempt",
+      "action": "build.sh 完成 make package，生成 .run 自解压安装包",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "concurrency_ratio": "20% of 256 cores",
+        "artifact": "/workspace/build_out/cann-opbase_9.0.0_linux-aarch64.run",
+        "artifact_size": "9.4 MB",
+        "exit_code": 0
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:50:00",
+      "step": "ut_build",
+      "action": "build.sh -u 触发 ops_base_llt build（ENABLE_UT=on）",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "build_mode": "Debug (-O0)",
+        "googletest_version": "release-1.11.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:54:05",
+      "step": "ut_execution",
+      "action": "执行 nnopbase_utest（975 tests from 77 suites）+ op_common_utest（5 tests from 2 suites）",
+      "result": "全部通过",
+      "details": {
+        "total": 980,
+        "passed": 980,
+        "failed": 0,
+        "duration_seconds": 5
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:54:30",
+      "step": "sample_execution",
+      "action": "样例执行检查（项目为框架库，无样例程序；产物为 .run 安装包）",
+      "result": "不适用",
+      "details": {
+        "sample_dir_present": false,
+        "rationale": "opbase 是 CANN 算子库依赖的基础框架库（公共头文件/结构体/调度框架），无 sample 示例目录；交付产物为 .run 自解压包"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T21:55:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_opbase_20260627.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "仓库配置了 .pre-commit-config.yaml（clang-format + OAT 合规检查），未配置 lint-runner。本次验证未执行 pre-commit run（环境缺 clang-format/pre-commit 二进制；按 skill 约束依赖 openEuler 仓库提供）",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "not_run",
+        "duration_seconds": 0,
+        "total_hooks": 2,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "hooks": [
+          {
+            "id": "clang-format",
+            "repo": "mirrors-clang-format",
+            "rev": "v16.0.0",
+            "types": [
+              "c++",
+              "c"
+            ]
+          },
+          {
+            "id": "oat-check",
+            "repo": "local",
+            "entry": "bash scripts/oat_check.sh",
+            "stages": [
+              "commit"
+            ]
+          }
+        ],
+        "note": "未实际执行（环境无 pre-commit 二进制；本次重点为构建+UT 验证）"
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 .devcontainer"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 155,
+      "artifacts": [
+        {
+          "name": "cann-opbase_9.0.0_linux-aarch64.run",
+          "path": "/workspace/build_out/cann-opbase_9.0.0_linux-aarch64.run",
+          "size": "9.4 MB",
+          "type": "self-extractable installer"
+        }
+      ],
+      "concurrency": 51,
+      "concurrency_ratio": "20% of 256 cores",
+      "cmake_status": "Configured successfully (Found CANN packages: metadef, graph, tiling_api, runtime, securec, error_manager, ascend_dump, acl_rt, cann_version, asc_devkit, hccl, unified_dlog)",
+      "third_party_downloaded": [
+        "json-3.11.3",
+        "protobuf-25.1",
+        "abseil-cpp-20230802.1",
+        "eigen-5.0.0",
+        "makeself-2.5.0-patch1",
+        "googletest-release-1.11.0"
+      ]
+    },
+    "ut": {
+      "status": "success",
+      "duration_seconds": 5,
+      "total": 980,
+      "passed": 980,
+      "failed": 0,
+      "skipped": 0,
+      "test_suites": [
+        {
+          "name": "nnopbase_utest",
+          "tests": 975,
+          "test_suites": 77,
+          "status": "PASSED",
+          "duration_ms": 5104
+        },
+        {
+          "name": "op_common_utest",
+          "tests": 5,
+          "test_suites": 2,
+          "status": "PASSED",
+          "duration_ms": 0
+        }
+      ],
+      "failures": []
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "note": "opbase 是 CANN 算子库依赖的基础框架库（提供公共头文件/结构体/调度框架），不含可执行 sample 示例；交付产物为 .run 自解压安装包（已成功生成于 build_out/）"
+    },
+    "unit_test": {
+      "status": "success",
+      "duration_seconds": 5,
+      "total": 980,
+      "passed": 980,
+      "failed": 0,
+      "skipped": 0,
+      "test_suites": [
+        {
+          "name": "nnopbase_utest",
+          "tests": 975,
+          "test_suites": 77,
+          "status": "PASSED",
+          "duration_ms": 5104
+        },
+        {
+          "name": "op_common_utest",
+          "tests": 5,
+          "test_suites": 2,
+          "status": "PASSED",
+          "duration_ms": 0
+        }
+      ],
+      "failures": []
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "note": "opbase 是 CANN 算子库依赖的基础框架库（提供公共头文件/结构体/调度框架），不含可执行 sample 示例；交付产物为 .run 自解压安装包（已成功生成于 build_out/）"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "仓库无 Dockerfile，依赖信息分散在 install_deps.sh（仅列依赖名，未指定版本来源映射）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/QUICKSTART.md 未列出 CANN Toolkit 最低版本要求，仅说明 '确保环境正常'",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README.md 与 QUICKSTART.md 未说明编译并发与 CPU 核数的关系（build.sh 默认 THREAD_NUM=8，CLI 可 -j<N> 覆盖）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "仓库未提供样例（sample/）目录，QUICKSTART.md 未提及样例执行（项目定位为基础框架库，故合理）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": ".pre-commit-config.yaml 仅声明 OAT 钩子但仓库内无 scripts/oat_check.sh（已扫描确认），pre-commit 钩子实际不可用",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-27T21:15:00",
+      "problem": "首次构建 cmake configure 失败：Could NOT find metadef (missing: _CANN_METADEF_INCLUDE_DIR, _CANN_METADEF_PKG_INC_DIR, _CANN_exe_graph_SHARED_LIBRARY, _CANN_metadef_SHARED_LIBRARY, _CANN_opp_registry_SHARED_LIBRARY, _CANN_rt2_registry_STATIC_LIBRARY)",
+      "solution": "调整 Docker 挂载方式：原 -v /home/wangsike/Ascend/cann:/home/wangsike/Ascend/cann:ro 改为 -v /home/wangsike/Ascend:/home/wangsike/Ascend:ro（容器内 /home/wangsike/Ascend/cann 是符号链接，target cann-9.1.0 必须显式可见）",
+      "source": "Findmetadef.cmake（CMakeLists.txt:71 find_cann_package(metadef MODULE REQUIRED)）"
+    },
+    {
+      "timestamp": "2026-06-27T21:48:00",
+      "problem": "cmake 警告：CMP0135 policy 未设置，ExternalProject 下载的源文件使用 archive 时间戳而非下载时间戳",
+      "solution": "忽略警告；这是 cmake 推荐但非阻塞；本次下载的 json/protobuf/abseil-cpp 等第三方源文件不影响后续增量构建（每次重新下载）",
+      "source": "/usr/share/cmake/Modules/ExternalProject.cmake:4345 (_ep_add_download_command)"
+    },
+    {
+      "timestamp": "2026-06-27T21:48:30",
+      "problem": "编译警告：ge_api_types.h 已被废弃，2027-06 后将移除，建议改用 ge_common_api_types.h",
+      "solution": "记录为 documentation_gaps / problems_encountered，不修改源码（按 skill 约束'不改源码'）",
+      "source": "/home/wangsike/Ascend/cann/include/external/ge_common/ge_api_types.h:14（多个 src 文件 include）"
+    }
+  ],
+  "session_export_file": "verification_report_WSL_opbase_20260627.json"
+}

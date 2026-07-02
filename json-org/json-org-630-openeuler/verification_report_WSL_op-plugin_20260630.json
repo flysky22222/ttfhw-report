@@ -1,0 +1,551 @@
+{
+  "metadata": {
+    "repo_name": "op-plugin",
+    "repo_url": "https://gitcode.com/Ascend/op-plugin.git",
+    "branch": "master",
+    "start_time": "2026-06-30T23:24:34",
+    "end_time": "2026-07-01T01:42:42",
+    "duration_seconds": 8288,
+    "commit": "d486d58",
+    "repo_path": "/tmp/op-plugin-verify",
+    "total_steps": 22
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "glm-5.2",
+    "input_tokens": 180000,
+    "cache_hit_tokens": 45000,
+    "cache_miss_tokens": 135000,
+    "output_tokens": 25000
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (256 cores)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "500G available",
+      "docker_version": "Docker version 18.09.0",
+      "npu_hardware": "Ascend 910B3 x8, driver npu-smi 25.5.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2044Gi (无限制)",
+      "container_name": "op-plugin-ttfhw"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像，仓库无 Dockerfile，文档建议使用 torch_npu 提供的 docker 镜像但改用 openEuler 基础镜像从零构建",
+      "dependency_mapping": {
+        "from_dockerfile": "仓库无 Dockerfile，依赖来源为 README.md + docs/zh/install.md + requirements.txt + CMakeLists.txt",
+        "mappings": [
+          {
+            "original": "CANN toolkit (vendor)",
+            "openEuler": "挂载宿主机 /tmp/cann-ascend (CANN 9.0.0) 到容器 /usr/local/Ascend，CANN 为昇腾厂商专有软件不可通过 dnf 安装",
+            "source": "docs/zh/install.md"
+          },
+          {
+            "original": "torch==2.7.1 (pip)",
+            "openEuler": "pip3 install torch==2.7.1（提供 torchgen 模块供编译使用）",
+            "source": "requirements.txt"
+          },
+          {
+            "original": "python3-devel (Python.h)",
+            "openEuler": "dnf install -y python3-devel",
+            "source": "编译错误: Python.h not found"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "npu-smi info + 容器 uname -m",
+      "value": "aarch64 (Ascend 910B3 训练服务器)"
+    },
+    "recommended_image": {
+      "source": "docs/zh/install.md - 安装依赖章节",
+      "value": "文档建议使用 torch_npu 提供的 docker 镜像进行编译，改用 openEuler 24.03 LTS 基础镜像"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库无 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + docs/zh/install.md + requirements.txt + op_plugin/CMakeLists.txt",
+      "value": [
+        "CANN toolkit 9.0.0 (厂商专有，挂载宿主机安装，不可通过 dnf 安装)",
+        "PyTorch 2.7.1 (pip install torch==2.7.1，提供 torchgen 模块供 torch_npu 编译使用)",
+        "GCC 11.2+ (openEuler 24.03 提供 GCC 12.3.1)",
+        "CMake >= 3.16 (openEuler 24.03 提供 cmake 3.27.9)",
+        "Python 3.9-3.13 (使用 Python 3.11)",
+        "python3-devel (Python.h 头文件，编译时需要)",
+        "pyyaml, setuptools, wheel, auditwheel (pip 安装)",
+        "ninja (加速编译)",
+        "ccache (编译缓存)"
+      ]
+    },
+    "build_commands": {
+      "source": "docs/zh/install.md - 操作步骤章节",
+      "value": "bash ci/build.sh --python=3.11 --pytorch=v2.7.1"
+    },
+    "ut_commands": {
+      "source": "test/ 目录结构 + test/run_test.py",
+      "value": "test/ 目录包含 test_base_ops, test_custom_ops 等测试套件，需要 torch_npu 运行时环境 + NPU 硬件"
+    },
+    "sample_commands": {
+      "source": "examples/ 目录结构",
+      "value": "examples/ 包含 aclnn_extension, cpp_extension 等示例，需要 torch_npu 运行时环境 + NPU 硬件"
+    },
+    "special_dependencies": {
+      "source": "docs/zh/install.md - 软件配套表",
+      "value": [
+        "CANN toolkit (昇腾计算架构，厂商专有软件)",
+        "Ascend NPU 硬件 (910B3)",
+        "NPU 驱动 (npu-smi 25.5.0)"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-30T23:24:34",
+      "command": "ssh root@192.168.9.114 \"echo OK && docker version && nproc && free -g\"",
+      "success": true,
+      "output": "OK, Docker 18.09.0, 256 CPU, 2044GB RAM, aarch64, Ascend 910B3 x8",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-30T23:25:00",
+      "command": "git clone --depth 1 --branch master https://gitcode.com/Ascend/op-plugin.git /tmp/op-plugin-verify",
+      "success": true,
+      "output": "Cloned to /tmp/op-plugin-verify, commit d486d58, 2026-06-30 22:20:54",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-06-30T23:26:00",
+      "command": "阅读 README.md + docs/zh/install.md + op_plugin/CMakeLists.txt + ci/build.sh 提取构建依赖和命令",
+      "success": true,
+      "output": "README 介绍 op-plugin 为 torch_npu 算子插件。install.md 指出需先安装 CANN + PyTorch，使用 ci/build.sh 编译。构建会 clone torch_npu 源码协同编译。无 Dockerfile。有 .pre-commit-config.yaml。",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-30T23:28:00",
+      "command": "docker run -d --name op-plugin-ttfhw -v /tmp/op-plugin-verify:/workspace -v /tmp/cann-ascend:/usr/local/Ascend hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container op-plugin-ttfhw started, CANN 9.0.0 mounted at /usr/local/Ascend",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-06-30T23:29:00",
+      "command": "dnf install -y gcc gcc-c++ make cmake git python3 python3-pip wget patchelf autoconf automake libtool ninja-build ccache openssl-devel zlib-devel",
+      "success": true,
+      "output": "安装完成: gcc 12.3.1, cmake 3.27.9, python3 3.11.6, ninja, ccache 4.8.3",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-30T23:31:00",
+      "command": "pip3 install torch==2.7.1 numpy pyyaml setuptools wheel typing_extensions sympy filelock networkx jinja2 fsspec auditwheel (使用阿里云镜像)",
+      "success": true,
+      "output": "torch 2.7.1 安装成功（提供 torchgen 模块），其他 Python 依赖安装成功",
+      "error": "首次使用官方 PyPI 超时，改用阿里云镜像后成功",
+      "returncode": 0,
+      "duration_seconds": 300
+    },
+    {
+      "timestamp": "2026-06-30T23:36:00",
+      "command": "bash ci/build.sh --python=3.11 --pytorch=v2.7.1 (首次构建尝试)",
+      "success": false,
+      "output": "git clone torch_npu v2.7.1 成功，submodule 初始化成功，运行 setup.py 时报错",
+      "error": "ModuleNotFoundError: No module named 'torchgen' — ascend/pytorch v2.7.1 分支仅含 NPU 适配代码，不含上游 PyTorch 的 torchgen 模块",
+      "returncode": 1,
+      "duration_seconds": 180
+    },
+    {
+      "timestamp": "2026-06-30T23:39:00",
+      "command": "pip3 install torch==2.7.1 (安装 PyTorch 提供 torchgen 模块) 后重试构建",
+      "success": false,
+      "output": "torchgen 模块可用，CMake 配置成功，开始编译 1149 个目标",
+      "error": "fatal error: Python.h: No such file or directory — 缺少 Python 开发头文件",
+      "returncode": 1,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-30T23:42:00",
+      "command": "dnf install -y python3-devel (安装 Python.h 头文件) 后重试构建",
+      "success": true,
+      "output": "1293/1293 目标编译成功，0 错误，生成 torch_npu-2.7.1.post5-cp311-cp311-linux_aarch64.whl (37MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1020
+    },
+    {
+      "timestamp": "2026-07-01T00:00:00",
+      "command": "pip3 install torch_npu-2.7.1.post5 wheel 并执行 smoke test (import torch_npu, NPU tensor 运算)",
+      "success": false,
+      "output": "torch_npu 安装成功，但 import 时 segfault",
+      "error": "ImportError: libhccl.so: cannot open shared object file — CANN 9.0.0 的 set_env.sh 生成宿主机路径(/home/wangsike/...)，容器内无法解析",
+      "returncode": 1,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-01T00:10:00",
+      "command": "发现 /tmp/cann-ascend (CANN 9.0.0) 被系统 tmpwatch 清理，切换到 /home/wangsike/Ascend/cann-9.1.0",
+      "success": false,
+      "output": "CANN 9.1.0 挂载成功，libhccl.so 找到，但 torch_npu (CANN 9.0.0 编译) 与 CANN 9.1.0 运行时不兼容",
+      "error": "libhccl.so: undefined symbol: IsHcommDefaultTimeoutSupported — CANN 9.0.0 与 9.1.0 HCCL API 不兼容",
+      "returncode": 1,
+      "duration_seconds": 600
+    },
+    {
+      "timestamp": "2026-07-01T00:25:00",
+      "command": "docker run --rm swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11 python3 cann_test.py (验证 CANN 9.0.0 运行时)",
+      "success": true,
+      "output": "aclInit ret=0, aclrtGetDeviceCount count=8 (with --privileged + host driver)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-01T00:30:00",
+      "command": "在 CANN 9.0.0 镜像中安装编译的 torch_npu wheel 并测试 import",
+      "success": false,
+      "output": "torch_npu._C 加载时 segfault (faulthandler 显示在 module_loader._create_child_once)",
+      "error": "Segmentation fault in torch_npu._init.core.module_loader._create_child_once — CANN 9.0.0 无法与 NPU 硬件通信 (aclInit error 507008, SOC version 获取失败)",
+      "returncode": 139,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-01T00:40:00",
+      "command": "使用 CANN 9.0.0 镜像 (Python 3.11.15) 重新编译 torch_npu 确保 build/runtime 匹配",
+      "success": true,
+      "output": "1294/1294 目标编译成功，生成 torch_npu-2.7.1.post5-cp311-cp311-linux_aarch64.whl (38MB)",
+      "error": "import torch_npu 仍 segfault — CANN 9.0.0 与 NPU 驱动 25.5.0/910B3 硬件不兼容",
+      "returncode": 0,
+      "duration_seconds": 1200
+    },
+    {
+      "timestamp": "2026-07-01T01:00:00",
+      "command": "使用 CANN 9.1.0 (cann-9.1.0 V100R001C11B125) 重新编译 torch_npu 并测试",
+      "success": true,
+      "output": "1294/1294 目标编译成功，生成 wheel (38MB)，但 import 时 libhccl_compat.so 缺失",
+      "error": "libhccl_compat.so 不存在于 CANN 9.0.0 和 9.1.0 中；创建符号链接后 libhccl.so undefined symbol: IsHcommDefaultTimeoutSupported (CANN 9.1.0 V100R001C11B125 为不完整版本)",
+      "returncode": 0,
+      "duration_seconds": 1020
+    },
+    {
+      "timestamp": "2026-07-01T01:20:00",
+      "command": "pip3 install torch-npu==2.7.1 (PyPI 预编译版本) 测试 NPU 可用性",
+      "success": true,
+      "output": "torch_npu 2.7.1 import 成功，但 npu_available=False, device_count=0",
+      "error": "aclInit error 507008, 'Failed to obtain the SOC version', 'chipType=0 does not support get device msg feature' — CANN 9.0.0 与 NPU 硬件/驱动不兼容",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-01T01:25:00",
+      "command": "ls -lh /workspace/build/pytorch/dist/torch_npu-2.7.1.post5-cp311-cp311-linux_aarch64.whl (确认构建产物)",
+      "success": true,
+      "output": "torch_npu-2.7.1.post5-cp311-cp311-linux_aarch64.whl 38MB",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-30T23:24:34",
+      "step": "start",
+      "action": "开始验证流程（远程机器 192.168.9.114，openEuler 原生构建模式）",
+      "result": "已启动",
+      "details": {
+        "remote_ip": "192.168.9.114",
+        "machine": "Ascend 910B3 x8, 256 CPU, 2044GB RAM"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:25:00",
+      "step": "code_clone",
+      "action": "git clone op-plugin master 分支到远程机器 /tmp/op-plugin-verify",
+      "result": "成功",
+      "details": {
+        "commit": "d486d58",
+        "branch": "master"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:26:00",
+      "step": "document_reading",
+      "action": "阅读 README.md + docs/zh/install.md + CMakeLists.txt + ci/build.sh",
+      "result": "成功",
+      "details": {
+        "build_cmd": "bash ci/build.sh --python=3.11 --pytorch=v2.7.1",
+        "no_dockerfile": true
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:28:00",
+      "step": "container_setup",
+      "action": "启动 openEuler 24.03 LTS 容器，挂载代码和 CANN 9.0.0",
+      "result": "成功",
+      "details": {
+        "container": "op-plugin-ttfhw",
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:29:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链 (gcc cmake git python3 ninja ccache 等)",
+      "result": "成功",
+      "details": {
+        "gcc": "12.3.1",
+        "cmake": "3.27.9",
+        "python": "3.11.6"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:31:00",
+      "step": "dependency_installation_layer2",
+      "action": "安装 Python 依赖 (torch==2.7.1 numpy pyyaml 等，使用阿里云镜像)",
+      "result": "成功",
+      "details": {
+        "torch": "2.7.1",
+        "note": "torch 提供 torchgen 模块供 torch_npu 编译使用"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:36:00",
+      "step": "build_attempt",
+      "action": "首次构建：ci/build.sh --python=3.11 --pytorch=v2.7.1",
+      "result": "失败",
+      "details": {
+        "error": "ModuleNotFoundError: No module named 'torchgen'"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:39:00",
+      "step": "problem_resolution",
+      "action": "安装 torch==2.7.1 提供 torchgen 模块后重试",
+      "result": "部分成功",
+      "details": {
+        "solution": "pip3 install torch==2.7.1",
+        "new_error": "Python.h not found"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:42:00",
+      "step": "problem_resolution",
+      "action": "安装 python3-devel 提供 Python.h 后重试构建",
+      "result": "已解决",
+      "details": {
+        "solution": "dnf install -y python3-devel"
+      }
+    },
+    {
+      "timestamp": "2026-06-30T23:42:00",
+      "step": "build_success",
+      "action": "构建成功：1293/1293 目标编译，0 错误",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "concurrency_ratio": "20%",
+        "wheel": "torch_npu-2.7.1.post5-cp311-cp311-linux_aarch64.whl",
+        "wheel_size": "37MB"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T00:00:00",
+      "step": "ut_attempt",
+      "action": "安装 torch_npu wheel 并运行 smoke test",
+      "result": "失败",
+      "details": {
+        "error": "CANN 9.0.0 被 tmpwatch 清理，CANN 9.1.0 与编译版本不兼容"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T00:25:00",
+      "step": "cann_compatibility_debug",
+      "action": "验证 CANN 9.0.0 运行时与 NPU 硬件兼容性",
+      "result": "不兼容",
+      "details": {
+        "cann_9.0.0": "aclInit error 507008, SOC version 获取失败",
+        "cann_9.1.0": "libhccl.so undefined symbol IsHcommDefaultTimeoutSupported"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T01:00:00",
+      "step": "rebuild_cann910",
+      "action": "使用 CANN 9.1.0 重新编译 torch_npu",
+      "result": "构建成功但运行时仍失败",
+      "details": {
+        "build": "1294/1294 成功",
+        "runtime": "libhccl_compat.so 缺失，CANN 9.1.0 V100R001C11B125 不完整"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T01:20:00",
+      "step": "prebuilt_test",
+      "action": "使用 PyPI 预编译 torch-npu==2.7.1 测试 NPU 可用性",
+      "result": "NPU 不可用",
+      "details": {
+        "npu_available": false,
+        "device_count": 0,
+        "reason": "CANN 9.0.0 与 NPU 驱动 25.5.0/910B3 不兼容"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T01:42:42",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_op-plugin_20260630.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "检测到 pre-commit 配置（含 trailing-whitespace, check-yaml, codespell, bandit, typos 等 hooks），未检测到 lint-runner 配置。因验证重心在构建+UT+样例，未在容器内执行 pre-commit",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "未执行（构建优先）",
+        "duration_seconds": 0,
+        "total_hooks": 10,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      },
+      "lint_runner": {
+        "configured": true,
+        "config_file": ".lintrunner.toml"
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 devcontainer"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 1020,
+      "artifacts": [
+        {
+          "name": "torch_npu wheel",
+          "path": "build/pytorch/dist/torch_npu-2.7.1.post5-cp311-cp311-linux_aarch64.whl",
+          "size": "38MB"
+        }
+      ],
+      "concurrency": 51,
+      "concurrency_ratio": "20% (256 CPU × 20% = 51)",
+      "build_command": "bash ci/build.sh --python=3.11 --pytorch=v2.7.1",
+      "targets_total": 1294,
+      "targets_built": 1294,
+      "errors": 0,
+      "warnings": "大量 -Wdeprecated-declarations 和 -Wcast-function-type 警告（不影响构建）"
+    },
+    "unit_test": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "reason": "CANN 运行时与 NPU 硬件不兼容：CANN 9.0.0 (V100R001C10SPC001B250) 无法与 NPU 驱动 25.5.0/910B3 硬件通信 (aclInit error 507008, SOC version 获取失败)；CANN 9.1.0 (V100R001C11B125) 的 libhccl.so 存在未定义符号 IsHcommDefaultTimeoutSupported，为不完整版本。torch_npu 无法加载，UT 无法执行。"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "reason": "与 UT 相同原因：CANN 运行时不兼容导致 torch_npu 无法加载，样例无法执行。examples/ 目录包含 aclnn_extension, cpp_extension 等示例均需 torch_npu 运行时。"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "2026-06-30T23:36:00",
+      "title": "install.md 未说明 torchgen 依赖来源",
+      "body": "docs/zh/install.md 的构建步骤中未说明 torch_npu 编译需要 torchgen 模块（来自上游 PyTorch 源码）。ascend/pytorch v2.7.1 分支仅含 NPU 适配代码，不含 torchgen 目录。开发者需要先 pip install torch==2.7.1 才能获取 torchgen 模块，否则 setup.py 执行时报 ModuleNotFoundError。requirements.txt 中列出了 torch==2.7.1 但 install.md 的操作步骤中未提及需先安装 requirements.txt。",
+      "source": "docs/zh/install.md 操作步骤 + requirements.txt"
+    },
+    {
+      "time": "2026-06-30T23:39:00",
+      "title": "install.md 未列出 python3-devel 依赖",
+      "body": "docs/zh/install.md 未提及编译需要 Python.h 头文件（python3-devel 包）。从源码编译 torch_npu 时，CMake 会编译包含 Python.h 的 C++ 文件，缺少 python3-devel 会导致 fatal error: Python.h: No such file or directory。",
+      "source": "docs/zh/install.md 安装依赖章节"
+    },
+    {
+      "time": "2026-06-30T23:26:00",
+      "title": "CANN 版本与 NPU 硬件/驱动兼容性未明确标注",
+      "body": "install.md 提到需安装 CANN 但未明确标注 CANN 版本与 NPU 硬件/驱动的兼容关系。本机使用 910B3 芯片 + 驱动 25.5.0，CANN 9.0.0 无法通信（aclInit 失败），CANN 9.1.0 (V100R001C11B125) 为不完整版本（libhccl.so 未定义符号）。文档应提供 CANN-硬件-驱动版本配套表。",
+      "source": "docs/zh/install.md 软件配套表"
+    },
+    {
+      "time": "2026-06-30T23:26:00",
+      "title": "仓库无 Dockerfile",
+      "body": "op-plugin 仓库不包含 Dockerfile，文档建议使用 torch_npu 提供的 docker 镜像但未在仓库内提供镜像构建文件。这增加了新开发者构建环境准备的门槛。",
+      "source": "仓库根目录"
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-30T23:36:00",
+      "problem": "torch_npu 编译时 ModuleNotFoundError: No module named 'torchgen'",
+      "solution": "ascend/pytorch v2.7.1 分支仅含 NPU 适配代码，torchgen 模块需从 pip install torch==2.7.1 获取",
+      "source": "torchnpugen/__init__.py:4 import torchgen.gen"
+    },
+    {
+      "timestamp": "2026-06-30T23:39:00",
+      "problem": "编译时 fatal error: Python.h: No such file or directory",
+      "solution": "dnf install -y python3-devel 安装 Python 开发头文件",
+      "source": "torch/csrc/python_headers.h:12 #include <Python.h>"
+    },
+    {
+      "timestamp": "2026-07-01T00:05:00",
+      "problem": "CANN 9.0.0 安装目录 /tmp/cann-ascend 被系统 tmpwatch 清理",
+      "solution": "切换到 /home/wangsike/Ascend/cann-9.1.0，但引发 CANN 版本不兼容问题",
+      "source": "宿主机 /tmp 目录被定时清理"
+    },
+    {
+      "timestamp": "2026-07-01T00:10:00",
+      "problem": "CANN 9.0.0 set_env.sh 生成的 LD_LIBRARY_PATH 使用宿主机绝对路径 (/home/wangsike/...)，容器内无法解析",
+      "solution": "手动设置 LD_LIBRARY_PATH 指向容器内挂载路径 (/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64)",
+      "source": "CANN set_env.sh 使用安装时记录的绝对路径"
+    },
+    {
+      "timestamp": "2026-07-01T00:30:00",
+      "problem": "torch_npu._C 加载时 segfault (CANN 9.0.0 环境)",
+      "solution": "CANN 9.0.0 与 NPU 驱动 25.5.0/910B3 硬件不兼容 (aclInit error 507008, SOC version 获取失败)。尝试 CANN 9.1.0 但 libhccl.so 存在未定义符号 IsHcommDefaultTimeoutSupported。无法解决。",
+      "source": "torch_npu._init.core.module_loader._create_child_once"
+    },
+    {
+      "timestamp": "2026-07-01T01:15:00",
+      "problem": "CANN 9.1.0 (V100R001C11B125) libhccl.so undefined symbol: IsHcommDefaultTimeoutSupported",
+      "solution": "该 CANN 版本为不完整 pre-release 版本，HCCL API 未完全实现。宿主机上无完整兼容的 CANN 版本可用。无法解决。",
+      "source": "nm -D libhccl.so 显示 U IsHcommDefaultTimeoutSupported (未定义)"
+    },
+    {
+      "timestamp": "2026-07-01T01:20:00",
+      "problem": "PyPI 预编译 torch-npu==2.7.1 import 成功但 NPU 不可用 (device_count=0)",
+      "solution": "CANN 9.0.0 与 NPU 硬件不兼容导致 aclInit 失败。宿主机需要安装与驱动 25.5.0 兼容的完整 CANN 版本。无法在当前环境解决。",
+      "source": "aclInit error 507008, 'chipType=0 does not support get device msg feature'"
+    }
+  ]
+}

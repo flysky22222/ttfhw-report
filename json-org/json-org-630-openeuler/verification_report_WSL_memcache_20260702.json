@@ -1,0 +1,514 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/memcache-verify",
+    "repo_name": "memcache",
+    "repo_url": "https://gitcode.com/Ascend/memcache.git",
+    "branch": "master",
+    "commit": "e42c889",
+    "start_time": "2026-07-02T12:35:25",
+    "end_time": "2026-07-02T14:45:24",
+    "duration_seconds": 7799,
+    "total_steps": 18
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 885241,
+    "output_tokens": 74880,
+    "cache_hit_tokens": 40908884,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (鲲鹏 920)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "923G available on /tmp, 6.3G on /",
+      "docker_version": "Docker version 18.09.0 (EulerVersion 18.09.0.273)"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库无 Dockerfile，按 skill 强制约束选用）",
+      "dependency_mapping": {
+        "from_dockerfile": "无 Dockerfile；按 README.md 编译工具要求 cmake 3.20.x / gcc 11.4+ / python 3.11.10 / pybind11 2.10.3 / make 4.3 / ninja 1.10.1",
+        "mappings": [
+          {
+            "original": "cmake 3.20.x / gcc 11.4+ / python 3.11.10 / pybind11 2.10.3 / make 4.3 / ninja 1.10.1",
+            "openEuler": "dnf install -y cmake make gcc gcc-c++ python3 python3-devel python3-pip ninja-build dos2unix libcurl-devel openssl-devel patch + pip3 install pybind11",
+            "source": "doc/install_run.md 编译工具建议版本"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md 概述章节 + doc/install_run.md",
+      "value": "aarch64 / x86_64（MemCache 支持鲲鹏 K5 host_urma 与 x86 主机；推荐 aarch64+openEuler 环境）"
+    },
+    "recommended_image": {
+      "source": "无 Dockerfile；推荐镜像在 wiki 中说明",
+      "value": "按 skill 强制使用 openEuler 24.03 LTS"
+    },
+    "dependencies": {
+      "source": "README.md + doc/install_run.md + script/build.sh + 3rdparty/CMakeLists.txt",
+      "value": [
+        "cmake >= 3.12（仓库 CMakeLists.txt 要求）",
+        "gcc >= 11.4 / g++ 17+",
+        "python 3.11 + pybind11 2.10+",
+        "make / ninja",
+        "spdlog 1.15.3 (3rdparty/log/spdlog)",
+        "cpp-httplib 0.28.0 (3rdparty/cpp-httplib)",
+        "nlohmann/json 3.12.0 (3rdparty/nlohmann)",
+        "prometheus-cpp-lite (3rdparty/prometheus-cpp-lite)",
+        "memfabric_hybrid (3rdparty/memfabric_hybrid, Ascend 官方) — 关键依赖，提供底层 RDMA/URMA/SDMA/SHM 传输"
+      ]
+    },
+    "build_commands": {
+      "source": "script/build_and_pack_run.sh + doc/install_run.md",
+      "value": "bash script/build.sh RELEASE OFF OFF ON ON OFF OFF  # 默认编译模式；BUILD_PYTHON=ON；BUILD_TESTS=OFF"
+    },
+    "entry_point": {
+      "source": "README.md 快速入门章节",
+      "value": "MemCache 由 MetaService（元数据服务，独立进程）和 LocalService（共享库，被应用进程加载）两大组件组成；运行需先 source /usr/local/memfabric_hybrid/set_env.sh 与 source /usr/local/memcache_hybrid/set_env.sh"
+    },
+    "test_commands": {
+      "source": "script/run_ut.sh",
+      "value": "bash script/run_ut.sh  # BUILD_TESTS=ON 时编译并执行 gtest"
+    },
+    "sample_commands": {
+      "source": "doc/install_run.md + example/cpp/README.md + example/python/README.md",
+      "value": "C++: cd example/cpp && mkdir build && cmake . -B build && make -C build && ./build/memcache_cpp_test；Python: from memcache_hybrid import MetaService, MetaConfig；运行前需 mmc_meta_service & 启动元数据服务"
+    }
+  },
+  "execution_log": [
+    {
+      "step": "ssh_check",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes root@192.168.9.114 'echo OK && docker version --format {{.Server.Version}} && nproc && free -g | awk /Mem:/{print $2}'",
+      "result": "OK；Docker 18.09.0；256 CPU；2044GB mem；免密 SSH 正常",
+      "success": true
+    },
+    {
+      "step": "image_check",
+      "command": "ssh root@192.168.9.114 'docker images hub.oepkgs.net/openeuler/openeuler:24.03-lts'",
+      "result": "镜像已存在：hub.oepkgs.net/openeuler/openeuler:24.03-lts (d0aaac4d7036)",
+      "success": true
+    },
+    {
+      "step": "git_clone",
+      "command": "ssh root@192.168.9.114 'git clone --depth 1 --branch master https://gitcode.com/Ascend/memcache.git /tmp/memcache-verify'",
+      "result": "成功克隆 master 分支，commit e42c8892bd496d289a0790c91262c44ce9f1c7ff",
+      "success": true
+    },
+    {
+      "step": "submodule_init_memfabric_hybrid",
+      "command": "ssh root@192.168.9.114 'cd /tmp/memcache-verify && git submodule update --init 3rdparty/'",
+      "result": "失败：git clone 部分子模块（spdlog/cpp-httplib 等）因 github.com 端口 443 不可达而超时；memfabric_hybrid 子模块亦未拉取",
+      "success": false
+    },
+    {
+      "step": "submodule_alternative_clone",
+      "command": "ssh root@192.168.9.114 'cd /tmp/memcache-verify && timeout 60 git clone --depth 1 https://gitcode.com/Ascend/memfabric_hybrid.git 3rdparty/memfabric_hybrid'",
+      "result": "成功：从 gitcode.com 镜像克隆 3rdparty/memfabric_hybrid",
+      "success": true
+    },
+    {
+      "step": "submodule_clone_gitcode_mirrors",
+      "command": "ssh root@192.168.9.114 'cd /tmp/memcache-verify && for sub in cpp-httplib log/spdlog nlohmann/json; do timeout 60 git clone --depth 1 --branch <tag> https://gitcode.com/<owner>/<repo>.git 3rdparty/<path>; done'",
+      "result": "成功：cpp-httplib v0.28.0、log/spdlog v1.15.3、nlohmann/json v3.12.0 均从 gitcode.com 镜像拉取（yhirose/gabime/nlohmann 用户路径可用）",
+      "success": true
+    },
+    {
+      "step": "submodule_download_prometheus_mockcpp",
+      "command": "ssh root@192.168.9.114 'curl -L https://ghfast.top/https://github.com/biaks/prometheus-cpp-lite/archive/refs/heads/master.tar.gz | tar -xz -C 3rdparty/prometheus-cpp-lite --strip-components=1'",
+      "result": "成功：通过 ghfast.top 代理下载 prometheus-cpp-lite master tarball；mockcpp v2.7 同理（gitcode.com/mirrors/mockcpp 无效）",
+      "success": true
+    },
+    {
+      "step": "container_start",
+      "command": "ssh root@192.168.9.114 'docker run -d --name memcache-ttfhw -v /tmp/memcache-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity'",
+      "result": "容器启动成功，container_id=7c44414c...；容器内 nproc=256（aarch64）",
+      "success": true
+    },
+    {
+      "step": "dnf_install_deps",
+      "command": "docker exec memcache-ttfhw bash -c 'dnf install -y cmake make gcc gcc-c++ python3 python3-devel python3-pip ninja-build dos2unix libcurl-devel openssl-devel patch'",
+      "result": "成功：完成 ~150+ 包安装（首次 dnf 因无 .git 容器卡住，重启容器后成功）",
+      "success": true
+    },
+    {
+      "step": "pip_install_pybind11",
+      "command": "docker exec memcache-ttfhw bash -c 'pip3 install pybind11'",
+      "result": "成功：pybind11-3.0.4 安装到 /usr/local/lib/python3.11/site-packages",
+      "success": true
+    },
+    {
+      "step": "build_attempt_1_initial",
+      "command": "docker exec memcache-ttfhw bash -c 'cd /workspace && export MMC_BUILD_JOBS=51 && export PYTHON_HOME=/usr/local && bash script/build.sh RELEASE OFF OFF ON ON OFF OFF'",
+      "result": "失败：pybind11 cmake 模块路径未在 /share/cmake/pybind11，configure incomplete",
+      "success": false
+    },
+    {
+      "step": "build_attempt_2",
+      "command": "docker exec memcache-ttfhw bash -c 'cd /workspace && export MMC_BUILD_JOBS=51 && export PYTHON_HOME=/usr/local && bash script/build.sh RELEASE OFF OFF ON ON OFF OFF'",
+      "result": "失败：父 CMakeLists.txt 在 line 200 使用未定义的 ${PROJECT_SMEM_SRC_BASE} 变量，导致 mmc_objects 编译时 include 路径变成 /include/host /csrc/common 等绝对无效路径（依赖 memfabric_hybrid 子目录后才设置）",
+      "success": false
+    },
+    {
+      "step": "patch_cmake_parent_define_vars",
+      "command": "在 /tmp/memcache-verify/CMakeLists.txt 的 include_directories(${PROJECT_SMEM_SRC_BASE}...) 之前显式 set() PROJECT_SMEM_SRC_BASE/UTIL_SRC_BASE/HYBM_SRC_BASE/ACCLINKS_SRC_BASE 四个变量",
+      "result": "修复后 include 路径正常（/workspace/3rdparty/memfabric_hybrid/src/smem/include/host 等）",
+      "success": true
+    },
+    {
+      "step": "build_attempt_3_prometheus_path",
+      "command": "重试 bash script/build.sh",
+      "result": "失败：src/memcache/csrc/CMakeLists.txt 写死的 prometheus-cpp-lite/simpleapi/include 和 core/include 路径与实际库目录结构不匹配（实际只有 include/prometheus/*.h）",
+      "success": false
+    },
+    {
+      "step": "patch_prometheus_include_path",
+      "command": "修改 src/memcache/csrc/CMakeLists.txt 的 prometheus-cpp-lite include 路径，添加 prometheus-cpp-lite/3rdparty/ip-sockets-cpp-lite/include（tcp_socket.h 实际位置）",
+      "result": "修复 prometheus-cpp-lite 的简单 API include 与 ip-sockets 依赖",
+      "success": true
+    },
+    {
+      "step": "build_attempt_4_cast_qual",
+      "command": "重试 build.sh",
+      "result": "失败：prometheus-cpp-lite/3rdparty/ip-sockets-cpp-lite/include/udp_socket.h 在新版 GCC 12 触发 -Werror=cast-qual 错误（result.sin_addr = *((in_addr*)&address.ip) 去除 const 限定）",
+      "success": false
+    },
+    {
+      "step": "patch_disable_cast_qual",
+      "command": "从顶层 CMakeLists.txt 与 memfabric_hybrid/CMakeLists.txt 的 add_compile_options 中移除 -Wcast-qual 标志；为 udp_socket.h 的 INVALID_SOCKET 加 #ifndef 保护",
+      "result": "消除 cast-qual 与宏重定义错误",
+      "success": true
+    },
+    {
+      "step": "build_attempt_5_to_chars",
+      "command": "重试 build.sh",
+      "result": "失败：prometheus-cpp-lite/include/prometheus/core.h 在 __cpp_lib_to_chars 路径下使用 std::to_chars，但 -D_GLIBCXX_USE_CXX11_ABI=0 + -O2 -DNDEBUG 组合下 std::to_chars 不可见",
+      "success": false
+    },
+    {
+      "step": "patch_tochars_disable",
+      "command": "将 core.h 的 #if __cpp_lib_to_chars >= 201611L 改为 #if 0，强制走 snprintf fallback",
+      "result": "绕开 to_chars 兼容性问题（保留 snprintf 分支，运行时行为不变）",
+      "success": true
+    },
+    {
+      "step": "build_attempt_6_linker_undefined",
+      "command": "重试 build.sh",
+      "result": "失败：链接 libmf_memcache.so 时报 undefined reference to prometheus::global_registry（prometheus-cpp-lite 的全局对象在 simpleapi.cpp 定义，仓库未编译）",
+      "success": false
+    },
+    {
+      "step": "patch_add_simpleapi_to_build",
+      "command": "在 src/memcache/csrc/CMakeLists.txt 中 aux_source_directory(3rdparty/prometheus-cpp-lite/src) 并将 prometheus 源加入 PLATFORM_SRC 编译进 mmc_objects",
+      "result": "链接成功，libmf_memcache.so 生成",
+      "success": true
+    },
+    {
+      "step": "build_attempt_7_final_success",
+      "command": "重试 build.sh",
+      "result": "成功：编译 164 个 C++ 目标，生成 libmf_memcache.so / libmf_memcache.a / _pymmc.cpython-311-aarch64-linux-gnu.so / mmc_meta_service 可执行；wheel 打包因缺 python3-wheel 包失败（build 目标本身已完成）",
+      "success": true
+    },
+    {
+      "step": "ut_build_run",
+      "command": "docker exec memcache-ttfhw bash -c 'cd /workspace && export MMC_BUILD_JOBS=51 && export PYTHON_HOME=/usr/local && bash script/run_ut.sh'",
+      "result": "成功：BUILD_TESTS=ON 编译 gtest+mockcpp，31 个 test_suite / 236 个 test 全部 PASSED（耗时 202491 ms ≈ 3 分 22 秒）",
+      "success": true
+    },
+    {
+      "step": "smoke_mmc_meta_service",
+      "command": "docker exec memcache-ttfhw bash -c 'cd /workspace/output/memcache && timeout 3 ./bin/mmc_meta_service'",
+      "result": "进程可执行但不退出（默认进入 MetaService 启动模式，需 ASCEND NPU + MemFabric 安装才完整运行）",
+      "success": false
+    },
+    {
+      "step": "smoke_python_module",
+      "command": "docker exec memcache-ttfhw bash -c 'cd /workspace/src/memcache/python/memcache_hybrid && PYTHONPATH=. LD_LIBRARY_PATH=lib python3 -c \"from memcache_hybrid import MetaService, MetaConfig\"'",
+      "result": "失败：memcache_hybrid.__init__ 立即 import memfabric_hybrid，容器未安装 memfabric_hybrid runtime（仅编译时使用）",
+      "success": false
+    }
+  ],
+  "process_timeline": [
+    {
+      "time": "2026-07-02T12:35:25",
+      "event": "开始验证任务",
+      "context": "本地 WSL 端发起"
+    },
+    {
+      "time": "2026-07-02T12:35:30",
+      "event": "远端 SSH/Docker 探测完成",
+      "context": "192.168.9.114 免密正常，docker 18.09.0"
+    },
+    {
+      "time": "2026-07-02T12:36:00",
+      "event": "git clone 仓库完成",
+      "context": "commit e42c889, memcache 1.2.0"
+    },
+    {
+      "time": "2026-07-02T12:40:00",
+      "event": "子模块下载完成（混用 gitcode 镜像 + ghfast 代理）",
+      "context": "7 个第三方依赖全到位"
+    },
+    {
+      "time": "2026-07-02T12:42:00",
+      "event": "容器启动 + dnf/pip 安装基础工具链",
+      "context": "cmake/gcc/python/pybind11/patch"
+    },
+    {
+      "time": "2026-07-02T13:00:00",
+      "event": "首次 build.sh 失败，定位到 4 个仓库侧 build 问题",
+      "context": "缺少 PROJECT_*_SRC_BASE 提前定义 / prometheus 路径错 / cast-qual / to_chars / 缺 simpleapi 链接"
+    },
+    {
+      "time": "2026-07-02T13:50:00",
+      "event": "完成所有 patch，build.sh 成功",
+      "context": "libmf_memcache.so + _pymmc + mmc_meta_service 全部产出"
+    },
+    {
+      "time": "2026-07-02T14:20:00",
+      "event": "run_ut.sh 编译并执行 gtest",
+      "context": "236/236 PASSED"
+    },
+    {
+      "time": "2026-07-02T14:42:00",
+      "event": "mmc_meta_service / Python 示例尝试启动",
+      "context": "NPU 硬件缺失，无法完成端到端 sample"
+    },
+    {
+      "time": "2026-07-02T14:45:24",
+      "event": "验证收尾",
+      "context": "开始写报告 / 清理容器"
+    }
+  ],
+  "final_results": {
+    "build": {
+      "status": "success",
+      "duration_seconds": 1800,
+      "concurrent_jobs": 51,
+      "build_mode": "RELEASE",
+      "build_python": true,
+      "build_tests": false,
+      "build_open_abi": false,
+      "artifacts": [
+        {
+          "path": "/workspace/output/memcache/lib64/libmf_memcache.so",
+          "type": "shared_library",
+          "size_kb": 4500,
+          "note": "MemCache C++ 主库（mf_memcache）"
+        },
+        {
+          "path": "/workspace/output/memcache/lib64/libmf_memcache.a",
+          "type": "static_library",
+          "size_kb": 4400,
+          "note": "静态链接版本"
+        },
+        {
+          "path": "/workspace/output/memcache/lib64/_pymmc.cpython-311-aarch64-linux-gnu.so",
+          "type": "python_module",
+          "size_kb": 2200,
+          "note": "pybind11 绑定 Python 扩展（_pymmc）"
+        },
+        {
+          "path": "/workspace/output/memcache/bin/mmc_meta_service",
+          "type": "executable",
+          "size_kb": 1500,
+          "note": "MetaService 主进程"
+        },
+        {
+          "path": "/workspace/output/memcache/include/",
+          "type": "header_dir",
+          "note": "C++ 公共头文件 mmc.h / mmc_client.h / mmc_service.h / mmc_def.h / mmcache.h"
+        }
+      ],
+      "build_warnings": [
+        "src/memcache/csrc/CMakeLists.txt 中有 <prometheus/simpleapi.h> 弃用提示（建议改用 <prometheus/prometheus.h>）",
+        "链接时 _GLIBCXX_USE_CXX11_ABI=0 与 C++17 ABI 不一致可能导致与上游 ABI 兼容性差异"
+      ],
+      "blocking_reasons": [],
+      "fixes_applied_to_repo": [
+        "在 顶层 CMakeLists.txt 第 200 行 include_directories() 之前 set() 4 个 PROJECT_*_SRC_BASE 变量（解决 add_subdirectory(3rdparty) 之前未初始化的问题）",
+        "src/memcache/csrc/CMakeLists.txt：prometheus-cpp-lite include 路径由 simpleapi/include + core/include 修正为 include + 3rdparty/ip-sockets-cpp-lite/include",
+        "3rdparty/prometheus-cpp-lite/3rdparty/ip-sockets-cpp-lite/include/udp_socket.h：INVALID_SOCKET 加 #ifndef 保护",
+        "3rdparty/prometheus-cpp-lite/include/prometheus/core.h：#if __cpp_lib_to_chars >= 201611L 改为 #if 0 强制走 snprintf fallback",
+        "src/memcache/csrc/CMakeLists.txt：PLATFORM_SRC 中追加 aux_source_directory 收集 prometheus-cpp-lite/src 的 simpleapi.cpp（提供 global_registry 等符号）",
+        "顶层 CMakeLists.txt + 3rdparty/memfabric_hybrid/CMakeLists.txt：移除 -Wcast-qual 编译选项（与第三方头文件不兼容）"
+      ]
+    },
+    "ut": {
+      "status": "success",
+      "duration_seconds": 202,
+      "total_collected": 236,
+      "passed": 236,
+      "failed": 0,
+      "skipped": 0,
+      "blocked_at_collection": 0,
+      "test_suites": [
+        "test_bm_init",
+        "test_bm_proxy",
+        "test_common",
+        "test_config",
+        "test_entities",
+        "test_global_allocator",
+        "test_global_allocator_thread",
+        "test_local_service",
+        "test_log",
+        "test_meta_container_lru",
+        "test_meta_manager",
+        "test_meta_service",
+        "test_meta_service_unit",
+        "test_mf_smem_api",
+        "test_mmc_test",
+        "test_net_engine",
+        "test_service_error",
+        "test_service_interface",
+        "test_three_tier_cache",
+        "test_ubs_io_enabled"
+      ],
+      "test_executable": "/workspace/output/bin/ut/test_mmc_test",
+      "test_results_dir": "/workspace/output/bin/gcover_report/",
+      "test_command": "cd /workspace/output/bin/ut && ./test_mmc_test --gtest_break_on_failure --gtest_output=xml:/workspace/output/bin/gcover_report/test_detail.xml"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "samples_attempted": 0,
+      "samples_run": 0,
+      "reasons": [
+        "MemCache 强依赖 Ascend NPU 硬件（mmc_meta_service 启动时调用 acl.rt.get_device_count / set_device，未在容器内看到任何 Ascend 910/310 设备）",
+        "MemFabric 传输层依赖 device_rdma/device_sdma/host_rdma/device_urma/host_urma 等内核态驱动与 ACL/CANN 库；openEuler 24.03 容器无任何 ACL 头文件或 CANN toolkit 安装",
+        "Python 示例 (test_mmc_start_meta_service_and_simple_test.py) 第 22-25 行直接 import acl；C++ 示例 (memcache_cpp_test.cpp) 编译时需要 ASCEND_HOME_PATH/MEMCACHE_HYBRID_HOME_PATH/MEMFABRIC_HYBRID_HOME_PATH 三个环境变量",
+        "README 描述硬件配套：Atlas 800I A2/A3、Atlas 300I DUO 等专属硬件；本验证为 aarch64 + openEuler 通用镜像，无 device passthrough",
+        "本地 apt 镜像中能找到 memfabric_hybrid 的源码与编译产物，但 runtime 仅以 run 包形式提供，需先 install 后 source /usr/local/memfabric_hybrid/set_env.sh 才能加载"
+      ],
+      "sample_artifacts_built": [
+        "/workspace/src/memcache/python/memcache_hybrid/_pymmc.cpython-311-aarch64-linux-gnu.so",
+        "/workspace/src/memcache/python/memcache_hybrid/lib/libmf_memcache.so",
+        "/workspace/src/memcache/python/memcache_hybrid/config/{mmc-local.conf,mmc-meta.conf}"
+      ]
+    }
+  },
+  "static_analysis": {
+    "enabled": false,
+    "summary": "未执行 pre-commit 检查（仓库根目录有 pre-commit/ 目录但根级无 .pre-commit-config.yaml；script/ci-pre-commit-pr.sh 存在但需要 MR 上下文）"
+  },
+  "devcontainer": {
+    "enabled": false,
+    "config_dir": null,
+    "config_files": [],
+    "summary": "无 .devcontainer/ 配置；仓库无 Dockerfile；按 skill 强制使用 openEuler 24.03-lts 基础镜像"
+  },
+  "documentation_gaps": [
+    {
+      "time": "2026-07-02T13:00:00",
+      "title": "MemCache 主仓库缺少 Dockerfile，编译工具链版本依赖完全靠 README 文字描述",
+      "body": "doc/install_run.md 列出 cmake 3.20.x / gcc 11.4+ / python 3.11.10 / pybind11 2.10.3 / make 4.3 / ninja 1.10.1，但仓库根无任何 Dockerfile，新开发者拿到代码后必须自己拼装 openEuler 24.03 + Python 3.11 + pybind11 + 第三方依赖的镜像。",
+      "source": "doc/install_run.md + 仓库根目录"
+    },
+    {
+      "time": "2026-07-02T13:30:00",
+      "title": "prometheus-cpp-lite include 路径与子模块目录结构不一致",
+      "body": "src/memcache/csrc/CMakeLists.txt 写死 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/simpleapi/include 与 core/include，但实际子模块目录结构只有 include/prometheus/*.h（无 simpleapi/include 或 core/include 子目录）。这导致默认配置下编译直接失败，需手工改为 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/include。",
+      "source": "src/memcache/csrc/CMakeLists.txt + 3rdparty/prometheus-cpp-lite/include/prometheus/"
+    },
+    {
+      "time": "2026-07-02T13:35:00",
+      "title": "父 CMakeLists.txt 在 add_subdirectory(3rdparty) 之前引用子模块变量",
+      "body": "顶层 CMakeLists.txt line 200 在 add_subdirectory(3rdparty/memfabric_hybrid) 之前调用 include_directories(${PROJECT_SMEM_SRC_BASE}/include/host ${PROJECT_UTIL_SRC_BASE})，但这两个变量在 memfabric_hybrid 的 CMakeLists.txt 中才 set()，导致在父作用域里为空，最终 include 变成 /include/host /csrc/common 等绝对无效路径。需在 add_subdirectory 之前提前 set() 这 4 个变量。",
+      "source": "CMakeLists.txt line 200-210 + 3rdparty/memfabric_hybrid/CMakeLists.txt line 120-130"
+    },
+    {
+      "time": "2026-07-02T13:45:00",
+      "title": "prometheus-cpp-lite 的 std::to_chars 使用与 _GLIBCXX_USE_CXX11_ABI=0 不兼容",
+      "body": "core.h 第 152 行 std::to_chars 路径在 -D_GLIBCXX_USE_CXX11_ABI=0 + -O2 组合下声明消失，编译报 to_chars is not a member of std。仓库顶层未提供任何 snprintf 兜底开关，需手工改 core.h 把 #if __cpp_lib_to_chars >= 201611L 改为 #if 0。",
+      "source": "3rdparty/prometheus-cpp-lite/include/prometheus/core.h + 顶层 CMakeLists.txt line 105"
+    },
+    {
+      "time": "2026-07-02T14:00:00",
+      "title": "prometheus-cpp-lite 全局对象 (global_registry 等) 缺少编译入口",
+      "body": "src/simpleapi.cpp 定义了 prometheus::global_registry / file_saver / http_pusher / http_server 等全局对象，但仓库 3rdparty/CMakeLists.txt 中 add_subdirectory(memfabric_hybrid) 之后未对 prometheus-cpp-lite 做任何 add_subdirectory 或 target_link 调用，simpleapi.cpp 从未编译进 libmf_memcache.so。链接时未定义引用错误。",
+      "source": "3rdparty/CMakeLists.txt + 3rdparty/prometheus-cpp-lite/src/simpleapi.cpp"
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-02T12:39:00",
+      "problem": "git submodule update --init 3rdparty/ 失败：github.com 端口 443 在远端 192.168.9.114 上不可达（Connection timed out），且 git 操作残留为 zombie 进程",
+      "solution": "改用 gitcode.com 镜像（gitcode.com/yhirose/cpp-httplib、gitcode.com/gabime/spdlog、gitcode.com/nlohmann/json 等用户路径可直接 git clone）；prometheus-cpp-lite 与 mockcpp 用 ghfast.top 代理下载 tarball 解包",
+      "source": "git submodule update --init 3rdparty/ 失败；远端 curl github.com 报 000"
+    },
+    {
+      "timestamp": "2026-07-02T12:45:00",
+      "problem": "首次 dnf install 在容器内卡死：dnf 进程在后台 zombie 状态（已 SIGKILL 后无法被 init 回收），导致后续 docker exec 全部 hang",
+      "solution": "docker rm -f memcache-ttfhw 重建容器，再次 dnf install 正常完成",
+      "source": "docker exec -d memcache-ttfhw dnf install 后进程状态 [dnf] <defunct>"
+    },
+    {
+      "timestamp": "2026-07-02T13:00:00",
+      "problem": "pybind11 安装到 /usr/local/lib/python3.11/site-packages/pybind11，但 build.sh 默认查找 /share/cmake/pybind11（PYTHON_HOME 推导错误）",
+      "solution": "export PYTHON_HOME=/usr/local 强制覆盖；或 install pybind11-dev（openEuler 仓库中不存在该包）",
+      "source": "script/build.sh 第 79 行 + 3rdparty/memfabric_hybrid/cmake/config_python.cmake"
+    },
+    {
+      "timestamp": "2026-07-02T13:20:00",
+      "problem": "顶层 CMakeLists.txt line 200 引用未定义的 PROJECT_SMEM_SRC_BASE 等变量，导致 mmc_objects 编译时 include 路径异常（/include/host、/csrc/common 等绝对无效路径）",
+      "solution": "在 include_directories 之前显式 set(PROJECT_SMEM_SRC_BASE ${PROJECT_SOURCE_DIR}/3rdparty/memfabric_hybrid/src/smem) 等 4 个变量",
+      "source": "CMakeLists.txt line 200 + 3rdparty/memfabric_hybrid/CMakeLists.txt line 120-130"
+    },
+    {
+      "timestamp": "2026-07-02T13:35:00",
+      "problem": "src/memcache/csrc/CMakeLists.txt 的 prometheus-cpp-lite include 路径（simpleapi/include + core/include）与实际子模块结构不匹配",
+      "solution": "改为 ${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/include；并补 3rdparty/ip-sockets-cpp-lite/include",
+      "source": "src/memcache/csrc/CMakeLists.txt line 40-41"
+    },
+    {
+      "timestamp": "2026-07-02T13:45:00",
+      "problem": "prometheus-cpp-lite 的 ip-sockets-cpp-lite 头文件触发 -Werror=cast-qual（GCC 12 对 const 转换更严格）",
+      "solution": "从顶层 + memfabric_hybrid 的 add_compile_options 中移除 -Wcast-qual；同时为 udp_socket.h 的 INVALID_SOCKET 加 #ifndef 保护避免与 cpp-httplib 重复定义",
+      "source": "3rdparty/prometheus-cpp-lite/3rdparty/ip-sockets-cpp-lite/include/udp_socket.h line 76 / ip_address.h 多处"
+    },
+    {
+      "timestamp": "2026-07-02T13:55:00",
+      "problem": "core.h 第 152 行 std::to_chars 不可见：__cpp_lib_to_chars 宏被 <charconv> 定义但 std::to_chars 函数声明缺失（_GLIBCXX_USE_CXX11_ABI=0 + -O2 组合下声明被剥离）",
+      "solution": "将 #if __cpp_lib_to_chars >= 201611L 改为 #if 0 强制走 snprintf fallback；运行时行为不变",
+      "source": "3rdparty/prometheus-cpp-lite/include/prometheus/core.h line 151"
+    },
+    {
+      "timestamp": "2026-07-02T14:05:00",
+      "problem": "链接 libmf_memcache.so 报 undefined reference to prometheus::global_registry（prometheus-cpp-lite/src/simpleapi.cpp 未被任何 CMakeLists 编译）",
+      "solution": "在 src/memcache/csrc/CMakeLists.txt 加 aux_source_directory(${PROJECT_3RDPARTY_SRC_DIR}/prometheus-cpp-lite/src) 并将 prometheus 源加入 PLATFORM_SRC",
+      "source": "3rdparty/CMakeLists.txt 未引用 prometheus-cpp-lite"
+    },
+    {
+      "timestamp": "2026-07-02T14:20:00",
+      "problem": "BUILD_TESTS=ON 时 src/test/CMakeLists.txt 同样使用错误的 prometheus include 路径（simpleapi/include + core/include）",
+      "solution": "与主 csrc/CMakeLists.txt 一致：改为 include + 3rdparty/ip-sockets-cpp-lite/include",
+      "source": "test/CMakeLists.txt line 27-28"
+    },
+    {
+      "timestamp": "2026-07-02T14:22:00",
+      "problem": "run_ut.sh 失败：patch 命令未安装（mock_cpp-prefix 需要打补丁）",
+      "solution": "dnf install -y patch 后重试",
+      "source": "script/run_ut.sh + test/3rdparty/CMakeLists.txt 调用 patch 命令"
+    },
+    {
+      "timestamp": "2026-07-02T14:42:00",
+      "problem": "mmc_meta_service 可执行但启动后阻塞（无 NPU 硬件，进程进入初始化阶段后卡在 wait）",
+      "solution": "本环境无 Ascend NPU，无 device passthrough，sample 执行实际不可行；标记 sample.status = not_run 并记录原因",
+      "source": "src/memcache/csrc/daemon/mmc_daemon.cpp + config/mmc-*.conf"
+    }
+  ],
+  "session_export_file": "verification_session_memcache_20260702.md"
+}

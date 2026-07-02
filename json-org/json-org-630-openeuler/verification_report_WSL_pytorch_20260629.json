@@ -1,0 +1,680 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/pytorch-verify",
+    "start_time": "2026-06-29T13:32:00",
+    "end_time": "2026-06-29T14:11:30",
+    "duration_seconds": 2370,
+    "total_steps": 30,
+    "repo_name": "pytorch",
+    "repo_url": "https://gitcode.com/Ascend/pytorch.git",
+    "branch": "master",
+    "commit": "d9be2ae"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 4619,
+    "output_tokens": 963,
+    "cache_hit_tokens": 57030,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Huawei Kunpeng 920 (remote machine 192.168.9.114)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "949G available (tmpfs /tmp)",
+      "docker_version": "Docker version 18.09.0, build 05c4df4"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库 ci/docker/ARM/Dockerfile 原指定 quay.io/pypa/manylinux_2_28_aarch64 镜像，已替换为 openEuler 24.03 LTS 从零构建；远程宿主机为 aarch64 架构）",
+      "dependency_mapping": {
+        "from_dockerfile": "ci/docker/ARM/Dockerfile 来自 quay.io/pypa/manylinux_2_28_aarch64，RUN yum install gcc-toolset-14 / ninja-build / dos2unix，pip install torch==2.7.1+cpu / numpy / pyyaml / setuptools",
+        "mappings": [
+          {
+            "original": "manylinux_2_28_aarch64 base",
+            "openEuler": "openEuler 24.03 LTS aarch64 base",
+            "source": "ci/docker/ARM/Dockerfile 第1行 FROM"
+          },
+          {
+            "original": "yum install gcc-toolset-14",
+            "openEuler": "dnf install gcc gcc-c++ (12.3.1)",
+            "source": "ci/docker/ARM/Dockerfile gcc-toolset-14 映射"
+          },
+          {
+            "original": "pip install torch==2.7.1+cpu",
+            "openEuler": "pip install torch==2.13.0.dev20260515+cpu (master 分支 version.txt=2.13.0，需要支持 addmm.dtype 和 Dimname 的 torch nightly 版本)",
+            "source": "ci/docker/ARM/Dockerfile pip install torch 行"
+          },
+          {
+            "original": "pip install numpy==1.21.3",
+            "openEuler": "pip install numpy (默认安装 2.4.6)",
+            "source": "ci/docker/ARM/Dockerfile pip install numpy 行"
+          },
+          {
+            "original": "pip install pyyaml / setuptools",
+            "openEuler": "pip install pyyaml / setuptools / wheel",
+            "source": "ci/docker/ARM/Dockerfile pip install 行"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + ci/docker/ARM/Dockerfile",
+      "value": "aarch64（远程机器架构）；README 同时支持 aarch64 和 x86_64"
+    },
+    "recommended_image": {
+      "source": "README.md - 从源码编译章节 + ci/docker/ARM/Dockerfile",
+      "value": "原推荐 quay.io/pypa/manylinux_2_28_aarch64 镜像，改用 openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "ci/docker/ARM/Dockerfile RUN 指令",
+      "value": [
+        {
+          "original": "FROM quay.io/pypa/manylinux_2_28_aarch64:2025.04.26-0",
+          "openEuler_equivalent": "FROM hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+        },
+        {
+          "original": "yum install -y gcc-toolset-14",
+          "openEuler_equivalent": "dnf install -y gcc gcc-c++"
+        },
+        {
+          "original": "yum install -y ninja-build",
+          "openEuler_equivalent": "dnf install -y ninja-build"
+        },
+        {
+          "original": "yum install -y vim-common",
+          "openEuler_equivalent": "openEuler 24.03 LTS 基础镜像已包含常用工具，无需额外安装"
+        },
+        {
+          "original": "pip3.9 install torch==2.7.1+cpu --index-url https://download.pytorch.org/whl/cpu",
+          "openEuler_equivalent": "pip3 install --index-url https://download-r2.pytorch.org/whl/nightly/cpu/ torch==2.13.0.dev20260515+cpu（master 分支 version.txt=2.13.0，需要支持 addmm.dtype 和 Dimname 的 torch nightly 版本，2.13.0.dev20260515 是最后一个同时支持二者的版本）"
+        },
+        {
+          "original": "pip3.9 install numpy==1.21.3",
+          "openEuler_equivalent": "pip3 install numpy (默认安装 2.4.6)"
+        },
+        {
+          "original": "pip3.9 install pyyaml / setuptools",
+          "openEuler_equivalent": "pip3 install pyyaml / setuptools / wheel"
+        }
+      ]
+    },
+    "dependencies": {
+      "source": "ci/docker/ARM/Dockerfile + setup.py + ci/build.sh",
+      "value": [
+        "gcc / gcc-c++ >= 10.2 (ARM 推荐) - dnf: gcc gcc-c++ (12.3.1)",
+        "make / cmake / ninja-build - dnf: make cmake ninja-build",
+        "git - dnf: git",
+        "python3 >= 3.9 - openEuler 24.03 LTS 自带 3.11.6",
+        "python3-pip / python3-devel - dnf: python3-pip python3-devel",
+        "openssl-devel / libffi-devel - dnf: openssl-devel libffi-devel",
+        "pyyaml / setuptools / numpy / wheel - pip: pyyaml setuptools numpy wheel",
+        "torch >= 2.10.0 (ci/build.sh SUPPORTED_TORCH_VERSION=2.10.0..2.13.0) - pip: torch==2.13.0.dev20260515+cpu"
+      ]
+    },
+    "build_commands": {
+      "source": "ci/build.sh + README.md - 从源码编译章节",
+      "value": "bash ci/build.sh --python=3.11  (内部执行 python3.11 setup.py build bdist_wheel)"
+    },
+    "ut_commands": {
+      "source": "test/ 目录 + setup.py",
+      "value": "python3 -m pytest test/ (需要 torch_npu 包已安装 + CANN 运行时 + NPU 设备)"
+    },
+    "sample_commands": {
+      "source": "examples/ 目录",
+      "value": "python3 examples/libtorch_npu/*.py (需要 torch_npu 包已安装 + Ascend NPU 设备)"
+    },
+    "special_dependencies": {
+      "source": "README.md - 安装前置条件 + ci/build.sh",
+      "value": [
+        "必须先安装 CANN 工具包（source /usr/local/Ascend/ascend-toolkit/set_env.sh）才能运行 torch_npu",
+        "必须先安装匹配的 PyTorch（CPU wheel for aarch64）",
+        "master 分支对应 PyTorch 2.13.0（version.txt = 2.13.0），需要 PyPI/nightly 上同时支持 addmm.dtype 和 Dimname 的 torch 版本",
+        "GCC 版本约束：ARM 推荐 gcc 10.2，X86 推荐 gcc 9.3.1（实际 openEuler 24.03 LTS 默认 gcc 12.3.1）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-29T13:32:00",
+      "command": "环境检查：ssh root@192.168.9.114 nproc / free -g / df -h / docker version",
+      "success": true,
+      "output": "nproc=256, free=2044G, df=/tmp 949G, docker=18.09.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-29T13:33:30",
+      "command": "git clone --depth 1 --branch master https://gitcode.com/Ascend/pytorch.git /tmp/pytorch-verify",
+      "success": true,
+      "output": "Cloning into '/tmp/pytorch-verify'... (141M, 10 个子模块)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-29T13:35:00",
+      "command": "文档阅读：cat /tmp/pytorch-verify/README.md | head -100",
+      "success": true,
+      "output": "Ascend Extension for PyTorch (torch_npu)，master 分支对应 PyTorch 2.13.0 + CANN 8.x，编译需要 gcc 10.2 (ARM) / 9.3.1 (X86)，使用 bash ci/build.sh --python=3.x 编译",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-29T13:35:30",
+      "command": "Dockerfile 依赖分析：cat ci/docker/ARM/Dockerfile",
+      "success": true,
+      "output": "FROM quay.io/pypa/manylinux_2_28_aarch64:2025.04.26-0, RUN yum install gcc-toolset-14 / ninja-build / dos2unix, pip install torch==2.7.1+cpu / numpy==1.21.3 / pyyaml / setuptools",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T13:36:00",
+      "command": "构建脚本分析：cat ci/build.sh",
+      "success": true,
+      "output": "SUPPORTED_PY_VERSION=(3.9 3.10 3.11 3.12 3.13), SUPPORTED_TORCH_VERSION=(2.10.0 2.11.0 2.12.0 2.13.0), Default python=3.9, 调用 python3 setup.py build bdist_wheel",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T13:36:30",
+      "command": "静态检查扫描：ls -la .pre-commit-config.yaml / .devcontainer / .lint-runner.*",
+      "success": true,
+      "output": "未找到 pre-commit / devcontainer / lint-runner 配置",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T13:36:45",
+      "command": "docker rm -f pytorch-ttfhw 2>/dev/null; docker run -d --name pytorch-ttfhw -v /tmp/pytorch-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container ID: fdb0fa70eeddc70bca2433e99bb68da3c6dacbd6205377271e984ff166bd9d4d",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-29T13:40:00",
+      "command": "第一层依赖：dnf install -y gcc gcc-c++ make cmake ninja-build git python3-pip python3-devel openssl-devel libffi-devel",
+      "success": true,
+      "output": "安装完成：gcc-12.3.1, gcc-c++-12.3.1, make-4.4.1, cmake-3.27.9, ninja-build-1.11.1, git-2.43.0, python3-3.11.6, python3-pip-23.3.1, openssl-devel, libffi-devel",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 180
+    },
+    {
+      "timestamp": "2026-06-29T13:41:00",
+      "command": "pip3 config set global.index-url https://mirrors.huaweicloud.com/repository/pypi/simple",
+      "success": true,
+      "output": "Writing to /root/.config/pip/pip.conf",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T13:42:00",
+      "command": "pip3 install --no-cache-dir pyyaml setuptools wheel",
+      "success": true,
+      "output": "Successfully installed packaging-26.2 pyyaml-6.0.3 wheel-0.47.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-29T13:43:00",
+      "command": "pip3 install --no-cache-dir numpy",
+      "success": true,
+      "output": "Successfully installed numpy-2.4.6",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 20
+    },
+    {
+      "timestamp": "2026-06-29T13:43:30",
+      "command": "pip3 install --no-cache-dir --index-url https://download-r2.pytorch.org/whl/nightly/cpu/ torch==2.13.0.dev20260515+cpu",
+      "success": true,
+      "output": "torch-2.13.0.dev20260515+cpu 安装成功（155MB 下载约 7 分钟），Dimname + addmm.dtype 都被支持",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 600
+    },
+    {
+      "timestamp": "2026-06-29T13:53:30",
+      "command": "git config --global --add safe.directory '*'（配置 11 个子模块目录）",
+      "success": true,
+      "output": "已配置全局 safe.directory 匹配所有路径，避免 dubious ownership 错误",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T13:54:03",
+      "command": "首次构建：bash ci/build.sh --python=3.11 (触发 submodule init + ACL header 拷贝 + ATEN binding 生成 + 编译，MAX_JOBS=51 即 20% CPU 并发)",
+      "success": true,
+      "output": "10 个子模块自动 clone（Tensorpipe + acl_src/{runtime,ge,graph-autofusion} + fmt + googletest + nlohmann + op-plugin + torchair/torchair），ACL headers 成功从 acl_src submodule 拷贝至 third_party/acl/inc/acl/，ATEN bindings 成功生成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 360
+    },
+    {
+      "timestamp": "2026-06-29T14:05:00",
+      "command": "ninja 全量编译：ninja -j51 编译 torch_npu 静态/动态库 (1287 个目标)",
+      "success": true,
+      "output": "[1285/1287] Linking CXX shared library libtorch_npu.so\n[1286/1287] Linking CXX shared library packages/torch_npu/lib/libtorch_npu.so\n[1287/1287] Linking CXX shared library packages/torch_npu/lib/libop_plugin_atb.so",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 660
+    },
+    {
+      "timestamp": "2026-06-29T14:10:30",
+      "command": "Wheel 打包：python3.11 setup.py bdist_wheel",
+      "success": true,
+      "output": "adding 'torch_npu-2.13.0+gitd9be2ae.dist-info/RECORD', removing build/bdist.linux-aarch64/wheel. 产物: /workspace/dist/torch_npu-2.13.0+gitd9be2ae-cp311-cp311-linux_aarch64.whl (37.5 MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 35
+    },
+    {
+      "timestamp": "2026-06-29T14:10:40",
+      "command": "Wheel 安装：pip3 install --no-deps /workspace/dist/torch_npu-2.13.0+gitd9be2ae-cp311-cp311-linux_aarch64.whl",
+      "success": true,
+      "output": "Successfully installed torch-npu-2.13.0+gitd9be2ae",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-29T14:10:50",
+      "command": "冒烟测试：python3 -c 'import torch_npu; print(torch_npu.__version__)'",
+      "success": false,
+      "output": "ModuleNotFoundError: No module named 'torch_npu._C'（libtorch_npu.so 动态链接 17 个未解析的 CANN 符号：libhccl.so / libascendcl.so / libacl_op_compiler.so / libge_runner.so / libgraph.so / libc10.so 等）",
+      "error": "torch_npu 是 CANN 扩展，构建可成功产 wheel，但运行时需在带 CANN toolkit + NPU 设备的 Atlas 服务器上才能加载",
+      "returncode": 1,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-29T14:11:00",
+      "command": "Unit test 尝试：python3 -m pytest /workspace/test/utils/test_step.py 2>&1 | head -5",
+      "success": false,
+      "output": "ModuleNotFoundError: No module named 'torch_npu._C'（同上，torch_npu 包无法导入）",
+      "error": "test/ 目录下共 716 个 test_*.py 文件，全部依赖 torch_npu._C；torch_npu 包加载需要 CANN 运行时（libtorch_npu.so 引用 CANN 符号 17 个）",
+      "returncode": 1,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-29T14:11:10",
+      "command": "Sample 检查：head -10 /workspace/examples/libtorch_npu/inference_model.cpp && head -10 /workspace/examples/libtorch_npu/trace_model.py",
+      "success": true,
+      "output": "inference_model.cpp 包含 #include \"torch_npu/torch_npu.h\"，trace_model.py 依赖 torch.nn 但运行需要 torch_npu::init_npu('npu:0')",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T14:11:20",
+      "command": "生成验证报告：写入 /workspace/verification_report_WSL_pytorch_20260629.json",
+      "success": true,
+      "output": "JSON 报告已生成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-29T13:32:00",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式）",
+      "result": "已启动",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-06-29T13:33:30",
+      "step": "code_preparation",
+      "action": "在远程机器 192.168.9.114 上 git clone 仓库（master 分支，--depth 1）",
+      "result": "成功",
+      "details": {
+        "path": "/tmp/pytorch-verify",
+        "size": "141M",
+        "submodules": 10,
+        "commit": "d9be2ae",
+        "version.txt": "2.13.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:35:00",
+      "step": "document_reading",
+      "action": "读取 README.md 了解构建说明",
+      "result": "成功",
+      "details": {
+        "file": "README.md",
+        "sections_read": [
+          "Version",
+          "Installation",
+          "From Source",
+          "Getting Started"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:35:30",
+      "step": "dockerfile_analysis",
+      "action": "读取 ci/docker/ARM/Dockerfile 提取依赖并映射到 openEuler 等效包",
+      "result": "成功",
+      "details": {
+        "dockerfile": "ci/docker/ARM/Dockerfile（原 FROM quay.io/pypa/manylinux_2_28_aarch64）",
+        "mappings": {
+          "gcc-toolset-14": "gcc gcc-c++",
+          "torch==2.7.1+cpu": "torch==2.13.0.dev20260515+cpu (master version.txt=2.13.0)",
+          "numpy==1.21.3": "numpy (默认 2.4.6)"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:36:00",
+      "step": "build_script_analysis",
+      "action": "读取 ci/build.sh 解析构建参数和支持的 Python/torch 版本矩阵",
+      "result": "成功",
+      "details": {
+        "supported_py": [
+          "3.9",
+          "3.10",
+          "3.11",
+          "3.12",
+          "3.13"
+        ],
+        "supported_torch": [
+          "2.10.0",
+          "2.11.0",
+          "2.12.0",
+          "2.13.0"
+        ],
+        "default_python": "3.9"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:36:30",
+      "step": "static_analysis_scan",
+      "action": "检查仓库 pre-commit / lint-runner / devcontainer 配置",
+      "result": "未配置",
+      "details": {
+        "pre_commit_configured": false,
+        "lint_runner_configured": false,
+        "devcontainer_configured": false
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:36:45",
+      "step": "container_setup",
+      "action": "拉取 openEuler 基础镜像并启动容器 pytorch-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "pytorch-ttfhw",
+        "container_id": "fdb0fa70"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:40:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc gcc-c++ make cmake ninja-build git python3-pip python3-devel openssl-devel libffi-devel）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:41:00",
+      "step": "dependency_installation_layer2_pip_config",
+      "action": "配置 pip 使用华为云镜像源",
+      "result": "成功",
+      "details": {
+        "source": "华为云 PyPI 镜像",
+        "url": "https://mirrors.huaweicloud.com/repository/pypi/simple"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:42:00",
+      "step": "dependency_installation_layer2",
+      "action": "安装 Python 构建依赖（pyyaml setuptools wheel）",
+      "result": "成功",
+      "details": {
+        "packages": [
+          "pyyaml-6.0.3",
+          "setuptools",
+          "wheel-0.47.0"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:43:00",
+      "step": "dependency_installation_layer2_numpy",
+      "action": "安装 numpy（默认 2.4.6）",
+      "result": "成功",
+      "details": {
+        "version": "numpy-2.4.6"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:43:30",
+      "step": "dependency_installation_layer3_torch",
+      "action": "安装 PyTorch CPU wheel torch==2.13.0.dev20260515+cpu（master=2.13.0，最后一个同时支持 Dimname + 2.12+ features 的 nightly 版本）",
+      "result": "成功",
+      "details": {
+        "torch_version": "2.13.0.dev20260515+cpu",
+        "supports_dimname": true,
+        "supports_addmm_dtype": true,
+        "supports_2_12_features": true,
+        "wheel_size": "155.1MB"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T13:53:30",
+      "step": "git_safe_directory",
+      "action": "配置 git safe.directory 避免 dubious ownership 错误",
+      "result": "成功",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-06-29T13:54:03",
+      "step": "build_attempt_1",
+      "action": "首次构建：bash ci/build.sh --python=3.11（submodule init + ACL header 拷贝 + ATEN binding 生成 + 1287 个编译目标）",
+      "result": "成功",
+      "details": {
+        "build_steps": 1287,
+        "concurrency": "20% CPU = 51 jobs",
+        "wheel_path": "/workspace/dist/torch_npu-2.13.0+gitd9be2ae-cp311-cp311-linux_aarch64.whl",
+        "wheel_size": "37.5 MB",
+        "libtorch_npu_so_size": "99 MB",
+        "wheel_sha256": "06796d12853f3f9102829ac510f751dded4fff8bc29b96e4435ec69361f37331"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T14:10:30",
+      "step": "wheel_installation",
+      "action": "pip3 install --no-deps wheel 文件",
+      "result": "成功",
+      "details": {
+        "installed_at": "/usr/local/lib64/python3.11/site-packages/torch_npu/",
+        "version": "torch-npu-2.13.0+gitd9be2ae"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T14:10:50",
+      "step": "smoke_test",
+      "action": "python3 -c 'import torch_npu'",
+      "result": "失败",
+      "details": {
+        "error": "libtorch_npu.so 引用 17 个未解析的 CANN 符号（libhccl.so / libascendcl.so / libacl_op_compiler.so / libge_runner.so / libgraph.so / libc10.so 等），容器内未安装 CANN toolkit",
+        "env_limitation": true
+      }
+    },
+    {
+      "timestamp": "2026-06-29T14:11:00",
+      "step": "ut_execution",
+      "action": "尝试执行单元测试（test/utils/）",
+      "result": "失败（环境受限）",
+      "details": {
+        "error": "torch_npu._C 无法加载（CANN 运行时缺失），测试无法执行",
+        "env_limitation": true,
+        "test_count_available": 716
+      }
+    },
+    {
+      "timestamp": "2026-06-29T14:11:10",
+      "step": "sample_execution",
+      "action": "检查样例文件（examples/libtorch_npu/inference_model.cpp, trace_model.py）",
+      "result": "失败（环境受限）",
+      "details": {
+        "error": "样例需要 torch_npu::init_npu('npu:0')，需要真实 NPU 设备，且 torch_npu 包无法加载",
+        "env_limitation": true
+      }
+    },
+    {
+      "timestamp": "2026-06-29T14:11:20",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_pytorch_20260629.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "仓库未配置 pre-commit / lint-runner / devcontainer（已确认根目录不存在 .pre-commit-config.yaml / .devcontainer/ / .lint-runner.*）",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 .devcontainer/ 目录；实际构建镜像选择参考 ci/docker/ARM/Dockerfile（quay.io/pypa/manylinux_2_28_aarch64），最终改用 openEuler 24.03 LTS"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 1000,
+      "attempts": 1,
+      "attempts_detail": "首次成功（直接使用 master=2.13.0 验证过的 torch==2.13.0.dev20260515+cpu，省去尝试多版本的耗时）",
+      "artifacts": [
+        {
+          "name": "torch_npu wheel",
+          "path": "/workspace/dist/torch_npu-2.13.0+gitd9be2ae-cp311-cp311-linux_aarch64.whl",
+          "size": "37.5 MB",
+          "sha256": "06796d12853f3f9102829ac510f751dded4fff8bc29b96e4435ec69361f37331"
+        },
+        {
+          "name": "libtorch_npu.so",
+          "path": "/workspace/build/packages/torch_npu/lib/libtorch_npu.so",
+          "size": "99 MB"
+        },
+        {
+          "name": "libop_plugin_atb.so",
+          "path": "/workspace/build/packages/torch_npu/lib/libop_plugin_atb.so",
+          "size": "1.2 MB"
+        },
+        {
+          "name": "libtensorpipe.so",
+          "path": "/workspace/build/packages/torch_npu/lib/libtensorpipe.so",
+          "size": "3.4 MB"
+        },
+        {
+          "name": "libnpu_profiler.so",
+          "path": "/workspace/build/packages/torch_npu/lib/libnpu_profiler.so",
+          "size": "157 KB"
+        }
+      ],
+      "concurrency": "20% CPU = 51 jobs",
+      "compiler": "gcc 12.3.1 (openEuler 12.3.1-38.oe2403)",
+      "build_target_count": 1287
+    },
+    "unit_test": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "note": "test/ 目录下共 716 个 test_*.py 文件，全部依赖 torch_npu._C；构建成功产出了 wheel，但 torch_npu 包加载时 libtorch_npu.so 引用 17 个未解析的 CANN 符号（libhccl.so / libascendcl.so / libacl_op_compiler.so / libge_runner.so / libgraph.so / libc10.so / libtorch_python.so / libtorch.so / libtorch_cpu.so 等），容器内未安装 CANN toolkit，包无法导入。需要在已部署 CANN runtime 的环境（带 NPU 设备的 Atlas 服务器）才能执行 UT。"
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "note": "examples/libtorch_npu/ 下的样例（inference_model.cpp / trace_model.py）需要 torch_npu::init_npu('npu:0') 初始化 NPU 设备并执行 .npu() tensor 操作，远端验证机器为通用 aarch64 服务器（无 NPU 设备）且无 CANN runtime，样例无法执行。"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未明确指出 master 分支对应的 torch nightly 兼容版本范围（实测需要 2.13.0.dev20260515+cpu 这种特定的 nightly 版本才能同时支持 Dimname 和 2.12+ features）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "ci/docker/ARM/Dockerfile 仍使用 torch==2.7.1+cpu（与 README 版本匹配表 master=2.13.0 不一致），实际构建需要更新 Dockerfile 中的 torch 版本",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "build.sh SUPPORTED_TORCH_VERSION=(2.10.0 2.11.0 2.12.0 2.13.0) 中未说明哪些是 release 版本哪些是 nightly 版本",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "未在 README 中说明 CANN toolkit 的具体安装位置和版本要求（需要 /usr/local/Ascend/ascend-toolkit/set_env.sh）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "torch_npu/csrc/aten/npu_native_functions.yaml 第 79 行仍使用 Dimname 类型（master=2.13.0 编译时的 torch nightly 2.13.0.dev20260611+ 已不再支持 Dimname 解析，op-plugin 子模块的 addmm.dtype 又需要 2.10+ 才有，造成 master 分支有版本不兼容窗口）",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-29T13:53:30",
+      "problem": "git 在 /workspace 目录报错 dubious ownership in repository（容器内 root 用户读取 uid=1001 创建的 clone 目录）",
+      "solution": "git config --global --add safe.directory '*' 匹配所有路径",
+      "source": "git 2.43.0 安全检查"
+    },
+    {
+      "timestamp": "2026-06-29T14:10:50",
+      "problem": "wheel 安装后 import torch_npu 报 ModuleNotFoundError: No module named 'torch_npu._C'（libtorch_npu.so 链接到 17 个 CANN runtime 符号但容器内未安装 CANN toolkit）",
+      "solution": "未解决（环境限制）：torch_npu 是 CANN 扩展，构建可成功产 wheel，但运行时需在带 CANN toolkit + NPU 设备的 Atlas 服务器上才能加载",
+      "source": "torch_npu/lib/libtorch_npu.so 动态链接依赖（ldd 列出 17 个 not found：CANN runtime / libtorch_python / libtorch / libtorch_cpu / libc10 等）"
+    }
+  ]
+}

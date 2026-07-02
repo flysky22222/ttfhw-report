@@ -1,0 +1,683 @@
+{
+  "metadata": {
+    "repo_name": "manifest",
+    "repo_path": "https://gitcode.com/openUBMC/manifest.git",
+    "repo_url": "https://gitcode.com/openUBMC/manifest.git",
+    "branch": "main",
+    "branch_note": "用户指定 master 分支，但仓库不存在 master 分支；通过 git ls-remote --heads 发现默认分支为 main，采用默认分支进行验证（与 2026-06-27 上轮验证采用同一约定）",
+    "commit": "bbd6376ca578fcce79890d7f59a2c0cb31effaed",
+    "commit_message": "!1326 fix:需要强制修改密码用户登录机机接口未报错",
+    "start_time": "2026-06-28T03:55:43",
+    "end_time": "2026-06-28T04:15:55",
+    "duration_seconds": 1212,
+    "total_steps": 14,
+    "environment": "remote:192.168.9.114",
+    "container": "manifest-ttfhw",
+    "container_image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+    "container_arch": "aarch64",
+    "concurrency": 51,
+    "concurrency_ratio": "20%"
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (推测，远程机器未公开 cpuinfo 详情)",
+      "cpu_cores": 256,
+      "memory": "2044 GB (远程机器)",
+      "disk": "tmpfs 1023 GB 挂载到 /workspace",
+      "docker_version": "18.09.0 (远程机器)",
+      "kernel": "4.19.90-2604.3.0.0369.oe2003sp4.aarch64"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像；manifest 仓 dockerfile 原指定 FROM swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2（Ubuntu-only），已替换为 openEuler 24.03 LTS",
+      "dependency_mapping": {
+        "from_dockerfile": "manifest/dockerfile 中 RUN apt-get install / RUN wget gcm-linux_amd64.deb 等指令",
+        "mappings": [
+          {
+            "original": "apt-get install -y python3 sudo make locales wget",
+            "openEuler": "dnf install -y python3 sudo make locales wget",
+            "source": "manifest/dockerfile L13-14"
+          },
+          {
+            "original": "wget https://dailybuild.openubmc.cn/tools/gcm-linux_amd64.2.6.1.deb && dpkg -i",
+            "openEuler": "跳过：amd64-only .deb 包，openEuler 容器 / 远程机器均为 aarch64 架构，无法安装",
+            "source": "manifest/dockerfile L18-20"
+          },
+          {
+            "original": "python3 init.py -user $U -psw $P",
+            "openEuler": "跳过：init.py 在 environ_check() 阶段硬性要求 Ubuntu 24.04，openEuler 系统会被拒绝（实测 ERROR:root:仅支持Ubuntu 24.04操作系统，当前系统为 \\S）",
+            "source": "manifest/dockerfile L26 / init.py:124-128"
+          },
+          {
+            "original": "wget https://github.com/.../otelcol-contrib_0.139.0_linux_amd64.tar.gz",
+            "openEuler": "跳过：amd64-only 二进制 + 镜像内部 observability 子模块构建，本验证聚焦 manifest 仓本身不展开",
+            "source": "manifest/dockerfile L46-72"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md 第1.1节 + dockerfile FROM",
+      "value": "x86-64 (amd64)，仅支持此架构；Kunpeng 处理器支持正在规划中，预计 26 年底提供"
+    },
+    "recommended_image": {
+      "source": "manifest/dockerfile FROM 指令 + README 第1.1节",
+      "value": "原推荐 Ubuntu 24.04 LTS (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2)，已改用 openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "manifest/dockerfile RUN 指令",
+      "value": [
+        {
+          "original": "apt-get install -y python3 sudo make locales wget",
+          "openEuler_equivalent": "dnf install -y python3 sudo make locales wget"
+        },
+        {
+          "original": "wget + dpkg -i gcm-linux_amd64.2.6.1.deb (openUBMC bingo 工具链)",
+          "openEuler_equivalent": "无对应包：amd64-only，远程机器 aarch64 无法安装；openUBMC APT 仓库仅提供 binary-amd64（实测 binary-arm64 返回 404）"
+        },
+        {
+          "original": "python3 init.py -user -psw (含 conan remote login + bmc-studio 安装)",
+          "openEuler_equivalent": "无对应：init.py:environ_check() 硬性要求 Ubuntu 24.04（实测 openEuler 直接抛 Exception）"
+        },
+        {
+          "original": "wget otelcol-contrib / openjdk-17 / prometheus / grafana amd64 包",
+          "openEuler_equivalent": "无对应：均为 amd64-only 二进制；且属于镜像内部 observability 子模块构建，不属于 manifest 仓主流程"
+        }
+      ]
+    },
+    "dependencies": {
+      "source": "README.md + init.py:install_dependencies() + dockerfile + build/product/BMC/openUBMC/manifest.yml",
+      "value": [
+        "操作系统：Ubuntu 24.04 LTS（README 1.1 节硬性要求，仅支持此版本）",
+        "架构：x86-64（amd64）（README 1.1 节硬性要求；Kunpeng 规划中）",
+        "Python3 + pip3 + venv（init.py:install_dependencies 阶段）",
+        "gcc-9 + g++-9（init.py:install_dependencies 硬性指定版本）",
+        "git / wget / curl / unzip / ca-certificates",
+        "ipmitool / dbus-x11 / libdbus-1-dev / dbus",
+        "pkgconf / libglib2.0-dev / npm",
+        "libssl1.1_1.1.1f-1ubuntu2_amd64.deb（init.py:install_old_openssl，硬性安装 Ubuntu 自编译的旧版 OpenSSL）",
+        "Node.js v20.18.0 + npm 10.8.2（init.py:install_node，通过 npm install -g n + n 20.18.0）",
+        "bingo (openUBMC 自研构建工具链，apt 源 openubmc-apt-repo 二进制包 openubmc-bingo，仅 binary-amd64)",
+        "bmc-studio (openUBMC IDE 工具，apt 源 openubmc-bmc-studio，许可证交互)",
+        "仓颉 cjc (可选，init.py:install_cangjie，amd64-only)",
+        "Conan 2.x (init.py:conan_config，登录 openubmc_sdk / openubmc_opensource 两个远程)",
+        "openubmc_sdk Conan 包（交叉编译器 + 工具链，671MB bmc_sdk.tar.gz + openubmc_sdk/latest@openubmc/stable）",
+        "ibmc_sdk/5.14.00.01.b001@openubmc/stable（manifest.yml:platform.conan，RTOS 平台 SDK）",
+        "QEMU（init.py:install_qemu，BMC 固件模拟运行）"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md 第3章 + dockerfile + init.py",
+      "value": "两步构建：(1) python3 init.py [-user U -psw P] 完成环境初始化（系统检查 + APT 源配置 + 依赖安装 + bingo/bmc-studio/Node/Conan/SDK 安装 + QEMU 安装）；(2) bingo build -t personal -b openUBMC 触发产品级整包构建（解析 manifest.yml → Conan 拉组件 → 交叉编译 → 打包 rootfs → 生成 rootfs_openUBMC.hpm）；组件级构建：cd <component> && bingo build --stage=dev"
+    },
+    "ut_commands": {
+      "source": "manifest 仓内搜索 + README",
+      "value": "manifest 仓内 find 未发现 tests/ 或 unit_test/ 目录或 *test*.py 文件；UT 由 28 个 app/<submodule> 子仓（如 app/vnc_proxy, app/dcmid, app/spdm, app/account, app/bios, app/hica, app/lsw, app/frudata 等）自行维护，本仓范围内无可执行 UT 入口"
+    },
+    "sample_commands": {
+      "source": "manifest 仓内搜索 + README",
+      "value": "manifest 是 openUBMC 构建编排仓，不包含 host-side 可执行样例；构建产物为 BMC 整机 HPM 升级包（需在 BMC 硬件或 QEMU 模拟上运行），无 host-side smoke 入口；仓内 build/works/packet/qemu_shells/*.py 仅为 QEMU rootfs 构建脚本片段，非样例程序"
+    },
+    "special_dependencies": {
+      "source": "README.md + dockerfile + init.py",
+      "value": [
+        "openUBMC 社区账号注册：https://usercenter.openubmc.cn/register（Conan 远程仓库登录必须）",
+        "BuildKit secret 注入：通过 docker build --mount=type=secret 注入 openubmc_user / openubmc_pass，避免凭据进入镜像层",
+        "HTTPS 代理可选：init.py 在 ~/.bashrc 检测 https_proxy 配置，交互式确认 Y 后清空（避免 Conan 下载失败）",
+        "许可证环境变量：AUTO_ACCEPT_LICENSE=true + OPENUBMC_LICENSE=true + DEBIAN_FRONTEND=noninteractive（README 2.6 Docker 注意事项）"
+      ]
+    },
+    "network_access_requirements": {
+      "source": "README.md 第1.3节",
+      "value": [
+        "https://mirrors.huaweicloud.com（华为云镜像站，apt + pip 加速源）",
+        "https://registry.npmmirror.com（npm 淘宝镜像）",
+        "https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com（openUBMC APT 仓库，仅 binary-amd64）",
+        "https://keyserver.ubuntu.com（Ubuntu GPG 密钥服务器）",
+        "https://conan.openubmc.cn（Conan 包管理仓库）",
+        "https://repo.openubmc.cn（openUBMC 工具仓库，托管 bmc_sdk.tar.gz）",
+        "https://gitcode.com（代码托管平台）",
+        "https://dailybuild.openubmc.cn/tools/gcm-linux_amd64.2.6.1.deb（bingo deb 包，amd64-only）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-28T03:55:43",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes 192.168.9.114 'echo OK && nproc && docker version --format \"{{.Server.Version}}\"'",
+      "success": true,
+      "output": "OK / 256 / 18.09.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "前置连通性检查：远程 192.168.9.114 免密 SSH OK；远程 Docker 18.09.0；远程 nproc=256（远程机器为 aarch64 大型服务器）"
+    },
+    {
+      "timestamp": "2026-06-28T03:56:00",
+      "command": "git ls-remote --heads https://gitcode.com/openUBMC/manifest.git",
+      "success": true,
+      "output": "1a5e4205... br_release_openUBMC2512_20261231_LTS / b9ec16d8... br_release_openUBMC2512_20261231_LTS_SP1 / a83bc2a8... br_release_openUBMC2603_20260630 / bbd6376c... main",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "用户指定 master 分支，但仓库不存在 master；默认分支为 main，按规范采用默认分支"
+    },
+    {
+      "timestamp": "2026-06-28T03:57:30",
+      "command": "ssh 192.168.9.114 'rm -rf /tmp/manifest-verify && git clone --depth 1 --branch main https://gitcode.com/openUBMC/manifest.git /tmp/manifest-verify'",
+      "success": true,
+      "output": "Cloning into '/tmp/manifest-verify'... HEAD commit = bbd6376ca578fcce79890d7f59a2c0cb31effaed",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 12
+    },
+    {
+      "timestamp": "2026-06-28T03:58:30",
+      "command": "ssh 192.168.9.114 'docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts'",
+      "success": true,
+      "output": "Status: Image is up to date for hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-28T03:59:00",
+      "command": "ssh 192.168.9.114 'docker rm -f manifest-ttfhw 2>/dev/null; docker run -d --name manifest-ttfhw -v /tmp/manifest-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity'",
+      "success": true,
+      "output": "Container ID: a66d17b4fd660083e9af37089edee6dba1f69b4382e8ca0befc4e55694b45abc",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-28T04:00:30",
+      "command": "docker exec manifest-ttfhw bash -c 'nproc && cat /etc/os-release | head -5 && uname -m'",
+      "success": true,
+      "output": "256 cores / openEuler 24.03 (LTS) / aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "容器架构确认：openEuler 24.03 LTS aarch64；远程机器本身也是 aarch64，无法通过架构仿真支持 Ubuntu 24.04 amd64 硬性要求"
+    },
+    {
+      "timestamp": "2026-06-28T04:01:00",
+      "command": "docker exec manifest-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git python3 python3-pip wget curl unzip'",
+      "success": true,
+      "output": "Complete! (gcc-12.3.1 / gcc-c++-12.3.1 / make-4.4.1 / cmake-3.22.0 / git-2.43.0 / python3-3.11.6 / python3-pip-23.3.1 / wget-1.21.4 / curl-8.4.0 / unzip-6.0)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 78
+    },
+    {
+      "timestamp": "2026-06-28T04:04:00",
+      "command": "docker exec manifest-ttfhw bash -c 'curl -sI https://repo.openubmc.cn/26.06_test/sdk/bmc_sdk.tar.gz && curl -sI https://conan.openubmc.cn && curl -sI https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com'",
+      "success": true,
+      "output": "200 OK (3/3 全部连通，bmc_sdk.tar.gz 大小 671293886 字节 ≈ 640MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 4,
+      "note": "openUBMC 远端仓库网络连通性确认（即便在 openEuler 内也能直连 conan.openubmc.cn / repo.openubmc.cn）"
+    },
+    {
+      "timestamp": "2026-06-28T04:05:00",
+      "command": "docker exec manifest-ttfhw bash -c 'curl -sI https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu/dists/noble/main/binary-amd64/Packages && curl -sI https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com/Ubuntu/dists/noble/main/binary-arm64/Packages'",
+      "success": true,
+      "output": "amd64: 200 OK / arm64: 404 Not Found",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "openUBMC APT 仓库仅提供 binary-amd64，binary-arm64 返回 404。远程机器 + 容器均为 aarch64，无法通过 apt 源安装 bingo / bmc-studio / openubmc-bmc-sdk 等工具链"
+    },
+    {
+      "timestamp": "2026-06-28T04:06:30",
+      "command": "docker exec manifest-ttfhw bash -c 'curl -sI https://dailybuild.openubmc.cn/tools/gcm-linux_amd64.2.6.1.deb && python3 init.py'",
+      "success": false,
+      "output": "gcm deb 28156142 字节（约 27MB），文件名 gcm-linux_amd64.deb 表明 amd64-only / init.py 输出: ERROR:root:仅支持Ubuntu 24.04操作系统，当前系统为 \\S",
+      "error": "init.py:environ_check() (line 124-128) 读取 /etc/issue 文件首行，要求以 'Ubuntu 24.04' 开头，否则直接 raise Exception；openEuler 24.03 系统的 /etc/issue 为空（\\S），硬性被拒绝",
+      "returncode": 1,
+      "duration_seconds": 4,
+      "note": "init.py 启动即抛异常退出（环境检查未通过前无法执行任何 install_* / conan_config / install_sdk 阶段）"
+    },
+    {
+      "timestamp": "2026-06-28T04:08:00",
+      "command": "docker exec manifest-ttfhw bash -c 'git config --global --add safe.directory /workspace && pre-commit run --all-files'",
+      "success": true,
+      "output": "Check .sr Files...Passed / Check JSON...Passed / Check YAML...Passed / trim trailing whitespace...Passed / fix end of files...Passed / check for merge conflicts...Passed / check for added large files...Passed / check for case conflicts...Passed / detect private key...Passed (注：conventional-commit 与 add-signoff-and-change-id 因需最近一次 commit 满足规范而未单独显示，且 .bmcgo 目录下尚有 conventional-commit 与 add-signoff-and-change-id 两个 hooks 因需检测提交记录语义未在 run --all-files 中触发;实际显示的 9 个 hook 全 Passed)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 142,
+      "note": "pre-commit 静态检查 9/9 全部通过（conventional-commit 与 add-signoff-and-change-id hooks 不在 run --all-files 默认 scope，配置文件识别到；其他 9 个本地代码质量 hook 均通过）"
+    },
+    {
+      "timestamp": "2026-06-28T04:12:00",
+      "command": "docker exec manifest-ttfhw bash -c 'python3 init.py -user testuser -psw testpass && python3 init.py --help && grep -n \"def install\\|def conan\\|def check\\|environ_check\" /workspace/init.py'",
+      "success": true,
+      "output": "1) python3 init.py -user testuser -psw testpass: ERROR:root:仅支持Ubuntu 24.04操作系统，当前系统为 \\S (返回码 1) / 2) python3 init.py --help: usage 输出正常（argparse 解析 OK，包含 -b / -user / -psw 三个可选参数）/ 3) grep 列出 init.py 中 13 个 install/check 函数（environ_check / ubuntu_init / install_dependencies / install_old_openssl / install_node / install_bingo / install_studio / install_cangjie / conan_config / install_sdk / install_qemu / install_qemu_compile_dependencies / install_qemu_runtime_dependencies / install_studio_runtime_dependencies / check_path），全部硬性依赖 Ubuntu 24.04",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "深入确认：init.py 在 environ_check()（line 124-128）硬性要求 /etc/issue 首行以 'Ubuntu 24.04' 开头，openEuler 容器内该文件内容为 '\\S'，无法绕过；后续 install_* / conan_config / install_sdk 阶段均不会执行"
+    },
+    {
+      "timestamp": "2026-06-28T04:13:00",
+      "command": "docker exec manifest-ttfhw bash -c 'find . -path ./.git -prune -o -type f \\( -name \"*test*.py\" -o -name \"conftest*\" \\) -print | head -5 && find . -path ./.git -prune -o -type d \\( -name tests -o -name unit_test \\) -print | head -5'",
+      "success": true,
+      "output": "未找到任何 *test*.py / conftest.py / tests/ / unit_test/ 路径",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "manifest 仓内确实无 UT 框架或测试代码；构建产物为 HPM BMC 固件升级包，无 host-side smoke 样例入口"
+    },
+    {
+      "timestamp": "2026-06-28T04:14:30",
+      "command": "docker exec manifest-ttfhw bash -c 'find build/ -maxdepth 4 -name \"*.py\" | head -5 && grep -l \"def main\\|if __name__\" build/works/packet/qemu_shells/*.py 2>/dev/null | head -3'",
+      "success": true,
+      "output": "build/works/packet/work_prepare_tools.py / build/works/packet/work_build_qemu_rootfs.py / build/works/packet/qemu_shells/vemake_1711.py / build/works/packet/qemu_shells/qemu_schema.py / build/sdk/conanfile.py；grep 仅匹配到 qemu_schema.py 与 vemake_1711.py 含 if __name__，但二者均为 QEMU rootfs 构建脚本片段，非独立样例程序",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "仓内 Python 脚本均为构建编排工具（init.py / build_image.py / build/works/packet/*.py / build/customization/*.py / build/sdk/conanfile.py），无 standalone sample entry point"
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-28T03:55:43",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式）",
+      "result": "已启动",
+      "details": {
+        "repo": "manifest",
+        "branch_requested": "master",
+        "branch_used": "main",
+        "environment": "remote:192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T03:56:00",
+      "step": "branch_resolution",
+      "action": "git ls-remote 解析实际分支",
+      "result": "用户指定 master 不存在，采用 main",
+      "details": {
+        "available_branches": [
+          "br_release_openUBMC2512_20261231_LTS",
+          "br_release_openUBMC2512_20261231_LTS_SP1",
+          "br_release_openUBMC2603_20260630",
+          "main"
+        ],
+        "selected": "main"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T03:57:30",
+      "step": "code_preparation",
+      "action": "远程 git clone --depth 1 --branch main",
+      "result": "成功",
+      "details": {
+        "path": "/tmp/manifest-verify",
+        "commit": "bbd6376ca578fcce79890d7f59a2c0cb31effaed"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T03:58:30",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像（替换 Ubuntu 24.04）",
+      "result": "openEuler 24.03 LTS",
+      "details": {
+        "selection_reason": "manifest/dockerfile 原 FROM swr.../openubmc/ubuntu:24.04.2，强制改用 openEuler 24.03 LTS"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T03:59:00",
+      "step": "container_setup",
+      "action": "拉取镜像并启动容器 manifest-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "manifest-ttfhw",
+        "container_arch": "aarch64",
+        "host_arch": "aarch64"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:00:30",
+      "step": "environment_check",
+      "action": "检查容器内 OS / 架构 / 规格",
+      "result": "openEuler 24.03 LTS / aarch64",
+      "details": {
+        "nproc": 256,
+        "memory": "2044GB",
+        "docker": "18.09.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:01:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装第一层系统工具链（gcc gcc-c++ make cmake git python3 python3-pip wget curl unzip）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "make-4.4.1",
+          "cmake-3.22.0",
+          "git-2.43.0",
+          "python3-3.11.6",
+          "python3-pip-23.3.1",
+          "wget-1.21.4",
+          "curl-8.4.0",
+          "unzip-6.0"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:04:00",
+      "step": "network_probe",
+      "action": "探测 openUBMC 远端仓库可达性",
+      "result": "3/3 全部 200 OK",
+      "details": {
+        "urls": [
+          "https://repo.openubmc.cn/26.06_test/sdk/bmc_sdk.tar.gz",
+          "https://conan.openubmc.cn",
+          "https://openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com"
+        ],
+        "size_bmc_sdk_tar_gz": 671293886
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:05:00",
+      "step": "architecture_compatibility_check",
+      "action": "检查 openUBMC 工具链对 aarch64 的支持",
+      "result": "不支持：仅 amd64",
+      "details": {
+        "openubmc_apt_arm64": 404,
+        "openubmc_apt_amd64": 200,
+        "gcm_deb_filename": "gcm-linux_amd64.2.6.1.deb",
+        "remote_machine_arch": "aarch64",
+        "container_arch": "aarch64",
+        "verdict": "openUBMC APT 仅提供 binary-amd64；远程机器与容器均为 aarch64；即使绕过 OS 检查，工具链二进制也无法安装"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:06:30",
+      "step": "build_attempt",
+      "action": "尝试 init.py 触发环境初始化",
+      "result": "失败：environ_check 直接拒绝",
+      "details": {
+        "error": "ERROR:root:仅支持Ubuntu 24.04操作系统，当前系统为 \\S",
+        "source": "init.py:124-128 environ_check() 读取 /etc/issue 硬性要求 'Ubuntu 24.04' 前缀"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:08:00",
+      "step": "static_analysis_execution",
+      "action": "执行 pre-commit run --all-files",
+      "result": "9/9 全部通过",
+      "details": {
+        "passed": 9,
+        "failed": 0,
+        "hooks": [
+          "Check .sr Files",
+          "Check JSON",
+          "Check YAML",
+          "trim trailing whitespace",
+          "fix end of files",
+          "check for merge conflicts",
+          "check for added large files",
+          "check for case conflicts",
+          "detect private key"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:12:00",
+      "step": "ut_search",
+      "action": "在仓内搜索 UT / 测试代码",
+      "result": "未发现",
+      "details": {
+        "patterns": [
+          "*test*.py",
+          "conftest.py",
+          "tests/",
+          "unit_test/"
+        ],
+        "findings": "0 matches"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:13:00",
+      "step": "sample_search",
+      "action": "在仓内搜索 host-side sample / main entry",
+      "result": "未发现独立样例程序",
+      "details": {
+        "patterns": [
+          "def main",
+          "if __name__"
+        ],
+        "findings": "build/works/packet/qemu_shells/{vemake_1711,qemu_schema}.py 含 if __name__ 但为 QEMU rootfs 构建脚本片段，非样例"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T04:14:30",
+      "step": "report_generation",
+      "action": "生成验证报告（JSON 原始报告）",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_manifest_20260628.json",
+        "verdict": "build=not_run / ut=not_run / sample=not_run（环境硬性不兼容 + 仓内无 UT/样例）",
+        "static_analysis_pre_commit": "9/9 Passed"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "检测到 .pre-commit-config.yaml（2 个 pre-commit 源合计 12 个 hooks），包含 conventional-commit / add-signoff-and-change-id / check-sr / check-json / check-yaml / trailing-whitespace / end-of-file-fixer / check-merge-conflict / check-added-large-files / check-case-conflict / detect-private-key；本轮实际执行 pre-commit run --all-files，9/9 hook 全部 Passed（conventional-commit 与 add-signoff-and-change-id 因需在 commit-msg 阶段触发，未在 run --all-files 中显示但配置识别到）；未检测到 lint-runner 配置",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "全部通过",
+        "duration_seconds": 142,
+        "total_hooks": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "hook_results": [
+          {
+            "hook_name": "Check .sr Files (check-sr)",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "Check JSON (check-json)",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "Check YAML (check-yaml)",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "trim trailing whitespace",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "fix end of files",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "check for merge conflicts",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "check for added large files",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "check for case conflicts",
+            "status": "Passed"
+          },
+          {
+            "hook_name": "detect private key",
+            "status": "Passed"
+          }
+        ],
+        "additional_hooks_not_in_run_scope": [
+          {
+            "hook_name": "conventional-commit",
+            "reason": "仅在 commit-msg 阶段触发，不在 run --all-files scope"
+          },
+          {
+            "hook_name": "add-signoff-and-change-id",
+            "reason": "仅在 commit-msg / prepare-commit-msg 阶段触发，不在 run --all-files scope"
+          }
+        ]
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 .devcontainer 目录；提供自有 dockerfile (FROM swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2) 替代 devcontainer 能力，但 dockerfile 仅支持 Ubuntu 24.04 amd64，不适用于 openEuler aarch64 验证环境"
+    },
+    "build": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "command": "python3 init.py && bingo build -t personal -b openUBMC",
+      "concurrency": 51,
+      "reason": "环境硬性不兼容：manifest 仓 README 1.1 节 + dockerfile FROM + init.py:environ_check() 三处均硬性要求 Ubuntu 24.04 LTS amd64；本验证环境（远程机器 192.168.9.114 + openEuler 24.03 容器 manifest-ttfhw）均为 aarch64 架构，且 init.py 在 environ_check() 阶段读取 /etc/issue 首行硬性校验 'Ubuntu 24.04' 前缀，openEuler 容器内该文件内容为 '\\S'，直接抛出 Exception。即使绕过 OS 校验，openUBMC APT 仓库（openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com）仅提供 binary-amd64（实测 binary-arm64 返回 404），gcm-linux_amd64.2.6.1.deb / bmc_sdk.tar.gz / bmc-studio / openubmc-bmc-sdk 等工具链均为 amd64-only，aarch64 容器无法 dpkg 安装。无任何可降级路径：Ubuntu 24.04 amd64 是 init.py 拒绝非该系统的唯一硬约束 + openUBMC Conan 私有仓库登录需要 openUBMC 社区账号凭据（usercenter.openubmc.cn 注册），本验证无可用社区凭据",
+      "static_validation_results": {
+        "init_py_syntax": "pass (ast.parse)",
+        "build_image_py_syntax": "pass (ast.parse)",
+        "build_sdk_conanfile_py_syntax": "pass (ast.parse)",
+        "init_py_help": "pass (argparse 解析正常, 输出 usage 含 -b / -user / -psw)",
+        "build_image_py_help": "pass (argparse 解析正常)",
+        "init_py_execution": "fail (environ_check 抛 Exception: 仅支持Ubuntu 24.04)"
+      },
+      "config_validation_results": {
+        "build_openubmc_lock": "valid JSON, version=0.5, contains conan requires + build_requires",
+        "build_sdk_openubmc_sdk_lock": "valid JSON",
+        "build_version_yml": "valid YAML",
+        "dep_rules_json": "valid JSON",
+        "build_product_BMC_openUBMC_manifest_yml": "valid YAML, schema=/usr/share/bingo/schema/manifest.schema.json, platform.conan=ibmc_sdk/5.14.00.01.b001@openubmc/stable, openubmc_sdk.conan=openubmc_sdk/latest@openubmc/stable, base.version=26.06.00.01, dependencies=iam/vpd/hica/observability/fluent-bit/libyaml/opentelemetry/abseil/grpc/protobuf 等 28 个 conan 组件"
+      },
+      "environment_compatibility_matrix": {
+        "remote_machine_arch": "aarch64",
+        "container_arch": "aarch64",
+        "manifest_required_arch": "amd64 (x86-64)",
+        "openubmc_apt_binary_amd64": "200 OK",
+        "openubmc_apt_binary_arm64": "404 Not Found",
+        "verdict": "架构不匹配"
+      }
+    },
+    "ut": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "skip_reason": "manifest 是 openUBMC 构建编排仓（管理 28 个 app/<submodule> 子仓的版本依赖与构建策略），本仓内 find 未发现 tests/ 或 unit_test/ 目录，也未发现 *test*.py / conftest.py 等 UT 框架入口；UT 由各 app/<submodule> 子仓（如 app/vnc_proxy, app/dcmid, app/spdm, app/account, app/bios, app/hica, app/lsw, app/frudata, app/general_hardware, app/fructrl 等）自行维护，本验证范围仅限 manifest 仓本身，不展开子模块验证"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "note": "manifest 是构建编排仓，不包含 host-side 可执行样例；构建产物为 openUBMC BMC 整机 HPM 升级包（rootfs_openUBMC.hpm），需在 BMC 硬件或 QEMU 模拟上运行验证，无 host-side smoke 入口；仓内 build/works/packet/qemu_shells/{vemake_1711,qemu_schema}.py 含 if __name__ 但为 QEMU rootfs 构建脚本片段，非独立样例程序"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未列出 bingo 工具链的 Conan 包名引用（需通过 dockerfile 或 openUBMC APT 仓库推断 openubmc-bingo 包）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未明确说明 manifest 仓与 28 个 app/<submodule> 子仓的版本同步流程（仅描述 bingo build -t personal 触发整体集成）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未明示 aarch64 / Kunpeng 架构的实际支持时间表（仅写 '预计 26 年底提供'）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "init.py 的 environ_check() 直接 read /etc/issue 首行判定 OS，未采用 /etc/os-release VERSION_ID 等更稳健的发行版检测方式，对容器化场景不友好",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "openUBMC APT 仓库（openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com）仅提供 binary-amd64，binary-arm64 返回 404，与 README 1.1 节 'Kunpeng 处理器支持正在规划中' 自相矛盾（规划中应至少有预览包）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "manifest.yml 中 platform.conan=ibmc_sdk/5.14.00.01.b001@openubmc/stable + openubmc_sdk.conan=openubmc_sdk/latest@openubmc/latest 使用了 latest 标签（不可重现构建的常见反模式）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "dockerfile 中 wget + dpkg -i 安装 gcm-linux_amd64.2.6.1.deb 流程未将 .deb 文件名参数化（25.x 与 26.06 版本文件名可能不同）",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-28T03:56:00",
+      "problem": "用户指定 master 分支，但 manifest 仓库不存在 master 分支（git ls-remote --heads 仅显示 main 和 3 个 br_release_* 分支）",
+      "solution": "通过 git ls-remote 发现默认分支为 main，采用默认分支重新克隆；HEAD commit = bbd6376ca578fcce79890d7f59a2c0cb31effaed",
+      "source": "git ls-remote --heads https://gitcode.com/openUBMC/manifest.git"
+    },
+    {
+      "timestamp": "2026-06-28T04:05:00",
+      "problem": "远程机器 192.168.9.114 与 openEuler 容器 manifest-ttfhw 均为 aarch64 架构，但 manifest 仓硬性要求 x86-64（amd64）：README 1.1 节明文 + dockerfile FROM swr.../openubmc/ubuntu:24.04.2 + openUBMC APT 仓库仅提供 binary-amd64（实测 binary-arm64 返回 404）+ bingo gcm-linux_amd64.2.6.1.deb 文件名含 amd64",
+      "solution": "无可降级路径：openEuler 24.03 / Ubuntu 24.04 均无 aarch64 镜像支持 openUBMC 工具链（无对应 Conan profile / 无交叉编译 SDK / 无对应 init.py OS 检查豁免）；若需在 aarch64 环境验证 manifest 仓，须先由 openUBMC 社区发布 arm64 工具链 + 改造 init.py OS 检测逻辑",
+      "source": "manifest/README.md:1.1 + manifest/dockerfile:1 + manifest/init.py:124-128"
+    },
+    {
+      "timestamp": "2026-06-28T04:06:30",
+      "problem": "init.py:environ_check() 硬性要求 /etc/issue 首行以 'Ubuntu 24.04' 开头，openEuler 容器内 /etc/issue 内容为 '\\S'，立即抛 Exception（'仅支持Ubuntu 24.04操作系统，当前系统为 \\\\S'），后续 install_dependencies / install_bingo / install_studio / conan_config / install_sdk 等 11 个阶段全部不会执行",
+      "solution": "当前 openEuler 容器内无法绕过 init.py OS 校验；唯一可行路径是准备一个 Ubuntu 24.04 amd64 镜像作为宿主（或 docker exec --privileged 启动 Ubuntu 容器），但这已超出 ttfhw-verify-runner 在 openEuler 镜像下的验证边界",
+      "source": "manifest/init.py:124-128 environ_check() 实现: open('/etc/issue').readline().strip() 必须以 'Ubuntu 24.04' 起始"
+    },
+    {
+      "timestamp": "2026-06-28T04:06:30",
+      "problem": "bingo 工具链（gcm-linux_amd64.2.6.1.deb, 27MB）以及 bmc_sdk.tar.gz (640MB) 均为 amd64-only 二进制，远程 aarch64 容器无法通过 dpkg 安装，且 init.py 后续 install_bingo() 阶段还会通过 apt-get install openubmc-bingo 安装 openUBMC 工具（apt 源 openubmc-apt-repo.obs.cn-north-4.myhuaweicloud.com 实测 binary-arm64 返回 404）",
+      "solution": "当前 aarch64 环境无对应包；需等待 openUBMC 社区发布 arm64 工具链（README 1.1 节写 'Kunpeng 处理器支持正在规划中，预计 26 年底提供'）",
+      "source": "manifest/dockerfile:18-20 + manifest/init.py:190 install_bingo() + openUBMC APT 仓库 HTTP 探测"
+    },
+    {
+      "timestamp": "2026-06-28T04:06:30",
+      "problem": "init.py:conan_config() 阶段需要登录 conan remote openubmc_sdk 与 openubmc_opensource 两个远程仓库，要求 openUBMC 社区账号（usercenter.openubmc.cn 注册）；本验证无社区账号凭据，且 dockerfile 期望通过 BuildKit --mount=type=secret 注入；即使绕过 OS 检查，无凭据也无法完成 Conan 认证",
+      "solution": "需 openUBMC 社区账号 + BuildKit secret 凭据；本验证任务不含社区凭据",
+      "source": "manifest/init.py:256 conan_config() + manifest/dockerfile:24-28 RUN --mount=type=secret"
+    },
+    {
+      "timestamp": "2026-06-28T04:13:00",
+      "problem": "manifest 仓内 find 未发现 tests/ / unit_test/ 目录，也未发现 *test*.py / conftest.py 等 UT 框架入口，无 host-side 可执行样例；本仓范围 UT 状态仅能记 not_run",
+      "solution": "本验证范围仅限 manifest 仓本身；如需验证 28 个 app/<submodule> 子仓的 UT，需单独启动子仓验证任务",
+      "source": "find . -path ./.git -prune -o -type f \\( -name '*test*.py' -o -name 'conftest*' \\) -print 返回 0 匹配"
+    }
+  ]
+}

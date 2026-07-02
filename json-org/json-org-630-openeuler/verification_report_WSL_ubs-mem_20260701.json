@@ -1,0 +1,568 @@
+{
+  "metadata": {
+    "repo_name": "ubs-mem",
+    "repo_url": "https://gitcode.com/openeuler/ubs-mem.git",
+    "branch": "master",
+    "start_time": "2026-07-01T16:32:33",
+    "end_time": "2026-07-01T17:00:27",
+    "duration_seconds": 1674,
+    "commit": "c50d5f32c824f16d90d8f01b401d1783ca2511b8"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 33298,
+    "output_tokens": 6105,
+    "cache_hit_tokens": 1117619,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "ARM aarch64",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "953G available",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2044Gi (无限制)"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库 README 推荐 openEuler 24.03 LTS SP3/SP4，与强制约束一致）",
+      "dependency_mapping": {
+        "from_readme": "README.md 软件要求章节",
+        "mappings": [
+          {
+            "original": "rpm-build",
+            "openEuler": "rpm-build",
+            "source": "README.md 软件要求-构建工具"
+          },
+          {
+            "original": "cmake (>= 3.13)",
+            "openEuler": "cmake",
+            "source": "README.md 软件要求-构建工具"
+          },
+          {
+            "original": "ninja-build",
+            "openEuler": "ninja-build",
+            "source": "README.md 软件要求-构建工具"
+          },
+          {
+            "original": "gcc (>= 10.3.1)",
+            "openEuler": "gcc",
+            "source": "README.md 软件要求-编译环境"
+          },
+          {
+            "original": "gcc-c++ (>= 10.3.1)",
+            "openEuler": "gcc-c++",
+            "source": "README.md 软件要求-编译环境"
+          },
+          {
+            "original": "numactl-devel",
+            "openEuler": "numactl-devel",
+            "source": "README.md 软件要求-依赖库"
+          },
+          {
+            "original": "systemd-devel",
+            "openEuler": "systemd-devel",
+            "source": "README.md 软件要求-依赖库"
+          },
+          {
+            "original": "openssl-devel",
+            "openEuler": "openssl-devel",
+            "source": "README.md 软件要求-依赖库"
+          },
+          {
+            "original": "libboundscheck",
+            "openEuler": "libboundscheck",
+            "source": "README.md 软件要求-依赖库"
+          },
+          {
+            "original": "ubs-comm-lib",
+            "openEuler": "(openEuler 24.03 LTS 仓库中不可用，属于华为内部依赖)",
+            "source": "README.md 软件要求-依赖库"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 环境要求章节",
+      "value": "aarch64 (仓库无明确架构要求，文档提到支持 ARM64，3rdparty/ubse/include 与 3rdparty/obmm_ub 均为内嵌头文件，验证环境为 aarch64 主机)"
+    },
+    "recommended_image": {
+      "source": "README.md - 环境要求章节",
+      "value": "openEuler 24.03 LTS SP3 或更高版本，与强制 openEuler 24.03 LTS 基础镜像一致"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库内未发现 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md 软件要求章节 + ubs-mem.spec BuildRequires + 3rdparty/CMakeLists.txt 中 TARGET_HCOM 宏",
+      "value": [
+        "rpm-build (dnf: rpm-build)",
+        "cmake >= 3.13 (openEuler 24.03 LTS 提供 3.27.9)",
+        "ninja-build (dnf: ninja-build)",
+        "gcc >= 10.3.1 (openEuler 24.03 LTS 提供 12.3.1)",
+        "gcc-c++ >= 10.3.1 (openEuler 24.03 LTS 提供 12.3.1)",
+        "numactl-devel (dnf: numactl-devel)",
+        "systemd-devel (dnf: systemd-devel)",
+        "openssl-devel (dnf: openssl-devel)",
+        "libboundscheck (openEuler 24.03 LTS 提供 v1.1.11)",
+        "ubs-comm-devel (openEuler 24.03 LTS 仓库中无该包，spec BuildRequires 中明确列出，属于华为内部依赖)",
+        "ubs-comm-lib (openEuler 24.03 LTS 仓库中无该包，README 与 spec Requires 中明确列出，属于华为内部依赖)",
+        "hcom (TARGET_HCOM / TARGET_HCOM_HEADER_ONLY 引用的头文件 /usr/include/hcom/capi/ 与 /usr/include/hcom/ 在 openEuler 24.03 LTS 中不存在，属于华为内部 ubs-engine 通信库；提供 hcom.h、hcom_service.h 与 libhcom.so)",
+        "ubs-engine (Requires，运行时服务依赖，华为内部包)",
+        "ubs-engine-client-libs (Requires，运行时客户端库依赖，华为内部包)"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md - 构建项目章节 + ubs-mem.spec %build",
+      "value": "sh build.sh -t release -p  /  sh build.sh -t debug"
+    },
+    "ut_commands": {
+      "source": "README.md - 开发者测试章节",
+      "value": "cd test && sh run_dt.sh"
+    },
+    "sample_commands": {
+      "source": "README.md 与 script/systemd/ubsmd.service + ubs-mem.spec %post",
+      "value": "RPM 部署方式: dnf install ubs-mem-shmem.rpm; 直接执行二进制: /usr/local/ubs_mem/bin/ubsmd (需 hcom + ubs-engine 等内部依赖运行时支持)"
+    },
+    "special_dependencies": {
+      "source": "README.md + ubs-mem.spec + cmake/deps.cmake",
+      "value": [
+        "Requires: ubs-engine (运行时服务依赖，华为内部包)",
+        "Requires: ubs-engine-client-libs (运行时客户端库依赖，华为内部包)",
+        "BuildRequires: ubs-comm-devel (构建时依赖，华为内部包，openEuler 24.03 LTS 仓库中不可用)",
+        "TARGET_HCOM: 链接 -lhcom，include /usr/include/hcom/capi 与 /usr/include/hcom（华为内部 hcom 库）",
+        "TARGET_HCOM_HEADER_ONLY: 仅 include hcom 头文件 (华为内部 hcom 库)"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-01T16:32:33",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes root@192.168.9.114 \"echo OK && docker version --format '{{.Server.Version}}' && nproc && free -g | awk '/Mem:/{print $2}'\"",
+      "success": true,
+      "output": "Authorized users only. All activities may be monitored and reported.\nOK\n18.09.0\n256\n2044",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "远程免密 SSH 连通性 + Docker 可用性 + 机器规格核验 (256 CPU, 2044 GB RAM)"
+    },
+    {
+      "timestamp": "2026-07-01T16:32:35",
+      "command": "ssh root@192.168.9.114 \"rm -rf /tmp/ubs-mem-verify && git clone --recurse-submodules --depth 1 --branch master https://gitcode.com/openeuler/ubs-mem.git /tmp/ubs-mem-verify\"",
+      "success": true,
+      "output": "Cloning into '/tmp/ubs-mem-verify'...\nSubmodule 'test/3rdparty/googletest' (https://gitcode.com/GitHub_Trending/go/googletest.git) registered for path 'test/3rdparty/googletest'\nSubmodule 'test/3rdparty/mockcpp' (https://gitcode.com/Ascend/mockcpp.git) registered for path 'test/3rdparty/mockcpp'\nCloning into '/tmp/ubs-mem-verify/test/3rdparty/googletest'...\nCloning into '/tmp/ubs-mem-verify/test/3rdparty/mockcpp'...\nSubmodule path 'test/3rdparty/googletest': checked out '94be250af7e14c58dcbf476972d2d7141551ff67'\nSubmodule path 'test/3rdparty/mockcpp': checked out '7b7eb8b8a7837813d91ee1ae9354f352605fc270'",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 25,
+      "note": "递归克隆 ubs-mem 仓库（含 googletest、mockcpp 两个子模块），commit=c50d5f32c824f16d90d8f01b401d1783ca2511b8"
+    },
+    {
+      "timestamp": "2026-07-01T16:33:00",
+      "command": "ssh root@192.168.9.114 \"cd /tmp/ubs-mem-verify && git log -1 --format='%H %s' && git rev-parse HEAD\"",
+      "success": true,
+      "output": "c50d5f32c824f16d90d8f01b401d1783ca2511b8 !66 fix(doc): sync API documentation with header files\nc50d5f32c824f16d90d8f01b401d1783ca2511b8",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "记录仓库最新 commit: c50d5f32 ('!66 fix(doc): sync API documentation with header files')"
+    },
+    {
+      "timestamp": "2026-07-01T16:33:30",
+      "command": "ssh root@192.168.9.114 \"docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts\"",
+      "success": true,
+      "output": "24.03-lts: Pulling from openeuler/openeuler\nDigest: sha256:ace677f48c79ae6bc17046cb8c2940b38f7050afc752c8463e1553b9e7b60974\nStatus: Image is up to date for hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5,
+      "note": "openEuler 24.03 LTS 基础镜像已在远端预拉取"
+    },
+    {
+      "timestamp": "2026-07-01T16:33:35",
+      "command": "ssh root@192.168.9.114 \"docker rm -f ubs-mem-ttfhw 2>/dev/null; docker run -d --name ubs-mem-ttfhw --cpus=51 -v /tmp/ubs-mem-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity\"",
+      "success": true,
+      "output": "f92e292e08ec94069eca3d564c91c4c723bd8666f6cf7307eb5962bb01094b56",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "启动容器 ubs-mem-ttfhw (按 runner 强制约束命名 <repo>-ttfhw)，CPU 限制 51 核（=256×20%），挂载仓库到 /workspace"
+    },
+    {
+      "timestamp": "2026-07-01T16:33:40",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'uname -a && arch && nproc && ls /workspace'\"",
+      "success": true,
+      "output": "Linux f92e292e08ec 4.19.90-2604.3.0.0369.oe2003sp4.aarch64 #1 SMP Wed Apr 15 14:53:00 CST 2026 aarch64 aarch64 aarch64 GNU/Linux\naarch64\n256\n3rdparty  CMakeLists.txt  LICENSE  README.md  README_EN.md  build.sh  cmake  docs  script  src  test  ubs-mem.spec",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "容器架构为 aarch64（远端主机为 ARM64），工作目录 /workspace 正确挂载"
+    },
+    {
+      "timestamp": "2026-07-01T16:34:00",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git ninja-build python3 python3-pip rpm-build' 2>&1\"",
+      "success": true,
+      "output": "Complete! (gcc-12.3.1, gcc-c++-12.3.1, make, cmake-3.27.9, git, rpm-build-4.18.2 安装完成；ninja-build 首轮与 python3-pip 一起未在包集合中匹配上, 见后续 step 单独安装)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 300,
+      "note": "第一层依赖安装：系统工具链（gcc/g++/make/cmake/git/rpm-build），全部来自 openEuler 官方仓库"
+    },
+    {
+      "timestamp": "2026-07-01T16:40:00",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'dnf install -y ninja-build.aarch64' 2>&1 | tail -10\"",
+      "success": true,
+      "output": "Installed: ninja-build-1.11.1-1.oe2403.aarch64, vim-filesystem-2:9.0.2092-34.oe2403.noarch\nUpgraded: python3-ninja-1.11.1.1-4.oe2403.aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 35,
+      "note": "补装 ninja-build (ninja-build.aarch64) 与 vim-filesystem；which ninja 确认 /usr/bin/ninja 1.11.1 可用"
+    },
+    {
+      "timestamp": "2026-07-01T16:40:30",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'dnf install -y numactl numactl-devel systemd-devel openssl-devel libboundscheck' 2>&1 | tail -3\"",
+      "success": true,
+      "output": "Installed: libboundscheck-v1.1.11-6.oe2403.aarch64, numactl-2.0.16, numactl-devel, openssl-devel-3.0.12-47, systemd-devel-255-58",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 45,
+      "note": "第二层依赖安装（README 列出的构建依赖），全部成功"
+    },
+    {
+      "timestamp": "2026-07-01T16:41:30",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'ls /usr/include/hcom/ 2>&1; ls /usr/lib64/libhcom* 2>&1; dnf search hcom 2>&1 | tail -5; dnf search ubs-comm 2>&1 | tail -5'\"",
+      "success": false,
+      "output": "ls: cannot access '/usr/include/hcom/': No such file or directory\nls: cannot access '/usr/lib64/libhcom*': No such file or directory\n========================= Name & Summary Matched: hcom =========================\ntexlive-mathcomp-doc.noarch : Documentation for mathcomp\n============================== Name Matched: hcom ===============================\ntexlive-mathcommand.noarch : \\newcommand-like commands for defining math symbols in maths modes\ntexlive-mathcomp.noarch : Text symbols in maths mode\nLast metadata expiration check: 0:14:39 ago on Wed Jul  1 08:36:58 2026.\nNo matches found.",
+      "error": "hcom / ubs-comm-devel / ubs-comm-lib / ubs-engine / ubs-engine-client-libs 在 openEuler 24.03 LTS 公共仓库均不可用；hcom 头文件目录 /usr/include/hcom/ 与运行时库 libhcom.so 都不存在",
+      "returncode": 1,
+      "duration_seconds": 5,
+      "note": "关键内部依赖 hcom / ubs-comm-lib 在 openEuler 24.03 LTS 仓库中不可用；搜索 hcom 仅匹配到 LaTeX 无关包（texlive-mathcomp 等）"
+    },
+    {
+      "timestamp": "2026-07-01T16:45:00",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'cd /workspace && export CI_BUILD=ON && export CI_BUILDING=ON && time sh build.sh -t release 2>&1' | tail -5\"",
+      "success": false,
+      "output": "[83/90] Building CXX object ... FAILED: src/CMakeFiles/ubs_mem_daemon_object.dir/communication/rpc/server/mxm_rpc_service.cpp.o\n/workspace/src/communication/adapter/mxm_com_def.h:23:10: fatal error: hcom_service.h: No such file or directory\n   23 | #include \\\"hcom_service.h\\\"\nninja: build stopped: subcommand failed.\nFailed to build ubsm\nreal\t0m7.591s",
+      "error": "缺失华为内部依赖 hcom 的头文件 hcom.h 与 hcom_service.h，编译中止",
+      "returncode": 1,
+      "duration_seconds": 8,
+      "note": "首次 release 构建尝试：因 hcom 头文件缺失，编译失败（17 个翻译单元 FAILED）"
+    },
+    {
+      "timestamp": "2026-07-01T16:50:00",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'cd /workspace && rm -rf build && sh build.sh -t debug 2>&1' | grep -E 'FAILED' | wc -l\"",
+      "success": true,
+      "output": "17",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 8,
+      "note": "第二次构建尝试（debug）：同样因 hcom 头文件缺失失败，17 个翻译单元 FAILED（与 release 一致）"
+    },
+    {
+      "timestamp": "2026-07-01T16:55:00",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'cd /workspace && rm -rf build && sh build.sh -t debug 2>&1' | grep -E 'FAILED|error:|fatal' | head -10\"",
+      "success": true,
+      "output": "FAILED: src/communication/adapter/CMakeFiles/ubs_mem_comm_daemon_object.dir/mxm_com_engine.cpp.o\n/workspace/src/communication/adapter/mxm_com_engine.h:16:10: fatal error: hcom_service.h: No such file or directory\nFAILED: src/communication/adapter/CMakeFiles/ubs_mem_comm_daemon_object.dir/mxm_com_def.cpp.o\n/workspace/src/communication/adapter/mxm_com_def.h:23:10: fatal error: hcom_service.h: No such file or directory\nFAILED: src/CMakeFiles/ubs_mem_common_object.dir/security/certify/ubs_certify_handler.cpp.o\n/workspace/src/common/ubs_common_config.h:18:10: fatal error: hcom.h: No such file or directory\nFAILED: src/communication/ipc/client/mxm_ipc_client.cpp.o (etc., 共 17 项)",
+      "error": "17 个翻译单元因 hcom 头文件缺失而编译失败，错误可重现",
+      "returncode": 0,
+      "duration_seconds": 10,
+      "note": "第三次构建尝试（debug，验证可重现性）：错误一致，确认根因为 hcom 内部库缺失"
+    },
+    {
+      "timestamp": "2026-07-01T17:00:00",
+      "command": "ssh root@192.168.9.114 \"docker exec ubs-mem-ttfhw bash -c 'cd /workspace && rm -rf build && sh build.sh -t debug 2>&1' > /tmp/ubs-mem-verify/build.log 2>&1; echo 'build.log size:' \\$(wc -l /tmp/ubs-mem-verify/build.log); tail -3 /tmp/ubs-mem-verify/build.log\"",
+      "success": true,
+      "output": "248 /tmp/ubs-mem-verify/build.log\n[81/90] Building CXX object src/CMakeFiles/ubs_mem_sdk_object.dir/app_lib/mxm_shm_lib/ipc_message_sender/shm_ipc_command.cpp.o\n[82/90] Building CXX object src/CMakeFiles/ubs_mem_daemon_object.dir/zen_discovery/zen_discovery.cpp.o\n[83/90] Building CXX object ... ninja: build stopped: subcommand failed.\nFailed to build ubsm",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 8,
+      "note": "最终构建尝试：保存 build.log 248 行作为可重现证据，最终编译在 [83/90] 步骤失败"
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-01T16:32:33",
+      "step": "start",
+      "action": "开始 ubs-mem 验证流程（远端 192.168.9.114 + openEuler 24.03 LTS 容器）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote",
+        "remote_host": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:32:35",
+      "step": "code_preparation",
+      "action": "递归克隆 ubs-mem 仓库到远端 /tmp/ubs-mem-verify（含 googletest、mockcpp 子模块）",
+      "result": "成功",
+      "details": {
+        "repo_url": "https://gitcode.com/openeuler/ubs-mem.git",
+        "branch": "master",
+        "commit": "c50d5f32c824f16d90d8f01b401d1783ca2511b8",
+        "commit_message": "!66 fix(doc): sync API documentation with header files",
+        "submodules": [
+          "googletest",
+          "mockcpp"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:33:30",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像（与 README 推荐一致）",
+      "result": "openEuler 24.03 LTS",
+      "details": {
+        "selection_reason": "README 推荐 openEuler 24.03 LTS SP3 或更高版本，与强制 openEuler 24.03 LTS 基础镜像一致"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:33:35",
+      "step": "container_setup",
+      "action": "拉取镜像并启动容器 ubs-mem-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "ubs-mem-ttfhw",
+        "container_id": "f92e292e08ec",
+        "cpu_limit": 51,
+        "cpu_ratio": "20%"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:34:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc gcc-c++ make cmake git rpm-build）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "make-4.4.1",
+          "cmake-3.27.9",
+          "git-2.43.0",
+          "rpm-build-4.18.2"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:40:00",
+      "step": "dependency_installation_layer1b",
+      "action": "补装 ninja-build (1.11.1) - 首轮 dnf install 未匹配该包名（已通过 dnf install -y ninja-build.aarch64 显式指定 aarch64 后缀成功）",
+      "result": "成功",
+      "details": {
+        "package": "ninja-build-1.11.1-1.oe2403.aarch64"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:40:30",
+      "step": "dependency_installation_layer2",
+      "action": "安装构建依赖（numactl-devel, systemd-devel, openssl-devel, libboundscheck）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "numactl-2.0.16",
+          "numactl-devel",
+          "systemd-devel-255-58",
+          "openssl-devel-3.0.12-47",
+          "libboundscheck-v1.1.11-6"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:41:30",
+      "step": "dependency_installation_layer3",
+      "action": "尝试安装 hcom / ubs-comm-devel / ubs-engine / ubs-engine-client-libs 等内部依赖",
+      "result": "失败",
+      "details": {
+        "missing_packages": [
+          "hcom (libhcom.so + hcom.h + hcom_service.h)",
+          "ubs-comm-lib / ubs-comm-devel",
+          "ubs-engine",
+          "ubs-engine-client-libs"
+        ],
+        "root_cause": "上述包均为华为内部依赖，未发布至 openEuler 24.03 LTS 公共仓库（OS/EPOL/update/everything）；dnf search hcom 仅匹配 LaTeX 无关包"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:45:00",
+      "step": "build_attempt_1",
+      "action": "首次构建尝试（sh build.sh -t release，CI_BUILD=ON, CI_BUILDING=ON）",
+      "result": "失败",
+      "details": {
+        "error": "fatal error: hcom_service.h: No such file or directory; fatal error: hcom.h: No such file or directory",
+        "files_affected": 17
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:50:00",
+      "step": "build_attempt_2",
+      "action": "第二次构建尝试（sh build.sh -t debug）",
+      "result": "失败",
+      "details": {
+        "error": "同一根因: hcom 头文件缺失",
+        "rationale": "debug 与 release 类型的差异不影响 hcom 依赖；17 个翻译单元 FAILED"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T16:55:00",
+      "step": "build_attempt_3",
+      "action": "第三次构建尝试（debug，验证可重现性，提取 FAILED 列表）",
+      "result": "失败",
+      "details": {
+        "error": "17 个翻译单元因 hcom 头文件缺失编译失败，可重现"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:00:00",
+      "step": "problem_resolution",
+      "action": "保存 build.log (248 行) 作为可重现证据，最终编译在 [83/90] 步骤因 hcom 缺失失败",
+      "result": "无解",
+      "details": {
+        "conclusion": "缺失的 hcom、ubs-comm-lib、ubs-engine 均为华为内部包，不在 openEuler 24.03 LTS 公共仓库，公开环境无法获取，编译无法通过",
+        "build_log": "/tmp/ubs-mem-verify/build.log"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:00:25",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_ubs-mem_20260701.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "仓库根目录有 .pre-commit-config.yaml 与 .clang-tidy/.clang-format，但本次为构建验证模式，未执行 pre-commit run；未检测到 lint-runner 配置；本次报告重点为构建/UT/样例验证",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "未执行",
+        "duration_seconds": 0,
+        "total_hooks": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 .devcontainer 目录；按强制约束使用 openEuler 24.03 LTS 基础镜像"
+    },
+    "build": {
+      "status": "failed",
+      "duration_seconds": 26,
+      "artifacts": [],
+      "failure_reason": "17 个 C++ 翻译单元因缺失华为内部依赖 hcom 的头文件 hcom.h 与 hcom_service.h 而编译失败；hcom 库在 openEuler 24.03 LTS 公共仓库中不可用；README 列出的 ubs-comm-lib / ubs-engine 等内部依赖同样不可用",
+      "attempts": [
+        {
+          "attempt": 1,
+          "command": "sh build.sh -t release (CI_BUILD=ON, CI_BUILDING=ON)",
+          "result": "failed",
+          "duration_seconds": 8,
+          "build_folder": "build/release"
+        },
+        {
+          "attempt": 2,
+          "command": "sh build.sh -t debug",
+          "result": "failed",
+          "duration_seconds": 8,
+          "build_folder": "build/debug",
+          "failed_units": 17
+        },
+        {
+          "attempt": 3,
+          "command": "sh build.sh -t debug (reproducibility check)",
+          "result": "failed",
+          "duration_seconds": 10,
+          "build_folder": "build/debug",
+          "failed_units": 17
+        }
+      ]
+    },
+    "unit_test": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "reason": "构建失败，UT 二进制 mxmd_ut 未生成，无法执行；test/run_dt.sh 入口依赖的 ubsmd 主二进制不存在"
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "reason": "构建失败，ubsmd 主二进制未生成；且 ubsmd 运行时依赖内部包 ubs-engine 与 ubse.service 启动支持，openEuler 24.03 LTS 公共仓库中均不可用"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 软件要求章节列出 ubs-comm-lib 与 spec 中 BuildRequires 列出 ubs-comm-devel，但 openEuler 24.03 LTS 仓库中无此包，文档未提供备用获取方式",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未列出构建所需的 hcom 内部通信库（cmake/3rdparty/CMakeLists.txt 中 TARGET_HCOM / TARGET_HCOM_HEADER_ONLY 隐式依赖 /usr/include/hcom），外部新手开发者无法仅依据 README 一次性凑齐构建环境",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "ubs-mem.spec Requires 包含 ubs-engine 与 ubs-engine-client-libs 两个运行时依赖，文档未提示这些为华为内部组件",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "仓库内未提供 Dockerfile，新手开发者无法直接复制文档依赖映射为容器化构建步骤",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "构建产物 ubsmd.service 默认依赖 ubse.service 启动支持（README 安装部署章节 + ubs-mem.spec %post），文档未提示 ubse 同样为内部包",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-01T16:41:30",
+      "problem": "openEuler 24.03 LTS 公共仓库缺失华为内部依赖 hcom（libhcom.so + hcom.h + hcom_service.h）、ubs-comm-lib、ubs-comm-devel、ubs-engine、ubs-engine-client-libs",
+      "solution": "无法解决：上述包未发布至 openEuler 24.03 LTS 公共仓库；公开镜像与基础环境无法获取；外部验证环境（如本次远端 192.168.9.114）受限于内网仓库不可达",
+      "source": "README.md 软件要求章节、ubs-mem.spec BuildRequires/Requires、3rdparty/CMakeLists.txt 中 TARGET_HCOM / TARGET_HCOM_HEADER_ONLY 宏"
+    },
+    {
+      "timestamp": "2026-07-01T16:45:00",
+      "problem": "sh build.sh -t release 编译失败：fatal error: hcom_service.h: No such file or directory；fatal error: hcom.h: No such file or directory",
+      "solution": "无法解决：缺失的头文件来自 hcom 内部库；已在 dnf 全仓库（OS/EPOL/update/everything/debuginfo/source）搜索 hcom 仅匹配 LaTeX 无关包；尝试了 release、debug、debug 复现三次构建组合，结果一致",
+      "source": "src/communication/adapter/mxm_com_def.h:23、src/common/ubs_common_config.h:18 等 17 个翻译单元"
+    }
+  ]
+}

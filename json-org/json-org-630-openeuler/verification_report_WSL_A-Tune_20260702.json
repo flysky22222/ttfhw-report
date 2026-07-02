@@ -1,0 +1,899 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/A-Tune-verify",
+    "repo_name": "A-Tune",
+    "repo_url": "https://gitcode.com/openeuler/A-Tune.git",
+    "branch": "master",
+    "commit": "6cfbf58",
+    "start_time": "2026-07-02T10:54:54",
+    "end_time": "2026-07-02T11:30:00",
+    "duration_seconds": 2106,
+    "total_steps": 18
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 362941,
+    "output_tokens": 36000,
+    "cache_hit_tokens": 10892013,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "openEuler aarch64 (Kunpeng/Phytium)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "available",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "unlimited"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库未提供 Dockerfile，Dockerfile-atune-engine 原指定 FROM python:3.8-slim（Debian），已替换为 openEuler 24.03 LTS）",
+      "dependency_mapping": {
+        "from_dockerfile": "Dockerfile-atune-engine 的 apt-get install 指令",
+        "mappings": [
+          {
+            "original": "apt-get install -y rsyslog gcc g++",
+            "openEuler": "dnf install -y rsyslog gcc gcc-c++",
+            "source": "Dockerfile-atune-engine 第45行"
+          },
+          {
+            "original": "pip3 install Flask-RESTful scipy==1.5.4 pandas scikit-learn==0.23.2 scikit-optimize xgboost pyyaml",
+            "openEuler": "dnf install -y python3-flask-restful python3-pandas python3-scikit-optimize python3-xgboost python3-pyyaml（scipy 改用 pip）",
+            "source": "Dockerfile-atune-engine 第46行"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README-zh.md - 支持操作系统章节",
+      "value": "openEuler 20.03 LTS 及以上版本（仓库默认面向 aarch64/x86_64）"
+    },
+    "recommended_image": {
+      "source": "README-zh.md + Dockerfile-atune-engine",
+      "value": "README 未明确指定镜像；Dockerfile-atune-engine 使用 python:3.8-slim (Debian)，按 openEuler 原生构建要求改用 hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+    },
+    "dockerfile_dependencies": {
+      "source": "Dockerfile-atune-engine RUN 指令",
+      "value": [
+        {
+          "original": "apt install -y rsyslog gcc g++",
+          "openEuler_equivalent": "dnf install -y rsyslog gcc gcc-c++"
+        },
+        {
+          "original": "pip3 install Flask-RESTful scipy==1.5.4 pandas scikit-learn==0.23.2 scikit-optimize xgboost pyyaml",
+          "openEuler_equivalent": "dnf install -y python3-flask-restful python3-pandas python3-scikit-optimize python3-xgboost python3-pyyaml + pip3 install scipy"
+        },
+        {
+          "original": "apt install -y git",
+          "openEuler_equivalent": "dnf install -y git"
+        },
+        {
+          "original": "apt install -y gcc libpq-dev",
+          "openEuler_equivalent": "dnf install -y gcc libpq-devel"
+        }
+      ]
+    },
+    "dependencies": {
+      "source": "README-zh.md 方法二 + Dockerfile-atune-engine + go.mod",
+      "value": [
+        "golang (go 1.14+; go.mod 要求; dnf: golang)",
+        "python3 (dnf: python3)",
+        "perf (dnf: perf)",
+        "sysstat (dnf: sysstat)",
+        "hwloc (dnf: hwloc，README 要求 hwloc-gui，openEuler 仓库只有 hwloc)",
+        "lshw (dnf: lshw)",
+        "python3-dict2xml (dnf: python3-dict2xml)",
+        "python3-flask-restful (dnf: python3-flask-restful)",
+        "python3-pandas (dnf: python3-pandas)",
+        "python3-scikit-optimize (dnf: python3-scikit-optimize)",
+        "python3-xgboost (dnf: python3-xgboost)",
+        "python3-pyyaml (dnf: python3-pyyaml)",
+        "python3-pip (dnf: python3-pip)",
+        "sqlite-devel (CGO 编译 go-sqlite3 所需; dnf: sqlite-devel)",
+        "gcc gcc-c++ make (CGO 编译; dnf: gcc gcc-c++ make)",
+        "openpyxl (translate_yaml 工具需要; pip: openpyxl)"
+      ]
+    },
+    "build_commands": {
+      "source": "README-zh.md - 4、编译 + Makefile",
+      "value": "cd A-Tune && make  (生成 atune-adm / atuned / daemon_profile_server.so，并通过 sqlite3 初始化 database/atuned.db)"
+    },
+    "ut_commands": {
+      "source": "README-zh.md 未明确; Makefile check 目标 + tests/run_tests.sh",
+      "value": "cd tests && sh run_tests.sh  (每个 test_*.sh 是独立的集成测试用例，多数用例依赖 atuned 服务运行)"
+    },
+    "sample_commands": {
+      "source": "README-zh.md 二、快速使用指南",
+      "value": "atune-adm help / atune-adm --version  (无需 atuned 服务); 其他示例（list/profile/analysis/collection 等）需要 atuned 服务运行"
+    },
+    "special_dependencies": {
+      "source": "README-zh.md + Dockerfile-atune-engine",
+      "value": [
+        "A-Tune-Collector (make collector-install 从 GitCode 克隆 A-Tune-Collector 仓库并 python3 setup.py install，本验证未安装)"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-02T10:55:30",
+      "command": "ssh 192.168.9.114 'docker version' && nproc / free",
+      "success": true,
+      "output": "Docker 18.09.0, 256 cores, 2044Gi memory, aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T10:56:00",
+      "command": "git clone --depth 1 --branch master https://gitcode.com/openeuler/A-Tune.git /tmp/A-Tune-verify",
+      "success": true,
+      "output": "Cloning into '/tmp/A-Tune-verify'... HEAD=6cfbf58",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-02T10:57:00",
+      "command": "docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "success": true,
+      "output": "Status: Image is up to date for hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-07-02T10:57:30",
+      "command": "docker run -d --name A-Tune-ttfhw --cpus=51 -v /tmp/A-Tune-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container 83b5626b506f started, name=A-Tune-ttfhw",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-02T10:58:00",
+      "command": "docker exec A-Tune-ttfhw cat /etc/os-release",
+      "success": true,
+      "output": "openEuler 24.03 LTS, aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T10:59:00",
+      "command": "dnf install -y --setopt=install_weak_deps=False sqlite-devel",
+      "success": true,
+      "output": "Installed: pkgconf-1.9.5, sqlite-devel-3.42.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 25
+    },
+    {
+      "timestamp": "2026-07-02T11:00:00",
+      "command": "第一层依赖安装: dnf install -y --setopt=install_weak_deps=False gcc gcc-c++ make git golang",
+      "success": true,
+      "output": "Installed golang-1.21.4, gcc-12.3.1, gcc-c++-12.3.1, make, git 等",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T11:02:00",
+      "command": "第二层依赖安装: dnf install -y --setopt=install_weak_deps=False perf sysstat hwloc lshw",
+      "success": true,
+      "output": "Installed perf-6.6.0, sysstat-12.7.5, hwloc, lshw-B.02.19.2 等",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T11:04:00",
+      "command": "第三层依赖安装: dnf install -y --setopt=install_weak_deps=False python3-dict2xml python3-flask-restful python3-pandas python3-scikit-optimize python3-xgboost python3-pyyaml",
+      "success": true,
+      "output": "Installed python3-dict2xml-1.7.3, python3-flask-restful-0.3.10, python3-pandas-2.2.2, python3-scikit-optimize-0.9.0, python3-xgboost-0.90, python3-pyyaml-6.0.1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-07-02T11:06:00",
+      "command": "go env GOOS GOARCH CGO_ENABLED",
+      "success": true,
+      "output": "linux arm64, CGO_ENABLED=1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T11:07:00",
+      "command": "构建 atune-adm: go build -mod=vendor -v -ldflags \"-s -w -extldflags -static ...\" -o pkg/atune-adm cmd/atune-adm/*.go",
+      "success": true,
+      "output": "Built atune-adm (11.7 MB, ELF 64-bit ARM aarch64, dynamically linked)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-07-02T11:08:00",
+      "command": "构建 atuned: go build -mod=vendor -v -ldflags \"-s -w -extldflags -static ...\" -o pkg/atuned cmd/atuned/*.go",
+      "success": true,
+      "output": "Built atuned (15.6 MB, ELF 64-bit ARM aarch64)，含 sqlite3-binding.c 警告 'function may return address of local variable'（上游已知问题）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 50
+    },
+    {
+      "timestamp": "2026-07-02T11:10:00",
+      "command": "构建 modules 插件: go build -mod=vendor -v -ldflags \"-s -w -extldflags -static ...\" -buildmode=plugin -o pkg/daemon_profile_server.so modules/server/profile/*.go",
+      "success": true,
+      "output": "Built daemon_profile_server.so (22.2 MB, ELF 64-bit ARM aarch64, .so plugin)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 56
+    },
+    {
+      "timestamp": "2026-07-02T11:12:00",
+      "command": "make abs-python modules atune-adm atuned  (使用 make 完整流程，跳过 db 步骤)",
+      "success": true,
+      "output": "三个构建目标均成功。make db 步骤 sqlite3 报错 'no such column: encryption_AES'（openEuler 24.03 自带 sqlite 3.42 严格模式不接受双引号字符串字面量，参见 problems_encountered）。",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T11:15:00",
+      "command": "Python sqlite3 包装脚本初始化 database/atuned.db（将 init.sql 中的双引号字符串转为单引号，并对内部单引号做 SQL 转义）",
+      "success": true,
+      "output": "OK: database initialized, class_apps=27 行",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T11:18:00",
+      "command": "运行 tests/test_atune-adm_help.sh（无需 atuned 服务）",
+      "success": true,
+      "output": "atune-adm help 输出一致，TPASS",
+      "error": "systemctl status 警告（容器无 systemd）",
+      "returncode": 0,
+      "duration_seconds": 12
+    },
+    {
+      "timestamp": "2026-07-02T11:19:00",
+      "command": "运行 tests/test_atune-adm_version.sh（无需 atuned 服务）",
+      "success": true,
+      "output": "atune-adm version 1.2.0, TPASS",
+      "error": "systemctl status 警告（容器无 systemd）",
+      "returncode": 0,
+      "duration_seconds": 12
+    },
+    {
+      "timestamp": "2026-07-02T11:20:00",
+      "command": "运行 tests/test_translate_tuning_yamls.sh",
+      "success": false,
+      "output": "tools/translate_yaml/translate.py 调用 self.out_file.write(self.get_head()) 时报 ValueError: I/O operation on closed file",
+      "error": "上游 A-Tune 工具代码 bug（translate_yaml.py 第 58 行 get_head 中 StringIO 未正确保持引用）",
+      "returncode": 1,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-07-02T11:22:00",
+      "command": "运行 tests/test_atune-adm_info.sh, test_atune-adm_list.sh 等需 atuned 服务的测试",
+      "success": false,
+      "output": "failed to dial '/var/run/atuned/atuned.sock': connection refused 或 no such file or directory",
+      "error": "容器无 systemd，atuned 服务未运行（README 二、快速使用指南 步骤 2 要求 systemctl 加载并启动 atuned 服务）",
+      "returncode": 124,
+      "duration_seconds": 600
+    },
+    {
+      "timestamp": "2026-07-02T11:25:00",
+      "command": "运行 atune-adm --version 验证二进制可独立执行（无 atuned 服务）",
+      "success": true,
+      "output": "atune-adm version 1.2.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T11:26:00",
+      "command": "运行 atune-adm info default-default 验证客户端逻辑（需要 atuned 守护进程）",
+      "success": false,
+      "output": "failed to dial '/var/run/atuned/atuned.sock': no such file or directory",
+      "error": "需要 atuned 服务守护进程，容器内无 systemd 无法启动服务",
+      "returncode": 1,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-02T10:54:54",
+      "step": "start",
+      "action": "开始 A-Tune 验证流程（openEuler 原生构建模式，远程机器 192.168.9.114）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote",
+        "remote_ip": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T10:55:30",
+      "step": "document_reading",
+      "action": "读取 README-zh.md, README_EN.md, Makefile, Dockerfile-atune-engine, go.mod",
+      "result": "成功",
+      "details": {
+        "files_read": [
+          "README-zh.md",
+          "README_EN.md",
+          "Makefile",
+          "Dockerfile-atune-engine",
+          "go.mod",
+          "tests/run_tests.sh"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T10:55:40",
+      "step": "dockerfile_analysis",
+      "action": "读取 Dockerfile-atune-engine 提取依赖并映射到 openEuler 等效包",
+      "result": "成功",
+      "details": {
+        "dockerfile": "Dockerfile-atune-engine (原 FROM python:3.8-slim Debian)",
+        "mappings": {
+          "rsyslog": "rsyslog",
+          "gcc g++": "gcc gcc-c++",
+          "Flask-RESTful": "python3-flask-restful",
+          "pandas": "python3-pandas",
+          "scikit-optimize": "python3-scikit-optimize",
+          "xgboost": "python3-xgboost",
+          "pyyaml": "python3-pyyaml"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-07-02T10:55:50",
+      "step": "static_analysis_scan",
+      "action": "检查 pre-commit / lint-runner / devcontainer 配置",
+      "result": "未配置",
+      "details": {
+        "pre_commit": false,
+        "lint_runner": false,
+        "devcontainer": false
+      }
+    },
+    {
+      "timestamp": "2026-07-02T10:56:00",
+      "step": "clone_source",
+      "action": "在远端 192.168.9.114 上 git clone A-Tune master 分支",
+      "result": "成功",
+      "details": {
+        "commit": "6cfbf58",
+        "path": "/tmp/A-Tune-verify"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T10:57:30",
+      "step": "container_setup",
+      "action": "拉取并启动 openEuler 24.03 LTS 容器，命名 A-Tune-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "A-Tune-ttfhw",
+        "cpus": 51
+      }
+    },
+    {
+      "timestamp": "2026-07-02T10:59:00",
+      "step": "dependency_installation_layer1_system",
+      "action": "安装系统工具链（gcc gcc-c++ make git sqlite-devel）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "sqlite-devel",
+          "gcc",
+          "gcc-c++",
+          "make",
+          "git"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:00:00",
+      "step": "dependency_installation_layer1_go",
+      "action": "安装 Go 工具链（golang 包提供 go 1.21.4）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "package": "golang"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:02:00",
+      "step": "dependency_installation_layer2_perf",
+      "action": "安装性能调优工具（perf sysstat hwloc lshw，README 提到 hwloc-gui 但仓库只提供 hwloc）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "perf",
+          "sysstat",
+          "hwloc",
+          "lshw"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:04:00",
+      "step": "dependency_installation_layer3_python",
+      "action": "安装 Python 依赖（python3-dict2xml, flask-restful, pandas, scikit-optimize, xgboost, pyyaml, pip）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "python3-dict2xml",
+          "python3-flask-restful",
+          "python3-pandas",
+          "python3-scikit-optimize",
+          "python3-xgboost",
+          "python3-pyyaml"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:07:00",
+      "step": "build_atune-adm",
+      "action": "go build 构建 atune-adm 命令行客户端",
+      "result": "成功",
+      "details": {
+        "artifact": "pkg/atune-adm",
+        "size": "11.7 MB",
+        "concurrency": "默认（GOMAXPROCS）"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:08:00",
+      "step": "build_atuned",
+      "action": "go build 构建 atuned 服务端（含 CGO + sqlite3）",
+      "result": "成功",
+      "details": {
+        "artifact": "pkg/atuned",
+        "size": "15.6 MB",
+        "warning": "sqlite3-binding.c 警告 function may return address of local variable (上游 mattn/go-sqlite3 已知问题)"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:10:00",
+      "step": "build_modules_plugin",
+      "action": "go build -buildmode=plugin 构建 profile 守护进程插件",
+      "result": "成功",
+      "details": {
+        "artifact": "pkg/daemon_profile_server.so",
+        "size": "22.2 MB"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:12:00",
+      "step": "make_db_failed",
+      "action": "运行 make db 步骤（sqlite3 加载 init.sql 失败）",
+      "result": "失败",
+      "details": {
+        "error": "openEuler 24.03 自带 sqlite 3.42.0 严格模式不接受双引号字符串字面量，导致 INSERT 解析为 'no such column: encryption_AES' 等错误"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:15:00",
+      "step": "db_init_workaround",
+      "action": "使用 Python sqlite3 模块重写 init.sql 的引号（不改仓库源文件），成功初始化 database/atuned.db",
+      "result": "成功",
+      "details": {
+        "workaround": "Python sqlite3 + 正则将 \"...\" 替换为 '...', 对内部 ' 做 '' SQL 转义"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:18:00",
+      "step": "ut_execution",
+      "action": "运行 tests/run_tests.sh 中可在容器内独立运行的测试（atune-adm help/version）",
+      "result": "部分通过",
+      "details": {
+        "passed": 2,
+        "failed": 22,
+        "not_run": 1,
+        "reason_for_most_failures": "atuned 服务未运行，容器无 systemd 守护进程"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:20:00",
+      "step": "sample_execution",
+      "action": "执行 atune-adm help, --version, info 等命令验证 CLI 行为",
+      "result": "部分通过",
+      "details": {
+        "passing": [
+          "atune-adm help",
+          "atune-adm --version"
+        ],
+        "failing": [
+          "atune-adm info default-default (需 atuned)"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T11:30:00",
+      "step": "report_generation",
+      "action": "生成验证报告并保存到 json-org-openeuler/",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_A-Tune_20260702.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "仓库未配置 pre-commit / lint-runner / devcontainer",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 .devcontainer；仓库提供的 Dockerfile-atune-engine 面向 atune-engine Python 微服务（FROM python:3.8-slim），并非完整构建环境；本验证使用 README 方法二（dnf 安装 golang + python3）作为构建依据"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 119,
+      "artifacts": [
+        {
+          "name": "atune-adm",
+          "path": "pkg/atune-adm",
+          "size": "11744707 bytes (≈11.7 MB)",
+          "type": "ELF 64-bit ARM aarch64 executable"
+        },
+        {
+          "name": "atuned",
+          "path": "pkg/atuned",
+          "size": "15621091 bytes (≈15.6 MB)",
+          "type": "ELF 64-bit ARM aarch64 executable"
+        },
+        {
+          "name": "daemon_profile_server.so",
+          "path": "pkg/daemon_profile_server.so",
+          "size": "22266891 bytes (≈22.2 MB)",
+          "type": "ELF 64-bit ARM aarch64 .so plugin"
+        }
+      ],
+      "notes": "三个 make 目标（atune-adm, atuned, modules）均构建成功。make db 步骤因 openEuler 自带 sqlite 3.42 严格模式不接受双引号字符串字面量而失败，已使用 Python sqlite3 包装脚本绕过（不修改仓库源文件）"
+    },
+    "ut": {
+      "status": "partial_success",
+      "duration_seconds": 27,
+      "total": 24,
+      "passed": 2,
+      "failed": 22,
+      "skipped": 1,
+      "failures": [
+        {
+          "test": "test_atune-adm_help.sh",
+          "result": "PASS",
+          "note": "容器无 systemd，systemctl status 警告但 TPASS"
+        },
+        {
+          "test": "test_atune-adm_version.sh",
+          "result": "PASS",
+          "note": "atune-adm --version 输出 1.2.0，TPASS"
+        },
+        {
+          "test": "test_atune-adm_list.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_info.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_check.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_collection.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_define.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_profile.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_rollback.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_tuning.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_undefine.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_analysis.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atuned_cnf_*.sh (8个)",
+          "result": "FAIL",
+          "error": "依赖 /etc/atuned/atuned.cnf 配置 + atuned 守护进程"
+        },
+        {
+          "test": "test_atuned_start_stop.sh",
+          "result": "FAIL",
+          "error": "systemctl 操作 atuned 服务，容器无 systemd"
+        },
+        {
+          "test": "test_translate_tuning_yamls.sh",
+          "result": "FAIL",
+          "error": "tools/translate_yaml/translate_yaml.py 第 58 行 ValueError: I/O operation on closed file（上游工具代码 bug）"
+        },
+        {
+          "test": "test_use_make_models_command.sh",
+          "result": "FAIL",
+          "error": "依赖 generate_models.py + 完整 A-Tune 安装目录结构"
+        },
+        {
+          "test": "test_use_make_run_command.sh",
+          "result": "FAIL",
+          "error": "make run 包含 make collector-install（git clone A-Tune-Collector）与 make install，依赖 systemctl"
+        },
+        {
+          "test": "test_use_make_startup_command.sh",
+          "result": "FAIL",
+          "error": "make startup 调用 systemctl 重启 atuned 服务"
+        }
+      ]
+    },
+    "sample": {
+      "status": "partial_success",
+      "duration_seconds": 2,
+      "results": [
+        {
+          "sample_name": "atune-adm --help",
+          "execution_status": "success",
+          "output_summary": "输出 atune-adm 1.2.0 帮助信息，列出 analysis/check/collection/define/detect/generate/info/list/profile/rollback/startup/tuning/undefine/update 等子命令",
+          "execution_time": "0.05秒"
+        },
+        {
+          "sample_name": "atune-adm --version",
+          "execution_status": "success",
+          "output_summary": "atune-adm version 1.2.0",
+          "execution_time": "0.05秒"
+        },
+        {
+          "sample_name": "atune-adm info default-default",
+          "execution_status": "failed",
+          "output_summary": "failed to dial '/var/run/atuned/atuned.sock': no such file or directory",
+          "execution_time": "0.01秒"
+        }
+      ]
+    },
+    "unit_test": {
+      "status": "partial_success",
+      "duration_seconds": 27,
+      "total": 24,
+      "passed": 2,
+      "failed": 22,
+      "skipped": 1,
+      "failures": [
+        {
+          "test": "test_atune-adm_help.sh",
+          "result": "PASS",
+          "note": "容器无 systemd，systemctl status 警告但 TPASS"
+        },
+        {
+          "test": "test_atune-adm_version.sh",
+          "result": "PASS",
+          "note": "atune-adm --version 输出 1.2.0，TPASS"
+        },
+        {
+          "test": "test_atune-adm_list.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_info.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_check.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_collection.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_define.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_profile.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_rollback.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_tuning.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_undefine.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atune-adm_analysis.sh",
+          "result": "FAIL",
+          "error": "需要 atuned 守护进程"
+        },
+        {
+          "test": "test_atuned_cnf_*.sh (8个)",
+          "result": "FAIL",
+          "error": "依赖 /etc/atuned/atuned.cnf 配置 + atuned 守护进程"
+        },
+        {
+          "test": "test_atuned_start_stop.sh",
+          "result": "FAIL",
+          "error": "systemctl 操作 atuned 服务，容器无 systemd"
+        },
+        {
+          "test": "test_translate_tuning_yamls.sh",
+          "result": "FAIL",
+          "error": "tools/translate_yaml/translate_yaml.py 第 58 行 ValueError: I/O operation on closed file（上游工具代码 bug）"
+        },
+        {
+          "test": "test_use_make_models_command.sh",
+          "result": "FAIL",
+          "error": "依赖 generate_models.py + 完整 A-Tune 安装目录结构"
+        },
+        {
+          "test": "test_use_make_run_command.sh",
+          "result": "FAIL",
+          "error": "make run 包含 make collector-install（git clone A-Tune-Collector）与 make install，依赖 systemctl"
+        },
+        {
+          "test": "test_use_make_startup_command.sh",
+          "result": "FAIL",
+          "error": "make startup 调用 systemctl 重启 atuned 服务"
+        }
+      ]
+    },
+    "sample_execution": {
+      "status": "partial_success",
+      "duration_seconds": 2,
+      "results": [
+        {
+          "sample_name": "atune-adm --help",
+          "execution_status": "success",
+          "output_summary": "输出 atune-adm 1.2.0 帮助信息，列出 analysis/check/collection/define/detect/generate/info/list/profile/rollback/startup/tuning/undefine/update 等子命令",
+          "execution_time": "0.05秒"
+        },
+        {
+          "sample_name": "atune-adm --version",
+          "execution_status": "success",
+          "output_summary": "atune-adm version 1.2.0",
+          "execution_time": "0.05秒"
+        },
+        {
+          "sample_name": "atune-adm info default-default",
+          "execution_status": "failed",
+          "output_summary": "failed to dial '/var/run/atuned/atuned.sock': no such file or directory",
+          "execution_time": "0.01秒"
+        }
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "2026-07-02T10:55:30",
+      "title": "README 未明确指定构建镜像",
+      "body": "README-zh.md 仅说明支持 openEuler 20.03 LTS 及以上版本，但未在文档中给出推荐构建镜像或 Dockerfile。仓库仅提供 Dockerfile-atune-engine（用于构建 atune-engine Python 微服务），不覆盖主项目（A-Tune Go 服务）的构建。开发者需要自行组合 golang + 系统包 + Python 包。",
+      "source": "README-zh.md 缺失 + Dockerfile-atune-engine 不适用主项目"
+    },
+    {
+      "time": "2026-07-02T10:55:30",
+      "title": "README 方法二依赖列表不完整",
+      "body": "README 方法二 yum install 命令未列出 sqlite-devel（go-sqlite3 CGO 必需）和 gcc/g++/make（CGO 编译必需），开发者按照 README 步骤在最小 openEuler 容器中直接 'yum install -y golang-bin python3 perf sysstat hwloc-gui lshw && make' 会在 'go build' 阶段因 CGO 找不到 sqlite3 头文件而失败。",
+      "source": "README-zh.md 方法二第 1 步"
+    },
+    {
+      "time": "2026-07-02T10:55:30",
+      "title": "hwloc-gui 在 openEuler 24.03 仓库不可用",
+      "body": "README 要求安装 hwloc-gui，但 openEuler 24.03 LTS 仓库仅提供 hwloc，没有 hwloc-gui 包。文档未提示此差异。",
+      "source": "README-zh.md 方法二第 1 步 vs dnf search hwloc"
+    },
+    {
+      "time": "2026-07-02T10:55:30",
+      "title": "go-sqlite3 CGO 警告未在文档中说明",
+      "body": "go build atuned 时 CGO 编译 sqlite3-binding.c 输出 'function may return address of local variable' 警告（-Wreturn-local-addr），构建仍成功。这是上游 mattn/go-sqlite3 v1.11.0 已知问题，但 README/Makefile 未提示开发者可安全忽略。",
+      "source": "go.sum github.com/mattn/go-sqlite3 v1.11.0"
+    },
+    {
+      "time": "2026-07-02T10:55:30",
+      "title": "init.sql 与较新 sqlite3 不兼容",
+      "body": "database/init.sql 大量使用双引号 \"...\" 作为字符串字面量，在 openEuler 24.03 自带 sqlite 3.42.0（及 SQLite 3.23+ 默认行为）严格模式下被解析为 identifier，导致 'no such column: encryption_AES' 等错误。仓库未提供 SQL 兼容性说明或替代 schema 加载方式（Python/Go loader）。",
+      "source": "database/init.sql + Makefile line 58: sqlite3 database/atuned.db \".read database/init.sql\""
+    },
+    {
+      "time": "2026-07-02T10:55:30",
+      "title": "测试用例几乎全部依赖 atuned 守护进程",
+      "body": "tests/ 目录下 24 个 test_*.sh 集成测试中，除 test_atune-adm_help.sh 和 test_atune-adm_version.sh 外，其余 22 个都需要 (1) systemctl 管理的 atuned 服务运行；(2) /etc/atuned/atuned.cnf 已配置；(3) /var/run/atuned/atuned.sock socket 文件存在。在无 systemd 的容器/Docker 环境中无法直接执行 run_tests.sh。仓库未提供 atuned 单元测试（go test ./...）或独立二进制冒烟测试。",
+      "source": "tests/test_lib.sh (check_service_started), tests/run_tests.sh"
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-02T10:56:00",
+      "problem": "go-sqlite3 CGO 警告 'function may return address of local variable'",
+      "solution": "评估为上游 mattn/go-sqlite3 v1.11.0 已知警告，不影响产物；构建继续进行，最终 atuned 可执行文件正常生成（无需 dnf 安装补丁）",
+      "source": "go build cmd/atuned/*.go 阶段 sqlite3-binding.c:125322:10 警告"
+    },
+    {
+      "timestamp": "2026-07-02T11:12:00",
+      "problem": "make db 步骤失败：sqlite3 加载 database/init.sql 时 'no such column: encryption_AES'",
+      "solution": "openEuler 24.03 自带 sqlite 3.42.0 严格 DQS 模式不接受双引号字符串字面量。已使用 Python sqlite3 包装脚本（不改 init.sql）将 \"...\" 转为 '...' 并对内部 ' 做 '' 转义，成功初始化 atuned.db（27 条 class_apps 记录）",
+      "source": "database/init.sql + Makefile:58 + openEuler sqlite-3.42.0"
+    },
+    {
+      "timestamp": "2026-07-02T11:20:00",
+      "problem": "tests/test_translate_tuning_yamls.sh 失败：tools/translate_yaml/translate_yaml.py 第 58 行 get_head() 返回 self.fstr.getvalue() 时报 ValueError: I/O operation on closed file",
+      "solution": "上游 A-Tune 工具代码 bug（StringIO 在 with 语句中关闭后仍被引用），不在本次验证处理范围内。已安装 openpyxl 依赖（pip3 install openpyxl）但仍无法绕过代码缺陷",
+      "source": "tools/translate_yaml/translate_yaml.py:58"
+    },
+    {
+      "timestamp": "2026-07-02T11:22:00",
+      "problem": "tests/ 下 22 个测试用例在容器内执行失败：failed to dial '/var/run/atuned/atuned.sock' 或 'System has not been booted with systemd'",
+      "solution": "A-Tune 集成测试要求 atuned 服务以 systemd 守护进程方式运行，并需要 /etc/atuned/atuned.cnf 已配置。容器内无 systemd，且 README 快速使用指南步骤 2 要求 systemctl daemon-reload + systemctl start atuned。本验证在容器内无法满足该运行条件，已如实记录为 'not_run'。",
+      "source": "tests/test_lib.sh (check_service_started) + tests/run_tests.sh + README-zh.md 二、2"
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "metadata": {
+    "repo_path": "https://gitcode.com/cann/driver",
+    "start_time": "2026-07-01T17:30:00",
+    "end_time": "2026-07-01T18:25:00",
+    "duration_seconds": 3300,
+    "total_steps": 22
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 169139,
+    "output_tokens": 5519,
+    "cache_hit_tokens": 1557505,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng-920 (疑似)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "home: 6.3T available, root: 6.8G available",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库 QUICKSTART 推荐 openEuler/Ubuntu 通用；aarch64 容器与远端主机同构）",
+      "dependency_mapping": {
+        "from_dockerfile": "QUICKSTART.md 中的 yum install 列表",
+        "mappings": [
+          {
+            "original": "kernel-headers-$(uname -r)",
+            "openEuler": "kernel-headers (无版本后缀，容器 uname 与 dnf 仓库版本不匹配)",
+            "source": "QUICKSTART.md 1.编译环境准备"
+          },
+          {
+            "original": "kernel-devel-$(uname -r)",
+            "openEuler": "kernel-devel (无版本后缀)",
+            "source": "QUICKSTART.md 1.编译环境准备"
+          },
+          {
+            "original": "openssl开发库",
+            "openEuler": "openssl-devel",
+            "source": "QUICKSTART.md 1.编译环境准备"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 概述",
+      "value": "x86_64 与 aarch64 (验证环境为 aarch64)"
+    },
+    "recommended_image": {
+      "source": "QUICKSTART.md - 1.编译环境准备",
+      "value": "openeuler (推荐) / ubuntu 均支持，已选用 openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "QUICKSTART.md 1.编译环境准备 yum install 指令",
+      "value": [
+        {
+          "original": "yum install -y tar net-tools kernel-headers-$(uname -r) kernel-devel-$(uname -r) openssl-devel pkg-config patch",
+          "openEuler_equivalent": "dnf install -y tar net-tools kernel-headers kernel-devel openssl-devel pkg-config patch"
+        },
+        {
+          "original": "yum install -y gcc gcc-c++ g++ cmake make libffi libffi-devel binutils binutils-devel elfutils elfutils-devel elfutils-libelf-devel",
+          "openEuler_equivalent": "dnf install -y gcc gcc-c++ g++ cmake make libffi libffi-devel binutils binutils-devel elfutils elfutils-devel elfutils-libelf-devel"
+        }
+      ]
+    },
+    "dependencies": {
+      "source": "QUICKSTART.md + README.md",
+      "value": [
+        "gcc gcc-c++ g++ (dnf: gcc gcc-c++ g++)",
+        "cmake make (dnf: cmake make)",
+        "bash (预装)",
+        "kernel-headers kernel-devel (dnf: kernel-headers kernel-devel)",
+        "net-tools (dnf: net-tools)",
+        "openssl-devel (dnf: openssl-devel)",
+        "pkg-config (dnf: pkg-config)",
+        "patch (dnf: patch)",
+        "python3 python3-pip (dnf: python3 python3-pip)",
+        "binutils binutils-devel elfutils elfutils-devel elfutils-libelf-devel (dnf: 同名)",
+        "libffi libffi-devel (dnf: libffi libffi-devel)",
+        "git (dnf: git)",
+        "googletest (可选，仅 UT 依赖；本仓 UT 为占位符未实际使用)",
+        "makeself (执行本地编译 run 包时依赖，编译时随第三方依赖自动下载)"
+      ]
+    },
+    "build_commands": {
+      "source": "QUICKSTART.md 3.源码编译及部署 + build.sh usage",
+      "value": "bash build.sh --pkg --soc=ascend910_93 （需传 -k 指向实际 kernel-devel 路径，线程数 -j 传入）"
+    },
+    "ut_commands": {
+      "source": "test/run_test.sh usage",
+      "value": "bash test/run_test.sh -t"
+    },
+    "sample_commands": {
+      "source": "examples/README.md + examples/dcmi/dcmi/run.sh",
+      "value": "bash examples/dcmi/dcmi/run.sh <main_alias> <sub_prefix>（需要安装 CANN 全套软件 + 真实昇腾 NPU 硬件）"
+    },
+    "special_dependencies": {
+      "source": "QUICKSTART.md 1.编译环境准备",
+      "value": [
+        "ascend950 灵衢模式额外依赖：umdk-urma-lib, umdk-urma-devel, libummu-devel（仅 ascend950 --ube 模式需要，本次验证选用 ascend910_93 未涉及）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-01T17:30:00",
+      "command": "ssh 192.168.9.114 \"echo OK && docker version | head -5 && nproc && free -g\"",
+      "success": true,
+      "output": "OK / Docker 18.09.0 / 256 CPUs / 2044 GB / aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5,
+      "note": "前置连通性检查：免密 SSH OK、远端 Docker 18.09.0、CPU 256 核、内存 2044 GB、架构 aarch64"
+    },
+    {
+      "timestamp": "2026-07-01T17:32:00",
+      "command": "ssh 192.168.9.114 \"rm -rf /tmp/driver-verify && git clone --depth 1 --branch master https://gitcode.com/cann/driver.git /tmp/driver-verify\"",
+      "success": true,
+      "output": "Cloning into '/tmp/driver-verify'... 仓库符号链接 (如 ascend_dev_num.h) 正确保留为 lrwxrwxrwx",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 25,
+      "note": "远端 /etc/gitconfig 未设置 core.symlinks=false，git clone 正常保留符号链接 (与 20260628 历史报告对比)"
+    },
+    {
+      "timestamp": "2026-07-01T17:33:00",
+      "command": "ssh 192.168.9.114 \"cd /tmp/driver-verify && git log -1 --format='%H %ai' && git rev-parse --short HEAD\"",
+      "success": true,
+      "output": "d1eb5ff505e4487d6e02edd43f8690b9bf68a3b1 2026-07-01 16:09:54 +0800 / d1eb5ff",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T17:34:00",
+      "command": "ssh 192.168.9.114 \"docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts\"",
+      "success": true,
+      "output": "Status: Image is up to date for hub.oepkgs.net/openeuler/openeuler:24.03-lts (sha256:ace677f4)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 4
+    },
+    {
+      "timestamp": "2026-07-01T17:35:00",
+      "command": "ssh 192.168.9.114 \"docker rm -f driver-ttfhw 2>/dev/null; docker run -d --name driver-ttfhw -v /tmp/driver-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity\"",
+      "success": true,
+      "output": "Container ID: c63806e9095e6cd99c046c1c83d0552db9bd89b399732f60459972dd138777f3",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "严格按 skill 强制约束使用 driver-ttfhw 命名格式"
+    },
+    {
+      "timestamp": "2026-07-01T17:36:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'cat /etc/os-release | head -5 && uname -m && nproc'\"",
+      "success": true,
+      "output": "openEuler 24.03 (LTS) / aarch64 / 256",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T17:37:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'dnf install -y gcc gcc-c++ g++ cmake make binutils binutils-devel elfutils elfutils-devel elfutils-libelf-devel openssl-devel pkg-config patch tar net-tools libffi libffi-devel kernel-headers kernel-devel'\"",
+      "success": true,
+      "output": "Complete! 安装 gcc-12.3.1 / cmake-3.27.9 / kernel-headers-6.6.0-145.0.13.139.oe2403.aarch64 / kernel-devel-6.6.0-145.0.13.139.oe2403.aarch64 等",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 180,
+      "note": "QUICKSTART.md 1.编译环境准备 完整依赖一次安装"
+    },
+    {
+      "timestamp": "2026-07-01T17:40:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'g++ --version | head -1 && cmake --version | head -1 && python3 --version && uname -r && ls /lib/modules/'\"",
+      "success": true,
+      "output": "g++ 12.3.1 (openEuler 12.3.1-38.oe2403) / cmake 3.27.9 / python3 3.11.6 / uname -r=4.19.90-2604.3.0.0369.oe2003sp4.aarch64 / /lib/modules=6.6.0-145.0.13.139.oe2403.aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "环境核对：工具链与 uname 不一致现象确认 (容器 uname 返回宿主机内核 4.19.90，但 kernel-devel 安装到 6.6.0-145.0.13.139 路径)"
+    },
+    {
+      "timestamp": "2026-07-01T17:41:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'cd /workspace && bash build.sh --make_clean && echo CLEANED'\"",
+      "success": true,
+      "output": "CLEANED",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T17:42:00",
+      "command": "ssh 192.168.9.114 \"docker exec -d driver-ttfhw bash -c 'cd /workspace && (time bash build.sh -j51 --pkg --soc=ascend910_93 > /tmp/build.log 2>&1) && echo BUILD_RC=$? >> /tmp/build.log'\"",
+      "success": false,
+      "output": "npu_driver build failed. clean source / BUILD_RC=2",
+      "error": "make[3]: *** [CMakeFiles/drv_seclib_host.dir/build.make:126: ascend910B/drv_seclib_host/src/drv_seclib_host.ko] Error 2 / make[4]: *** /lib/modules/4.19.90-2604.3.0.0369.oe2003sp4.aarch64/build: No such file or directory",
+      "returncode": 2,
+      "duration_seconds": 360,
+      "note": "根因：make -C /lib/modules/4.19.90-.../build (即 /lib/modules 路径下 symlink 目标目录) 不含 Makefile；kernel-devel Makefile 在 /usr/src/kernels/6.6.0-145.../Makefile，未被 -C 解析到。修复方案：改用 -k 指向 /usr/src/kernels/<ver> 直接路径"
+    },
+    {
+      "timestamp": "2026-07-01T17:48:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'cd /workspace && bash build.sh --make_clean 2>&1 | tail -3'\"",
+      "success": true,
+      "output": "(无输出，build 目录已清空)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T17:49:00",
+      "command": "ssh 192.168.9.114 \"docker exec -d driver-ttfhw bash -c 'cd /workspace && (time bash build.sh -j51 -k /usr/src/kernels/6.6.0-145.0.13.139.oe2403.aarch64 --pkg --soc=ascend910_93 > /tmp/build.log 2>&1) && echo BUILD_RC=$? >> /tmp/build.log'\"",
+      "success": true,
+      "output": "-------------- npu_driver package generate finished ------------- clean source / BUILD_RC=0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 915,
+      "note": "构建成功：耗时 15 分 15 秒，并发 51 (256×20%)，生成 102M 的 Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run 自解压安装包，含 97 个 .ko 内核模块与 105 个 .so 共享库"
+    },
+    {
+      "timestamp": "2026-07-01T18:05:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'ls -la /workspace/build_out/ && find /workspace/build -name \"*.ko\" | wc -l && find /workspace/build -name \"lib*.so\" | wc -l'\"",
+      "success": true,
+      "output": "Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run (102M, 106463518 bytes) / 97 个 .ko / 105 个 .so",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-01T18:07:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'cd /workspace/test && rm -rf build build_out && mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=$(pwd)/../build_out .. 2>&1 | tail -3 && make -j51 2>&1 | tail -3'\"",
+      "success": true,
+      "output": "-- Build files have been written to: /workspace/test/build / [100%] Built target npu_driver_utest",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30,
+      "note": "按 test/run_test.sh -t 流程手动跑 cmake + make -j51 + 安装 + 执行"
+    },
+    {
+      "timestamp": "2026-07-01T18:08:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'cd /workspace/test && mkdir -p build_out/bin && cp build/ut/npu_driver_utest build_out/bin/ && ./build_out/bin/npu_driver_utest'\"",
+      "success": true,
+      "output": "[UT] Testcase initialize success.\\n[UT] Testcase run start...\\n[UT] Testcase run success.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3,
+      "note": "UT 编译并执行成功；test/ut/common/main.cc 为占位符，无具体测试用例"
+    },
+    {
+      "timestamp": "2026-07-01T18:10:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'find /workspace/examples -name \\\"main.c\\\" | head -10 && cat /workspace/examples/dcmi/dcmi/run.sh | head -20'\"",
+      "success": true,
+      "output": "examples/dcmi/dcmi/0_configure_manager/0_set_user_config/main.c 等 7 个 .c 文件 / run.sh BUILD_CMD=gcc main.c -I/usr/local/dcmi/ -I${TOPDIR}/src/custom/include -I${TOPDIR}/pkg_inc -L/usr/local/dcmi/ -L/usr/local/Ascend/driver/lib64/driver -ldcmi -o main",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "样例依赖 /usr/local/dcmi/ 与 /usr/local/Ascend/driver/lib64/driver，标准安装路径"
+    },
+    {
+      "timestamp": "2026-07-01T18:12:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'mkdir -p /usr/local/dcmi /usr/local/Ascend/driver/lib64/driver && ln -sf /workspace/build/driver/driver/lib64/libdcmi.so /usr/local/dcmi/libdcmi.so && ln -sf /workspace/build/driver/driver/lib64/driver/* /usr/local/Ascend/driver/lib64/driver/'\"",
+      "success": true,
+      "output": "kmsagent.conf / libaivault.so / libaivaulttee.so / libascend_hal.so / libascend_kms.so / ... (含全部驱动共享库)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "将构建产物软链到 run.sh 期望的标准安装路径"
+    },
+    {
+      "timestamp": "2026-07-01T18:14:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'cd /workspace/examples/dcmi/dcmi && bash run.sh all 2>&1 | head -20'\"",
+      "success": false,
+      "output": "Processing [user/0_set_user_config]\\n/usr/bin/ld: warning: libdsmi_network.so, needed by /usr/local/dcmi//libdcmi.so, not found (try using -rpath or -rpath-link)\\n/usr/bin/ld: /usr/local/dcmi//libdcmi.so: undefined reference to `dsmi_get_pcie_error_rate` ...\\nFAILED_FILE: 0_configure_manager/0_set_user_config/main.c",
+      "error": "样例编译链接失败：libdcmi.so 依赖 dsmi/dpa/hdc/dms/ascend_hal 等多个符号，所有 7 个 .c 样例均失败",
+      "returncode": 1,
+      "duration_seconds": 15,
+      "note": "根因：driver 包只提供高层 libdcmi.so / libdrvdsmi_host.so，依赖的 libdpa_host.so / libhdc_host.so / libdms_host.so 等属于 CANN toolkit/runtime，必须安装完整 CANN 软件栈才能编译样例"
+    },
+    {
+      "timestamp": "2026-07-01T18:18:00",
+      "command": "样例执行判断：即使样例编译通过，dcmi_init/dcmi_get_card_num_list 等 API 也需要真实昇腾 NPU 硬件；当前为容器环境，无 NPU 设备",
+      "success": false,
+      "output": "样例需要：(1) 完整 CANN toolkit/runtime (2) 真实昇腾 NPU 硬件，(3) 内核模块加载",
+      "error": "环境约束：仅在 openEuler 24.03 容器中，无 NPU 设备，无法模拟 PCIe 设备交互",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "依据规则禁止放弃：环境不支持时状态写 not_run，并在 problems_encountered 详细记录原因"
+    },
+    {
+      "timestamp": "2026-07-01T18:20:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'rm -rf /usr/local/dcmi /usr/local/Ascend && echo cleaned sample workdir'\"",
+      "success": true,
+      "output": "cleaned sample workdir",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "清理容器内为样例准备的标准路径软链"
+    },
+    {
+      "timestamp": "2026-07-01T18:25:00",
+      "command": "ssh 192.168.9.114 \"docker exec driver-ttfhw bash -c 'ls /workspace/build_out/ && find /workspace/build -name \"*.ko\" | wc -l && stat -c \"%Y\" /workspace/build_out/Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run'\"",
+      "success": true,
+      "output": "Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run / 97 / 1782929128",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-01T17:30:00",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式 + 远程机器 192.168.9.114）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote",
+        "remote_host": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:32:00",
+      "step": "document_reading",
+      "action": "阅读 README.md、QUICKSTART.md、build.sh、test/run_test.sh、examples/README.md",
+      "result": "成功",
+      "details": {
+        "files": [
+          "README.md",
+          "docs/zh/QUICKSTART.md",
+          "build.sh",
+          "test/run_test.sh",
+          "examples/README.md"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:33:00",
+      "step": "git_clone",
+      "action": "git clone --depth 1 --branch master https://gitcode.com/cann/driver.git /tmp/driver-verify",
+      "result": "成功",
+      "details": {
+        "commit": "d1eb5ff505e4487d6e02edd43f8690b9bf68a3b1",
+        "symlinks_preserved": true
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:34:00",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像（aarch64 架构）",
+      "result": "已确认",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "architecture": "aarch64"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:35:00",
+      "step": "container_setup",
+      "action": "启动容器 driver-ttfhw 并挂载 /tmp/driver-verify 到 /workspace",
+      "result": "成功",
+      "details": {
+        "container_name": "driver-ttfhw",
+        "container_id": "c63806e9095e"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:37:00",
+      "step": "dependency_installation",
+      "action": "从 openEuler 仓库 dnf install 系统工具链 + QUICKSTART 文档依赖",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 24.03 LTS 官方仓库 (dnf)",
+        "kernel_version": "6.6.0-145.0.13.139.oe2403.aarch64",
+        "packages": [
+          "gcc",
+          "gcc-c++",
+          "g++",
+          "cmake",
+          "make",
+          "binutils",
+          "binutils-devel",
+          "elfutils",
+          "elfutils-devel",
+          "elfutils-libelf-devel",
+          "openssl-devel",
+          "pkg-config",
+          "patch",
+          "tar",
+          "net-tools",
+          "libffi",
+          "libffi-devel",
+          "kernel-headers",
+          "kernel-devel"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:42:00",
+      "step": "build_attempt_1",
+      "action": "首次构建 bash build.sh -j51 --pkg --soc=ascend910_93",
+      "result": "失败",
+      "details": {
+        "error": "drv_seclib_host.ko / ascend_kernel_open_adapt.ko 编译失败：/lib/modules/4.19.90-.../build 路径下无 Makefile"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T17:49:00",
+      "step": "build_attempt_2",
+      "action": "改用 -k /usr/src/kernels/6.6.0-145.0.13.139.oe2403.aarch64 显式指定 kernel 路径，重新构建",
+      "result": "成功",
+      "details": {
+        "duration_seconds": 915,
+        "concurrency": 51,
+        "concurrency_ratio": "20%",
+        "soc": "ascend910_93",
+        "output_package": "/workspace/build_out/Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run (102M, 106463518 bytes)"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:05:00",
+      "step": "artifact_summary",
+      "action": "汇总构建产物",
+      "result": "成功",
+      "details": {
+        "ko_count": 97,
+        "so_count": 105,
+        "package": "Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:07:00",
+      "step": "ut_build",
+      "action": "在 test/ 目录中独立构建 npu_driver_utest (cmake + make -j51)",
+      "result": "成功",
+      "details": {
+        "build_dir": "/workspace/test/build"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:08:00",
+      "step": "ut_execution",
+      "action": "执行 npu_driver_utest",
+      "result": "成功",
+      "details": {
+        "total": 0,
+        "passed": 0,
+        "output": [
+          "[UT] Testcase initialize success.",
+          "[UT] Testcase run start...",
+          "[UT] Testcase run success."
+        ],
+        "note": "main.cc 为占位符，无具体测试用例"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:12:00",
+      "step": "sample_prepare",
+      "action": "软链构建产物到 /usr/local/dcmi/ 和 /usr/local/Ascend/driver/lib64/driver",
+      "result": "成功",
+      "details": {
+        "method": "ln -sf /workspace/build/driver/driver/lib64/* 到标准安装路径"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:14:00",
+      "step": "sample_attempt",
+      "action": "执行 examples/dcmi/dcmi/run.sh all 编译 7 个样例 .c",
+      "result": "失败",
+      "details": {
+        "error": "libdcmi.so 缺 dsmi/dpa/hdc/dms 等 CANN runtime 符号，7 个样例全部 FAILED_FILE"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:18:00",
+      "step": "sample_decision",
+      "action": "依据规则禁止放弃，环境不支持时状态写 not_run",
+      "result": "已记录",
+      "details": {
+        "reason": "样例需要 (1) 完整 CANN toolkit/runtime (2) 真实昇腾 NPU 硬件 (3) 内核模块加载；容器环境无法满足"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:25:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_driver_20260701.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "本次验证聚焦构建/UT/样例三阶段，未在容器内执行 pre-commit。配置上仓库仅 .pre-commit-config.yaml 含 clang-format 与 oat-check 两个 hook，未配置 lint-runner。",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "未执行",
+        "duration_seconds": 0,
+        "total_hooks": 2,
+        "hooks": [
+          "clang-format",
+          "oat-check"
+        ]
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": null,
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS",
+      "summary": "仓库未配置 devcontainer"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 915,
+      "concurrency": 51,
+      "concurrency_ratio": "20%",
+      "soc": "ascend910_93",
+      "artifacts": [
+        {
+          "name": "Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run",
+          "path": "build_out/Ascend-hdk-A3-driver_26.1.0.b061_openeuler24.03-aarch64.run",
+          "size": "102 MB (106463518 bytes)",
+          "type": "self-extracting run package"
+        },
+        {
+          "name": "kernel_modules",
+          "path": "build/driver/driver/host/*.ko",
+          "count": 97,
+          "type": ".ko kernel modules",
+          "examples": [
+            "drv_seclib_host.ko",
+            "ascend_kernel_open_adapt.ko",
+            "drv_pcie_host.ko",
+            "asdrv_dms.ko",
+            "asdrv_esched.ko",
+            "asdrv_svm.ko",
+            "asdrv_vtrs.ko",
+            "ts_debug.ko",
+            "ts_agent.ko",
+            "debug_switch.ko"
+          ]
+        },
+        {
+          "name": "shared_libraries",
+          "path": "build/driver/driver/lib64/*.so, build/lib/*.so, build/rdma-core/build/lib/*.so",
+          "count": 105,
+          "type": ".so shared libraries",
+          "examples": [
+            "libascend_hal.so",
+            "libdrvdsmi_host.so",
+            "libdsmi_network.so",
+            "libcmscbb.so",
+            "libascend_kms.so",
+            "librdmacm.so",
+            "libdcmi.so"
+          ]
+        }
+      ],
+      "make_target": "driver",
+      "build_cmd": "bash build.sh -j51 -k /usr/src/kernels/6.6.0-145.0.13.139.oe2403.aarch64 --pkg --soc=ascend910_93",
+      "fixes_applied": [
+        "改用 -k /usr/src/kernels/6.6.0-145.0.13.139.oe2403.aarch64 显式指定 kernel-devel 路径（容器 uname -r 与 dnf 仓库版本不一致，/lib/modules/4.19.90-.../build 软链目标目录无 Makefile）"
+      ]
+    },
+    "ut": {
+      "status": "success",
+      "duration_seconds": 35,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "note": "test/ut/common/main.cc 为占位符，无具体测试用例。编译并执行了 npu_driver_utest 可执行文件，输出 'Testcase run success'。",
+      "execution_output": [
+        "[UT] Testcase initialize success.",
+        "[UT] Testcase run start...",
+        "[UT] Testcase run success."
+      ],
+      "ut_cmd": "bash test/run_test.sh -t (本验证手动拆解为 cmake + make -j51 + ./npu_driver_utest)",
+      "build_dir": "test/build"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 15,
+      "results": [],
+      "reason": "examples/dcmi/dcmi/0_configure_manager/0_set_user_config 等样例的编译需要完整 CANN toolkit（libdpa_host.so、libhdc_host.so、libdms_host.so 等不在本 driver 包内），且运行需要真实昇腾 NPU 硬件 + 加载内核模块；当前为容器环境无法满足",
+      "tried_to_compile": "examples/dcmi/dcmi/0_configure_manager/0_set_user_config 等 7 个 .c 样例（通过 run.sh all）",
+      "compile_error": "undefined reference to `dsmi_get_pcie_error_rate` / `dsmi_set_power_state_v2` / `dsmi_get_soc_sensor_info` / `dsmi_get_device_count` / `drvGetPlatformInfo` / `snprintf_s` 等（CANN runtime 库缺失）",
+      "samples_listed": [
+        "examples/dcmi/dcmi/0_configure_manager/0_set_user_config/main.c",
+        "examples/dcmi/dcmi/0_configure_manager/1_set_device_share/main.c",
+        "examples/dcmi/dcmi/1_query_npuinfo/0_get_pcie_info/main.c",
+        "examples/dcmi/dcmi/1_query_npuinfo/1_get_board_info/main.c",
+        "examples/dcmi/dcmi/1_query_npuinfo/2_get_flash_info/main.c",
+        "examples/dcmi/dcmi/2_chip_reset/0_internal_reset/main.c",
+        "examples/dcmi/dcmi/2_chip_reset/1_external_reset/main.c"
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "QUICKSTART.md 推荐 kernel-headers-$(uname -r) 与 kernel-devel-$(uname -r)，但容器内 uname -r (宿主机的 4.19.90) 与 dnf 仓库中可安装的 kernel-devel 版本 (6.6.0-145.0.13.139.oe2403) 不一致。/lib/modules/<uname> 软链目标目录不含 Makefile，需要显式传 -k /usr/src/kernels/<ver> 指向真实 kernel-devel 路径；建议 README 或 QUICKSTART 增加容器场景的 -k 用法说明",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "examples/README.md 与 examples/dcmi/dcmi/run.sh 均假设 /usr/local/dcmi/ 和 /usr/local/Ascend/driver/lib64/driver 已存在，但没有文档说明这两个路径如何在 CI/验证环境中预置；样例本身还需要 libdpa_host.so / libhdc_host.so / libdms_host.so 等 CANN runtime 库，缺少 '本样例必须在安装完整 CANN 后运行' 的明确警告",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README.md 顶部说 '推荐OS版本使用linux v5.4、linux v5.10或linux v6.8'，但 QUICKSTART 中又提到 ascend950 --ube 模式必须 openEuler 24.03 LTS SP4，两段叙述存在版本不一致的潜在歧义",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": ".pre-commit-config.yaml 中 clang-format 来自 gitcode.com 镜像仓库，企业内网环境可能无法访问该镜像源；当前验证未实际执行 pre-commit",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-01T17:42:00",
+      "problem": "drv_seclib_host.ko / ascend_kernel_open_adapt.ko 编译失败，make 报错 /lib/modules/4.19.90-2604.3.0.0369.oe2003sp4.aarch64/build: No such file or directory",
+      "solution": "make -C /lib/modules/<uname> 解析到的是 /lib/modules/4.19.90-.../ 目录 (含 build 与 source 软链)，而非 build 软链的目标目录，build 软链目标 /usr/src/kernels/6.6.0-.../Makefile 不会被 -C 解析到。改用 -k /usr/src/kernels/6.6.0-145.0.13.139.oe2403.aarch64 显式指定 kernel-devel 根路径后构建通过",
+      "source": "src/sdk_driver/vascend/Makefile:13 UNAME=$(shell uname -r); cmake/create_ko_target.cmake:66 COMMAND ${MAKE_CMD} -C ${HOST_KERNEL_PATH} M=... modules"
+    },
+    {
+      "timestamp": "2026-07-01T18:14:00",
+      "problem": "examples/dcmi/dcmi/run.sh all 编译 7 个 .c 样例全部失败：libdcmi.so 缺 dsmi/dpa/hdc/dms 等 CANN runtime 符号",
+      "solution": "本次未解决。driver 包只提供 libdcmi.so / libdrvdsmi_host.so / libascend_hal.so 等高层接口，依赖的 libdpa_host.so / libhdc_host.so / libdms_host.so 等基础库属于 CANN toolkit/runtime 包，必须安装完整 CANN 软件栈才能编译样例",
+      "source": "examples/dcmi/dcmi/run.sh BUILD_CMD 与 gcc 链接 undefined reference 错误信息"
+    },
+    {
+      "timestamp": "2026-07-01T18:18:00",
+      "problem": "样例即使编译通过也无法运行：dcmi_init/dcmi_get_card_num_list 等 API 需要真实昇腾 NPU 设备",
+      "solution": "依据规则禁止放弃：环境不支持时状态写 not_run",
+      "source": "examples/dcmi/dcmi/0_configure_manager/0_set_user_config/main.c 调用 dcmi_init() 等设备相关 API"
+    }
+  ]
+}

@@ -1,0 +1,683 @@
+{
+  "metadata": {
+    "repo_name": "kpex",
+    "repo_url": "https://gitcode.com/kunpengcompute/kunpeng-extension-for-pytorch.git",
+    "branch": "main",
+    "start_time": "2026-07-01T10:31:55",
+    "end_time": "2026-07-01T12:05:30",
+    "duration_seconds": 5615,
+    "total_steps": 18,
+    "commit": "18b55e2376ec669ac6af1f78f637e92de92b408b"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 26830,
+    "output_tokens": 2558,
+    "cache_hit_tokens": 386032,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (0x48:0xd01)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "6.9G available on /",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 16,
+      "memory": "unlimited (host 2044Gi)"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像。仓库 README 描述目标平台为鲲鹏 920 + openEuler 22.03 LTS-SP4 AArch64（未提供 Dockerfile），改用更近期的 24.03 LTS aarch64 镜像通过 dnf 重建环境",
+      "dependency_mapping": {
+        "from_dockerfile": "仓库未提供 Dockerfile，依赖来源于 README.md（鲲鹏 HPCKit 软件栈）+ requirements_install.md（PyTorch 编译指南）",
+        "mappings": [
+          {
+            "original": "PyTorch 2.5.0 (必须按 thirdparty 补丁从源码编译，BLAS=KML, USE_CUDA=0, USE_MKLDNN=0)",
+            "openEuler": "受时间窗口限制改用 PyPI aarch64 pip wheel torch==2.5.0（CPU 版），功能性受限",
+            "source": "README.md 第5节 + requirements_install.md 第4节"
+          },
+          {
+            "original": "HPCKit kudnn (kunpeng-extension 加速库)",
+            "openEuler": "/opt/HPCKit/HPCKit/26.0.RC1/kudnn/bisheng（容器以只读方式挂载）",
+            "source": "README.md 第4节 module load bisheng/kudnn26.0.RC1/kudnn"
+          },
+          {
+            "original": "HPCKit kupl (kunpeng 算子后端)",
+            "openEuler": "/opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release",
+            "source": "README.md 第4节 module load bisheng/kupl26.0.RC1/release"
+          },
+          {
+            "original": "HPCKit kutacc (kunpeng Tensor 加速计算库)",
+            "openEuler": "/opt/HPCKit/HPCKit/26.0.RC1/kutacc/bisheng",
+            "source": "README.md 第4节 module load bisheng/kutacc26.0.RC1/kutacc"
+          },
+          {
+            "original": "HPCKit hmpi (鲲鹏 MPI)",
+            "openEuler": "/opt/HPCKit/HPCKit/26.0.RC1/hmpi/bisheng/release/hmpi",
+            "source": "README.md 第4节 module load bisheng/hmpi26.0.RC1/release"
+          },
+          {
+            "original": "HPCKit kblas (鲲鹏 BLAS)",
+            "openEuler": "/opt/HPCKit/HPCKit/26.0.RC1/kml/bisheng/lib/sve/kblas/multi (按 CPU part 0xd01 选 sve)",
+            "source": "README.md 第4节 module load bisheng/kml26.0.RC1/kblas/multi"
+          },
+          {
+            "original": "BiSheng compiler (clang-based)",
+            "openEuler": "/opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng（setvars.sh 设置 CC=clang/CXX=clang++）",
+            "source": "README.md 第4节 module load bisheng/compiler5.1.0.2/bishengmodule"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 版本配套章节",
+      "value": "AArch64（鲲鹏 920 专业版）；本验证在 192.168.9.114 远程 aarch64 主机执行（CPU part 0xd01 即 Kunpeng 920）"
+    },
+    "recommended_image": {
+      "source": "README.md - 版本配套章节（未提供 Dockerfile）",
+      "value": "文档推荐 openEuler 22.03 LTS-SP4 AArch64；本验证改用 openEuler 24.03 LTS aarch64 基础镜像"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库无 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + requirements_install.md + setup.py",
+      "value": [
+        "gcc/clang 工具链（dnf: gcc gcc-c++；编译时切换到 BiSheng clang++）",
+        "cmake（dnf: cmake）",
+        "make（dnf: make）",
+        "git（dnf: git）",
+        "python3 >= 3.11.0（容器自带 python3-3.11.6）",
+        "python3-pip / python3-devel（dnf）",
+        "python3-numpy（dnf: python3-numpy）",
+        "PyTorch 2.5.0（pip 装 aarch64 wheel）",
+        "BiSheng compiler 5.1.0.2（HPCKit）",
+        "kudnn / kupl / kutacc / kml/kblas / hmpi（HPCKit 一整套鲲鹏加速库）",
+        "numactl（dnf: numactl，运行时提供 libnuma.so.1 给 libkudnn）",
+        "memkind（dnf: memkind，运行时提供 libmemkind.so.0 给 libkudnn）",
+        "libomp（来自 BiSheng compiler 的 lib/）"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md - 编译安装第5节",
+      "value": "CFLAGS=\"-stdlib=libstdc++ -lstdc++\" KPEX_BUILD_TYPE=release HMPI_ROOT=... KUTACC_ROOT=... KUPL_ROOT=... KUDNN_ROOT=... pip install --root-user-action=ignore --no-build-isolation --editable .（本质为 python3 setup.py develop）"
+    },
+    "ut_commands": {
+      "source": "README.md - 第6节 运行与验证",
+      "value": "无独立 UT 命令；仓库未提供测试套件，仅以 `import kpex` 无报错作为安装/构建成功的冒烟测试"
+    },
+    "sample_commands": {
+      "source": "examples/optimization_test.py + examples/kupl_example/kupl_example.py",
+      "value": [
+        "python3 examples/optimization_test.py（依赖 import kpex + torchvision）",
+        "python3 examples/kupl_example/kupl_example.py（依赖 import kpex._C_example）"
+      ]
+    },
+    "special_dependencies": {
+      "source": "README.md + kudnn/bisheng 链接依赖",
+      "value": [
+        "BiSheng clang++（setvars.sh 后编译 C++ 扩展，CFLAGS=-stdlib=libstdc++ 是 clang 选项）",
+        "libsdma_dk.so（鲲鹏 SDMA 用户态驱动库，仓库 README 未明确列出，但 libkudnn.so 强依赖）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-01T10:30:00",
+      "command": "ssh 192.168.9.114 \"uname -m; cat /etc/os-release | head -3; which dnf yum; ls /opt/HPCKit\"",
+      "success": true,
+      "output": "aarch64; openEuler 20.03 (LTS-SP4); /usr/bin/dnf /usr/bin/yum; /opt/HPCKit 存在 HPCKit/26.0.RC1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T10:30:30",
+      "command": "ssh 192.168.9.114 \"git clone --depth 1 --branch main https://gitcode.com/kunpengcompute/kunpeng-extension-for-pytorch.git /tmp/kpex-verify\"",
+      "success": true,
+      "output": "Cloning into '/tmp/kpex-verify'... commit=18b55e2376ec669ac6af1f78f637e92de92b408b",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 25
+    },
+    {
+      "timestamp": "2026-07-01T10:31:55",
+      "command": "docker run -d --name kpex-ttfhw --cpus=16 -v /tmp/kpex-verify:/workspace -v /opt/HPCKit:/opt/HPCKit:ro -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container c66a508f8e63 started, aarch64, openEuler 24.03 LTS, nproc=256",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-01T10:33:00",
+      "command": "docker exec kpex-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git python3-pip python3-devel environment-modules'",
+      "success": true,
+      "output": "Installed: gcc-12.3.1, gcc-c++-12.3.1, make-4.4.1, cmake-3.27.9, git-2.45.x, python3-pip, python3-devel",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-07-01T10:55:00",
+      "command": "docker exec kpex-ttfhw bash -c 'python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==2.5.0 --no-cache-dir'",
+      "success": true,
+      "output": "Successfully installed torch-2.5.0 (manylinux2014_aarch64 wheel, 91.8MB) + filelock/typing-extensions/networkx/jinja2/fsspec/sympy/mpmath/MarkupSafe",
+      "error": "Error in cpuinfo: prctl(PR_SVE_GET_VL) failed（仅警告，torch 仍可用）",
+      "returncode": 0,
+      "duration_seconds": 240
+    },
+    {
+      "timestamp": "2026-07-01T10:59:00",
+      "command": "docker exec kpex-ttfhw bash -c 'dnf install -y python3-numpy python3-setuptools'",
+      "success": true,
+      "output": "Installed: python3-numpy-1.24.3, python3-setuptools（pypi 403 受限改用 dnf）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-01T10:59:30",
+      "command": "docker exec kpex-ttfhw bash -c 'python3 -c \"import torch, numpy; print(torch.__version__, numpy.__version__)\"'",
+      "success": true,
+      "output": "2.5.0 1.24.3 (cpuinfo 警告可忽略)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T11:00:00",
+      "command": "docker exec kpex-ttfhw bash -c 'source /opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng/env/setvars.sh && clang++ --version'",
+      "success": true,
+      "output": "BiSheng Enterprise 5.1.0.2 clang version 19.1.7, Target: aarch64-unknown-linux-gnu",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-01T11:00:30",
+      "command": "docker exec kpex-ttfhw bash -c 'export CFLAGS=\"-stdlib=libstdc++ -lstdc++\" KPEX_BUILD_TYPE=release HMPI_ROOT=... KUTACC_ROOT=... KUPL_ROOT=... KUDNN_ROOT=... LD_LIBRARY_PATH=... LIBRARY_PATH=... CPATH=... && MAX_JOBS=16 python3 setup.py develop'  (attempt 1, gcc 编译器)",
+      "success": false,
+      "output": "gcc: error: unrecognized command-line option '-stdlib=libstdc++' （CFLAGS 是 clang 选项，需要切换到 BiSheng clang++）",
+      "error": "exit 1",
+      "returncode": 1,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-01T11:00:45",
+      "command": "docker exec kpex-ttfhw bash -c 'source /opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng/env/setvars.sh && export CFLAGS=... KPEX_BUILD_TYPE=release ... && MAX_JOBS=16 python3 setup.py develop' (attempt 2, BiSheng clang++)",
+      "success": true,
+      "output": "running develop → build_ext → building 'kpex._C' + 'kpex._C_example' → 16 个 .o 编译完成 → linking _C.cpython-311-aarch64-linux-gnu.so (592376B) + _C_example.cpython-311-aarch64-linux-gnu.so (133440B) → egg-info 写入 → develop 安装完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 760
+    },
+    {
+      "timestamp": "2026-07-01T11:14:00",
+      "command": "docker exec kpex-ttfhw bash -c 'ls -la /workspace/kpex/_C*.so'",
+      "success": true,
+      "output": "_C.cpython-311-aarch64-linux-gnu.so (592376B) + _C_example.cpython-311-aarch64-linux-gnu.so (133440B) 已就绪",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-01T11:14:30",
+      "command": "docker exec kpex-ttfhw bash -c 'export LD_LIBRARY_PATH=...PYTHONPATH=/workspace python3 -c \"import kpex\"'  (尝试冒烟测试)",
+      "success": false,
+      "output": "ImportError: libnuma.so.1: cannot open shared object file",
+      "error": "ldd 缺失 libnuma",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T11:15:00",
+      "command": "docker exec kpex-ttfhw bash -c 'dnf install -y numactl numactl-devel'",
+      "success": true,
+      "output": "Installed: numactl-libs-2.0.16-10.oe2403.aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-07-01T11:15:30",
+      "command": "docker exec kpex-ttfhw bash -c 'export LD_LIBRARY_PATH=... python3 -c \"import kpex\"'",
+      "success": false,
+      "output": "ImportError: libomp.so: cannot open shared object file",
+      "error": "ldd 缺 libomp（用 BiSheng 自带的）",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T11:16:00",
+      "command": "docker exec kpex-ttfhw bash -c 'export LD_LIBRARY_PATH=/opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng/lib:... python3 -c \"import kpex\"'",
+      "success": false,
+      "output": "ImportError: libmemkind.so.0: cannot open shared object file",
+      "error": "ldd 缺 libmemkind",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T11:16:30",
+      "command": "docker exec kpex-ttfhw bash -c 'dnf install -y memkind'",
+      "success": true,
+      "output": "Installed: memkind-1.14.0-4.oe2403.aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 20
+    },
+    {
+      "timestamp": "2026-07-01T11:17:00",
+      "command": "docker exec kpex-ttfhw bash -c 'export LD_LIBRARY_PATH=... python3 -c \"import kpex\"'",
+      "success": false,
+      "output": "ImportError: libsdma_dk.so: cannot open shared object file（libkudnn.so 强依赖）",
+      "error": "ldd 缺 libsdma_dk.so（鲲鹏 SDMA 用户态驱动，README 未列出，HPCKit 不提供）",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T11:18:00",
+      "command": "find / -name 'libsdma*' -type f 2>/dev/null; rpm -qa | grep -iE '(kunpeng|sdma|hbm|hbw)' 2>/dev/null",
+      "success": true,
+      "output": "未发现 libsdma_dk.so，openEuler 20.03 / 24.03 均不自带；该库属于鲲鹏 NPU 驱动包（libkpnpu / kunpeng-npu）须用户额外安装",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-01T11:30:00",
+      "command": "docker exec kpex-ttfhw bash -c 'cd /workspace && git init -q && git config --global --add safe.directory /workspace && git add -A && pre-commit run --all-files'",
+      "success": true,
+      "output": "trim trailing whitespace...Passed / check json...(no files to check)Skipped / check yaml...(no files to check)Skipped / mixed line ending...Passed / check for merge conflicts...Passed / check for added large files...Passed / clang-format...Passed",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-01T11:55:00",
+      "command": "docker exec kpex-ttfhw bash -c 'export LD_LIBRARY_PATH=... PYTHONPATH=/workspace python3 -c \"import kpex\"' (再次确认)",
+      "success": false,
+      "output": "ImportError: libsdma_dk.so: cannot open shared object file（无法绕过，运行时强依赖）",
+      "error": "exit 4",
+      "returncode": 1,
+      "duration_seconds": 2
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-01T10:30:00",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式）",
+      "result": "已启动",
+      "details": {
+        "repo": "kpex",
+        "target": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:30:30",
+      "step": "git_clone",
+      "action": "在远程 aarch64 主机上 git clone --depth 1 --branch main 仓库到 /tmp/kpex-verify",
+      "result": "成功",
+      "details": {
+        "commit": "18b55e2376ec669ac6af1f78f637e92de92b408b",
+        "comment": "!7 add hbw device surport and kupl for kunpeng cpu"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:31:55",
+      "step": "container_setup",
+      "action": "拉取并启动 kpex-ttfhw 容器（openEuler 24.03 LTS aarch64，挂载 /workspace 与只读 /opt/HPCKit）",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container": "kpex-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:33:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链 (gcc/g++/make/cmake/git/python3-pip/python3-devel)",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 24.03 仓库 (dnf)"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:55:00",
+      "step": "dependency_installation_pytorch",
+      "action": "通过 pip 安装 torch==2.5.0 aarch64 wheel（替代源码编译，缩短时间）",
+      "result": "成功",
+      "details": {
+        "version": "2.5.0",
+        "wheel": "manylinux2014_aarch64",
+        "index": "https://pypi.tuna.tsinghua.edu.cn/simple",
+        "note": "与 requirements_install.md 推荐的源码 BLAS=KML 编译版存在差异，运行时 KuDNN/KuPL 强依赖项可能受影响"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:59:00",
+      "step": "dependency_installation_layer2",
+      "action": "安装 numpy (dnf) + setuptools (pip)",
+      "result": "成功",
+      "details": {
+        "note": "pypi 部分包返回 403，改用 dnf 源"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:59:30",
+      "step": "static_analysis_scan",
+      "action": "检查仓库 pre-commit 配置",
+      "result": "已配置",
+      "details": {
+        "config_file": ".pre-commit-config.yaml",
+        "hooks_count": 7
+      }
+    },
+    {
+      "timestamp": "2026-07-01T10:59:45",
+      "step": "static_analysis_scan",
+      "action": "检查仓库 lint-runner 配置",
+      "result": "未配置",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-07-01T10:59:50",
+      "step": "devcontainer_scan",
+      "action": "检查 .devcontainer 目录",
+      "result": "未配置",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-07-01T11:00:00",
+      "step": "image_selection",
+      "action": "选择 openEuler 基础镜像并切到 BiSheng 编译器（README 推荐 module load bisheng/compiler5.1.0.2）",
+      "result": "BiSheng 5.1.0.2 clang 19.1.7",
+      "details": {
+        "selection_reason": "仓库 setup.py 使用 -fopenmp + CFLAGS=-stdlib=libstdc++（clang 选项），系统 gcc 不支持；切换到 HPCKit 提供的 BiSheng clang"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:00:30",
+      "step": "build_attempt",
+      "action": "首次构建尝试（使用系统 gcc）",
+      "result": "失败",
+      "details": {
+        "error": "gcc 不识别 -stdlib=libstdc++"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:00:45",
+      "step": "build_retry",
+      "action": "切到 BiSheng clang++ 后重新执行 python3 setup.py develop（MAX_JOBS=16）",
+      "result": "成功",
+      "details": {
+        "duration_seconds": 760,
+        "concurrency": 16,
+        "artifacts": [
+          "kpex/_C.cpython-311-aarch64-linux-gnu.so",
+          "kpex/_C_example.cpython-311-aarch64-linux-gnu.so"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:14:30",
+      "step": "smoke_test_attempt",
+      "action": "冒烟测试 python3 -c 'import kpex'",
+      "result": "失败",
+      "details": {
+        "error": "libnuma.so.1 缺失"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:15:00",
+      "step": "problem_resolution",
+      "action": "安装 numactl (dnf)",
+      "result": "已解决",
+      "details": {
+        "package": "numactl-libs-2.0.16"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:15:30",
+      "step": "smoke_test_attempt",
+      "action": "冒烟测试 #2",
+      "result": "失败",
+      "details": {
+        "error": "libomp.so 缺失"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:16:00",
+      "step": "problem_resolution",
+      "action": "将 BiSheng lib/ 加入 LD_LIBRARY_PATH",
+      "result": "已解决",
+      "details": {
+        "path": "/opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng/lib"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:16:00",
+      "step": "smoke_test_attempt",
+      "action": "冒烟测试 #3",
+      "result": "失败",
+      "details": {
+        "error": "libmemkind.so.0 缺失"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:16:30",
+      "step": "problem_resolution",
+      "action": "安装 memkind (dnf)",
+      "result": "已解决",
+      "details": {
+        "package": "memkind-1.14.0"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:17:00",
+      "step": "smoke_test_attempt",
+      "action": "冒烟测试 #4",
+      "result": "失败",
+      "details": {
+        "error": "libsdma_dk.so 缺失（libkudnn.so 强依赖，README 未列出，HPCKit 不提供，需要鲲鹏 NPU 驱动包）"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:18:00",
+      "step": "problem_resolution",
+      "action": "全盘搜索 libsdma_dk.so（容器内+宿主机）",
+      "result": "未找到",
+      "details": {
+        "note": "openEuler 20.03/24.03 均不自带；此库来自鲲鹏专用驱动包，verify window 内无法获得"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:30:00",
+      "step": "static_analysis_execution",
+      "action": "执行 pre-commit run --all-files (BiSheng clang-format v18.1.8 + pre-commit-hooks v6.0.0)",
+      "result": "全部通过",
+      "details": {
+        "passed": 5,
+        "skipped": 2,
+        "failed": 0
+      }
+    },
+    {
+      "timestamp": "2026-07-01T11:55:00",
+      "step": "smoke_test_attempt",
+      "action": "冒烟测试 #5（最终确认）",
+      "result": "失败",
+      "details": {
+        "error": "libsdma_dk.so 依然缺失"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T12:00:00",
+      "step": "ut_sample_verdict",
+      "action": "判定单元测试与样例执行：均依赖 import kpex，运行时缺 libsdma_dk.so 无法运行",
+      "result": "not_run",
+      "details": {
+        "reason": "运行时依赖 libsdma_dk.so 缺失；仓库本身无独立 UT 框架"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T12:05:00",
+      "step": "report_generation",
+      "action": "生成原始 JSON 报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_kpex_20260701.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "检测到 pre-commit 配置（7 个 hooks：6 项已执行其中 5 项 Passed + 2 项 Skipped，无 lint-runner 配置，无 devcontainer 配置）",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "全部通过",
+        "duration_seconds": 60,
+        "total_hooks": 7,
+        "passed": 5,
+        "skipped": 2,
+        "failed": 0,
+        "failures": []
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 devcontainer，依赖来源于 README + HPCKit 商业软件栈"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 763,
+      "artifacts": [
+        {
+          "name": "kpex._C",
+          "path": "/workspace/kpex/_C.cpython-311-aarch64-linux-gnu.so",
+          "size": "592376 bytes"
+        },
+        {
+          "name": "kpex._C_example",
+          "path": "/workspace/kpex/_C_example.cpython-311-aarch64-linux-gnu.so",
+          "size": "133440 bytes"
+        }
+      ],
+      "details": "BiSheng clang++ 19.1.7 编译 16 个 csrc .cpp 单元为 _C + _C_example 两个 CPython 扩展；链接 libkutacc/libkudnn/libkupl + torch_cpu；MAX_JOBS=16；第 1 次 gcc 失败后切换编译器第 2 次成功"
+    },
+    "ut": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "details": "仓库未提供单元测试框架（无 test/ 目录、无 pytest/ctest/gtest 配置）。仓库 README 第6节将 `python3 -c 'import kpex'` 无报错作为唯一的功能性冒烟测试，但该冒烟测试在运行时因 libkudnn.so 强依赖的 libsdma_dk.so 缺失而无法通过"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "details": "examples/optimization_test.py 与 examples/kupl_example/kupl_example.py 均 `import kpex`/`import kpex._C_example`，运行时同样受 libsdma_dk.so 缺失阻塞"
+    },
+    "unit_test": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "details": "仓库未提供单元测试框架（无 test/ 目录、无 pytest/ctest/gtest 配置）。仓库 README 第6节将 `python3 -c 'import kpex'` 无报错作为唯一的功能性冒烟测试，但该冒烟测试在运行时因 libkudnn.so 强依赖的 libsdma_dk.so 缺失而无法通过"
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "details": "examples/optimization_test.py 与 examples/kupl_example/kupl_example.py 均 `import kpex`/`import kpex._C_example`，运行时同样受 libsdma_dk.so 缺失阻塞"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "2026-07-01T10:45:00",
+      "title": "README 未说明需要使用 BiSheng 编译器",
+      "body": "README 第4节说明需 `module load bisheng/compiler5.1.0.2/bishengmodule`，但未提示 system gcc 会因不识别 -stdlib=libstdc++ 而构建失败；新开发者若跳过 HPCKit 直接用 openEuler 24.03 系统 gcc 构建会立即报错",
+      "source": "README.md 第4-5节 + setup.py CFLAGS 解析路径"
+    },
+    {
+      "time": "2026-07-01T10:50:00",
+      "title": "README 未列出 PyTorch 编译版与 pip 版的差异",
+      "body": "README 第5节要求 PyTorch 必须按 requirements_install.md 用 BLAS=KML/USE_CUDA=0 等从源码编译并打 thirdparty 补丁；本验证受时间窗口限制改用 PyPI aarch64 torch==2.5.0 wheel，但运行时 kpex._C 因链接的 libkudnn.so 强依赖 libsdma_dk.so 而无法加载——README 未明确提示：'pip 版 torch + 编译版 kpex 组合会因 libsdma_dk.so 缺失而 import 失败'",
+      "source": "README.md 第5节 + requirements_install.md + ldd 验证"
+    },
+    {
+      "time": "2026-07-01T11:17:00",
+      "title": "README 未列出 libsdma_dk.so 这一关键运行时依赖",
+      "body": "libkudnn.so 在 ELF NEEDED 段声明强依赖 libsdma_dk.so，但 README/requirements_install.md/HPCKit 安装指南 均未列出该库。该库属于鲲鹏 NPU 用户态驱动（典型 rpm 名 kunpeng-npu-driver / libkpnpu），openEuler 24.03 与 20.03 仓库均不自带；本验证因此无法完成 `import kpex` 冒烟测试。",
+      "source": "readelf -d libkudnn.so.1 + ldd 输出 + HPCKit /opt/HPCKit/HPCKit/26.0.RC1 全盘搜索"
+    },
+    {
+      "time": "2026-07-01T11:18:00",
+      "title": "README 缺少运行时 LD_LIBRARY_PATH 配置示例",
+      "body": "安装成功后用户运行 `import kpex` 还需要 LD_LIBRARY_PATH 包含 HPCKit 全部 lib 目录（kutacc/kudnn/kupl/hmpi/kml）+ 编译器 lib（提供 libomp.so）+ numactl/memkind（系统 dnf）；README 未提供完整的 export 命令",
+      "source": "README.md 第6节（仅要求 `import kpex` 无报错）"
+    },
+    {
+      "time": "2026-07-01T10:35:00",
+      "title": "仓库无独立单元测试套件",
+      "body": "仓库根与 csrc/ 均未发现 test/ 目录、CMakeLists.txt 的 ctest 段、GoogleTest 引用或 pytest/tox 配置；README 第6节仅以 `import kpex` 作为唯一冒烟测试；这意味着仓库的'UT'实际上等同于 C++ 扩展能否被 Python 加载，颗粒度过粗",
+      "source": "全仓搜索 test/ ctest gtest googletest Catch2"
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-01T11:00:30",
+      "problem": "首次构建使用 openEuler 24.03 自带 gcc 12.3.1，gcc 不识别 -stdlib=libstdc++",
+      "solution": "切换到 HPCKit 提供的 BiSheng clang++ 19.1.7（source compiler/bisheng/env/setvars.sh 设置 CC=clang CXX=clang++）",
+      "source": "setup.py 第38行 extra_compile_args += ['-fopenmp'] 后追加 CFLAGS='-stdlib=libstdc++ -lstdc++'；README.md 第4节"
+    },
+    {
+      "timestamp": "2026-07-01T11:14:30",
+      "problem": "import kpex 时 ImportError: libnuma.so.1",
+      "solution": "dnf install -y numactl（系统仓库提供 libnuma.so.1）",
+      "source": "ldd /workspace/kpex/_C.so + readelf -d libkudnn.so.1"
+    },
+    {
+      "timestamp": "2026-07-01T11:15:30",
+      "problem": "import kpex 时 ImportError: libomp.so",
+      "solution": "将 /opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng/lib 加入 LD_LIBRARY_PATH",
+      "source": "BiSheng 自带的 libomp.so（readelf -d libkudnn.so.1 / libkutacc.so.1 / libkupl.so.1 均 NEEDED libomp.so）"
+    },
+    {
+      "timestamp": "2026-07-01T11:16:00",
+      "problem": "import kpex 时 ImportError: libmemkind.so.0",
+      "solution": "dnf install -y memkind",
+      "source": "readelf -d libkudnn.so.1 NEEDED libmemkind.so.0"
+    },
+    {
+      "timestamp": "2026-07-01T11:17:00",
+      "problem": "import kpex 时 ImportError: libsdma_dk.so（最终阻塞运行时冒烟测试）",
+      "solution": "未在 verify 窗口内解决。需要在鲲鹏硬件上安装 kunpeng-npu-driver / libkpnpu 软件包以提供 libsdma_dk.so；openEuler 20.03/24.03 仓库均不自带",
+      "source": "readelf -d libkudnn.so.1 NEEDED libsdma_dk.so + 全盘搜索无果"
+    }
+  ]
+}

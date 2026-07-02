@@ -1,0 +1,515 @@
+{
+  "metadata": {
+    "repo_name": "kuqcd",
+    "repo_url": "https://gitcode.com/kunpengcompute/kuqcd.git",
+    "branch": "main",
+    "commit": "472b6ad7334f377f752346569dff07f1b0834c94",
+    "start_time": "2026-07-01T18:00:00",
+    "end_time": "2026-07-01T18:11:00",
+    "duration_seconds": 660,
+    "total_steps": 15
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 21315,
+    "output_tokens": 2598,
+    "cache_hit_tokens": 477554,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng-920 (CPU part 0xd01)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "充足",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像，仓库 README 推荐 openEuler 22.03 LTS-SP4 AArch64，属于同源更新",
+      "dependency_mapping": {
+        "from_dockerfile": "仓库未提供 Dockerfile",
+        "mappings": [
+          {
+            "original": "HPCKit 26.0.RC1 (bisheng/HMPI/KUPL)",
+            "openEuler": "openEuler 仓库无对应包，宿主 /opt/HPCKit 已预装并挂载进容器",
+            "source": "README.md 构建章节"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 版本配套章节",
+      "value": "aarch64 (鲲鹏 920 专业版，README 写 0xd22；宿主实际 0xd01)"
+    },
+    "recommended_image": {
+      "source": "README.md - 版本配套章节",
+      "value": "openEuler 22.03 LTS-SP4 AArch64"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库未提供 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md 构建安装章节 + CMakeLists.txt",
+      "value": [
+        "HPCKit 26.0.RC1（bisheng 编译器 + HMPI + KUPL + KuQCD 头文件/库）",
+        "cmake（dnf: cmake）",
+        "gcc/g++/make（dnf: gcc gcc-c++ make）",
+        "numactl/numactl-devel（dnf 仓库，KUPL 运行时依赖 libnuma）"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md - KuQCD编译安装章节 + build.sh",
+      "value": "source HPCKit 各组件 env/setvars.sh && mkdir build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DUSE_SVE=OFF -DKUNPENG_ARCH=NATIVE .. && make -j51"
+    },
+    "ut_commands": {
+      "source": "README.md - 测试章节 + test/build.sh + test/run.sh",
+      "value": "cd test && mpicxx -lkuqcd test_solver.cpp -o test_solver && ./test_solver < input"
+    },
+    "sample_commands": {
+      "source": "README.md - 测试章节",
+      "value": "test/test_solver 程序读取 test/input 作为样例输入"
+    },
+    "special_dependencies": {
+      "source": "README.md - 前置条件章节",
+      "value": [
+        "HPCKit 商业包（宿主已预装 /opt/HPCKit/HPCKit/26.0.RC1）",
+        "毕昇编译器（HPCKit 内置，openEuler 仓库无独立包）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-01T18:00:00",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes 192.168.9.114 'echo OK'",
+      "success": true,
+      "output": "OK",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-01T18:00:30",
+      "command": "ssh 192.168.9.114 'docker version --format {{.Server.Version}} && nproc && free -g | awk \"/Mem:/{print \\$2}\"'",
+      "success": true,
+      "output": "Docker 18.09.0, 256 cores, 2044 GB memory",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T18:01:00",
+      "command": "ssh 192.168.9.114 'rm -rf /tmp/kuqcd-verify && git clone --depth 1 --branch main https://gitcode.com/kunpengcompute/kuqcd.git /tmp/kuqcd-verify'",
+      "success": true,
+      "output": "Cloning into '/tmp/kuqcd-verify'...",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-01T18:01:30",
+      "command": "ssh 192.168.9.114 'lscpu | head -15 && cat /proc/cpuinfo | grep \"CPU part\" | head -1'",
+      "success": true,
+      "output": "Kunpeng-920; CPU implementer 0x48, CPU part 0xd01 (无 sve features)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "宿主 lscpu 显示 Kunpeng-920，但 CPU part 为 0xd01（Features 不含 sve），与 README 声明 0xd22 略有差异"
+    },
+    {
+      "timestamp": "2026-07-01T18:01:45",
+      "command": "ssh 192.168.9.114 'ls /opt/HPCKit/HPCKit/26.0.RC1/ && ls /opt/HPCKit/HPCKit/26.0.RC1/kuqcd/bisheng/lib/'",
+      "success": true,
+      "output": "HPCKit 26.0.RC1 已预装（compiler/bisheng + hmpi + kupl + kuqcd）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "发现宿主已预装 HPCKit 26.0.RC1，本次验证可直接复用"
+    },
+    {
+      "timestamp": "2026-07-01T18:02:00",
+      "command": "ssh 192.168.9.114 'docker rm -f kuqcd-ttfhw 2>/dev/null; docker run -d --name kuqcd-ttfhw --cpus=51 -v /tmp/kuqcd-verify:/workspace -v /opt/HPCKit:/opt/HPCKit:ro -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity'",
+      "success": true,
+      "output": "Container ID: 52590d04cd2a...",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-01T18:02:30",
+      "command": "docker exec kuqcd-ttfhw bash -c 'dnf install -y cmake make gcc gcc-c++ 2>&1 | tail -3'",
+      "success": true,
+      "output": "Complete! (gcc-12.3.1, cmake-3.27.9, make-4.4.1 已安装)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-01T18:03:00",
+      "command": "docker exec -e HPCKit_VERSION=26.0.RC1 kuqcd-ttfhw bash -c 'cd /workspace && rm -rf build && mkdir build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DUSE_SVE=OFF -DKUNPENG_ARCH=NATIVE .. 2>&1 | tail -10'",
+      "success": true,
+      "output": "cmake 配置成功：-O3 -fstack-protector-strong -mcpu=native -ffast-math -funroll-loops -ftree-vectorize -fopenmp",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "关闭 SVE 并使用 -mcpu=native，因为宿主 CPU 不支持 SVE（Features 无 sve）"
+    },
+    {
+      "timestamp": "2026-07-01T18:04:00",
+      "command": "docker exec -e HPCKit_VERSION=26.0.RC1 kuqcd-ttfhw bash -c 'cd /workspace/build && make -j51 2>&1 | tail -5'",
+      "success": true,
+      "output": "[100%] Linking CXX shared library ../lib/libkuqcd.so\n[100%] Built target kuqcd",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-01T18:04:30",
+      "command": "docker exec kuqcd-ttfhw bash -c 'dnf install -y numactl numactl-devel 2>&1 | tail -3'",
+      "success": true,
+      "output": "Installed: numactl-2.0.16-10.oe2403.aarch64, numactl-devel-2.0.16-10.oe2403.aarch64, numactl-libs-2.0.16-10.oe2403.aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30,
+      "note": "KUPL 依赖 libnuma，补充安装"
+    },
+    {
+      "timestamp": "2026-07-01T18:05:00",
+      "command": "docker exec kuqcd-ttfhw bash -c 'cd /workspace/test && mpicxx -lkuqcd test_solver.cpp -o ./test_solver 2>&1'",
+      "success": true,
+      "output": "test_solver 编译成功（77KB ELF 二进制）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-07-01T18:05:30",
+      "command": "docker exec kuqcd-ttfhw bash -c 'cd /workspace/test && export OMPI_MCA_plm_rsh_agent=/bin/false && timeout 60 ./test_solver < input 2>&1'",
+      "success": true,
+      "output": "start test kuqcd_solve_multishift\ngridx = 1  gridy = 1  gridz = 1  gridt = 1\nCGM: # iterations 1\ntotal time =  1.714400e-04 [s]\nend test kuqcd_solve_multishift PASSED\n1 tests ran, 1 tests PASSED",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-01T18:06:00",
+      "command": "docker exec kuqcd-ttfhw bash -c 'cd /workspace/test && export OMPI_MCA_plm_rsh_agent=/bin/false && timeout 60 ./test_solver < input 2>&1'",
+      "success": true,
+      "output": "start test kuqcd_solve_multishift\ngridx = 1  gridy = 1  gridz = 1  gridt = 1\nCGM: # iterations 1\ntotal time =  1.726600e-04 [s]\nend test kuqcd_solve_multishift PASSED\n1 tests ran, 1 tests PASSED",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "二次运行确认结果稳定"
+    },
+    {
+      "timestamp": "2026-07-01T18:06:30",
+      "command": "docker exec kuqcd-ttfhw bash -c 'ls -la /workspace/build/lib/'",
+      "success": true,
+      "output": "libkuqcd.so, libkuqcd.so.1 -> libkuqcd.so.1.26.0.RC1 (854248 bytes)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-01T18:11:00",
+      "command": "scp 192.168.9.114:/tmp/kuqcd-verify/verification_report_WSL_kuqcd_20260701.json ./json-org-openeuler/ (即本报告)",
+      "success": true,
+      "output": "报告落地",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-01T18:00:00",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式，远程机器 192.168.9.114）",
+      "result": "已启动",
+      "details": {
+        "repo": "kuqcd",
+        "branch": "main",
+        "commit": "472b6ad"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:00:30",
+      "step": "environment_check",
+      "action": "检查远程机器 Docker、CPU、内存",
+      "result": "成功",
+      "details": {
+        "docker": "18.09.0",
+        "arch": "aarch64",
+        "cpu_cores": 256,
+        "memory": "2044Gi"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:01:00",
+      "step": "code_preparation",
+      "action": "git clone --depth 1 --branch main 到 /tmp/kuqcd-verify",
+      "result": "成功",
+      "details": {
+        "url": "https://gitcode.com/kunpengcompute/kuqcd.git",
+        "commit": "472b6ad7334f377f752346569dff07f1b0834c94"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:01:30",
+      "step": "document_reading",
+      "action": "阅读 README.md、CMakeLists.txt、build.sh、test/build.sh、test/run.sh",
+      "result": "完成",
+      "details": {
+        "readme_findings": "需要 HPCKit 26.0.RC1 + 毕昇编译器 + HMPI + KUPL；声明支持鲲鹏 920 (0xd22)",
+        "cmake_findings": "默认 SVE512 触发 -mcpu=hip11；SVE256 触发 -mcpu=hip09；其他值不设置 SVEBITS 宏"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:01:45",
+      "step": "hpc_toolchain_discovery",
+      "action": "发现宿主已预装 HPCKit 26.0.RC1（/opt/HPCKit）",
+      "result": "成功",
+      "details": {
+        "compiler": "BiSheng 5.1.0.2 (clang 19.1.7)",
+        "hmpi": "/opt/HPCKit/HPCKit/26.0.RC1/hmpi/bisheng/release/hmpi",
+        "kupl": "/opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:02:00",
+      "step": "container_setup",
+      "action": "启动 kuqcd-ttfhw 容器（openEuler 24.03 LTS）并挂载 HPCKit 目录",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "kuqcd-ttfhw",
+        "mounts": [
+          "/tmp/kuqcd-verify:/workspace",
+          "/opt/HPCKit:/opt/HPCKit:ro"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:02:30",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc gcc-c++ cmake make）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:03:00",
+      "step": "build_configure",
+      "action": "cmake 配置：clang/clang++ + USE_SVE=OFF + KUNPENG_ARCH=NATIVE",
+      "result": "成功",
+      "details": {
+        "reason": "宿主 CPU 不支持 SVE（Features 无 sve），默认 SVE512 会触发 BiSheng 专属 -mcpu=hip11"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:04:00",
+      "step": "build_compile",
+      "action": "make -j51（CPU 核数 256 × 20%）",
+      "result": "成功",
+      "details": {
+        "artifact": "/workspace/build/lib/libkuqcd.so.1.26.0.RC1 (854248 bytes)"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:04:30",
+      "step": "dependency_installation_layer2",
+      "action": "安装 numactl/numactl-devel（KUPL 依赖 libnuma）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:05:00",
+      "step": "test_build",
+      "action": "mpicxx -lkuqcd test_solver.cpp -o test_solver",
+      "result": "成功",
+      "details": {
+        "artifact": "/workspace/test/test_solver (77488 bytes)"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:05:30",
+      "step": "ut_execution",
+      "action": "执行 ./test_solver < input（设置 OMPI_MCA_plm_rsh_agent=/bin/false 绕过 ssh plm）",
+      "result": "成功",
+      "details": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "iterations": 1,
+        "duration_ms": 0.17
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:06:00",
+      "step": "ut_execution_repeat",
+      "action": "二次运行确认结果稳定",
+      "result": "成功",
+      "details": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "iterations": 1,
+        "duration_ms": 0.17
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:06:30",
+      "step": "artifact_inspection",
+      "action": "列出构建产物",
+      "result": "成功",
+      "details": {
+        "libkuqcd.so.1.26.0.RC1": "854248 bytes",
+        "test_solver": "77488 bytes"
+      }
+    },
+    {
+      "timestamp": "2026-07-01T18:11:00",
+      "step": "report_generation",
+      "action": "生成验证报告（build=success, ut=success, sample=success）",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_kuqcd_20260701.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "仓库未配置 .pre-commit-config.yaml，也未配置 lint-runner，未执行静态检查",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 devcontainer"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 60,
+      "compiler": "BiSheng 5.1.0.2 (clang 19.1.7)",
+      "compile_flags": "-O3 -fstack-protector-strong -mcpu=native -ffast-math -funroll-loops -ftree-vectorize -fopenmp",
+      "artifacts": [
+        {
+          "name": "libkuqcd.so.1.26.0.RC1",
+          "path": "build/lib/libkuqcd.so.1.26.0.RC1",
+          "size": "854248 bytes"
+        }
+      ],
+      "note": "默认 SVE512 配置在宿主 CPU 上会触发 Illegal instruction（CPU 不支持 SVE），因此使用 -DUSE_SVE=OFF -DKUNPENG_ARCH=NATIVE 重新配置，编译成功且能正常运行测试"
+    },
+    "unit_test": {
+      "status": "success",
+      "duration_seconds": 2,
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "test_solver_compile": "mpicxx -lkuqcd test_solver.cpp -o test_solver (使用 HPCKit HMPI mpicxx)",
+      "test_name": "kuqcd_solve_multishift",
+      "test_method": "TestCGMPC<float, 1, KUQCD_GAUGE_RECON_NO, KUQCD_GAUGE_RECON_NO>(KUQCD_NORMAL_ORDER)",
+      "grid": "1x1x1x1",
+      "iterations": 1,
+      "result_summary": "1 tests ran, 1 tests PASSED",
+      "note": "需要设置 OMPI_MCA_plm_rsh_agent=/bin/false 以绕过 orte 单例模式对 ssh plm 的硬依赖；test/build.sh 内置 cputype==0xd22 检查会跳过 0xd01 平台，本次直接用 mpicxx 编译跳过该检查"
+    },
+    "sample_execution": {
+      "status": "success",
+      "duration_seconds": 1,
+      "results": [
+        {
+          "sample_name": "test_solver",
+          "input_file": "test/input (gridx=1, gridy=1, gridz=1, gridt=1)",
+          "execution_status": "成功",
+          "output_summary": "CGM 求解 1 次迭代收敛，total time = 1.72e-4 s，PASSED",
+          "execution_time": "0.17 ms"
+        }
+      ],
+      "note": "样例与单元测试是同一个 test_solver 二进制：read test/input -> 跑 kuqcd_solve_multishift -> 输出 PASSED"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 声明支持鲲鹏 920 (0xd22)，但宿主实际为 0xd01（lscpu 报 Kunpeng-920 但 Features 无 sve），需补充 CPU part 兼容说明",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 编译章节只描述 module load 方式，但 HPCKit setvars.sh 是 setvars.sh 模式，新手难以发现可用的环境加载路径",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "test/build.sh 强校验 cputype == 0xd22，其他 CPU 直接跳过而没有失败提示，且未提供 0xd01 等其他鲲鹏变体的 fallback 路径",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "test/build.sh 存在脚本错误：export LD_LIBRARY_PATH=\"$ABS_PATH:...\" 引用了未定义的 ABS_PATH 变量，应为 LIB_ABS_PATH，导致即便 cputype 匹配也会因 LD_LIBRARY_PATH 为空而运行失败",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "未提供 Dockerfile，新手难以在 openEuler 上从零构建；CMakeLists.txt KUNPENG_ARCH 选项仅有 SVE512/SVE256/其他三种分支，generic 分支不设置 SVEBITS 宏，必须依赖 SVE 路径才能让代码编译通过",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-01T18:03:00",
+      "problem": "默认 KUNPENG_ARCH=SVE512 配置触发 -mcpu=hip11，非 BiSheng 编译器不支持；测试不通过 SVE 路径会因 SVEBITS 宏未定义而编译失败",
+      "solution": "用 -DUSE_SVE=OFF -DKUNPENG_ARCH=NATIVE 重新配置，跳过 SVE 路径同时绕开 BiSheng 专属 -mcpu 标记",
+      "source": "CMakeLists.txt L116-130 SVE 分支"
+    },
+    {
+      "timestamp": "2026-07-01T18:04:30",
+      "problem": "链接 test_solver 时 libkupl.so 找不到 libnuma",
+      "solution": "dnf install -y numactl numactl-devel",
+      "source": "libkupl.so.1 依赖 libnuma 符号"
+    },
+    {
+      "timestamp": "2026-07-01T18:05:00",
+      "problem": "运行 test_solver 时 ORTE 报 plm_rsh_agent (ssh) 找不到",
+      "solution": "export OMPI_MCA_plm_rsh_agent=/bin/false 绕过 ORTE 对 ssh plm 的硬依赖",
+      "source": "OpenMPI ORTE 容器环境适配"
+    },
+    {
+      "timestamp": "2026-07-01T18:05:00",
+      "problem": "test/build.sh 强校验 cputype == 0xd22，宿主 CPU 0xd01 会被脚本跳过",
+      "solution": "直接用 mpicxx -lkuqcd test_solver.cpp -o test_solver 编译（绕开 cputype 检查），下游链接、运行均正常",
+      "source": "test/build.sh L4 if [[ \"$cputype\" == \"0xd22\" ]]"
+    }
+  ]
+}

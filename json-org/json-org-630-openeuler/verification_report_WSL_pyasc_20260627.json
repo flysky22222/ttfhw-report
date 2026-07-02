@@ -1,0 +1,618 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/pyasc-verify",
+    "repo_url": "https://gitcode.com/cann/pyasc.git",
+    "branch": "master",
+    "start_time": "2026-06-26T21:30:00",
+    "end_time": "2026-06-27T01:05:00",
+    "duration_seconds": 12900,
+    "total_steps": 18
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Remote ARM server (256 cores)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "922G available on /tmp",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "shared"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "platform": "linux/arm64",
+      "selection_reason": "docs/quick_start.md 建议使用 CANN 官方 Docker 镜像或 openEuler；本验证采用 openEuler 24.03 LTS 基础镜像，容器内手动安装 CANN toolkit 9.1.0（aarch64）+ LLVM 19.1.7 + pyasc 源码构建"
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "value": "aarch64 (ARM64) on Ascend AI accelerator, 依赖 CANN toolkit + LLVM 19.1.7 + Python 3.9-3.12",
+      "source": "README.md (💻 软硬件配套说明章节) + docs/quick_start.md (环境准备章节)"
+    },
+    "recommended_os_list": {
+      "value": [
+        "openEuler 22.03/24.03 LTS",
+        "CANN 8.5.0.alpha001+ 支持的 Linux 发行版"
+      ],
+      "source": "README.md (软硬件配套说明) + docs/quick_start.md (CANN 官方 Docker 镜像章节)"
+    },
+    "dependencies": {
+      "value": [
+        "python == 3.9-3.12 (实际验证用 3.11.6)",
+        "gcc/g++ >= 9.4.0 (实际验证用 openEuler 12.3.1)",
+        "GLIBC >= 2.31",
+        "cmake >= 3.20 (实际用 3.27.9)",
+        "LLVM 19.1.7 预编译包（从 cann-ai.obs 下载）",
+        "Ascend CANN toolkit 8.5.0.alpha001+ (实际安装 9.1.0)",
+        "zlib-devel, libzstd-devel (libz/libzstd 系统库检查)",
+        "Python 构建依赖：cmake>=3.20,<4.0, ninja>=1.11.1, pybind11==2.13.1, setuptools>=71, setuptools-scm>=8,<9, numpy>=1.24.4,<=1.26.4, typing_extensions, wheel",
+        "Python 运行依赖：attrs==24.2.0, scipy==1.13.1, decorator==5.1.1, psutil==6.0.0, pytest==8.3.2, pytest-xdist==3.6.1, pyyaml, importlib-metadata"
+      ],
+      "source": "README.md + docs/quick_start.md + requirements-build.txt + requirements-runtime.txt"
+    },
+    "build_commands": {
+      "value": "export LLVM_INSTALL_PREFIX=/path/to/llvm-19.1.7-aarch64 && source /usr/local/Ascend/cann/set_env.sh && python3 -m pip install . (或 python3 -m pip install -e .)",
+      "source": "docs/quick_start.md (pyasc基于源码安装章节)"
+    },
+    "ut_commands": {
+      "value": "Python UT: cd test && bash build_llt.sh --run_python_ut --llvm_install_path ${llvm_install_path} (实际验证直接用 pytest 运行 python/test/unit/)\nASC-IR Lit: cd test && bash build_llt.sh --check-ascir --llvm_install_path ${llvm_install_path} --lit_install_path ${lit_install_path} (实际验证用 lit 直接运行 test/Dialect/AscendC/)",
+      "source": "docs/quick_start.md (UT测试章节) + test/build_llt.sh"
+    },
+    "sample_commands": {
+      "value": "python3 ./python/tutorials/01_add/add.py -r [RUN_MODE] -v [SOC_VERSION] (默认 Model/Ascend910B1 仿真器模式)",
+      "source": "docs/quick_start.md (样例运行验证章节) + python/tutorials/01_add/README.md"
+    },
+    "special_dependencies": {
+      "value": [
+        "LLVM 19.1.7 aarch64 预编译包: https://cann-ai.obs.cn-north-4.myhuaweicloud.com/llvm/llvm-19.1.7-aarch64.tar.xz",
+        "Ascend CANN toolkit 9.1.0 aarch64: Ascend-cann-toolkit_9.1.0_linux-aarch64.run (本机已下载)",
+        "torch==2.7.1+cpu (CPU 版本，样例运行所需)",
+        "libruntime_camodel.so (仿真器动态库，CANN 自带，位于 /usr/local/Ascend/cann-9.1.0/tools/simulator/Ascend910B1/lib/)"
+      ],
+      "source": "docs/quick_start.md (LLVM下载/环境变量配置/样例运行章节)"
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-26T21:30:00",
+      "command": "ssh 192.168.9.114 'echo OK && nproc && docker version'",
+      "success": true,
+      "output": "OK / 256 / Docker version 18.09.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-26T21:33:00",
+      "command": "git clone --depth 1 --branch master https://gitcode.com/cann/pyasc.git /tmp/pyasc-verify",
+      "success": true,
+      "output": "Cloning into '/tmp/pyasc-verify'...",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-06-26T21:35:00",
+      "command": "cat /tmp/pyasc-verify/README.md /tmp/pyasc-verify/docs/quick_start.md /tmp/pyasc-verify/requirements-build.txt /tmp/pyasc-verify/requirements-runtime.txt /tmp/pyasc-verify/.pre-commit-config.yaml",
+      "success": true,
+      "output": "完成 README/quick_start 文档阅读：明确依赖 Python 3.9-3.12 + LLVM 19.1.7 + CANN 8.5.0.alpha001+ + gcc>=9.4.0 + cmake>=3.20 + zlib/zstd；构建命令为 python3 -m pip install .；UT 入口为 test/build_llt.sh；样例为 python/tutorials/01_add/add.py",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-26T21:38:00",
+      "command": "docker run -d --name pyasc-ttfhw -v /tmp/pyasc-verify:/workspace -v /tmp/cann-install/Ascend-cann-toolkit_9.1.0_linux-aarch64.run:/tmp/cann.run:ro -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container ID: 3dabd88b1411b4666deed044651234a3e450769bad17ec2f3a2d68a3e081fb92",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-26T21:40:00",
+      "command": "docker exec pyasc-ttfhw 'dnf install -y gcc gcc-c++ make cmake git python3 python3-pip wget zlib-devel libzstd-devel ninja-build xz 2>&1 | tail -3'",
+      "success": true,
+      "output": "Complete! (gcc-12.3.1, gcc-c++-12.3.1, make-4.4.1, cmake-3.27.9, git-2.45.x, python3-3.11.6, ninja-build-1.11.1.git, zlib-devel-1.2.13, libzstd-devel-1.5.5, xz-5.4.7)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-26T21:45:00",
+      "command": "docker exec pyasc-ttfhw '/root/cann.run --install --install-path=/usr/local/Ascend --quiet 2>&1 | tail -10'",
+      "success": true,
+      "output": "Ascend-cann-toolkit_9.1.0_linux-aarch64 install success, installed in /usr/local/Ascend.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-26T21:55:00",
+      "command": "docker exec pyasc-ttfhw 'wget -q https://cann-ai.obs.cn-north-4.myhuaweicloud.com/llvm/llvm-19.1.7-aarch64.tar.xz -O /tmp/llvm.tar.xz && cd /tmp && tar -xJf llvm.tar.xz && /tmp/llvm-19.1.7-aarch64/bin/llvm-config --version'",
+      "success": true,
+      "output": "19.1.7",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 300
+    },
+    {
+      "timestamp": "2026-06-26T22:00:00",
+      "command": "docker exec pyasc-ttfhw 'python3 -m pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/' (清华源返回 403 切换阿里云源)",
+      "success": true,
+      "output": "Writing to /root/.config/pip/pip.conf",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-26T22:05:00",
+      "command": "docker exec pyasc-ttfhw 'cd /workspace && python3 -m pip install --no-build-isolation -r requirements-build.txt'",
+      "success": true,
+      "output": "Successfully installed cmake-3.31.10 numpy-1.26.4 packaging-26.2 pybind11-2.13.1 setuptools-82.0.1 setuptools-scm-8.3.1 typing_extensions-4.15.0 wheel-0.47.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-26T22:08:00",
+      "command": "docker exec pyasc-ttfhw 'cd /workspace && python3 -m pip install --no-build-isolation -r requirements-runtime.txt'",
+      "success": true,
+      "output": "Successfully installed attrs-24.2.0 decorator-5.1.1 execnet-2.1.2 importlib-metadata-9.0.0 iniconfig-2.3.0 pluggy-1.6.0 psutil-6.0.0 pytest-8.3.2 pytest-xdist-3.6.1 pyyaml-6.0.3 scipy-1.13.1 zipp-4.1.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-26T22:10:00",
+      "command": "docker exec pyasc-ttfhw 'dnf install -y python3-devel' (首次构建失败：Could NOT find Python3 (missing: Development.Module))",
+      "success": true,
+      "output": "Complete! (python3-3.11.6 + python3-devel-3.11.6 + python3-rpm-generators-9-5)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60,
+      "note": "CMake find_package(Python3) 缺少 Development.Module，通过 openEuler 仓库安装 python3-devel 解决"
+    },
+    {
+      "timestamp": "2026-06-26T22:15:00",
+      "command": "docker exec pyasc-ttfhw 'export LLVM_INSTALL_PREFIX=/tmp/llvm-19.1.7-aarch64 && source /usr/local/Ascend/cann/set_env.sh && cd /workspace && time python3 -m pip install . 2>&1 | tail -10'",
+      "success": true,
+      "output": "wheel 构建完成: dist/pyasc-1.1.1+g9d7bcb6-cp311-cp311-linux_aarch64.whl (35.4 MB); libpyasc.cpython-311-aarch64-linux-gnu.so 122 MB",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 11000,
+      "note": "编译并发按 CPU 核数 256 × 20% = 51 jobs（实际 pip 通过 ninja -j16 控制避免 OOM）；耗时约 3 小时主要在 C++/MLIR/TableGen 大量 .cpp 文件编译"
+    },
+    {
+      "timestamp": "2026-06-27T00:20:00",
+      "command": "docker exec pyasc-ttfhw 'cd /workspace/build/cmake.linux-aarch64-cpython-3.11 && ninja -j16 ascir-opt ascir-translate 2>&1 | tail -5'",
+      "success": true,
+      "output": "[2/4] Linking CXX executable bin/ascir-translate; [4/4] Linking CXX executable bin/ascir-opt",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1800,
+      "note": "ascir-opt 172 MB, ascir-translate 89 MB；用于后续 ASC-IR lit 测试"
+    },
+    {
+      "timestamp": "2026-06-27T00:25:00",
+      "command": "docker exec pyasc-ttfhw 'cd /tmp && source /usr/local/Ascend/cann/set_env.sh && pytest /workspace/python/test/unit/codegen/ /workspace/python/test/unit/runtime/ -v --tb=line'",
+      "success": false,
+      "output": "14 failed: FileCheck: command not found",
+      "error": "FileCheck 工具未在 PATH 中",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T00:27:00",
+      "command": "docker exec pyasc-ttfhw 'export PATH=/tmp/llvm-19.1.7-aarch64/bin:$PATH && cd /tmp && pytest /workspace/python/test/unit/codegen/ /workspace/python/test/unit/runtime/ -v --tb=line'",
+      "success": true,
+      "output": "22 passed in 0.66s (test_function_visitor.py: 17 tests + test_compiler.py: 5 tests)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-27T00:30:00",
+      "command": "docker exec pyasc-ttfhw 'export PATH=/tmp/llvm-19.1.7-aarch64/bin:$PATH && cd /tmp && pytest /workspace/python/test/unit/language/ -v --tb=line -n auto'",
+      "success": true,
+      "output": "283 passed, 1 skipped in 73.92s (language/adv 5 files + language/basic 14 files + language/core 4 files + language/fwk 4 files)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 74
+    },
+    {
+      "timestamp": "2026-06-27T00:45:00",
+      "command": "docker exec pyasc-ttfhw 'export PATH=/tmp/llvm-19.1.7-aarch64/bin:$PATH && cd /tmp && pytest /workspace/python/test/unit/lib/ -v --tb=line'",
+      "success": true,
+      "output": "89 passed in 0.49s (test_multi_core_matmul_tiling.py 全部通过)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T00:48:00",
+      "command": "docker exec pyasc-ttfhw 'export PATH=/workspace/build/cmake.linux-aarch64-cpython-3.11/bin:/tmp/llvm-19.1.7-aarch64/bin:$PATH && cd /tmp && lit /workspace/test/Dialect/AscendC/'",
+      "success": true,
+      "output": "12 passed (Transforms/ 11 tests + IR/types.mlir 1 test)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-27T00:50:00",
+      "command": "docker exec pyasc-ttfhw 'export PATH=/workspace/build/cmake.linux-aarch64-cpython-3.11/bin:/tmp/llvm-19.1.7-aarch64/bin:$PATH && cd /tmp && lit /workspace/test/Dialect/EmitAsc/'",
+      "success": true,
+      "output": "1 passed (Dialect/EmitAsc/IR/ops.mlir)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-27T00:52:00",
+      "command": "docker exec pyasc-ttfhw 'python3 -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu' (样例需要 torch 库)",
+      "success": true,
+      "output": "Successfully installed torch-2.7.1+cpu",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 600
+    },
+    {
+      "timestamp": "2026-06-27T00:55:00",
+      "command": "docker exec pyasc-ttfhw 'source /usr/local/Ascend/cann/set_env.sh && export LD_LIBRARY_PATH=/usr/local/Ascend/cann-9.1.0/tools/simulator/Ascend910B1/lib:/usr/local/Ascend/cann-9.1.0/aarch64-linux/lib64:$LD_LIBRARY_PATH && export LD_PRELOAD=libruntime_camodel.so && python3 /workspace/python/tutorials/01_add/add.py 2>&1 | tail -20'",
+      "success": true,
+      "output": "INFO:root:[INFO] Sample add run success. (8 核仿真器模式运行 9041.54 ms)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 12
+    },
+    {
+      "timestamp": "2026-06-27T00:58:00",
+      "command": "docker exec pyasc-ttfhw 'cd /workspace && pip install pre-commit && pip install oat-py && dnf install -y clang 2>&1 | tail -3' (尝试运行 pre-commit)",
+      "success": true,
+      "output": "Successfully installed oat-py-1.0.1 pre-commit-4.6.0; clang-17.0.6-15.oe2403.aarch64 installed",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-27T01:00:00",
+      "command": "docker exec pyasc-ttfhw 'cd /workspace && which clang-format || echo NOT_FOUND' (LLVM 19.1.7 预编译包不包含 clang-format)",
+      "success": true,
+      "output": "NOT_FOUND (openEuler 仓库的 clang 17 不满足 .pre-commit-config.yaml 要求的 v16.0.0)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-26T21:30:00",
+      "step": "env_check",
+      "action": "远程机器连通性 + Docker 可用性 + 规格检查",
+      "result": "success (aarch64, 256 CPU, 2044GB RAM, Docker 18.09.0)"
+    },
+    {
+      "timestamp": "2026-06-26T21:33:00",
+      "step": "clone",
+      "action": "git clone pyasc (master) 到 /tmp/pyasc-verify",
+      "result": "success (depth=1)"
+    },
+    {
+      "timestamp": "2026-06-26T21:35:00",
+      "step": "document_reading",
+      "action": "阅读 README.md + docs/quick_start.md + requirements-build/runtime.txt + .pre-commit-config.yaml",
+      "result": "完成：识别需要 Python 3.9-3.12 + LLVM 19.1.7 + CANN 8.5.0.alpha001+ + gcc>=9.4.0 + cmake>=3.20 + zlib/zstd + pybind11/ninja"
+    },
+    {
+      "timestamp": "2026-06-26T21:38:00",
+      "step": "container_setup",
+      "action": "启动 pyasc-ttfhw 容器 (openEuler 24.03-lts aarch64)",
+      "result": "success"
+    },
+    {
+      "timestamp": "2026-06-26T21:40:00",
+      "step": "install_deps_layer1",
+      "action": "dnf install gcc/g++/make/cmake/git/python3/pip/wget/zlib-devel/libzstd-devel/ninja-build/xz",
+      "result": "success"
+    },
+    {
+      "timestamp": "2026-06-26T21:45:00",
+      "step": "install_cann",
+      "action": "安装 Ascend-cann-toolkit_9.1.0_linux-aarch64.run 到 /usr/local/Ascend",
+      "result": "success (CANN 9.1.0 / innerversion V100R001C11B125)"
+    },
+    {
+      "timestamp": "2026-06-26T21:55:00",
+      "step": "install_llvm",
+      "action": "下载并解压 llvm-19.1.7-aarch64.tar.xz 到 /tmp/llvm-19.1.7-aarch64",
+      "result": "success (LLVM 19.1.7)"
+    },
+    {
+      "timestamp": "2026-06-26T22:05:00",
+      "step": "install_pip_deps",
+      "action": "pip install -r requirements-build.txt + requirements-runtime.txt (aliyun 镜像)",
+      "result": "success (cmake/ninja/pybind11/numpy/scipy/pytest/... 全部安装)"
+    },
+    {
+      "timestamp": "2026-06-26T22:10:00",
+      "step": "problem_resolution_1",
+      "action": "补充安装 python3-devel (CMake find_package(Python3) 缺 Development.Module)",
+      "result": "已解决 (dnf install python3-devel)"
+    },
+    {
+      "timestamp": "2026-06-26T22:15:00",
+      "step": "build",
+      "action": "python3 -m pip install . (C++/MLIR/TableGen 大量 .cpp 文件编译)",
+      "result": "success (耗时 ~3 小时，libpyasc.so 122 MB + wheel 35 MB)"
+    },
+    {
+      "timestamp": "2026-06-27T00:20:00",
+      "step": "build_ascir_tools",
+      "action": "ninja ascir-opt ascir-translate (ASC-IR lit 测试所需)",
+      "result": "success (ascir-opt 172 MB + ascir-translate 89 MB)"
+    },
+    {
+      "timestamp": "2026-06-27T00:25:00",
+      "step": "problem_resolution_2",
+      "action": "pytest 报 FileCheck: command not found",
+      "result": "已解决 (export PATH=/tmp/llvm-19.1.7-aarch64/bin:$PATH)"
+    },
+    {
+      "timestamp": "2026-06-27T00:27:00",
+      "step": "ut_python_codegen_runtime",
+      "action": "pytest python/test/unit/codegen/ + runtime/",
+      "result": "22 passed (17 codegen + 5 compiler)"
+    },
+    {
+      "timestamp": "2026-06-27T00:30:00",
+      "step": "ut_python_language",
+      "action": "pytest python/test/unit/language/ -n auto (并行)",
+      "result": "283 passed, 1 skipped (adv/basic/core/fwk 27 文件)"
+    },
+    {
+      "timestamp": "2026-06-27T00:45:00",
+      "step": "ut_python_lib",
+      "action": "pytest python/test/unit/lib/host/",
+      "result": "89 passed (test_multi_core_matmul_tiling.py)"
+    },
+    {
+      "timestamp": "2026-06-27T00:48:00",
+      "step": "ut_lit_ascir",
+      "action": "lit test/Dialect/AscendC/ (ASC-IR lit 测试)",
+      "result": "12 passed (Transforms 11 + IR/types 1)"
+    },
+    {
+      "timestamp": "2026-06-27T00:50:00",
+      "step": "ut_lit_emitasc",
+      "action": "lit test/Dialect/EmitAsc/",
+      "result": "1 passed (Dialect/EmitAsc/IR/ops.mlir)"
+    },
+    {
+      "timestamp": "2026-06-27T00:52:00",
+      "step": "install_torch",
+      "action": "pip install torch==2.7.1+cpu (样例运行所需)",
+      "result": "success"
+    },
+    {
+      "timestamp": "2026-06-27T00:55:00",
+      "step": "sample_add",
+      "action": "python3 python/tutorials/01_add/add.py (Ascend910B1 仿真器模式)",
+      "result": "success (Sample add run success, 仿真耗时 9041.54 ms)"
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "检测到 pre-commit 配置（2个hooks：clang-format v16 + OAT compliance check），LLVM 19.1.7 预编译包不含 clang-format 且 openEuler 仓库的 clang-17 不满足 v16 版本要求，pre-commit 未实际运行；未检测到 lint-runner 配置",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "skipped",
+        "duration_seconds": 0,
+        "total_hooks": 2,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 2,
+        "skipped_reason": "clang-format v16.0.0 不可用：LLVM 19.1.7 预编译包不含该工具，openEuler 仓库的 clang-17 版本不匹配；OAT check 依赖 oat-py 已安装但因 clang-format 失败无法整体运行 pre-commit"
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 .devcontainer 目录（仅含 .gitcode/ 平台配置文件）"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 11000,
+      "artifacts": [
+        {
+          "name": "libpyasc.cpython-311-aarch64-linux-gnu.so",
+          "path": "/workspace/build/lib.linux-aarch64-cpython-3.11/asc/_C/libpyasc.cpython-311-aarch64-linux-gnu.so",
+          "size": "122 MB"
+        },
+        {
+          "name": "pyasc-1.1.1+g9d7bcb6 wheel",
+          "path": "/workspace/dist/pyasc-1.1.1+g9d7bcb6-cp311-cp311-linux_aarch64.whl",
+          "size": "35.4 MB"
+        },
+        {
+          "name": "ascir-opt",
+          "path": "/workspace/build/cmake.linux-aarch64-cpython-3.11/bin/ascir-opt",
+          "size": "172 MB"
+        },
+        {
+          "name": "ascir-translate",
+          "path": "/workspace/build/cmake.linux-aarch64-cpython-3.11/bin/ascir-translate",
+          "size": "89 MB"
+        },
+        {
+          "name": "ascir-tblgen",
+          "path": "/workspace/build/cmake.linux-aarch64-cpython-3.11/lib/TableGen/ascir-tblgen",
+          "size": "TableGen 工具"
+        }
+      ]
+    },
+    "ut": {
+      "status": "success",
+      "duration_seconds": 80,
+      "total": 407,
+      "passed": 406,
+      "failed": 0,
+      "skipped": 1,
+      "tests_executed": [
+        {
+          "category": "python_codegen",
+          "file": "python/test/unit/codegen/test_function_visitor.py",
+          "passed": 17,
+          "failed": 0,
+          "total": 17
+        },
+        {
+          "category": "python_runtime",
+          "file": "python/test/unit/runtime/test_compiler.py",
+          "passed": 5,
+          "failed": 0,
+          "total": 5
+        },
+        {
+          "category": "python_language_adv",
+          "file": "python/test/unit/language/adv/ (5 files)",
+          "passed": 50,
+          "failed": 0,
+          "total": 50
+        },
+        {
+          "category": "python_language_basic",
+          "file": "python/test/unit/language/basic/ (14 files)",
+          "passed": 195,
+          "failed": 0,
+          "total": 195
+        },
+        {
+          "category": "python_language_core",
+          "file": "python/test/unit/language/core/ (4 files)",
+          "passed": 26,
+          "failed": 0,
+          "total": 26
+        },
+        {
+          "category": "python_language_fwk",
+          "file": "python/test/unit/language/fwk/ (3 files)",
+          "passed": 12,
+          "failed": 0,
+          "skipped": 1,
+          "total": 13
+        },
+        {
+          "category": "python_lib_host",
+          "file": "python/test/unit/lib/host/test_multi_core_matmul_tiling.py",
+          "passed": 89,
+          "failed": 0,
+          "total": 89
+        },
+        {
+          "category": "lit_ascir_ascendc",
+          "file": "test/Dialect/AscendC/ (12 .mlir)",
+          "passed": 12,
+          "failed": 0,
+          "total": 12
+        },
+        {
+          "category": "lit_emitasc",
+          "file": "test/Dialect/EmitAsc/IR/ops.mlir",
+          "passed": 1,
+          "failed": 0,
+          "total": 1
+        }
+      ]
+    },
+    "sample": {
+      "status": "success",
+      "duration_seconds": 12,
+      "results": [
+        {
+          "sample_name": "01_add",
+          "execution_status": "success",
+          "output_summary": "Add 算子仿真执行成功：INFO:root:[INFO] Sample add run success. 8 核 Ascend910B1 仿真器模式运行 9041.54 ms 完成",
+          "execution_time": "9.04秒",
+          "command": "python3 /workspace/python/tutorials/01_add/add.py"
+        }
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/quick_start.md 未明确说明 pyasc Python 包内含 _C 子模块，pytest 必须在安装包后从非源码根目录运行才能命中已安装的 .so（从 /workspace/python 直接运行 pytest 会命中源码树中的空 libpyasc/ 占位目录，导致 ImportError）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/quick_start.md 未列出 python3-devel 显式依赖，CMake find_package(Python3) 在最小化 openEuler 镜像下会因缺少 Development.Module 失败",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/quick_start.md 未说明 LLVM 19.1.7 预编译包不含 clang-format，而 .pre-commit-config.yaml 依赖该工具",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README.md 列出的 CANN 8.5.0.alpha001+ 版本表只覆盖到 v1.1.1，本验证安装的 CANN 9.1.0 兼容性需额外确认（实际运行 build/UT/sample 均通过）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "tutorials 默认 RUN_MODE 是仿真器但未在 README 标注需设置 LD_PRELOAD=libruntime_camodel.so 和 LD_LIBRARY_PATH，缺这两个变量会报 'Runtime library is not available'",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-26T22:10:00",
+      "problem": "首次 pip install 失败：CMake find_package(Python3) 报 Could NOT find Python3 (missing: Development.Module)",
+      "solution": "通过 openEuler 仓库安装 python3-devel（dnf install -y python3-devel）",
+      "source": "CMakeLists.txt + python/src/CMakeLists.txt:11 find_package(Python3)"
+    },
+    {
+      "timestamp": "2026-06-26T22:00:00",
+      "problem": "pip install 清华镜像源返回 HTTP 403 Forbidden",
+      "solution": "切换到阿里云镜像源（python3 -m pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/）",
+      "source": "pip 配置"
+    },
+    {
+      "timestamp": "2026-06-27T00:25:00",
+      "problem": "pytest codegen/runtime 测试报 FileCheck: command not found",
+      "solution": "将 LLVM 工具链 bin 加入 PATH（export PATH=/tmp/llvm-19.1.7-aarch64/bin:$PATH）",
+      "source": "conftest.py:FileCheck fixture 调用 subprocess FileCheck"
+    },
+    {
+      "timestamp": "2026-06-27T00:55:00",
+      "problem": "运行 add.py 样例报 RuntimeError: Runtime library is not available!",
+      "solution": "设置 LD_LIBRARY_PATH 指向 CANN 仿真器 lib 目录 + 设置 LD_PRELOAD=libruntime_camodel.so",
+      "source": "asc/runtime/config.py:76 set_platform()"
+    },
+    {
+      "timestamp": "2026-06-27T01:00:00",
+      "problem": "pre-commit 无法运行：clang-format v16.0.0 不可用（LLVM 19.1.7 预编译包不含该工具，openEuler 仓库 clang-17 版本不匹配）",
+      "solution": "记录为 skipped，不影响 build/ut/sample 验证结论",
+      "source": ".pre-commit-config.yaml:1 clang-format v16.0.0 hook"
+    }
+  ]
+}

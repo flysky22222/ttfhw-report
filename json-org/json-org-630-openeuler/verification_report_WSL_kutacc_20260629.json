@@ -1,0 +1,698 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/kutacc-verify",
+    "repo_name": "kutacc",
+    "repo_url": "https://gitcode.com/kunpengcompute/kutacc.git",
+    "branch": "main",
+    "commit": "5c2af34",
+    "start_time": "2026-06-29T11:58:27",
+    "end_time": "2026-06-29T12:11:23",
+    "duration_seconds": 776,
+    "total_steps": 18
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "cache_miss_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (implementer 0x48)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "/tmp 充足",
+      "docker_version": "Docker 18.09.0 (EulerVersion 18.09.0.273)",
+      "cpu_features": "fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma dcpop asimddp asimdfhm ssbs (无 sve/sve2/bf16)"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS) aarch64",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2044Gi (无限制)"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像；README 中推荐的 openEuler 22.03 LTS-SP4 也属于 openEuler 系列，本技能统一使用 openEuler 24.03 LTS。仓库 README 要求运行平台为鲲鹏 920 专业版 aarch64，远程主机确认为 aarch64/CPU implementer 0x48 (Huawei)，但无 SVE/bf16 特性支持。",
+      "dependency_mapping": {
+        "from_dockerfile": "项目未提供 Dockerfile，依赖来自 README.md、build.sh、CMakeLists.txt、/opt/HPCKit/HPCKit/26.0.RC1/modulefiles/。",
+        "mappings": [
+          {
+            "original": "yu install cmake",
+            "openEuler": "dnf install -y cmake",
+            "source": "README 第4步"
+          },
+          {
+            "original": "yu install environment-modules",
+            "openEuler": "dnf install -y environment-modules",
+            "source": "README 第3步"
+          },
+          {
+            "original": "Bisheng 编译器 (clang/clang++)",
+            "openEuler": "从 /opt/HPCKit/HPCKit/26.0.RC1/compiler/bisheng/bin/clang 加载",
+            "source": "modulefiles/bisheng/compiler5.1.0.2"
+          },
+          {
+            "original": "KuTACC 库 + 头文件",
+            "openEuler": "从 /opt/HPCKit/HPCKit/26.0.RC1/kutacc/bisheng 加载",
+            "source": "modulefiles/bisheng/kutacc26.0.RC1"
+          },
+          {
+            "original": "Huawei Hyper MPI (hmpi)",
+            "openEuler": "从 /opt/HPCKit/HPCKit/26.0.RC1/hmpi/bisheng/release 加载",
+            "source": "modulefiles/bisheng/hmpi26.0.RC1"
+          },
+          {
+            "original": "kupl 数学库",
+            "openEuler": "从 /opt/HPCKit/HPCKit/26.0.RC1/kupl/bisheng/release 加载",
+            "source": "modulefiles/bisheng/kupl26.0.RC1"
+          },
+          {
+            "original": "libnuma (numa)",
+            "openEuler": "dnf install -y numactl-devel",
+            "source": "src/CMakeLists.txt target_link_libraries(numa)"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md 版本配套章节",
+      "value": "aarch64 (鲲鹏 920 专业版)"
+    },
+    "recommended_image": {
+      "source": "README.md 版本配套章节",
+      "value": "原推荐 openEuler 22.03 LTS-SP4 AArch64，本技能统一改用 openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "项目未提供 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + build.sh + CMakeLists.txt + HPCKit modulefiles",
+      "value": [
+        "environment-modules (dnf: environment-modules)",
+        "cmake (dnf: cmake)",
+        "gcc/g++ (dnf: gcc gcc-c++)",
+        "numactl-devel (dnf: numactl-devel，映射自 src/CMakeLists.txt target_link_libraries(numa))",
+        "Bisheng compiler5.1.0.2 (来自 HPCKit)",
+        "libkutacc_core (来自 HPCKit kutacc/bisheng/lib)",
+        "libhmpi 26.0.RC1 (来自 HPCKit hmpi/bisheng/release)",
+        "libkupl 26.0.RC1 (来自 HPCKit kupl/bisheng/release)",
+        "googletest v1.15.2 (GitHub tarball，由 clang 自行编译)"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md 编译安装章节 + build.sh help",
+      "value": "sh build.sh --install_path=/workspace/install --build_type=Release (src 构建)；或 --build_kind=test 用于测试构建"
+    },
+    "ut_commands": {
+      "source": "test/test_all.sh",
+      "value": "sh build.sh --build_kind=test 编译测试 -> export GTEST_ROOT=/usr/local && cd /workspace/install/bin && ./kutacc_cal_test；comm 测试用 mpirun -n 2"
+    },
+    "sample_commands": {
+      "source": "README.md 编译安装章节（库本身作为 AlphaFold2 推理底层被消费，无独立可执行示例）",
+      "value": "通过 dlopen 加载 libkutacc.so 并调用 kutacc_get_version() 验证动态库可装载与导出符号可达"
+    },
+    "special_dependencies": {
+      "source": "HPCKit 安装步骤",
+      "value": [
+        "HPCKit_26.0.RC1_Linux-aarch64（华为 HPC 工具链，整套 Kupl/MPI/KML/KuTACC core 依赖）",
+        "Bisheng modulefile 加载语法：module use HPCKit/latest/modulefiles; module load bisheng/{compiler,kutacc,kupl,hmpi}/<ver>"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-29T11:58:27",
+      "command": "ssh 192.168.9.114 nproc && free -g | awk '/Mem:/{print $2}'",
+      "success": true,
+      "output": "256\n2044",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T11:58:55",
+      "command": "ssh 192.168.9.114 'docker version | head -3 && uname -m'",
+      "success": true,
+      "output": "Client: Version: 18.09.0 / 主机架构 aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-29T11:59:30",
+      "command": "ssh 192.168.9.114 'git ls-remote --heads https://gitcode.com/kunpengcompute/kutacc.git'",
+      "success": true,
+      "output": "5c2af34... refs/heads/br_dist_infer ; 5c2af34... refs/heads/main  ; 任务分支 master 不存在，已改用 main",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-29T11:59:45",
+      "command": "ssh 192.168.9.114 'git clone --depth 1 --branch main https://gitcode.com/kunpengcompute/kutacc.git /tmp/kutacc-verify'",
+      "success": true,
+      "output": "Cloning into '/tmp/kutacc-verify'... (commit 5c2af34)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 12
+    },
+    {
+      "timestamp": "2026-06-29T12:00:30",
+      "command": "docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts (远端 192.168.9.114)",
+      "success": true,
+      "output": "Status: Image is up to date (sha256:ace677f4...)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 4
+    },
+    {
+      "timestamp": "2026-06-29T12:00:40",
+      "command": "ssh 192.168.9.114 'docker run -d --name kutacc-ttfhw -v /tmp/kutacc-verify:/workspace -v /opt/HPCKit:/opt/HPCKit -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity'",
+      "success": true,
+      "output": "Container fa05ab58d3fe... 启动成功",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-29T12:01:10",
+      "command": "docker exec kutacc-ttfhw bash -c 'dnf install -y environment-modules cmake make gcc gcc-c++ numactl-devel git'",
+      "success": true,
+      "output": "Complete! (environment-modules, cmake-3.27.9, make-4.4.1, gcc-12.3.1, gcc-c++, numactl-devel, git 均安装成功)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 95
+    },
+    {
+      "timestamp": "2026-06-29T12:02:40",
+      "command": "cat > /etc/profile.d/kutacc.sh && source 后 module use + module load compiler5.1.0.2 / hmpi26.0.RC1/release / kupl26.0.RC1/release / kutacc26.0.RC1/kutacc + export CPLUS_INCLUDE_PATH",
+      "success": true,
+      "output": "BiSheng Enterprise 5.1.0.2 clang 19.1.7 已激活，mpicc/mpirun 来自 hmpi，libkutacc_core.so 从 HPCKit 加载",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 12
+    },
+    {
+      "timestamp": "2026-06-29T12:03:00",
+      "command": "docker exec kutacc-ttfhw bash -c 'cd /workspace && sh build.sh --install_path=/workspace/install --build_type=Release'",
+      "success": true,
+      "output": "[100%] Built target kutacc / Install /workspace/install/lib/libkutacc.so.1.26.1.RC1 (+ libkutacc.so / libkutacc.so.1) / 安装 /workspace/install/include/kutacc.h",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 168,
+      "note": "编译并发 make -j51（= 256 × 20%），src 链接出 libkutacc.so 并执行 make install"
+    },
+    {
+      "timestamp": "2026-06-29T12:05:50",
+      "command": "docker exec kutacc-ttfhw bash -c 'dnf install -y git && curl -sL -o /tmp/gtest.tar.gz https://github.com/google/googletest/archive/refs/tags/v1.15.2.tar.gz && tar xzf gtest.tar.gz'",
+      "success": true,
+      "output": "872667 字节已下载；googletest-1.15.2 解压完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 35
+    },
+    {
+      "timestamp": "2026-06-29T12:06:30",
+      "command": "docker exec kutacc-ttfhw bash -c 'source /etc/profile.d/kutacc.sh && cd /tmp/googletest-1.15.2/build && cmake -G \"Unix Makefiles\" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DBUILD_GMOCK=OFF .. && make -j51 && make install'",
+      "success": true,
+      "output": "libgtest.a / libgtest_main.a 安装到 /usr/local/lib64，头文件到 /usr/local/include/gtest/",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 35
+    },
+    {
+      "timestamp": "2026-06-29T12:07:30",
+      "command": "docker exec kutacc-ttfhw bash -c 'export GTEST_ROOT=/usr/local && source /etc/profile.d/kutacc.sh && cd /workspace && sh build.sh --install_path=/workspace/install --build_kind=test --build_type=Release'",
+      "success": true,
+      "output": "[100%] Built target kutacc_cal_test / kutacc_comm_test；安装到 /workspace/install/bin/",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 92,
+      "note": "测试构建链接了 GTest::gtest + GTest::gtest_main + libkutacc.so + stdc++ + pthread"
+    },
+    {
+      "timestamp": "2026-06-29T12:09:30",
+      "command": "docker exec kutacc-ttfhw bash -c 'export OMP_NUM_THREADS=64 && /workspace/install/bin/kutacc_cal_test'",
+      "success": false,
+      "output": "Illegal instruction (core dumped), returncode 132，无任何 stdout/stderr 输出",
+      "error": "Illegal instruction — 容器 CPU (/proc/cpuinfo) 不包含 sve/sve2/bf16 features，但 libkutacc.so 与 kutacc_cal_test 的代码段包含 armv8.2-a+bf16+sve/msve-vector-bits=512 指令。问题源于运行 CPU 缺少 ISA 特性，与本仓库构建流程无关，README 中明确要求运行平台为鲲鹏 920 专业版",
+      "returncode": 132,
+      "duration_seconds": 1,
+      "note": "UT 状态：failed — 进程被 SIGILL 终止，所有 7 个测试用例（gating/global/invariant/outer/rigid/transition/triangle）均未运行"
+    },
+    {
+      "timestamp": "2026-06-29T12:10:00",
+      "command": "docker exec kutacc-ttfhw bash -c 'source /etc/profile.d/kutacc.sh && clang++ -std=c++17 -o /tmp/sample /tmp/sample.cpp -ldl && /tmp/sample'",
+      "success": false,
+      "output": "COMPILE_OK；运行时 Illegal instruction (core dumped), returncode 132",
+      "error": "sample.cpp 仅做了 dlopen(\"/workspace/install/lib/libkutacc.so\") + dlsym(\"kutacc_get_version\")，dlopen 阶段就触发 SIGILL，说明 libkutacc.so 的 .text 已包含未支持 ISA 指令",
+      "returncode": 132,
+      "duration_seconds": 2,
+      "note": "Sample 状态：failed — 库动态加载阶段即崩溃"
+    },
+    {
+      "timestamp": "2026-06-29T12:11:23",
+      "command": "构建 + 安装产物自检：ls /workspace/install/{include,lib,bin}",
+      "success": true,
+      "output": "include/kutacc.h ; lib/libkutacc.so.1.26.1.RC1 (+ .so + .so.1) ; bin/kutacc_cal_test + kutacc_comm_test",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1,
+      "note": "产物文件均已生成；链接关系正确（ldd 显示依赖 kutacc_core/numa/mpi/kupl/libstdc++/libomp）"
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-29T11:58:27",
+      "step": "start",
+      "action": "启动验证流程（远端 docker 模式 192.168.9.114，目标仓库 kutacc 分支 main）",
+      "result": "已启动",
+      "details": {}
+    },
+    {
+      "timestamp": "2026-06-29T11:58:55",
+      "step": "env_check",
+      "action": "远端主机规格与 Docker 检查（256 核 aarch64 / Docker 18.09.0 / CPU implementer 0x48 / 无 SVE/bf16）",
+      "result": "成功",
+      "details": {
+        "remote_ip": "192.168.9.114",
+        "container_name": "kutacc-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T11:59:30",
+      "step": "repo_clone",
+      "action": "git ls-remote 发现任务分支 master 不存在，改用 main 并 git clone --depth 1",
+      "result": "成功",
+      "details": {
+        "commit": "5c2af34",
+        "branch_correction": "master -> main"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:00:40",
+      "step": "container_setup",
+      "action": "拉取 openEuler 24.03 LTS 镜像、启动容器 kutacc-ttfhw 并挂载仓库与宿主 /opt/HPCKit",
+      "result": "成功",
+      "details": {
+        "mounts": [
+          "/tmp/kutacc-verify:/workspace",
+          "/opt/HPCKit:/opt/HPCKit"
+        ],
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:01:10",
+      "step": "dependency_layer1",
+      "action": "容器内 dnf 安装 environment-modules / cmake / make / gcc / gcc-c++ / numactl-devel / git（系统工具链 + 项目所需 numa 库）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 24.03 官方仓库",
+        "packages": [
+          "environment-modules",
+          "cmake-3.27.9",
+          "make-4.4.1",
+          "gcc-12.3.1",
+          "gcc-c++",
+          "numactl-devel",
+          "git"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:02:40",
+      "step": "dependency_layer2",
+      "action": "挂载 /opt/HPCKit 并通过 modules 加载 Bisheng compiler / HMPI release / KUPL release / KuTACC core + 设置 CPLUS_INCLUDE_PATH",
+      "result": "成功",
+      "details": {
+        "compiler": "BiSheng 5.1.0.2 (clang 19.1.7)",
+        "mpi": "HMPI 26.0.RC1 release",
+        "kupl": "26.0.RC1 release",
+        "kutacc_core": "26.0.RC1 bisheng/lib"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:03:00",
+      "step": "build_src",
+      "action": "执行 sh build.sh --install_path=/workspace/install --build_type=Release",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "concurrency_ratio": "20% of 256 核",
+        "artifact": "libkutacc.so.1.26.1.RC1 + kutacc.h"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:05:50",
+      "step": "dependency_layer3",
+      "action": "GitHub 受网络限制改用 curl tarball 下载 googletest v1.15.2 并用 Bisheng 编译安装到 /usr/local",
+      "result": "成功",
+      "details": {
+        "GTEST_ROOT": "/usr/local",
+        "libgtest.a": "/usr/local/lib64/libgtest.a"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:07:30",
+      "step": "build_test",
+      "action": "export GTEST_ROOT && sh build.sh --build_kind=test 构建 kutacc_cal_test + kutacc_comm_test",
+      "result": "成功",
+      "details": {
+        "artifacts": [
+          "install/bin/kutacc_cal_test",
+          "install/bin/kutacc_comm_test"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:09:30",
+      "step": "ut_execution",
+      "action": "直接运行 /workspace/install/bin/kutacc_cal_test (gtest)",
+      "result": "失败（SIGILL）",
+      "details": {
+        "error": "Illegal instruction 132",
+        "root_cause": "容器 CPU 缺少 sve / bf16 特性，与 README 强约束的鲲鹏 920 专业版 ISA 不匹配"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:10:00",
+      "step": "sample_execution",
+      "action": "dlopen libkutacc.so + 触发 kutacc_get_version 符号作为最小动态库冒烟用例",
+      "result": "失败（SIGILL）",
+      "details": {
+        "error": "Illegal instruction 132",
+        "root_cause": "libkutacc.so .text 内 SVE/bf16 指令在当前 aarch64 CPU 上不可执行"
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:11:10",
+      "step": "build_artifacts_recorded",
+      "action": "记录构建产物（lib + bin + include）以供后续归一化",
+      "result": "成功",
+      "details": {
+        "lib": [
+          "libkutacc.so",
+          "libkutacc.so.1",
+          "libkutacc.so.1.26.1.RC1"
+        ],
+        "include": [
+          "kutacc.h"
+        ],
+        "bin": [
+          "kutacc_cal_test",
+          "kutacc_comm_test"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-29T12:11:23",
+      "step": "report_generation",
+      "action": "生成验证报告 json-org-openeuler/verification_report_WSL_kutacc_20260629.json",
+      "result": "成功",
+      "details": {
+        "output_file": "json-org-openeuler/verification_report_WSL_kutacc_20260629.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "仓库未配置 pre-commit 与 lint-runner，且项目为 HPC 算子库，主要可检查项为编译期 -Werror（已通过）",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库根目录无 .devcontainer/ 子目录；不提供 devcontainer 配置"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 168,
+      "concurrency": 51,
+      "concurrency_ratio": "20% × 256 CPU",
+      "compiler": "BiSheng 5.1.0.2 (clang 19.1.7)",
+      "artifacts": [
+        {
+          "name": "libkutacc.so.1.26.1.RC1",
+          "path": "/workspace/install/lib/libkutacc.so.1.26.1.RC1",
+          "type": "shared_library"
+        },
+        {
+          "name": "libkutacc.so.1",
+          "path": "/workspace/install/lib/libkutacc.so.1",
+          "type": "soname_symlink"
+        },
+        {
+          "name": "libkutacc.so",
+          "path": "/workspace/install/lib/libkutacc.so",
+          "type": "dev_symlink"
+        },
+        {
+          "name": "kutacc.h",
+          "path": "/workspace/install/include/kutacc.h",
+          "type": "header"
+        }
+      ],
+      "warnings": "cmake/CMakeLists 使用 -march=armv8.2-a+bf16+sve -msve-vector-bits=512 与 -Werror，Release 模式下仍能零警告通过编译"
+    },
+    "ut": {
+      "status": "failed",
+      "duration_seconds": 1,
+      "total": 7,
+      "passed": 0,
+      "failed": 7,
+      "failure_type": "SIGILL (Illegal instruction)",
+      "failures": [
+        {
+          "sample_name": "kutacc_cal_test/gating_attention_test",
+          "execution_status": "failed",
+          "output_summary": "进程在 Linux 动态加载库后立即 SIGILL（132），所有 7 个 GoogleTest 用例（gating/global/invariant_point/outer_product_mean/rigid/transition/triangle_multiplication）均未启动",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/global_attention_test",
+          "execution_status": "failed",
+          "output_summary": "未运行（前置 SIGILL）",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/invariant_point_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/outer_product_mean_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/rigid_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/transition_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/triangle_multiplication_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_comm_test/all_gather_test",
+          "execution_status": "skipped",
+          "output_summary": "cal 已 SIGILL，按 README test_all.sh 顺序先 cal 后 comm，未执行（环境前提崩）",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_comm_test/transpose_test",
+          "execution_status": "skipped",
+          "output_summary": "未执行",
+          "execution_time": "0s"
+        }
+      ],
+      "root_cause": "容器 CPU 实测缺少 sve/sve2/bf16 features，但 libkutacc_cal_test 依赖的 libkutacc.so 与 libkutacc_core.so 由 src/CMakeLists.txt 中的 -march=armv8.2-a+bf16+sve -msve-vector-bits=512 编译生成；运行时触及未实现 SVE/bf16 指令触发 SIGILL。修复需要把构建/运行均迁移到 README 强约束的鲲鹏 920 专业版 (SVE-256) 平台，本环境的 aarch64 主机不满足"
+    },
+    "sample": {
+      "status": "failed",
+      "duration_seconds": 2,
+      "results": [
+        {
+          "sample_name": "dlopen libkutacc.so + kutacc_get_version 符号冒烟",
+          "execution_status": "failed",
+          "output_summary": "动态库装载阶段即 SIGILL（returncode 132），未触发任何业务调用即崩溃",
+          "execution_time": "0s",
+          "exit_code": 132
+        }
+      ],
+      "root_cause": "与 UT 相同的 ISA 不匹配问题，库本身无法被当前 aarch64 主机装载运行"
+    },
+    "unit_test": {
+      "status": "failed",
+      "duration_seconds": 1,
+      "total": 7,
+      "passed": 0,
+      "failed": 7,
+      "failure_type": "SIGILL (Illegal instruction)",
+      "failures": [
+        {
+          "sample_name": "kutacc_cal_test/gating_attention_test",
+          "execution_status": "failed",
+          "output_summary": "进程在 Linux 动态加载库后立即 SIGILL（132），所有 7 个 GoogleTest 用例（gating/global/invariant_point/outer_product_mean/rigid/transition/triangle_multiplication）均未启动",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/global_attention_test",
+          "execution_status": "failed",
+          "output_summary": "未运行（前置 SIGILL）",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/invariant_point_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/outer_product_mean_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/rigid_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/transition_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_cal_test/triangle_multiplication_test",
+          "execution_status": "failed",
+          "output_summary": "未运行",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_comm_test/all_gather_test",
+          "execution_status": "skipped",
+          "output_summary": "cal 已 SIGILL，按 README test_all.sh 顺序先 cal 后 comm，未执行（环境前提崩）",
+          "execution_time": "0s"
+        },
+        {
+          "sample_name": "kutacc_comm_test/transpose_test",
+          "execution_status": "skipped",
+          "output_summary": "未执行",
+          "execution_time": "0s"
+        }
+      ],
+      "root_cause": "容器 CPU 实测缺少 sve/sve2/bf16 features，但 libkutacc_cal_test 依赖的 libkutacc.so 与 libkutacc_core.so 由 src/CMakeLists.txt 中的 -march=armv8.2-a+bf16+sve -msve-vector-bits=512 编译生成；运行时触及未实现 SVE/bf16 指令触发 SIGILL。修复需要把构建/运行均迁移到 README 强约束的鲲鹏 920 专业版 (SVE-256) 平台，本环境的 aarch64 主机不满足"
+    },
+    "sample_execution": {
+      "status": "failed",
+      "duration_seconds": 2,
+      "results": [
+        {
+          "sample_name": "dlopen libkutacc.so + kutacc_get_version 符号冒烟",
+          "execution_status": "failed",
+          "output_summary": "动态库装载阶段即 SIGILL（returncode 132），未触发任何业务调用即崩溃",
+          "execution_time": "0s",
+          "exit_code": 132
+        }
+      ],
+      "root_cause": "与 UT 相同的 ISA 不匹配问题，库本身无法被当前 aarch64 主机装载运行"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "项目 README 未提供 Dockerfile，依赖关系分散在 README/build.sh/CMakeLists.txt 与 HPCKit modulefiles 中",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 未明确说明 if(SVE/bf16 not available) 的降级编译选项；编译标志 -march=armv8.2-a+bf16+sve -msve-vector-bits=512 硬编码（src/CMakeLists.txt 第31-32行）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "README 推荐运行平台只写 '鲲鹏 920 专业版'，未细化到具体 SVE vector-bits 与 bf16 强制要求，环境核查需靠 /proc/cpuinfo Features 字段",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "test/test_all.sh 默认 world_size=2 num_threads=64，在单核/单 socket 容器中未做适配逻辑",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "build.sh 默认编译器 clang 在大多数环境找不到时直接退出，未尝试 gcc 回退",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-29T11:59:30",
+      "problem": "任务参数中分支为 master，git ls-remote 发现仓库主分支为 main，无 master 分支",
+      "solution": "改用 main 分支进行 git clone，并将 verification-queue.yaml 中 kutacc 的 branch 字段纠正为 main",
+      "source": "git ls-remote --heads https://gitcode.com/kunpengcompute/kutacc.git"
+    },
+    {
+      "timestamp": "2026-06-29T12:01:30",
+      "problem": "openEuler 24.03 容器内默认无 environment-modules / cmake / gcc / numactl-devel",
+      "solution": "dnf install -y environment-modules cmake make gcc gcc-c++ numactl-devel git 一次性安装（按需替换 README 的 yum → dnf 即可）",
+      "source": "容器首次进入 + README 第3-4步"
+    },
+    {
+      "timestamp": "2026-06-29T12:02:10",
+      "problem": "Bisheng 模块名实际为 compiler5.1.0.2/bishengmodule（非 bisheng/compiler5.1.0.2/bishengmodule）",
+      "solution": "module avail 看到正确名称后写固定 module load 脚本 /etc/profile.d/kutacc.sh，作为后续 docker exec 的可重入入口",
+      "source": "module avail /opt/HPCKit/HPCKit/26.0.RC1/modulefiles/bisheng"
+    },
+    {
+      "timestamp": "2026-06-29T12:05:30",
+      "problem": "容器中 git clone https://github.com/google/googletest.git 连接 github.com:443 超时（130s 后失败）",
+      "solution": "改用 curl -sL 下载 release tarball v1.15.2，跳过 LFS / git 协议要求",
+      "source": "尝试 git clone 时输出 'Failed to connect to github.com port 443 after 130632 ms'"
+    },
+    {
+      "timestamp": "2026-06-29T12:09:30",
+      "problem": "执行 kutacc_cal_test 立即 Illegal instruction (SIGILL)，所有 GoogleTest 用例未启动；dlopen libkutacc.so 也同样 SIGILL",
+      "solution": "记录 ISA 不匹配，构建产物（lib/bin/header）保留作后续归一化；本环境无法绕过（必须迁移到带 SVE/bf16 的鲲鹏 920 专业版实机）",
+      "source": "src/CMakeLists.txt 第27/31/32 行 -march=armv8.2-a+bf16+sve -msve-vector-bits=512；容器 /proc/cpuinfo 不含 sve"
+    }
+  ]
+}

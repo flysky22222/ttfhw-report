@@ -277,3 +277,13 @@ tr.jumpable td:first-child::after { content: " ↓"; color: var(--accent); font-
 .detail-head .json-path code { font-size: 12px; word-break: break-all; color: var(--accent, #2f6feb); }
 .detail-head .json-path a { text-decoration: none; }
 .detail-head .json-path a:hover code { text-decoration: underline; }
+.detail .section h3 { margin: 14px 0 6px; font-size: 13.5px; color: var(--text); }
+.detail .sub-h { margin: 10px 0 5px; font-size: 12.5px; font-weight: 600; color: var(--text-dim); }
+.sec-loading { color: var(--text-faint); font-size: 13px; padding: 6px 0; }
+.gap-list { margin: 0; padding-left: 20px; }
+.gap-list li { margin: 0 0 12px; }
+.gap-list .gap-t { font-weight: 600; color: var(--text); }
+.gap-list .gap-b { margin-top: 3px; color: var(--text-dim); white-space: pre-wrap; }
+.gap-list .src { margin-top: 3px; font-size: 11.5px; color: var(--text-faint); }
+.log-out.err { color: var(--failed); }
+.json-dump { max-height: 520px; overflow: auto; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; line-height: 1.5; white-space: pre; }

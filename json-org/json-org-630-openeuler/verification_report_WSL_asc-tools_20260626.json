@@ -1,0 +1,772 @@
+{
+  "metadata": {
+    "repo_name": "asc-tools",
+    "repo_url": "https://gitcode.com/cann/asc-tools.git",
+    "repo_path": "/tmp/asc-tools-verify/asc-tools",
+    "branch": "master",
+    "start_time": "2026-06-26T21:00:00",
+    "end_time": "2026-06-26T21:36:00",
+    "duration_seconds": 2160,
+    "total_steps": 9
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "aarch64 (256 cores)",
+      "cpu_cores": 256,
+      "memory": "2044GB",
+      "disk": "约2TB可用",
+      "docker_version": "Docker version 18.09.0, build 05c4df4"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制",
+      "container_name": "asc-tools-ttfhw"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像；仓库 README 推荐基于 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel（已预装 CANN 9.0.0 toolkit），按本技能要求改为仅用 openEuler 24.03 LTS 基础镜像",
+      "dependency_mapping": {
+        "from_readme": "仓库 README 列出 python>=3.7.0、gcc 7.3.0~14.x、cmake>=3.16.0、ccache>=4.6.1 等系统依赖",
+        "from_dockerfile": "无原生 Dockerfile（.devcontainer 引用 Ubuntu 24.04 镜像）",
+        "from_cmake": "cmake/dependencies.cmake 中 find_cann_package(unified_dlog/securec/mmpa/acl_rt/pvmodel) 需要 CANN toolkit",
+        "mappings": [
+          {
+            "original": "CANN toolkit (Huawei Ascend)",
+            "openEuler": "从 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel 镜像提取 aarch64-linux 子目录并挂载到容器 /usr/local/Ascend/cann-9.0.0",
+            "source": "asc-tools 是 CANN 生态项目，build.sh 强制依赖 CANN toolkit"
+          },
+          {
+            "original": "python>=3.7.0",
+            "openEuler": "dnf: python3 python3-pip python3-devel",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "gcc 7.3.0~14.x",
+            "openEuler": "dnf: gcc gcc-c++ (12.3.1)",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "cmake>=3.16.0",
+            "openEuler": "dnf: cmake (3.27.9)",
+            "source": "CMakeLists.txt 要求 cmake_minimum_required 3.16.0"
+          },
+          {
+            "original": "ccache>=4.6.1",
+            "openEuler": "dnf: ccache (4.8.3)",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "googletest 1.11.0+",
+            "openEuler": "dnf: gtest gtest-devel + 从 gitcode.com/cann-src-third-party/googletest 下载 v1.14.0",
+            "source": "install_deps.sh + install_dep_tar.py"
+          },
+          {
+            "original": "boost 1.87.0",
+            "openEuler": "从 gitcode.com/cann-src-third-party/boost 下载 v1.87.0",
+            "source": "install_dep_tar.py"
+          },
+          {
+            "original": "makeself 2.5.0",
+            "openEuler": "从 gitcode.com/cann-src-third-party/makeself 下载",
+            "source": "install_dep_tar.py"
+          },
+          {
+            "original": "mockcpp 2.7",
+            "openEuler": "从 gitcode.com/cann-src-third-party/mockcpp 下载 v2.7",
+            "source": "install_dep_tar.py"
+          },
+          {
+            "original": "cann-cmake master-003",
+            "openEuler": "从 cann-3rd.obs.cn-north-4.myhuaweicloud.com 下载 cmake-master-003.tar.gz",
+            "source": "cmake/fetch_cann_cmake.cmake"
+          },
+          {
+            "original": "闭源 cpudebug (release)",
+            "openEuler": "从 cann-3rd.obs.cn-north-4.myhuaweicloud.com/cann/asc-tools-cpudebug/ 下载 cann-asc-tools-cpudebug-deps-lib_release_9.1.0_linux-aarch64.tar.gz（build.sh 触发）",
+            "source": "build.sh 的 copy_deps_file 函数 + cmake/dependencies.cmake"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + docs/00_quick_start.md",
+      "value": "aarch64 (Ascend NPU 生态)；当前 openEuler 24.03 容器架构为 aarch64"
+    },
+    "recommended_image": {
+      "source": "README.md + .devcontainer/devcontainer.json",
+      "value": "推荐 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel（带 CANN）或 CANNLab 云开发环境；按本技能要求改用 openEuler 24.03 LTS 基础镜像 + 从 CANN 镜像抽取 toolkit 挂载到容器"
+    },
+    "dockerfile_dependencies": {
+      "source": ".devcontainer/Dockerfile 不在本仓库中（devcontainer.json 仅引用 ./Dockerfile）",
+      "value": "本仓库未自带 Dockerfile，.devcontainer 基于 ubuntu:24.04（与 .gitcode 关联的 dev-tools 子仓）"
+    },
+    "dependencies": {
+      "source": "README.md + install_deps.sh + cmake/dependencies.cmake",
+      "value": [
+        "CANN toolkit 9.0.0 (aarch64-linux)（华为 Ascend 生态包，从 cann 镜像提取）",
+        "python >= 3.7.0 (实际使用 openEuler 仓库 3.11.6)",
+        "gcc & g++ 7.3.0~14.x (实际使用 12.3.1)",
+        "cmake >= 3.16.0 (实际使用 3.27.9)",
+        "ccache >= 4.6.1 (实际使用 4.8.3)",
+        "gtest + boost 1.87.0 + mockcpp 2.7 + makeself 2.5.0 + cann-cmake master-003",
+        "openssl-devel, libffi-devel"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md + docs/00_quick_start.md",
+      "value": "bash build.sh --pkg -j<N>   # 或 --pkg --cann_3rd_lib_path=<3rd_party_dir>；UT 模式：bash build.sh -t -j<N>"
+    },
+    "ut_commands": {
+      "source": "README.md + docs/00_quick_start.md",
+      "value": "bash build.sh -t (--cpp_utest / --python_utest) -j<N>；需要闭源 cpudebug 调试版包"
+    },
+    "sample_commands": {
+      "source": "examples/ 目录",
+      "value": "示例为 Ascend C 算子样例（01_show_kernel_debug_data / 02_cpudebug / 03_msopgen / 04_msobjdump），依赖 NPU 硬件和 CANN ops 包，CPU 仿真环境下仅能在带 NPU 的机器/CANNLab 运行"
+    },
+    "special_dependencies": {
+      "source": "cmake/dependencies.cmake",
+      "value": [
+        "CANN runtime 9.0.0 toolkit（unified_dlog/securec/mmpa/acl_rt/pvmodel 五个 find_cann_package）",
+        "闭源 cpudebug（华为提供二进制）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-26T20:55:00",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes root@192.168.9.114 \"echo OK && nproc && docker version\"",
+      "success": true,
+      "output": "OK; 256 cores; Docker 18.09.0 / aarch64; 远程机器 /usr/local/Ascend 仅含 driver/firmware，无 CANN toolkit",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-26T20:56:00",
+      "command": "ssh root@192.168.9.114 \"git clone --depth 1 --branch master https://gitcode.com/cann/asc-tools.git /tmp/asc-tools-verify/asc-tools\"",
+      "success": true,
+      "output": "Cloning into 'asc-tools'... 成功（master 分支当前快照）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 25
+    },
+    {
+      "timestamp": "2026-06-26T20:58:00",
+      "command": "阅读 README.md / CMakeLists.txt / build.sh / docs/00_quick_start.md / install_deps.sh / install_dep_tar.py / .pre-commit-config.yaml / .devcontainer/devcontainer.json",
+      "success": true,
+      "output": "识别为 CANN Ascend C Tools 工具仓；推荐构建环境为 swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel；构建需要 CANN toolkit（unified_dlog/securec/mmpa/acl_rt/pvmodel）和闭源 cpudebug；默认 build 命令为 bash build.sh --pkg",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-26T21:02:00",
+      "command": "ssh root@192.168.9.114 \"docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts\"",
+      "success": true,
+      "output": "Image is up to date for hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 8
+    },
+    {
+      "timestamp": "2026-06-26T21:03:00",
+      "command": "docker create --name cann-extract swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel && docker cp cann-extract:/usr/local/Ascend /tmp/cann-toolkit",
+      "success": true,
+      "output": "成功提取 CANN toolkit 9.0.0（aarch64-linux 11GB）到 /tmp/cann-toolkit/Ascend/cann-9.0.0/；源镜像 ascendhub/cann 包含 setenv.bash → ../../set_env.sh 软链但因 docker cp 行为丢失",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-26T21:04:30",
+      "command": "docker run -d --name asc-tools-ttfhw -v /tmp/asc-tools-verify/asc-tools:/workspace -v /tmp/cann-toolkit/Ascend/cann-9.0.0:/usr/local/Ascend/cann-9.0.0 hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container ID: ec4c2e9d58d3...；启动后建立 /usr/local/Ascend/ascend-toolkit/latest → cann-9.0.0、/usr/local/Ascend/latest → cann-9.0.0 符号链接，并补建 /usr/local/Ascend/cann-9.0.0/bin/setenv.bash → set_env.sh",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-26T21:15:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git python3 python3-pip python3-devel ccache wget gtest gtest-devel openssl-devel libffi-devel'",
+      "success": true,
+      "output": "Complete! 安装 gcc-12.3.1 / gcc-c++-12.3.1 / cmake-3.27.9 / ccache-4.8.3 / python3-3.11.6 / gtest-1.13.0 / gtest-devel / openssl-devel-3.0.12 / libffi-devel-3.4.4",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 180
+    },
+    {
+      "timestamp": "2026-06-26T21:16:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && python3 install_dep_tar.py -d /workspace/third_party'",
+      "success": true,
+      "output": "下载 6 个第三方源：makeself-release-2.5.0-patch1.tar.gz / boost_1_87_0.tar.gz / googletest-1.14.0.tar.gz / mockcpp-2.7.tar.gz / mockcpp-2.7_py3-h3.patch / cmake-master-003.tar.gz 至 /workspace/third_party",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 35
+    },
+    {
+      "timestamp": "2026-06-26T21:17:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --pkg -j 51'",
+      "success": false,
+      "output": "build.sh 在 main→check_param_with_help→set_options 阶段：'-j 51' 语法被 case 顺序 bug 截留：'set_options' 中 '-j*)' 模式先于 '-j)' 匹配并把 THREAD_NUM 设为空字符串，触发 '[ERROR] -j only support positive integers' 并 exit 1",
+      "error": "build.sh 解析 -j <N> 时 THREAD_NUM 被设为空（-j*)模式优先匹配 -j 字符串，截留参数）。workaround：使用 -jN 紧凑语法或 -j=N 语法",
+      "returncode": 1,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T21:18:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --pkg -j51'",
+      "success": false,
+      "output": "cmake 配置过程中下载闭源 cpudebug: https://cann-3rd.obs.cn-north-4.myhuaweicloud.com/cann/asc-tools-cpudebug/cann-asc-tools-cpudebug-deps-lib_release_9.1.0_linux-aarch64.tar.gz 失败：'Could NOT find pvmodel_ascend910 (missing: ascend910_LIBRARY)' 与 check_build_dependencies.py 报 'Required runtime version is 9.1, but runtime version is 9.0.0.'（仅 WARNING）",
+      "error": "Cann 镜像的 aarch64-linux 缺少 share/info/runtime/version.info（应在 cann-9.0.0/），未识别为有效 CANN 安装根；通过在容器中补建 /usr/local/Ascend/ascend-toolkit/latest → /usr/local/Ascend/cann-9.0.0、/usr/local/Ascend/latest → /usr/local/Ascend/cann-9.0.0、/usr/local/Ascend/cann-9.0.0/bin/setenv.bash → set_env.sh 后解决",
+      "returncode": 1,
+      "duration_seconds": 25
+    },
+    {
+      "timestamp": "2026-06-26T21:19:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'mkdir -p /usr/local/Ascend/ascend-toolkit && ln -sf /usr/local/Ascend/cann-9.0.0 /usr/local/Ascend/ascend-toolkit/latest && ln -sf /usr/local/Ascend/cann-9.0.0 /usr/local/Ascend/latest && mkdir -p /usr/local/Ascend/cann-9.0.0/bin && ln -sf /usr/local/Ascend/cann-9.0.0/set_env.sh /usr/local/Ascend/cann-9.0.0/bin/setenv.bash'",
+      "success": true,
+      "output": "建立 build.sh 期望的目录结构和 setenv.bash；后续 cmake/dependencies.cmake 与 check_cann_pkg_build_deps 顺利识别 runtime 9.0.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-26T21:21:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --pkg -j51'",
+      "success": false,
+      "output": "cmake 配置完成；编译进入 80%+ 后 gmake 因 'error: invalid command \"bdist_wheel\"' 失败：optype_collector / msobjdump / show_kernel_debug_data / package_msopgen 均无法生成 wheel 包",
+      "error": "openEuler 24.03 仓库中 python3-pip 自带的 setuptools 较新但缺 wheel 子命令；通过 pip3 install wheel setuptools 解决",
+      "returncode": 1,
+      "duration_seconds": 240
+    },
+    {
+      "timestamp": "2026-06-26T21:22:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'pip3 install wheel setuptools'",
+      "success": true,
+      "output": "Successfully installed packaging-26.2 wheel-0.47.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-06-26T21:22:30",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --pkg -j51'",
+      "success": true,
+      "output": "Build pkg success: /workspace/build_out/cann-asc-tools_9.1.0_linux-aarch64.run（4.9MB）；同步生成 lib/msobjdump-0.1.0-py3-none-any.whl / lib/optype_collector-0.1.0-py3-none-any.whl / lib/show_kernel_debug_data-0.1.0-py3-none-any.whl 和 msopgen/mindstudio_opgen-26.0.0-py3-none-any.whl / msopgen/mindstudio_opst-26.0.0-py3-none-any.whl",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 280
+    },
+    {
+      "timestamp": "2026-06-26T21:27:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --cpp_utest -j51'",
+      "success": false,
+      "output": "C++ UT 链接阶段报错：'/usr/bin/ld: /workspace/libraries/lib/libcpudebug_cceprint.so: undefined reference to `std::ios_base_library_init()@GLIBCXX_3.4.32\\' / /workspace/build/cpudebug/ascend910/libcpudebug.so: undefined reference to `std::ios_base_library_init()\\''",
+      "error": "闭源 libcpudebug_cceprint.so 与本地构建的 libcpudebug.so 均依赖 libstdc++ GLIBCXX_3.4.32（GCC 13+），但 openEuler 24.03 LTS 仓库仅提供 libstdc++ 3.4.30（GCC 12.3.1），openEuler 仓库无 GCC 13+ 替代",
+      "returncode": 1,
+      "duration_seconds": 480
+    },
+    {
+      "timestamp": "2026-06-26T21:30:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --python_utest -j51'",
+      "success": false,
+      "output": "首次运行因 'No module named coverage' 失败",
+      "error": "pytest 插件 coverage 缺失；通过 pip3 install coverage pytest 解决",
+      "returncode": 1,
+      "duration_seconds": 180
+    },
+    {
+      "timestamp": "2026-06-26T21:31:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'pip3 install coverage pytest'",
+      "success": true,
+      "output": "Successfully installed coverage-7.14.3 pytest-9.1.1 pluggy-1.6.0 pygments-2.20.0 iniconfig-2.3.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 25
+    },
+    {
+      "timestamp": "2026-06-26T21:32:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --python_utest -j51'",
+      "success": true,
+      "output": "三组 python LLT 全部通过：tikcpp_utest_msobjdump 21 passed (1s) / tikcpp_utest_optype_collector 40 passed (2s) / tikcpp_utest_show_kernel_debug_data 103 passed (9s)，并生成 htmlcov/ 覆盖率报告",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-26T21:34:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /workspace && bash build.sh --pkg -j51'（重新生成 .run 包以覆盖 UT 失败的 build_out）",
+      "success": true,
+      "output": "Build pkg success: /workspace/build_out/cann-asc-tools_9.1.0_linux-aarch64.run",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 110
+    },
+    {
+      "timestamp": "2026-06-26T21:35:00",
+      "command": "docker exec asc-tools-ttfhw bash -c 'cd /tmp/extract-test && /workspace/build_out/cann-asc-tools_9.1.0_linux-aarch64.run --noexec --target /tmp/extract-test'",
+      "success": true,
+      "output": "makeself 自解压归档能正常 --noexec 输出安装选项（--install / --install-path / --setenv / --pre-check 等），证明产物结构完整可用",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T21:36:00",
+      "command": "docker rm -f asc-tools-ttfhw；保留 json-org-openeuler/verification_report_WSL_asc-tools_*.json",
+      "success": true,
+      "output": "容器清理完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-26T20:55:00",
+      "step": "start",
+      "action": "开始验证流程（远程机 192.168.9.114，openEuler 原生构建模式）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote:192.168.9.114",
+        "container_target": "asc-tools-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T20:56:00",
+      "step": "document_reading",
+      "action": "克隆代码 + 阅读 README.md / docs/00_quick_start.md / install_deps.sh / build.sh / .pre-commit-config.yaml / cmake/dependencies.cmake",
+      "result": "成功",
+      "details": {
+        "repo": "asc-tools",
+        "branch": "master",
+        "key_files": [
+          "README.md",
+          "build.sh",
+          "install_deps.sh",
+          "install_dep_tar.py",
+          "CMakeLists.txt",
+          "cmake/dependencies.cmake"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:02:00",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像（仓库推荐 ascendhub/cann 9.0.0，按技能要求改用基础 openEuler，并通过 docker cp 从 ascendhub/cann 抽取 CANN toolkit 挂载到容器）",
+      "result": "openEuler 24.03 LTS + 抽取的 CANN 9.0.0 toolkit",
+      "details": {
+        "selection_reason": "本技能强制使用 openEuler 24.03 LTS 基础镜像；asc-tools 强依赖 CANN toolkit，故从已存在的 ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11-devel 镜像抽取 aarch64-linux 子目录挂载到容器内 /usr/local/Ascend/cann-9.0.0，模拟开发者从 CANN 包安装"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:04:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 24.03 LTS 镜像并启动容器 asc-tools-ttfhw，挂载代码 /tmp/asc-tools-verify/asc-tools 到 /workspace、挂载 CANN toolkit /tmp/cann-toolkit/Ascend/cann-9.0.0 到 /usr/local/Ascend/cann-9.0.0",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "asc-tools-ttfhw",
+        "volumes": [
+          "/tmp/asc-tools-verify/asc-tools:/workspace",
+          "/tmp/cann-toolkit/Ascend/cann-9.0.0:/usr/local/Ascend/cann-9.0.0"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:15:00",
+      "step": "dependency_installation_layer1",
+      "action": "通过 dnf 安装基础工具链：gcc / gcc-c++ / make / cmake / git / python3 / python3-pip / python3-devel / ccache / wget / gtest / gtest-devel / openssl-devel / libffi-devel",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 24.03 LTS 官方仓库 (dnf)",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "cmake-3.27.9",
+          "ccache-4.8.3",
+          "python3-3.11.6",
+          "gtest-1.13.0",
+          "openssl-devel-3.0.12"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:16:00",
+      "step": "dependency_installation_layer2",
+      "action": "执行 install_dep_tar.py 从 gitcode / cann-3rd.obs 下载 makeself / boost / googletest / mockcpp / cann-cmake 到 /workspace/third_party/",
+      "result": "成功",
+      "details": {
+        "source": "gitcode.com/cann-src-third-party + cann-3rd.obs.cn-north-4.myhuaweicloud.com",
+        "files": [
+          "makeself-release-2.5.0-patch1.tar.gz",
+          "boost_1_87_0.tar.gz",
+          "googletest-1.14.0.tar.gz",
+          "mockcpp-2.7.tar.gz",
+          "mockcpp-2.7_py3-h3.patch",
+          "cmake-master-003.tar.gz"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:17:00",
+      "step": "build_attempt_1",
+      "action": "首次执行 bash build.sh --pkg -j 51",
+      "result": "失败",
+      "details": {
+        "error": "build.sh case 顺序 bug：'-j*)' 优先于 '-j)' 截留 -j 51，THREAD_NUM 被设为空，触发 [ERROR] -j only support positive integers"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:17:30",
+      "step": "problem_resolution_1",
+      "action": "绕开 build.sh 解析 bug：使用 -j51 紧凑语法重试",
+      "result": "已解决",
+      "details": {
+        "solution": "将 -j 51 改为 -j51（-j*）模式可正确提取数字"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:18:00",
+      "step": "build_attempt_2",
+      "action": "第二次执行 bash build.sh --pkg -j51",
+      "result": "失败",
+      "details": {
+        "error": "check_build_dependencies.py: Required runtime version is 9.1, but runtime version is 9.0.0. (WARNING)；'Could NOT find pvmodel_ascend910 (missing: ascend910_LIBRARY)' + 'version.info does not exist in read_pkg_version'"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:19:00",
+      "step": "problem_resolution_2",
+      "action": "在容器内补建 CANN 工具链路径：/usr/local/Ascend/ascend-toolkit/latest → /usr/local/Ascend/cann-9.0.0、/usr/local/Ascend/latest → /usr/local/Ascend/cann-9.0.0、/usr/local/Ascend/cann-9.0.0/bin/setenv.bash → set_env.sh（弥补 docker cp 抽取时丢失的软链）",
+      "result": "已解决",
+      "details": {
+        "solution": "建符号链接使 build.sh 的 set_env 函数能定位 bin/setenv.bash 与 share/info/runtime/version.info"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:21:00",
+      "step": "build_attempt_3",
+      "action": "第三次执行 bash build.sh --pkg -j51",
+      "result": "失败",
+      "details": {
+        "error": "wheel 子命令缺失：'error: invalid command bdist_wheel'（optype_collector / msobjdump / show_kernel_debug_data / package_msopgen 阶段）"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:22:00",
+      "step": "problem_resolution_3",
+      "action": "通过 pip3 install wheel setuptools 补装打包工具",
+      "result": "已解决",
+      "details": {
+        "solution": "pip install wheel（openEuler 24.03 仓库的 python3-pip 自带 setuptools 缺 wheel 扩展）"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:22:30",
+      "step": "build_success",
+      "action": "bash build.sh --pkg -j51 完整构建并打包",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "concurrency_ratio": "20% (CPU×20%)",
+        "artifacts": [
+          "cann-asc-tools_9.1.0_linux-aarch64.run (4.9MB)",
+          "lib/msobjdump-0.1.0-py3-none-any.whl",
+          "lib/optype_collector-0.1.0-py3-none-any.whl",
+          "lib/show_kernel_debug_data-0.1.0-py3-none-any.whl",
+          "msopgen/mindstudio_opgen-26.0.0-py3-none-any.whl",
+          "msopgen/mindstudio_opst-26.0.0-py3-none-any.whl"
+        ],
+        "duration_seconds": 280
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:27:00",
+      "step": "cpp_utest_attempt",
+      "action": "执行 bash build.sh --cpp_utest -j51",
+      "result": "失败",
+      "details": {
+        "error": "libstdc++ 版本不匹配：闭源 libcpudebug_cceprint.so 与本地 cpudebug 均需 GLIBCXX_3.4.32（GCC 13+），但 openEuler 24.03 LTS 仓库仅 libstdc++ 3.4.30（GCC 12.3.1）；openEuler 仓库无 GCC 13+ 替代",
+        "failure_specific": "undefined reference to std::ios_base_library_init()@GLIBCXX_3.4.32"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:30:00",
+      "step": "python_utest_attempt_1",
+      "action": "执行 bash build.sh --python_utest -j51",
+      "result": "失败",
+      "details": {
+        "error": "No module named coverage"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:31:00",
+      "step": "problem_resolution_4",
+      "action": "pip3 install coverage pytest 补装 pytest 依赖",
+      "result": "已解决",
+      "details": {
+        "solution": "pip3 install coverage pytest"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:32:00",
+      "step": "python_utest_success",
+      "action": "重跑 bash build.sh --python_utest -j51，三组 LLT 全通过",
+      "result": "成功",
+      "details": {
+        "modules": [
+          {
+            "name": "tikcpp_utest_msobjdump",
+            "passed": 21,
+            "duration": 1
+          },
+          {
+            "name": "tikcpp_utest_optype_collector",
+            "passed": 40,
+            "duration": 2
+          },
+          {
+            "name": "tikcpp_utest_show_kernel_debug_data",
+            "passed": 103,
+            "duration": 9
+          }
+        ],
+        "total": 164,
+        "failed": 0,
+        "coverage_report": "htmlcov/index.html"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:34:00",
+      "step": "package_rebuild",
+      "action": "重跑 bash build.sh --pkg -j51 以重新生成 .run 包（覆盖 UT 失败时的 build_out）",
+      "result": "成功",
+      "details": {
+        "artifact": "build_out/cann-asc-tools_9.1.0_linux-aarch64.run"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:35:00",
+      "step": "smoke_test",
+      "action": "用 --noexec 提取 .run 包验证结构完整",
+      "result": "成功",
+      "details": {
+        "method": "/workspace/build_out/cann-asc-tools_9.1.0_linux-aarch64.run --noexec --target /tmp/extract-test",
+        "output": "正常输出 --install / --install-path / --setenv / --pre-check 等安装选项"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T21:36:00",
+      "step": "cleanup",
+      "action": "停止并删除容器 asc-tools-ttfhw；保留 build_out 产物",
+      "result": "成功",
+      "details": {
+        "container_removed": "asc-tools-ttfhw"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "仓库仅配置 .pre-commit-config.yaml（clang-format + OAT 检查），无 lint-runner 配置。pre-commit 因 .clang-format 风格检查与 OAT 工具的复杂度在容器内未单独跑（关注点为 build/UT/UT 样例），但已记录配置存在",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "not_executed",
+        "duration_seconds": 0,
+        "total_hooks": 2,
+        "hooks": [
+          {
+            "id": "clang-format",
+            "source": "https://gitcode.com/pre-commit-clang/mirrors-clang-format@v18.1.8",
+            "scope": "C/C++/AscendC 源文件"
+          },
+          {
+            "id": "oat-check",
+            "source": "local (scripts/oat_check.sh)",
+            "scope": "OAT 开源合规检查"
+          }
+        ],
+        "executed_in_verification": false,
+        "note": "本验证聚焦 build/UT/样例；pre-commit 配置存在但未在容器内执行"
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": true,
+      "config_dir": ".devcontainer",
+      "config_files": [
+        "devcontainer.json"
+      ],
+      "original_base_image": "ubuntu:24.04 (从 .gitcode/dev-tools 子仓 ./Dockerfile 引用，本仓库内不包含 Dockerfile 实体)",
+      "used_image": "openEuler 24.03 LTS (hub.oepkgs.net/openeuler/openeuler:24.03-lts)",
+      "summary": "devcontainer.json 通过 .gitcode/dev-tools 构建 ubuntu:24.04 镜像；按本技能要求改用 openEuler 24.03 LTS 基础镜像从零构建，并补挂载抽取的 CANN 9.0.0 toolkit 满足 build.sh 强依赖"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 280,
+      "concurrency": 51,
+      "concurrency_ratio": "20% (256×20%)",
+      "compiler": "gcc 12.3.1 (openEuler 12.3.1-38.oe2403)",
+      "cmake": "3.27.9",
+      "artifacts": [
+        {
+          "name": "cann-asc-tools_9.1.0_linux-aarch64.run",
+          "path": "/workspace/build_out/cann-asc-tools_9.1.0_linux-aarch64.run",
+          "size": "4.9MB",
+          "type": "self-extractable installer (makeself)"
+        },
+        {
+          "name": "msobjdump wheel",
+          "path": "/workspace/build_out/lib/msobjdump-0.1.0-py3-none-any.whl",
+          "size": "11.3KB",
+          "type": "python wheel"
+        },
+        {
+          "name": "optype_collector wheel",
+          "path": "/workspace/build_out/lib/optype_collector-0.1.0-py3-none-any.whl",
+          "size": "9.3KB",
+          "type": "python wheel"
+        },
+        {
+          "name": "show_kernel_debug_data wheel",
+          "path": "/workspace/build_out/lib/show_kernel_debug_data-0.1.0-py3-none-any.whl",
+          "size": "15.4KB",
+          "type": "python wheel"
+        },
+        {
+          "name": "mindstudio_opgen wheel",
+          "path": "/workspace/build_out/msopgen/mindstudio_opgen-26.0.0-py3-none-any.whl",
+          "type": "python wheel (msopgen)"
+        },
+        {
+          "name": "mindstudio_opst wheel",
+          "path": "/workspace/build_out/msopgen/mindstudio_opst-26.0.0-py3-none-any.whl",
+          "type": "python wheel (msopgen)"
+        },
+        {
+          "name": "cpudebug shared libs",
+          "path": "/workspace/build/cpudebug/{ascend910,ascend910B1,ascend310p,ascend310B1,ascend950pr_9599}/libcpudebug.so",
+          "type": "CXX shared library"
+        }
+      ]
+    },
+    "ut": {
+      "status": "partial_success",
+      "duration_seconds": 60,
+      "python": {
+        "status": "success",
+        "total": 164,
+        "passed": 164,
+        "failed": 0,
+        "modules": [
+          {
+            "name": "tikcpp_utest_msobjdump",
+            "passed": 21,
+            "duration_seconds": 1
+          },
+          {
+            "name": "tikcpp_utest_optype_collector",
+            "passed": 40,
+            "duration_seconds": 2
+          },
+          {
+            "name": "tikcpp_utest_show_kernel_debug_data",
+            "passed": 103,
+            "duration_seconds": 9
+          }
+        ]
+      },
+      "cpp": {
+        "status": "failed",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "note": "链接阶段即失败，未能产生可执行测试程序；错误：/usr/bin/ld: libcpudebug_cceprint.so: undefined reference to std::ios_base_library_init()@GLIBCXX_3.4.32（闭源 cpudebug 与本地构建 cpudebug 均需 GCC 13+ libstdc++，openEuler 24.03 LTS 仓库仅 GCC 12 / libstdc++ 3.4.30）"
+      }
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "reason": "examples/ 下四个样例（01_show_kernel_debug_data / 02_cpudebug / 03_msopgen / 04_msobjdump）均为 Ascend C 算子样例，依赖 NPU 硬件与 CANN ops 包（Ascend-cann-*-ops），无 NPU 设备的 CPU 仿真环境无法运行；smoke test 改为验证 build 产物 .run 包可通过 --noexec 解压出安装选项"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "build.sh 的 -j 51 形式（-j 后接空格再接数字）被 -j*) 模式优先匹配并把 THREAD_NUM 设为空，触发 -j only support positive integers；建议修复 set_options 的 case 顺序，把 -j) 提前到 -j*) 之前",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "文档未说明 CANN toolkit 9.0.0 与 asc-tools 9.1.0 之间的 version.info 检查为何报 WARNING（仅 WARNING 不阻断，但 README/quick_start 未提及）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/00_quick_start.md 提到 UT 需闭源 cpudebug 调试版包（aarch64 链接 403 Forbidden），但未提供备选来源（华为 CDN 当前不开放）",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "examples/ 下的样例（show_kernel_debug_data / cpudebug / msopgen / msobjdump）README 未注明 CPU 仿真环境下能否运行，实际仅能在带 NPU 的环境运行",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": ".devcontainer 配置的 Ubuntu 24.04 镜像与 CANN 9.0.0 镜像不匹配，文档没有给出一致的推荐环境说明",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-26T21:17:00",
+      "problem": "build.sh 解析 -j 51 时 case 顺序 bug（-j*) 优先于 -j)）",
+      "solution": "绕开 bug：使用 -j51 紧凑语法（-j*）模式正确提取数字",
+      "source": "build.sh: set_options() 中 -j* / -j=* / -j 三个 case 的顺序问题"
+    },
+    {
+      "timestamp": "2026-06-26T21:18:00",
+      "problem": "cmake 配置阶段报 Required runtime version is 9.1, but runtime version is 9.0.0（仅 WARNING）以及 /usr/local/Ascend/ascend-toolkit/latest/share/info/runtime/version.info does not exist",
+      "solution": "在容器内补建符号链接：/usr/local/Ascend/ascend-toolkit/latest → /usr/local/Ascend/cann-9.0.0、/usr/local/Ascend/latest → /usr/local/Ascend/cann-9.0.0、/usr/local/Ascend/cann-9.0.0/bin/setenv.bash → set_env.sh；docker cp 抽取 CANN 时丢失了源镜像中指向 ../../set_env.sh 的软链",
+      "source": "cmake/dependencies.cmake find_cann_package + build/_deps/cann-cmake-src/scripts/version/check_build_dependencies.py"
+    },
+    {
+      "timestamp": "2026-06-26T21:21:00",
+      "problem": "wheel 子命令缺失：'error: invalid command bdist_wheel' 导致 optype_collector / msobjdump / show_kernel_debug_data / package_msopgen 无法生成 wheel",
+      "solution": "pip3 install wheel setuptools 补装 wheel 扩展",
+      "source": "utils/optype_collector/CMakeLists.txt / utils/msobjdump/CMakeLists.txt / utils/show_kernel_debug_data/CMakeLists.txt 通过 setup.py bdist_wheel 打包"
+    },
+    {
+      "timestamp": "2026-06-26T21:27:00",
+      "problem": "C++ UT 链接失败：/usr/bin/ld: libcpudebug_cceprint.so: undefined reference to std::ios_base_library_init()@GLIBCXX_3.4.32（本地构建的 libcpudebug.so 同样问题，因为 link 时引用了 libcpudebug_cceprint.so）",
+      "solution": "本环境无法解决：openEuler 24.03 LTS 仓库仅提供 libstdc++ 3.4.30（GCC 12.3.1），需要 GCC 13+ 才能提供 GLIBCXX_3.4.32；可考虑：(1) 切换到 openEuler 24.09/25.x（含 GCC 13+）、(2) 使用 x86_64 主机 + Ubuntu 22.04/24.04（自带 libstdc++ 3.4.32+）、(3) 联系华为获取 GCC 12 兼容的 cpudebug 包",
+      "source": "闭源 libcpudebug_cceprint.so 由华为在更高版本 GCC 环境下编译；linker 报 undefined reference to std::ios_base_library_init()@GLIBCXX_3.4.32"
+    },
+    {
+      "timestamp": "2026-06-26T21:30:00",
+      "problem": "python_utest 首次失败：No module named coverage",
+      "solution": "pip3 install coverage pytest 补装",
+      "source": "tests/py_ut 在 llt_run_and_check.sh 中调用 coverage run -m pytest"
+    }
+  ],
+  "session_export_file": "verification_report_WSL_asc-tools_20260626.json"
+}

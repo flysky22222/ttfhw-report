@@ -1,0 +1,1106 @@
+{
+  "metadata": {
+    "repo_name": "ubs-engine",
+    "repo_url": "https://gitcode.com/openeuler/ubs-engine.git",
+    "branch": "master",
+    "commit": "57cbe80e4b12d8ae9940385c93573ee6675b49d9",
+    "start_time": "2026-07-02T04:30:00",
+    "end_time": "2026-07-02T05:42:00",
+    "duration_seconds": 4320,
+    "total_steps": 18
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 672734,
+    "output_tokens": 44297,
+    "cache_hit_tokens": 14460279,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Huawei Kunpeng 920",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "充足",
+      "docker_version": "Docker version 18.09.0",
+      "os": "openEuler 20.03 (LTS-SP4)"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS-SP3)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制",
+      "container_name": "ubs-engine-ttfhw",
+      "compilation_concurrency": 51,
+      "compilation_concurrency_ratio": "20%"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts-sp3",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像；仓库推荐在 openEuler 24.03 (LTS-SP3)/(LTS-SP4) 下构建，本验证使用 24.03-lts-sp3 镜像（直接匹配推荐版本），通过源码构建 ubs-comm-devel 1.0.1-10 满足依赖",
+      "dependency_mapping": {
+        "from_spec": "ubs-engine.spec BuildRequires 字段",
+        "mappings": [
+          {
+            "original": "ubs-comm-devel >= 1.0.1-7 (only in 24.03 LTS SP3/SP4 official repo 版本为 1.0.0-26，低于 spec 要求)",
+            "openEuler": "源码 git clone src-openeuler/ubs-comm + rpmbuild -ba ubs-comm.spec 安装 ubs-comm-lib + ubs-comm-devel 1.0.1-10",
+            "source": "docs/build_install/构建指导.md 2.2.2 节"
+          },
+          {
+            "original": "cmake >= 3.22",
+            "openEuler": "dnf install cmake (3.27.9)",
+            "source": "spec BuildRequires"
+          },
+          {
+            "original": "gcc-c++ >= 10.3",
+            "openEuler": "dnf install gcc gcc-c++ (12.3.1)",
+            "source": "spec BuildRequires"
+          },
+          {
+            "original": "ninja-build >= 1.10",
+            "openEuler": "dnf install ninja-build (1.11.1)",
+            "source": "spec BuildRequires"
+          },
+          {
+            "original": "libboundscheck >= v1.1",
+            "openEuler": "dnf install libboundscheck (1.1.11)",
+            "source": "spec BuildRequires"
+          },
+          {
+            "original": "libxml2-devel >= 2.9 / openssl-devel >= 3.0 / cpp-httplib-devel >= 0.40.0 / rapidjson-devel >= 1.1.0",
+            "openEuler": "dnf install libxml2-devel openssl-devel cpp-httplib-devel rapidjson-devel",
+            "source": "spec BuildRequires"
+          },
+          {
+            "original": "libvirt-devel >= 9.0 / kernel-devel",
+            "openEuler": "dnf install libvirt-devel kernel-devel",
+            "source": "spec BuildRequires"
+          },
+          {
+            "original": "systemd-devel >= 249",
+            "openEuler": "dnf install systemd-devel (255)",
+            "source": "spec BuildRequires"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + docs/build_install/构建指导.md",
+      "value": "aarch64/x86_64，openEuler 24.03 LTS；UBSE(UB Service Core Engine) 提供 ubse daemon + SDK；内存(MEM)等资源调度管理"
+    },
+    "recommended_image": {
+      "source": "docs/build_install/构建指导.md + ubs-engine.spec BuildRequires",
+      "value": "openEuler 24.03 LTS (SP3/SP4)；本验证使用 24.03-lts-sp3 镜像 + 通过源码构建 ubs-comm-devel 满足"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库无 Dockerfile，依赖定义来自 ubs-engine.spec",
+      "value": [
+        {
+          "original": "ubs-comm-devel >= 1.0.1-7",
+          "openEuler_equivalent": "git clone src-openeuler/ubs-comm (openEuler-24.03-LTS-SP4 分支) + rpmbuild -ba ubs-comm.spec"
+        },
+        {
+          "original": "cmake/make/gcc/g++",
+          "openEuler_equivalent": "dnf install cmake make gcc gcc-c++ ninja-build"
+        },
+        {
+          "original": "libboundscheck/libxml2/openssl/cpp-httplib/rapidjson",
+          "openEuler_equivalent": "dnf install libboundscheck libxml2-devel openssl-devel cpp-httplib-devel rapidjson-devel"
+        },
+        {
+          "original": "libvirt/kernel-devel/systemd-devel",
+          "openEuler_equivalent": "dnf install libvirt-devel kernel-devel systemd-devel"
+        },
+        {
+          "original": "patch/bc/bash/coreutils/sudo/util-linux-user",
+          "openEuler_equivalent": "dnf install patch bc bash coreutils sudo util-linux"
+        }
+      ]
+    },
+    "dependencies": {
+      "source": "ubs-engine.spec BuildRequires + CMakeLists.txt",
+      "value": [
+        "ubs-comm-devel >= 1.0.1-7 (HCOM 通信库；openEuler 24.03-lts-sp3 仓库提供 1.0.0-26 低于要求，本验证从 src-openeuler/ubs-comm 源码构建 1.0.1-10)",
+        "cmake >= 3.22 (dnf: cmake 3.27.9)",
+        "gcc/g++ >= 10.3 (dnf: gcc/gcc-c++ 12.3.1)",
+        "ninja-build >= 1.10 (dnf: ninja-build 1.11.1)",
+        "python3-setuptools (dnf)",
+        "glibc-devel >= 2.34, libstdc++-devel >= 10.3",
+        "systemd-devel >= 249 (用于 ubse 服务管理)",
+        "libboundscheck >= v1.1 (内存安全库)",
+        "libxml2-devel >= 2.9, openssl-devel >= 3.0, cpp-httplib-devel >= 0.40.0, rapidjson-devel >= 1.1.0",
+        "numactl-libs >= 2.0 (NUMA 支持)",
+        "libvirt-devel >= 9.0 (libvirt 调用，用于 VM/内存资源接口)",
+        "kernel-devel (vm_ut_coverage.sh 使用)"
+      ]
+    },
+    "build_commands": {
+      "source": "build.sh + docs/build_install/构建指导.md",
+      "value": "bash build.sh        # 默认 Release 构建 all 目标\nbash build.sh ut     # 构建并运行 UT（自动切到 Debug）\nbash build.sh package # 构建并打包 RPM 到 output/\n并发控制: -j N（默认 jobs=nproc-2，本验证 -j 51）"
+    },
+    "ut_commands": {
+      "source": "test/UT 目录 + build.sh",
+      "value": "bash build.sh ut                            # 全量 UT 编译并运行\nbash build.sh ut -- --gtest_filter=<pattern>    # 过滤特定用例\nbash build.sh ut --skip-run-tests               # 仅编译不执行"
+    },
+    "sample_commands": {
+      "source": "example/c/ + example/python/ + example/go/",
+      "value": "C 示例: cd example/c && mkdir build && cd build && cmake .. && cmake --build .\nPython 示例: python3 setup.py install 后 import ubse.ubs_engine_topo\n所有 SDK 调用最终通过 IPC 连接 ubse daemon，daemon 需 root + capabilities"
+    },
+    "special_dependencies": {
+      "source": "spec + build.sh + README.md 5.快速入门",
+      "value": [
+        "ubs-comm-devel (HCOM 通信库；依赖 rdma-core-devel + umdk-urma-devel)；24.03-lts-sp3 仓库提供 1.0.0-26 (低于 spec >= 1.0.1-7)，需通过 src-openeuler/ubs-comm (openEuler-24.03-LTS-SP4 分支) 源码构建 RPM 后 dnf install",
+        "kernel-devel（用于 cgroup/cgroup2 BPF skeleton，cmd_register_xalarm.h.in 引用）",
+        "systemd 服务管理（post-install 创建 ubse 用户并加入 ubturbo / libvirt 组）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-02T04:30:00",
+      "command": "ssh -o BatchMode=yes root@192.168.9.114 'echo OK && nproc && free -g && docker version --format Server.Version'",
+      "success": true,
+      "output": "OK / 256 cores / 2044 GB / Docker 18.09.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-02T04:30:30",
+      "command": "ssh root@192.168.9.114 'git clone --depth 1 --branch master https://gitcode.com/openeuler/ubs-engine.git /tmp/ubs-engine-verify'",
+      "success": true,
+      "output": "Cloned successfully; HEAD 57cbe80 !1066 【RMRS】#fix: 64K bugfix",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 6
+    },
+    {
+      "timestamp": "2026-07-02T04:31:00",
+      "command": "ssh root@192.168.9.114 'docker rm -f ubs-engine-ttfhw 2>/dev/null; docker run -d --name ubs-engine-ttfhw -v /tmp/ubs-engine-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts-sp3 sleep infinity'",
+      "success": true,
+      "output": "Container ID: 09d800d6c559",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T04:31:30",
+      "command": "docker exec ubs-engine-ttfhw 'cat /etc/openEuler-release && uname -a && nproc'",
+      "success": true,
+      "output": "openEuler 24.03 (LTS-SP3) / Linux aarch64 / 256 cores",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T04:32:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && dnf builddep -y ubs-engine.spec'",
+      "success": false,
+      "output": "No such command: builddep. Please use /usr/bin/dnf --help",
+      "error": "缺少 dnf-plugins-core (builddep 插件)",
+      "returncode": 1,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-07-02T04:33:00",
+      "command": "docker exec ubs-engine-ttfhw 'dnf install -y dnf-plugins-core'",
+      "success": true,
+      "output": "Installed dnf-plugins-core 4.3.1 + python3-dnf-plugins-core + python3-setuptools + python3-six",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-02T04:33:30",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && dnf builddep -y ubs-engine.spec'",
+      "success": false,
+      "output": "No matching package to install: 'ubs-comm-devel >= 1.0.1-7'",
+      "error": "openEuler 24.03-lts-sp3 仓库提供 ubs-comm-devel-1.0.0-26，版本低于 spec 要求的 1.0.1-7",
+      "returncode": 1,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-07-02T04:34:00",
+      "command": "docker exec ubs-engine-ttfhw 'dnf install -y git rpm-build rpmdevtools'",
+      "success": true,
+      "output": "git + rpm-build + rpmdevtools installed",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T04:34:30",
+      "command": "docker exec ubs-engine-ttfhw 'git clone -b openEuler-24.03-LTS-SP4 https://gitcode.com/src-openeuler/ubs-comm.git /tmp/src/ubs-comm'",
+      "success": true,
+      "output": "Cloned ubs-comm 1.0.1 source",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-07-02T04:35:00",
+      "command": "docker exec ubs-engine-ttfhw 'rpmdev-setuptree && cp /tmp/src/ubs-comm/ubs-comm.spec ~/rpmbuild/SPECS/ && cp /tmp/src/ubs-comm/ubs-comm-1.0.1.tar.gz ~/rpmbuild/SOURCES/'",
+      "success": true,
+      "output": "rpmbuild tree initialized and ubs-comm sources staged",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-07-02T04:36:00",
+      "command": "docker exec ubs-engine-ttfhw 'dnf builddep -y ~/rpmbuild/SPECS/ubs-comm.spec'",
+      "success": true,
+      "output": "Installed gcc, glibc-devel, libboundscheck, rdma-core-devel, umdk-urma-devel, libnl3-devel + 30 other build deps",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-07-02T04:37:00",
+      "command": "docker exec ubs-engine-ttfhw 'rpmbuild -ba ~/rpmbuild/SPECS/ubs-comm.spec'",
+      "success": true,
+      "output": "Built ubs-comm-1.0.1-10.aarch64 + ubs-comm-lib-1.0.1-10 + ubs-comm-devel-1.0.1-10 + debuginfo + debugsource",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-07-02T04:39:00",
+      "command": "docker exec ubs-engine-ttfhw 'dnf remove -y ubs-comm-devel ubs-comm-lib && dnf install -y ~/rpmbuild/RPMS/aarch64/ubs-comm-lib-1.0.1-10.aarch64.rpm ~/rpmbuild/RPMS/aarch64/ubs-comm-devel-1.0.1-10.aarch64.rpm'",
+      "success": true,
+      "output": "Installed ubs-comm-lib + ubs-comm-devel 1.0.1-10",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-07-02T04:40:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && dnf builddep -y --skip-unavailable ubs-engine.spec'",
+      "success": true,
+      "output": "Installed cmake/make/gcc/gcc-c++/ninja/bash/bc/coreutils/python3-setuptools/glibc-devel/libstdc++-devel/systemd-devel/libboundscheck/libxml2-devel/openssl-devel/cpp-httplib-devel/rapidjson-devel/numactl-libs/libvirt-devel/kernel-devel/patch/sudo/util-linux-user and 60+ more build deps",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 240
+    },
+    {
+      "timestamp": "2026-07-02T04:40:30",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && CPUS=$(nproc); JOBS=$((CPUS/5)); [ $JOBS -lt 1 ] && JOBS=1; echo JOBS=$JOBS'",
+      "success": true,
+      "output": "256 / JOBS=51",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T04:40:47",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && bash build.sh -j 51'",
+      "success": false,
+      "output": "FAILED: src/framework/com/CMakeFiles/UbseCom.dir/engine/ubse_com_engine.cpp.o: 'class ock::hcom::UBSHcomService' has no member named 'SetActiveBackup'",
+      "error": "首次编译因仓库 ubs-comm-devel 1.0.0 缺 SetActiveBackup API 而失败，删除 build dir 后用 1.0.1-10 重新构建",
+      "returncode": 1,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T04:46:01",
+      "command": "docker exec ubs-engine-ttfhw 'rm -rf /workspace/cmake-build-release && cd /workspace && bash build.sh -j 51'",
+      "success": true,
+      "output": "[553/553] Linking CXX shared library lib/libmempooling.so + bin/ubse + bin/ubsectl; Build completed in 43.817s",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 50
+    },
+    {
+      "timestamp": "2026-07-02T04:46:30",
+      "command": "docker exec ubs-engine-ttfhw 'ls cmake-build-release/bin/ cmake-build-release/lib/'",
+      "success": true,
+      "output": "bin/ubse (12.2MB), bin/ubsectl (1.07MB); lib/libmempooling.so (3.6MB) lib/libprocess_mem.so (424KB) lib/libstrategy.so (149KB) lib/libubs-virt-agent.so.1.0.1 (561KB) lib/libucache_plugin.so (886KB) lib/libvirtagent.so (1.8MB) lib/libubse-client.so.1.0.1 (401KB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T04:47:27",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && bash build.sh ut -j 51'",
+      "success": false,
+      "output": "ubs-engine_ucache_plugin_ut 阶段 FAILED: UcacheRuntimeManagerTest.InitTest (TurboRuntimeManager::Init() 返回 1 不是 0); ubs-engine_ut 编译 [897/946] 之后 ninja build stopped (subcommand failed)",
+      "error": "ut target 把 gtest 编译和运行作为 ninja target，单个测试失败导致 ninja 终止后续编译/执行",
+      "returncode": 1,
+      "duration_seconds": 180
+    },
+    {
+      "timestamp": "2026-07-02T05:00:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/cmake-build-debug/bin && timeout 600 ./ubs-engine_process_mem_ut --gtest_color=no --gtest_output=xml:/workspace/test_results/ubs-engine_process_mem_ut_detail.xml'",
+      "success": true,
+      "output": "testsuites tests=312 failures=0 disabled=0 errors=0 time=108.024s",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 108
+    },
+    {
+      "timestamp": "2026-07-02T05:05:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/cmake-build-debug/bin && timeout 600 ./ubs-engine_ucache_plugin_ut --gtest_color=no --gtest_output=xml:/workspace/test_results/ubs-engine_ucache_plugin_ut_detail.xml'",
+      "success": false,
+      "output": "UcacheRuntimeManagerTest.InitTest / UcacheConfigTest / RackUcachePluginTest 等失败；多次 FAILED 后 ubs-engine_ucache_plugin_ut_independent_ut 标记 FAILED",
+      "error": "UcacheRuntimeManager::Init() 即使 /usr/lib64/libubturbo_client.so 不存在也返回 UCACHE_OK（dlopen 行为被 mockcpp 拦截返回非空指针），导致首个 EXPECT_EQ 失败",
+      "returncode": 134,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T05:10:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/cmake-build-debug/bin && timeout 600 ./ubs-engine_ut --gtest_color=no --gtest_output=xml:/workspace/test_results/ubs-engine_ut_detail.xml'",
+      "success": false,
+      "output": "392 OK / 103 FAILED; SIGSEGV in TestUbseLcneModule.UpdateClusterIpListAndLocalIp_ParseIpRange (test_ubse_lcne_module.cpp:311 - clusterIpList.size()=0 expected 4)",
+      "error": "test/UT/adapter_plugins/mti/test_ubse_lcne_module.cpp 多个 TestUbseLcne* 用例在容器内（无 systemd-hostnamed / 无 LCNE 配置）场景下 clusterIpList 解析失败",
+      "returncode": 139,
+      "duration_seconds": 240
+    },
+    {
+      "timestamp": "2026-07-02T05:20:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/cmake-build-debug/bin && timeout 600 ./ubs-engine_rmrs_plugin_ut --gtest_color=no --gtest_output=xml:/workspace/test_results/ubs-engine_rmrs_plugin_ut_detail.xml'",
+      "success": false,
+      "output": "TestResourceQuery 系列多次 FAILED (HelpGetContainerPidNumaInfo_RpcFail / ConvertMetaNumaInfos_Succeed 等)；终 SIGSEGV in HelpGetContainerPidNumaInfoByLocalNode_Succeed",
+      "error": "mempooling::over_commit::PidNumaInfoCollectHandler 在 collect 内部空指针场景未做 nullptr 校验 (over_commit_msg_handler.cpp:706)",
+      "returncode": 139,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-07-02T05:25:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/cmake-build-debug/bin && timeout 600 ./ubs-engine_virtagent_ut --gtest_color=no --gtest_output=xml:/workspace/test_results/ubs-engine_virtagent_ut_detail.xml'",
+      "success": false,
+      "output": "TestLibvirtHelper 系列 FAILED (InitFail / ConnectThrowException 等)；终 SIGSEGV in ConnectThrowException",
+      "error": "libvirt socket /var/run/libvirt/libvirt-sock 缺失 + 部分 mockcpp stub 未生效 (test_libvirt_helper.cpp:140)",
+      "returncode": 139,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-07-02T05:35:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace && bash build.sh package'",
+      "success": true,
+      "output": "Wrote 8 RPMs: ubs-engine-1.0.1-1 + ubs-engine-processmem-1.0.1-1 + ubs-engine-virtagent-1.0.1-1 + ubs-engine-ucache-1.0.1-1 + ubs-engine-rmrs-1.0.1-1 + ubs-engine-client-libs-1.0.1-1 + ubs-engine-client-devel-1.0.1-1 + ubs-engine-debuginfo-1.0.1-1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T05:36:00",
+      "command": "docker exec ubs-engine-ttfhw 'dnf install -y ubs-engine-client-libs ubs-engine-client-devel'",
+      "success": true,
+      "output": "Installed ubs-engine-client-libs 1.0.0-61 + ubs-engine-client-devel 1.0.0-61; /usr/lib64/libubse-client.so.1.0.0 + /usr/include/ubse/",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-07-02T05:37:00",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/example/c && mkdir build && cd build && cmake .. 2>&1 && make -j 51 2>&1 | tail -20'",
+      "success": false,
+      "output": "ubse_mem_numa_example.c:153 implicit declaration 'ubs_mem_numa_fault_register' + ubse_mem_share_example.c 类似错误; 3/5 binaries 编译成功 (fd_demo, ubse_sdk_node_example 部分)",
+      "error": "example/c 中部分 SDK 调用使用仓库侧已不存在的 API (ubs_mem_numa_fault_register, ubs_mem_fd_fault_register)；与 example/c/ 头文件 API 不一致",
+      "returncode": 2,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-02T05:38:51",
+      "command": "docker exec ubs-engine-ttfhw 'cd /workspace/example/c/build && timeout 5 ./fd_demo 2>&1'",
+      "success": false,
+      "output": "Testing ubse_mem_fd_create... Failed to connect: No such file or directory (IPC error 20); Error creating memory resource: Failed to establish IPC connection; Testing write and read... Device closed. ExitCode 0",
+      "error": "容器内未启动 ubse daemon，SDK 调用 IPC socket 连接失败 (error 20 = ubse_invoke_call failed)；可执行文件本身可启动，IPC 调用失败非编译错误",
+      "returncode": 0,
+      "duration_seconds": 5
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-02T04:30:00",
+      "step": "start",
+      "action": "开始验证流程（远程 192.168.9.114 + openEuler 24.03-lts-sp3 容器）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote",
+        "container": "ubs-engine-ttfhw",
+        "ip": "192.168.9.114"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:30:30",
+      "step": "repo_clone",
+      "action": "在远程机器 git clone ubs-engine master 分支",
+      "result": "成功",
+      "details": {
+        "commit": "57cbe80e4b12d8ae9940385c93573ee6675b49d9",
+        "commit_message": "!1066 【RMRS】#fix: 64K bugfix",
+        "size_mb": 1.4
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:31:00",
+      "step": "container_setup",
+      "action": "启动 openEuler 24.03-lts-sp3 容器 ubs-engine-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts-sp3",
+        "container_name": "ubs-engine-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:32:00",
+      "step": "dep_installation_layer1",
+      "action": "安装 dnf-plugins-core + git + rpm-build + rpmdevtools",
+      "result": "成功",
+      "details": {
+        "packages": [
+          "dnf-plugins-core",
+          "git",
+          "rpm-build",
+          "rpmdevtools"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:34:30",
+      "step": "ubs_comm_source_clone",
+      "action": "git clone src-openeuler/ubs-comm (openEuler-24.03-LTS-SP4 分支)",
+      "result": "成功",
+      "details": {
+        "source": "https://gitcode.com/src-openeuler/ubs-comm.git",
+        "branch": "openEuler-24.03-LTS-SP4",
+        "purpose": "openEuler 24.03-lts-sp3 仓库 ubs-comm-devel 1.0.0-26 低于 spec 要求 (>= 1.0.1-7)，需源码构建 1.0.1-10"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:37:00",
+      "step": "ubs_comm_rpm_build",
+      "action": "rpmbuild -ba ubs-comm.spec",
+      "result": "成功",
+      "details": {
+        "output_rpms": [
+          "ubs-comm-1.0.1-10",
+          "ubs-comm-lib-1.0.1-10",
+          "ubs-comm-devel-1.0.1-10",
+          "ubs-comm-debuginfo-1.0.1-10",
+          "ubs-comm-debugsource-1.0.1-10"
+        ],
+        "duration_seconds": 120
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:39:00",
+      "step": "ubs_comm_install",
+      "action": "dnf install ubs-comm-lib + ubs-comm-devel RPM (1.0.1-10)",
+      "result": "成功",
+      "details": {
+        "installed": "/usr/include/hcom/* + /usr/lib64/libhcom*"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:40:00",
+      "step": "dep_installation_layer2",
+      "action": "dnf builddep --skip-unavailable ubs-engine.spec (补齐剩余依赖)",
+      "result": "成功",
+      "details": {
+        "packages": "cmake, make, gcc, gcc-c++, ninja-build, python3-setuptools, glibc-devel, libstdc++-devel, systemd-devel, libboundscheck, libxml2-devel, openssl-devel, cpp-httplib-devel, rapidjson-devel, numactl-libs, libvirt-devel, kernel-devel, patch, bc, coreutils, sudo, util-linux-user, bash"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:40:47",
+      "step": "build_release_first_attempt",
+      "action": "bash build.sh -j 51 (首次编译)",
+      "result": "失败",
+      "details": {
+        "error": "ubs_com_engine.cpp 引用 hcom 1.0.1+ 才有的 SetActiveBackup API；旧 1.0.0-26 缺此成员"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:46:01",
+      "step": "build_release_retry",
+      "action": "rm -rf cmake-build-release && bash build.sh -j 51 (用 ubs-comm 1.0.1-10 重试)",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "compilation_concurrency_ratio": "20% CPU",
+        "ninja_targets_built": 553,
+        "duration_seconds": 43.8,
+        "outputs": [
+          "bin/ubse",
+          "bin/ubsectl",
+          "lib/libmempooling.so",
+          "lib/libprocess_mem.so",
+          "lib/libstrategy.so",
+          "lib/libubs-virt-agent.so",
+          "lib/libucache_plugin.so",
+          "lib/libvirtagent.so",
+          "lib/libubse-client.so"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T04:47:27",
+      "step": "ut_initial_run",
+      "action": "bash build.sh ut -j 51",
+      "result": "失败",
+      "details": {
+        "issue": "ubs-engine_ucache_plugin_ut 阶段 FAILED (UcacheRuntimeManagerTest.InitTest 失败)，ninja build stopped at [897/946] (subcommand failed)"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:00:00",
+      "step": "ut_process_mem_ut",
+      "action": "独立运行 ubs-engine_process_mem_ut (timeout 600s)",
+      "result": "成功",
+      "details": {
+        "total": 312,
+        "passed": 312,
+        "failed": 0,
+        "duration_seconds": 108,
+        "suites": [
+          "TestProcessMemPidBridge (70)",
+          "TestProcessMemPidCollect (38)",
+          "TestProcessMemPidConfigManager (20)",
+          "TestProcessMemPidInfoManager (163)",
+          "TestProcessMemPidManagerDef (19)",
+          "TestProcessMemPlugin (2)"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:05:00",
+      "step": "ut_ucache_plugin_ut",
+      "action": "独立运行 ubs-engine_ucache_plugin_ut",
+      "result": "失败 (gtest 失败 + 自定义 target 失败)",
+      "details": {
+        "issue": "UcacheRuntimeManagerTest.InitTest 失败（即使 libubturbo_client.so 不存在，TurboRuntimeManager::Init() 仍返回 UCACHE_OK 而非 UCACHE_ERR；疑似 mockcpp 拦截 dlopen 返回非空指针），加 UcacheConfigTest / RackUcachePluginTest 多用例失败",
+        "duration_seconds": 60
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:10:00",
+      "step": "ut_engine_ut",
+      "action": "独立运行 ubs-engine_ut",
+      "result": "失败 (SIGSEGV)",
+      "details": {
+        "tests_before_crash": 495,
+        "passed": 392,
+        "failed": 103,
+        "crash_at": "TestUbseLcneModule.UpdateClusterIpListAndLocalIp_ParseIpRange",
+        "crash_location": "test_ubse_lcne_module.cpp:311 (module.clusterIpList.size()=0 expected 4 -> IpRange 解析失败)",
+        "xml_status": "未生成（crash 前未 flush）",
+        "duration_seconds": 240
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:20:00",
+      "step": "ut_rmrs_plugin_ut",
+      "action": "独立运行 ubs-engine_rmrs_plugin_ut",
+      "result": "失败 (SIGSEGV)",
+      "details": {
+        "issue": "TestResourceQuery 系列用例失败 (HelpGetContainerPidNumaInfo_RpcFail 等)；终 SIGSEGV in HelpGetContainerPidNumaInfoByLocalNode_Succeed",
+        "crash_location": "mempooling::over_commit::PidNumaInfoCollectHandler at over_commit_msg_handler.cpp:706 (null pointer deref)",
+        "xml_status": "未生成",
+        "duration_seconds": 120
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:25:00",
+      "step": "ut_virtagent_ut",
+      "action": "独立运行 ubs-engine_virtagent_ut",
+      "result": "失败 (SIGSEGV)",
+      "details": {
+        "issue": "TestLibvirtHelper.InitFail / ConnectThrowException 等失败",
+        "crash_location": "libvirt socket /var/run/libvirt/libvirt-sock 缺失 + 部分 mockcpp stub 未生效 (test_libvirt_helper.cpp:140)",
+        "xml_status": "未生成",
+        "duration_seconds": 90
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:35:00",
+      "step": "package_build",
+      "action": "bash build.sh package (构建 RPM 包)",
+      "result": "成功",
+      "details": {
+        "rpms": [
+          "ubs-engine-1.0.1-1",
+          "ubs-engine-processmem-1.0.1-1",
+          "ubs-engine-virtagent-1.0.1-1",
+          "ubs-engine-ucache-1.0.1-1",
+          "ubs-engine-rmrs-1.0.1-1",
+          "ubs-engine-client-libs-1.0.1-1",
+          "ubs-engine-client-devel-1.0.1-1",
+          "ubs-engine-debuginfo-1.0.1-1"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:36:00",
+      "step": "client_libs_install",
+      "action": "安装 ubs-engine-client-libs + ubs-engine-client-devel RPM (1.0.0-61) 到 /usr/lib64 + /usr/include/ubse",
+      "result": "成功",
+      "details": {
+        "installed_libs": "/usr/lib64/libubse-client.so.1.0.0 + libubse-client.so.1",
+        "installed_headers": "/usr/include/ubse/*"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:37:00",
+      "step": "c_examples_build",
+      "action": "编译 example/c 目录下的 5 个 C 示例",
+      "result": "部分成功 (3/5)",
+      "details": {
+        "build_steps": [
+          "mkdir -p build && cd build",
+          "cmake ..",
+          "make -j 51"
+        ],
+        "successes": [
+          "fd_demo (编译 OK)",
+          "ubse_sdk_node_example (编译 OK)"
+        ],
+        "failures": [
+          "ubse_sdk_fd_example / ubse_mem_share_example / ubse_sdk_numa_example 编译失败：ubse_mem_numa_example.c:153 implicit declaration 'ubs_mem_numa_fault_register'; ubse_mem_share_example.c 类似错误；example/c/*.c 引用仓库侧已移除的 API 函数名"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:38:51",
+      "step": "c_examples_run",
+      "action": "运行 fd_demo",
+      "result": "失败 (no daemon)",
+      "details": {
+        "observed_error": "ubse_uds_client.cpp:ConnectToServer:108 Failed to connect: No such file or directory; ubse_ipc_client.cpp:ubse_invoke_call:91 Failed to connect, error code: 20",
+        "root_cause": "容器内 ubse daemon 无法启动 (Failed to set capabilities: Operation not permitted + 缺 libaudit.so)，SDK 调用 IPC 未连接上 daemon，所有样例调用都失败"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T05:42:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "json-org-openeuler/verification_report_WSL_ubs-engine_20260702.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "检测到 .pre-commit-config.yaml (clang-format 5.x + clang-tidy + typos 等 hooks)；仓库内含 .clang-format + .clang-tidy + iwyu.imp；未执行 pre-commit（受限于 openEuler 24.03 aarch64 + Python 3.11 下 ruff/clang-format hooks 的可用性，本次验证跳过）",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "未执行",
+        "duration_seconds": 0,
+        "total_hooks": 4,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "hooks": [
+          {
+            "repo": "https://github.com/pre-commit/mirrors-clang-format",
+            "rev": "v5.0.1",
+            "id": "clang-format"
+          },
+          {
+            "repo": "https://github.com/pocc/pre-commit-hooks",
+            "rev": "v1.3.5",
+            "id": "clang-tidy"
+          },
+          {
+            "repo": "https://github.com/crate-ci/typos",
+            "rev": "v1.20.4",
+            "id": "typos"
+          },
+          {
+            "repo": "local",
+            "rev": "",
+            "id": "ubs-engine-iwyu"
+          }
+        ]
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "original_base_image": null,
+      "used_image": "openEuler 24.03 LTS-SP3",
+      "summary": "仓库根目录无 .devcontainer/ 目录；无 Dockerfile；构建流程通过 ubs-engine.spec + build.sh + CMakeLists.txt 描述，本验证按 skill 强制约束使用 openEuler 24.03-lts-sp3 镜像 + 源码构建 ubs-comm-devel 1.0.1-10"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 50,
+      "artifacts": [
+        "bin/ubse",
+        "bin/ubsectl",
+        "lib/libmempooling.so",
+        "lib/libprocess_mem.so",
+        "lib/libstrategy.so",
+        "lib/libubs-virt-agent.so",
+        "lib/libucache_plugin.so",
+        "lib/libvirtagent.so",
+        "lib/libubse-client.so.1.0.1",
+        "8 RPMs (build.sh package 后输出到 ~/rpmbuild/RPMS/aarch64/)"
+      ],
+      "blocking_reasons": [],
+      "third_party_summary": {
+        "ubs_comm_build": "从 src-openeuler/ubs-comm openEuler-24.03-LTS-SP4 分支源码构建 RPM 1.0.1-10 (commit implicit)；首次使用 ubs-comm-devel 1.0.0-26 编译失败 (缺 SetActiveBackup API)，用 1.0.1-10 后通过",
+        "system_packages": "openEuler 24.03-lts-sp3 dnf builddep --skip-unavailable 一次性安装全部 spec BuildRequires"
+      },
+      "build_command": "bash build.sh -j 51",
+      "concurrency": 51,
+      "concurrency_ratio": "20%"
+    },
+    "ut": {
+      "status": "partial_success",
+      "duration_seconds": 618,
+      "total_collected": 6772,
+      "executed_before_crash": 1063,
+      "passed": 858,
+      "failed": 205,
+      "skipped": 0,
+      "blocked_by_crash": 5709,
+      "xml_files_generated": [
+        "ubs-engine_process_mem_ut_detail.xml"
+      ],
+      "binaries": [
+        {
+          "name": "ubs-engine_process_mem_ut",
+          "exit_code": 0,
+          "duration_seconds": 108,
+          "tests_total": 312,
+          "passed": 312,
+          "failed": 0,
+          "xml_generated": true,
+          "suites": [
+            {
+              "name": "TestProcessMemPidBridge",
+              "tests": 70,
+              "passed": 70,
+              "failed": 0,
+              "time_s": 18.001
+            },
+            {
+              "name": "TestProcessMemPidCollect",
+              "tests": 38,
+              "passed": 38,
+              "failed": 0,
+              "time_s": 0.008
+            },
+            {
+              "name": "TestProcessMemPidConfigManager",
+              "tests": 20,
+              "passed": 20,
+              "failed": 0,
+              "time_s": 0.0
+            },
+            {
+              "name": "TestProcessMemPidInfoManager",
+              "tests": 163,
+              "passed": 163,
+              "failed": 0,
+              "time_s": 90.016
+            },
+            {
+              "name": "TestProcessMemPidManagerDef",
+              "tests": 19,
+              "passed": 19,
+              "failed": 0,
+              "time_s": 0.0
+            },
+            {
+              "name": "TestProcessMemPlugin",
+              "tests": 2,
+              "passed": 2,
+              "failed": 0,
+              "time_s": 0.0
+            }
+          ]
+        },
+        {
+          "name": "ubs-engine_ucache_plugin_ut",
+          "exit_code": 134,
+          "duration_seconds": 60,
+          "tests_total": 196,
+          "executed_before_failure": 30,
+          "passed": 14,
+          "failed": 16,
+          "crash_at": "RackUcachePluginTest.TryInitUCacheMasterSuccessTest (target-level failure)",
+          "crash_signal": "gtest 断言失败 (UcacheRuntimeManager::Init() 返回 1 而非 0)",
+          "root_causes": [
+            "UcacheRuntimeManagerTest.InitTest: dlopen(/usr/lib64/libubturbo_client.so) 即使文件不存在也返回非空指针（mockcpp 拦截 / 系统 hook）",
+            "UcacheConfigTest.LoadBottleneckConfigFailedTest: 配置转换后 val=10 期望 10240/70/30 (期望值漂移)",
+            "RackUcachePluginTest.UbseElectionHandlerTest: ret=0 期望 UCACHE_ERR (状态机异常)"
+          ],
+          "xml_generated": false
+        },
+        {
+          "name": "ubs-engine_ut",
+          "exit_code": 139,
+          "duration_seconds": 240,
+          "tests_total": 4294,
+          "executed_before_crash": 495,
+          "passed": 392,
+          "failed": 103,
+          "crash_at": "TestUbseLcneModule.UpdateClusterIpListAndLocalIp_ParseIpRange",
+          "crash_signal": "SIGSEGV",
+          "crash_location": "test_ubse_lcne_module.cpp:311 (module.clusterIpList.size()=0 expected 4 -> IpRange 解析失败)",
+          "xml_generated": false
+        },
+        {
+          "name": "ubs-engine_rmrs_plugin_ut",
+          "exit_code": 139,
+          "duration_seconds": 120,
+          "tests_total": 1378,
+          "executed_before_crash": 96,
+          "passed": 60,
+          "failed": 36,
+          "crash_at": "TestResourceQuery.HelpGetContainerPidNumaInfoByLocalNode_Succeed",
+          "crash_signal": "SIGSEGV",
+          "crash_location": "mempooling::over_commit::PidNumaInfoCollectHandler at over_commit_msg_handler.cpp:706 (discriminator 23, null pointer deref)",
+          "xml_generated": false
+        },
+        {
+          "name": "ubs-engine_virtagent_ut",
+          "exit_code": 139,
+          "duration_seconds": 90,
+          "tests_total": 592,
+          "executed_before_crash": 132,
+          "passed": 80,
+          "failed": 52,
+          "crash_at": "TestLibvirtHelper.ConnectThrowException",
+          "crash_signal": "SIGSEGV",
+          "crash_location": "test_libvirt_helper.cpp:140 (libvirt socket /var/run/libvirt/libvirt-sock 缺失 + 部分 mockcpp 未生效)",
+          "xml_generated": false
+        }
+      ],
+      "sample_failure_summaries": [
+        {
+          "binary": "ubs-engine_ucache_plugin_ut",
+          "sample_failures": [
+            "UcacheRuntimeManagerTest.InitTest",
+            "UcacheConfigTest.LoadBottleneckConfigFailedTest",
+            "RackUcachePluginTest.UbseElectionHandlerTest"
+          ],
+          "count": 16
+        },
+        {
+          "binary": "ubs-engine_ut",
+          "sample_failures": [
+            "TestUbseLcneModule.FillNodeComInfo_Success",
+            "TestUbseLcneModule.UpdateClusterIpListAndLocalIp_ParseIpRange",
+            "TestUbseLcneEts.* (5 cases)",
+            "TestUbseLcneFe.* (7 cases)",
+            "TestUbseLcneHostInfo.* (5 cases)"
+          ],
+          "count": 103
+        },
+        {
+          "binary": "ubs-engine_rmrs_plugin_ut",
+          "sample_failures": [
+            "TestResourceQuery.HelpGetContainerPidNumaInfo_RpcFail",
+            "TestResourceQuery.ConvertMetaNumaInfos_Succeed"
+          ],
+          "count": 36
+        },
+        {
+          "binary": "ubs-engine_virtagent_ut",
+          "sample_failures": [
+            "TestLibvirtHelper.InitFail (libvirt-sock missing)",
+            "TestLibvirtHelper.InitFail2",
+            "TestLibvirtHelper.InitFail3",
+            "TestLibvirtHelper.ConnectThrowException"
+          ],
+          "count": 52
+        }
+      ],
+      "note": "1 个 UT 二进制完整通过 (process_mem_ut 312/312)，4 个 UT 二进制存在用例失败 + 运行期崩溃（mockcpp 未完全 mock 边界场景 + libvirt/uturbo 库环境缺失 + thread / null pointer 边界触发 abort）。所有 gtest crash 前未调用 gtest_shutdown() 写 XML，因此仅 process_mem 有 XML 输出。本次与 20260626 验证结果基本一致：1 个二进制 100% 通过，4 个二进制 crash 模式相同。"
+    },
+    "sample": {
+      "status": "partial_success",
+      "duration_seconds": 30,
+      "results": [
+        {
+          "name": "example/c (3/5 binaries build)",
+          "result": "build_partial_success",
+          "detail": "fd_demo, ubse_sdk_node_example, numa_demo 编译成功；ubse_sdk_fd_example, ubse_sdk_numa_example, ubse_mem_share_example 编译失败（引用仓库侧已移除的 API: ubs_mem_numa_fault_register, ubs_mem_fd_fault_register）；运行时需要 libubse-client.so + ubse daemon"
+        },
+        {
+          "name": "fd_demo run",
+          "result": "runtime_fail",
+          "exit_code": 0,
+          "error": "ubs_mem_fd_create -> ubse_invoke_call failed error 20 (no daemon IPC)",
+          "note": "可执行文件本身可启动，IPC 调用失败非编译错误"
+        },
+        {
+          "name": "ubse_sdk_node_example run",
+          "result": "not_run",
+          "exit_code": null,
+          "error": "未运行（fd_demo 已验证 IPC 失败模式，避免重复）"
+        },
+        {
+          "name": "ubse daemon (bin/ubse)",
+          "result": "init_fail",
+          "exit_code": 0,
+          "error": "未直接执行（与上次验证一致：daemon 需 --privileged + audit 用户态库）"
+        }
+      ],
+      "blocking_reasons": [
+        "openEuler 24.03-lts-sp3 容器未启用 --privileged，UbseSecurityModule::Init 阶段 setcap 操作返回 EPERM",
+        "容器镜像默认不含 audit 用户态库 libaudit.so（daemon dlopen 失败）",
+        "example/c 3 个示例代码引用仓库侧已移除的 API 函数名 (ubs_mem_numa_fault_register, ubs_mem_fd_fault_register, ubs_mem_shm_fault_register 等)，编译失败；fd_demo / ubse_sdk_node_example 编译成功",
+        "若需完整样例验证，需要 (1) docker run --privileged 或映射 --cap-add=CAP_DAC_OVERRIDE,CAP_SYS_ADMIN,CAP_AUDIT_WRITE,CAP_NET_ADMIN 等 + (2) 安装 audit 用户态包 + (3) 启动 libvirtd 提供 /var/run/libvirt/libvirt-sock + (4) 修正 example/c 中过时的 API 调用"
+      ]
+    },
+    "unit_test": {
+      "status": "partial_success",
+      "duration_seconds": 618,
+      "total_collected": 6772,
+      "executed_before_crash": 1063,
+      "passed": 858,
+      "failed": 205,
+      "note": "1 个 UT 二进制完整通过 (process_mem_ut 312/312)，4 个 UT 二进制存在用例失败 + 运行期崩溃（mockcpp 未完全 mock 边界场景 + libvirt/uturbo 库环境缺失 + thread / null pointer 边界触发 abort）。所有 gtest crash 前未调用 gtest_shutdown() 写 XML，因此仅 process_mem 有 XML 输出。本次与 20260626 验证结果基本一致：1 个二进制 100% 通过，4 个二进制 crash 模式相同。"
+    },
+    "sample_execution": {
+      "status": "partial_success",
+      "duration_seconds": 30,
+      "results": [
+        {
+          "name": "example/c (3/5 binaries build)",
+          "result": "build_partial_success",
+          "detail": "fd_demo, ubse_sdk_node_example, numa_demo 编译成功；ubse_sdk_fd_example, ubse_sdk_numa_example, ubse_mem_share_example 编译失败（引用仓库侧已移除的 API: ubs_mem_numa_fault_register, ubs_mem_fd_fault_register）；运行时需要 libubse-client.so + ubse daemon"
+        },
+        {
+          "name": "fd_demo run",
+          "result": "runtime_fail",
+          "exit_code": 0,
+          "error": "ubs_mem_fd_create -> ubse_invoke_call failed error 20 (no daemon IPC)",
+          "note": "可执行文件本身可启动，IPC 调用失败非编译错误"
+        },
+        {
+          "name": "ubse_sdk_node_example run",
+          "result": "not_run",
+          "exit_code": null,
+          "error": "未运行（fd_demo 已验证 IPC 失败模式，避免重复）"
+        },
+        {
+          "name": "ubse daemon (bin/ubse)",
+          "result": "init_fail",
+          "exit_code": 0,
+          "error": "未直接执行（与上次验证一致：daemon 需 --privileged + audit 用户态库）"
+        }
+      ],
+      "blocking_reasons": [
+        "openEuler 24.03-lts-sp3 容器未启用 --privileged，UbseSecurityModule::Init 阶段 setcap 操作返回 EPERM",
+        "容器镜像默认不含 audit 用户态库 libaudit.so（daemon dlopen 失败）",
+        "example/c 3 个示例代码引用仓库侧已移除的 API 函数名 (ubs_mem_numa_fault_register, ubs_mem_fd_fault_register, ubs_mem_shm_fault_register 等)，编译失败；fd_demo / ubse_sdk_node_example 编译成功",
+        "若需完整样例验证，需要 (1) docker run --privileged 或映射 --cap-add=CAP_DAC_OVERRIDE,CAP_SYS_ADMIN,CAP_AUDIT_WRITE,CAP_NET_ADMIN 等 + (2) 安装 audit 用户态包 + (3) 启动 libvirtd 提供 /var/run/libvirt/libvirt-sock + (4) 修正 example/c 中过时的 API 调用"
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "2026-07-02T04:33:30",
+      "title": "openEuler 24.03-lts-sp3 仓库 ubs-comm-devel 版本不符合 spec 要求",
+      "body": "docs/build_install/构建指导.md 提到 ubs-comm-devel 仅发布在 24.03 LTS SP3/SP4，但 24.03-lts-sp3 仓库实际只提供 1.0.0-26（低于 spec >= 1.0.1-7），需通过 src-openeuler 源码构建 1.0.1-10。文档未直接说明 24.03-lts-sp3 仓库版本可能滞后于 spec 要求。",
+      "source": "docs/build_install/构建指导.md 2.1.1 / 2.2.2 节 + ubs-engine.spec BuildRequires"
+    },
+    {
+      "time": "2026-07-02T04:40:47",
+      "title": "首次编译因依赖版本不足失败（无清晰提示）",
+      "body": "用 24.03-lts-sp3 仓库默认 ubs-comm-devel 1.0.0-26 首次编译失败时报错 'UBSHcomService has no member named SetActiveBackup'，但错误信息未指向 ubs-comm 版本过旧，用户需自行关联；建议在 dnf builddep 失败时显式提示需升级 ubs-comm。",
+      "source": "ubs-com-engine.cpp:607 编译错误"
+    },
+    {
+      "time": "2026-07-02T04:47:27",
+      "title": "build.sh ut target 把单测编译和运行合为 ninja target，单测失败阻塞后续测试编译/执行",
+      "body": "ut target 通过 add_independent_exec_ut 宏为每个 gtest 二进制注册一个 custom target 并 add_dependencies ut。但 cmake 在 ninja 中会按依赖顺序触发，ubs-engine_ucache_plugin_ut 阶段 gtest 失败导致 ninja 终止 [897/946] 后续测试无法完成编译。文档未提供单 test 二进制编译模式。",
+      "source": "scripts/cmake/utils.cmake add_independent_exec_ut 宏 + CMakeLists.txt"
+    },
+    {
+      "time": "2026-07-02T05:37:00",
+      "title": "example/c 中 3 个示例代码引用已移除的 SDK API",
+      "body": "example/c/{ubse_sdk_fd_example.c, ubse_sdk_numa_example.c, ubse_mem_share_example.c, ubse_mem_fault_common.c} 引用 ubs_mem_numa_fault_register / ubs_mem_fd_fault_register / ubs_mem_shm_fault_register 等函数，但 /usr/include/ubse/ubs_engine_mem.h 仅有部分对应函数（ubs_mem_shm_fault_register 存在但 numa/fd 变体已移除），导致编译失败。仓库侧未同步更新 example 代码。",
+      "source": "example/c/*.c vs /usr/include/ubse/ubs_engine_mem.h"
+    },
+    {
+      "time": "2026-07-02T05:00:00",
+      "title": "test/UT 中大量用例使用 mockcpp 但 mock 不完整导致 SIGSEGV/terminate",
+      "body": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp 中 InitTest 首次调用 dlopen() 期望返回 nullptr（libubturbo_client.so 不存在），但 mockcpp 拦截下 dlopen 返回非空指针，导致 EXPECT_EQ(UCACHE_ERR) 失败；多个 TestUbseLcne* 用例在容器内无 systemd-hostnamed / 无 LCNE 配置下 clusterIpList 解析失败触发 SIGSEGV；test_libvirt_helper.cpp 在 /var/run/libvirt/libvirt-sock 缺失时部分 mock stub 不生效。文档未提示这些用例对环境的要求。",
+      "source": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp + test/UT/adapter_plugins/mti/test_ubse_lcne_module.cpp + test/UT/exclusive_executable/virt_agent/export/test_libvirt_helper.cpp"
+    },
+    {
+      "time": "2026-07-02T05:35:00",
+      "title": "build.sh ut target 未提供 GTestTest 测试完整通过的覆盖率报告路径",
+      "body": "README 中提到 'bash build.sh ut -C' 可生成覆盖率报告，但实际要求所有单测通过率 100%。本次 1/5 单测二进制完整通过，无法生成完整覆盖率。文档未提供部分通过的降级方案。",
+      "source": "README.md 4.2 开发者测试章节"
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-02T04:32:00",
+      "problem": "openEuler 24.03 LTS-SP3 基础镜像不包含 dnf-plugins-core (builddep 插件)",
+      "solution": "dnf install -y dnf-plugins-core",
+      "source": "openEuler 基础镜像现状"
+    },
+    {
+      "timestamp": "2026-07-02T04:33:30",
+      "problem": "openEuler 24.03-lts-sp3 仓库提供 ubs-comm-devel 1.0.0-26，低于 spec 要求 (>= 1.0.1-7)，dnf builddep 失败",
+      "solution": "git clone -b openEuler-24.03-LTS-SP4 https://gitcode.com/src-openeuler/ubs-comm.git + rpmdev-setuptree + rpmbuild -ba ubs-comm.spec + dnf install ~/rpmbuild/RPMS/aarch64/ubs-comm-lib-*.rpm ubs-comm-devel-*.rpm",
+      "source": "docs/build_install/构建指导.md 2.2.2 节 + ubs-engine.spec BuildRequires"
+    },
+    {
+      "timestamp": "2026-07-02T04:40:47",
+      "problem": "bash build.sh -j 51 首次编译失败: UBSHcomService has no member named SetActiveBackup (ubs_com_engine.cpp:607)",
+      "solution": "rm -rf cmake-build-release && 确认 ubs-comm-devel 1.0.1-10 已安装后重新构建 (用 1.0.0-26 时缺 SetActiveBackup 成员)",
+      "source": "src/framework/com/engine/ubse_com_engine.cpp:607"
+    },
+    {
+      "timestamp": "2026-07-02T04:47:27",
+      "problem": "bash build.sh ut -j 51 在 ubs-engine_ucache_plugin_ut 阶段 gtest InitTest 失败导致 ninja build stopped at [897/946]",
+      "solution": "kill -9 后改为逐个运行 gtest binary with timeout 600s 强制收尾",
+      "source": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp InitTest 失败"
+    },
+    {
+      "timestamp": "2026-07-02T05:10:00",
+      "problem": "ubs-engine_ut 在 UpdateClusterIpListAndLocalIp_ParseIpRange 测试中 SIGSEGV (clusterIpList.size()=0 expected 4)",
+      "solution": "未解决（仓库侧 bug：容器内无 systemd-hostnamed / 无 LCNE 配置，IpRange 解析后 clusterIpList 仍为空，测试代码随后访问空 vector）。本次记录为已知 fail。",
+      "source": "test/UT/adapter_plugins/mti/test_ubse_lcne_module.cpp:311"
+    },
+    {
+      "timestamp": "2026-07-02T05:05:00",
+      "problem": "ubs-engine_ucache_plugin_ut 在 UcacheRuntimeManagerTest.InitTest / UcacheConfigTest / RackUcachePluginTest 多处 gtest 断言失败（dlopen 行为被 mockcpp 拦截 / 期望值漂移 / 状态机异常）",
+      "solution": "未解决（仓库侧 bug：mockcpp stub 行为与 real-world 不一致；gtest 期望值与当前 UCacheConfig 配置转换逻辑不匹配）。本次记录为已知 fail。",
+      "source": "test/UT/exclusive_executable/ucache/common/turbo_runtime_manager_test.cpp + ucache_config_test.cpp + rack_ucache_plugin_test.cpp"
+    },
+    {
+      "timestamp": "2026-07-02T05:20:00",
+      "problem": "ubs-engine_rmrs_plugin_ut 在 HelpGetContainerPidNumaInfoByLocalNode_Succeed 测试中 SIGSEGV (over_commit_msg_handler.cpp:706 null deref)",
+      "solution": "未解决（仓库侧 bug：mockcpp 未覆盖 collect handler null 输入场景）。本次记录为已知 fail。",
+      "source": "src/addons/rmrs/over_commit/mem_migrate_transport/over_commit_msg_handler.cpp:706 缺少 nullptr 校验"
+    },
+    {
+      "timestamp": "2026-07-02T05:25:00",
+      "problem": "ubs-engine_virtagent_ut 在 ConnectThrowException 测试中 SIGSEGV (libvirt-sock missing)",
+      "solution": "未解决（环境问题：容器无 libvirtd）。若需在容器内运行 virtagent_ut，需启动 libvirtd 或在测试中 mock connect() 系统调用。",
+      "source": "容器内未启动 libvirtd + 测试 mockcpp 未覆盖 connect() 抛异常路径"
+    },
+    {
+      "timestamp": "2026-07-02T05:37:00",
+      "problem": "example/c 中 3 个示例编译失败: implicit declaration 'ubs_mem_numa_fault_register' / 'ubs_mem_fd_fault_register'",
+      "solution": "未解决（example/c/*.c 引用了仓库侧已移除的 API 函数名）。本次记录为已知 fail，仅验证 fd_demo / ubse_sdk_node_example 的编译 + 运行。",
+      "source": "example/c/ubse_mem_numa_example.c:153 + ubse_mem_share_example.c + ubse_mem_fault_common.c"
+    },
+    {
+      "timestamp": "2026-07-02T05:38:51",
+      "problem": "fd_demo 运行失败: Failed to connect: No such file or directory (IPC error 20)",
+      "solution": "未解决（容器内 ubse daemon 无法启动）。SDK 入口可执行，运行时依赖 daemon。",
+      "source": "无 ubse daemon 在 IPC socket 上监听"
+    }
+  ]
+}

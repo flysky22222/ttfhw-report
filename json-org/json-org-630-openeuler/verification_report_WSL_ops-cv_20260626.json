@@ -1,0 +1,814 @@
+{
+  "metadata": {
+    "repo_path": "https://gitcode.com/cann/ops-cv.git",
+    "start_time": "2026-06-26T18:54:00",
+    "end_time": "2026-06-26T19:42:00",
+    "duration_seconds": 2880,
+    "total_steps": 35
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (256 cores)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "983G available in /tmp",
+      "docker_version": "Docker version 18.09.0, build 05c4df4"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2044Gi (无限制)"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像。仓库是 CANN 算子库（华为 Ascend NPU），文档推荐使用 CANN toolkit 提供的镜像（基于 openEuler 24.03），与 openEuler 基础镜像一致",
+      "dependency_mapping": {
+        "from_dockerfile": "无 Dockerfile，依据 install_deps.sh 和 build.sh 提取依赖",
+        "mappings": [
+          {
+            "original": "python3-dev (debian)",
+            "openEuler": "python3-devel",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "libgtest-dev (debian)",
+            "openEuler": "gtest-devel",
+            "source": "install_deps.sh"
+          },
+          {
+            "original": "cmake3 (rhel7)",
+            "openEuler": "cmake",
+            "source": "install_deps.sh"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + docs/zh/install/quick_install.md",
+      "value": "aarch64（容器为 aarch64），需华为 Ascend NPU 硬件"
+    },
+    "recommended_image": {
+      "source": "docs/zh/install/quick_install.md - Docker 部署章节",
+      "value": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.1.0-beta.1-910b-openeuler24.03-py3.12-devel，已改用 openEuler 24.03 LTS 基础镜像"
+    },
+    "dockerfile_dependencies": {
+      "source": "install_deps.sh",
+      "value": [
+        {
+          "original": "apt install python3 python3-pip python3-dev",
+          "openEuler_equivalent": "dnf install -y python3 python3-pip python3-devel"
+        },
+        {
+          "original": "apt install libgtest-dev",
+          "openEuler_equivalent": "dnf install -y gtest-devel"
+        },
+        {
+          "original": "apt install cmake make",
+          "openEuler_equivalent": "dnf install -y cmake make"
+        }
+      ]
+    },
+    "dependencies": {
+      "source": "README.md + install_deps.sh + CMakeLists.txt",
+      "value": [
+        "cmake >= 3.16 (dnf: cmake, 已安装 3.27.9)",
+        "gcc/g++ >= 7.3.0 (dnf: gcc gcc-c++, 已安装 12.3.1)",
+        "make (dnf: make)",
+        "python3 >= 3.7.0 (dnf: python3, 已安装 3.11.6)",
+        "python3-devel (dnf: python3-devel, UT 编译需要)",
+        "dos2unix (dnf: dos2unix)",
+        "patch (dnf: patch)",
+        "pkg-config (dnf: pkgconfig)",
+        "pigz (dnf: pigz, 可选)",
+        "CANN Toolkit 9.1.0 (必需，仓库核心依赖，docker 内独立安装)",
+        "googletest 1.11.0 (UT 编译需要)"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md + build.sh + docs/QUICKSTART.md",
+      "value": "bash build.sh --pkg --soc=ascend910b --jit -j50（CANN 9.1.0 对应版本，无 kernel bin 模式）"
+    },
+    "ut_commands": {
+      "source": "build.sh -u 选项",
+      "value": "bash build.sh -u --noexec -j50（编译 UT 但不执行）"
+    },
+    "sample_commands": {
+      "source": "docs/QUICKSTART.md 一、编译运行",
+      "value": "bash build.sh --run_example add_example eager cust --vendor_name=custom --simulator --soc=ascend910b（需要 simulator）"
+    },
+    "special_dependencies": {
+      "source": "version.cmake + cmake/dependencies.cmake",
+      "value": [
+        "CANN toolkit >= 8.5（实际安装 9.1.0）",
+        "Ascend NPU 硬件（必需，但本环境为纯 openEuler 容器，无 NPU）",
+        "CANN ops 包（可选，仅运行态需要）"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-26T18:54:00",
+      "command": "ssh 192.168.9.114 \"docker version\" 检查 Docker 可用性",
+      "success": true,
+      "output": "Docker 18.09.0, OS/Arch: linux/arm64, Server 可用",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T18:54:30",
+      "command": "ssh 192.168.9.114 \"nproc && free -g\" 获取远程机器规格",
+      "success": true,
+      "output": "256 CPU cores, 2044GB memory",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-26T18:55:00",
+      "command": "ssh 192.168.9.114 \"git clone --depth 1 --branch master https://gitcode.com/cann/ops-cv.git /tmp/ops-cv-verify\"",
+      "success": true,
+      "output": "Cloning into '.'...",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-26T18:56:00",
+      "command": "ssh 192.168.9.114 \"docker run -d --name ops-cv-ttfhw hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity\"",
+      "success": true,
+      "output": "Container ID: 0507becce5bbb53c47e7f2b620f0011639707b6b9c7d379ef8b2aff22da53d77",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T18:56:30",
+      "command": "docker cp /tmp/ops-cv-verify/. ops-cv-ttfhw:/workspace/",
+      "success": true,
+      "output": "代码已复制到容器内 /workspace/",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-06-26T18:57:00",
+      "command": "docker exec ops-cv-ttfhw bash -c 'dnf install -y gcc gcc-c++ make cmake git python3 python3-pip dos2unix patch pkg-config'（第一层：系统工具链）",
+      "success": true,
+      "output": "Complete! 安装了 gcc-12.3.1, cmake-3.27.9, python3-3.11.6 等基础工具链",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-26T18:58:00",
+      "command": "docker exec ops-cv-ttfhw bash -c 'cd /workspace/build && cmake ..' 首次尝试 cmake 配置",
+      "success": false,
+      "output": "-- Configuring incomplete, errors occurred!",
+      "error": "CMake Error at cmake/dependencies.cmake:82 (find_package): Could not find a package configuration file provided by \"ASC\" with any of the following names: ASCConfig.cmake, asc-config.cmake. Add the installation prefix of \"ASC\" to CMAKE_PREFIX_PATH or set \"ASC_DIR\" to a directory containing one of the above files.",
+      "returncode": 1,
+      "duration_seconds": 5,
+      "note": "缺少 CANN toolkit，仓库核心编译依赖"
+    },
+    {
+      "timestamp": "2026-06-26T18:58:30",
+      "command": "下载 CANN toolkit 9.1.0: curl -L -o /tmp/Ascend-cann-toolkit_9.1.0_linux-aarch64.run",
+      "success": true,
+      "output": "1507278125 bytes (1.5GB) downloaded in 50 seconds",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 50
+    },
+    {
+      "timestamp": "2026-06-26T18:59:00",
+      "command": "docker cp /tmp/Ascend-cann-toolkit_9.1.0_linux-aarch64.run ops-cv-ttfhw:/tmp/",
+      "success": true,
+      "output": "toolkit run 包已复制到容器",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T18:59:30",
+      "command": "docker exec ops-cv-ttfhw bash -c 'chmod 755 / && chmod 755 /root'",
+      "success": true,
+      "output": "权限修复成功（首次安装因 /root 权限 700 被脚本中止）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-26T19:00:00",
+      "command": "docker exec ops-cv-ttfhw bash -c '/tmp/Ascend-cann-toolkit_9.1.0_linux-aarch64.run --install --install-path=/root/Ascend --quiet' 安装 CANN toolkit",
+      "success": true,
+      "output": "Ascend-cann-toolkit_9.1.0_linux-aarch64 install success, installed in /root/Ascend",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-26T19:02:00",
+      "command": "source /root/Ascend/cann/set_env.sh && cd /workspace && rm -rf build && mkdir build && cd build && cmake .. -DCMAKE_BUILD_TYPE=Release 第二次 cmake 配置",
+      "success": false,
+      "output": "cmake 在 cmake/dependencies.cmake:82 报错 find_package(ASC REQUIRED)",
+      "error": "Could not find ASC package configuration file (ASCConfig.cmake)",
+      "returncode": 1,
+      "duration_seconds": 5,
+      "note": "ASCEND_HOME_PATH 环境变量未指向正确路径，需手动指定 ASCEND_INSTALL_PATH"
+    },
+    {
+      "timestamp": "2026-06-26T19:05:00",
+      "command": "cmake .. -DCMAKE_BUILD_TYPE=Release -DASCEND_INSTALL_PATH=/root/Ascend/cann-9.1.0 第三次 cmake 配置（手动指定 ASCEND_INSTALL_PATH）",
+      "success": true,
+      "output": "-- Configuring done (4.1s), -- Generating done (0.3s), Build files have been written to: /workspace/build",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-06-26T19:05:30",
+      "command": "source /root/Ascend/cann/set_env.sh && cd /workspace/build && cmake --build . --target ophost_cv -- -j50（编译并发 = 256 × 20% ≈ 50）",
+      "success": true,
+      "output": "[100%] Built target ophost_cv, libophost_cv.so 2.3MB",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 13
+    },
+    {
+      "timestamp": "2026-06-26T19:06:00",
+      "command": "cmake --build . --target opapi_cv -- -j50 编译 opapi 库",
+      "success": true,
+      "output": "[100%] Built target opapi_cv, libopapi_cv.so 1.9MB",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 9
+    },
+    {
+      "timestamp": "2026-06-26T19:07:00",
+      "command": "cmake --build . --target opgraph_cv -- -j50 编译 opgraph 库",
+      "success": true,
+      "output": "[100%] Built target opgraph_cv, libopgraph_cv.so 264KB",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 66
+    },
+    {
+      "timestamp": "2026-06-26T19:09:00",
+      "command": "bash build.sh --pkg --soc=ascend910b --jit -j50 使用 build.sh 编译并打包（CANN 9.1.0 对应版本，无 kernel bin 模式）",
+      "success": true,
+      "output": "Self-extractable archive \"cann-910b-ops-cv_9.1.0_linux-aarch64.run\" successfully created. Build pkg success: /workspace/build_out/cann-910b-ops-cv_9.1.0_linux-aarch64.run (2.7MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 126
+    },
+    {
+      "timestamp": "2026-06-26T19:11:00",
+      "command": "bash build.sh -u --noexec -j50 编译 UT（首次尝试）",
+      "success": false,
+      "output": "gmake: *** [cv_op_api_ut] Error 2",
+      "error": "fatal error: Python.h: No such file or directory（op_api_ut 需要 python3-devel）",
+      "returncode": 1,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-26T19:13:00",
+      "command": "dnf install -y python3-devel python3-pip 补充安装 python 开发库",
+      "success": true,
+      "output": "Complete! python3-devel 安装完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 6
+    },
+    {
+      "timestamp": "2026-06-26T19:14:00",
+      "command": "pip3 install -r /workspace/requirements.txt 安装 python 三方库依赖",
+      "success": true,
+      "output": "Successfully installed MarkupSafe-3.0.3 absl-py-2.4.0 attrs-26.1.0 decorator-5.3.1 jinja2-3.1.6 mpmath-1.3.0 numpy-1.26.4 packaging-26.2 pyyaml-6.0.3 sympy-1.14.0 wheel-0.47.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-26T19:16:00",
+      "command": "bash build.sh -u --noexec -j50 重新编译 UT（op_host + op_api 通过；op_kernel 失败）",
+      "success": false,
+      "output": "op_host_ut 和 op_api_ut 编译成功，op_kernel_ut 编译失败",
+      "error": "/workspace/objdetect/roi_pooling_grad_with_arg_max/op_kernel/arch35/roi_pooling_grad_with_arg_max_simt.h:84:27: error: 'asc_atomic_add' was not declared in this scope; did you mean '__asc_simt_vf::asc_atomic_add'?（opkernel 需要 bisheng 编译器）",
+      "returncode": 1,
+      "duration_seconds": 73
+    },
+    {
+      "timestamp": "2026-06-26T19:18:00",
+      "command": "./tests/ut/op_host/cv_op_host_ut 执行 op_host 单元测试",
+      "success": false,
+      "output": "timeout: the monitored command dumped core",
+      "error": "BUILD_PATH 环境变量未设置",
+      "returncode": 124,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T19:18:30",
+      "command": "export BUILD_PATH=/workspace/build && ./tests/ut/op_host/cv_op_host_ut 重试 op_host 测试",
+      "success": true,
+      "output": "[==========] 192 tests from 51 test suites ran. (103 ms total) [ PASSED ] 192 tests.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T19:20:00",
+      "command": "export BUILD_PATH=/workspace/build && ./tests/ut/op_api/cv_op_api_ut 执行 op_api 单元测试",
+      "success": true,
+      "output": "[==========] 751 tests from 37 test suites ran. (8395 ms total) [ PASSED ] 751 tests.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-06-26T19:21:00",
+      "command": "bash cann-910b-ops-cv_9.1.0_linux-aarch64.run --full --install-path=/root/Ascend/ops-cv --quiet 安装 .run 包",
+      "success": true,
+      "output": "Opp package installed successfully! The new version takes effect immediately.",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-26T19:28:00",
+      "command": "g++ ../image/resize_linear/examples/test_aclnn_resize_linear.cpp 手动编译示例（使用 simulator 库）",
+      "success": true,
+      "output": "test_aclnn_resize_linear 编译成功（94KB ELF 可执行文件）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-26T19:34:00",
+      "command": "ln -sf libruntime_camodel.so libruntime.so && ln -sf libnpu_drv_camodel.so libascend_hal.so 创建 simulator 符号链接",
+      "success": true,
+      "output": "符号链接创建成功",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-26T19:35:00",
+      "command": "export ASCEND_OPP_PATH=/root/Ascend/ops-cv/cann/opp && ./test_aclnn_resize_linear 在 simulator 中运行示例",
+      "success": false,
+      "output": "[INFO] Model Start Time: 2026-06-26 19:34:32 ... PEM MODEL Total no. of 1 chip(s) Model Init Success!",
+      "error": "timeout: the monitored command dumped core（simulator 初始化成功但算子 kernel 因 .run 包未包含 kernel bin 而无法执行）",
+      "returncode": 124,
+      "duration_seconds": 30
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-26T18:54:00",
+      "step": "start",
+      "action": "开始在远程机器 192.168.9.114 上验证 ops-cv",
+      "result": "已启动",
+      "details": {
+        "mode": "remote",
+        "container": "ops-cv-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T18:54:30",
+      "step": "environment_check",
+      "action": "检查远程机器 Docker 可用性和规格",
+      "result": "成功",
+      "details": {
+        "docker": "18.09.0",
+        "arch": "aarch64",
+        "cpus": 256,
+        "memory_gb": 2044
+      }
+    },
+    {
+      "timestamp": "2026-06-26T18:55:00",
+      "step": "code_sync",
+      "action": "克隆 ops-cv master 分支到远程机器 /tmp/ops-cv-verify",
+      "result": "成功",
+      "details": {
+        "branch": "master",
+        "depth": 1
+      }
+    },
+    {
+      "timestamp": "2026-06-26T18:56:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 24.03 LTS 镜像并启动容器 ops-cv-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "ops-cv-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T18:57:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc/g++/make/cmake/git/python3/python3-pip/dos2unix/patch/pkg-config）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc",
+          "gcc-c++",
+          "make",
+          "cmake",
+          "git",
+          "python3",
+          "python3-pip",
+          "dos2unix",
+          "patch",
+          "pkgconfig"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-26T18:58:00",
+      "step": "build_attempt_1",
+      "action": "首次 cmake 配置",
+      "result": "失败",
+      "details": {
+        "error": "缺少 CANN toolkit（find_package ASC REQUIRED）"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T18:58:30",
+      "step": "cann_toolkit_download",
+      "action": "下载 CANN toolkit 9.1.0 aarch64（1.5GB）",
+      "result": "成功",
+      "details": {
+        "duration_seconds": 50,
+        "source": "https://ascend.devcloud.huaweicloud.com"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:00:00",
+      "step": "cann_toolkit_install",
+      "action": "在容器内安装 CANN toolkit 9.1.0",
+      "result": "成功",
+      "details": {
+        "install_path": "/root/Ascend/cann-9.1.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:05:00",
+      "step": "cmake_configure_retry",
+      "action": "重新执行 cmake 配置（手动指定 ASCEND_INSTALL_PATH）",
+      "result": "成功",
+      "details": {
+        "configure_time": "4.1s"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:05:30",
+      "step": "build_target_ophost_cv",
+      "action": "编译 ophost 库（libophost_cv.so）",
+      "result": "成功",
+      "details": {
+        "concurrency": 50,
+        "duration_seconds": 13,
+        "artifact": "libophost_cv.so 2.3MB"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:06:00",
+      "step": "build_target_opapi_cv",
+      "action": "编译 opapi 库（libopapi_cv.so）",
+      "result": "成功",
+      "details": {
+        "concurrency": 50,
+        "duration_seconds": 9,
+        "artifact": "libopapi_cv.so 1.9MB"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:07:00",
+      "step": "build_target_opgraph_cv",
+      "action": "编译 opgraph 库（libopgraph_cv.so）",
+      "result": "成功",
+      "details": {
+        "concurrency": 50,
+        "duration_seconds": 66,
+        "artifact": "libopgraph_cv.so 264KB"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:09:00",
+      "step": "build_package",
+      "action": "使用 build.sh 编译并打包（--pkg --soc=ascend910b --jit）",
+      "result": "成功",
+      "details": {
+        "duration_seconds": 126,
+        "artifact": "/workspace/build_out/cann-910b-ops-cv_9.1.0_linux-aarch64.run (2.7MB)"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:11:00",
+      "step": "ut_compile_attempt_1",
+      "action": "首次编译所有 UT（op_host + op_api + op_kernel）",
+      "result": "失败",
+      "details": {
+        "error": "fatal error: Python.h: No such file or directory"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:13:00",
+      "step": "dependency_python_devel",
+      "action": "补充安装 python3-devel 和 python 三方库依赖",
+      "result": "成功",
+      "details": {
+        "packages": [
+          "python3-devel",
+          "pyyaml",
+          "absl-py",
+          "jinja2",
+          "numpy<2.0",
+          "setuptools",
+          "wheel",
+          "decorator",
+          "sympy",
+          "attrs"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:16:00",
+      "step": "ut_compile_attempt_2",
+      "action": "重新编译 UT",
+      "result": "部分成功",
+      "details": {
+        "op_host_ut": "成功",
+        "op_api_ut": "成功",
+        "op_kernel_ut": "失败（需 bisheng 编译器）"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:18:30",
+      "step": "ut_execution_host",
+      "action": "执行 op_host 单元测试",
+      "result": "成功",
+      "details": {
+        "total": 192,
+        "passed": 192,
+        "failed": 0,
+        "duration_seconds": 5
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:20:00",
+      "step": "ut_execution_api",
+      "action": "执行 op_api 单元测试",
+      "result": "成功",
+      "details": {
+        "total": 751,
+        "passed": 751,
+        "failed": 0,
+        "duration_seconds": 10
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:21:00",
+      "step": "package_install",
+      "action": "安装 ops-cv run 包到 /root/Ascend/ops-cv",
+      "result": "成功",
+      "details": {
+        "install_path": "/root/Ascend/ops-cv/cann/opp"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:28:00",
+      "step": "sample_compile",
+      "action": "手动编译示例 test_aclnn_resize_linear.cpp（使用 simulator 库）",
+      "result": "成功",
+      "details": {
+        "artifact": "test_aclnn_resize_linear (94KB ELF)"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:34:00",
+      "step": "simulator_setup",
+      "action": "创建 simulator 符号链接（libruntime.so, libascend_hal.so）",
+      "result": "成功",
+      "details": {
+        "sim_lib": "/root/Ascend/cann-9.1.0/tools/simulator/dav_2201/lib"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:35:00",
+      "step": "sample_execution",
+      "action": "在 simulator 中运行示例 test_aclnn_resize_linear",
+      "result": "失败",
+      "details": {
+        "reason": "PEM MODEL 初始化成功但因 ops-cv --jit 模式未构建 kernel bin，算子执行时无 kernel 可调用",
+        "duration_seconds": 30
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:40:00",
+      "step": "cleanup",
+      "action": "停止并删除容器 ops-cv-ttfhw",
+      "result": "待执行",
+      "details": {
+        "container": "ops-cv-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-06-26T19:42:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_ops-cv_20260626.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": false,
+      "summary": "ops-cv 仓库未配置 pre-commit 和 lint-runner 工具（CMake C++ 项目）",
+      "pre_commit": {
+        "configured": false,
+        "config_file": null
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "summary": "ops-cv 仓库未配置 .devcontainer 目录，但提供了 docs/zh/install/quick_install.md 描述的 Docker 部署方案（基于 CANN 官方镜像）",
+      "config_dir": null,
+      "config_files": null
+    },
+    "build": {
+      "status": "成功",
+      "duration_seconds": 214,
+      "artifacts": [
+        {
+          "name": "libophost_cv.so",
+          "path": "/workspace/build/libophost_cv.so",
+          "size": "2.3 MB"
+        },
+        {
+          "name": "libopapi_cv.so",
+          "path": "/workspace/build/libopapi_cv.so",
+          "size": "1.9 MB"
+        },
+        {
+          "name": "libopgraph_cv.so",
+          "path": "/workspace/build/opp/built-in/op_proto/libopgraph_cv.so",
+          "size": "264 KB"
+        },
+        {
+          "name": "libes_cv.so",
+          "path": "/workspace/build/libes_cv.so",
+          "size": "194 KB"
+        },
+        {
+          "name": "liboponnx_plugin_cv.so",
+          "path": "/workspace/build/liboponnx_plugin_cv.so",
+          "size": "706 KB"
+        },
+        {
+          "name": "ops-cv.run",
+          "path": "/workspace/build_out/cann-910b-ops-cv_9.1.0_linux-aarch64.run",
+          "size": "2.7 MB"
+        }
+      ]
+    },
+    "ut": {
+      "status": "部分成功",
+      "duration_seconds": 88,
+      "total": 943,
+      "passed": 943,
+      "failed": 0,
+      "sub_components": [
+        {
+          "name": "op_host_ut",
+          "status": "成功",
+          "total": 192,
+          "passed": 192,
+          "failed": 0,
+          "duration_seconds": 5,
+          "test_suites": 51
+        },
+        {
+          "name": "op_api_ut",
+          "status": "成功",
+          "total": 751,
+          "passed": 751,
+          "failed": 0,
+          "duration_seconds": 10,
+          "test_suites": 37
+        },
+        {
+          "name": "op_kernel_ut",
+          "status": "未运行",
+          "total": 0,
+          "passed": 0,
+          "failed": 0,
+          "reason": "编译失败：opkernel 源码使用 bisheng 编译器专用 intrinsics（如 asc_atomic_add），标准 GCC 无法识别。该模块需要华为 Ascend 专用 bisheng 编译器，仅在 Ascend NPU 硬件环境下可用"
+        }
+      ],
+      "failures": []
+    },
+    "sample": {
+      "status": "部分成功",
+      "duration_seconds": 35,
+      "results": [
+        {
+          "sample_name": "test_aclnn_resize_linear",
+          "execution_status": "失败",
+          "output_summary": "PEM MODEL 初始化成功（Total no. of 1 chip(s) Model Init Success!），但在加载算子 kernel 时段错误退出",
+          "execution_time": "30秒后超时",
+          "error": "由于 ops-cv --jit 模式（--pkg --jit）不构建 kernel bin，run 包中无 operator kernel 可调用；编译产物 libopapi_cv.so 和头文件均已就位，但缺算子 kernel 二进制。如需完整执行需改用 --pkg（非 --jit）且使用 bisheng 编译器构建 kernel bin"
+        },
+        {
+          "sample_name": "ops-cv.run 安装包",
+          "execution_status": "成功",
+          "output_summary": "Opp package installed successfully! 成功安装到 /root/Ascend/ops-cv/cann/opp",
+          "execution_time": "3秒"
+        }
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "build.sh 中 ENABLE_RUN_EXAMPLE 与 ENABLE_CUSTOM 互斥（run_example 会强制设 ENABLE_CUSTOM=FALSE），导致 --run_example 在 --pkg 模式下无法正常编译示例",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "文档明确推荐使用 CANN 官方 Docker 镜像（cann:9.1.0-beta.1-910b-openeuler24.03-py3.12-devel），但未提供在无 Ascend NPU 硬件环境下的 simulator 验证路径",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "UT 编译需要 python3-devel，但 install_deps.sh 仅在 debian 分支安装 python3-dev；rhel 分支漏装，导致首次 UT 编译失败",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "cmake 配置需要 ASCEND_INSTALL_PATH 显式参数；set_env.sh 中 ASCEND_HOME_PATH 未被 cmake 自动识别，需要用户手动指定",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-26T18:58:00",
+      "problem": "首次 cmake 配置失败：find_package(ASC REQUIRED) 找不到 ASCConfig.cmake",
+      "solution": "下载并安装 CANN toolkit 9.1.0 aarch64 到 /root/Ascend/cann-9.1.0",
+      "source": "cmake/dependencies.cmake:82"
+    },
+    {
+      "timestamp": "2026-06-26T18:59:00",
+      "problem": "CANN toolkit 安装因 /root 目录权限 700 被中止",
+      "solution": "chmod 755 / 和 chmod 755 /root 后重新安装",
+      "source": "/var/log/ascend_seclog/ascend_toolkit_install.log"
+    },
+    {
+      "timestamp": "2026-06-26T19:02:00",
+      "problem": "第二次 cmake 仍报找不到 ASC 包",
+      "solution": "手动指定 -DASCEND_INSTALL_PATH=/root/Ascend/cann-9.1.0 后配置成功",
+      "source": "set_env.sh 中 ASCEND_HOME_PATH 未自动传递到 cmake"
+    },
+    {
+      "timestamp": "2026-06-26T19:11:00",
+      "problem": "UT 编译失败：fatal error: Python.h: No such file or directory",
+      "solution": "dnf install -y python3-devel 后重新编译",
+      "source": "tests/ut/op_api/op_api_ut_common/inc/op_api_ut_common/inner/c_py.h:15"
+    },
+    {
+      "timestamp": "2026-06-26T19:16:00",
+      "problem": "opkernel UT 编译失败：'asc_atomic_add' was not declared in this scope",
+      "solution": "已记录原因：opkernel 源码使用华为 Ascend bisheng 编译器专用 intrinsics，需要 Ascend NPU 硬件 + bisheng 编译器才能编译。本环境为纯 openEuler 容器，无 Ascend NPU，因此 opkernel UT 无法编译",
+      "source": "objdetect/roi_pooling_grad_with_arg_max/op_kernel/arch35/roi_pooling_grad_with_arg_max_simt.h:84"
+    },
+    {
+      "timestamp": "2026-06-26T19:18:00",
+      "problem": "op_host UT 首次执行段错误退出",
+      "solution": "export BUILD_PATH=/workspace/build 后重试通过",
+      "source": "cv_op_host_ut 内部从环境变量 BUILD_PATH 读取构建路径"
+    },
+    {
+      "timestamp": "2026-06-26T19:35:00",
+      "problem": "示例 test_aclnn_resize_linear 在 simulator 中初始化后段错误",
+      "solution": "已记录原因：build.sh --pkg --jit 模式不构建 operator kernel bin，simulator 加载算子时找不到 kernel。本环境无法用 bisheng 编译器构建 kernel bin（需要 Ascend NPU），因此示例无法完整执行",
+      "source": "PEM MODEL 初始化成功但算子 kernel 加载失败"
+    }
+  ]
+}

@@ -360,28 +360,36 @@
       }
     }
 
+    // 各段先构造成字符串，再按场景排序组装
+    const defects = r.defects || [];
+    const problems = (r.problems || []).filter(p => p.title);
+    const secDocFacts = (r.docFacts || []).length ? `<div class="section"><h2>${ico("doc")} 文档关键事实</h2>
+      <table class="dtable"><colgroup><col style="width:15%"><col style="width:55%"><col style="width:30%"></colgroup><thead><tr><th>项</th><th>文档抽取值</th><th>来源</th></tr></thead><tbody>${
+        r.docFacts.map(f => `<tr><td>${esc(f.label)}</td><td>${esc(f.value)}</td><td class="src">${esc(f.source)}</td></tr>`).join("")}</tbody></table></div>` : "";
+    const secAttempts = (r.attempts || []).length ? `<div class="section"><h2>${ico("list")} 执行记录（${r.attempts.length}）</h2><div class="log-list">${
+      r.attempts.map(a => `<div class="log-row ${a.ok ? "ok" : "bad"}"><span class="log-dot"></span><div class="log-body">
+        <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>` : "";
+    // 使用者场景/无JSON 用的原样章节（不改动）
+    const secDefects = defects.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）<span class="hint">点击行跳到下方完整报告对应缺陷</span></h2>
+      <table class="dtable"><colgroup><col style="width:42%"><col style="width:11%"><col style="width:47%"></colgroup><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
+        defects.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
+          <td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
+    const secProblems = problems.length ? `<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
+      <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
+        problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
+    const ph = id => `<div class="section" id="${id}"><div class="sec-loading">加载中…（从原始 JSON 生成）</div></div>`;
+
     const sections = [];
     sections.push(`<div class="section"><h2>${ico("clock")} 四阶段耗时</h2><div class="timeline">${tl}</div></div>`);
     sections.push(`<div class="cards">${cards.join("")}</div>`);
-
-    if ((r.docFacts || []).length) sections.push(`<div class="section"><h2>${ico("doc")} 文档关键事实</h2>
-      <table class="dtable"><colgroup><col style="width:15%"><col style="width:55%"><col style="width:30%"></colgroup><thead><tr><th>项</th><th>文档抽取值</th><th>来源</th></tr></thead><tbody>${
-        r.docFacts.map(f => `<tr><td>${esc(f.label)}</td><td>${esc(f.value)}</td><td class="src">${esc(f.source)}</td></tr>`).join("")}</tbody></table></div>`);
-
-    if ((r.attempts || []).length) sections.push(`<div class="section"><h2>${ico("list")} 执行记录（${r.attempts.length}）</h2><div class="log-list">${
-      r.attempts.map(a => `<div class="log-row ${a.ok ? "ok" : "bad"}"><span class="log-dot"></span><div class="log-body">
-        <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>`);
-
-    const defects = r.defects || [];
-    if (defects.length) sections.push(`<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）<span class="hint">点击行跳到下方完整报告对应缺陷</span></h2>
-      <table class="dtable"><colgroup><col style="width:42%"><col style="width:11%"><col style="width:47%"></colgroup><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
-        defects.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
-          <td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
-
-    const problems = (r.problems || []).filter(p => p.title);
-    if (problems.length) sections.push(`<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
-      <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
-        problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>`);
+    const enrich = r.scenario === "developer" && r.jsonUrl;   // 仅贡献者且有原始JSON→拉JSON生成丰富章节；使用者场景不动
+    if (enrich) {
+      sections.push(ph("sec-env"));       // 验证环境（含宿主机）
+      sections.push(ph("sec-docmiss"));   // 文档缺失（放验证环境下面，从JSON写全 title+body）
+      sections.push(ph("sec-problems"));  // 遇到问题（放文档缺失下面）
+    } else {
+      sections.push(secDocFacts, secAttempts, secDefects, secProblems);
+    }
 
     // 社区CI 门禁检查项明细（放在详情后段）：列每项 ✅/❌/⚠，并说明测试型项失败属正常
     const ciP = (r.phases || []).find(p => /社区CI/.test(p.name || ""));
@@ -403,6 +411,8 @@
         <thead><tr><th>检查项</th><th>结果</th><th>说明</th></tr></thead><tbody>${rows}</tbody></table></div>`);
     }
 
+    if (enrich) sections.push(ph("sec-docread"), ph("sec-static"), ph("sec-execlog"), ph("sec-timeline"));
+
     if (r.summary) sections.push(`<div class="section"><h2>${ico("doc")} 结论摘要</h2><div class="summary-text">${esc(r.summary)}</div></div>`);
 
     const hist = state.data.records.filter(x => x.scenario === r.scenario && x.community === r.community && (r.scenario === "user" || x.repo === r.repo)).sort((a, b) => b.date.localeCompare(a.date));
@@ -410,20 +420,89 @@
       hist.map(h => `<div class="hist" data-id="${h.id}"><span>${h.date}</span><span class="badge ${h.result}">${RES[h.result]}</span>
         <span class="src">${h.scene && h.scene !== "compile-verify" ? h.scene : ""}</span><span class="num mono" style="text-align:right">${h.totalMinutes ? h.totalMinutes + " min" : "—"}</span></div>`).join("")}</div></div>`);
 
-    if (r.reportFile) sections.push(`<div class="section"><h2>${ico("doc")} 完整报告（原始文档）</h2><div id="fullReport" class="full-report">加载中…</div></div>`);
+    if (enrich) sections.push(ph("sec-rawjson"));           // 完整 JSON 数据 —— 放最下面
+    else if (r.reportFile) sections.push(`<div class="section"><h2>${ico("doc")} 完整报告（原始文档）</h2><div id="fullReport" class="full-report">加载中…</div></div>`);
 
     content.innerHTML = `<div class="detail"><a class="back" href="#">‹ 返回总览</a>
       <div class="detail-head"><div class="dh-id"><h1>${ico("repo")} ${r.repo}</h1>
         <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div>${
-  r.jsonUrl ? `<div class="json-path">JSON 报告：<a href="${esc(r.jsonUrl)}" target="_blank" rel="noopener" title="点击打开原始 JSON（computing-TTFHW/ttfhw-report）"><code>${esc(r.jsonPath || r.jsonUrl)}</code> ↗</a></div>` : ""}</div>
+  r.jsonPath ? `<div class="json-path">JSON 报告：<a href="./${esc(r.jsonPath)}" target="_blank" rel="noopener" title="打开原始 JSON 验证报告"><code>${esc(r.jsonPath)}</code> ↗</a></div>` : ""}</div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
     content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { gotoReport(h.dataset.id); }));
     content.querySelectorAll("tr.jumpable").forEach(tr => tr.addEventListener("click", () => {
       const el = document.getElementById(tr.dataset.anchor);
       if (el) { el.scrollIntoView({ behavior: "smooth", block: "center" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1600); }
     }));
-    if (r.reportFile) loadReport(r);
+    if (!enrich && r.reportFile) loadReport(r);
+    if (enrich) enrichFromJson(r);
     window.scrollTo(0, 0);
+  }
+
+  // ── 贡献者详情页：拉原始 JSON，用代码(非AI)生成 验证环境/文档缺失/遇到问题/文档阅读摘要/静态分析/执行日志/过程时间线/完整JSON ──
+  // 源仓私有，浏览器拉不到；改从本站公开镜像 ./json-org/... 同源拉取
+  const jsonSrc = r => r.jsonPath ? "./" + r.jsonPath : rawUrl(r.jsonUrl);
+  const rawUrl = u => (u || "").replace("github.com/", "raw.githubusercontent.com/").replace("/blob/", "/");
+  const fmtV = v => Array.isArray(v) ? v.map(fmtV).join("；") : (v && typeof v === "object" ? JSON.stringify(v, null, 1) : (v == null ? "" : String(v)));
+  const kvTable = obj => !obj || !Object.keys(obj).length ? "" :
+    `<table class="dtable"><tbody>${Object.entries(obj).map(([k, v]) => `<tr><td style="width:26%">${esc(k)}</td><td>${esc(fmtV(v))}</td></tr>`).join("")}</tbody></table>`;
+  function setSec(id, title, iconName, html) {
+    const el = document.getElementById(id); if (!el) return;
+    if (!html) { el.remove(); return; }
+    el.innerHTML = `<h2>${ico(iconName)} ${title}</h2>${html}`;
+  }
+  function enrichFromJson(r) {
+    fetch(jsonSrc(r)).then(x => x.ok ? x.json() : Promise.reject(x.status)).then(j => {
+      const fr = j.final_results || {}, ms = j.machine_spec || {};
+      // 1) 验证环境（含宿主机）
+      let env = "";
+      if (Object.keys(ms.host_machine || {}).length) env += `<h3>宿主机</h3>${kvTable(ms.host_machine)}`;
+      if (Object.keys(ms.container || {}).length) env += `<h3>容器</h3>${kvTable(ms.container)}`;
+      if (ms.image_source) { const im = ms.image_source; env += `<h3>镜像来源</h3>${kvTable({ 类型: im.type, 镜像: im.image_name, 选择原因: im.selection_reason })}`;
+        if (im.dependency_mapping && (im.dependency_mapping.mappings || []).length)
+          env += `<div class="sub-h">依赖映射（apt→openEuler）</div><table class="dtable"><thead><tr><th>原始</th><th>openEuler</th><th>来源</th></tr></thead><tbody>${
+            im.dependency_mapping.mappings.map(mp => `<tr><td>${esc(mp.original || "")}</td><td>${esc(mp.openEuler || "")}</td><td class="src">${esc(mp.source || "")}</td></tr>`).join("")}</tbody></table>`; }
+      setSec("sec-env", "验证环境", "arch", env || "—");
+      // 2) 文档缺失（写全 title+body；title 空只写 body），代码遍历 documentation_gaps
+      const gaps = j.documentation_gaps || [];
+      setSec("sec-docmiss", `文档缺失 / 缺口（${gaps.length}）`, "bug", !gaps.length ? "" :
+        `<ol class="gap-list">${gaps.map(g => {
+          if (typeof g === "string") return `<li>${esc(g)}</li>`;
+          const t = g.title || g.gap || g.description || "", body = g.body || g.detail || g.suggestion || g.impact || "";
+          const src = g.source || g.location || "", lvl = g.severity || g.level || "";
+          return `<li>${t ? `<div class="gap-t">${esc(t)}${lvl ? ` <span class="lvl lvl-${esc(lvl)}">${esc(lvl)}</span>` : ""}</div>` : ""}${body ? `<div class="gap-b">${esc(body)}</div>` : ""}${src ? `<div class="src">来源：${esc(src)}</div>` : ""}</li>`;
+        }).join("")}</ol>`);
+      // 3) 遇到问题（title+body）
+      const probs = j.problems_encountered || [];
+      setSec("sec-problems", `遇到问题（${probs.length}）`, "bug", !probs.length ? "" :
+        `<ol class="gap-list">${probs.map(p => {
+          const t = p.problem || p.title || "", sol = p.solution || p.detail || "", src = p.source || "", ts = p.timestamp || "";
+          return `<li>${t ? `<div class="gap-t">${esc(t)}</div>` : ""}${sol ? `<div class="gap-b">${esc(sol)}</div>` : ""}${(src || ts) ? `<div class="src">${esc([ts, src].filter(Boolean).join(" · "))}</div>` : ""}</li>`;
+        }).join("")}</ol>`);
+      // 4) 文档阅读摘要
+      const dr = j.document_reading_summary || {};
+      setSec("sec-docread", "文档阅读摘要", "doc", !Object.keys(dr).length ? "" :
+        `<table class="dtable"><thead><tr><th style="width:20%">项</th><th>抽取值</th><th style="width:24%">来源</th></tr></thead><tbody>${
+          Object.entries(dr).map(([k, v]) => { const val = v && typeof v === "object" && "value" in v ? v.value : v, src = v && typeof v === "object" ? (v.source || "") : "";
+            return `<tr><td>${esc(k)}</td><td>${esc(fmtV(val))}</td><td class="src">${esc(src)}</td></tr>`; }).join("")}</tbody></table>`);
+      // 5) 静态分析
+      const sa = fr.static_analysis;
+      if (sa) { let h = sa.summary ? `<div class="summary-text">${esc(sa.summary)}</div>` : "";
+        ["pre_commit", "lint_runner"].forEach(k => { if (sa[k]) h += `<div class="sub-h">${k}</div>${kvTable(sa[k])}`; });
+        setSec("sec-static", "静态分析", "flask", h || kvTable(sa)); } else setSec("sec-static", "", "flask", "");
+      // 6) 执行日志
+      const el = j.execution_log || [];
+      setSec("sec-execlog", `执行日志（${el.length}）`, "list", !el.length ? "" :
+        `<div class="log-list">${el.map(a => `<div class="log-row ${a.success === false ? "bad" : "ok"}"><span class="log-dot"></span><div class="log-body">
+          <div class="log-step">${esc(a.timestamp || "")} · ${a.success === false ? "失败" : "成功"}${a.duration_seconds != null ? " · " + a.duration_seconds + "s" : ""}</div>
+          ${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}${a.error ? `<div class="log-out err">${esc(a.error)}</div>` : ""}</div></div>`).join("")}</div>`);
+      // 7) 过程时间线
+      const pt = j.process_timeline || [];
+      setSec("sec-timeline", `过程时间线（${pt.length}）`, "clock", !pt.length ? "" :
+        `<table class="dtable"><thead><tr><th style="width:16%">时间</th><th style="width:16%">阶段</th><th>动作</th><th style="width:12%">结果</th><th>详情</th></tr></thead><tbody>${
+          pt.map(s => `<tr><td class="mono">${esc((s.timestamp || "").replace("T", " "))}</td><td>${esc(s.step || s.stage || "")}</td><td>${esc(s.action || "")}</td><td>${esc(s.result || "")}</td><td class="src">${esc(s.details || "")}</td></tr>`).join("")}</tbody></table>`);
+      // 8) 完整 JSON（最下面）
+      setSec("sec-rawjson", "完整 JSON 数据", "doc", `<pre class="json-dump">${esc(JSON.stringify(j, null, 2))}</pre>`);
+    }).catch(err => { const e = document.getElementById("sec-env"); if (e) e.innerHTML = `<div class="sec-loading">原始 JSON 加载失败：${esc(String(err))}（可点上方"JSON 报告"直接查看）</div>`; });
   }
 
   function dcard(icon, title, rows, ...extra) {

@@ -1,0 +1,416 @@
+{
+  "metadata": {
+    "repo_name": "MindIE-SD",
+    "repo_path": "/workspace",
+    "repo_url": "https://gitcode.com/Ascend/MindIE-SD.git",
+    "branch": "master",
+    "commit": "738225336614b006c2176a698792d5c68fff5eef",
+    "start_time": "2026-06-30T14:24:00",
+    "end_time": "2026-06-30T15:10:43",
+    "duration_seconds": 2803,
+    "total_steps": 24
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "glm-5.2",
+    "input_tokens": 56335,
+    "output_tokens": 3719,
+    "cache_hit_tokens": 878720,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "935G available (/tmp)",
+      "docker_version": "Docker version 18.09.0",
+      "npu": "8 x Ascend 910B3 (64GB HBM each), npu-smi 25.5.0, driver mounted read-only"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2044Gi (unlimited)",
+      "python": "3.11.6",
+      "name": "MindIE-SD-ttfhw"
+    },
+    "compile_concurrency": {
+      "rule": "CPU核数 × 20%（至少为1）",
+      "cpu_cores": 256,
+      "jobs": 51,
+      "env": "CMAKE_BUILD_PARALLEL_LEVEL=51, MAKEFLAGS=-j51"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库 Dockerfile 原指定 FROM ubuntu:24.04，已替换为 openEuler）"
+    },
+    "environment": "remote:192.168.9.114 (root, passwordless SSH)"
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + docker/Dockerfile_910b_aarch64.ubuntu",
+      "value": "aarch64（昇腾 910B3 系列），MindIE Stable Diffusion 推理引擎"
+    },
+    "recommended_image": {
+      "source": "Dockerfile_910b_aarch64.ubuntu FROM 指令",
+      "value": "原推荐 ubuntu:24.04，已改用 openEuler 24.03 LTS"
+    },
+    "dependencies": {
+      "source": "requirements.txt + setup.py + docs/zh/installation.md + Dockerfile",
+      "value": [
+        "Python >= 3.10 (openEuler 24.03 自带 python3.11.6)",
+        "gcc/gcc-c++/make/cmake (dnf 安装)",
+        "CANN Toolkit 9.0.0 (Ascend-cann-toolkit + Ascend-cann-910b-ops)",
+        "torch==2.9.0 (aarch64 wheel from pytorch-package.obs.cn-north-4.myhuaweicloud.com)",
+        "torch_npu==2.9.0.post1 (aarch64 wheel)",
+        "triton==3.5.0 + triton-ascend==3.2.0 (mirror 仅有 3.2.0，非 requirements 中的 3.2.1)",
+        "diffusers/transformers/open_clip_torch/timm 等推理依赖",
+        "CANN TBE 编译器隐含依赖: decorator, scipy, attrs, numpy, pyyaml"
+      ]
+    },
+    "build_commands": {
+      "source": "build/build.sh + setup.py + docs/zh/installation.md",
+      "value": "source /usr/local/Ascend/ascend-toolkit/set_env.sh && python3 setup.py bdist_wheel (CustomBuildPy 自动执行 build_ops.sh + build_plugin.sh)"
+    },
+    "ut_commands": {
+      "source": "tests/run_UT_test.sh + tests/UT/run.py",
+      "value": "bash tests/run_UT_test.sh (coverage run tests/UT/run.py + pytest tests/UT)"
+    },
+    "sample_commands": {
+      "source": "examples/dummy_run/README.md",
+      "value": "python3 examples/dummy_run/wan_infer.py --device_id 1 (空权重前向推理，仅需 KB 级配置文件)"
+    }
+  },
+  "execution_log": [
+    {
+      "step": 1,
+      "timestamp": "2026-06-30T14:24:00",
+      "phase": "env_check",
+      "command": "ssh root@192.168.9.114 \"echo SSH_OK && docker version && nproc && free -g\"",
+      "success": true,
+      "output": "SSH_OK; Docker 18.09.0; 256 CPUs; 2044GiB RAM; 935G disk",
+      "duration_seconds": 5
+    },
+    {
+      "step": 2,
+      "timestamp": "2026-06-30T14:24:30",
+      "phase": "env_check",
+      "command": "ssh root@192.168.9.114 \"npu-smi info\"",
+      "success": true,
+      "output": "8 x Ascend 910B3 (64GB HBM), npu-smi 25.5.0; NPU 0 Critical, NPU 1-7 OK",
+      "duration_seconds": 3
+    },
+    {
+      "step": 3,
+      "timestamp": "2026-06-30T14:25:00",
+      "phase": "code_prepare",
+      "command": "ssh root@192.168.9.114 \"git clone --depth 1 --branch master https://gitcode.com/Ascend/MindIE-SD.git /tmp/MindIE-SD-verify\"",
+      "success": true,
+      "output": "Clone OK; commit 7382253 (!374 merge dev into master)",
+      "duration_seconds": 20
+    },
+    {
+      "step": 4,
+      "timestamp": "2026-06-30T14:25:30",
+      "phase": "doc_read",
+      "command": "cat README.md docs/zh/installation.md docs/zh/developer_guide/test.md setup.py build/build_ops.sh build/build_plugin.sh",
+      "success": true,
+      "output": "Python 包，源码安装: python setup.py bdist_wheel; UT: bash tests/run_UT_test.sh; 样例: examples/dummy_run/ 空权重 NPU 推理; 依赖 CANN 9.0.0 + torch_npu",
+      "duration_seconds": 30
+    },
+    {
+      "step": 5,
+      "timestamp": "2026-06-30T14:26:00",
+      "phase": "container",
+      "command": "ssh root@192.168.9.114 \"docker run -d --name MindIE-SD-ttfhw --privileged --ipc=host --net=host -v /usr/local/Ascend/driver:/usr/local/Ascend/driver:ro -v /tmp/MindIE-SD-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity\"",
+      "success": true,
+      "output": "Container started; openEuler 24.03 LTS; Python 3.11.6; 256 CPUs",
+      "duration_seconds": 8
+    },
+    {
+      "step": 6,
+      "timestamp": "2026-06-30T14:26:30",
+      "phase": "deps",
+      "command": "docker exec MindIE-SD-ttfhw dnf install -y gcc gcc-c++ make cmake wget git python3-pip python3-devel zlib-devel bzip2-devel libffi-devel openssl-devel xz-devel",
+      "success": true,
+      "output": "gcc 12.3.1, cmake 3.27.9, pip 23.3.1 installed",
+      "duration_seconds": 120
+    },
+    {
+      "step": 7,
+      "timestamp": "2026-06-30T14:30:00",
+      "phase": "cann",
+      "command": "docker exec MindIE-SD-ttfhw bash -c 'wget Ascend-cann-toolkit_9.0.0_linux-aarch64.run && yes | ./toolkit.run --install --quiet'",
+      "success": true,
+      "output": "CANN toolkit 9.0.0 installed at /usr/local/Ascend (1.2GB download)",
+      "duration_seconds": 330
+    },
+    {
+      "step": 8,
+      "timestamp": "2026-06-30T14:35:30",
+      "phase": "cann",
+      "command": "docker exec MindIE-SD-ttfhw bash -c 'source set_env.sh && yes | ./ops910b.run --install --quiet'",
+      "success": true,
+      "output": "Ascend-cann-910b-ops 9.0.0 installed (2.2GB download); 910B ops available",
+      "duration_seconds": 130
+    },
+    {
+      "step": 9,
+      "timestamp": "2026-06-30T14:38:00",
+      "phase": "deps",
+      "command": "docker exec MindIE-SD-ttfhw pip3 install torch-2.9.0-cp311-cp311-manylinux_2_28_aarch64.whl torch_npu-2.9.0.post1-cp311-cp311-manylinux_2_28_aarch64.whl",
+      "success": true,
+      "output": "torch 2.9.0+cpu, torch_npu 2.9.0.post1 installed (Huawei OBS wheels)",
+      "duration_seconds": 90
+    },
+    {
+      "step": 10,
+      "timestamp": "2026-06-30T14:42:00",
+      "phase": "deps",
+      "command": "docker exec MindIE-SD-ttfhw pip3 install -r requirements.txt (triton-ascend==3.2.0 替代 3.2.1) + requirements-test.txt + decorator + scipy + attrs",
+      "success": true,
+      "output": "All deps installed; triton-ascend 3.2.0 (mirror 无 3.2.1); decorator/scipy 为 CANN TBE 编译器隐含依赖",
+      "duration_seconds": 300
+    },
+    {
+      "step": 11,
+      "timestamp": "2026-06-30T14:48:00",
+      "phase": "verify_npu",
+      "command": "docker exec MindIE-SD-ttfhw python3 -c 'import torch,torch_npu; print(torch.npu.is_available(), torch.npu.device_count())'",
+      "success": true,
+      "output": "npu_available=True, device_count=8 (910B3); torch=2.9.0+cpu, torch_npu=2.9.0.post1",
+      "duration_seconds": 15
+    },
+    {
+      "step": 12,
+      "timestamp": "2026-06-30T14:50:00",
+      "phase": "build",
+      "command": "docker exec MindIE-SD-ttfhw bash -c 'source set_env.sh && export CMAKE_BUILD_PARALLEL_LEVEL=51 MAKEFLAGS=-j51 && python3 setup.py bdist_wheel' (第一次失败: ModuleNotFoundError decorator)",
+      "success": false,
+      "output": "build_ops.sh 失败: CANN TBE 编译器缺 decorator 模块 (tbe/tvm/target/generic_func.py)",
+      "duration_seconds": 120
+    },
+    {
+      "step": 13,
+      "timestamp": "2026-06-30T14:52:00",
+      "phase": "build",
+      "command": "docker exec MindIE-SD-ttfhw pip3 install decorator attrs && 重试 build (第二次失败: ModuleNotFoundError scipy)",
+      "success": false,
+      "output": "build_ops.sh 失败: CANN TBE 编译器缺 scipy 模块 (tbe/tvm/relay/analysis/sparse_dense.py)",
+      "duration_seconds": 120
+    },
+    {
+      "step": 14,
+      "timestamp": "2026-06-30T14:55:00",
+      "phase": "build",
+      "command": "docker exec MindIE-SD-ttfhw pip3 install scipy && 重试: python3 setup.py bdist_wheel (CMAKE_BUILD_PARALLEL_LEVEL=51)",
+      "success": true,
+      "output": "BUILD COMPLETED SUCCESSFULLY; wheel: mindiesd-3.0.0-cp311-cp311-linux_aarch64.whl (9.3M); plugin: libPTAExtensionOPS.so (2.5M); ops vendors: aie_ascendc/customize/customize_transformer",
+      "duration_seconds": 420
+    },
+    {
+      "step": 15,
+      "timestamp": "2026-06-30T15:02:00",
+      "phase": "build",
+      "command": "ls dist/ mindiesd/plugin/*.so mindiesd/ops/vendors/",
+      "success": true,
+      "output": "wheel 9.3M, libPTAExtensionOPS.so 2.5M, 3 ops vendor dirs 全量构建（未跳过 ops）",
+      "duration_seconds": 2
+    },
+    {
+      "step": 16,
+      "timestamp": "2026-06-30T15:03:00",
+      "phase": "ut",
+      "command": "docker exec MindIE-SD-ttfhw bash -c 'source set_env.sh && source build/set_env.sh && python3 -c \"import mindiesd\"'",
+      "success": true,
+      "output": "mindiesd import OK (warning: triton-ascend 3.2.0 < 3.2.1, SparseLinearAttention disabled, 非致命)",
+      "duration_seconds": 10
+    },
+    {
+      "step": 17,
+      "timestamp": "2026-06-30T15:03:30",
+      "phase": "ut",
+      "command": "docker exec MindIE-SD-ttfhw bash tests/run_UT_test.sh",
+      "success": true,
+      "output": "unittest: Ran 34 tests OK; pytest: 34 passed, 0 failed, 1 warning in 6.76s; coverage 19% (TOTAL 6784 stmts)",
+      "duration_seconds": 45
+    },
+    {
+      "step": 18,
+      "timestamp": "2026-06-30T15:05:00",
+      "phase": "sample",
+      "command": "docker exec MindIE-SD-ttfhw pip3 install -r examples/dummy_run/requirements.txt (diffusers 0.38.0, transformers 5.2.0)",
+      "success": true,
+      "output": "dummy_run deps installed (升级 diffusers 0.29.0->0.38.0, transformers 4.44.2->5.2.0)",
+      "duration_seconds": 60
+    },
+    {
+      "step": 19,
+      "timestamp": "2026-06-30T15:07:00",
+      "phase": "sample",
+      "command": "docker exec MindIE-SD-ttfhw bash -c 'export LD_LIBRARY_PATH=driver/lib64/{common,driver,inner}:cann/lib64:$LD_LIBRARY_PATH PATH=/usr/local/sbin:$PATH ASCEND_CUSTOM_OPP_PATH=mindiesd/ops/vendors/... HF_ENDPOINT=https://hf-mirror.com && python3 examples/dummy_run/wan_infer.py --device_id 1'",
+      "success": true,
+      "output": "Wan2.2 dummy weight verification PASSED; Build 3094.86ms, Inference 6960.60ms, Peak mem 12.14GB (device 1, 910B3)",
+      "duration_seconds": 180
+    },
+    {
+      "step": 20,
+      "timestamp": "2026-06-30T15:10:00",
+      "phase": "report",
+      "command": "收集 build.log / ut.log / sample.log / final.xml 元数据，生成 verification_report JSON",
+      "success": true,
+      "output": "三阶段全部成功: build=success, ut=success(34/34), sample=success",
+      "duration_seconds": 30
+    }
+  ],
+  "final_results": {
+    "build": {
+      "status": "success",
+      "duration_seconds": 540,
+      "artifacts": [
+        {
+          "name": "mindiesd wheel",
+          "path": "dist/mindiesd-3.0.0-cp311-cp311-linux_aarch64.whl",
+          "size": "9.3 MB"
+        },
+        {
+          "name": "libPTAExtensionOPS.so",
+          "path": "mindiesd/plugin/libPTAExtensionOPS.so",
+          "size": "2.5 MB"
+        },
+        {
+          "name": "AscendC ops vendors",
+          "path": "mindiesd/ops/vendors/{aie_ascendc,customize,customize_transformer}",
+          "size": "3 vendor dirs (laser_attention, ada_block_sparse_attention, la_preprocess, sparse_block_estimate, quant_flash_attn 等)"
+        }
+      ],
+      "notes": [
+        "全量构建（AscendC ops + TIK ops + PyTorch plugin），未使用 MINDIESD_SKIP_OPS_BUILD 跳过",
+        "CANN 9.0.0 toolkit + 910b-ops 完整安装，ops 编译成功",
+        "编译并发限制 51 (CPU 256 × 20%)",
+        "CANN TBE 编译器隐含 Python 依赖 decorator/scipy 需手动补装"
+      ]
+    },
+    "unit_test": {
+      "status": "success",
+      "duration_seconds": 45,
+      "total": 34,
+      "passed": 34,
+      "failed": 0,
+      "failures": [],
+      "mode": "real torch_npu + NPU (aarch64, 910B3)",
+      "framework": "unittest (coverage run tests/UT/run.py) + pytest (tests/UT --junit-xml)",
+      "test_files": [
+        "tests/UT/compilation/test_aclgraph_config.py (17 tests)",
+        "tests/UT/utils/logs/test_log.py (4 tests)",
+        "tests/UT/utils/test_env.py (8 tests)",
+        "tests/UT/utils/test_exception.py (5 tests)"
+      ],
+      "coverage": "19% (TOTAL 6784 statements, 2174 branches)",
+      "note": "真实 NPU 环境（非 CPU mock），torch_npu 2.9.0.post1 + CANN 9.0.0; triton-ascend 3.2.0<3.2.1 警告（SparseLinearAttention disabled）不影响 UT"
+    },
+    "sample_execution": {
+      "status": "success",
+      "duration_seconds": 180,
+      "sample": "examples/dummy_run/wan_infer.py (Wan2.2 空权重 NPU 前向推理)",
+      "device": "NPU 1 (Ascend 910B3, 64GB HBM)",
+      "results": [
+        {
+          "metric": "build_total",
+          "value_ms": 3094.86
+        },
+        {
+          "metric": "inference_timed",
+          "value_ms": 6960.6
+        },
+        {
+          "metric": "peak_memory",
+          "value_gb": 12.14
+        },
+        {
+          "metric": "transformer_build",
+          "value_ms": 178.81
+        },
+        {
+          "metric": "text_encoder_timed",
+          "value_ms": 5.96
+        }
+      ],
+      "verdict": "Wan2.2 dummy weight verification PASSED",
+      "note": "空权重模式（仅下载 KB 级配置文件 from HF mirror），2 层 transformer，1280x720x81 frames，1 inference step；NPU 0 Critical 故使用 device 1"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "requirements.txt 中 triton-ascend==3.2.1 在华为云 PyPI 镜像仅有 3.2.0，安装需降级或换源",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "CANN TBE 编译器（msopgen/tbe）隐含依赖 decorator/scipy/attrs，docs/zh/installation.md 未列出这些 Python 包",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "examples/dummy_run/requirements.txt 要求 diffusers==0.38.0/transformers==5.2.0，与主 requirements.txt 的 0.29.0/4.44.2 冲突，需单独升级",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "容器内 npu-smi 需要 driver lib64 子目录（common/driver/inner）加入 LD_LIBRARY_PATH，Dockerfile 未说明",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/zh/installation.md 列出 CANN 9.0.0，实际验证使用 9.0.0 toolkit + 910b-ops，版本一致",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-30T14:50:00",
+      "problem": "build_ops.sh 调用 CANN msopgen/TBE 编译器时 ModuleNotFoundError: No module named 'decorator' (tbe/tvm/target/generic_func.py import decorator)",
+      "solution": "pip3 install decorator（CANN TBE 编译器隐含依赖，未在其安装文档中列出）",
+      "source": "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/tvm/target/generic_func.py:22"
+    },
+    {
+      "timestamp": "2026-06-30T14:55:00",
+      "problem": "build_ops.sh 调用 CANN TBE 编译器时 ModuleNotFoundError: No module named 'scipy' (tbe/tvm/relay/analysis/sparse_dense.py import scipy.sparse)",
+      "solution": "pip3 install scipy（CANN TBE 编译器隐含依赖）",
+      "source": "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/tvm/relay/analysis/sparse_dense.py:25"
+    },
+    {
+      "timestamp": "2026-06-30T14:42:00",
+      "problem": "requirements.txt 中 triton-ascend==3.2.1 在华为云 PyPI 镜像不可用（仅有 3.2.0rc2/3.2.0）",
+      "solution": "安装 triton-ascend==3.2.0（功能等价，仅触发 triton-ascend<3.2.1 的 SparseLinearAttention disabled 警告，不影响 build/UT/sample）",
+      "source": "requirements.txt:5"
+    },
+    {
+      "timestamp": "2026-06-30T15:07:00",
+      "problem": "容器内 npu-smi 报 libc_sec.so/libdrvdsmi_host.so/libascend_hal.so 找不到，check_npu() 会失败",
+      "solution": "export LD_LIBRARY_PATH=/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64/inner:$LD_LIBRARY_PATH 并将 /usr/local/sbin 加入 PATH",
+      "source": "examples/dummy_run/model/__init__.py check_npu() 依赖 npu-smi"
+    },
+    {
+      "timestamp": "2026-06-30T15:07:00",
+      "problem": "NPU 0 健康状态 Critical，torch.randn().npu() 在 device 0 报 runtime error 507033",
+      "solution": "样例使用 --device_id 1（NPU 1-7 健康 OK）",
+      "source": "npu-smi info 显示 NPU 0 Critical"
+    },
+    {
+      "timestamp": "2026-06-30T15:05:00",
+      "problem": "examples/dummy_run/requirements.txt 要求 diffusers==0.38.0/transformers==5.2.0，与主 requirements.txt (0.29.0/4.44.2) 冲突",
+      "solution": "在 build/UT 完成后单独 pip install dummy_run requirements 升级 diffusers/transformers",
+      "source": "examples/dummy_run/requirements.txt"
+    }
+  ]
+}

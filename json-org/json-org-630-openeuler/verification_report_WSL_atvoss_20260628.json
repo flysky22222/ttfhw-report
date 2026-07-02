@@ -1,0 +1,734 @@
+{
+  "metadata": {
+    "repo_name": "atvoss",
+    "repo_url": "https://gitcode.com/cann/atvoss.git",
+    "branch": "master",
+    "start_time": "2026-06-28T00:53:00",
+    "end_time": "2026-06-28T01:25:00",
+    "duration_seconds": 1920,
+    "total_steps": 18,
+    "commit": "999805358318db9288c6e9e8c2e49e098ad4f8db",
+    "environment": "remote:192.168.9.114"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "claude-sonnet-4-6",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Huawei Kunpeng 920",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "充足",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2Ti (无限制)"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像；CANN 9.1.0 toolkit 通过宿主 /home/wangsike/Ascend 只读挂载到容器 /opt/Ascend，提供 bisheng 编译器与 Ascend C 头文件",
+      "dependency_mapping": {
+        "from_dockerfile": "仓库无 Dockerfile；依赖通过 cmake/CMakeASCEND.cmake 自动探测 $ASCEND_HOME_PATH",
+        "mappings": [
+          {
+            "original": "${ASCEND_HOME_PATH}/compiler/tikcpp/include",
+            "openEuler": "/opt/cann-wrap/compiler/tikcpp/inner (映射自 /opt/Ascend/cann-9.1.0/aarch64-linux/tikcpp)",
+            "source": "CMakeASCEND.cmake"
+          },
+          {
+            "original": "${ASCEND_HOME_PATH}/compiler/ascendc/include/basic_api/impl",
+            "openEuler": "/opt/Ascend/cann-9.1.0/compiler/ascendc/include/basic_api/impl",
+            "source": "CMakeASCEND.cmake"
+          },
+          {
+            "original": "${ASCEND_HOME_PATH}/compiler/ascendc/impl/aicore/basic_api",
+            "openEuler": "路径在 CANN 9.1.0 安装中不存在，构建时通过 cmake 包装目录占位",
+            "source": "CMakeASCEND.cmake"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + docs/quick_start.md",
+      "value": "aarch64（昇腾 NPU host CPU）"
+    },
+    "recommended_image": {
+      "source": "无 Dockerfile；按 skill 约束使用 openEuler 24.03 LTS",
+      "value": "openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "无 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "docs/quick_start.md + cmake/CMakeASCEND.cmake + scripts/build.sh",
+      "value": [
+        "gcc >= 7.3.0 (dnf: gcc gcc-c++)",
+        "cmake >= 3.16.0 (dnf: cmake)",
+        "python >= 3.7.0 (dnf: python3 python3-pip)",
+        "make (dnf: make)",
+        "git (dnf: git)",
+        "gawk / dos2unix / pigz (dnf)",
+        "CANN toolkit (宿主挂载 /opt/Ascend/cann-9.1.0)",
+        "bisheng 编译器 (/opt/Ascend/cann-9.1.0/tools/bisheng_compiler/bin)",
+        "googletest v1.14.0 (ExternalProject 自动下载)"
+      ]
+    },
+    "build_commands": {
+      "source": "scripts/build.sh + docs/quick_start.md",
+      "value": "bash scripts/build.sh -DSOC=ascend950 <target>"
+    },
+    "ut_commands": {
+      "source": "docs/quick_start.md UT测试章节",
+      "value": "bash scripts/build.sh -DSOC=ascend950 --host_ut"
+    },
+    "sample_commands": {
+      "source": "docs/quick_start.md 编译执行章节",
+      "value": "./output/bin/rms_norm --shape=512,3 (需要 NPU 设备)"
+    },
+    "special_dependencies": {
+      "source": "cmake/third_party/gtest.cmake",
+      "value": [
+        "googletest v1.14.0 从 https://gitcode.com/cann-src-third-party/googletest 自动下载"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-28T00:53:00",
+      "command": "ssh 192.168.9.114 'nproc && docker version --format '{{.Server.Version}}'",
+      "success": true,
+      "output": "256 cores, Docker 18.09.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-28T00:54:00",
+      "command": "ssh 192.168.9.114 'git clone --depth 1 --branch master https://gitcode.com/cann/atvoss.git /tmp/atvoss-verify-fresh'",
+      "success": true,
+      "output": "Cloning into '/tmp/atvoss-verify-fresh'... commit 999805358318db9288c6e9e8c2e49e098ad4f8db",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-28T00:55:00",
+      "command": "读取 README.md / docs/quick_start.md / scripts/build.sh / CMakeLists.txt / cmake/CMakeASCEND.cmake / cmake/third_party/gtest.cmake",
+      "success": true,
+      "output": "确认项目使用 bisheng 编译器 + CANN toolkit + ASCEND_HOME_PATH + SOC=ascend950；UT 通过 gtest v1.14.0 ExternalProject 拉取；examples 需要 --npu-arch=dav-3510 编译",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-28T00:56:00",
+      "command": "docker run -d --name atvoss-ttfhw -v /tmp/atvoss-verify-fresh:/workspace -v /home/wangsike/Ascend:/opt/Ascend:ro -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "Container ID: 8d90a530bad807ebf6d4520f54a3524ca71ce3bc1362ae77541a2c7612b379e3",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-28T00:57:00",
+      "command": "docker exec atvoss-ttfhw dnf install -y gcc gcc-c++ make cmake git python3 python3-pip gawk dos2unix pigz wget unzip tar",
+      "success": true,
+      "output": "安装 gcc-12.3.1, gcc-c++-12.3.1, make, cmake-3.27.9, git-2.43.0, python3-3.11.6, gawk, dos2unix, pigz 等",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-28T00:58:00",
+      "command": "docker exec atvoss-ttfhw bash -c '创建 /opt/cann-wrap 包装目录，将 /opt/Ascend/cann-9.1.0 各子目录软链接进 wrapper，补齐 tikcpp 和 ascendc/impl/aicore 缺失路径'",
+      "success": true,
+      "output": "Wrapper 含 compiler/tikcpp, compiler/ascendc/impl/aicore, lib64 等所有 cmake 期望路径",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-28T00:58:30",
+      "command": "docker exec atvoss-ttfhw bash -c 'export ASCEND_HOME_PATH=/opt/cann-wrap && export PATH=/opt/cann-wrap/tools/bisheng_compiler/bin:$PATH && bisheng --version'",
+      "success": true,
+      "output": "2026-06-24T18:23:33+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231), Target: aarch64-unknown-linux-gnu",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T00:59:00",
+      "command": "cmake -S /workspace -B /workspace/build -DCMAKE_BUILD_TYPE=Release -DSOC=ascend950",
+      "success": true,
+      "output": "Configuring done (0.4s) / Generating done (0.1s)，CMakeCache.txt 已生成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-06-28T00:59:30",
+      "command": "cmake --build /workspace/build --target host_ut -j51 (构建4个 host 单元测试)",
+      "success": true,
+      "output": "[100%] Built target host_ut，生成 test_arguments(828848B) / test_elewise_tiling(829656B) / test_expr_linearizer(827560B) / test_utility(826920B)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-28T01:01:00",
+      "command": "运行 host_ut 时遇到 libascendcl.so/libruntime.so 找不到问题，分析 ldd 依赖",
+      "success": false,
+      "output": "ldd 显示缺少 libascendcl.so, libruntime.so, libascend_hal.so 等",
+      "error": "需要在 LD_LIBRARY_PATH 加入 CANN 库路径",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-28T01:01:30",
+      "command": "export LD_LIBRARY_PATH=/opt/Ascend/cann-9.1.0/aarch64-linux/lib64:/opt/Ascend/cann-9.1.0/aarch64-linux/devlib/linux/aarch64:/opt/Ascend/cann-9.1.0/aarch64-linux/lib64/device/lib64 并重新运行 4 个 UT",
+      "success": true,
+      "output": "test_arguments PASSED 1/1, test_elewise_tiling PASSED 1/1, test_expr_linearizer PASSED 1/1, test_utility PASSED 1/1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-28T01:05:00",
+      "command": "cmake --build /workspace/build --target abs -j51 (构建 examples/abs)",
+      "success": true,
+      "output": "[100%] Built target abs，生成 /workspace/build/examples/abs/abs(418104B)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-28T01:06:00",
+      "command": "直接执行 ./abs --shape=512,3",
+      "success": false,
+      "output": "Start abs fp32 data",
+      "error": "aclError:500000 (ACL_ERROR_RT_FAILURE) - 无 NPU 设备",
+      "returncode": 1,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-28T01:06:30",
+      "command": "尝试 cannsim record ./abs --shape=512,3 -s Ascend950",
+      "success": false,
+      "output": "Simulation SUCCESS 0.2s (USER_APP executed successfully)，但实际 ./abs 仍返回 aclError:500000；cannprof 不可用",
+      "error": "cannsim 仅模拟 AscendC kernel 执行，无法替代 ACL runtime 设备初始化，样例验证流程无法完成 Accuracy verification passed 校验",
+      "returncode": 1,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-06-28T01:08:00",
+      "command": "静态分析：dnf install -y clang-tools-extra 后使用 clang-format --dry-run --Werror 扫描 124 个 C++ 源文件",
+      "success": true,
+      "output": "total=124 fail=7（include/graph/expr_cast_eliminate.h, include/elewise/graph/bind.h, include/elewise/device/device_adapter.h, include/elewise/block/schedule.h, examples/rms_norm/rms_norm.cpp, examples/python_extension/csrc/abs/ascend950/abs.cpp, tests/ut/compile_perf/compile_perf_test.cpp）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-28T01:25:00",
+      "command": "整合验证结果：build 成功（UT 4 个 + abs example），unit_test 4/4 PASSED，sample_execution 无法在无 NPU 环境下完成",
+      "success": true,
+      "output": "build=success, ut=success, sample=not_run",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T01:25:30",
+      "command": "写入 verification_report_WSL_atvoss_20260628.json",
+      "success": true,
+      "output": "/workspace/verification_report_WSL_atvoss_20260628.json",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-28T00:53:00",
+      "step": "start",
+      "action": "启动 atvoss 仓库验证（远程模式 192.168.9.114）",
+      "result": "已启动",
+      "details": {
+        "repo_url": "https://gitcode.com/cann/atvoss.git",
+        "branch": "master"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:54:00",
+      "step": "code_preparation",
+      "action": "在远程机器 git clone --depth 1 master 分支到 /tmp/atvoss-verify-fresh",
+      "result": "成功",
+      "details": {
+        "commit": "999805358318db9288c6e9e8c2e49e098ad4f8db",
+        "size": "约 0.8MB"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:55:00",
+      "step": "document_reading",
+      "action": "阅读 README.md / docs/quick_start.md / scripts/build.sh / CMakeLists.txt / cmake/*",
+      "result": "成功",
+      "details": {
+        "build_system": "cmake + bisheng 编译器",
+        "host_ut_target": "tests/ut/host/test_{arguments,elewise_tiling,expr_linearizer,utility}",
+        "examples": "abs/muls/rms_norm/python_extension",
+        "third_party_gtest": "ExternalProject 从 gitcode 下载 v1.14.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:55:30",
+      "step": "static_analysis_scan",
+      "action": "检查 pre-commit 配置",
+      "result": "已配置",
+      "details": {
+        "config_file": ".pre-commit-config.yaml",
+        "hooks": [
+          "clang-format@16",
+          "oat-check"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:55:30",
+      "step": "static_analysis_scan",
+      "action": "检查 lint-runner 配置",
+      "result": "未配置",
+      "details": {
+        "searched_patterns": [
+          ".lint-runner.yaml",
+          ".lint-runner.json",
+          "lint-runner.config.*"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:55:30",
+      "step": "devcontainer_scan",
+      "action": "检查 .devcontainer 目录",
+      "result": "未配置",
+      "details": {
+        "searched_paths": [
+          ".devcontainer",
+          ".devcontainer.json"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:56:00",
+      "step": "container_setup",
+      "action": "在远程机器拉取 openEuler 24.03-lts 镜像并启动容器 atvoss-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "atvoss-ttfhw",
+        "mounts": [
+          "/tmp/atvoss-verify-fresh:/workspace",
+          "/home/wangsike/Ascend:/opt/Ascend:ro"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:57:00",
+      "step": "dependency_installation_layer1",
+      "action": "dnf install -y gcc gcc-c++ make cmake git python3 python3-pip gawk dos2unix pigz wget unzip tar",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "make",
+          "cmake-3.27.9",
+          "git-2.43.0",
+          "python3-3.11.6",
+          "gawk",
+          "dos2unix",
+          "pigz",
+          "wget",
+          "unzip",
+          "tar"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:58:00",
+      "step": "dependency_installation_layer2",
+      "action": "在容器内创建 /opt/cann-wrap 软链包装，关联宿主 /opt/Ascend/cann-9.1.0 各子目录并补齐缺失路径",
+      "result": "成功",
+      "details": {
+        "source": "宿主 CANN 9.1.0 工具链（只读挂载）",
+        "packages": [
+          "bisheng-15.0.5 (clang-based)",
+          "CANN 9.1.0 toolkit"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:58:30",
+      "step": "cmake_configure",
+      "action": "cmake -S /workspace -B /workspace/build -DCMAKE_BUILD_TYPE=Release -DSOC=ascend950",
+      "result": "成功",
+      "details": {
+        "ascend_dir": "/opt/cann-wrap",
+        "bisheng": "found at /opt/cann-wrap/tools/bisheng_compiler/bin/bisheng"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T00:59:30",
+      "step": "build_attempt",
+      "action": "cmake --build build --target host_ut -j51 (CPU 256×20%=51)",
+      "result": "成功",
+      "details": {
+        "artifacts": [
+          "test_arguments",
+          "test_elewise_tiling",
+          "test_expr_linearizer",
+          "test_utility"
+        ],
+        "concurrency": 51,
+        "concurrency_ratio": "20%"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:01:00",
+      "step": "problem_resolution",
+      "action": "UT 运行报 libascendcl.so: cannot open shared object file，分析 ldd 发现需 LD_LIBRARY_PATH",
+      "result": "已解决",
+      "details": {
+        "solution": "export LD_LIBRARY_PATH=/opt/Ascend/cann-9.1.0/aarch64-linux/lib64:/opt/Ascend/cann-9.1.0/aarch64-linux/devlib/linux/aarch64:/opt/Ascend/cann-9.1.0/aarch64-linux/lib64/device/lib64",
+        "source": "ldd 输出 + CANN 库布局"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:01:30",
+      "step": "ut_execution",
+      "action": "运行 4 个 host 单元测试（test_arguments/test_elewise_tiling/test_expr_linearizer/test_utility）",
+      "result": "成功",
+      "details": {
+        "total": 4,
+        "passed": 4,
+        "failed": 0,
+        "failures": []
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:05:00",
+      "step": "build_example",
+      "action": "cmake --build build --target abs -j51",
+      "result": "成功",
+      "details": {
+        "artifacts": [
+          {
+            "name": "abs",
+            "path": "build/examples/abs/abs",
+            "size": "418104B"
+          }
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:06:00",
+      "step": "sample_attempt",
+      "action": "直接执行 ./abs --shape=512,3",
+      "result": "失败",
+      "details": {
+        "error": "aclError:500000 (ACL_ERROR_RT_FAILURE)，环境中无 NPU 设备"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:06:30",
+      "step": "sample_cannsim_attempt",
+      "action": "通过 cannsim record 模拟执行",
+      "result": "部分",
+      "details": {
+        "observation": "cannsim 标记 SUCCESS，但实际 ./abs 仍返回 aclError:500000；cannprof 不可用，仅记录到 record/log/ub_log，未输出 Accuracy verification passed"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:08:00",
+      "step": "static_analysis_execution",
+      "action": "clang-format v17 dry-run 124 个 C++ 源文件（仓库配置 v16，容器采用 v17 替代）",
+      "result": "部分通过",
+      "details": {
+        "total": 124,
+        "passed": 117,
+        "failed": 7,
+        "failures": [
+          "include/graph/expr_cast_eliminate.h",
+          "include/elewise/graph/bind.h",
+          "include/elewise/device/device_adapter.h",
+          "include/elewise/block/schedule.h",
+          "examples/rms_norm/rms_norm.cpp",
+          "examples/python_extension/csrc/abs/ascend950/abs.cpp",
+          "tests/ut/compile_perf/compile_perf_test.cpp"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T01:25:00",
+      "step": "report_generation",
+      "action": "生成 verification_report_WSL_atvoss_20260628.json",
+      "result": "成功",
+      "details": {
+        "output_file": "/workspace/verification_report_WSL_atvoss_20260628.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "仓库配置 .pre-commit-config.yaml 含 clang-format 与 oat-check 两个 hook；未配置 lint-runner；未配置 devcontainer。本环境用 clang-format v17 dry-run 替代 pre-commit run，117/124 通过、7 个文件存在格式偏差",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "hooks": [
+          "clang-format@16",
+          "oat-check (Python oat-py)"
+        ]
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      },
+      "execution": {
+        "tool": "clang-format v17.0.6 (system)",
+        "mode": "dry-run --Werror",
+        "total_files": 124,
+        "passed": 117,
+        "failed": 7,
+        "failed_files": [
+          "include/graph/expr_cast_eliminate.h",
+          "include/elewise/graph/bind.h",
+          "include/elewise/device/device_adapter.h",
+          "include/elewise/block/schedule.h",
+          "examples/rms_norm/rms_norm.cpp",
+          "examples/python_extension/csrc/abs/ascend950/abs.cpp",
+          "tests/ut/compile_perf/compile_perf_test.cpp"
+        ],
+        "note": "pre-commit run --all-files 在容器内 15 分钟超时，本验证改用直接 clang-format dry-run 完成静态格式检查；oat-check hook 需要 git staged 文件，跳过"
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 .devcontainer"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 120,
+      "concurrency": 51,
+      "concurrency_ratio": "20% of 256 cores",
+      "build_system": "cmake + bisheng (clang-15.0.5)",
+      "image": "openEuler 24.03 LTS",
+      "soc": "ascend950",
+      "artifacts": [
+        {
+          "name": "test_arguments",
+          "path": "build/tests/ut/host/test_arguments",
+          "size": "828848B"
+        },
+        {
+          "name": "test_elewise_tiling",
+          "path": "build/tests/ut/host/test_elewise_tiling",
+          "size": "829656B"
+        },
+        {
+          "name": "test_expr_linearizer",
+          "path": "build/tests/ut/host/test_expr_linearizer",
+          "size": "827560B"
+        },
+        {
+          "name": "test_utility",
+          "path": "build/tests/ut/host/test_utility",
+          "size": "826920B"
+        },
+        {
+          "name": "abs",
+          "path": "build/examples/abs/abs",
+          "size": "418104B"
+        }
+      ],
+      "notes": "host_ut 与 examples/abs 两个目标均编译成功；examples/muls 与 rms_norm 未单独构建（cmake configure 已通过，按需可继续）"
+    },
+    "ut": {
+      "status": "success",
+      "duration_seconds": 5,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": [],
+      "details": [
+        {
+          "test": "test_arguments",
+          "result": "PASSED",
+          "tests_run": 1
+        },
+        {
+          "test": "test_elewise_tiling",
+          "result": "PASSED",
+          "tests_run": 1
+        },
+        {
+          "test": "test_expr_linearizer",
+          "result": "PASSED",
+          "tests_run": 1
+        },
+        {
+          "test": "test_utility",
+          "result": "PASSED",
+          "tests_run": 1
+        }
+      ],
+      "notes": "UT 在 host CPU 上通过 gtest 框架执行，需要 LD_LIBRARY_PATH 指向 CANN 9.1.0 lib64"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 12,
+      "examples_compiled": [
+        "abs"
+      ],
+      "examples_run": [],
+      "reason": "examples/abs 运行时报 aclError:500000 (ACL_ERROR_RT_FAILURE)；cannsim record 仅模拟 AscendC kernel，不能替代 ACL runtime/TS 设备初始化，未输出 'Accuracy verification passed'。在远程机器 192.168.9.114 当前无 NPU 设备可用，sample_execution 标记为 not_run",
+      "attempted_commands": [
+        "./abs --shape=512,3",
+        "cannsim record ./abs --shape=512,3 -s Ascend950 --gen-report"
+      ],
+      "details": [
+        {
+          "sample_name": "abs",
+          "execution_status": "not_run",
+          "reason": "no NPU device on host",
+          "compile_status": "success"
+        }
+      ]
+    },
+    "unit_test": {
+      "status": "success",
+      "duration_seconds": 5,
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "failures": [],
+      "details": [
+        {
+          "test": "test_arguments",
+          "result": "PASSED",
+          "tests_run": 1
+        },
+        {
+          "test": "test_elewise_tiling",
+          "result": "PASSED",
+          "tests_run": 1
+        },
+        {
+          "test": "test_expr_linearizer",
+          "result": "PASSED",
+          "tests_run": 1
+        },
+        {
+          "test": "test_utility",
+          "result": "PASSED",
+          "tests_run": 1
+        }
+      ],
+      "notes": "UT 在 host CPU 上通过 gtest 框架执行，需要 LD_LIBRARY_PATH 指向 CANN 9.1.0 lib64"
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 12,
+      "examples_compiled": [
+        "abs"
+      ],
+      "examples_run": [],
+      "reason": "examples/abs 运行时报 aclError:500000 (ACL_ERROR_RT_FAILURE)；cannsim record 仅模拟 AscendC kernel，不能替代 ACL runtime/TS 设备初始化，未输出 'Accuracy verification passed'。在远程机器 192.168.9.114 当前无 NPU 设备可用，sample_execution 标记为 not_run",
+      "attempted_commands": [
+        "./abs --shape=512,3",
+        "cannsim record ./abs --shape=512,3 -s Ascend950 --gen-report"
+      ],
+      "details": [
+        {
+          "sample_name": "abs",
+          "execution_status": "not_run",
+          "reason": "no NPU device on host",
+          "compile_status": "success"
+        }
+      ]
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "README 与 docs/quick_start.md 未声明示例/UT 必须依赖真实 NPU 设备或等效 simulator，仅笼统说 '运行算子时必须安装驱动与固件'",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "示例执行流程依赖 cannsim 工具与 CANN runtime 配合，但 quick_start.md 仅一笔带过 'cannsim record ./run.sh -s Ascend950 --gen-report'，缺少 cannprof 安装提示",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "cmake/CMakeASCEND.cmake 假设的 ${ASCEND_HOME_PATH}/compiler/ascendc/impl/aicore/basic_api 路径在 CANN 9.1.0 安装中并不存在（已通过 wrapper 软链占位），需要随 CANN 版本同步 CMakeASCEND",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "scripts/build.sh 中 ASCEND_HOME_PATH 未设置即报错退出，未提供默认值（默认 /usr/local/Ascend/ascend-toolkit/latest），对 openEuler + cann-9.1.0 安装路径不友好",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "无 Dockerfile 提供环境复现路径，本次验证依赖宿主 /home/wangsike/Ascend 中的 CANN 9.1.0 安装",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-28T00:56:00",
+      "problem": "atvoss-ttfhw 容器需要 bisheng 编译器与 CANN Ascend C 头文件，openEuler 24.03-lts 基础镜像未自带 CANN 工具链",
+      "solution": "将宿主 /home/wangsike/Ascend 只读挂载到容器 /opt/Ascend；容器内创建 /opt/cann-wrap 软链包装目录，将缺失的 compiler/tikcpp 与 compiler/ascendc/impl/aicore 路径补齐",
+      "source": "cmake/CMakeASCEND.cmake 路径要求"
+    },
+    {
+      "timestamp": "2026-06-28T01:01:00",
+      "problem": "host_ut 构建成功但运行报 libascendcl.so: cannot open shared object file",
+      "solution": "设置 LD_LIBRARY_PATH=/opt/Ascend/cann-9.1.0/aarch64-linux/lib64:/opt/Ascend/cann-9.1.0/aarch64-linux/devlib/linux/aarch64:/opt/Ascend/cann-9.1.0/aarch64-linux/lib64/device/lib64",
+      "source": "ldd 输出"
+    },
+    {
+      "timestamp": "2026-06-28T01:06:00",
+      "problem": "examples/abs 编译成功但运行报 aclError:500000 (ACL_ERROR_RT_FAILURE)，远程机器无 NPU 设备",
+      "solution": "尝试 cannsim record 模拟，但 cannsim 仅模拟 AscendC kernel 执行、不替代 ACL runtime/TS 设备初始化，无法完成 'Accuracy verification passed' 校验；按禁止放弃原则如实标记 sample_execution=not_run",
+      "source": "examples/abs/abs.cpp:133 aclrtSetDevice/aclrtMemcpy 等调用"
+    },
+    {
+      "timestamp": "2026-06-28T01:08:00",
+      "problem": "pre-commit run --all-files 在容器内超时（15 分钟未完成）",
+      "solution": "改用 clang-format v17（系统）--dry-run --Werror 扫描 124 个 C++ 源文件，得到与 pre-commit clang-format hook 等效结果",
+      "source": "pre-commit 需要下载 clang-format v16 与 oat-py pip 包，受网络/速率限制"
+    }
+  ]
+}

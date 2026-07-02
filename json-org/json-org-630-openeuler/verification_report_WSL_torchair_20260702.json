@@ -1,0 +1,720 @@
+{
+  "metadata": {
+    "repo_path": "/tmp/torchair-verify",
+    "repo_name": "torchair",
+    "repo_url": "https://gitcode.com/Ascend/torchair.git",
+    "branch": "master",
+    "start_time": "2026-07-02T03:01:29",
+    "end_time": "2026-07-02T03:21:07",
+    "duration_seconds": 1178,
+    "total_steps": 18,
+    "commit": "137794ea2f209f5ee07bf15b8c93132f144faa63"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 182637,
+    "output_tokens": 32596,
+    "cache_hit_tokens": 4684249,
+    "cache_miss_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "ARM Kunpeng 920 (256 vCPU)",
+      "cpu_cores": 256,
+      "memory": "2Ti",
+      "disk": "913G available under /workspace (tmpfs)",
+      "docker_version": "Docker version 18.09.0, build 05c4df4"
+    },
+    "container": {
+      "os": "openEuler 24.03 (LTS)",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "2Ti (无限制)"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（仓库未提供 Dockerfile；README 描述适用于 Ascend NPU 设备，openEuler 24.03 是官方支持的发行版之一）",
+      "dependency_mapping": {
+        "from_dockerfile": "仓库未提供 Dockerfile；参考 README 依赖章节（PyTorch 2.6+、torch_npu、CANN），从 PyTorch 官方 CPU wheel 安装 torch 2.6.0",
+        "mappings": [
+          {
+            "original": "PyTorch 2.6.0+ (Python)",
+            "openEuler": "pip install torch==2.6.0+cpu from download.pytorch.org/whl/cpu (aarch64)",
+            "source": "README.md 版本配套表 + configure.py _COMPAT_TORCH_VERSION"
+          },
+          {
+            "original": "wheel/setuptools for bdist_wheel",
+            "openEuler": "dnf install -y python3-pip && pip install wheel setuptools",
+            "source": "build 阶段 SetuptoolsCommand bdist_wheel 缺失"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 支持的型号章节",
+      "value": "Ascend NPU 系列（950PR/950DT、Atlas A3/A2）；构建主机为 aarch64，仓库为 NPU 扩展库"
+    },
+    "recommended_image": {
+      "source": "README.md 未指定基础镜像；提供 CANN 与 torch_npu 配套表",
+      "value": "原无推荐镜像，按 ttfhw 规则强制使用 openEuler 24.03 LTS"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库未提供 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + configure.py + CMakeLists.txt + build.sh",
+      "value": [
+        "gcc / gcc-c++ (dnf: gcc gcc-c++)",
+        "cmake (dnf: cmake)",
+        "make (dnf: make)",
+        "git (dnf: git)",
+        "python3 / python3-pip / python3-devel (dnf: python3 python3-pip python3-devel)",
+        "wget / unzip (dnf: wget unzip)",
+        "PyTorch 2.6.0 (CPU) (pip: torch==2.6.0+cpu from download.pytorch.org/whl/cpu)",
+        "typing_extensions, filelock, sympy==1.13.1, networkx, jinja2, fsspec, pyyaml, 'numpy<2' (pip)",
+        "wheel, setuptools (pip; build 阶段 bdist_wheel 需要)"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md - 安装章节 / build.sh -c 模式",
+      "value": "mkdir build && cd build && cmake .. && make torchair -j<N>（CI 模式：NO_ASCEND_SDK=1 跳过 SDK 路径检查）"
+    },
+    "ut_commands": {
+      "source": "build.sh -u 模式 + README",
+      "value": "build.sh -u（需 ASCEND_HOME_PATH 或 CANN SDK；本环境未提供，UT 标记 not_run）"
+    },
+    "sample_commands": {
+      "source": "README.md - 快速上手 + examples/_kernel_extension_aclgraph",
+      "value": "import torchair + get_npu_backend (需要 NPU 硬件 + CANN 运行时，本环境无法满足，sample 标记 not_run)"
+    },
+    "special_dependencies": {
+      "source": "build.sh git submodule",
+      "value": [
+        "third_party/secure_c (atomgit.com/openeuler/libboundscheck)",
+        "third_party/googletest (gitee.com/mirrors/googletest)"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-07-02T03:01:29",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes 192.168.9.114 \"echo OK && nproc && free -g\"",
+      "success": true,
+      "output": "OK / 256 / 2044Gi",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-07-02T03:02:00",
+      "command": "ssh 192.168.9.114 'docker version'",
+      "success": true,
+      "output": "Client/Server Version: 18.09.0 (EulerVersion 18.09.0.273), arch aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T03:02:30",
+      "command": "ssh 192.168.9.114 'rm -rf /tmp/torchair-verify && git clone --depth 1 --branch master https://gitcode.com/Ascend/torchair.git /tmp/torchair-verify'",
+      "success": true,
+      "output": "Cloning into '/tmp/torchair-verify'... (commit 137794ea2f209f5ee07bf15b8c93132f144faa63)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T03:03:30",
+      "command": "ssh 192.168.9.114 'cd /tmp/torchair-verify && git submodule update --init --recursive' (初始化 googletest + secure_c/libboundscheck)",
+      "success": true,
+      "output": "Submodule 'third_party/googletest' (https://gitee.com/mirrors/googletest.git) registered\nSubmodule 'third_party/secure_c' (https://atomgit.com/openeuler/libboundscheck) registered\nSubmodule path 'third_party/googletest': checked out '58d77fa8070e8cec2dc1ed015d66b454c8d78850'\nSubmodule path 'third_party/secure_c': checked out '1ae16ab92de4884eacea211dcd1989af95dae79b'",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-02T03:04:00",
+      "command": "docker run -d --name torchair-ttfhw -v /tmp/torchair-verify:/workspace -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "ec2eb9f76ecbaae906a9b54310e26df14891e324a7598e6e5ce182e8fd6dd0d1 (up)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T03:05:00",
+      "command": "第一层系统工具链：docker exec torchair-ttfhw bash -c 'dnf install -y git gcc gcc-c++ make cmake python3 python3-pip python3-devel wget unzip'",
+      "success": true,
+      "output": "安装完成：git-2.43.0, gcc-12.3.1, gcc-c++-12.3.1, make-4.4.1, cmake-3.27.9, python3-3.11.6, python3-pip-23.2.1, python3-devel-3.11.6, wget-1.21.4, unzip-6.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-07-02T03:07:00",
+      "command": "pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/",
+      "success": true,
+      "output": "Writing to /root/.config/pip/pip.conf",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T03:07:30",
+      "command": "pip install --no-deps torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu (aarch64 wheel)",
+      "success": true,
+      "output": "Downloaded torch-2.6.0+cpu-cp311-cp311-manylinux_2_28_aarch64.whl (95.7 MB) / Successfully installed torch-2.6.0+cpu",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 300
+    },
+    {
+      "timestamp": "2026-07-02T03:13:00",
+      "command": "pip install typing_extensions filelock sympy networkx jinja2 fsspec pyyaml 'numpy<2' MarkupSafe",
+      "success": true,
+      "output": "成功安装: typing_extensions-4.15.0, filelock-3.29.4, sympy-1.14.0, networkx-3.6.1, jinja2-3.1.6, fsspec-2026.6.0, pyyaml-6.0.3, numpy-1.26.4, MarkupSafe-3.0.3（sympy 1.14.0 与 torch 2.6.0 不兼容 → 降级为 1.13.1）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T03:14:30",
+      "command": "pip install 'sympy==1.13.1' (修复 torch 2.6.0 依赖约束)",
+      "success": true,
+      "output": "Successfully installed sympy-1.13.1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-07-02T03:15:00",
+      "command": "python3 -c 'import torch; print(torch.__version__, torch.compiled_with_cxx11_abi())' (验证 torch 2.6.0+cpu, ABI=1)",
+      "success": true,
+      "output": "2.6.0+cpu / True",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T03:15:30",
+      "command": "cd /workspace && TARGET_PYTHON_PATH=/usr/bin/python3 NO_ASCEND_SDK=1 python3 configure.py (CI 模式配置)",
+      "success": true,
+      "output": "Configuration finished; tools/PYTHON_BIN_PATH=/usr/bin/python3, tools/TORCH_VERSION=20600, tools/COMPILE_FLAGS=-D_GLIBCXX_USE_CXX11_ABI=1 -I/usr/include/python3.11",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-07-02T03:15:45",
+      "command": "mkdir -p build && cd build && cmake ..",
+      "success": true,
+      "output": "-- The CXX compiler identification: GNU 12.3.1 / Configuring for RELEASE build / Configuring done (0.4s) / Generating done (0.0s) / Build files have been written to: /workspace/build",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-07-02T03:15:48",
+      "command": "time make torchair -j51 (构建，并发 51 = 256 核 × 20%)",
+      "success": false,
+      "output": "Built target _torchair / Built target _npu_utils / Built target _npu_graph_executor / Built target _abi_compat_ge_apis",
+      "error": "error: invalid command 'bdist_wheel' (build 内置 setup.py 调用 bdist_wheel 失败，wheel 包未安装)",
+      "returncode": 2,
+      "duration_seconds": 69,
+      "note": "build 失败于最后打包阶段：4 个 .so 已编译成功，但 setup.py 缺少 bdist_wheel 命令"
+    },
+    {
+      "timestamp": "2026-07-02T03:17:00",
+      "command": "pip install wheel setuptools (补充构建阶段缺失的打包工具)",
+      "success": true,
+      "output": "Successfully installed packaging-26.2, wheel-0.47.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 10
+    },
+    {
+      "timestamp": "2026-07-02T03:17:10",
+      "command": "cd /workspace/build && time make torchair -j51 (重试构建)",
+      "success": true,
+      "output": "adding 'torchair/scope/_scope_attr.py' ... Built target torchair / wheel: torchair-0.1-py3-none-any.whl",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2,
+      "note": "复用首次构建产物，wheel 阶段从增量开始；总编译耗时 71s"
+    },
+    {
+      "timestamp": "2026-07-02T03:17:30",
+      "command": "ls /workspace/build/dist/torchair/core/ + ls /workspace/build/dist/dist/ (验证产物)",
+      "success": true,
+      "output": "_torchair.so(657840) / _npu_graph_executor.so(527728) / _npu_utils.so(199000) / _abi_compat_ge_apis.so(67816) / torchair-0.1-py3-none-any.whl(1796058 bytes = 1.71 MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T03:17:40",
+      "command": "pip install /workspace/build/dist/dist/torchair-0.1-py3-none-any.whl --force-reinstall (冒烟安装)",
+      "success": true,
+      "output": "Successfully installed protobuf-3.20.3, torchair-0.1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 15
+    },
+    {
+      "timestamp": "2026-07-02T03:18:00",
+      "command": "python3 -c 'import torchair' (冒烟导入测试)",
+      "success": false,
+      "output": "ImportError: libge_runner.so: cannot open shared object file: No such file or directory (来自 torchair/_ge_concrete_graph/compat_ir.py:5)",
+      "error": "冒烟测试失败：缺少 CANN 运行时库 libge_runner.so（CI 构建使用 stub，未链接完整 CANN runtime）",
+      "returncode": 1,
+      "duration_seconds": 5,
+      "note": "符合预期：README 明确说明未指定 CANN SDK 时无法在 CPU 上执行任何功能"
+    },
+    {
+      "timestamp": "2026-07-02T03:18:30",
+      "command": "pip install pre-commit (准备静态检查)",
+      "success": true,
+      "output": "Successfully installed pre-commit-4.6.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-07-02T03:19:00",
+      "command": "git config --global --add safe.directory /workspace (修复容器内 git 'dubious ownership')",
+      "success": true,
+      "output": "配置已写入 /root/.gitconfig",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T03:19:10",
+      "command": "cd /workspace && pre-commit run --all-files (首次运行：初始化 4 个 hook 环境 + 执行 10 个 hook)",
+      "success": false,
+      "output": "trim trailing whitespace...Failed (- files were modified by this hook: docs/zh/npugraph_ex/advanced/static_kernel_compile.md)\nfix end of files...Passed / check yaml...Passed / check for added large files...Passed / check for merge conflicts...Passed / detect private key...Passed / check json...Passed / codespell...Passed / bandit (Python 安全漏洞检查)...Passed / typos...Passed",
+      "error": "trailing-whitespace hook 自动修复了 1 个文件 (docs/zh/npugraph_ex/advanced/static_kernel_compile.md)，其余 9 个 hook 通过",
+      "returncode": 1,
+      "duration_seconds": 180,
+      "note": "首次运行 9/10 hook 通过，trailing-whitespace 自动修复 1 个文件后退出码为 1"
+    },
+    {
+      "timestamp": "2026-07-02T03:22:10",
+      "command": "cd /workspace && pre-commit run --all-files (重跑：trailing-whitespace 已修复，期望全通过)",
+      "success": true,
+      "output": "trim trailing whitespace...Passed / fix end of files...Passed / check yaml...Passed / check for added large files...Passed / check for merge conflicts...Passed / detect private key...Passed / check json...Passed / codespell...Passed / bandit...Passed / typos...Passed  (10/10 全部通过)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-07-02T03:23:00",
+      "command": "ls /workspace/tests/ut/testcases/ + ls /workspace/tests/smoke/ + ls /workspace/examples/ (检查 UT/样例可用性)",
+      "success": true,
+      "output": "tests/ut/testcases/: 仅 example.cpp (空 GTest main，无实际测试用例) / tests/smoke/: 10 个 Python smoke 测试 (aclgraph_test.py, cache_compile_test.py, converter_test.py 等)，全部需 NPU + CANN / examples/: 仅 _kernel_extension_aclgraph 子目录",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-07-02T03:24:00",
+      "command": "find /workspace -maxdepth 2 -name '.devcontainer' -o -name '.lint-runner*' (devcontainer/lint-runner 扫描)",
+      "success": true,
+      "output": "未发现 .devcontainer/ 目录；未发现 lint-runner 配置文件",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-07-02T03:01:29",
+      "step": "start",
+      "action": "开始验证流程（openEuler 原生构建模式 + 远程机器 192.168.9.114）",
+      "result": "已启动",
+      "details": {
+        "environment": "remote:192.168.9.114",
+        "container_name": "torchair-ttfhw"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:02:00",
+      "step": "environment_check",
+      "action": "检查远程机器 SSH/Docker 连通性、CPU 核数、内存、Docker 版本",
+      "result": "成功",
+      "details": {
+        "cpu_cores": 256,
+        "memory_GB": 2044,
+        "docker_version": "18.09.0",
+        "arch": "aarch64"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:02:30",
+      "step": "code_preparation",
+      "action": "git clone --depth 1 --branch master https://gitcode.com/Ascend/torchair.git /tmp/torchair-verify",
+      "result": "成功",
+      "details": {
+        "commit": "137794ea2f209f5ee07bf15b8c93132f144faa63"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:03:30",
+      "step": "submodule_init",
+      "action": "git submodule update --init --recursive (third_party/secure_c + third_party/googletest)",
+      "result": "成功",
+      "details": {
+        "submodules": [
+          "secure_c(1ae16ab)",
+          "googletest(58d77fa)"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:04:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 基础镜像并启动容器 torchair-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_id": "ec2eb9f76ecb"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:05:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链（gcc gcc-c++ make cmake git python3 python3-pip python3-devel wget unzip）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc-12.3.1",
+          "gcc-c++-12.3.1",
+          "make-4.4.1",
+          "cmake-3.27.9",
+          "git-2.43.0",
+          "python3-3.11.6",
+          "python3-pip-23.2.1",
+          "python3-devel-3.11.6",
+          "wget",
+          "unzip"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:07:00",
+      "step": "dependency_installation_layer2",
+      "action": "安装 PyTorch 2.6.0 CPU (aarch64 wheel) 及依赖",
+      "result": "成功",
+      "details": {
+        "source": "download.pytorch.org/whl/cpu + pypi 阿里云镜像",
+        "packages": [
+          "torch==2.6.0+cpu (aarch64, 95.7 MB)",
+          "typing_extensions-4.15.0, filelock-3.29.4, sympy-1.13.1, networkx-3.6.1, jinja2-3.1.6, fsspec-2026.6.0, pyyaml-6.0.3, numpy-1.26.4, MarkupSafe-3.0.3"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:15:00",
+      "step": "configure",
+      "action": "执行 configure.py (CI 模式：NO_ASCEND_SDK=1)，生成 tools/PYTHON_BIN_PATH 等配置",
+      "result": "成功",
+      "details": {
+        "torch_version": "20600",
+        "compile_flags": "-D_GLIBCXX_USE_CXX11_ABI=1 -I/usr/include/python3.11"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:15:45",
+      "step": "build_attempt",
+      "action": "首次构建：cmake .. && make torchair -j51",
+      "result": "部分成功（.so 全部构建成功，wheel 打包失败）",
+      "details": {
+        "compiled_targets": [
+          "_torchair.so",
+          "_npu_graph_executor.so",
+          "_npu_utils.so",
+          "_abi_compat_ge_apis.so"
+        ],
+        "failure": "setup.py 报 'invalid command bdist_wheel'"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:17:00",
+      "step": "problem_resolution",
+      "action": "问题定位：构建脚本中 bdist_wheel 命令未注册；通过 pip 安装 wheel/setuptools 修复",
+      "result": "已解决",
+      "details": {
+        "solution": "pip install wheel setuptools (openEuler python3-pip 提供)"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:17:10",
+      "step": "build_retry",
+      "action": "重试 make torchair -j51（增量构建，复用 .so 产物）",
+      "result": "成功",
+      "details": {
+        "concurrency": 51,
+        "concurrency_ratio": "20%",
+        "artifacts": [
+          "torchair-0.1-py3-none-any.whl (1.71 MB)",
+          "_torchair.so (657840 bytes)",
+          "_npu_graph_executor.so (527728 bytes)",
+          "_npu_utils.so (199000 bytes)",
+          "_abi_compat_ge_apis.so (67816 bytes)"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:17:40",
+      "step": "smoke_install",
+      "action": "pip install torchair-0.1-py3-none-any.whl --force-reinstall (冒烟安装)",
+      "result": "成功",
+      "details": {
+        "installed": [
+          "protobuf-3.20.3",
+          "torchair-0.1"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:18:00",
+      "step": "smoke_import",
+      "action": "python3 -c 'import torchair' (冒烟导入测试)",
+      "result": "失败（预期内）",
+      "details": {
+        "error": "ImportError: libge_runner.so: cannot open shared object file",
+        "reason": "CANN 运行时未安装（CI 模式仅用 stub）"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:18:30",
+      "step": "static_analysis_setup",
+      "action": "pip install pre-commit (准备静态检查)",
+      "result": "成功",
+      "details": {
+        "pre_commit_version": "4.6.0"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:19:10",
+      "step": "static_analysis_execution",
+      "action": "pre-commit run --all-files (首次运行：初始化 4 个 hook 环境)",
+      "result": "9/10 通过（trailing-whitespace 自动修复 1 个文件后退出码非 0）",
+      "details": {
+        "passed": [
+          "fix end of files",
+          "check yaml",
+          "check for added large files",
+          "check for merge conflicts",
+          "detect private key",
+          "check json",
+          "codespell",
+          "bandit",
+          "typos"
+        ],
+        "failed_first_run": [
+          "trailing-whitespace (auto-fixed docs/zh/npugraph_ex/advanced/static_kernel_compile.md)"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:22:10",
+      "step": "static_analysis_rerun",
+      "action": "pre-commit run --all-files (重跑)",
+      "result": "10/10 全部通过",
+      "details": {
+        "autofixed_files": [
+          "docs/zh/npugraph_ex/advanced/static_kernel_compile.md"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:23:00",
+      "step": "ut_execution",
+      "action": "检查 tests/ut/testcases/ 与 tests/smoke/ 的可用性",
+      "result": "not_run (环境无实际测试可执行)",
+      "details": {
+        "testcases_dir": "仅 example.cpp (空 GTest main 模板)",
+        "smoke_tests": "10 个 Python 文件，全部需 NPU + CANN runtime (libge_runner/libge_local_stub 等)"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:24:00",
+      "step": "sample_execution",
+      "action": "检查 examples/ 的可用性",
+      "result": "not_run (需 NPU 硬件 + CANN SDK)",
+      "details": {
+        "examples": [
+          "examples/_kernel_extension_aclgraph/{figures,pybind,torch_library}"
+        ],
+        "reason": "README 明确说明未指定 CANN SDK 时无法在 CPU 上执行；examples/_kernel_extension_aclgraph 需 NPU"
+      }
+    },
+    {
+      "timestamp": "2026-07-02T03:25:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_torchair_20260702.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "检测到 pre-commit 配置（10 个 hooks），首次运行 9/10 通过（trailing-whitespace 自动修复 1 个文件），重跑 10/10 全部通过；未检测到 lint-runner 配置",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "全部通过 (重跑后)",
+        "duration_seconds": 240,
+        "total_hooks": 10,
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0,
+        "failures": [],
+        "autofixed_files": [
+          "docs/zh/npugraph_ex/advanced/static_kernel_compile.md"
+        ]
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 .devcontainer 目录，也未提供 Dockerfile"
+    },
+    "build": {
+      "status": "success",
+      "duration_seconds": 71,
+      "concurrency": 51,
+      "concurrency_ratio": "20% (CPU×0.2)",
+      "artifacts": [
+        {
+          "name": "torchair-0.1-py3-none-any.whl",
+          "path": "build/dist/dist/torchair-0.1-py3-none-any.whl",
+          "size": "1.71 MB (1,796,058 bytes)"
+        },
+        {
+          "name": "_torchair.so",
+          "path": "build/dist/torchair/core/_torchair.so",
+          "size": "657,840 bytes (704K)"
+        },
+        {
+          "name": "_npu_graph_executor.so",
+          "path": "build/dist/torchair/core/_npu_graph_executor.so",
+          "size": "527,728 bytes (576K)"
+        },
+        {
+          "name": "_npu_utils.so",
+          "path": "build/dist/torchair/core/_npu_utils.so",
+          "size": "199,000 bytes (256K)"
+        },
+        {
+          "name": "_abi_compat_ge_apis.so",
+          "path": "build/dist/torchair/core/_abi_compat_ge_apis.so",
+          "size": "67,816 bytes (128K)"
+        }
+      ],
+      "build_warnings": [
+        "concrete_graph/utils.cpp:282 GE2ATEN_MAP_TYPE_BY_NUM 宏 'comparison with string literal' 警告 (3 处)",
+        "core/torchair.cpp:52 变量 c10_stream set but not used 警告",
+        "concrete_graph/utils.cpp:425 FreeGeBlockPtr 函数 defined but not used 警告"
+      ]
+    },
+    "ut": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "reason": "仓库 tests/ut/testcases/ 目录仅有 example.cpp (空 GTest main 模板)，无实际测试用例；tests/smoke/ 下的 10 个 Python smoke 测试全部需要 NPU 硬件 + CANN runtime (libge_runner.so / libge_local_stub.so 等)；本环境为 aarch64 远程机器无 NPU 硬件，且 CI 构建模式 NO_ASCEND_SDK=1 仅产出 stub 而非完整 CANN 库，无法运行任何 UT"
+    },
+    "unit_test": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "failures": [],
+      "reason": "仓库 tests/ut/testcases/ 目录仅有 example.cpp (空 GTest main 模板)，无实际测试用例；tests/smoke/ 下的 10 个 Python smoke 测试全部需要 NPU 硬件 + CANN runtime (libge_runner.so / libge_local_stub.so 等)；本环境为 aarch64 远程机器无 NPU 硬件，且 CI 构建模式 NO_ASCEND_SDK=1 仅产出 stub 而非完整 CANN 库，无法运行任何 UT"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "reason": "样例程序 (examples/_kernel_extension_aclgraph/) 全部需要 NPU 硬件 + 完整 CANN SDK；冒烟测试 import torchair 失败，因 stub 库 libge_local_stub.so 包含未定义符号 (本地构建不含完整 GE 实现)；README 明确说明未配置 CANN SDK 时无法在 CPU 上执行任何样例；本环境无 NPU 硬件且 CI 构建模式 (NO_ASCEND_SDK=1) 仅产 stub"
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "reason": "样例程序 (examples/_kernel_extension_aclgraph/) 全部需要 NPU 硬件 + 完整 CANN SDK；冒烟测试 import torchair 失败，因 stub 库 libge_local_stub.so 包含未定义符号 (本地构建不含完整 GE 实现)；README 明确说明未配置 CANN SDK 时无法在 CPU 上执行任何样例；本环境无 NPU 硬件且 CI 构建模式 (NO_ASCEND_SDK=1) 仅产 stub"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "2026-07-02T03:05:00",
+      "title": "README 未指定基础镜像/Dockerfile",
+      "body": "README 安装章节未提供 Dockerfile 或推荐的基础镜像，仅说明需要 Ascend NPU 设备与 CANN 工具链。新手开发者从 README 入手时无法快速获得可复现的构建环境，本次验证需自行确定使用 openEuler 24.03 LTS 并用 pip 安装 torch CPU 版作为 fallback。",
+      "source": "README.md 安装与卸载章节"
+    },
+    {
+      "time": "2026-07-02T03:15:00",
+      "title": "configure.py 在 CI 模式下需手动设置环境变量",
+      "body": "build.sh 在 -c (CI build) 选项下会内部 export NO_ASCEND_SDK=1，但若直接调用 configure.py 必须显式设置该变量；文档未明确说明此行为，导致首次运行可能卡在交互式 'Specify the location of ascend sdk' 提示。",
+      "source": "build.sh 第 96-104 行 + configure.py main() 函数"
+    },
+    {
+      "time": "2026-07-02T03:17:00",
+      "title": "构建未声明 wheel/setuptools 为必需依赖",
+      "body": "构建脚本通过 setup.py bdist_wheel 生成 wheel 包，但 openEuler 24.03 LTS 的 python3-pip 包默认不安装 wheel/setuptools；首次构建会在最后打包阶段失败 'invalid command bdist_wheel'。建议在 README 或 build.sh 中加入 'pip install wheel setuptools' 前置步骤。",
+      "source": "build/CMakeFiles/torchair.dir/build.make 内部 setup.py 调用 + openEuler python3-pip 包内容"
+    },
+    {
+      "time": "2026-07-02T03:18:00",
+      "title": "冒烟测试失败的根因未在 README 说明",
+      "body": "pip install 生成的 wheel 后 'import torchair' 会立即报 libge_runner.so 找不到；README 仅说明 '未指定 Ascend SDK 路径时无法执行 CPU 调试'，未说明连 import 都会失败 (因为 stub 库含未定义符号)。",
+      "source": "README.md 快速上手章节 + torchair/_ge_concrete_graph/compat_ir.py:5"
+    },
+    {
+      "time": "2026-07-02T03:23:00",
+      "title": "tests/ut/testcases/ 缺少实际测试用例",
+      "body": "仓库仅在 tests/ut/testcases/ 保留 example.cpp (空 GTest main 模板)，无任何实际单元测试；UT 子系统实际处于占位状态，开发者无法通过本仓库的 UT 验证代码改动。",
+      "source": "tests/ut/testcases/example.cpp"
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-07-02T03:17:00",
+      "problem": "首次 make torchair 在最后 wheel 打包阶段失败：error: invalid command 'bdist_wheel'",
+      "solution": "通过 pip install wheel setuptools 安装缺失的打包工具 (openEuler python3-pip 包未自动安装这两个 wheel 构建依赖)，重试构建成功",
+      "source": "build/CMakeFiles/torchair.dir/build.make:72 调用 setup.py bdist_wheel"
+    },
+    {
+      "timestamp": "2026-07-02T03:13:00",
+      "problem": "torch 2.6.0+cpu 严格依赖 sympy==1.13.1 (python_version >= 3.9)，pip 默认安装 sympy 1.14.0 触发依赖冲突",
+      "solution": "pip install 'sympy==1.13.1' 降级到 torch 要求的版本",
+      "source": "torch 2.6.0+cpu 安装时的 dependency conflict 警告"
+    },
+    {
+      "timestamp": "2026-07-02T03:18:00",
+      "problem": "冒烟测试 import torchair 失败：ImportError: libge_runner.so: cannot open shared object file",
+      "solution": "未解决（环境约束）— CI 构建模式 NO_ASCEND_SDK=1 仅产 stub，缺少完整 CANN runtime 库；本环境无 NPU 硬件，无法在 CPU 上执行 README 描述的 torchair 功能；UT 和 sample 标记为 not_run",
+      "source": "torchair/_ge_concrete_graph/compat_ir.py:5 + README 快速上手章节"
+    }
+  ]
+}

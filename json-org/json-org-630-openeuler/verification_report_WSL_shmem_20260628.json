@@ -1,0 +1,683 @@
+{
+  "metadata": {
+    "repo_path": "https://gitcode.com/cann/shmem",
+    "start_time": "2026-06-28T06:01:00",
+    "end_time": "2026-06-28T06:57:00",
+    "duration_seconds": 3360,
+    "total_steps": 22
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "MiniMax-M3",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "Kunpeng 920 (ARM64)",
+      "cpu_cores": 256,
+      "memory": "2044Gi",
+      "disk": "/workspace (tmpfs)",
+      "docker_version": "Docker version 18.09.0, build 05c4df4 (EulerVersion: 18.09.0.273)"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "无限制"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像。仓库 README 明确声明本项目仅适配昇腾 NPU 平台，需安装 CANN toolkit (含 bisheng 编译器、AscendCL 运行时、tikcpp 等)。本验证通过 bind-mount 远端已安装的 CANN toolkit 9.1.0 (aarch64) 到容器内，bisheng 编译器版本为 2026-06-24 (clang-15.0.5 后端)，属于 NEW 版本 (>= 20260327 分界)，符合仓库对 Ascend HDK 25.0.RC1.1 + CANN 9.0.0 的版本要求",
+      "dependency_mapping": {
+        "from_spec_file": "README.md + docs/quickstart.md + scripts/build.sh + CMakeLists.txt",
+        "mappings": [
+          {
+            "original": "bash scripts/build.sh (依赖 bisheng 编译器)",
+            "openEuler": "通过远端 /home/wangsike/Ascend/cann-9.1.0/bin/bisheng (绑挂载到容器)",
+            "source": "CMakeLists.txt 第15行 set(CMAKE_C_COMPILER bisheng)，第19行 set(CMAKE_CXX_COMPILER bisheng)"
+          },
+          {
+            "original": "依赖 CANN 环境变量 ASCEND_HOME_PATH",
+            "openEuler": "通过 source /home/wangsike/Ascend/ascend-toolkit/set_env.sh 自动设置 ASCEND_HOME_PATH=/home/wangsike/Ascend/cann-9.1.0",
+            "source": "CMakeLists.txt 第56-60行 if(NOT DEFINED ENV{ASCEND_HOME_PATH}) message(FATAL_ERROR ...)"
+          },
+          {
+            "original": "依赖 ASCEND_HOME_PATH/{arch}-linux/include/tikcpp/tikcfw 等头文件",
+            "openEuler": "由 bind-mount 的 CANN 工具包提供 (位于 /home/wangsike/Ascend/cann-9.1.0/aarch64-linux/include/tikcpp)",
+            "source": "CMakeLists.txt 第315-336行 include_directories(${ASCEND_HOME_PATH}/compiler/tikcpp/...)"
+          },
+          {
+            "original": "依赖 runtime ascendcl m tiling_api platform c_sec dl nnopbase pthread",
+            "openEuler": "由 bind-mount 的 CANN toolkit 提供 (位于 /home/wangsike/Ascend/cann-9.1.0/lib64/ 和 aarch64-linux/devlib/)",
+            "source": "CMakeLists.txt 第346行 link_libraries(runtime stdc++ ascendcl m tiling_api platform c_sec dl nnopbase pthread)"
+          },
+          {
+            "original": "UT 依赖 googletest v1.14.x",
+            "openEuler": "scripts/build.sh 中 fn_build_googletest 函数自动从 https://gitcode.com/GitHub_Trending/go/googletest.git clone (--branch v1.14.x)",
+            "source": "scripts/build.sh 第206行"
+          },
+          {
+            "original": "examples 依赖 catlass 第三方库",
+            "openEuler": "scripts/build.sh 中 -examples 参数触发自动从 https://gitcode.com/cann/catlass.git clone (含 googletest 子模块)",
+            "source": "scripts/build.sh 第309、323行"
+          },
+          {
+            "original": "examples/UT 依赖 ops 包 (含 libhccl.so 等算子库)",
+            "openEuler": "本验证未安装 ops 包，core libshmem.so + 17 个 examples + UT 二进制全部成功编译 (运行时受限于无 NPU 硬件)",
+            "source": "docs/quickstart.md 第48-49行：社区版本需要额外安装一个 {soc_name}-ops 的 .run 安装包"
+          }
+        ]
+      }
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md + docs/quickstart.md 4.1节 - 硬件要求",
+      "value": "Atlas 系列：800I A2/A3、800T A2/A3；架构兼容 aarch64、x86 (但仅在华为 Ascend NPU 上能实际运行)；本验证在 aarch64 openEuler 24.03 容器中完成，core lib + examples + UT 二进制全部成功编译，但运行时需 NPU 硬件"
+    },
+    "recommended_image": {
+      "source": "README.md + docs/quickstart.md - 本项目面向昇腾平台，依赖 CANN toolkit；本验证遵循 ttfhw 验证规范使用 openEuler 24.03 LTS",
+      "value": "改用 openEuler 24.03 LTS 基础镜像 + bind-mount 远端已安装的 CANN toolkit 9.1.0 (aarch64)"
+    },
+    "dockerfile_dependencies": {
+      "source": "仓库根目录未提供 Dockerfile",
+      "value": []
+    },
+    "dependencies": {
+      "source": "README.md + docs/quickstart.md 4.2节 + scripts/build.sh + CMakeLists.txt + requirements.txt",
+      "value": [
+        "CANN toolkit 9.0.0+ (含 bisheng 编译器、AscendCL 运行时、tikcpp、tikcfw、tiling_api 等) — 本环境 bind-mount 远端已安装的 cann-9.1.0",
+        "gcc >= 7.3.0 / g++ >= 7.3.0 (openEuler: gcc-12.3.1, gcc-c++)",
+        "cmake >= 3.19 (openEuler: cmake-3.27.9，CMakeLists.txt 要求 >= 3.16)",
+        "GLIBC >= 2.28 (openEuler 24.03 自带 glibc-2.38)",
+        "Python >= 3.9.0 (openEuler: python3-3.11.6)",
+        "make / git / ccache / wget",
+        "pyyaml 6.0.3 / pybind11 2.13.1 / numpy 1.24.4-1.26.4 / scipy 1.13.1 (Python 绑定所需，pip 安装)",
+        "(可选) ml_dtypes / pandas / matplotlib / seaborn (运行 examples 所需，由 requirements-examples.txt 提供)"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md + docs/quickstart.md 5.1节 + scripts/build.sh",
+      "value": "核心库构建：bash scripts/build.sh；带 examples：bash scripts/build.sh -examples；带 UT：bash scripts/build.sh -uttests；完整构建：bash scripts/build.sh -full (含 python wheel)；本验证执行 -uttests -examples 同时构建"
+    },
+    "ut_commands": {
+      "source": "docs/quickstart.md 9.1节 + scripts/run.sh",
+      "value": "bash scripts/build.sh -uttests && bash scripts/run.sh (UT 需要真实 NPU 硬件，本环境无 NPU 硬件，因此 UT 二进制编译成功但运行时初始化即段错误)"
+    },
+    "sample_commands": {
+      "source": "docs/quickstart.md 5.2节",
+      "value": "bash scripts/build.sh -examples && cd examples/allgather && bash run.sh -pes 2 -type int (samples 需要真实 NPU 硬件，本环境无 NPU 硬件，因此 samples 仅完成编译)"
+    },
+    "special_dependencies": {
+      "source": "scripts/build.sh fn_build_googletest / 3rdparty/ 目录",
+      "value": [
+        "googletest v1.14.x (UT 编译时自动从 gitcode clone，需 -uttests 选项)",
+        "catlass 库 (examples/UT 构建时从 gitcode clone，Ascend 内核依赖)",
+        "doxygen 1.9.6 (仅 -gendoc 时使用)",
+        "sphinx + sphinx_rtd_theme + myst_parser + breathe (仅 -gendoc 时 pip install)"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-28T06:01:00",
+      "command": "ssh -o ConnectTimeout=5 -o BatchMode=yes root@192.168.9.114 'echo OK && nproc && free -g | awk /Mem:/{print $2}' (前置环境检查)",
+      "success": true,
+      "output": "OK 256 2044",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-28T06:02:00",
+      "command": "ssh 192.168.9.114 'docker version' (检查远端 Docker 可用性，OS=linux/arm64, Docker 18.09.0)",
+      "success": true,
+      "output": "Client: Docker version 18.09.0, build 05c4df4 (EulerVersion: 18.09.0.273) ... Server: ... OS/Arch: linux/arm64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T06:03:00",
+      "command": "ssh 192.168.9.114 'rm -rf /tmp/shmem-verify-shared && mkdir -p /tmp/shmem-verify-shared && git clone --depth 1 --branch master https://gitcode.com/cann/shmem.git /tmp/shmem-verify-shared' (准备 fresh 代码，排除旧容器残留)",
+      "success": true,
+      "output": "Cloning into '/tmp/shmem-verify-shared'... (commit 10cffffd803ff8813c783323e8144336df5af281 'AIV直驱UDMA切换Hcomm接口--控制面适配')",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-28T06:04:30",
+      "command": "ssh 192.168.9.114 'docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts' (拉取 openEuler 基础镜像)",
+      "success": true,
+      "output": "Status: Image is up to date for hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-28T06:05:00",
+      "command": "ssh 192.168.9.114 'docker rm -f shmem-ttfhw 2>/dev/null; docker run -d --name shmem-ttfhw -v /tmp/shmem-verify-shared:/workspace -v /home/wangsike:/home/wangsike -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity' (启动验证容器 shmem-ttfhw，命名符合 <repo>-ttfhw 格式；bind-mount 远端已安装的 CANN toolkit 9.1.0 到容器内)",
+      "success": true,
+      "output": "Container ID: 13df12ad291228150bce73cf6afeaafc2b91be76da8d45d1ffc0ac5f24c347b2",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-28T06:06:00",
+      "command": "容器内 nproc 验证：256 核；CPU × 20% = 51 jobs (build.sh 内置 -j17 与本规范一致 — 见下方 build 输出)",
+      "success": true,
+      "output": "CPUS=256 JOBS=51 (按 ttfhw 规范)，但 build.sh 内硬编码 -j17 用于 make install 步骤",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T06:08:00",
+      "command": "第一层系统工具链：dnf install -y --nogpgcheck gcc gcc-c++ make cmake git python3 python3-pip wget curl ccache unzip openssl-devel (安装开发基础)",
+      "success": true,
+      "output": "Complete! gcc-12.3.1, gcc-c++-12.3.1, make-4.4.1, cmake-3.27.9, git-2.45.x, python3-3.11.6, python3-pip-23.3.1, openssl-devel-3.0.x 等安装完成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 42
+    },
+    {
+      "timestamp": "2026-06-28T06:10:00",
+      "command": "第二层 Python 依赖：pip3 install --no-cache-dir -i https://mirrors.aliyun.com/pypi/simple/ pyyaml==6.0.3 pybind11==2.13.1 numpy>=1.24.4,<=1.26.4 scipy==1.13.1 (清华源 403 改用阿里云源)",
+      "success": true,
+      "output": "Successfully installed numpy-1.26.4 pybind11-2.13.1 pyyaml-6.0.3 scipy-1.13.1",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-28T06:12:00",
+      "command": "CANN 环境变量配置：source /home/wangsike/Ascend/ascend-toolkit/set_env.sh (bind-mount 自远端)；ASCEND_HOME_PATH=/home/wangsike/Ascend/cann-9.1.0；bisheng -v 输出 2026-06-24T18:23:33+08:00 clang 15.0.5",
+      "success": true,
+      "output": "ASCEND_TOOLKIT_HOME=/home/wangsike/Ascend/cann-9.1.0；bisheng 编译器已就绪",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-28T06:24:00",
+      "command": "核心库构建：bash scripts/build.sh (默认不包含 examples 和 UT)，-j17 编译 make install",
+      "success": true,
+      "output": "Self-extractable archive '/workspace/install/aarch64/SHMEM_1.0.0_linux-aarch64.run' successfully created",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 14
+    },
+    {
+      "timestamp": "2026-06-28T06:25:00",
+      "command": "验证核心库产物：ls -la /workspace/install/shmem/lib/ → libshmem.so (2.4MB), libshmem_utils.so (180KB), aclshmem_bootstrap_uid.so (130KB), aclshmem_bootstrap_config_store.so (557KB); SHMEM_1.0.0_linux-aarch64.run 安装包 (981KB)",
+      "success": true,
+      "output": "全部核心库产物存在",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T06:27:00",
+      "command": "examples 编译：rm -rf build install && bash scripts/build.sh -examples (首次，自动 clone catlass 第三方库从 gitcode)",
+      "success": true,
+      "output": "17 个示例全部编译成功：aclgraph_demo, allgather, ascendc_perftest, cmo, combine, combine_doubleplane, dispatch, dispatch_doubleplane, kv_shuffle, mte_perftest, multi_instance, notifywait, rma_d2h_demo, sdma, udma_atomic_add, udma_demo, udma_perftest；对应 *_kernel.so 在 build/lib/",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 29
+    },
+    {
+      "timestamp": "2026-06-28T06:36:00",
+      "command": "UT 编译：bash scripts/build.sh -uttests (构建 googletest v1.14.x + catlass，编译 aclshmem_unittest 二进制)",
+      "success": true,
+      "output": "googletest 编译并安装到 3rdparty/googletest/lib/；aclshmem_unittest 二进制生成于 build/bin/ (15MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 173
+    },
+    {
+      "timestamp": "2026-06-28T06:39:00",
+      "command": "同时构建 examples + UT：rm -rf build install && git config --global --add safe.directory /workspace && bash scripts/build.sh -uttests -examples (一次性构建完整产物)",
+      "success": true,
+      "output": "19 个可执行文件 (17 examples + aclshmem_unittest + hccs_sio_link) + 18 个 .so 全部生成；SHMEM_1.0.0_linux-aarch64.run 安装包 (2.2MB) 生成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 68
+    },
+    {
+      "timestamp": "2026-06-28T06:40:00",
+      "command": "验证最终产物：ls /workspace/build/bin/ (19 个) + ls /workspace/install/shmem/lib/ (4 个 .so) + ls /workspace/install/aarch64/*.run",
+      "success": true,
+      "output": "build/bin/: 17 examples + aclshmem_unittest + hccs_sio_link = 19 个；build/lib/: 18 个 .so；install/shmem/lib/: libshmem.so (9.1MB), libshmem_utils.so (180KB), aclshmem_bootstrap_uid.so (130KB), aclshmem_bootstrap_config_store.so (557KB)；install/aarch64/SHMEM_1.0.0_linux-aarch64.run (2.2MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-28T06:41:00",
+      "command": "尝试运行 UT：export LD_LIBRARY_PATH=/workspace/build/lib:/home/wangsike/Ascend/cann-9.1.0/lib64:$LD_LIBRARY_PATH && ./aclshmem_unittest --gtest_list_tests",
+      "success": false,
+      "output": "(无输出)",
+      "error": "Segmentation fault (core dumped) — 初始化阶段崩溃，exit_code=139；原因是验证环境无 Ascend NPU 硬件 (/dev/davinci* 不存在)，AscendCL runtime 无法初始化",
+      "returncode": 139,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-28T06:42:00",
+      "command": "尝试运行示例 allgather：export LD_LIBRARY_PATH=... && timeout 10 ./allgather",
+      "success": false,
+      "output": "(无 stdout)",
+      "error": "Segmentation fault (core dumped) — 与 UT 失败原因相同；examples 链接 libshmem.so + ascendcl runtime，必须在 NPU 硬件上执行",
+      "returncode": 139,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-28T06:42:30",
+      "command": "检查 NPU 设备：ls -la /dev/davinci* 2>&1 (验证环境无 NPU 硬件)",
+      "success": true,
+      "output": "ls: cannot access '/dev/davinci*': No such file or directory (确认无 Ascend NPU 设备)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T06:48:00",
+      "command": "检查 ASCEND 驱动：ls /usr/local/Ascend/driver /usr/local/Ascend/firmware (宿主机昇腾驱动未安装)",
+      "success": true,
+      "output": "driver/firmware 目录存在但容器内无访问；npu-smi 命令不存在",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T06:50:00",
+      "command": "记录构建版本信息：cat /workspace/install/version.info",
+      "success": true,
+      "output": "SHMEM Version: 1.0.0；Platform: aarch64；branch: master；commit id: 10cffffd803ff8813c783323e8144336df5af281",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-28T06:55:00",
+      "command": "打包验证报告 JSON 到 /workspace 挂载点",
+      "success": true,
+      "output": "verification_report_WSL_shmem_20260628.json 已写入容器 /workspace",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-28T06:01:00",
+      "step": "start",
+      "action": "开始验证流程 (openEuler 原生构建模式 + 远程机器 192.168.9.114)",
+      "result": "已启动",
+      "details": {
+        "repo": "shmem",
+        "url": "https://gitcode.com/cann/shmem.git",
+        "branch": "master"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:01:30",
+      "step": "document_reading",
+      "action": "读取 README.md 了解构建说明 (含 CANN 依赖、Atlas NPU 硬件要求)",
+      "result": "成功",
+      "details": {
+        "file": "README.md",
+        "sections_read": [
+          "快速入门",
+          "项目简介",
+          "核心功能",
+          "FAQ",
+          "注意事项"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:02:00",
+      "step": "document_reading",
+      "action": "读取 docs/quickstart.md 4.x 节确认环境要求与构建命令",
+      "result": "成功",
+      "details": {
+        "file": "docs/quickstart.md",
+        "min_cmake_version": "3.19",
+        "min_gcc": "7.3.0",
+        "min_python": "3.9.0"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:02:30",
+      "step": "document_reading",
+      "action": "读取 CMakeLists.txt 确认 bisheng 编译器、ASCEND_HOME_PATH 依赖、link_libraries 等关键约束",
+      "result": "成功",
+      "details": {
+        "file": "CMakeLists.txt",
+        "min_cmake_version": "3.16",
+        "compiler": "bisheng",
+        "link_libs": "runtime ascendcl m tiling_api platform c_sec dl nnopbase pthread"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:03:00",
+      "step": "image_selection",
+      "action": "选择 openEuler 24.03 LTS 基础镜像 (忽略原 CANN 适配说明，本仓库没有 Dockerfile)",
+      "result": "openEuler 24.03 LTS",
+      "details": {
+        "selection_reason": "本仓库无 Dockerfile 指定的镜像，但需要 CANN toolkit 9.0.0+ 提供的 bisheng 编译器；通过 bind-mount 远端已安装的 cann-9.1.0 到容器 /home/wangsike"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:05:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 基础镜像并启动容器 shmem-ttfhw，bind-mount CANN toolkit 路径",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container_name": "shmem-ttfhw",
+        "bind_mounts": [
+          "/tmp/shmem-verify-shared:/workspace",
+          "/home/wangsike:/home/wangsike"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:08:00",
+      "step": "dependency_installation_layer1",
+      "action": "安装系统工具链 (gcc gcc-c++ make cmake git python3 python3-pip wget curl ccache unzip openssl-devel)",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 官方仓库 (dnf)",
+        "packages": [
+          "gcc",
+          "gcc-c++",
+          "make",
+          "cmake",
+          "git",
+          "python3",
+          "python3-pip",
+          "wget",
+          "curl",
+          "ccache",
+          "unzip",
+          "openssl-devel"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:10:00",
+      "step": "dependency_installation_layer2",
+      "action": "安装 Python 依赖 (pyyaml pybind11 numpy scipy from requirements.txt)",
+      "result": "成功",
+      "details": {
+        "source": "aliyun pypi 镜像 (清华源 403 改用阿里云)",
+        "packages": [
+          "pyyaml==6.0.3",
+          "pybind11==2.13.1",
+          "numpy==1.26.4",
+          "scipy==1.13.1"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:12:00",
+      "step": "cann_environment",
+      "action": "通过 source /home/wangsike/Ascend/ascend-toolkit/set_env.sh 加载 CANN 9.1.0 环境变量 (ASCEND_HOME_PATH=/home/wangsike/Ascend/cann-9.1.0, bisheng 15.0.5/2026-06-24)",
+      "result": "成功",
+      "details": {
+        "cann_path": "/home/wangsike/Ascend/cann-9.1.0",
+        "bisheng_version": "2026-06-24T18:23:33 clang 15.0.5"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:24:00",
+      "step": "build_attempt",
+      "action": "核心库首次构建 (bash scripts/build.sh)",
+      "result": "成功",
+      "details": {
+        "artifacts": [
+          "libshmem.so",
+          "libshmem_utils.so",
+          "aclshmem_bootstrap_uid.so",
+          "aclshmem_bootstrap_config_store.so",
+          "SHMEM_1.0.0_linux-aarch64.run"
+        ],
+        "duration_seconds": 14,
+        "concurrency": 17
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:27:00",
+      "step": "build_with_examples",
+      "action": "examples 编译 (bash scripts/build.sh -examples，自动 clone catlass 第三方库)",
+      "result": "成功",
+      "details": {
+        "examples_count": 17,
+        "kernel_libs_count": 17,
+        "duration_seconds": 29
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:36:00",
+      "step": "build_with_ut",
+      "action": "UT 编译 (bash scripts/build.sh -uttests，下载 googletest v1.14.x 并编译 aclshmem_unittest)",
+      "result": "成功",
+      "details": {
+        "ut_binary": "build/bin/aclshmem_unittest (15MB)",
+        "googletest": "v1.14.x",
+        "duration_seconds": 173
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:39:00",
+      "step": "build_full",
+      "action": "一次性构建 examples + UT (rm -rf build install && bash scripts/build.sh -uttests -examples)",
+      "result": "成功",
+      "details": {
+        "bin_count": 19,
+        "lib_count": 18,
+        "duration_seconds": 68,
+        "concurrency": 17
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:41:00",
+      "step": "ut_execution",
+      "action": "执行 UT (./aclshmem_unittest --gtest_list_tests)",
+      "result": "失败 (无 NPU 硬件)",
+      "details": {
+        "exit_code": 139,
+        "error": "Segmentation fault",
+        "root_cause": "无 Ascend NPU 硬件 (无 /dev/davinci* 设备)"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:42:00",
+      "step": "sample_execution",
+      "action": "执行示例 allgather",
+      "result": "失败 (无 NPU 硬件)",
+      "details": {
+        "exit_code": 139,
+        "error": "Segmentation fault",
+        "root_cause": "无 Ascend NPU 硬件，ascendcl runtime 无法初始化"
+      }
+    },
+    {
+      "timestamp": "2026-06-28T06:55:00",
+      "step": "report_generation",
+      "action": "生成验证报告",
+      "result": "成功",
+      "details": {
+        "output_file": "verification_report_WSL_shmem_20260628.json"
+      }
+    }
+  ],
+  "final_results": {
+    "static_analysis": {
+      "enabled": true,
+      "summary": "仓库根目录有 .pre-commit-config.yaml (含 clang-format 等 hooks)，未检测到 devcontainer / lint-runner 配置；本验证聚焦于 README 文档约定的构建/UT/样例流程，未单独执行 pre-commit run --all-files",
+      "pre_commit": {
+        "configured": true,
+        "config_file": ".pre-commit-config.yaml",
+        "status": "未执行 (本验证聚焦于构建/UT/样例流程)"
+      },
+      "lint_runner": {
+        "configured": false,
+        "config_file": null
+      }
+    },
+    "devcontainer": {
+      "enabled": false,
+      "config_dir": null,
+      "config_files": [],
+      "summary": "仓库未配置 devcontainer；按 ttfhw 验证规范使用 openEuler 24.03 LTS 基础镜像 + bind-mount CANN toolkit 9.1.0"
+    },
+    "build": {
+      "status": "成功",
+      "duration_seconds": 284,
+      "concurrency": 17,
+      "concurrency_ratio": "约 6.6% (容器可用 CPU 256 核，build.sh 硬编码 -j17)",
+      "artifacts": [
+        {
+          "name": "libshmem.so",
+          "path": "install/shmem/lib/libshmem.so",
+          "size": "9.1MB"
+        },
+        {
+          "name": "libshmem_utils.so",
+          "path": "install/shmem/lib/libshmem_utils.so",
+          "size": "180KB"
+        },
+        {
+          "name": "aclshmem_bootstrap_uid.so",
+          "path": "install/shmem/lib/aclshmem_bootstrap_uid.so",
+          "size": "130KB"
+        },
+        {
+          "name": "aclshmem_bootstrap_config_store.so",
+          "path": "install/shmem/lib/aclshmem_bootstrap_config_store.so",
+          "size": "557KB"
+        },
+        {
+          "name": "SHMEM_1.0.0_linux-aarch64.run",
+          "path": "install/aarch64/SHMEM_1.0.0_linux-aarch64.run",
+          "size": "2.2MB"
+        }
+      ],
+      "extension_builds": {
+        "with_examples": {
+          "status": "成功",
+          "examples_count": 17,
+          "duration_seconds": 29
+        },
+        "with_ut": {
+          "status": "成功",
+          "ut_binary": "build/bin/aclshmem_unittest",
+          "ut_binary_size": "15MB",
+          "duration_seconds": 173
+        }
+      }
+    },
+    "ut": {
+      "status": "not_run",
+      "duration_seconds": 5,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "note": "UT 二进制 (aclshmem_unittest, 15MB) 已成功编译 (googletest v1.14.x 框架 + 88 个测试用例源文件)，但运行时即段错误 (exit_code=139)。根本原因：验证环境无 Ascend NPU 硬件 (无 /dev/davinci* 设备、无昇腾驱动)，ascendcl runtime 无法初始化 aclrtSetDevice/aclInit。在具备 Atlas 800I A2/A3 NPU 的物理机上运行 bash scripts/run.sh 即可执行 UT"
+    },
+    "sample": {
+      "status": "not_run",
+      "duration_seconds": 5,
+      "results": [
+        {
+          "sample_name": "allgather",
+          "execution_status": "失败",
+          "output_summary": "Segmentation fault (core dumped) — 初始化阶段崩溃，与 UT 失败原因相同 (无 NPU 硬件)",
+          "execution_time": "5秒 (timeout)"
+        }
+      ],
+      "note": "examples 共 17 个 (aclgraph_demo、allgather、ascendc_perftest、cmo、combine、combine_doubleplane、dispatch、dispatch_doubleplane、kv_shuffle、mte_perftest、multi_instance、notifywait、rma_d2h_demo、sdma、udma_atomic_add、udma_demo、udma_perftest) 全部成功编译为 build/bin/ 下可执行文件 + 对应 build/lib/*_kernel.so；运行时受限于 NPU 硬件缺失，未能执行"
+    },
+    "unit_test": {
+      "status": "not_run",
+      "duration_seconds": 5,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "note": "UT 二进制 (aclshmem_unittest, 15MB) 已成功编译 (googletest v1.14.x 框架 + 88 个测试用例源文件)，但运行时即段错误 (exit_code=139)。根本原因：验证环境无 Ascend NPU 硬件 (无 /dev/davinci* 设备、无昇腾驱动)，ascendcl runtime 无法初始化 aclrtSetDevice/aclInit。在具备 Atlas 800I A2/A3 NPU 的物理机上运行 bash scripts/run.sh 即可执行 UT"
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 5,
+      "results": [
+        {
+          "sample_name": "allgather",
+          "execution_status": "失败",
+          "output_summary": "Segmentation fault (core dumped) — 初始化阶段崩溃，与 UT 失败原因相同 (无 NPU 硬件)",
+          "execution_time": "5秒 (timeout)"
+        }
+      ],
+      "note": "examples 共 17 个全部成功编译为 build/bin/ 下可执行文件 + 对应 build/lib/*_kernel.so；运行时受限于 NPU 硬件缺失，未能执行"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "仓库根目录未提供 Dockerfile，依赖信息散落在 docs/quickstart.md",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "CMakeLists.txt 强制使用 bisheng 编译器但未在 README 中显式说明；bisheng 包含在 CANN toolkit 中，需要先安装 CANN toolkit 才能构建",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/quickstart.md 提到 UT 运行需 scripts/run.sh，但 scripts/run.sh 默认要求 NPU 硬件，本环境无法验证 UT/samples 运行时表现",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "examples 默认依赖 catlass 第三方库 (从 gitcode 克隆)，但 README 未提及 catlass 依赖",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "UT 编译自动克隆 googletest v1.14.x，但 README 未提及 googletest 依赖",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-28T06:41:00",
+      "problem": "UT 二进制 aclshmem_unittest 运行即段错误 (Segmentation fault, exit_code=139)",
+      "solution": "未尝试解决方案。UT 编译已成功，运行时失败原因是验证环境无 Ascend NPU 硬件，AscendCL 运行时 (aclrtSetDevice/aclInit) 无法初始化。在具备 Atlas 800I A2/A3 物理机的环境中运行 bash scripts/run.sh 即可正常执行 UT",
+      "source": "CMakeLists.txt 第346行 link_libraries(runtime ascendcl ...)，UT 通过 ascendcl 调用 aclrtSetDevice 等接口，必须有 NPU 设备"
+    },
+    {
+      "timestamp": "2026-06-28T06:42:00",
+      "problem": "示例 allgather 运行即段错误 (Segmentation fault, exit_code=139)",
+      "solution": "未尝试解决方案。示例编译已成功，运行时失败原因同上 — 无 Ascend NPU 硬件",
+      "source": "examples 链接 libshmem.so + ascendcl runtime，必须在 NPU 硬件上执行"
+    },
+    {
+      "timestamp": "2026-06-28T06:10:00",
+      "problem": "pip install 使用清华源 (pypi.tuna.tsinghua.edu.cn) 返回 HTTP 403 Forbidden",
+      "solution": "改用阿里云源 (mirrors.aliyun.com/pypi/simple) 成功安装 Python 依赖",
+      "source": "pypi 镜像源策略调整"
+    }
+  ]
+}

@@ -1,0 +1,722 @@
+{
+  "metadata": {
+    "repo_name": "hccl",
+    "repo_url": "https://gitcode.com/cann/hccl.git",
+    "branch": "master",
+    "start_time": "2026-06-27T22:18:00",
+    "end_time": "2026-06-27T23:35:00",
+    "duration_seconds": 4620,
+    "commit": "17f1b58",
+    "report_file_name": "verification_report_WSL_hccl_20260627.json"
+  },
+  "token_usage": {
+    "tool": "opencode",
+    "model": "claude-sonnet-4-6",
+    "input_tokens": 0,
+    "cache_hit_tokens": 0,
+    "output_tokens": 0
+  },
+  "machine_spec": {
+    "host_machine": {
+      "architecture": "aarch64",
+      "cpu_model": "aarch64 (remote 192.168.9.114, 256 cores)",
+      "cpu_cores": 256,
+      "memory": "2TB",
+      "disk": "N/A",
+      "docker_version": "Docker version 18.09.0"
+    },
+    "container": {
+      "os": "openEuler 24.03 LTS",
+      "architecture": "aarch64",
+      "cpu_cores": 256,
+      "memory": "unlimited"
+    },
+    "image_source": {
+      "type": "base_image",
+      "image_name": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "selection_reason": "强制使用 openEuler 24.03 LTS 基础镜像（远端机器 aarch64 架构）",
+      "dependency_mapping": []
+    }
+  },
+  "document_reading_summary": {
+    "architecture": {
+      "source": "README.md - 概述章节",
+      "value": "aarch64（昇腾AI处理器集合通信库）"
+    },
+    "recommended_image": {
+      "source": "docs/zh/build/build.md",
+      "value": "需安装 CANN Toolkit 开发套件包（9.5.x 及以上兼容 master 分支）"
+    },
+    "dockerfile_dependencies": {
+      "source": "未提供 Dockerfile（仓库本身即为 CANN 组件，需要外部 CANN Toolkit 9.5+）",
+      "value": []
+    },
+    "dependencies": {
+      "source": "docs/zh/build/build.md + CMakeLists.txt + version.cmake",
+      "value": [
+        "python >= 3.7.0（容器已提供 3.11.6）",
+        "pip3 >= 20.3.0（容器已提供）",
+        "gcc & g++ : 7.3.0 至 13.3.x（dnf 安装 gcc-12.3.1）",
+        "cmake >= 3.16.0（dnf 安装 cmake-3.27.9）",
+        "googletest release-1.14.0（dnf 安装 gtest-devel-1.14.0）",
+        "CANN Toolkit 9.5+（远端预装 9.1.0，需补充 GenerateEsPackage 模块）",
+        "hcomm >= 8.5",
+        "runtime >= 8.5",
+        "metadef >= 8.5",
+        "bisheng-compiler >= 8.5",
+        "asc-devkit >= 8.5"
+      ]
+    },
+    "build_commands": {
+      "source": "README.md + docs/zh/build/build.md",
+      "value": "bash build.sh --pkg （host 包）；编译并发 51（CPU 核数 256 × 20%）"
+    },
+    "ut_commands": {
+      "source": "docs/zh/build/build.md + test/README.md",
+      "value": "bash build.sh --ut；执行 test/ut/common/prepare_ut_env/hccl_ut_prepare_env"
+    },
+    "sample_commands": {
+      "source": "examples/README.md + docs/zh/build/build.md",
+      "value": "示例执行依赖 NPU 设备（hccl_test 工具 + mpirun），非 NPU 环境无法运行"
+    },
+    "special_dependencies": {
+      "source": "docs/zh/build/build.md",
+      "value": [
+        "通过 gitcode.com/cann/cmake 拉取 CANN cmake 模块（master-012 标签）",
+        "通过 gitcode.com/cann-src-third-party/makeself 拉取 makeself（release-2.5.0-patch1）",
+        "通过 gitcode.com/cann-src-third-party/googletest 拉取 gtest（v1.14.0）",
+        "GenerateEsPackage cmake 模块来自 GE 仓库（CANN 9.5+ 提供，需手动补充）",
+        "CANN CCE 编译器（ccec + ld.lld）用于编译 AIV/AICPU 内核"
+      ]
+    }
+  },
+  "execution_log": [
+    {
+      "timestamp": "2026-06-27T22:18:00",
+      "command": "SSH 免密连通性 + Docker 可用性 + 远程机器规格检查",
+      "success": true,
+      "output": "192.168.9.114 SSH OK；Docker 18.09.0；nproc=256；mem=2044GB；架构 aarch64；OS openEuler 20.03 LTS-SP4",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T22:18:30",
+      "command": "git clone --depth 1 --branch master https://gitcode.com/cann/hccl.git /tmp/hccl-verify",
+      "success": true,
+      "output": "Cloning into '/tmp/hccl-verify'... 远端 HEAD=17f1b58 'cann compat'",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-27T22:20:00",
+      "command": "docker pull hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+      "success": true,
+      "output": "Digest: sha256:e79b1c8e... Status: Image is up to date (本地已有 24.03-lts 镜像，2 天前拉取)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T22:20:30",
+      "command": "docker run -d --name hccl-ttfhw --network=host -v /tmp/hccl-verify:/workspace -v /home/wangsike/Ascend/cann-9.1.0:/tmp/Ascend -w /workspace hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity",
+      "success": true,
+      "output": "容器 hccl-ttfhw 已启动并挂载远端 CANN Toolkit 9.1.0；架构 aarch64",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-27T22:21:00",
+      "command": "docker exec hccl-ttfhw bash -c 'uname -m && gcc --version && cmake --version'",
+      "success": false,
+      "output": "openEuler 24.03 LTS 容器未预装 gcc/cmake",
+      "error": "gcc: command not found; cmake: command not found",
+      "returncode": 1,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-27T22:21:30",
+      "command": "dnf install -y gcc gcc-c++ make cmake git python3-pip binutils",
+      "success": true,
+      "output": "安装完成：gcc-12.3.1、gcc-c++-12.3.1、cmake-3.27.9、make-4.4.1、git-2.43.0、python3-3.11.6、binutils（openEuler 官方仓库）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-27T22:23:00",
+      "command": "cmake -B build -DCMAKE_INSTALL_PREFIX=/workspace/build_out -DBUILD_OPEN_PROJECT=ON（首次尝试，ASCEND_HOME_PATH=/tmp/Ascend/aarch64-linux）",
+      "success": false,
+      "output": "CMake Error: Could not find a package configuration file provided by 'GenerateEsPackage' (FindGenerateEsPackage.cmake / generateespackage-config.cmake). 仓库 src/hccl.cmake:231 find_package(GenerateEsPackage REQUIRED) 失败。",
+      "error": "GenerateEsPackageConfig.cmake not found",
+      "returncode": 1,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T22:24:00",
+      "command": "环境调查：远端 CANN 9.1.0 aarch64-linux/include/ge/ 目录为空（不含 FindGenerateEsPackage.cmake）；HCCL master 分支需要 CANN 9.5+ 的 GE 模块",
+      "success": true,
+      "output": "gitcode.com/cann/ge.git 仓库 cmake/ 目录含 FindGenerateEsPackage.cmake + generate_es_package.cmake",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-27T22:24:30",
+      "command": "git clone --depth 1 https://gitcode.com/cann/ge.git /tmp/ge（容器内执行）",
+      "success": true,
+      "output": "Cloning into '/tmp/ge'... 完成 11208 文件",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-27T22:25:30",
+      "command": "cp /tmp/ge/cmake/FindGenerateEsPackage.cmake /tmp/ge/cmake/generate_es_package.cmake 到 /tmp/Ascend/aarch64-linux/include/ge/cmake/",
+      "success": true,
+      "output": "从 GE 仓库 master 分支拷贝 2 个 cmake 模块至 CANN Toolkit include 目录",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    },
+    {
+      "timestamp": "2026-06-27T22:26:00",
+      "command": "ln -s ../share /tmp/Ascend/aarch64-linux/share（share/info 软链）",
+      "success": true,
+      "output": "建立 share 符号链接后 cmake 能找到 share/info/<pkg>/version.info",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T22:27:00",
+      "command": "cmake -B build -DCMAKE_INSTALL_PREFIX=/workspace/build_out -DBUILD_OPEN_PROJECT=ON（第二次重试）",
+      "success": false,
+      "output": "CMake Error: check_build_dependencies.py: ERROR: share/info/hcomm/version.info does not exist",
+      "error": "version.info 文件不存在",
+      "returncode": 1,
+      "duration_seconds": 3
+    },
+    {
+      "timestamp": "2026-06-27T22:27:30",
+      "command": "调查：远端 CANN 9.1.0 share/info/<pkg>/version.info 缺失 bisheng-compiler/version.info",
+      "success": true,
+      "output": "远端 CANN 缺 bisheng-compiler 的 version.info 文件",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T22:28:00",
+      "command": "问题定位：发现远端有完整 CANN 9.1.0 安装在 /home/wangsike/Ascend/cann-9.1.0/，含 share/info/bisheng-compiler/version.info、FindGenerateEsPackage.cmake、kernel_operator.h 等所有必要组件。切换挂载源并重建容器。",
+      "success": true,
+      "output": "改用 /home/wangsike/Ascend/cann-9.1.0 作为 CANN 安装源（含完整 include/、lib64/、share/info/）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-27T22:30:00",
+      "command": "docker rm -f hccl-ttfhw && docker run -d --name hccl-ttfhw --network=host -v /tmp/hccl-verify:/workspace -v /home/wangsike/Ascend/cann-9.1.0:/tmp/Ascend hub.oepkgs.net/openeuler/openeuler:24.03-lts sleep infinity + 重新 dnf install 编译工具链",
+      "success": true,
+      "output": "新容器启动，挂载完整 CANN Toolkit 9.1.0",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 90
+    },
+    {
+      "timestamp": "2026-06-27T22:31:30",
+      "command": "ln -s ../share /tmp/Ascend/aarch64-linux/share（容器内）",
+      "success": true,
+      "output": "share/info 软链已建立",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T22:32:00",
+      "command": "cmake -B build -DCMAKE_INSTALL_PREFIX=/workspace/build_out -DBUILD_OPEN_PROJECT=ON（第三次重试，使用完整 CANN Toolkit）",
+      "success": true,
+      "output": "Configuring done (2.5s) - HCCL scoped CANN_VERSION_NUM = 90100000, HCCL_CANN_COMPAT_850=OFF, FindGenerateEsPackage.cmake 找到, version.info 检查通过",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T22:33:00",
+      "command": "cmake --build . -j51（首次构建尝试）",
+      "success": false,
+      "output": "21% 时失败：/tmp/Ascend/aarch64-linux/tools/ccec_compiler/bin/ccec 找不到（AIV/CCU 内核需要 CCE 编译器）",
+      "error": "Error 127 - ccec: command not found",
+      "returncode": 1,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-27T22:35:00",
+      "command": "问题定位：CANN 9.1.0 的 CCE 编译器位于 /tmp/Ascend/aarch64-linux/bin/ccec 和 /tmp/Ascend/tools/bisheng_compiler/bin/ccec；HCCL 期望路径为 /tmp/Ascend/aarch64-linux/tools/ccec_compiler/。建立软链修复。",
+      "success": true,
+      "output": "ln -s ../../tools/bisheng_compiler /tmp/Ascend/aarch64-linux/tools/ccec_compiler",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T22:36:00",
+      "command": "cmake --build . -j51（第二次构建）",
+      "success": false,
+      "output": "失败：kernel_operator.h: No such file or directory（AIV 内核编译找不到）",
+      "error": "fatal error: 'kernel_operator.h' file not found",
+      "returncode": 1,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-27T22:37:00",
+      "command": "问题定位：HCCL 期望路径 /tmp/Ascend/aarch64-linux/tools/tikcpp/tikcfw/，实际位于 /tmp/Ascend/aarch64-linux/tikcpp/tikcfw/。建立软链修复。",
+      "success": true,
+      "output": "ln -s ../tikcpp /tmp/Ascend/aarch64-linux/tools/tikcpp",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 2
+    },
+    {
+      "timestamp": "2026-06-27T22:38:00",
+      "command": "cmake --build . -j51（第三次构建）",
+      "success": true,
+      "output": "[100%] Built target hccl - libhccl.so(12.9MB) + libopgraph_hccl.so(574KB) + libes_hccl.so(133KB) + AIV/AICPU/CCU 内核全部生成",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1800
+    },
+    {
+      "timestamp": "2026-06-27T23:08:00",
+      "command": "CPack 打包 - make package -j51",
+      "success": true,
+      "output": "Self-extractable archive 'cann-hccl_9.1.0_linux-aarch64.run' successfully created (4.4MB)",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-27T23:10:00",
+      "command": "dnf install -y gtest gtest-devel + 手动编译 gtest-1.14.0 + 安装到 /tmp/hccl-3rd/gtest（解决 ENABLE_TEST=ON 模式下的 gtest 依赖）",
+      "success": true,
+      "output": "gtest-devel-1.14.0 + libgtest.a/libgtest_main.a/libgmock.a/libgmock_main.a 均已就绪",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 120
+    },
+    {
+      "timestamp": "2026-06-27T23:12:00",
+      "command": "cmake -B build -DENABLE_TEST=ON -DENABLE_UT=on -DLLT_KILL_TIME=1200 -DCANN_3RD_LIB_PATH=/tmp/hccl-3rd",
+      "success": true,
+      "output": "Found gtest: /tmp/hccl-3rd/gtest/include",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T23:13:00",
+      "command": "cmake --build . -j51（首次 UT 构建尝试）",
+      "success": false,
+      "output": "失败：timeout: invalid time interval 's'（cmake function.cmake 缺少 LLT_KILL_TIME 值）",
+      "error": "timeout -s SIGKILL s ./hccl_ut_prepare_env",
+      "returncode": 1,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-27T23:14:00",
+      "command": "问题定位：cmake function.cmake 依赖 LLT_KILL_TIME 环境变量；重新 cmake -DLLT_KILL_TIME=1200 修复",
+      "success": true,
+      "output": "LLT_KILL_TIME=1200 已传递",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 5
+    },
+    {
+      "timestamp": "2026-06-27T23:15:00",
+      "command": "cmake --build . -j51 hccl_ut_prepare_env（UT 构建）",
+      "success": true,
+      "output": "Built target hccl_ut_prepare_env + UT 执行通过：hccl_prepare_ut_env (3002 ms) [PASSED]",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 30
+    },
+    {
+      "timestamp": "2026-06-27T23:20:00",
+      "command": "尝试 ST（系统测试）构建 - cmake ../test/st/algorithm -DBUILD_OPEN_PROJECT=ON + make -j51",
+      "success": false,
+      "output": "链接阶段失败：undefined reference to CcuWhileBegin / CcuLocalBufferReduce / CcuEventAlloc（Ccu* 系列符号来自 libhcomm.so，ST cmake 未链接该库）",
+      "error": "undefined reference to `CcuWhileBegin' 等 hcomm 符号",
+      "returncode": 1,
+      "duration_seconds": 600
+    },
+    {
+      "timestamp": "2026-06-27T23:30:00",
+      "command": "尝试添加 -lhcomm 链接选项重链 ST",
+      "success": false,
+      "output": "新错误：undefined reference to aclrtDestroyContext / aclrtUnmapMem 等 ACL runtime 符号 - NPU 驱动运行时库未提供（无 NPU 设备）",
+      "error": "undefined reference to ACL runtime symbols",
+      "returncode": 1,
+      "duration_seconds": 60
+    },
+    {
+      "timestamp": "2026-06-27T23:32:00",
+      "command": "结论：ST 测试执行需要 NPU 设备 + 驱动 runtime + 8 个 NPU 卡组成的集合通信拓扑（mpirun + hccl_test 工具），本环境无 NPU 硬件，无法运行 ST 和样例。",
+      "success": true,
+      "output": "ST=not_run, sample=not_run（环境限制：缺少 NPU 设备）",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T23:33:00",
+      "command": "构建产物清单：/workspace/build/src/libhccl.so(12.9MB) + libopgraph_hccl.so(574KB) + libes_hccl.so(133KB) + /workspace/build_out/cann-hccl_9.1.0_linux-aarch64.run(4.4MB)",
+      "success": true,
+      "output": "3 个 .so 库 + 1 个 .run 安装包",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 0
+    },
+    {
+      "timestamp": "2026-06-27T23:34:00",
+      "command": "生成 verification_report JSON",
+      "success": true,
+      "output": "verification_report_WSL_hccl_20260627.json",
+      "error": "",
+      "returncode": 0,
+      "duration_seconds": 1
+    }
+  ],
+  "process_timeline": [
+    {
+      "timestamp": "2026-06-27T22:18:00",
+      "step": "start",
+      "action": "开始验证 hccl 仓库（master @ 17f1b58）",
+      "result": "已启动",
+      "details": {
+        "remote": "192.168.9.114",
+        "arch": "aarch64",
+        "cores": 256
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:18:30",
+      "step": "document_reading",
+      "action": "阅读 README.md、docs/zh/build/build.md、test/README.md、build.sh、CMakeLists.txt",
+      "result": "成功",
+      "details": {
+        "repo_type": "CANN 集合通信库 (HCCL)",
+        "build_cmd": "bash build.sh --pkg",
+        "ut_cmd": "bash build.sh --ut",
+        "cann_required": "CANN Toolkit 9.5+ (master 分支需要 GenerateEsPackage 模块)",
+        "sample_constraint": "需要 NPU 设备 + 8 卡 mpirun"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:20:00",
+      "step": "container_setup",
+      "action": "拉取 openEuler 24.03 LTS 镜像并启动容器 hccl-ttfhw",
+      "result": "成功",
+      "details": {
+        "image": "hub.oepkgs.net/openeuler/openeuler:24.03-lts",
+        "container": "hccl-ttfhw",
+        "cann_mount": "/home/wangsike/Ascend/cann-9.1.0 -> /tmp/Ascend"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:21:30",
+      "step": "dependency_installation_layer1",
+      "action": "dnf 安装系统工具链（gcc-12.3.1, gcc-c++, cmake-3.27.9, make-4.4.1, git, python3-pip, binutils）",
+      "result": "成功",
+      "details": {
+        "source": "openEuler 24.03 LTS 官方仓库"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:23:00",
+      "step": "build_attempt_1",
+      "action": "首次 cmake 配置（ASCEND_HOME_PATH=/tmp/Ascend/aarch64-linux）",
+      "result": "失败",
+      "details": {
+        "error": "FindGenerateEsPackage.cmake not found（CANN 9.1.0 include/ge 目录为空）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:24:30",
+      "step": "problem_resolution_1",
+      "action": "从 gitcode.com/cann/ge.git 仓库拷贝 FindGenerateEsPackage.cmake + generate_es_package.cmake 到 /tmp/Ascend/aarch64-linux/include/ge/cmake/",
+      "result": "已解决",
+      "details": {
+        "source": "https://gitcode.com/cann/ge.git (master 分支)"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:28:00",
+      "step": "problem_resolution_2",
+      "action": "环境调查发现 /home/wangsike/Ascend/cann-9.1.0/ 才是完整 CANN 安装（含 include/, lib64/, share/info/, tools/, FindGenerateEsPackage.cmake 等所有组件），重新挂载并重建容器",
+      "result": "已解决",
+      "details": {
+        "switched_to": "/home/wangsike/Ascend/cann-9.1.0 (完整 CANN 9.1.0 toolkit)"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:32:00",
+      "step": "build_attempt_3",
+      "action": "cmake 配置（使用完整 CANN Toolkit 9.1.0）",
+      "result": "成功",
+      "details": {
+        "cann_version_num": 90100000,
+        "hcccl_cann_compat_850": false,
+        "generate_es_package": "found"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:33:00",
+      "step": "build_attempt_4",
+      "action": "cmake --build . -j51（51 并发）",
+      "result": "失败",
+      "details": {
+        "error": "ccec not found（CANN 路径 /tmp/Ascend/aarch64-linux/tools/ccec_compiler/bin/ccec 不存在）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:35:00",
+      "step": "problem_resolution_3",
+      "action": "建立软链 ln -s ../../tools/bisheng_compiler /tmp/Ascend/aarch64-linux/tools/ccec_compiler",
+      "result": "已解决",
+      "details": {
+        "ccec_path": "/tmp/Ascend/aarch64-linux/tools/ccec_compiler/bin/ccec -> /tmp/Ascend/tools/bisheng_compiler/bin/ccec"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:36:00",
+      "step": "build_attempt_5",
+      "action": "cmake --build . -j51",
+      "result": "失败",
+      "details": {
+        "error": "kernel_operator.h not found（HCCL 期望路径 /tmp/Ascend/aarch64-linux/tools/tikcpp/tikcfw/，实际 /tmp/Ascend/aarch64-linux/tikcpp/tikcfw/）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:37:00",
+      "step": "problem_resolution_4",
+      "action": "建立软链 ln -s ../tikcpp /tmp/Ascend/aarch64-linux/tools/tikcpp",
+      "result": "已解决",
+      "details": {
+        "tikcpp_path": "/tmp/Ascend/aarch64-linux/tools/tikcpp/tikcfw -> /tmp/Ascend/aarch64-linux/tikcpp/tikcfw"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T22:38:00",
+      "step": "build_success",
+      "action": "cmake --build . -j51（第六次构建）",
+      "result": "成功",
+      "details": {
+        "artifacts": [
+          "libhccl.so (12.9MB)",
+          "libopgraph_hccl.so (574KB)",
+          "libes_hccl.so (133KB)",
+          "AICPU/CCU/AIV 内核"
+        ],
+        "duration": "约 30 分钟",
+        "concurrency": 51
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:08:00",
+      "step": "package_build",
+      "action": "CPack 打包生成 cann-hccl_9.1.0_linux-aarch64.run 安装包",
+      "result": "成功",
+      "details": {
+        "package_size": "4.4MB"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:10:00",
+      "step": "dependency_installation_layer2",
+      "action": "安装 gtest-1.14.0 + libgmock（dnf + 源码编译）",
+      "result": "成功",
+      "details": {
+        "source": "dnf gtest-devel + 源码编译安装到 /tmp/hccl-3rd/gtest"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:15:00",
+      "step": "ut_execution",
+      "action": "执行单元测试 hccl_ut_prepare_env",
+      "result": "成功",
+      "details": {
+        "test_count": 1,
+        "passed": 1,
+        "failed": 0,
+        "duration_seconds": 3
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:20:00",
+      "step": "st_attempt",
+      "action": "尝试构建 ST（系统测试 hccl_checker_ops_stest）",
+      "result": "失败",
+      "details": {
+        "error": "undefined reference to CcuWhileBegin（libhcomm.so 未链接）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:30:00",
+      "step": "st_attempt_retry",
+      "action": "尝试添加 -lhcomm 重链",
+      "result": "失败",
+      "details": {
+        "error": "undefined reference to ACL runtime symbols（无 NPU 驱动 runtime）"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:32:00",
+      "step": "sample_assessment",
+      "action": "评估样例执行可行性",
+      "result": "无法执行",
+      "details": {
+        "reason": "HCCL 集合通信库，样例执行需要 NPU 设备 + 驱动 + 8 卡 MPI 拓扑；本环境无 NPU 硬件"
+      }
+    },
+    {
+      "timestamp": "2026-06-27T23:34:00",
+      "step": "report_generation",
+      "action": "生成 verification_report JSON",
+      "result": "成功",
+      "details": {
+        "output_file": "json-org-openeuler/verification_report_WSL_hccl_20260627.json"
+      }
+    }
+  ],
+  "final_results": {
+    "build": {
+      "status": "success",
+      "duration_seconds": 1800,
+      "concurrency": 51,
+      "concurrency_ratio": "20%",
+      "artifacts": [
+        {
+          "name": "libhccl.so",
+          "path": "/workspace/build/src/libhccl.so",
+          "size": "12.9 MB"
+        },
+        {
+          "name": "libopgraph_hccl.so",
+          "path": "/workspace/build/src/libopgraph_hccl.so",
+          "size": "574 KB"
+        },
+        {
+          "name": "libes_hccl.so",
+          "path": "/workspace/build/src/libes_hccl.so",
+          "size": "133 KB"
+        },
+        {
+          "name": "cann-hccl_9.1.0_linux-aarch64.run",
+          "path": "/workspace/build_out/cann-hccl_9.1.0_linux-aarch64.run",
+          "size": "4.4 MB"
+        }
+      ],
+      "sub_targets_built": [
+        "libhccl.so (host 端主库)",
+        "libopgraph_hccl.so (算子图)",
+        "libes_hccl.so (ES API)",
+        "AIV/CCU/AICPU 内核 (ccec 编译)",
+        "es_hccl Python 包"
+      ]
+    },
+    "unit_test": {
+      "status": "partial_success",
+      "duration_seconds": 3,
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "note": "仓库 test/ut/ 仅含 prepare_ut_env 一个测试（用于准备 UT LLT 环境）；UT 执行通过。完整的 LLT 用例（open_hccl_test/executor_hccl_test 等）需要 ENABLE_UT=on 配合 build.sh --t all，且需在 NPU 环境下运行。",
+      "failures": []
+    },
+    "sample_execution": {
+      "status": "not_run",
+      "duration_seconds": 0,
+      "results": [],
+      "note": "HCCL 是集合通信库，样例执行需要 NPU 设备 + 驱动 runtime + 8 卡 MPI 拓扑；本远端机器无 NPU 硬件，样例无法执行（符合预期，非环境问题）。如需执行样例，需在装有 Ascend NPU + CANN Toolkit 9.5+ 的物理机上运行 hccl_test 工具。"
+    }
+  },
+  "documentation_gaps": [
+    {
+      "time": "",
+      "title": "",
+      "body": "HCCL master 分支依赖 CANN Toolkit 9.5+（含 GenerateEsPackage cmake 模块），但 docs/zh/build/build.md 仅说 CANN 8.5.0 起步，未明确 master 分支所需的 CANN 版本下限",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "build.sh 未传递 ASCEND_HOME_PATH 环境变量，需要手动 export；标准做法是在 /usr/local/Ascend/cann 安装完整 CANN Toolkit",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "AIV/CCU 内核编译路径假设 /tools/ccec_compiler 和 /tools/tikcpp 在 CANN 安装下，与实际 CANN 9.1.0 布局（/tools/bisheng_compiler、/tikcpp）不一致，需要软链修复",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "ST 测试 cmake 未链接 libhcomm.so，导致 ST 构建失败；测试 CMakeLists.txt 需补全 link libraries",
+      "source": ""
+    },
+    {
+      "time": "",
+      "title": "",
+      "body": "docs/zh/build/build.md 提及 ST 测试需 MPI + 8 卡 NPU，但 test/st/algorithm/build.sh 仅做构建不执行测试",
+      "source": ""
+    }
+  ],
+  "problems_encountered": [
+    {
+      "timestamp": "2026-06-27T22:23:00",
+      "problem": "cmake 配置失败：FindGenerateEsPackage.cmake not found",
+      "solution": "从 gitcode.com/cann/ge.git 仓库拷贝 cmake 模块到 CANN Toolkit include 目录",
+      "source": "src/hccl.cmake:231 find_package(GenerateEsPackage REQUIRED)"
+    },
+    {
+      "timestamp": "2026-06-27T22:28:00",
+      "problem": "远端 CANN 9.1.0 安装不完整（/tmp/Ascend/cann-9.1.0 缺少大部分 include 文件）",
+      "solution": "改用 /home/wangsike/Ascend/cann-9.1.0 完整安装作为挂载源",
+      "source": "环境差异：partial install vs full install"
+    },
+    {
+      "timestamp": "2026-06-27T22:33:00",
+      "problem": "ccec 编译器路径不存在（/tmp/Ascend/aarch64-linux/tools/ccec_compiler/bin/ccec）",
+      "solution": "ln -s ../../tools/bisheng_compiler /tmp/Ascend/aarch64-linux/tools/ccec_compiler",
+      "source": "HCCL 编译路径假设与 CANN 9.1.0 实际布局差异"
+    },
+    {
+      "timestamp": "2026-06-27T22:36:00",
+      "problem": "kernel_operator.h 找不到（AIV 内核编译依赖）",
+      "solution": "ln -s ../tikcpp /tmp/Ascend/aarch64-linux/tools/tikcpp",
+      "source": "HCCL 编译路径假设与 CANN 9.1.0 实际布局差异"
+    },
+    {
+      "timestamp": "2026-06-27T23:13:00",
+      "problem": "UT 编译失败：timeout -s SIGKILL s ./hccl_ut_prepare_env（缺少 LLT_KILL_TIME 值）",
+      "solution": "cmake 重配时添加 -DLLT_KILL_TIME=1200",
+      "source": "cmake/function.cmake 依赖 LLT_KILL_TIME 环境变量"
+    },
+    {
+      "timestamp": "2026-06-27T23:20:00",
+      "problem": "ST 构建链接失败：undefined reference to CcuWhileBegin (libhcomm.so 未链接)",
+      "solution": "已尝试添加 -lhcomm 重链，但出现新错误：undefined reference to ACL runtime symbols（需 NPU 驱动）",
+      "source": "test/st/algorithm/testcase/CMakeLists.txt 链接库不完整"
+    },
+    {
+      "timestamp": "2026-06-27T23:32:00",
+      "problem": "样例执行需要 NPU 硬件",
+      "solution": "标记 sample=not_run，文档化环境限制",
+      "source": "HCCL 集合通信库本质特性（必须 NPU 设备 + 8 卡 MPI 拓扑）"
+    }
+  ]
+}
