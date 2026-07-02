@@ -9582,7 +9582,7 @@
     }
    ],
    "summary": "pypto 真实结论：构建未通过。阶段一了解成功(约8min，依赖装好)；阶段二编译 pip install . 被 OOM 杀掉(exit 137)——文档未给编译内存/并行度要求，默认 -j128 在 8Gi OOM，加到 32Gi 内存+限制并行到 4 仍 OOM；编译反复失败耗尽 claude 25min step 超时，阶段三(使用)/四(贡献)未执行。社区CI 因上游 pre-receive hook 拒绝建 PR 无法非侵入触发(no_ci)。来源：终止断点报告 ttfhw-cann-dev-build-verify-20260625-93。已就「编译内存/并行度未说明」缺陷向上游提交 issue：https://gitcode.com/cann/pypto/issues/2431。",
-   "result": "failed",
+   "result": "terminated",
    "attempts": [
     {
      "step": "",
@@ -16450,31 +16450,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 90,
    "scene": "llm",
    "date": "2026-06-17",
@@ -16503,31 +16503,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 91,
    "scene": "llm-install",
    "date": "2026-05-22",
@@ -16658,19 +16658,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 93,
    "scene": "llm-install",
    "date": "2026-05-24",
@@ -16712,31 +16712,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 94,
    "scene": "llm-install",
    "date": "2026-05-25",
@@ -16838,31 +16838,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 95,
    "scene": "llm-install",
    "date": "2026-05-26",
@@ -16891,31 +16891,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 96,
    "scene": "llm-install",
    "date": "2026-05-27",
@@ -17226,31 +17226,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 100,
    "scene": "llm-install",
    "date": "2026-05-31",
@@ -17279,31 +17279,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 101,
    "scene": "llm-install",
    "date": "2026-06-01",
@@ -17332,31 +17332,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 102,
    "scene": "llm-install",
    "date": "2026-06-02",
@@ -17385,31 +17385,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 103,
    "scene": "llm-install",
    "date": "2026-06-08",
@@ -17528,31 +17528,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 105,
    "scene": "llm-install",
    "date": "2026-06-10",
@@ -17594,31 +17594,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 106,
    "scene": "llm-install",
    "date": "2026-06-11",
@@ -17923,25 +17923,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 110,
    "scene": "llm-install",
    "date": "2026-06-15",
@@ -18007,13 +18007,13 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -18025,13 +18025,13 @@
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 10,
-   "result": "failed",
+   "result": "terminated",
    "id": 111,
    "scene": "llm-install",
    "date": "2026-06-16",
@@ -18156,25 +18156,25 @@
     },
     {
      "name": "安装",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 113,
    "scene": "llm-install",
    "date": "2026-06-18",
@@ -18252,31 +18252,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 114,
    "scene": "llm-install",
    "date": "2026-06-19",
@@ -18311,25 +18311,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 3,
-   "result": "failed",
+   "result": "terminated",
    "id": 115,
    "scene": "llm-install",
    "date": "2026-06-20",
@@ -18442,31 +18442,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 117,
    "scene": "llm-install",
    "date": "2026-06-22",
@@ -18495,31 +18495,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 118,
    "scene": "llm-install",
    "date": "2026-06-23",
@@ -18548,31 +18548,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 119,
    "scene": "llm-install",
    "date": "2026-06-24",
@@ -18722,31 +18722,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 121,
    "scene": "llm-install",
    "date": "2026-06-26",
@@ -19329,31 +19329,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 127,
    "scene": "cpu-install",
    "date": "2026-05-10",
@@ -19532,31 +19532,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 130,
    "scene": "cpu-install",
    "date": "2026-05-13",
@@ -19657,7 +19657,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -19669,19 +19669,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 132,
    "scene": "cpu-install",
    "date": "2026-05-15",
@@ -19722,19 +19722,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 133,
    "scene": "cpu-install",
    "date": "2026-05-16",
@@ -19776,7 +19776,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -19788,19 +19788,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 134,
    "scene": "cpu-install",
    "date": "2026-05-17",
@@ -20477,25 +20477,25 @@
     },
     {
      "name": "安装",
-     "status": "unknown",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 2
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 143,
    "scene": "cpu-install",
    "date": "2026-05-26",
@@ -20698,25 +20698,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 146,
    "scene": "cpu-install",
    "date": "2026-05-29",
@@ -21418,19 +21418,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 155,
    "scene": "cpu-install",
    "date": "2026-06-12",
@@ -21820,31 +21820,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 160,
    "scene": "cpu-install",
    "date": "2026-06-17",
@@ -21933,31 +21933,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 162,
    "scene": "cpu-install",
    "date": "2026-06-19",
@@ -22095,31 +22095,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 164,
    "scene": "cpu-install",
    "date": "2026-06-21",
@@ -22245,31 +22245,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 166,
    "scene": "cpu-install",
    "date": "2026-06-23",
@@ -22304,25 +22304,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 167,
    "scene": "cpu-install",
    "date": "2026-06-24",
@@ -22364,31 +22364,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 168,
    "scene": "cpu-install",
    "date": "2026-06-25",
@@ -22417,31 +22417,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 169,
    "scene": "cpu-install",
    "date": "2026-06-26",
@@ -23020,25 +23020,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 177,
    "scene": "a2-npu-dev",
    "date": "2026-05-23",
@@ -23067,31 +23067,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 178,
    "scene": "a2-npu-dev",
    "date": "2026-05-30",
@@ -23312,31 +23312,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 181,
    "scene": "a2-npu-dev",
    "date": "2026-05-31",
@@ -23623,7 +23623,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -23635,19 +23635,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 185,
    "scene": "a2-npu-install",
    "date": "2026-05-30",
@@ -23911,7 +23911,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -23923,19 +23923,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 188,
    "scene": "user-install-verify",
    "date": "2026-06-15",
@@ -26833,7 +26833,7 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -26845,13 +26845,13 @@
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 223,
    "scene": "jijian-docker-install-v1",
    "date": "2026-05-15",
@@ -27091,7 +27091,7 @@
     }
    ],
    "totalMinutes": 14,
-   "result": "failed",
+   "result": "terminated",
    "id": 226,
    "scene": "jijian-docker-install-v1",
    "date": "2026-05-18",
@@ -28752,31 +28752,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 247,
    "scene": "jijian-docker-install-v1",
    "date": "2026-06-13",
@@ -29165,31 +29165,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 253,
    "scene": "jijian-docker-install-v1",
    "date": "2026-06-19",
@@ -30795,19 +30795,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 274,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-05-09",
@@ -31028,31 +31028,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 278,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-05-13",
@@ -31153,31 +31153,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 280,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-05-15",
@@ -31536,25 +31536,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 285,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-05-20",
@@ -31661,31 +31661,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 287,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-05-22",
@@ -32055,25 +32055,25 @@
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 293,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-05-28",
@@ -33116,31 +33116,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 307,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-06-18",
@@ -33325,31 +33325,31 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "安装",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 310,
    "scene": "huaweicloud-mirror-install",
    "date": "2026-06-21",
@@ -33953,7 +33953,7 @@
    "phases": [
     {
      "name": "了解",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
@@ -33965,19 +33965,19 @@
     },
     {
      "name": "使用",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     },
     {
      "name": "贡献",
-     "status": "failed",
+     "status": "not_run",
      "minutes": 0,
      "breakpoints": 0
     }
    ],
    "totalMinutes": 0,
-   "result": "failed",
+   "result": "terminated",
    "id": 319,
    "scene": "ascend-user-install-verify",
    "date": "2026-06-15",

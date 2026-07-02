@@ -2,9 +2,9 @@
 (() => {
   "use strict";
   const SCEN = { user: "使用者场景", developer: "贡献者场景" };
-  const RES = { success: "成功", partial: "部分成功", failed: "失败", unknown: "未知", not_run: "未执行" };
+  const RES = { success: "成功", partial: "部分成功", failed: "失败", unknown: "未知", not_run: "未执行", terminated: "已终止" };
   const COMM_ORDER = ["openEuler","HPCKit","UBS Core","openUBMC","CANN","MindSpeed","MindIE","PTA","MindSpore","openGauss","Triton","TileLang","Ascend","其他"];
-  const COLOR = { success: "#3ba272", partial: "#fac858", failed: "#ee6666", unknown: "#A4B1D7", not_run: "#c7ccd6" };
+  const COLOR = { success: "#3ba272", partial: "#fac858", failed: "#ee6666", unknown: "#A4B1D7", not_run: "#c7ccd6", terminated: "#8a92a6" };
 
   // 内联 SVG 图标（stroke 风格）
   const I = {

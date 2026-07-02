@@ -115,6 +115,7 @@ tbody tr:last-child td { border-bottom: 0; }
 .badge.failed  { color: var(--failed);  background: var(--failed-bg); }
 .badge.unknown { color: var(--text-dim); background: var(--unknown-bg); }
 .badge.not_run { color: var(--notrun); background: var(--notrun-bg); }
+.badge.terminated { color: #5b6472; background: #e7eaf0; }
 .badge.manual { color: #8a5a00; background: #fff3d6; }
 .repo-cell .scn.manual { display: inline-block; color: #8a5a00; background: #fff3d6; border-radius: 3px; padding: 0 5px; margin-top: 2px; }
 .timeline .tl-row .tl-bp { justify-self: start; margin-left: 8px; font-size: 12px; color: var(--partial, #b06a00); font-variant-numeric: tabular-nums; }
