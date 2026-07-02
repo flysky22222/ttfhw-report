@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh"><head><meta charset="utf-8"><title>TTFHW</title>
 <script>
-// GitHub Pages SPA 回退：把干净路径 /report/WSL_xxx 或 /json-org/... 转成 #hash 路由
-(function () {
-  var p = location.pathname.replace(/^\/+/, "");
-  var proj = "";
-  if (p.indexOf("ttfhw-report/") === 0) { proj = "ttfhw-report/"; p = p.slice(proj.length); }
-  location.replace("/" + proj + "#" + p + location.search);
-})();
+  // GitHub Pages SPA 回退：把干净路径 /report/WSL_x 编码成 /?/report/WSL_x 重定向到 index，
+  // index.html 的解码脚本再还原成 /report/WSL_x（自定义域名根路径，pathSegmentsToKeep=0）。
+  (function () {
+    var pathSegmentsToKeep = 0;
+    var l = window.location;
+    l.replace(
+      l.protocol + "//" + l.hostname + (l.port ? ":" + l.port : "") +
+      l.pathname.split("/").slice(0, 1 + pathSegmentsToKeep).join("/") + "/?/" +
+      l.pathname.slice(1).split("/").slice(pathSegmentsToKeep).join("/").replace(/&/g, "~and~") +
+      (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+      l.hash
+    );
+  })();
 </script></head><body>Redirecting…</body></html>

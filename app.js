@@ -50,27 +50,49 @@
     document.getElementById("resultChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; state.result = b.dataset.result; setActive("#resultChips .chip", b); route(); });
     const s = document.getElementById("search");
     s.addEventListener("input", () => { state.query = s.value.trim().toLowerCase(); if (!/^#(id=|report\/|json-org\/)/.test(location.hash)) route(); });
-    window.addEventListener("hashchange", route);
+    window.addEventListener("popstate", route);      // 干净路径(History API)前进/后退
+    window.addEventListener("hashchange", route);     // 兼容旧 #链接
     window.addEventListener("resize", () => charts.forEach(c => { try { c.resize(); } catch (e) {} }));
+    // 「返回总览」等 .back 链接走 SPA(不整页刷新)
+    document.getElementById("content").addEventListener("click", e => {
+      const a = e.target.closest("a.back"); if (a) { e.preventDefault(); goHome(); }
+    });
     renderIssues();
     route();
   }
   const opt = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; return o; };
   const setActive = (sel, btn) => { document.querySelectorAll(sel).forEach(x => x.classList.remove("active")); btn.classList.add("active"); };
 
-  // 报告 URL：贡献者场景用 report/WSL_<repo>（对齐官方 computing 站的干净路径）；
-  // 其余(使用者场景等)回退 id=<n>。也兼容旧的 #json-org/.../xxx.json 与 #id=。
+  // 报告 URL：干净路径(History API,无 #)。贡献者→ report/WSL_<repo>（对齐官方 computing 站）；
+  // 使用者→ report/<community>。项目页(github.io)带 /ttfhw-report/ 前缀，自定义域名为根 /。
+  const BASE = location.pathname.indexOf("/ttfhw-report/") === 0 ? "/ttfhw-report/" : "/";
   const recById = id => (state.data.records || []).find(r => r.id === +id);
-  const reportHash = r => "#" + (r && r.scenario === "developer" ? "report/WSL_" + r.repo : "id=" + (r ? r.id : ""));
-  const gotoReport = id => { const r = recById(id); if (r) location.hash = reportHash(r); };
+  const routePath = r => !r ? BASE
+    : r.scenario === "developer" ? BASE + "report/WSL_" + encodeURIComponent(r.repo)
+    : BASE + "report/" + encodeURIComponent(r.community);
+  function findByPath(p) {
+    const recs = state.data.records || []; let m;
+    if ((m = p.match(/^report\/WSL_(.+)$/i)))
+      return recs.find(r => r.scenario === "developer" && r.repo.toLowerCase() === decodeURIComponent(m[1]).toLowerCase());
+    if ((m = p.match(/^report\/(.+)$/i))) {
+      const c = decodeURIComponent(m[1]).toLowerCase();
+      const us = recs.filter(r => r.scenario === "user" && r.community.toLowerCase() === c);
+      if (us.length) { us.sort((a, b) => (b.rep ? 1 : 0) - (a.rep ? 1 : 0) || b.date.localeCompare(a.date)); return us[0]; }
+    }
+    return null;
+  }
+  const gotoReport = id => { const r = recById(id); if (r) { history.pushState({}, "", routePath(r)); route(); } };
+  const goHome = () => { history.pushState({}, "", BASE); route(); };
 
   function route() {
-    const h = decodeURIComponent(location.hash.replace(/^#/, ""));
-    const recs = state.data.records || [];
-    let rec = null, m;
-    if ((m = h.match(/^report\/WSL_(.+)$/))) rec = recs.find(r => r.scenario === "developer" && r.repo.toLowerCase() === m[1].toLowerCase());
-    else if ((m = h.match(/^id=(\d+)/))) rec = recById(m[1]);
-    else if (h.startsWith("json-org/")) rec = recs.find(r => r.jsonPath === h);
+    let p = decodeURIComponent(location.pathname);
+    p = p.indexOf(BASE) === 0 ? p.slice(BASE.length) : p.replace(/^\//, "");
+    let rec = findByPath(p);
+    if (!rec && location.hash) {   // 向后兼容旧的 #id= / #report/ / #json-org 链接
+      const h = decodeURIComponent(location.hash.replace(/^#/, "")); let m;
+      if ((m = h.match(/^id=(\d+)/))) rec = recById(m[1]);
+      else rec = findByPath(h) || (state.data.records || []).find(r => r.jsonPath === h);
+    }
     const ctrls = document.querySelector(".controls"), stats = document.getElementById("stats"), charts = document.getElementById("charts"), issues = document.getElementById("issues");
     const show = rec ? "none" : "";
     ctrls.style.display = show; stats.style.display = show; charts.style.display = show;
@@ -294,7 +316,7 @@
   function renderDetail(id) {
     const r = state.data.records.find(x => x.id === id);
     const content = document.getElementById("content"); document.getElementById("empty").hidden = true;
-    if (!r) { content.innerHTML = `<div class="empty">未找到记录。<a href="#">返回</a></div>`; return; }
+    if (!r) { content.innerHTML = `<div class="empty">未找到记录。<a class="back" href="${BASE}">返回</a></div>`; return; }
     const phases = state.data.phaseNames[r.scenario] || [];
     const maxMin = Math.max(1, ...r.phases.map(p => p.minutes));
     const tl = r.phases.map(p => `<div class="tl-row"><span class="tl-name">${p.name}</span><span class="tl-min mono">${p.minutes ? p.minutes + " min" : "—"}</span>
@@ -398,7 +420,7 @@
 
     if (r.reportFile) sections.push(`<div class="section"><h2>${ico("doc")} 完整报告（原始文档）</h2><div id="fullReport" class="full-report">加载中…</div></div>`);
 
-    content.innerHTML = `<div class="detail"><a class="back" href="#">‹ 返回总览</a>
+    content.innerHTML = `<div class="detail"><a class="back" href="${BASE}">‹ 返回总览</a>
       <div class="detail-head"><div class="dh-id"><h1>${ico("repo")} ${r.repo}</h1>
         <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div>${
   r.jsonUrl ? `<div class="json-path">JSON 报告：<a href="${esc(r.jsonUrl)}" target="_blank" rel="noopener" title="点击打开原始 JSON（computing-TTFHW/ttfhw-report）"><code>${esc(r.jsonPath || r.jsonUrl)}</code> ↗</a></div>` : ""}</div>
