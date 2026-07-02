@@ -313,7 +313,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 0,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_hcomm_20260701.json"
   },
   {
    "phases": [
@@ -517,7 +518,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 1,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_bishengjdk-8_20260626.json"
   },
   {
    "phases": [
@@ -684,7 +686,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 2,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindSpeed-LLM_20260629.json"
   },
   {
    "phases": [
@@ -943,7 +946,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 3,
-   "sampleMinutes": 9
+   "sampleMinutes": 9,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_A-Tune_20260702.json"
   },
   {
    "phases": [
@@ -1238,7 +1242,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 4,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_amct_20260628.json"
   },
   {
    "phases": [
@@ -1583,7 +1588,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 5,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_asc-devkit_20260628.json"
   },
   {
    "phases": [
@@ -1920,7 +1926,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 6,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_asc-tools_20260626.json"
   },
   {
    "phases": [
@@ -2210,7 +2217,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 7,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_atvoss_20260628.json"
   },
   {
    "phases": [
@@ -2458,7 +2466,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 8,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_component_drivers_20260701.json"
   },
   {
    "phases": [
@@ -2702,7 +2711,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 9,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_driver_20260701.json"
   },
   {
    "phases": [
@@ -3075,7 +3085,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 10,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ge_20260627.json"
   },
   {
    "phases": [
@@ -3339,7 +3350,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 11,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_graph-autofusion_20260628.json"
   },
   {
    "phases": [
@@ -3617,7 +3629,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 12,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ham_20260627.json"
   },
   {
    "phases": [
@@ -3934,7 +3947,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 13,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_hccl_20260627.json"
   },
   {
    "phases": [
@@ -4227,7 +4241,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 14,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_hixl_20260628.json"
   },
   {
    "phases": [
@@ -4533,7 +4548,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 15,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_iSulad_20260627.json"
   },
   {
    "phases": [
@@ -4828,7 +4844,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 16,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_kupl_20260628.json"
   },
   {
    "phases": [
@@ -5112,7 +5129,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 17,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_libipmi_20260701.json"
   },
   {
    "phases": [
@@ -5436,7 +5454,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 18,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_libmcpp_20260627.json"
   },
   {
    "phases": [
@@ -5697,7 +5716,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 19,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_memcache_20260702.json"
   },
   {
    "phases": [
@@ -5940,7 +5960,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 20,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_memfabric_hybrid_20260701.json"
   },
   {
    "phases": [
@@ -6218,7 +6239,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 21,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_metadef_20260628.json"
   },
   {
    "phases": [
@@ -6455,7 +6477,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 22,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindIE-Motor_20260630.json"
   },
   {
    "phases": [
@@ -6726,7 +6749,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 23,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindIE-PyMotor_20260629.json"
   },
   {
    "phases": [
@@ -6983,7 +7007,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 24,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindIE-SD_20260630.json"
   },
   {
    "phases": [
@@ -7457,7 +7482,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 26,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindSpeed-MM_20260627.json"
   },
   {
    "phases": [
@@ -7829,7 +7855,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 27,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_oam-tools_20260628.json"
   },
   {
    "phases": [
@@ -8137,7 +8164,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 28,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_OmniStateStore_20260701.json"
   },
   {
    "phases": [
@@ -8345,7 +8373,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 29,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_op-plugin_20260630.json"
   },
   {
    "phases": [
@@ -8644,7 +8673,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 30,
-   "sampleMinutes": 3
+   "sampleMinutes": 3,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_opbase_20260627.json"
   },
   {
    "phases": [
@@ -8904,7 +8934,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 31,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_kernel_20260701.json"
   },
   {
    "phases": [
@@ -9260,7 +9291,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 32,
-   "sampleMinutes": 1
+   "sampleMinutes": 1,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ops-cv_20260626.json"
   },
   {
    "phases": [
@@ -9529,7 +9561,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 33,
-   "sampleMinutes": 1
+   "sampleMinutes": 1,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ops-math_20260628.json"
   },
   {
    "phases": [
@@ -9922,7 +9955,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 34,
-   "sampleMinutes": 5
+   "sampleMinutes": 5,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ops-nn_20260627.json"
   },
   {
    "phases": [
@@ -10207,7 +10241,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 35,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ops-transformer_20260626.json"
   },
   {
    "phases": [
@@ -10505,7 +10540,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 36,
-   "sampleMinutes": 10
+   "sampleMinutes": 10,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_pto-isa_20260627.json"
   },
   {
    "phases": [
@@ -10782,7 +10818,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 37,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_pyasc_20260627.json"
   },
   {
    "phases": [
@@ -11150,7 +11187,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 38,
-   "sampleMinutes": 110
+   "sampleMinutes": 110,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_pypto_20260629.json"
   },
   {
    "phases": [
@@ -11528,7 +11566,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 39,
-   "sampleMinutes": 5
+   "sampleMinutes": 5,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_runtime_20260628.json"
   },
   {
    "phases": [
@@ -11769,7 +11808,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 40,
-   "sampleMinutes": 1
+   "sampleMinutes": 1,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_shmem_20260628.json"
   },
   {
    "phases": [
@@ -11934,7 +11974,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 41,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_stratovirt_20260626.json"
   },
   {
    "phases": [
@@ -12214,7 +12255,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 42,
-   "sampleMinutes": 5
+   "sampleMinutes": 5,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_torchair_20260702.json"
   },
   {
    "phases": [
@@ -12453,7 +12495,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 43,
-   "sampleMinutes": 6
+   "sampleMinutes": 6,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ubs-comm_20260702.json"
   },
   {
    "phases": [
@@ -12806,7 +12849,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 44,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ubs-engine_20260702.json"
   },
   {
    "phases": [
@@ -13157,7 +13201,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 45,
-   "sampleMinutes": 0
+   "sampleMinutes": 0,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ubs-io_20260626.json"
   },
   {
    "phases": [
@@ -13430,7 +13475,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 46,
-   "sampleMinutes": 2
+   "sampleMinutes": 2,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ubs-mem_20260701.json"
   },
   {
    "phases": [
@@ -13753,7 +13799,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 47,
-   "sampleMinutes": 3
+   "sampleMinutes": 3,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ubs-virt_20260628.json"
   },
   {
    "phases": [
@@ -14077,7 +14124,8 @@
    "month": "2026-07",
    "reportFile": "",
    "id": 48,
-   "sampleMinutes": 5
+   "sampleMinutes": 5,
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_ubturbo_20260626.json"
   },
   {
    "scenario": "user",
@@ -17394,7 +17442,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_devmon_20260701.json"
   },
   {
    "scenario": "developer",
@@ -36139,7 +36188,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindIE-LLM_20260702.json"
   },
   {
    "scenario": "developer",
@@ -36270,7 +36320,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_MindSpeed_20260702.json"
   },
   {
    "scenario": "developer",
@@ -36481,7 +36532,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_hmpi_20260627.json"
   },
   {
    "scenario": "developer",
@@ -36635,7 +36687,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_hucx_20260627.json"
   },
   {
    "scenario": "developer",
@@ -36787,7 +36840,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_kpex_20260701.json"
   },
   {
    "scenario": "developer",
@@ -36913,7 +36967,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_kudnn_20260628.json"
   },
   {
    "scenario": "developer",
@@ -37056,7 +37111,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_kuqcd_20260701.json"
   },
   {
    "scenario": "developer",
@@ -37216,7 +37272,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_kutacc_20260629.json"
   },
   {
    "scenario": "developer",
@@ -37386,7 +37443,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_manifest_20260628.json"
   },
   {
    "scenario": "developer",
@@ -37535,7 +37593,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_pytorch_20260629.json"
   },
   {
    "scenario": "developer",
@@ -37739,7 +37798,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_webui_20260627.json"
   },
   {
    "scenario": "developer",
@@ -37883,7 +37943,8 @@
    "date": "2026-07-02",
    "month": "2026-07",
    "sampleMinutes": 0,
-   "reportFile": ""
+   "reportFile": "",
+   "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_xucg_20260628.json"
   }
  ]
 }
