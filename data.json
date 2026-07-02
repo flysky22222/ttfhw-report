@@ -15952,7 +15952,7 @@
   {
    "scenario": "user",
    "community": "CANN",
-   "repo": "CANN 9.0.0-beta.2 (Ascend-cann toolkit + 910b-ops)",
+   "repo": "CANN",
    "env": {
     "os": "",
     "arch": "",
@@ -16048,7 +16048,7 @@
   {
    "scenario": "user",
    "community": "CANN",
-   "repo": "CANN 9.1.0-beta.1（驱动+Toolkit合一包 + 910b ops 算子包）",
+   "repo": "CANN",
    "env": {
     "os": "",
     "arch": "",
@@ -16150,7 +16150,7 @@
   {
    "scenario": "user",
    "community": "CANN",
-   "repo": "",
+   "repo": "CANN",
    "env": {
     "os": "",
     "arch": "",
@@ -16252,7 +16252,7 @@
   {
    "scenario": "user",
    "community": "MindIE",
-   "repo": "MindIE-LLM 2.3.0（昇腾大语言模型推理加速套件）",
+   "repo": "MindIE",
    "env": {
     "os": "",
     "arch": "",
@@ -16336,7 +16336,7 @@
   {
    "scenario": "user",
    "community": "MindIE",
-   "repo": "MindIE-LLM 3.0.0（文档显示）/ MindIE-LLM 2.3.0（版本兼容表）",
+   "repo": "MindIE",
    "env": {
     "os": "",
     "arch": "",
@@ -16432,7 +16432,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16485,7 +16485,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16538,7 +16538,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM (Ascend 大语言模型分布式训练套件)",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16628,7 +16628,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16681,7 +16681,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16747,7 +16747,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16873,7 +16873,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -16926,7 +16926,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17010,7 +17010,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM 26.0.0 (master 分支)",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17100,7 +17100,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM（大语言模型分布式训练套件）",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17208,7 +17208,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17261,7 +17261,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17314,7 +17314,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17367,7 +17367,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17420,7 +17420,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM 26.0.0 (预装镜像方式)",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17510,7 +17510,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17563,7 +17563,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17629,7 +17629,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM（大语言模型分布式训练套件）",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17719,7 +17719,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM（大语言模型分布式训练套件）",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17809,7 +17809,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM v26.0.0（master 分支）",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17899,7 +17899,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -17952,7 +17952,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18042,7 +18042,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM (基于昇腾生态的大语言模型分布式训练套件)",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18132,7 +18132,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18185,7 +18185,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18287,7 +18287,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18340,7 +18340,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18424,7 +18424,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18477,7 +18477,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18530,7 +18530,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18583,7 +18583,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM 26.0.0（基于昇腾生态的大语言模型分布式训练套件）",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18685,7 +18685,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18757,7 +18757,7 @@
   {
    "scenario": "user",
    "community": "MindSpeed",
-   "repo": "MindSpeed-LLM v26.0.0 (基于 PyTorch)",
+   "repo": "MindSpeed",
    "env": {
     "os": "",
     "arch": "",
@@ -18847,7 +18847,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -18919,7 +18919,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -18997,7 +18997,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19069,7 +19069,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19129,7 +19129,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19363,7 +19363,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19441,7 +19441,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19513,7 +19513,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19566,7 +19566,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19638,7 +19638,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19691,7 +19691,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19744,7 +19744,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19810,7 +19810,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore CPU 版 2.9.0",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19900,7 +19900,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -19972,7 +19972,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20056,7 +20056,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20134,7 +20134,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20212,7 +20212,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20290,7 +20290,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20374,7 +20374,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20452,7 +20452,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20505,7 +20505,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore CPU 版本 2.9.0",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20583,7 +20583,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore CPU 版 v2.9.0",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20673,7 +20673,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20726,7 +20726,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore CPU 版 2.9.0",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20798,7 +20798,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20876,7 +20876,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -20960,7 +20960,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore CPU 版 2.9.0",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21044,7 +21044,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21134,7 +21134,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21206,7 +21206,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21278,7 +21278,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21350,7 +21350,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21440,7 +21440,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版（pip 方式）",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21512,7 +21512,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21590,7 +21590,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 (CPU 版)",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21674,7 +21674,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21770,7 +21770,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore CPU 版本 2.9.0 在 amd64 Pod 内 pip",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21854,7 +21854,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21914,7 +21914,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -21967,7 +21967,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22039,7 +22039,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22129,7 +22129,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22189,7 +22189,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22279,7 +22279,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22332,7 +22332,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22398,7 +22398,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22451,7 +22451,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.9.0 CPU 版本（pip wheel 包）",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22529,7 +22529,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22582,7 +22582,7 @@
   {
    "scenario": "user",
    "community": "MindSpore",
-   "repo": "MindSpore 2.8.0 (Ascend 版本)",
+   "repo": "MindSpore",
    "env": {
     "os": "",
     "arch": "",
@@ -22672,7 +22672,7 @@
   {
    "scenario": "user",
    "community": "TileLang",
-   "repo": "TileLang-mlir-ascend（GitHub: tile-ai/tilelang-mlir-ascend）",
+   "repo": "TileLang",
    "env": {
     "os": "",
     "arch": "",
@@ -22762,7 +22762,7 @@
   {
    "scenario": "user",
    "community": "TileLang",
-   "repo": "",
+   "repo": "TileLang",
    "env": {
     "os": "",
     "arch": "",
@@ -22815,7 +22815,7 @@
   {
    "scenario": "user",
    "community": "TileLang",
-   "repo": "",
+   "repo": "TileLang",
    "env": {
     "os": "",
     "arch": "",
@@ -22899,7 +22899,7 @@
   {
    "scenario": "user",
    "community": "TileLang",
-   "repo": "TileLang-mlir-ascend（tilelang-ascend）源码构建",
+   "repo": "TileLang",
    "env": {
     "os": "",
     "arch": "",
@@ -22995,7 +22995,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23048,7 +23048,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23101,7 +23101,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "Triton-Ascend 3.2.1（CANN 9.0.0 / torch_npu 2.7.1.post4 / Python 3.11.15），官方开发者编程指南 `docs/zh/programming_guide/`。",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23185,7 +23185,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "Triton-Ascend 3.2.1（CANN 9.0.0 / torch 2.7.1 / torch_npu 2.7.1.post4↔2.7.1 / Python 3.11.15），文档 `docs/zh/programming_guide/`。",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23293,7 +23293,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23346,7 +23346,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "Triton-Ascend 3.2.1（CANN 9.0.0 / torch_npu 2.7.1.post4 / Python 3.11.15）。",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23430,7 +23430,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23520,7 +23520,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "Triton-Ascend 3.2.1 + torch_npu 2.7.1.post4 + CANN 9.0.0-beta.2",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23604,7 +23604,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23657,7 +23657,7 @@
   {
    "scenario": "user",
    "community": "Triton",
-   "repo": "",
+   "repo": "Triton",
    "env": {
     "os": "",
     "arch": "",
@@ -23723,7 +23723,7 @@
   {
    "scenario": "user",
    "community": "HPCKit",
-   "repo": "KUPL（鲲鹏统一并行加速库）v1.0.0",
+   "repo": "HPCKit",
    "env": {
     "os": "",
     "arch": "",
@@ -23825,7 +23825,7 @@
   {
    "scenario": "user",
    "community": "MindCluster",
-   "repo": "",
+   "repo": "MindCluster",
    "env": {
     "os": "",
     "arch": "",
@@ -23945,7 +23945,7 @@
   {
    "scenario": "user",
    "community": "MindEdge",
-   "repo": "MindEdge Framework (MEF) v26.0.0",
+   "repo": "MindEdge",
    "env": {
     "os": "",
     "arch": "",
@@ -24023,7 +24023,7 @@
   {
    "scenario": "user",
    "community": "MindSDK",
-   "repo": "DrivingSDK (基于昇腾NPU的自动驾驶加速库)",
+   "repo": "MindSDK",
    "env": {
     "os": "",
     "arch": "",
@@ -24083,7 +24083,7 @@
   {
    "scenario": "user",
    "community": "MindStudio",
-   "repo": "msprobe (MindStudio Probe) v26.0.0",
+   "repo": "MindStudio",
    "env": {
     "os": "",
     "arch": "",
@@ -24173,7 +24173,7 @@
   {
    "scenario": "user",
    "community": "MS-SWIFT",
-   "repo": "ms-swift 4.3.0",
+   "repo": "MS-SWIFT",
    "env": {
     "os": "",
     "arch": "",
@@ -24263,7 +24263,7 @@
   {
    "scenario": "user",
    "community": "openEuler",
-   "repo": "openEuler RPM 软件包构建贡献流程",
+   "repo": "openEuler",
    "env": {
     "os": "",
     "arch": "",
@@ -24341,7 +24341,7 @@
   {
    "scenario": "user",
    "community": "openEuler",
-   "repo": "sqlite RPM 包构建",
+   "repo": "openEuler",
    "env": {
     "os": "",
     "arch": "",
@@ -24437,7 +24437,7 @@
   {
    "scenario": "user",
    "community": "openEuler",
-   "repo": "openEuler RPM 构建开发环境文档 + sqlite 包",
+   "repo": "openEuler",
    "env": {
     "os": "",
     "arch": "",
@@ -24527,7 +24527,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC1 Docker 容器镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -24611,7 +24611,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC1 Docker 镜像（opengauss/opengauss-server:latest）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -24695,7 +24695,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC1 (容器镜像)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -24767,7 +24767,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 企业版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -24857,7 +24857,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 企业版 OM 工具",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -24947,7 +24947,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25037,7 +25037,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC1（dockerhub镜像实际版本）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25133,7 +25133,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss Lite 7.0.0-RC1（Docker 镜像 opengauss/opengauss:latest）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25223,7 +25223,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC1 极简版 Docker 镜像（实际测试版本，文档示例版本）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25307,7 +25307,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss-lite 7.0.0-RC1（预构建镜像版本）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25409,7 +25409,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25481,7 +25481,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25559,7 +25559,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25631,7 +25631,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25709,7 +25709,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像（x86_64 架构）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25787,7 +25787,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25895,7 +25895,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -25979,7 +25979,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版 x86_64",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26051,7 +26051,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26129,7 +26129,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26225,7 +26225,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26315,7 +26315,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26399,7 +26399,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26477,7 +26477,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26561,7 +26561,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26633,7 +26633,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像（x86_64 + openEuler 24.03 LTS）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26717,7 +26717,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26807,7 +26807,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26860,7 +26860,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker x86_64 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -26938,7 +26938,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版（x86_64）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27022,7 +27022,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27100,7 +27100,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27196,7 +27196,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27280,7 +27280,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27358,7 +27358,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27442,7 +27442,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27532,7 +27532,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27622,7 +27622,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27700,7 +27700,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27772,7 +27772,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27856,7 +27856,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -27934,7 +27934,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像（x86_64 + openEuler 24.03 LTS）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28012,7 +28012,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28090,7 +28090,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28186,7 +28186,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28246,7 +28246,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28318,7 +28318,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28390,7 +28390,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28468,7 +28468,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker x86_64",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28558,7 +28558,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28642,7 +28642,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版镜像 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28732,7 +28732,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28785,7 +28785,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像（x86_64）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28857,7 +28857,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -28935,7 +28935,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29019,7 +29019,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29072,7 +29072,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29144,7 +29144,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29197,7 +29197,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29250,7 +29250,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像 (x86_64)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29328,7 +29328,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版（x86_64）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29418,7 +29418,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29484,7 +29484,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29580,7 +29580,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29670,7 +29670,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 极简版 Docker 镜像（x86_64 架构）",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29730,7 +29730,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 Docker 极简版 x86_64",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29808,7 +29808,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss 7.0.0-RC3 轻量版",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29898,7 +29898,7 @@
   {
    "scenario": "user",
    "community": "openGauss",
-   "repo": "openGauss Lite 7.0.0-RC3 (轻量版 tar 包)",
+   "repo": "openGauss",
    "env": {
     "os": "",
     "arch": "",
@@ -29988,7 +29988,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境搭建与构建流程",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30078,7 +30078,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境搭建（Ubuntu 方案）",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30168,7 +30168,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 26.03 构建流程",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30246,7 +30246,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC BMC 固件开发平台（版本 26.03_2026.03.31）",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30324,7 +30324,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC BMC 固件构建环境",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30402,7 +30402,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发 Docker 镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30486,7 +30486,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发环境搭建文档",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30546,7 +30546,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker开发环境搭建文档 + openUBMC Docker镜像（swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03）",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30624,7 +30624,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发环境镜像 swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30702,7 +30702,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30762,7 +30762,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30815,7 +30815,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 (华为云 SWR)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30875,7 +30875,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -30935,7 +30935,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31007,7 +31007,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31060,7 +31060,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31132,7 +31132,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31185,7 +31185,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 镜像 `swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03`",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31269,7 +31269,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 `swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03`",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31359,7 +31359,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31443,7 +31443,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31509,7 +31509,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 华为云开源镜像站快速安装",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31562,7 +31562,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境 Docker 镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31640,7 +31640,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31693,7 +31693,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31753,7 +31753,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31806,7 +31806,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 华为云 SWR 镜像 `swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03`",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31872,7 +31872,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -31950,7 +31950,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 26.03 社区发行版",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32028,7 +32028,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32081,7 +32081,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境 Docker 镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32165,7 +32165,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 26.03 社区发行版固件包",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32243,7 +32243,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 26.03 社区发行版",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32345,7 +32345,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境 Docker 镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32405,7 +32405,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境 Docker 镜像 (Ubuntu 24.04)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32483,7 +32483,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32536,7 +32536,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 华为云镜像站开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32626,7 +32626,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境镜像 `swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03`",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32704,7 +32704,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像（华为云 SWR 镜像仓库）",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32782,7 +32782,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32866,7 +32866,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境 Docker 镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -32938,7 +32938,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发镜像 (华为云开源镜像站路径)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33010,7 +33010,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33094,7 +33094,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33147,7 +33147,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 固件包 openUBMC-CMT_25.12.01.01.zip (66.51 MB)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33225,7 +33225,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 25.12 LTS SP2 固件包",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33303,7 +33303,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33356,7 +33356,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33434,7 +33434,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 开发环境 Docker 镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33506,7 +33506,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33596,7 +33596,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC Docker 开发环境镜像（华为云开源镜像站）",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33656,7 +33656,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33709,7 +33709,7 @@
   {
    "scenario": "user",
    "community": "openUBMC",
-   "repo": "openUBMC 社区发行版（华为云镜像站路径）",
+   "repo": "openUBMC",
    "env": {
     "os": "",
     "arch": "",
@@ -33781,7 +33781,7 @@
   {
    "scenario": "user",
    "community": "SGLang",
-   "repo": "SGLang v0.5.13.post2.dev306 (从源码安装)",
+   "repo": "SGLang",
    "env": {
     "os": "",
     "arch": "",
@@ -33841,7 +33841,7 @@
   {
    "scenario": "user",
    "community": "verl",
-   "repo": "verl (Volcano Engine Reinforcement Learning for LLMs) v0.9.0.dev",
+   "repo": "verl",
    "env": {
     "os": "",
     "arch": "",
@@ -33931,7 +33931,7 @@
   {
    "scenario": "user",
    "community": "vllm-ascend",
-   "repo": "",
+   "repo": "vllm-ascend",
    "env": {
     "os": "",
     "arch": "",
