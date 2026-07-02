@@ -444,7 +444,7 @@
   const rawUrl = u => (u || "").replace("github.com/", "raw.githubusercontent.com/").replace("/blob/", "/");
   const fmtV = v => Array.isArray(v) ? v.map(fmtV).join("；") : (v && typeof v === "object" ? JSON.stringify(v, null, 1) : (v == null ? "" : String(v)));
   const kvTable = obj => !obj || !Object.keys(obj).length ? "" :
-    `<table class="dtable"><tbody>${Object.entries(obj).map(([k, v]) => `<tr><td style="width:26%">${esc(k)}</td><td>${esc(fmtV(v))}</td></tr>`).join("")}</tbody></table>`;
+    `<table class="dtable kv"><tbody>${Object.entries(obj).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${esc(fmtV(v))}</td></tr>`).join("")}</tbody></table>`;
   function setSec(id, title, iconName, html) {
     const el = document.getElementById(id); if (!el) return;
     if (!html) { el.remove(); return; }
@@ -499,7 +499,7 @@
       const pt = j.process_timeline || [];
       setSec("sec-timeline", `过程时间线（${pt.length}）`, "clock", !pt.length ? "" :
         `<table class="dtable"><thead><tr><th style="width:16%">时间</th><th style="width:16%">阶段</th><th>动作</th><th style="width:12%">结果</th><th>详情</th></tr></thead><tbody>${
-          pt.map(s => `<tr><td class="mono">${esc((s.timestamp || "").replace("T", " "))}</td><td>${esc(s.step || s.stage || "")}</td><td>${esc(s.action || "")}</td><td>${esc(s.result || "")}</td><td class="src">${esc(s.details || "")}</td></tr>`).join("")}</tbody></table>`);
+          pt.map(s => `<tr><td class="mono">${esc((s.timestamp || "").replace("T", " "))}</td><td>${esc(s.step || s.stage || "")}</td><td>${esc(s.action || "")}</td><td><span class="tl-res ${norm(s.result)}">${esc(s.result || "")}</span></td><td class="src">${esc(s.details || "")}</td></tr>`).join("")}</tbody></table>`);
       // 8) 完整 JSON（最下面）
       setSec("sec-rawjson", "完整 JSON 数据", "doc", `<pre class="json-dump">${esc(JSON.stringify(j, null, 2))}</pre>`);
     }).catch(err => { const e = document.getElementById("sec-env"); if (e) e.innerHTML = `<div class="sec-loading">原始 JSON 加载失败：${esc(String(err))}（可点上方"JSON 报告"直接查看）</div>`; });
