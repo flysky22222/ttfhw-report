@@ -135,7 +135,8 @@
     if (csel) csel.addEventListener("change", () => { state.issueComm = csel.value; renderIssues(); });
   }
 
-  function selectRecords() {
+  function selectRecords(opts) {
+    const ignoreScenario = opts && opts.ignoreScenario;
     let recs = state.data.records.slice();
     if (state.month !== "latest") recs = recs.filter(r => r.month === state.month);
     const g = new Map();
@@ -149,7 +150,7 @@
       if (better) g.set(k, r);
     }
     let out = [...g.values()];
-    if (state.scenario !== "all") out = out.filter(r => r.scenario === state.scenario);
+    if (!ignoreScenario && state.scenario !== "all") out = out.filter(r => r.scenario === state.scenario);
     if (state.result !== "all") out = out.filter(r => r.result === state.result);
     if (state.query) out = out.filter(r => r.repo.toLowerCase().includes(state.query) || r.community.toLowerCase().includes(state.query));
     return out;
@@ -157,7 +158,7 @@
 
   function renderList() {
     const recs = selectRecords();
-    renderStats(recs); renderCharts(recs);
+    renderStats(recs); renderCharts(recs, selectRecords({ ignoreScenario: true }));
     const content = document.getElementById("content"), empty = document.getElementById("empty");
     content.innerHTML = ""; empty.hidden = recs.length > 0;
     if (!recs.length) return;
@@ -200,7 +201,8 @@
     if (scenario === "developer") return ["获取", "编译构建", "测试", "社区CI"];
     return ["了解/获取", "安装/构建", "使用/测试", "贡献/CI"];
   }
-  function renderCharts(recs) {
+  function renderCharts(recs, chartRecs) {
+    chartRecs = chartRecs || recs;
     const el = document.getElementById("charts");
     disposeCharts();
     el.innerHTML =
@@ -227,8 +229,9 @@
     charts.push(pie);
 
     // 全流程耗时 TOP — 拆成「使用者场景」「贡献者场景」两图，样式一致；阶段名与下方表格保持一致
-    buildTopChart("ec-top-user", "user", recs);
-    buildTopChart("ec-top-dev", "developer", recs);
+    // 用忽略场景筛选的数据集，保证切到任一场景 tab 时两个柱状图都始终有内容、不隐藏
+    buildTopChart("ec-top-user", "user", chartRecs);
+    buildTopChart("ec-top-dev", "developer", chartRecs);
   }
 
   // 单个「全流程耗时 TOP」堆叠横向柱：按可见堆叠总时长排序，多→少 自上而下
