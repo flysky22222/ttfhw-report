@@ -86,7 +86,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900000,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-LLM_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-LLM_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindIE-LLM_20260622.json"
   },
   {
    "scenario": "developer",
@@ -152,7 +153,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900001,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-Motor_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-Motor_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindIE-Motor_20260617.json"
   },
   {
    "scenario": "developer",
@@ -218,7 +220,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900002,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-PyMotor_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-PyMotor_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindIE-PyMotor_20260617.json"
   },
   {
    "scenario": "developer",
@@ -284,7 +287,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900003,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-SD_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-SD_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindIE-SD_20260617.json"
   },
   {
    "scenario": "developer",
@@ -350,7 +354,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900004,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json"
   },
   {
    "scenario": "developer",
@@ -416,7 +421,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900005,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-MM_26.0.0_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-MM_26.0.0_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindSpeed-MM_26.0.0_20260618.json"
   },
   {
    "scenario": "developer",
@@ -482,7 +488,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900006,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json"
   },
   {
    "scenario": "developer",
@@ -548,7 +555,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900007,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_OmniStateStore_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_OmniStateStore_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_OmniStateStore_20260622.json"
   },
   {
    "scenario": "developer",
@@ -614,7 +622,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900008,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_a-tune_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_a-tune_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_a-tune_20260622.json"
   },
   {
    "scenario": "developer",
@@ -680,7 +689,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900009,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_amct_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_amct_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_amct_20260618.json"
   },
   {
    "scenario": "developer",
@@ -746,7 +756,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900010,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_asc-devkit_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_asc-devkit_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_asc-devkit_20260617.json"
   },
   {
    "scenario": "developer",
@@ -812,7 +823,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900011,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_asc-tools_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_asc-tools_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_asc-tools_20260618.json"
   },
   {
    "scenario": "developer",
@@ -878,7 +890,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900012,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_atvoss_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_atvoss_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_atvoss_20260618.json"
   },
   {
    "scenario": "developer",
@@ -944,7 +957,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900013,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_bishengjdk-8_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_bishengjdk-8_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_bishengjdk-8_20260622.json"
   },
   {
    "scenario": "developer",
@@ -1010,7 +1024,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900014,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_component_drivers_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_component_drivers_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_component_drivers_20260622.json"
   },
   {
    "scenario": "developer",
@@ -1076,7 +1091,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900015,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_devmon_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_devmon_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_devmon_20260618.json"
   },
   {
    "scenario": "developer",
@@ -1142,7 +1158,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900016,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_driver_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_driver_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_driver_20260618.json"
   },
   {
    "scenario": "developer",
@@ -1208,7 +1225,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900017,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ge_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ge_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ge_20260618.json"
   },
   {
    "scenario": "developer",
@@ -1274,7 +1292,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900018,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_graph-autofusion_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_graph-autofusion_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_graph-autofusion_20260617.json"
   },
   {
    "scenario": "developer",
@@ -1340,7 +1359,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900019,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ham_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ham_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ham_20260618.json"
   },
   {
    "scenario": "developer",
@@ -1406,7 +1426,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900020,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hccl_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hccl_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_hccl_20260617.json"
   },
   {
    "scenario": "developer",
@@ -1472,7 +1493,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900021,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hcomm_20260623.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hcomm_20260623.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_hcomm_20260623.json"
   },
   {
    "scenario": "developer",
@@ -1538,7 +1560,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900022,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hixl_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hixl_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_hixl_20260622.json"
   },
   {
    "scenario": "developer",
@@ -1604,7 +1627,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900023,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hucx_20260624.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hucx_20260624.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_hucx_20260624.json"
   },
   {
    "scenario": "developer",
@@ -1670,7 +1694,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900024,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_isulad_20260616.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_isulad_20260616.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_isulad_20260616.json"
   },
   {
    "scenario": "developer",
@@ -1736,7 +1761,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900025,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_kernel_20260616.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_kernel_20260616.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_kernel_20260616.json"
   },
   {
    "scenario": "developer",
@@ -1802,7 +1828,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900026,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_kpex_20260625.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_kpex_20260625.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_kpex_20260625.json"
   },
   {
    "scenario": "developer",
@@ -1868,7 +1895,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900027,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_libipmi_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_libipmi_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_libipmi_20260617.json"
   },
   {
    "scenario": "developer",
@@ -1934,7 +1962,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900028,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_libmcpp_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_libmcpp_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_libmcpp_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2000,7 +2029,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900029,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_memcache_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_memcache_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_memcache_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2066,7 +2096,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900030,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_memfabric_hybrid_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_memfabric_hybrid_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_memfabric_hybrid_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2132,7 +2163,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900031,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_metadef_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_metadef_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_metadef_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2198,7 +2230,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900032,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_oam-tools_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_oam-tools_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_oam-tools_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2264,7 +2297,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900033,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_opbase_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_opbase_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_opbase_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2330,7 +2364,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900034,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-cv_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-cv_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ops-cv_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2396,7 +2431,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900035,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-math_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-math_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ops-math_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2462,7 +2498,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900036,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-nn_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-nn_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ops-nn_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2528,7 +2565,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900037,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-transformer_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-transformer_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ops-transformer_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2594,7 +2632,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900038,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pto-isa_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pto-isa_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_pto-isa_20260617.json"
   },
   {
    "scenario": "developer",
@@ -2660,7 +2699,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900039,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pyasc_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pyasc_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_pyasc_20260618.json"
   },
   {
    "scenario": "developer",
@@ -2726,7 +2766,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900040,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pypto_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pypto_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_pypto_20260618.json"
   },
   {
    "scenario": "developer",
@@ -2792,7 +2833,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900041,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pytorch_v2.7.1_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pytorch_v2.7.1_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_pytorch_v2.7.1_20260618.json"
   },
   {
    "scenario": "developer",
@@ -2858,7 +2900,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900042,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_runtime_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_runtime_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_runtime_20260618.json"
   },
   {
    "scenario": "developer",
@@ -2924,7 +2967,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900043,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_shmem_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_shmem_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_shmem_20260622.json"
   },
   {
    "scenario": "developer",
@@ -2990,7 +3034,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900044,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_stratovirt_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_stratovirt_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_stratovirt_20260617.json"
   },
   {
    "scenario": "developer",
@@ -3056,7 +3101,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900045,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_torchair_master_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_torchair_master_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_torchair_master_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3122,7 +3168,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900046,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-comm_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-comm_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ubs-comm_20260617.json"
   },
   {
    "scenario": "developer",
@@ -3188,7 +3235,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900047,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-engine_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-engine_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ubs-engine_20260617.json"
   },
   {
    "scenario": "developer",
@@ -3254,7 +3302,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900048,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-io_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-io_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ubs-io_20260617.json"
   },
   {
    "scenario": "developer",
@@ -3320,7 +3369,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900049,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-mem_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-mem_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ubs-mem_20260617.json"
   },
   {
    "scenario": "developer",
@@ -3386,7 +3436,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900050,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-virt_20260617.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-virt_20260617.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ubs-virt_20260617.json"
   },
   {
    "scenario": "developer",
@@ -3452,7 +3503,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900051,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubturbo_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubturbo_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_ubturbo_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3518,7 +3570,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900052,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_webui_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_webui_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_WSL_webui_20260622.json"
   },
   {
    "scenario": "developer",
@@ -3584,7 +3637,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900053,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_hmpi_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_hmpi_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_hmpi_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3650,7 +3704,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900054,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kudnn_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kudnn_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_kudnn_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3716,7 +3771,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900055,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kupl_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kupl_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_kupl_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3782,7 +3838,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900056,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kuqcd_20260622.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kuqcd_20260622.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_kuqcd_20260622.json"
   },
   {
    "scenario": "developer",
@@ -3848,7 +3905,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900057,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kutacc_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kutacc_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_kutacc_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3914,7 +3972,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900058,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_op-plugin_master_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_op-plugin_master_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_op-plugin_master_20260618.json"
   },
   {
    "scenario": "developer",
@@ -3980,7 +4039,8 @@
    "scene": "compile-verify",
    "baseline": true,
    "id": 900059,
-   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_xucg_20260618.json"
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_xucg_20260618.json",
+   "jsonHtmlUrl": "https://github.com/computing-TTFHW/ttfhw-base-630/blob/main/json-org-630/verification_report_xucg_20260618.json"
   },
   {
    "scenario": "user",

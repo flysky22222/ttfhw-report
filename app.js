@@ -443,7 +443,9 @@
     content.innerHTML = `<div class="detail"><a class="back" href="#">‹ 返回总览</a>
       <div class="detail-head"><div class="dh-id"><h1>${ico("repo")} ${r.repo}</h1>
         <div class="meta"><span class="cm">社区：${r.community}</span><span>${SCEN[r.scenario]}</span>${r.manual ? `<span class="badge manual" title="人工撰写报告（非自动化测试），不计入总汇数据源">人工</span>` : ""}<span>${r.date}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">仓库 ↗</a>` : ""}</div>${
-  r.jsonPath ? `<div class="json-path">JSON 报告：<a href="./${esc(r.jsonPath)}" target="_blank" rel="noopener" title="打开原始 JSON 验证报告"><code>${esc(r.jsonPath)}</code> ↗</a></div>` : ""}</div>
+  r.jsonPath ? `<div class="json-path">JSON 报告：<a href="./${esc(r.jsonPath)}" target="_blank" rel="noopener" title="打开原始 JSON 验证报告"><code>${esc(r.jsonPath)}</code> ↗</a></div>` : ""}${
+  r.baseline && r.jsonHtmlUrl ? `<div class="json-path">基线来源：<a href="${esc(r.jsonHtmlUrl)}" target="_blank" rel="noopener" title="在 GitHub 查看该基线报告"><code>${esc(r.jsonHtmlUrl.replace("https://github.com/", ""))}</code> ↗</a></div>` : ""}${
+  r.baseline && r.sourceMd ? `<div class="json-path">基线来源：<code>${esc(r.sourceMd)}</code>（最早聚合报告子报告）</div>` : ""}</div>
         <div class="spacer"></div><span class="badge ${r.result} big">${RES[r.result]}</span></div>${sections.join("")}</div>`;
     content.querySelectorAll(".hist").forEach(h => h.addEventListener("click", () => { gotoReport(h.dataset.id); }));
     content.querySelectorAll("tr.jumpable").forEach(tr => tr.addEventListener("click", () => {
@@ -697,8 +699,7 @@
     const cols = `<th>${cfg.itemLabel}</th><th>结果<span class="th-sub">基线→${esc(monthLabel)}</span></th>` + cfg.cols.map(c => `<th class="num">${c.n}</th>`).join("") + `<th></th>`;
     const rows = items.map(r => {
       const b = r.base, c = r.cur;
-      const src = b.jsonUrl ? `<a class="mini-link" href="${esc(b.jsonUrl)}" target="_blank" rel="noopener" title="打开基线原始 JSON" onclick="event.stopPropagation()">基线↗</a>`
-        : b.sourceMd ? `<span class="mini-link" title="来源：${esc(b.sourceMd)}">基线</span>` : "";
+      const src = `<a class="mini-link" href="#id=${b.id}" title="打开该基线记录的子页面" onclick="event.stopPropagation()">基线↗</a>`;
       const tail = c ? `<td class="link-arrow" title="查看 ${esc(monthLabel)} 详情">›</td>` : `<td class="num"><span class="cmp-na">仅基线</span></td>`;
       return `<tr${c ? ` data-cur="${c.id}"` : ""}><td class="repo-cell">${esc(r.item)} ${src}</td>${cmpResult(b, c)}`
         + cfg.cols.map(col => cmpNum(col.g(b), c ? col.g(c) : null, col.dir, col.u)).join("") + tail + `</tr>`;
@@ -732,7 +733,8 @@
     const rows = recs.map(r => {
       const ph = i => (r.phases && r.phases[i]) ? (r.phases[i].minutes || 0) : "";
       const t = r.test || {}; const rate = t.total ? Math.round((t.passed || 0) / t.total * 100) : "";
-      return [SCEN[r.scenario] || r.scenario, r.community, r.repo, RES[r.result] || r.result, ph(0), ph(1), ph(2), ph(3), r.sampleMinutes != null ? r.sampleMinutes : "", r.totalMinutes || "", t.passed || "", t.total || "", rate, r.date, r.jsonUrl || r.url || ""];
+      const srcUrl = r.baseline ? (r.jsonHtmlUrl || r.sourceMd || r.url || "") : (r.jsonUrl || r.url || "");
+      return [SCEN[r.scenario] || r.scenario, r.community, r.repo, RES[r.result] || r.result, ph(0), ph(1), ph(2), ph(3), r.sampleMinutes != null ? r.sampleMinutes : "", r.totalMinutes || "", t.passed || "", t.total || "", rate, r.date, srcUrl];
     });
     download(`ttfhw_${tag}_${stamp()}.csv`, csvOf([head, ...rows]));
   }
