@@ -25,6 +25,11 @@
 
   const state = { data: null, month: "latest", scenario: "all", result: "all", query: "", issueComm: "all", compare: false, cmpMonth: "latest" };
 
+  // 阶段分钟数值/显示：整分钟显示整数；不足 1 分钟但有耗时（阶段带 sec，多见于基线秒级 build/test）显示「0.xx」；无耗时显示「·」
+  const mval = p => p ? (p.minutes ? p.minutes : (p.sec ? +(p.sec / 60).toFixed(2) : 0)) : 0;
+  const nfmt = x => (x == null ? "" : Number.isInteger(x) ? String(x) : x.toFixed(2));
+  const mdisp = v => v ? nfmt(v) : "·";
+
   const DEFAULT_PALETTE = ["#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de", "#3ba272", "#fc8452", "#9a60b4", "#ea7ccc", "#5470c6"];
 
   Promise.all([
@@ -306,11 +311,12 @@
     const isDev = sc === "developer";
     const cols = `<th>仓库</th><th>结果</th>` + phases.map(p => `<th class="num">${p}<span class="th-unit">（分）</span></th>`).join("") + (isDev ? `<th class="num">UT</th>` : `<th class="num">断点</th>`) + `<th class="num">总时长<span class="th-unit">（分）</span></th>` + (isDev ? `<th class="num" title="样例运行时间（原“CI”列实为 sample）">Sample<span class="th-unit">（分）</span></th>` : "") + `<th class="num">缺陷</th><th>日期</th><th></th>`;
     const rows = items.map(r => {
-      // 不足 1 分钟但确有耗时的阶段显示「<1」，避免看着像 0 / 缺数据（基线 build/test 常为秒级）
-      const pc = r.phases.map(p => { const disp = p.minutes ? p.minutes : (p.sec ? "<1" : "·"); return `<td class="num phase-cell ${p.status}"><span class="m ${p.minutes ? "" : "zero"}">${disp}</span></td>`; }).join("");
+      // 不足 1 分钟但确有耗时的阶段用「0.xx」显示，避免换算成整数分钟后看着像 0/缺数据（基线 build/test 常为秒级）
+      const pc = r.phases.map(p => { const v = mval(p); return `<td class="num phase-cell ${p.status}"><span class="m ${v ? "" : "zero"}">${mdisp(v)}</span></td>`; }).join("");
       const t = r.test || {};
       const extra = isDev ? (t.total ? `<td class="num"><span class="ut-pass">${t.passed || 0}</span>/${t.total}</td>` : `<td class="num">—</td>`) : `<td class="num">${r.breakpoints || 0}</td>`;
-      const sampleCell = isDev ? `<td class="num">${r.sampleMinutes != null ? (r.sampleMinutes || "·") : "·"}</td>` : "";
+      const sv = r.sampleMinutes ? r.sampleMinutes : (r.sampleSeconds ? +(r.sampleSeconds / 60).toFixed(2) : 0);
+      const sampleCell = isDev ? `<td class="num">${(r.sampleMinutes != null || r.sampleSeconds != null) ? mdisp(sv) : "·"}</td>` : "";
       const dn = (r.defects || []).length;
       return `<tr data-id="${r.id}"><td class="repo-cell">${r.repo}${r.manual ? `<span class="scn manual" title="人工撰写报告">人工</span>` : ""}${r.scene && r.scene !== "compile-verify" ? `<span class="scn">${r.scene}</span>` : ""}</td>
         <td><span class="badge ${r.result}">${RES[r.result]}</span></td>${pc}${extra}
@@ -333,7 +339,7 @@
     if (!r) { content.innerHTML = `<div class="empty">未找到记录。<a class="back" href="#">返回</a></div>`; return; }
     const phases = state.data.phaseNames[r.scenario] || [];
     const maxMin = Math.max(1, ...r.phases.map(p => p.minutes));
-    const tl = r.phases.map(p => `<div class="tl-row"><span class="tl-name">${p.name}</span><span class="tl-min mono">${p.minutes ? p.minutes + " min" : "—"}</span>
+    const tl = r.phases.map(p => `<div class="tl-row"><span class="tl-name">${p.name}</span><span class="tl-min mono">${mval(p) ? mdisp(mval(p)) + " min" : "—"}</span>
       <span class="tl-bar"><i class="bar-${p.status}" style="width:${Math.max(4, p.minutes / maxMin * 100)}%"></i></span><span class="badge ${p.status}">${RES[p.status]}</span>${
         p.breakpoints ? `<span class="tl-bp" title="该阶段发现的问题数（数据源：标准 JSON）">${p.breakpoints} 问题</span>` : ""}${
         p.ciPr ? `<a class="ci-pr" href="${esc(p.ciPrUrl)}" target="_blank" rel="noopener" title="跑出该 CI 时间的 PR">CI PR：${esc(p.ciPr)} ↗</a>` : ""}</div>`).join("");
@@ -580,9 +586,9 @@
   const RANK = { failed: 0, not_run: 0, unknown: 1, partial: 1, success: 2 };
   function setToolbarInfo(html) { const el = document.getElementById("ttInfo"); if (el) el.innerHTML = html; }
 
-  // 指标提取（基线与月份记录 phases 对齐）
-  const phMin = (r, i) => (r && r.phases && r.phases[i]) ? (r.phases[i].minutes || 0) : null;
-  const sumPh = (r, n) => r ? Array.from({ length: n }, (_, i) => phMin(r, i) || 0).reduce((a, b) => a + b, 0) : null;
+  // 指标提取（基线与月份记录 phases 对齐；基线秒级阶段返回 0.xx 分）
+  const phMin = (r, i) => (r && r.phases && r.phases[i]) ? mval(r.phases[i]) : null;
+  const sumPh = (r, n) => r ? +Array.from({ length: n }, (_, i) => phMin(r, i) || 0).reduce((a, b) => a + b, 0).toFixed(2) : null;
   const utRate = r => { const t = r && r.test; return t && t.total ? Math.round((t.passed || 0) / t.total * 100) : null; };
 
   // 场景对比配置：使用者按社区（了解/安装/使用/贡献），贡献者按仓库（获取/编译构建/测试/UT）
@@ -642,11 +648,11 @@
     u = u || "";
     if (base == null && cur == null) return `<td class="num cmp"><span class="cmp-na">—</span></td>`;
     if (base == null || cur == null)
-      return `<td class="num cmp"><span class="cmp-pair"><span class="cmp-b">${base == null ? "—" : base + u}</span><span class="cmp-sep">→</span><span class="cmp-c">${cur == null ? "—" : cur + u}</span></span></td>`;
-    const delta = cur - base, improve = dir < 0 ? delta < 0 : delta > 0;
+      return `<td class="num cmp"><span class="cmp-pair"><span class="cmp-b">${base == null ? "—" : nfmt(base) + u}</span><span class="cmp-sep">→</span><span class="cmp-c">${cur == null ? "—" : nfmt(cur) + u}</span></span></td>`;
+    const delta = +(cur - base).toFixed(2), improve = dir < 0 ? delta < 0 : delta > 0;
     const cls = delta === 0 ? "flat" : improve ? "good" : "bad", arrow = delta > 0 ? "▲" : delta < 0 ? "▼" : "＝";
     const winB = delta !== 0 && !improve ? "win" : "", winC = delta !== 0 && improve ? "win" : "";
-    return `<td class="num cmp"><span class="cmp-pair"><span class="cmp-b ${winB}">${base}${u}</span><span class="cmp-sep">→</span><span class="cmp-c ${winC}">${cur}${u}</span></span><span class="cmp-delta ${cls}">${arrow}${Math.abs(delta)}${u}</span></td>`;
+    return `<td class="num cmp"><span class="cmp-pair"><span class="cmp-b ${winB}">${nfmt(base)}${u}</span><span class="cmp-sep">→</span><span class="cmp-c ${winC}">${nfmt(cur)}${u}</span></span><span class="cmp-delta ${cls}">${arrow}${nfmt(Math.abs(delta))}${u}</span></td>`;
   }
   function cmpResult(b, c) {
     const badge = s => s ? `<span class="badge ${s}">${RES[s]}</span>` : `<span class="cmp-na">—</span>`;
@@ -736,7 +742,7 @@
     state.month = save;
     const head = ["场景", "社区", "仓库", "结果", "获取(min)", "编译构建(min)", "测试(min)", "社区CI(min)", "样例(min)", "总时长(min)", "UT通过", "UT总数", "UT通过率(%)", "日期", "来源"];
     const rows = recs.map(r => {
-      const ph = i => (r.phases && r.phases[i]) ? (r.phases[i].minutes || 0) : "";
+      const ph = i => (r.phases && r.phases[i]) ? mval(r.phases[i]) : "";
       const t = r.test || {}; const rate = t.total ? Math.round((t.passed || 0) / t.total * 100) : "";
       const srcUrl = r.baseline ? (r.jsonHtmlUrl || r.sourceMd || r.url || "") : (r.jsonUrl || r.url || "");
       return [SCEN[r.scenario] || r.scenario, r.community, r.repo, RES[r.result] || r.result, ph(0), ph(1), ph(2), ph(3), r.sampleMinutes != null ? r.sampleMinutes : "", r.totalMinutes || "", t.passed || "", t.total || "", rate, r.date, srcUrl];
@@ -760,7 +766,7 @@
         const b = r.base, c = r.cur;
         const rres = (b && c) ? ((RANK[c.result] ?? 1) > (RANK[b.result] ?? 1) ? `${C}更优` : (RANK[c.result] ?? 1) < (RANK[b.result] ?? 1) ? `${C}更差` : "持平") : "";
         const line = [cfg.label, ...(grpCol ? [r.group] : []), r.item, b ? RES[b.result] : "", c ? RES[c.result] : "", rres];
-        cfg.cols.forEach(col => { const bv = col.g(b), cv = c ? col.g(c) : null; line.push(bv == null ? "" : bv, cv == null ? "" : cv, (bv == null || cv == null) ? "" : (cv - bv), judge(bv, cv, col.dir)); });
+        cfg.cols.forEach(col => { const bv = col.g(b), cv = c ? col.g(c) : null; line.push(bv == null ? "" : bv, cv == null ? "" : cv, (bv == null || cv == null) ? "" : +(cv - bv).toFixed(2), judge(bv, cv, col.dir)); });
         out.push(line);
       });
       out.push([]);
