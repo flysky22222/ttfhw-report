@@ -7,7 +7,7 @@
  "userSource": "tools/outputs/final_reports/community-summary-report-20260401-20260519.md",
  "phaseNames": {
   "developer": [
-   "获取",
+   "环境准备",
    "编译构建",
    "测试",
    "社区CI成功"
@@ -33,19 +33,22 @@
    "totalMinutes": 62,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 50
+     "minutes": 50,
+     "sec": 2980
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 9
+     "minutes": 9,
+     "sec": 540
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 200
     },
     {
      "name": "社区CI成功",
@@ -100,19 +103,22 @@
    "totalMinutes": 28,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "sec": 695
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 16
+     "minutes": 16,
+     "sec": 985
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -167,19 +173,22 @@
    "totalMinutes": 39,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 34
+     "minutes": 34,
+     "sec": 2057
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 300
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 5
     },
     {
      "name": "社区CI成功",
@@ -234,19 +243,22 @@
    "totalMinutes": 41,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 40
+     "minutes": 40,
+     "sec": 2418
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 30
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 12
     },
     {
      "name": "社区CI成功",
@@ -301,19 +313,22 @@
    "totalMinutes": 8,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 238
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 206
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 8
     },
     {
      "name": "社区CI成功",
@@ -368,19 +383,22 @@
    "totalMinutes": 56,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 50
+     "minutes": 50,
+     "sec": 2977
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 211
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 172
     },
     {
      "name": "社区CI成功",
@@ -435,19 +453,22 @@
    "totalMinutes": 59,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 55
+     "minutes": 55,
+     "sec": 3302
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 206
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 8
     },
     {
      "name": "社区CI成功",
@@ -475,9 +496,9 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "not_run",
-   "envSeconds": 3327,
-   "buildSeconds": 180,
-   "utSeconds": 9,
+   "envSeconds": 3302,
+   "buildSeconds": 206,
+   "utSeconds": 8,
    "sampleSeconds": 0,
    "totalSeconds": 3516,
    "defects": [],
@@ -502,19 +523,22 @@
    "totalMinutes": 45,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 26
+     "minutes": 26,
+     "sec": 1548
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 16
+     "minutes": 16,
+     "sec": 952
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 199
     },
     {
      "name": "社区CI成功",
@@ -569,19 +593,22 @@
    "totalMinutes": 27,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 26
+     "minutes": 26,
+     "sec": 1582
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 33
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -636,19 +663,22 @@
    "totalMinutes": 55,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 43
+     "minutes": 43,
+     "sec": 2569
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 280
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 8
+     "minutes": 8,
+     "sec": 472
     },
     {
      "name": "社区CI成功",
@@ -703,19 +733,22 @@
    "totalMinutes": 61,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 59
+     "minutes": 59,
+     "sec": 3521
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 118
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 21
     },
     {
      "name": "社区CI成功",
@@ -770,19 +803,22 @@
    "totalMinutes": 60,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 50
+     "minutes": 50,
+     "sec": 2990
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 300
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 310
     },
     {
      "name": "社区CI成功",
@@ -837,19 +873,22 @@
    "totalMinutes": 50,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 44
+     "minutes": 44,
+     "sec": 2670
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 60
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 120
     },
     {
      "name": "社区CI成功",
@@ -904,19 +943,22 @@
    "totalMinutes": 11,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 7
+     "minutes": 7,
+     "sec": 392
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 263
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -971,19 +1013,22 @@
    "totalMinutes": 58,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 43
+     "minutes": 43,
+     "sec": 2576
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 13
+     "minutes": 13,
+     "sec": 802
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 82
     },
     {
      "name": "社区CI成功",
@@ -1038,19 +1083,22 @@
    "totalMinutes": 28,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "sec": 746
     },
     {
      "name": "编译构建",
      "status": "failed",
-     "minutes": 16
+     "minutes": 16,
+     "sec": 934
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -1105,19 +1153,22 @@
    "totalMinutes": 30,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 27
+     "minutes": 27,
+     "sec": 1617
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 180
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 3
     },
     {
      "name": "社区CI成功",
@@ -1172,19 +1223,22 @@
    "totalMinutes": 440,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 76
+     "minutes": 76,
+     "sec": 4534
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 315
+     "minutes": 315,
+     "sec": 18903
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 49
+     "minutes": 49,
+     "sec": 2963
     },
     {
      "name": "社区CI成功",
@@ -1239,19 +1293,22 @@
    "totalMinutes": 437,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 239
+     "minutes": 239,
+     "sec": 14365
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 83
+     "minutes": 83,
+     "sec": 4976
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 115
+     "minutes": 115,
+     "sec": 6878
     },
     {
      "name": "社区CI成功",
@@ -1306,19 +1363,22 @@
    "totalMinutes": 20,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 20
+     "minutes": 20,
+     "sec": 1198
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 1
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 1
     },
     {
      "name": "社区CI成功",
@@ -1373,19 +1433,22 @@
    "totalMinutes": 65,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 63
+     "minutes": 63,
+     "sec": 3770
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 127
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 3
     },
     {
      "name": "社区CI成功",
@@ -1440,19 +1503,22 @@
    "totalMinutes": 775,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 46
+     "minutes": 46,
+     "sec": 2740
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 246
+     "minutes": 246,
+     "sec": 14760
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 483
+     "minutes": 483,
+     "sec": 29000
     },
     {
      "name": "社区CI成功",
@@ -1507,19 +1573,22 @@
    "totalMinutes": 90,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 77
+     "minutes": 77,
+     "sec": 4640
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "sec": 720
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 10
     },
     {
      "name": "社区CI成功",
@@ -1574,19 +1643,22 @@
    "totalMinutes": 15,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 11
+     "minutes": 11,
+     "sec": 641
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 255
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 2
     },
     {
      "name": "社区CI成功",
@@ -1641,19 +1713,22 @@
    "totalMinutes": 16,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 15
+     "minutes": 15,
+     "sec": 910
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 50
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -1681,9 +1756,9 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "not_run",
-   "envSeconds": 909.8,
+   "envSeconds": 910,
    "buildSeconds": 50,
-   "utSeconds": 0.2,
+   "utSeconds": 0,
    "sampleSeconds": 0,
    "totalSeconds": 960,
    "defects": [],
@@ -1708,19 +1783,22 @@
    "totalMinutes": 23,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 241
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 19
+     "minutes": 19,
+     "sec": 1123
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 1
     },
     {
      "name": "社区CI成功",
@@ -1748,10 +1826,10 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "success",
-   "envSeconds": 241.01,
+   "envSeconds": 241,
    "buildSeconds": 1123,
-   "utSeconds": 0.59,
-   "sampleSeconds": 15.4,
+   "utSeconds": 1,
+   "sampleSeconds": 15,
    "totalSeconds": 1380,
    "defects": [],
    "problems": [],
@@ -1775,19 +1853,22 @@
    "totalMinutes": 270,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 267
+     "minutes": 267,
+     "sec": 16017
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 180
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 3
     },
     {
      "name": "社区CI成功",
@@ -1842,19 +1923,22 @@
    "totalMinutes": 20,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 17
+     "minutes": 17,
+     "sec": 1039
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 158
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 3
     },
     {
      "name": "社区CI成功",
@@ -1909,19 +1993,22 @@
    "totalMinutes": 15,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 8
+     "minutes": 8,
+     "sec": 478
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 278
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 140
     },
     {
      "name": "社区CI成功",
@@ -1976,19 +2063,22 @@
    "totalMinutes": 44,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 38
+     "minutes": 38,
+     "sec": 2298
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 95
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 237
     },
     {
      "name": "社区CI成功",
@@ -2043,19 +2133,22 @@
    "totalMinutes": 12,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 7
+     "minutes": 7,
+     "sec": 417
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 18
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 265
     },
     {
      "name": "社区CI成功",
@@ -2110,19 +2203,22 @@
    "totalMinutes": 60,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 47
+     "minutes": 47,
+     "sec": 2821
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 133
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 11
+     "minutes": 11,
+     "sec": 641
     },
     {
      "name": "社区CI成功",
@@ -2177,19 +2273,22 @@
    "totalMinutes": 164,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 131
+     "minutes": 131,
+     "sec": 7868
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 26
+     "minutes": 26,
+     "sec": 1550
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 7
+     "minutes": 7,
+     "sec": 413
     },
     {
      "name": "社区CI成功",
@@ -2244,19 +2343,22 @@
    "totalMinutes": 27,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 13
+     "minutes": 13,
+     "sec": 798
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "sec": 577
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 245
     },
     {
      "name": "社区CI成功",
@@ -2311,19 +2413,22 @@
    "totalMinutes": 17,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "sec": 604
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 6
+     "minutes": 6,
+     "sec": 382
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 29
     },
     {
      "name": "社区CI成功",
@@ -2378,19 +2483,22 @@
    "totalMinutes": 15,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "sec": 612
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 255
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 26
     },
     {
      "name": "社区CI成功",
@@ -2445,19 +2553,22 @@
    "totalMinutes": 9,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 311
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 208
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 19
     },
     {
      "name": "社区CI成功",
@@ -2512,19 +2623,22 @@
    "totalMinutes": 16,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 12
+     "minutes": 12,
+     "sec": 708
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 224
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 28
     },
     {
      "name": "社区CI成功",
@@ -2579,19 +2693,22 @@
    "totalMinutes": 15,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 13
+     "minutes": 13,
+     "sec": 758
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 100
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 37
     },
     {
      "name": "社区CI成功",
@@ -2646,19 +2763,22 @@
    "totalMinutes": 90,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 78
+     "minutes": 78,
+     "sec": 4703
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 6
+     "minutes": 6,
+     "sec": 390
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 305
     },
     {
      "name": "社区CI成功",
@@ -2713,19 +2833,22 @@
    "totalMinutes": 105,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 99
+     "minutes": 99,
+     "sec": 5920
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 300
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 70
     },
     {
      "name": "社区CI成功",
@@ -2780,19 +2903,22 @@
    "totalMinutes": 46,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 24
+     "minutes": 24,
+     "sec": 1423
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 22
+     "minutes": 22,
+     "sec": 1337
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -2820,9 +2946,9 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "not_run",
-   "envSeconds": 1420,
+   "envSeconds": 1423,
    "buildSeconds": 1337,
-   "utSeconds": 3,
+   "utSeconds": 0,
    "sampleSeconds": 0,
    "totalSeconds": 2760,
    "defects": [],
@@ -2847,19 +2973,22 @@
    "totalMinutes": 90,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 72
+     "minutes": 72,
+     "sec": 4310
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 8
+     "minutes": 8,
+     "sec": 480
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "sec": 600
     },
     {
      "name": "社区CI成功",
@@ -2914,19 +3043,22 @@
    "totalMinutes": 48,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 33
+     "minutes": 33,
+     "sec": 1980
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 7
+     "minutes": 7,
+     "sec": 420
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 4
+     "minutes": 4,
+     "sec": 240
     },
     {
      "name": "社区CI成功",
@@ -2981,19 +3113,22 @@
    "totalMinutes": 57,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 55
+     "minutes": 55,
+     "sec": 3273
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 83
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 64
     },
     {
      "name": "社区CI成功",
@@ -3048,19 +3183,22 @@
    "totalMinutes": 30,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 28
+     "minutes": 29,
+     "sec": 1731
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 69
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -3088,10 +3226,10 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "not_run",
-   "envSeconds": 1699,
+   "envSeconds": 1731,
    "buildSeconds": 69,
-   "utSeconds": 30,
-   "sampleSeconds": 2,
+   "utSeconds": 0,
+   "sampleSeconds": 0,
    "totalSeconds": 1800,
    "defects": [],
    "problems": [],
@@ -3115,19 +3253,22 @@
    "totalMinutes": 61,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 43
+     "minutes": 43,
+     "sec": 2587
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 5
+     "minutes": 5,
+     "sec": 324
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 6
+     "minutes": 6,
+     "sec": 361
     },
     {
      "name": "社区CI成功",
@@ -3182,19 +3323,22 @@
    "totalMinutes": 110,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 44
+     "minutes": 44,
+     "sec": 2629
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 6
+     "minutes": 6,
+     "sec": 371
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 60
+     "minutes": 60,
+     "sec": 3600
     },
     {
      "name": "社区CI成功",
@@ -3249,19 +3393,22 @@
    "totalMinutes": 50,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 34
+     "minutes": 34,
+     "sec": 2070
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 15
+     "minutes": 15,
+     "sec": 900
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 30
     },
     {
      "name": "社区CI成功",
@@ -3316,19 +3463,22 @@
    "totalMinutes": 34,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 31
+     "minutes": 31,
+     "sec": 1881
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 68
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 91
     },
     {
      "name": "社区CI成功",
@@ -3383,19 +3533,22 @@
    "totalMinutes": 40,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 32
+     "minutes": 32,
+     "sec": 1893
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 6
+     "minutes": 6,
+     "sec": 342
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 3
+     "minutes": 3,
+     "sec": 165
     },
     {
      "name": "社区CI成功",
@@ -3450,19 +3603,22 @@
    "totalMinutes": 23,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 20
+     "minutes": 20,
+     "sec": 1228
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 33
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 119
     },
     {
      "name": "社区CI成功",
@@ -3517,19 +3673,22 @@
    "totalMinutes": 11,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 9
+     "minutes": 9,
+     "sec": 530
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 2,
+     "sec": 96
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 34
     },
     {
      "name": "社区CI成功",
@@ -3584,19 +3743,22 @@
    "totalMinutes": 90,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 79
+     "minutes": 79,
+     "sec": 4734
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "sec": 600
     },
     {
      "name": "测试",
      "status": "success",
-     "minutes": 1
+     "minutes": 1,
+     "sec": 60
     },
     {
      "name": "社区CI成功",
@@ -3651,19 +3813,22 @@
    "totalMinutes": 36,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 26
+     "minutes": 26,
+     "sec": 1558
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 10
+     "minutes": 10,
+     "sec": 600
     },
     {
      "name": "测试",
      "status": "failed",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 2
     },
     {
      "name": "社区CI成功",
@@ -3718,19 +3883,22 @@
    "totalMinutes": 60,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 60
+     "minutes": 59,
+     "sec": 3556
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 20
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 24
     },
     {
      "name": "社区CI成功",
@@ -3758,8 +3926,8 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "not_run",
-   "envSeconds": 3571,
-   "buildSeconds": 5,
+   "envSeconds": 3556,
+   "buildSeconds": 20,
    "utSeconds": 24,
    "sampleSeconds": 0,
    "totalSeconds": 3600,
@@ -3785,19 +3953,22 @@
    "totalMinutes": 8,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 8
+     "minutes": 8,
+     "sec": 472
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 8
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -3825,9 +3996,9 @@
    },
    "sampleMinutes": 0,
    "sampleStatus": "not_run",
-   "envSeconds": 472.077,
-   "buildSeconds": 7.782,
-   "utSeconds": 0.141,
+   "envSeconds": 472,
+   "buildSeconds": 8,
+   "utSeconds": 0,
    "sampleSeconds": 0,
    "totalSeconds": 480,
    "defects": [],
@@ -3852,19 +4023,22 @@
    "totalMinutes": 25,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 25
+     "minutes": 25,
+     "sec": 1494
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 4
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 2
     },
     {
      "name": "社区CI成功",
@@ -3919,19 +4093,22 @@
    "totalMinutes": 39,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 17
+     "minutes": 17,
+     "sec": 1021
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 22
+     "minutes": 22,
+     "sec": 1319
     },
     {
      "name": "测试",
      "status": "not_run",
-     "minutes": 0
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -3986,19 +4163,22 @@
    "totalMinutes": 77,
    "phases": [
     {
-     "name": "获取",
+     "name": "环境准备",
      "status": "success",
-     "minutes": 69
+     "minutes": 77,
+     "sec": 4620
     },
     {
      "name": "编译构建",
      "status": "success",
-     "minutes": 2
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "测试",
      "status": "partial",
-     "minutes": 5
+     "minutes": 0,
+     "sec": 0
     },
     {
      "name": "社区CI成功",
@@ -4008,7 +4188,7 @@
    ],
    "build": {
     "status": "success",
-    "minutes": 2,
+    "minutes": 0,
     "command": "",
     "error": ""
    },
@@ -4024,12 +4204,12 @@
     "arch": "",
     "image": ""
    },
-   "sampleMinutes": 1,
+   "sampleMinutes": 0,
    "sampleStatus": "success",
-   "envSeconds": 4140,
-   "buildSeconds": 120,
-   "utSeconds": 300,
-   "sampleSeconds": 60,
+   "envSeconds": 4620,
+   "buildSeconds": 0,
+   "utSeconds": 0,
+   "sampleSeconds": 0,
    "totalSeconds": 4620,
    "defects": [],
    "problems": [],

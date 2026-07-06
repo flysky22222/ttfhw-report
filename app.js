@@ -277,9 +277,13 @@
     charts.push(c);
   }
 
+  // 阶段名：基线视图用 baseline.json 的 phaseNames（贡献者首阶段＝「环境准备」），其余用站点默认
+  const phaseNamesFor = sc => (state.month === "baseline" && state.baseline && state.baseline.phaseNames && state.baseline.phaseNames[sc])
+    || (state.data.phaseNames && state.data.phaseNames[sc]) || [];
+
   function scenarioBlock(sc, recs) {
     const block = document.createElement("section"); block.className = "scenario-block";
-    const phases = state.data.phaseNames[sc] || [];
+    const phases = phaseNamesFor(sc);
     const head = document.createElement("div"); head.className = "scenario-head";
     head.innerHTML = `<h2>${ico(sc === "developer" ? "hammer" : "doc")} ${SCEN[sc]}</h2><span class="pill">${recs.length} 条</span><span class="legend">四阶段：${phases.join(" · ")}（数字＝分钟）</span>`;
     block.appendChild(head);
@@ -300,9 +304,10 @@
     head.innerHTML = `<span class="name">${comm}</span>${countHtml}<span class="mini"><span class="s-succ">●</span>${dist.success} <span class="s-part">●</span>${dist.partial} <span class="s-fail">●</span>${dist.failed}</span>`;
     wrap.appendChild(head);
     const isDev = sc === "developer";
-    const cols = `<th>仓库</th><th>结果</th>` + phases.map(p => `<th class="num">${p}</th>`).join("") + (isDev ? `<th class="num">UT</th>` : `<th class="num">断点</th>`) + `<th class="num">总时长</th>` + (isDev ? `<th class="num" title="样例运行时间（原“CI”列实为 sample）">Sample</th>` : "") + `<th class="num">缺陷</th><th>日期</th><th></th>`;
+    const cols = `<th>仓库</th><th>结果</th>` + phases.map(p => `<th class="num">${p}<span class="th-unit">（分）</span></th>`).join("") + (isDev ? `<th class="num">UT</th>` : `<th class="num">断点</th>`) + `<th class="num">总时长<span class="th-unit">（分）</span></th>` + (isDev ? `<th class="num" title="样例运行时间（原“CI”列实为 sample）">Sample<span class="th-unit">（分）</span></th>` : "") + `<th class="num">缺陷</th><th>日期</th><th></th>`;
     const rows = items.map(r => {
-      const pc = r.phases.map(p => `<td class="num phase-cell ${p.status}"><span class="m ${p.minutes ? "" : "zero"}">${p.minutes || "·"}</span></td>`).join("");
+      // 不足 1 分钟但确有耗时的阶段显示「<1」，避免看着像 0 / 缺数据（基线 build/test 常为秒级）
+      const pc = r.phases.map(p => { const disp = p.minutes ? p.minutes : (p.sec ? "<1" : "·"); return `<td class="num phase-cell ${p.status}"><span class="m ${p.minutes ? "" : "zero"}">${disp}</span></td>`; }).join("");
       const t = r.test || {};
       const extra = isDev ? (t.total ? `<td class="num"><span class="ut-pass">${t.passed || 0}</span>/${t.total}</td>` : `<td class="num">—</td>`) : `<td class="num">${r.breakpoints || 0}</td>`;
       const sampleCell = isDev ? `<td class="num">${r.sampleMinutes != null ? (r.sampleMinutes || "·") : "·"}</td>` : "";
@@ -594,7 +599,7 @@
     developer: {
       label: "贡献者场景", icon: "hammer", itemLabel: "仓库", key: r => r.repo.toLowerCase(), group: r => r.community,
       cols: [
-        { n: "获取", g: r => phMin(r, 0), dir: -1, u: "" }, { n: "编译构建", g: r => phMin(r, 1), dir: -1, u: "" },
+        { n: "环境准备", g: r => phMin(r, 0), dir: -1, u: "" }, { n: "编译构建", g: r => phMin(r, 1), dir: -1, u: "" },
         { n: "测试", g: r => phMin(r, 2), dir: -1, u: "" }, { n: "三阶段合计", g: r => sumPh(r, 3), dir: -1, u: "" },
         { n: "UT通过率", g: utRate, dir: 1, u: "%" },
       ],
@@ -696,7 +701,7 @@
   function compareTable(sc, groupName, items, monthLabel) {
     const cfg = CMP[sc], dist = { good: 0, bad: 0 };
     items.forEach(r => { if (r.cur) { const d = cfg.primary(r.cur) - cfg.primary(r.base); if (d < 0) dist.good++; else if (d > 0) dist.bad++; } });
-    const cols = `<th>${cfg.itemLabel}</th><th>结果<span class="th-sub">基线→${esc(monthLabel)}</span></th>` + cfg.cols.map(c => `<th class="num">${c.n}</th>`).join("") + `<th></th>`;
+    const cols = `<th>${cfg.itemLabel}</th><th>结果<span class="th-sub">基线→${esc(monthLabel)}</span></th>` + cfg.cols.map(c => `<th class="num">${c.n}<span class="th-unit">（${c.u === "%" ? "%" : "分"}）</span></th>`).join("") + `<th></th>`;
     const rows = items.map(r => {
       const b = r.base, c = r.cur;
       const src = `<a class="mini-link" href="#id=${b.id}" title="打开该基线记录的子页面" onclick="event.stopPropagation()">基线↗</a>`;
