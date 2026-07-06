@@ -23,7 +23,7 @@
   };
   const ico = (k, cls = "") => `<svg class="ico ${cls}" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${I[k] || ""}</svg>`;
 
-  const state = { data: null, month: "latest", scenario: "all", result: "all", query: "", issueComm: "all" };
+  const state = { data: null, month: "latest", scenario: "all", result: "all", query: "", issueComm: "all", compare: false, cmpMonth: "latest" };
 
   const DEFAULT_PALETTE = ["#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de", "#3ba272", "#fc8452", "#9a60b4", "#ea7ccc", "#5470c6"];
 
@@ -31,9 +31,12 @@
     fetch("./data.json?t=" + Date.now()).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
     fetch("./vendor/echarts-theme.json?v=20260611b").then(r => r.ok ? r.json() : null).catch(() => null),
     fetch("./issues.json?t=" + Date.now()).then(r => r.ok ? r.json() : []).catch(() => []),
-  ]).then(([data, theme, issues]) => {
+    fetch("./baseline.json?t=" + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null),
+  ]).then(([data, theme, issues, baseline]) => {
     state.data = data;
     state.issues = issues || [];
+    state.baseline = baseline || null;
+    state.baseRecs = (baseline && baseline.records) || [];
     if (theme && window.echarts) { try { echarts.registerTheme("m5", theme); state.theme = "m5"; } catch (e) {} state.palette = theme.color || DEFAULT_PALETTE; }
     else state.palette = DEFAULT_PALETTE;
     init();
@@ -44,6 +47,7 @@
     document.getElementById("genAt").textContent = d.generatedAt && d.generatedAt !== "build" ? `数据生成于 ${d.generatedAt}` : "";
     const sel = document.getElementById("monthSel");
     sel.appendChild(opt("latest", "Latest（各仓库最新全量）"));
+    if ((state.baseRecs || []).length) sel.appendChild(opt("baseline", "🎯 " + ((state.baseline && state.baseline.fullLabel) || "630 基线（不限 OS）")));
     d.months.forEach(m => sel.appendChild(opt(m, m.replace("-", " 年 ") + " 月")));
     sel.addEventListener("change", () => { state.month = sel.value; route(); });
     document.getElementById("scenarioTabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (!b) return; state.scenario = b.dataset.scenario; setActive("#scenarioTabs .tab", b); route(); });
@@ -58,6 +62,7 @@
       const a = e.target.closest("a.back"); if (a) { e.preventDefault(); goHome(); }
     });
     renderIssues();
+    setupCompareAndExport();
     route();
   }
   const opt = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; return o; };
@@ -66,7 +71,8 @@
   // 报告 URL：# hash 路由。贡献者用仓库内 JSON 全路径 #json-org/.../verification_report_WSL_<repo>_<date>.json
   // （地址↔JSON 文件双向可拼）；使用者用 #report/<community>；无 jsonPath 的回退 #id=<n>。
   const BASE = "";
-  const recById = id => (state.data.records || []).find(r => r.id === +id);
+  const allRecs = () => (state.data.records || []).concat(state.baseRecs || []);
+  const recById = id => allRecs().find(r => r.id === +id);
   const reportHash = r => "#" + (!r ? ""
     : r.jsonPath ? r.jsonPath
     : r.scenario === "user" ? "report/" + encodeURIComponent(r.community)
@@ -85,10 +91,11 @@
       const c = m[1].toLowerCase(); const us = recs.filter(r => r.scenario === "user" && r.community.toLowerCase() === c);
       if (us.length) { us.sort((a, b) => (b.rep ? 1 : 0) - (a.rep ? 1 : 0) || b.date.localeCompare(a.date)); rec = us[0]; }
     }
-    const ctrls = document.querySelector(".controls"), stats = document.getElementById("stats"), charts = document.getElementById("charts"), issues = document.getElementById("issues");
+    const ctrls = document.querySelector(".controls"), stats = document.getElementById("stats"), charts = document.getElementById("charts"), issues = document.getElementById("issues"), toolbar = document.getElementById("tableToolbar");
     const show = rec ? "none" : "";
     ctrls.style.display = show; stats.style.display = show; charts.style.display = show;
     if (issues) issues.style.display = show;
+    if (toolbar) toolbar.style.display = rec ? "none" : "";
     if (rec) renderDetail(rec.id); else renderList();
   }
 
@@ -137,7 +144,7 @@
 
   function selectRecords(opts) {
     const ignoreScenario = opts && opts.ignoreScenario;
-    let recs = state.data.records.slice();
+    let recs = (state.month === "baseline" ? (state.baseRecs || []) : state.data.records).slice();
     if (state.month !== "latest") recs = recs.filter(r => r.month === state.month);
     const g = new Map();
     // 用户场景：每个社区只保留最新日期一行（repo 是冗长的产品描述、按 repo 分会炸出几十行）；
@@ -157,8 +164,15 @@
   }
 
   function renderList() {
+    if (state.compare) return renderCompare();
+    const charts = document.getElementById("charts"), issues = document.getElementById("issues");
+    charts.style.display = ""; if (issues) issues.style.display = "";
     const recs = selectRecords();
     renderStats(recs); renderCharts(recs, selectRecords({ ignoreScenario: true }));
+    const tag = state.month === "baseline" ? ((state.baseline && state.baseline.fullLabel) || "630 基线")
+      : (state.month === "latest" ? "Latest（各仓库最新全量）" : state.month.replace("-", " 年 ") + " 月");
+    setToolbarInfo(`当前视图：<b>${esc(tag)}</b> · 共 <b>${recs.length}</b> 条记录`
+      + (state.month === "baseline" && state.baseline ? ` · 来源 <a href="${esc(state.baseline.sourceUrl)}" target="_blank" rel="noopener">computing-ttfhw/ttfhw-base-630 ↗</a>` : ""));
     const content = document.getElementById("content"), empty = document.getElementById("empty");
     content.innerHTML = ""; empty.hidden = recs.length > 0;
     if (!recs.length) return;
@@ -309,7 +323,7 @@
 
   // ── 详情子页 ─────────────────────────────────────────────────────────
   function renderDetail(id) {
-    const r = state.data.records.find(x => x.id === id);
+    const r = allRecs().find(x => x.id === id);
     const content = document.getElementById("content"); document.getElementById("empty").hidden = true;
     if (!r) { content.innerHTML = `<div class="empty">未找到记录。<a class="back" href="#">返回</a></div>`; return; }
     const phases = state.data.phaseNames[r.scenario] || [];
@@ -552,4 +566,233 @@
     }).catch(e => { const el = document.getElementById("fullReport"); if (el) el.textContent = "报告加载失败：" + e; });
   }
   window.__loadReport = loadReport;
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 630 基线对比 + 导出
+  // ══════════════════════════════════════════════════════════════════════
+  const RANK = { failed: 0, not_run: 0, unknown: 1, partial: 1, success: 2 };
+  function setToolbarInfo(html) { const el = document.getElementById("ttInfo"); if (el) el.innerHTML = html; }
+
+  // 指标提取（基线与月份记录 phases 对齐）
+  const phMin = (r, i) => (r && r.phases && r.phases[i]) ? (r.phases[i].minutes || 0) : null;
+  const sumPh = (r, n) => r ? Array.from({ length: n }, (_, i) => phMin(r, i) || 0).reduce((a, b) => a + b, 0) : null;
+  const utRate = r => { const t = r && r.test; return t && t.total ? Math.round((t.passed || 0) / t.total * 100) : null; };
+
+  // 场景对比配置：使用者按社区（了解/安装/使用/贡献），贡献者按仓库（获取/编译构建/测试/UT）
+  const CMP = {
+    user: {
+      label: "使用者场景", icon: "doc", itemLabel: "社区", key: r => r.community.toLowerCase(), group: null,
+      cols: [
+        { n: "了解", g: r => phMin(r, 0), dir: -1, u: "" }, { n: "安装", g: r => phMin(r, 1), dir: -1, u: "" },
+        { n: "使用", g: r => phMin(r, 2), dir: -1, u: "" }, { n: "贡献", g: r => phMin(r, 3), dir: -1, u: "" },
+        { n: "全程", g: r => r.totalMinutes || sumPh(r, 4), dir: -1, u: "" },
+      ],
+      primary: r => r.totalMinutes || sumPh(r, 4),
+    },
+    developer: {
+      label: "贡献者场景", icon: "hammer", itemLabel: "仓库", key: r => r.repo.toLowerCase(), group: r => r.community,
+      cols: [
+        { n: "获取", g: r => phMin(r, 0), dir: -1, u: "" }, { n: "编译构建", g: r => phMin(r, 1), dir: -1, u: "" },
+        { n: "测试", g: r => phMin(r, 2), dir: -1, u: "" }, { n: "三阶段合计", g: r => sumPh(r, 3), dir: -1, u: "" },
+        { n: "UT通过率", g: utRate, dir: 1, u: "%" },
+      ],
+      primary: r => sumPh(r, 3),
+    },
+  };
+  // 所有可对比月份（使用者/贡献者并集）
+  function cmpMonths() {
+    const s = new Set((state.data.records || []).filter(r => r.scenario === "user" || r.scenario === "developer").map(r => r.month));
+    return [...s].filter(Boolean).sort().reverse();
+  }
+  function recsForMonth(sc, month) {
+    let recs = (state.data.records || []).filter(r => r.scenario === sc);
+    if (month !== "latest") recs = recs.filter(r => r.month === month);
+    const key = CMP[sc].key, g = new Map();
+    for (const r of recs) { const k = key(r); const c = g.get(k); if (!c || r.date > c.date) g.set(k, r); }
+    return [...g.values()];
+  }
+  function joinRows(sc, month) {
+    const key = CMP[sc].key;
+    const base = (state.baseRecs || []).filter(r => r.scenario === sc);
+    const cur = recsForMonth(sc, month);
+    const m = new Map(cur.map(r => [key(r), r]));
+    const rows = base.map(b => ({ item: sc === "developer" ? b.repo : b.community, group: b.community, base: b, cur: m.get(key(b)) || null }));
+    const bk = new Set(base.map(key));
+    return { rows, monthOnly: cur.filter(r => !bk.has(key(r))) };
+  }
+  const scenariosToShow = () => (state.scenario === "all" ? ["user", "developer"] : [state.scenario]).filter(sc => CMP[sc] && (state.baseRecs || []).some(r => r.scenario === sc));
+
+  // 数值对比单元格：左=基线 右=对比，箭头+差值上色（绿=对比更优）
+  function cmpNum(base, cur, dir, u) {
+    u = u || "";
+    if (base == null && cur == null) return `<td class="num cmp"><span class="cmp-na">—</span></td>`;
+    if (base == null || cur == null)
+      return `<td class="num cmp"><span class="cmp-pair"><span class="cmp-b">${base == null ? "—" : base + u}</span><span class="cmp-sep">→</span><span class="cmp-c">${cur == null ? "—" : cur + u}</span></span></td>`;
+    const delta = cur - base, improve = dir < 0 ? delta < 0 : delta > 0;
+    const cls = delta === 0 ? "flat" : improve ? "good" : "bad", arrow = delta > 0 ? "▲" : delta < 0 ? "▼" : "＝";
+    const winB = delta !== 0 && !improve ? "win" : "", winC = delta !== 0 && improve ? "win" : "";
+    return `<td class="num cmp"><span class="cmp-pair"><span class="cmp-b ${winB}">${base}${u}</span><span class="cmp-sep">→</span><span class="cmp-c ${winC}">${cur}${u}</span></span><span class="cmp-delta ${cls}">${arrow}${Math.abs(delta)}${u}</span></td>`;
+  }
+  function cmpResult(b, c) {
+    const badge = s => s ? `<span class="badge ${s}">${RES[s]}</span>` : `<span class="cmp-na">—</span>`;
+    let extra = "";
+    if (b && c) { const d = (RANK[c.result] ?? 1) - (RANK[b.result] ?? 1); extra = `<span class="cmp-delta ${d > 0 ? "good" : d < 0 ? "bad" : "flat"}">${d > 0 ? "▲" : d < 0 ? "▼" : "＝"}</span>`; }
+    return `<td class="cmp res"><span class="cmp-pair">${badge(b && b.result)}<span class="cmp-sep">→</span>${badge(c && c.result)}</span>${extra}</td>`;
+  }
+
+  function renderCompare() {
+    const stats = document.getElementById("stats"), charts = document.getElementById("charts"), issues = document.getElementById("issues"),
+      content = document.getElementById("content"), empty = document.getElementById("empty");
+    charts.style.display = "none"; if (issues) issues.style.display = "none"; empty.hidden = true; stats.style.display = "";
+    const scs = scenariosToShow();
+    if (!scs.length) { stats.innerHTML = ""; content.innerHTML = `<div class="empty">该场景下无基线数据可对比。</div>`; return; }
+    const monthLabel = state.cmpMonth === "latest" ? "Latest" : state.cmpMonth.replace("-", " 年 ") + " 月";
+
+    let nCmp = 0, faster = 0, slower = 0, improved = 0, regressed = 0, total = 0, monthOnlyAll = [];
+    const perSc = scs.map(sc => {
+      const cfg = CMP[sc], { rows, monthOnly } = joinRows(sc, state.cmpMonth);
+      total += rows.length; monthOnlyAll = monthOnlyAll.concat(monthOnly.map(r => (sc === "developer" ? r.repo : r.community)));
+      rows.forEach(r => { if (r.cur) { nCmp++; const b = cfg.primary(r.base), c = cfg.primary(r.cur); if (c < b) faster++; else if (c > b) slower++;
+        const d = (RANK[r.cur.result] ?? 1) - (RANK[r.base.result] ?? 1); if (d > 0) improved++; else if (d < 0) regressed++; } });
+      return { sc, cfg, rows };
+    });
+    const card = (icon, v, k, sub) => `<div class="stat"><div class="stat-h">${ico(icon)}<span class="k">${k}</span></div><div class="v">${v}</div>${sub ? `<div class="sub">${sub}</div>` : ""}</div>`;
+    stats.innerHTML =
+      card("layers", `${nCmp}<small>/${total}</small>`, "可对比项", `基线 ${total} 项 · 两侧都有数据 ${nCmp}`) +
+      card("clock", `<span class="s-succ">${faster}</span> / <span class="s-fail">${slower}</span>`, "更快 / 更慢", `按主指标耗时对比 · 持平 ${nCmp - faster - slower}`) +
+      card("check", `<span class="s-succ">${improved}</span> / <span class="s-fail">${regressed}</span>`, "结果改善 / 回退", `相对基线的结果等级变化`) +
+      card("hammer", `${scs.map(s => CMP[s].label.replace("场景", "")).join(" + ")}`, "对比范围", `基线 vs ${esc(monthLabel)}`);
+
+    setToolbarInfo(`对比：<b>🎯 630 基线</b> <span class="cmp-vs">vs</span> <b>${esc(monthLabel)}</b> · ${total} 项（${nCmp} 可比）· <span class="cmp-legend"><span class="lg good">绿＝${esc(monthLabel)}更优</span> <span class="lg bad">红＝更差</span> · 左基线→右对比</span>`);
+
+    const sections = perSc.map(({ sc, cfg, rows }) => {
+      let inner;
+      if (cfg.group) {
+        const byG = new Map();
+        for (const r of rows) { if (!byG.has(r.group)) byG.set(r.group, []); byG.get(r.group).push(r); }
+        inner = [...byG.keys()].sort((a, b) => ix(a) - ix(b) || a.localeCompare(b))
+          .map(g => compareTable(sc, g, byG.get(g).sort((x, y) => x.item.localeCompare(y.item)), monthLabel)).join("");
+      } else {
+        inner = compareTable(sc, cfg.label, rows.slice().sort((x, y) => ix(x.group) - ix(y.group) || x.item.localeCompare(y.item)), monthLabel);
+      }
+      return `<section class="scenario-block"><div class="scenario-head"><h2>${ico(cfg.icon)} ${cfg.label} · 对比</h2><span class="pill">基线 vs ${esc(monthLabel)}</span><span class="legend">数字＝分钟；左＝基线，右＝${esc(monthLabel)}；箭头/颜色标出对比侧优劣</span></div>${inner}</section>`;
+    }).join("");
+    const onlyNote = monthOnlyAll.length ? `<div class="cmp-note">另有 <b>${monthOnlyAll.length}</b> 项仅 ${esc(monthLabel)} 有、基线无（未纳入对比）：${monthOnlyAll.slice(0, 40).map(x => `<code>${esc(x)}</code>`).join(" ")}${monthOnlyAll.length > 40 ? " …" : ""}</div>` : "";
+    content.innerHTML = sections + onlyNote;
+    content.querySelectorAll("tbody tr[data-cur]").forEach(tr => tr.addEventListener("click", () => gotoReport(tr.dataset.cur)));
+    window.scrollTo(0, 0);
+  }
+
+  function compareTable(sc, groupName, items, monthLabel) {
+    const cfg = CMP[sc], dist = { good: 0, bad: 0 };
+    items.forEach(r => { if (r.cur) { const d = cfg.primary(r.cur) - cfg.primary(r.base); if (d < 0) dist.good++; else if (d > 0) dist.bad++; } });
+    const cols = `<th>${cfg.itemLabel}</th><th>结果<span class="th-sub">基线→${esc(monthLabel)}</span></th>` + cfg.cols.map(c => `<th class="num">${c.n}</th>`).join("") + `<th></th>`;
+    const rows = items.map(r => {
+      const b = r.base, c = r.cur;
+      const src = b.jsonUrl ? `<a class="mini-link" href="${esc(b.jsonUrl)}" target="_blank" rel="noopener" title="打开基线原始 JSON" onclick="event.stopPropagation()">基线↗</a>`
+        : b.sourceMd ? `<span class="mini-link" title="来源：${esc(b.sourceMd)}">基线</span>` : "";
+      const tail = c ? `<td class="link-arrow" title="查看 ${esc(monthLabel)} 详情">›</td>` : `<td class="num"><span class="cmp-na">仅基线</span></td>`;
+      return `<tr${c ? ` data-cur="${c.id}"` : ""}><td class="repo-cell">${esc(r.item)} ${src}</td>${cmpResult(b, c)}`
+        + cfg.cols.map(col => cmpNum(col.g(b), c ? col.g(c) : null, col.dir, col.u)).join("") + tail + `</tr>`;
+    }).join("");
+    const ncol = cfg.cols.length, firstW = cfg.group ? 17 : 14, resW = 16, tailW = 4;
+    const each = Math.floor((100 - firstW - resW - tailW) / ncol);
+    const cw = [firstW + "%", resW + "%", ...cfg.cols.map(() => each + "%"), tailW + "%"];
+    const colgroup = `<colgroup>${cw.map(w => `<col style="width:${w}">`).join("")}</colgroup>`;
+    return `<div class="community"><div class="community-head"><span class="name">${esc(groupName)}</span><span class="count">${items.length} ${cfg.itemLabel}</span><span class="mini"><span class="s-succ">▼</span>${dist.good} 更快 <span class="s-fail">▲</span>${dist.bad} 更慢</span></div>
+      <div class="tbl-wrap"><table class="ctbl cmp-tbl">${colgroup}<thead><tr>${cols}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  }
+
+  // ── 导出 ─────────────────────────────────────────────────────────────
+  const stamp = () => { const d = new Date(), p = n => String(n).padStart(2, "0"); return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}`; };
+  function download(name, text) {
+    const blob = new Blob(["﻿" + text], { type: "text/csv;charset=utf-8" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+  }
+  const csvCell = v => { v = v == null ? "" : String(v); return /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v; };
+  const csvOf = arr => arr.map(r => r.map(csvCell).join(",")).join("\r\n");
+
+  function exportCurrent(forceBaseline) {
+    const save = state.month;
+    if (forceBaseline) state.month = "baseline";
+    const recs = selectRecords();
+    const isBase = state.month === "baseline";
+    const tag = isBase ? "630基线" : (state.month === "latest" ? "Latest" : state.month);
+    state.month = save;
+    const head = ["场景", "社区", "仓库", "结果", "获取(min)", "编译构建(min)", "测试(min)", "社区CI(min)", "样例(min)", "总时长(min)", "UT通过", "UT总数", "UT通过率(%)", "日期", "来源"];
+    const rows = recs.map(r => {
+      const ph = i => (r.phases && r.phases[i]) ? (r.phases[i].minutes || 0) : "";
+      const t = r.test || {}; const rate = t.total ? Math.round((t.passed || 0) / t.total * 100) : "";
+      return [SCEN[r.scenario] || r.scenario, r.community, r.repo, RES[r.result] || r.result, ph(0), ph(1), ph(2), ph(3), r.sampleMinutes != null ? r.sampleMinutes : "", r.totalMinutes || "", t.passed || "", t.total || "", rate, r.date, r.jsonUrl || r.url || ""];
+    });
+    download(`ttfhw_${tag}_${stamp()}.csv`, csvOf([head, ...rows]));
+  }
+
+  function exportCompare() {
+    const C = state.cmpMonth === "latest" ? "Latest" : state.cmpMonth, B = "基线";
+    const scs = scenariosToShow();
+    const grp = (label, unit) => [`${label}·${B}${unit}`, `${label}·${C}${unit}`, `${label}·差(${C}-基线)`, `${label}·优劣`];
+    const judge = (b, c, dir) => (b == null || c == null) ? "" : (c === b ? "持平" : ((dir < 0 ? c < b : c > b) ? `${C}更优` : `${C}更差`));
+    const out = [];
+    scs.forEach(sc => {
+      const cfg = CMP[sc], grpCol = !!cfg.group, { rows } = joinRows(sc, state.cmpMonth);
+      out.push([`【${cfg.label}：基线 vs ${C}】`]);
+      const head = ["场景", ...(grpCol ? ["社区"] : []), cfg.itemLabel, `结果·${B}`, `结果·${C}`, "结果·优劣"];
+      cfg.cols.forEach(col => head.push(...grp(col.n, col.u ? "(%)" : "(min)")));
+      out.push(head);
+      rows.forEach(r => {
+        const b = r.base, c = r.cur;
+        const rres = (b && c) ? ((RANK[c.result] ?? 1) > (RANK[b.result] ?? 1) ? `${C}更优` : (RANK[c.result] ?? 1) < (RANK[b.result] ?? 1) ? `${C}更差` : "持平") : "";
+        const line = [cfg.label, ...(grpCol ? [r.group] : []), r.item, b ? RES[b.result] : "", c ? RES[c.result] : "", rres];
+        cfg.cols.forEach(col => { const bv = col.g(b), cv = c ? col.g(c) : null; line.push(bv == null ? "" : bv, cv == null ? "" : cv, (bv == null || cv == null) ? "" : (cv - bv), judge(bv, cv, col.dir)); });
+        out.push(line);
+      });
+      out.push([]);
+    });
+    download(`ttfhw_对比_基线_vs_${C}_${stamp()}.csv`, csvOf(out));
+  }
+
+  function setupCompareAndExport() {
+    const cs = document.getElementById("cmpMonthSel");
+    if (cs && !cs.children.length) {
+      cs.appendChild(opt("latest", "Latest（各仓库最新）"));
+      cmpMonths().forEach(m => cs.appendChild(opt(m, m.replace("-", " 年 ") + " 月")));
+      state.cmpMonth = cs.value || "latest";
+      cs.addEventListener("change", () => { state.cmpMonth = cs.value; route(); });
+    }
+    const tog = document.getElementById("cmpToggle");
+    if (tog) tog.addEventListener("click", e => {
+      const b = e.target.closest("[data-cmp]"); if (!b) return;
+      state.compare = b.dataset.cmp === "on"; setActive("#cmpToggle .tab", b);
+      const g = document.getElementById("cmpMonthGroup"); if (g) g.hidden = !state.compare;
+      const ms = document.getElementById("monthSel"); if (ms) ms.disabled = state.compare;
+      route();
+    });
+    const eb = document.getElementById("exportBtn"), em = document.getElementById("exportMenu");
+    if (eb && em) {
+      eb.addEventListener("click", e => { e.stopPropagation(); buildExportMenu(); em.hidden = !em.hidden; eb.classList.toggle("open", !em.hidden); });
+      em.addEventListener("click", e => e.stopPropagation());
+      document.addEventListener("click", () => { em.hidden = true; eb.classList.remove("open"); });
+    }
+  }
+  function buildExportMenu() {
+    const em = document.getElementById("exportMenu"); if (!em) return;
+    const items = [];
+    if (state.compare) {
+      const C = state.cmpMonth === "latest" ? "Latest" : state.cmpMonth;
+      items.push([`导出对比表（基线 vs ${C}）`, "cmp"]);
+    } else {
+      const tag = state.month === "baseline" ? "630 基线" : (state.month === "latest" ? "Latest" : state.month);
+      items.push([`导出当前表（${tag}）`, "cur"]);
+    }
+    if (!(state.compare) && state.month !== "baseline" && (state.baseRecs || []).length) items.push(["导出 630 基线全量", "base"]);
+    em.innerHTML = items.map(([t, k]) => `<button class="export-item" data-k="${k}">${ico("doc")} ${t} · CSV</button>`).join("");
+    em.querySelectorAll(".export-item").forEach(b => b.addEventListener("click", () => {
+      em.hidden = true; document.getElementById("exportBtn").classList.remove("open");
+      if (b.dataset.k === "cmp") exportCompare();
+      else if (b.dataset.k === "base") exportCurrent(true);
+      else exportCurrent(false);
+    }));
+  }
 })();

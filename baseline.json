@@ -1,0 +1,4509 @@
+{
+ "label": "630 基线",
+ "fullLabel": "TTFHW 630 基线（不限 OS）",
+ "date": "2026-06-30",
+ "sourceUrl": "https://computing-ttfhw.github.io/ttfhw-base-630/",
+ "sourceRepo": "https://github.com/computing-TTFHW/ttfhw-base-630",
+ "userSource": "tools/outputs/final_reports/community-summary-report-20260401-20260519.md",
+ "phaseNames": {
+  "developer": [
+   "获取",
+   "编译构建",
+   "测试",
+   "社区CI成功"
+  ],
+  "user": [
+   "了解",
+   "安装",
+   "使用",
+   "贡献"
+  ]
+ },
+ "note": "TTFHW 基线：贡献者场景取 computing-TTFHW/ttfhw-base-630（不限 OS 构建验证，630 快照）；使用者场景取最早聚合报告（2026-04-01~05-19）各社区代表性运行的子报告数据。",
+ "count": 67,
+ "records": [
+  {
+   "scenario": "developer",
+   "community": "MindIE",
+   "repo": "MindIE-LLM",
+   "url": "https://gitcode.com/Ascend/MindIE-LLM.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 62,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 50
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 9
+    },
+    {
+     "name": "测试",
+     "status": "failed",
+     "minutes": 3
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 9,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "failed",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2980,
+   "buildSeconds": 540,
+   "utSeconds": 200,
+   "sampleSeconds": 0,
+   "totalSeconds": 3720,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900000,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-LLM_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindIE",
+   "repo": "MindIE-Motor",
+   "url": "https://gitcode.com/Ascend/MindIE-Motor.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 28,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 12
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 16
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 16,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 695,
+   "buildSeconds": 985,
+   "utSeconds": 0,
+   "sampleSeconds": 0,
+   "totalSeconds": 1680,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900001,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-Motor_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindIE",
+   "repo": "MindIE-PyMotor",
+   "url": "https://gitcode.com/Ascend/MindIE-PyMotor.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 39,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 34
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 5,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2057,
+   "buildSeconds": 300,
+   "utSeconds": 5,
+   "sampleSeconds": 0,
+   "totalSeconds": 2362,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900002,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-PyMotor_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindIE",
+   "repo": "MindIE-SD",
+   "url": "https://gitcode.com/Ascend/MindIE-SD.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 41,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 40
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2418,
+   "buildSeconds": 30,
+   "utSeconds": 12,
+   "sampleSeconds": 0,
+   "totalSeconds": 2460,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900003,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindIE-SD_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindSpeed",
+   "repo": "MindSpeed-LLM",
+   "url": "https://gitcode.com/Ascend/MindSpeed-LLM.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 8,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 3,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 238,
+   "buildSeconds": 206,
+   "utSeconds": 8,
+   "sampleSeconds": 0,
+   "totalSeconds": 452,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900004,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindSpeed",
+   "repo": "MindSpeed-MM",
+   "url": "https://gitcode.com/Ascend/MindSpeed-MM.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 56,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 50
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 3
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 4,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 10,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2977,
+   "buildSeconds": 211,
+   "utSeconds": 172,
+   "sampleSeconds": 0,
+   "totalSeconds": 3360,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900005,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-MM_26.0.0_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindSpeed",
+   "repo": "MindSpeed",
+   "url": "https://gitcode.com/Ascend/MindSpeed.git",
+   "date": "2026-06-23",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 59,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 55
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 3,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 191,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 3327,
+   "buildSeconds": 180,
+   "utSeconds": 9,
+   "sampleSeconds": 0,
+   "totalSeconds": 3516,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900006,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_MindSpeed-LLM_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "OmniStateStore",
+   "url": "https://gitcode.com/openeuler/OmniStateStore.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 45,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 26
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 16
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 16,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 296,
+    "passed": 296,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "partial",
+   "envSeconds": 1548,
+   "buildSeconds": 952,
+   "utSeconds": 199,
+   "sampleSeconds": 1,
+   "totalSeconds": 2700,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900007,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_OmniStateStore_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "a-tune",
+   "url": "https://gitcode.com/openeuler/A-Tune.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 27,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 26
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "partial",
+   "envSeconds": 1582,
+   "buildSeconds": 33,
+   "utSeconds": 0,
+   "sampleSeconds": 5,
+   "totalSeconds": 1620,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900008,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_a-tune_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "AMCT",
+   "url": "https://gitcode.com/cann/amct.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 55,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 43
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 8
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 5,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 2208,
+    "passed": 2206,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2569,
+   "buildSeconds": 280,
+   "utSeconds": 472,
+   "sampleSeconds": 0,
+   "totalSeconds": 3321,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900009,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_amct_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "asc-devkit",
+   "url": "https://gitcode.com/cann/asc-devkit.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 61,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 59
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 81,
+    "passed": 81,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 3521,
+   "buildSeconds": 118,
+   "utSeconds": 21,
+   "sampleSeconds": 0,
+   "totalSeconds": 3660,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900010,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_asc-devkit_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "asc-tools",
+   "url": "https://gitcode.com/cann/asc-tools.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 60,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 50
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 5,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 435,
+    "passed": 435,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2990,
+   "buildSeconds": 300,
+   "utSeconds": 310,
+   "sampleSeconds": 0,
+   "totalSeconds": 3600,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900011,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_asc-tools_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "atvoss",
+   "url": "https://gitcode.com/cann/atvoss.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 50,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 44
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 2,
+   "sampleStatus": "success",
+   "envSeconds": 2670,
+   "buildSeconds": 60,
+   "utSeconds": 120,
+   "sampleSeconds": 150,
+   "totalSeconds": 3000,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900012,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_atvoss_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "bishengjdk-8",
+   "url": "https://gitcode.com/openeuler/bishengjdk-8.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 11,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 7
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 4,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 392,
+   "buildSeconds": 263,
+   "utSeconds": 0,
+   "sampleSeconds": 5,
+   "totalSeconds": 660,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900013,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_bishengjdk-8_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openUBMC",
+   "repo": "component_drivers",
+   "url": "https://gitcode.com/openUBMC/component_drivers.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 58,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 43
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 13
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 1
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 13,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 86,
+    "passed": 85,
+    "failed": 1,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2576,
+   "buildSeconds": 802,
+   "utSeconds": 82,
+   "sampleSeconds": 0,
+   "totalSeconds": 3460,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900014,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_component_drivers_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "MindStudio",
+   "repo": "devmon",
+   "url": "https://gitcode.com/openUBMC/devmon.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "failed",
+   "totalMinutes": 28,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 12
+    },
+    {
+     "name": "编译构建",
+     "status": "failed",
+     "minutes": 16
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "failed",
+    "minutes": 16,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 746,
+   "buildSeconds": 934,
+   "utSeconds": 0,
+   "sampleSeconds": 0,
+   "totalSeconds": 1680,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900015,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_devmon_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "driver",
+   "url": "https://gitcode.com/cann/driver.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 30,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 27
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 3,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1617,
+   "buildSeconds": 180,
+   "utSeconds": 3,
+   "sampleSeconds": 0,
+   "totalSeconds": 1800,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900016,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_driver_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "ge",
+   "url": "https://gitcode.com/cann/ge.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 440,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 76
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 315
+    },
+    {
+     "name": "测试",
+     "status": "failed",
+     "minutes": 49
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 315,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "failed",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 4534,
+   "buildSeconds": 18903,
+   "utSeconds": 2963,
+   "sampleSeconds": 0,
+   "totalSeconds": 26400,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900017,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ge_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "graph-autofusion",
+   "url": "https://gitcode.com/cann/graph-autofusion.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 437,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 239
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 83
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 115
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 83,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 3191,
+    "passed": 3177,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 14365,
+   "buildSeconds": 4976,
+   "utSeconds": 6878,
+   "sampleSeconds": 1,
+   "totalSeconds": 26220,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900018,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_graph-autofusion_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "HAM",
+   "url": "https://gitcode.com/openeuler/ham.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 20,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 20
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1198,
+   "buildSeconds": 1,
+   "utSeconds": 1,
+   "sampleSeconds": 0,
+   "totalSeconds": 1200,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900019,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ham_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "hccl",
+   "url": "https://gitcode.com/cann/hccl.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 65,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 63
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 3770,
+   "buildSeconds": 127,
+   "utSeconds": 3,
+   "sampleSeconds": 0,
+   "totalSeconds": 3900,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900020,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hccl_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "hcomm",
+   "url": "https://gitcode.com/cann/hcomm.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 775,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 46
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 246
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 483
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 246,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2740,
+   "buildSeconds": 14760,
+   "utSeconds": 29000,
+   "sampleSeconds": 0,
+   "totalSeconds": 46500,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900021,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hcomm_20260623.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "hixl",
+   "url": "https://gitcode.com/cann/hixl.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 90,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 77
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 12
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 12,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 170,
+    "passed": 151,
+    "failed": 19,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 4640,
+   "buildSeconds": 720,
+   "utSeconds": 10,
+   "sampleSeconds": 30,
+   "totalSeconds": 5400,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900022,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hixl_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "HUCX",
+   "url": "https://gitcode.com/kunpengcompute/hucx.git",
+   "date": "2026-06-24",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 15,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 11
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 4,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 641,
+   "buildSeconds": 255,
+   "utSeconds": 2,
+   "sampleSeconds": 2,
+   "totalSeconds": 900,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900023,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_hucx_20260624.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "isulad",
+   "url": "https://gitcode.com/openeuler/iSulad.git",
+   "date": "2026-06-16",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 16,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 15
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 49,
+    "passed": 47,
+    "failed": 2,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 909.8,
+   "buildSeconds": 50,
+   "utSeconds": 0.2,
+   "sampleSeconds": 0,
+   "totalSeconds": 960,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900024,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_isulad_20260616.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "kernel",
+   "url": "https://gitcode.com/openeuler/kernel.git",
+   "date": "2026-06-16",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 23,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 19
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 19,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 130,
+    "passed": 130,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 241.01,
+   "buildSeconds": 1123,
+   "utSeconds": 0.59,
+   "sampleSeconds": 15.4,
+   "totalSeconds": 1380,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900025,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_kernel_20260616.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "KPEX",
+   "url": "https://gitcode.com/kunpengcompute/kunpeng-extension-for-pytorch.git",
+   "date": "2026-06-25",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 270,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 267
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 3,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 16017,
+   "buildSeconds": 180,
+   "utSeconds": 3,
+   "sampleSeconds": 0,
+   "totalSeconds": 16200,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900026,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_kpex_20260625.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openUBMC",
+   "repo": "libipmi",
+   "url": "https://gitcode.com/openUBMC/libipmi.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 20,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 17
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 3,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 149,
+    "passed": 149,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1039,
+   "buildSeconds": 158,
+   "utSeconds": 3,
+   "sampleSeconds": 0,
+   "totalSeconds": 1200,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900027,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_libipmi_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openUBMC",
+   "repo": "libmcpp",
+   "url": "https://gitcode.com/openUBMC/libmcpp.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 15,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 8
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 2
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 5,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 2157,
+    "passed": 2151,
+    "failed": 13,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "partial",
+   "envSeconds": 478,
+   "buildSeconds": 278,
+   "utSeconds": 140,
+   "sampleSeconds": 16,
+   "totalSeconds": 912,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900028,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_libmcpp_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "memcache",
+   "url": "https://gitcode.com/Ascend/memcache.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 44,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 38
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 158,
+    "passed": 158,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2298,
+   "buildSeconds": 95,
+   "utSeconds": 237,
+   "sampleSeconds": 10,
+   "totalSeconds": 2640,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900029,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_memcache_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "memfabric_hybrid",
+   "url": "https://gitcode.com/Ascend/memfabric_hybrid.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 12,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 7
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 1245,
+    "passed": 1245,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 417,
+   "buildSeconds": 18,
+   "utSeconds": 265,
+   "sampleSeconds": 0,
+   "totalSeconds": 700,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900030,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_memfabric_hybrid_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "metadef",
+   "url": "https://gitcode.com/cann/metadef.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 60,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 47
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 11
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "failed",
+   "envSeconds": 2821,
+   "buildSeconds": 133,
+   "utSeconds": 641,
+   "sampleSeconds": 7,
+   "totalSeconds": 3602,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900031,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_metadef_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "oam-tools",
+   "url": "https://gitcode.com/cann/oam-tools.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 164,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 131
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 26
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 7
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 26,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 1733,
+    "passed": 1720,
+    "failed": 11,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 7868,
+   "buildSeconds": 1550,
+   "utSeconds": 413,
+   "sampleSeconds": 9,
+   "totalSeconds": 9840,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900032,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_oam-tools_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "opbase",
+   "url": "https://gitcode.com/cann/opbase.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 27,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 13
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 10,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 970,
+    "passed": 970,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 798,
+   "buildSeconds": 577,
+   "utSeconds": 245,
+   "sampleSeconds": 0,
+   "totalSeconds": 1620,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900033,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_opbase_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "ops-cv",
+   "url": "https://gitcode.com/cann/ops-cv.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 17,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 6
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 6,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 30,
+    "passed": 30,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "failed",
+   "envSeconds": 604,
+   "buildSeconds": 382,
+   "utSeconds": 29,
+   "sampleSeconds": 5,
+   "totalSeconds": 1020,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900034,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-cv_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "ops-math",
+   "url": "https://gitcode.com/cann/ops-math.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 15,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 4,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "failed",
+   "envSeconds": 612,
+   "buildSeconds": 255,
+   "utSeconds": 26,
+   "sampleSeconds": 7,
+   "totalSeconds": 900,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900035,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-math_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "ops-nn",
+   "url": "https://gitcode.com/cann/ops-nn.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 9,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 3
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 3,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "failed",
+   "envSeconds": 311,
+   "buildSeconds": 208,
+   "utSeconds": 19,
+   "sampleSeconds": 2,
+   "totalSeconds": 540,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900036,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-nn_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "ops-transformer",
+   "url": "https://gitcode.com/cann/ops-transformer.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 16,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 12
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 4
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 4,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 708,
+   "buildSeconds": 224,
+   "utSeconds": 28,
+   "sampleSeconds": 0,
+   "totalSeconds": 960,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900037,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ops-transformer_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "pto-isa",
+   "url": "https://gitcode.com/cann/pto-isa.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 15,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 13
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 114,
+    "passed": 114,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 758,
+   "buildSeconds": 100,
+   "utSeconds": 37,
+   "sampleSeconds": 5,
+   "totalSeconds": 900,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900038,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pto-isa_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "pyasc",
+   "url": "https://gitcode.com/cann/pyasc",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 90,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 78
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 6
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 5
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 6,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 375,
+    "passed": 88,
+    "failed": 286,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "failed",
+   "envSeconds": 4703,
+   "buildSeconds": 390,
+   "utSeconds": 305,
+   "sampleSeconds": 2,
+   "totalSeconds": 5400,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900039,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pyasc_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "pypto",
+   "url": "https://gitcode.com/cann/pypto",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 105,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 99
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 1
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 5,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 116,
+    "passed": 116,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 5920,
+   "buildSeconds": 300,
+   "utSeconds": 70,
+   "sampleSeconds": 10,
+   "totalSeconds": 6300,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900040,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pypto_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "PyTorch",
+   "repo": "pytorch",
+   "url": "https://gitcode.com/Ascend/pytorch.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 46,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 24
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 22
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 22,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1420,
+   "buildSeconds": 1337,
+   "utSeconds": 3,
+   "sampleSeconds": 0,
+   "totalSeconds": 2760,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900041,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_pytorch_v2.7.1_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "runtime",
+   "url": "https://gitcode.com/cann/runtime.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 90,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 72
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 8
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 8,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "failed",
+   "envSeconds": 4310,
+   "buildSeconds": 480,
+   "utSeconds": 600,
+   "sampleSeconds": 10,
+   "totalSeconds": 5400,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900042,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_runtime_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "CANN",
+   "repo": "shmem",
+   "url": "https://gitcode.com/cann/shmem.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 48,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 33
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 7
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 4
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 7,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 1,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 4,
+   "sampleStatus": "not_run",
+   "envSeconds": 1980,
+   "buildSeconds": 420,
+   "utSeconds": 240,
+   "sampleSeconds": 240,
+   "totalSeconds": 2880,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900043,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_shmem_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "stratovirt",
+   "url": "https://gitcode.com/openeuler/stratovirt.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 57,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 55
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 3273,
+   "buildSeconds": 83,
+   "utSeconds": 64,
+   "sampleSeconds": 0,
+   "totalSeconds": 3420,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900044,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_stratovirt_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "PTA",
+   "repo": "torchair",
+   "url": "https://gitcode.com/Ascend/torchair.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 30,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 28
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "failed",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "failed",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1699,
+   "buildSeconds": 69,
+   "utSeconds": 30,
+   "sampleSeconds": 2,
+   "totalSeconds": 1800,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900045,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_torchair_master_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "ubs-comm",
+   "url": "https://gitcode.com/openeuler/ubs-comm.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 61,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 43
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 5
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 6
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 5,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 306,
+    "passed": 306,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 6,
+   "sampleStatus": "success",
+   "envSeconds": 2587,
+   "buildSeconds": 324,
+   "utSeconds": 361,
+   "sampleSeconds": 388,
+   "totalSeconds": 3660,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900046,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-comm_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "ubs-engine",
+   "url": "https://gitcode.com/openeuler/ubs-engine.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 110,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 44
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 6
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 60
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 6,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 5552,
+    "passed": 5552,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2629,
+   "buildSeconds": 371,
+   "utSeconds": 3600,
+   "sampleSeconds": 0,
+   "totalSeconds": 6600,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900047,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-engine_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "ubs-io",
+   "url": "https://gitcode.com/openeuler/ubs-io.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 50,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 34
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 15
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 15,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 326,
+    "passed": 326,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 2070,
+   "buildSeconds": 900,
+   "utSeconds": 30,
+   "sampleSeconds": 0,
+   "totalSeconds": 3000,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900048,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-io_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "ubs-mem",
+   "url": "https://gitcode.com/openeuler/ubs-mem.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 34,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 31
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 752,
+    "passed": 752,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1881,
+   "buildSeconds": 68,
+   "utSeconds": 91,
+   "sampleSeconds": 0,
+   "totalSeconds": 2040,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900049,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-mem_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "ubs-virt",
+   "url": "https://gitcode.com/openeuler/ubs-virt.git",
+   "date": "2026-06-17",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 40,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 32
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 6
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 3
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 6,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 414,
+    "passed": 411,
+    "failed": 3,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1893,
+   "buildSeconds": 342,
+   "utSeconds": 165,
+   "sampleSeconds": 0,
+   "totalSeconds": 2400,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900050,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubs-virt_20260617.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "UBS Core",
+   "repo": "ubturbo",
+   "url": "https://gitcode.com/openeuler/ubturbo.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 23,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 20
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 1,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 450,
+    "passed": 450,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1228,
+   "buildSeconds": 33,
+   "utSeconds": 119,
+   "sampleSeconds": 0,
+   "totalSeconds": 1380,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900051,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_ubturbo_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "webui",
+   "url": "https://gitcode.com/openUBMC/webui.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 11,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 9
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 211,
+    "passed": 211,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 530,
+   "buildSeconds": 96,
+   "utSeconds": 34,
+   "sampleSeconds": 0,
+   "totalSeconds": 660,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900052,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_WSL_webui_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "hmpi",
+   "url": "https://gitcode.com/kunpengcompute/hmpi.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 90,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 79
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "测试",
+     "status": "success",
+     "minutes": 1
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 10,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "success",
+    "total": 1,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "success",
+   "envSeconds": 4734,
+   "buildSeconds": 600,
+   "utSeconds": 60,
+   "sampleSeconds": 6,
+   "totalSeconds": 5400,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900053,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_hmpi_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "kudnn",
+   "url": "https://gitcode.com/kunpengcompute/kudnn.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 36,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 26
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 10
+    },
+    {
+     "name": "测试",
+     "status": "failed",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 10,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "failed",
+    "total": 2066,
+    "passed": 1,
+    "failed": 2065,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1558,
+   "buildSeconds": 600,
+   "utSeconds": 2,
+   "sampleSeconds": 0,
+   "totalSeconds": 2160,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900054,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kudnn_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "HPCKit",
+   "repo": "kupl",
+   "url": "https://gitcode.com/kunpengcompute/kupl.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 60,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 60
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 171,
+    "passed": 161,
+    "failed": 10,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 3571,
+   "buildSeconds": 5,
+   "utSeconds": 24,
+   "sampleSeconds": 0,
+   "totalSeconds": 3600,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900055,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kupl_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "kuqcd",
+   "url": "https://gitcode.com/kunpengcompute/kuqcd.git",
+   "date": "2026-06-22",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 8,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 8
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 472.077,
+   "buildSeconds": 7.782,
+   "utSeconds": 0.141,
+   "sampleSeconds": 0,
+   "totalSeconds": 480,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900056,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kuqcd_20260622.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "kutacc",
+   "url": "https://gitcode.com/kunpengcompute/kutacc.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 25,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 25
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 0
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 0,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 56,
+    "passed": 55,
+    "failed": 1,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1494,
+   "buildSeconds": 4,
+   "utSeconds": 2,
+   "sampleSeconds": 0,
+   "totalSeconds": 1500,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900057,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_kutacc_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "PTA",
+   "repo": "op-plugin",
+   "url": "https://gitcode.com/Ascend/op-plugin.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 39,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 17
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 22
+    },
+    {
+     "name": "测试",
+     "status": "not_run",
+     "minutes": 0
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 22,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "not_run",
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 0,
+   "sampleStatus": "not_run",
+   "envSeconds": 1021,
+   "buildSeconds": 1319,
+   "utSeconds": 0,
+   "sampleSeconds": 0,
+   "totalSeconds": 2340,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900058,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_op-plugin_master_20260618.json"
+  },
+  {
+   "scenario": "developer",
+   "community": "openEuler",
+   "repo": "xucg",
+   "url": "https://gitcode.com/kunpengcompute/xucg.git",
+   "date": "2026-06-18",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 77,
+   "phases": [
+    {
+     "name": "获取",
+     "status": "success",
+     "minutes": 69
+    },
+    {
+     "name": "编译构建",
+     "status": "success",
+     "minutes": 2
+    },
+    {
+     "name": "测试",
+     "status": "partial",
+     "minutes": 5
+    },
+    {
+     "name": "社区CI成功",
+     "status": "not_run",
+     "minutes": 0
+    }
+   ],
+   "build": {
+    "status": "success",
+    "minutes": 2,
+    "command": "",
+    "error": ""
+   },
+   "test": {
+    "status": "partial",
+    "total": 198,
+    "passed": 131,
+    "failed": 67,
+    "note": ""
+   },
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "sampleMinutes": 1,
+   "sampleStatus": "success",
+   "envSeconds": 4140,
+   "buildSeconds": 120,
+   "utSeconds": 300,
+   "sampleSeconds": 60,
+   "totalSeconds": 4620,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "scene": "compile-verify",
+   "baseline": true,
+   "id": 900059,
+   "jsonUrl": "https://raw.githubusercontent.com/computing-TTFHW/ttfhw-base-630/main/json-org-630/verification_report_xucg_20260618.json"
+  },
+  {
+   "scenario": "user",
+   "community": "openEuler",
+   "repo": "openEuler",
+   "url": "",
+   "date": "2026-04-29",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 50,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 25,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 1
+    }
+   ],
+   "breakpoints": 4,
+   "defects": [
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "prepare-environment.md 版本过期 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "文档使用 yum 命令而非 dnf (一般)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "openEuler 镜像需要认证 (严重)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "spec 模板不完整 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "文档未说明非 rpm 系统处理 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "无验证命令示例 (一般)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "版本过期、镜像认证、spec模板不完整、无验证示例"
+    }
+   ],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "rpm-build",
+   "note": "代表性运行 20260429-01（来源报告口径），本地 RPM 构建场景",
+   "sourceMd": "ttfhw/community/openEuler/ttfhw-openeuler-rpm-build-20260429-01/ttfhw-openeuler-rpm-build-20260429-01.md",
+   "baseline": true,
+   "id": 950000
+  },
+  {
+   "scenario": "user",
+   "community": "CANN",
+   "repo": "CANN",
+   "url": "",
+   "date": "2026-04-28",
+   "month": "baseline",
+   "result": "success",
+   "totalMinutes": 285,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 35,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 150,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 80,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 1
+    }
+   ],
+   "breakpoints": 4,
+   "defects": [
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "Ubuntu 24.04 pip3 安装问题 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "容器环境驱动映射问题 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "容器环境 linux-headers 问题 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "Ubuntu 24.04-base 镜像缺少 universe 源 (重要)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "环境变量路径文档不一致 (一般)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "缺少 pip 安装警告说明 (一般)"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "Ubuntu 24.04 pip3 安装、容器环境驱动映射、linux-headers 命令不适用容器"
+    }
+   ],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "a2-offline-install",
+   "note": "代表性运行 20260428-01（来源报告口径）；A2/910B 离线安装，绕过 universe 源缺陷后成功",
+   "sourceMd": "ttfhw/community/CANN/ttfhw-cann-a2-offline-install-20260428-01/ttfhw-cann-a2-offline-install-20260428-01.md",
+   "baseline": true,
+   "id": 950001
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "MindSpore",
+   "url": "",
+   "date": "2026-04-28",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 103,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "not_run",
+     "minutes": 12,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 45,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 19,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "not_run",
+     "minutes": 27,
+     "breakpoints": 0
+    }
+   ],
+   "breakpoints": 0,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "install",
+   "note": "代表性运行 20260428-01（来源报告口径，取最长完整运行），框架安装与环境准备并入安装阶段 ｜ 安装含环境准备，取聚合表口径",
+   "sourceMd": "ttfhw/community/MindSpore/ttfhw-mindspore-install-20260428-01/ttfhw-mindspore-install-20260428-01.md",
+   "baseline": true,
+   "id": 950002
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "openGauss",
+   "url": "",
+   "date": "2026-05-03",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 75,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 1
+    },
+    {
+     "name": "安装",
+     "status": "partial",
+     "minutes": 45,
+     "breakpoints": 4
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "breakpoints": 5,
+   "defects": [
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "文档未提供 Docker 安装步骤（重要）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "Docker Hub 镜像在内网环境无法访问（严重）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "镜像包下载 URL 示例过时（重要）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "镜像包加载后镜像名与文档不一致（重要）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "Docker Hub 不可达、镜像包 URL 过时、镜像名不一致、缺少 Docker 安装说明"
+    }
+   ],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "jijian-docker-install-v1",
+   "note": "代表性运行 20260503-01（来源报告口径，取最长完整运行），已按“容器安装完成”为安装阶段结束点，SQL 验证归入使用阶段",
+   "sourceMd": "ttfhw/community/openGauss/ttfhw-opengauss-jijian-docker-install-v1-20260503-01/ttfhw-opengauss-jijian-docker-install-v1-20260503-01.md",
+   "baseline": true,
+   "id": 950003
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openUBMC",
+   "url": "",
+   "date": "2026-05-09",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 166,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 51,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "partial",
+     "minutes": 90,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    }
+   ],
+   "breakpoints": 3,
+   "defects": [
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "华为云镜像站部分仓库不可达（中等）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "openUBMC镜像内置apt源不可达（高）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "Conan版本兼容性问题（高）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "华为云镜像站updates仓库不可达、openUBMC镜像内置apt源不可达、Conan版本兼容性问题"
+    }
+   ],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "docker-env-fullcoverage",
+   "note": "代表性运行 20260509-02（来源报告口径，取最长完整运行，全路径覆盖场景含 Conan 认证排查）",
+   "sourceMd": "ttfhw/community/openUBMC/ttfhw-openubmc-docker-env-fullcoverage-20260509-02/ttfhw-openubmc-docker-env-fullcoverage-20260509-02.md",
+   "baseline": true,
+   "id": 950004
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "MindSpeed",
+   "url": "",
+   "date": "2026-05-18",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 217,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 120,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 60,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "partial",
+     "minutes": 22,
+     "breakpoints": 4
+    }
+   ],
+   "breakpoints": 4,
+   "defects": [],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "",
+   "note": "代表性运行 20260518-14（来源报告口径，取最长完整运行），模型适配判断归并到安装阶段 ｜ 源子报告 JSON 缺失，四阶段取聚合表口径",
+   "sourceMd": "ttfhw/community/MindSpeed/ttfhw-mindspeed-llm-install-20260518-14/ttfhw-mindspeed-llm-install-20260518-14.md",
+   "baseline": true,
+   "id": 950005
+  },
+  {
+   "scenario": "user",
+   "community": "MindIE",
+   "repo": "MindIE",
+   "url": "",
+   "date": "2026-04-28",
+   "month": "baseline",
+   "result": "partial",
+   "totalMinutes": 316,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 45,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 120,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 135,
+     "breakpoints": 3
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 16,
+     "breakpoints": 0
+    }
+   ],
+   "breakpoints": 3,
+   "defects": [
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "文档默认使用 HuggingFace，未考虑中国大陆用户（严重）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "文档示例配置使用4张 NPU，缺少单卡配置（重要）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "文档未说明模型资源需求（一般）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "镜像内未预置验证工具（重要）"
+    },
+    {
+     "title": "",
+     "level": "",
+     "source": "",
+     "detail": "模型获取渠道单一（HuggingFace）、缺少单卡配置示例、缺少离线验证方案"
+    }
+   ],
+   "problems": [],
+   "attempts": [],
+   "docFacts": [],
+   "artifacts": [],
+   "build": {},
+   "test": {},
+   "env": {},
+   "scene": "llm-install",
+   "note": "代表性运行 20260428-01（来源报告口径）；使用阶段因模型权重无国内下载渠道未跑通，失败排查耗时较长",
+   "sourceMd": "ttfhw/community/MindIE/ttfhw-mindie-llm-install-20260428-01/ttfhw-mindie-llm-install-20260428-01.md",
+   "baseline": true,
+   "id": 950006
+  }
+ ]
+}
