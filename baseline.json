@@ -1,6 +1,6 @@
 {
- "label": "630 基线",
- "fullLabel": "TTFHW 630 基线（不限 OS）",
+ "label": "基线",
+ "fullLabel": "TTFHW 基线数据",
  "date": "2026-06-30",
  "sourceUrl": "https://computing-ttfhw.github.io/ttfhw-base-630/",
  "sourceRepo": "https://github.com/computing-TTFHW/ttfhw-base-630",

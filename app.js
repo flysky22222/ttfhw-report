@@ -47,7 +47,7 @@
     document.getElementById("genAt").textContent = d.generatedAt && d.generatedAt !== "build" ? `数据生成于 ${d.generatedAt}` : "";
     const sel = document.getElementById("monthSel");
     sel.appendChild(opt("latest", "Latest（各仓库最新全量）"));
-    if ((state.baseRecs || []).length) sel.appendChild(opt("baseline", "🎯 " + ((state.baseline && state.baseline.fullLabel) || "630 基线（不限 OS）")));
+    if ((state.baseRecs || []).length) sel.appendChild(opt("baseline", "🎯 基线数据"));
     d.months.forEach(m => sel.appendChild(opt(m, m.replace("-", " 年 ") + " 月")));
     sel.addEventListener("change", () => { state.month = sel.value; route(); });
     document.getElementById("scenarioTabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (!b) return; state.scenario = b.dataset.scenario; setActive("#scenarioTabs .tab", b); route(); });
@@ -169,10 +169,10 @@
     charts.style.display = ""; if (issues) issues.style.display = "";
     const recs = selectRecords();
     renderStats(recs); renderCharts(recs, selectRecords({ ignoreScenario: true }));
-    const tag = state.month === "baseline" ? ((state.baseline && state.baseline.fullLabel) || "630 基线")
+    const tag = state.month === "baseline" ? "基线数据"
       : (state.month === "latest" ? "Latest（各仓库最新全量）" : state.month.replace("-", " 年 ") + " 月");
     setToolbarInfo(`当前视图：<b>${esc(tag)}</b> · 共 <b>${recs.length}</b> 条记录`
-      + (state.month === "baseline" && state.baseline ? ` · 来源 <a href="${esc(state.baseline.sourceUrl)}" target="_blank" rel="noopener">computing-ttfhw/ttfhw-base-630 ↗</a>` : ""));
+      + (state.month === "baseline" ? ` · <span class="cmp-legend">贡献者场景取 6 月基线（630），使用者场景取 4 月基线</span>` : ""));
     const content = document.getElementById("content"), empty = document.getElementById("empty");
     content.innerHTML = ""; empty.hidden = recs.length > 0;
     if (!recs.length) return;
@@ -621,6 +621,14 @@
     return { rows, monthOnly: cur.filter(r => !bk.has(key(r))) };
   }
   const scenariosToShow = () => (state.scenario === "all" ? ["user", "developer"] : [state.scenario]).filter(sc => CMP[sc] && (state.baseRecs || []).some(r => r.scenario === sc));
+  // 该场景基线数据的实际月份（贡献者=6月/630，使用者=4月）；取最常见的 YYYY-MM
+  function baseMonthLabel(sc) {
+    const ds = (state.baseRecs || []).filter(r => r.scenario === sc).map(r => (r.date || "").slice(0, 7)).filter(Boolean);
+    if (!ds.length) return "基线";
+    const cnt = {}; ds.forEach(m => cnt[m] = (cnt[m] || 0) + 1);
+    const m = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a])[0];
+    return m.replace("-", " 年 ") + " 月基线";
+  }
 
   // 数值对比单元格：左=基线 右=对比，箭头+差值上色（绿=对比更优）
   function cmpNum(base, cur, dir, u) {
@@ -663,7 +671,7 @@
       card("check", `<span class="s-succ">${improved}</span> / <span class="s-fail">${regressed}</span>`, "结果改善 / 回退", `相对基线的结果等级变化`) +
       card("hammer", `${scs.map(s => CMP[s].label.replace("场景", "")).join(" + ")}`, "对比范围", `基线 vs ${esc(monthLabel)}`);
 
-    setToolbarInfo(`对比：<b>🎯 630 基线</b> <span class="cmp-vs">vs</span> <b>${esc(monthLabel)}</b> · ${total} 项（${nCmp} 可比）· <span class="cmp-legend"><span class="lg good">绿＝${esc(monthLabel)}更优</span> <span class="lg bad">红＝更差</span> · 左基线→右对比</span>`);
+    setToolbarInfo(`对比：<b>🎯 基线</b> <span class="cmp-vs">vs</span> <b>${esc(monthLabel)}</b> · ${total} 项（${nCmp} 可比）· <span class="cmp-legend"><span class="lg good">绿＝${esc(monthLabel)}更优</span> <span class="lg bad">红＝更差</span> · 左基线→右对比</span>`);
 
     const sections = perSc.map(({ sc, cfg, rows }) => {
       let inner;
@@ -675,7 +683,7 @@
       } else {
         inner = compareTable(sc, cfg.label, rows.slice().sort((x, y) => ix(x.group) - ix(y.group) || x.item.localeCompare(y.item)), monthLabel);
       }
-      return `<section class="scenario-block"><div class="scenario-head"><h2>${ico(cfg.icon)} ${cfg.label} · 对比</h2><span class="pill">基线 vs ${esc(monthLabel)}</span><span class="legend">数字＝分钟；左＝基线，右＝${esc(monthLabel)}；箭头/颜色标出对比侧优劣</span></div>${inner}</section>`;
+      return `<section class="scenario-block"><div class="scenario-head"><h2>${ico(cfg.icon)} ${cfg.label} · 对比</h2><span class="pill">${esc(baseMonthLabel(sc))} vs ${esc(monthLabel)}</span><span class="legend">数字＝分钟；左＝${esc(baseMonthLabel(sc))}，右＝${esc(monthLabel)}；箭头/颜色标出对比侧优劣</span></div>${inner}</section>`;
     }).join("");
     const onlyNote = monthOnlyAll.length ? `<div class="cmp-note">另有 <b>${monthOnlyAll.length}</b> 项仅 ${esc(monthLabel)} 有、基线无（未纳入对比）：${monthOnlyAll.slice(0, 40).map(x => `<code>${esc(x)}</code>`).join(" ")}${monthOnlyAll.length > 40 ? " …" : ""}</div>` : "";
     content.innerHTML = sections + onlyNote;
@@ -718,7 +726,7 @@
     if (forceBaseline) state.month = "baseline";
     const recs = selectRecords();
     const isBase = state.month === "baseline";
-    const tag = isBase ? "630基线" : (state.month === "latest" ? "Latest" : state.month);
+    const tag = isBase ? "基线" : (state.month === "latest" ? "Latest" : state.month);
     state.month = save;
     const head = ["场景", "社区", "仓库", "结果", "获取(min)", "编译构建(min)", "测试(min)", "社区CI(min)", "样例(min)", "总时长(min)", "UT通过", "UT总数", "UT通过率(%)", "日期", "来源"];
     const rows = recs.map(r => {
@@ -783,10 +791,10 @@
       const C = state.cmpMonth === "latest" ? "Latest" : state.cmpMonth;
       items.push([`导出对比表（基线 vs ${C}）`, "cmp"]);
     } else {
-      const tag = state.month === "baseline" ? "630 基线" : (state.month === "latest" ? "Latest" : state.month);
+      const tag = state.month === "baseline" ? "基线数据" : (state.month === "latest" ? "Latest" : state.month);
       items.push([`导出当前表（${tag}）`, "cur"]);
     }
-    if (!(state.compare) && state.month !== "baseline" && (state.baseRecs || []).length) items.push(["导出 630 基线全量", "base"]);
+    if (!(state.compare) && state.month !== "baseline" && (state.baseRecs || []).length) items.push(["导出基线全量", "base"]);
     em.innerHTML = items.map(([t, k]) => `<button class="export-item" data-k="${k}">${ico("doc")} ${t} · CSV</button>`).join("");
     em.querySelectorAll(".export-item").forEach(b => b.addEventListener("click", () => {
       em.hidden = true; document.getElementById("exportBtn").classList.remove("open");
