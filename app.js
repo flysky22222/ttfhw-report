@@ -400,7 +400,7 @@
     // 使用者场景/无JSON 用的原样章节（不改动）
     const defs = defects.map(normDefect);
     const dHasSrc = defs.some(d => d.source), dHasDet = defs.some(d => d.detail || d.suggestion);
-    const srcCell = d => !d.source ? "—" : (/^https?:\/\//.test(d.source) ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">${esc(d.source)}</a>` : esc(d.source));
+    const srcCell = d => { if (!d.source) return "—"; const um = (d.source.match(/https?:\/\/\S+/) || [])[0]; const url = d.sourceUrl || um || ""; return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(d.source)} ↗</a>` : esc(d.source); };
     const detCell = d => { const p = d.detail ? `<span class="def-ph">${esc(d.detail)}</span>` : "", s = d.suggestion ? `<div class="def-sug"><b>建议：</b>${esc(d.suggestion)}</div>` : ""; return (p || s) ? p + s : "—"; };
     const dcw = dHasSrc && dHasDet ? ["30%", "9%", "20%", "41%"] : dHasDet ? ["34%", "10%", "56%"] : dHasSrc ? ["48%", "12%", "40%"] : ["82%", "18%"];
     const secDefects = defs.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defs.length}）${(!dHasSrc && !dHasDet) ? `<span class="hint">级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」</span>` : ""}</h2>
@@ -420,7 +420,17 @@
       sections.push(ph("sec-docmiss"));   // 文档缺失（放验证环境下面，从JSON写全 title+body）
       sections.push(ph("sec-problems"));  // 遇到问题（放文档缺失下面）
     } else {
-      sections.push(secDocFacts, secAttempts, secDefects, secProblems);
+      // 使用者场景：验证环境（机器/OS/镜像）+ 执行记录（具体操作），数据来自原始报告（build 时 patch 进 record）
+      let secUserEnv = "", secUserOps = "";
+      if (r.scenario === "user") {
+        const rows = r.envRows || [];
+        if (rows.length) secUserEnv = `<div class="section"><h2>${ico("arch")} 验证环境（机器 / 操作系统 / 镜像）</h2>
+          <table class="dtable"><colgroup><col style="width:26%"><col style="width:74%"></colgroup><tbody>${rows.map(kv => `<tr><td>${esc(kv[0])}</td><td>${inline(String(kv[1]))}</td></tr>`).join("")}</tbody></table></div>`;
+        const ops = r.ops || [];
+        if (ops.length) secUserOps = `<div class="section"><h2>${ico("list")} 执行记录 · 具体操作（访问 / 下载 / 登录 / 命令）</h2>${
+          ops.map(o => `<div class="ops-phase"><div class="ops-name">${esc(o.phase)}</div><ul class="ops-list">${(o.steps || []).map(s => `<li>${inline(String(s))}</li>`).join("")}</ul></div>`).join("")}</div>`;
+      }
+      sections.push(secUserEnv, secUserOps, secDocFacts, secAttempts, secDefects, secProblems);
     }
 
     // 社区CI 门禁检查项明细（放在详情后段）：列每项 ✅/❌/⚠，并说明测试型项失败属正常
