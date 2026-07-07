@@ -342,3 +342,9 @@ td.cmp { white-space: nowrap; vertical-align: middle; }
 .hist-desc { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-dim); }
 .hist-dim { color: var(--text-faint); }
 .hist-desc .scn { display: inline-block; font-size: 10px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 5px; padding: 0 5px; margin-right: 4px; vertical-align: 1px; }
+.def-src { font-size: 12px; color: var(--text-dim); word-break: break-all; }
+.def-src a { color: var(--accent); text-decoration: none; }
+.def-src a:hover { text-decoration: underline; }
+.def-ph { color: var(--text); }
+.def-sug { margin-top: 3px; font-size: 12px; color: var(--text-dim); }
+.def-sug b { color: var(--success); font-weight: 600; }

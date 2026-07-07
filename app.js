@@ -399,10 +399,13 @@
         <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>` : "";
     // 使用者场景/无JSON 用的原样章节（不改动）
     const defs = defects.map(normDefect);
-    const defHasExtra = defs.some(d => d.source || d.detail);   // 有真实来源/建议才显示第三列（开发者场景），否则只显示 问题+级别
-    const secDefects = defs.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defs.length}）<span class="hint">${defHasExtra ? "点击行跳到下方完整报告对应缺陷" : "级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」"}</span></h2>
-      <table class="dtable"><colgroup>${defHasExtra ? `<col style="width:42%"><col style="width:11%"><col style="width:47%">` : `<col style="width:82%"><col style="width:18%">`}</colgroup><thead><tr><th>问题</th><th>级别</th>${defHasExtra ? `<th>来源 / 建议</th>` : ""}</tr></thead><tbody>${
-        defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—"}</td>${defHasExtra ? `<td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td>` : ""}</tr>`).join("")}</tbody></table></div>` : "";
+    const dHasSrc = defs.some(d => d.source), dHasDet = defs.some(d => d.detail || d.suggestion);
+    const srcCell = d => !d.source ? "—" : (/^https?:\/\//.test(d.source) ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">${esc(d.source)}</a>` : esc(d.source));
+    const detCell = d => { const p = d.detail ? `<span class="def-ph">${esc(d.detail)}</span>` : "", s = d.suggestion ? `<div class="def-sug"><b>建议：</b>${esc(d.suggestion)}</div>` : ""; return (p || s) ? p + s : "—"; };
+    const dcw = dHasSrc && dHasDet ? ["30%", "9%", "20%", "41%"] : dHasDet ? ["34%", "10%", "56%"] : dHasSrc ? ["48%", "12%", "40%"] : ["82%", "18%"];
+    const secDefects = defs.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defs.length}）${(!dHasSrc && !dHasDet) ? `<span class="hint">级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」</span>` : ""}</h2>
+      <table class="dtable"><colgroup>${dcw.map(w => `<col style="width:${w}">`).join("")}</colgroup><thead><tr><th>问题</th><th>级别</th>${dHasSrc ? `<th>来源</th>` : ""}${dHasDet ? `<th>现象 / 建议</th>` : ""}</tr></thead><tbody>${
+        defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—"}</td>${dHasSrc ? `<td class="def-src">${srcCell(d)}</td>` : ""}${dHasDet ? `<td>${detCell(d)}</td>` : ""}</tr>`).join("")}</tbody></table></div>` : "";
     const secProblems = problems.length ? `<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
       <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
         problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
