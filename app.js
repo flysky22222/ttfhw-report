@@ -398,10 +398,11 @@
       r.attempts.map(a => `<div class="log-row ${a.ok ? "ok" : "bad"}"><span class="log-dot"></span><div class="log-body">
         <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>` : "";
     // 使用者场景/无JSON 用的原样章节（不改动）
-    const secDefects = defects.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）<span class="hint">点击行跳到下方完整报告对应缺陷</span></h2>
-      <table class="dtable"><colgroup><col style="width:42%"><col style="width:11%"><col style="width:47%"></colgroup><thead><tr><th>问题</th><th>级别</th><th>来源 / 建议</th></tr></thead><tbody>${
-        defects.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${d.level}">${d.level}</span>` : "—"}</td>
-          <td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
+    const defs = defects.map(normDefect);
+    const defHasExtra = defs.some(d => d.source || d.detail);   // 有真实来源/建议才显示第三列（开发者场景），否则只显示 问题+级别
+    const secDefects = defs.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defs.length}）<span class="hint">${defHasExtra ? "点击行跳到下方完整报告对应缺陷" : "级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」"}</span></h2>
+      <table class="dtable"><colgroup>${defHasExtra ? `<col style="width:42%"><col style="width:11%"><col style="width:47%">` : `<col style="width:82%"><col style="width:18%">`}</colgroup><thead><tr><th>问题</th><th>级别</th>${defHasExtra ? `<th>来源 / 建议</th>` : ""}</tr></thead><tbody>${
+        defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—"}</td>${defHasExtra ? `<td>${d.source ? `<a href="${esc(d.source)}" target="_blank" rel="noopener">来源</a> ` : ""}${esc(d.detail || "")}</td>` : ""}</tr>`).join("")}</tbody></table></div>` : "";
     const secProblems = problems.length ? `<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
       <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
         problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
@@ -445,8 +446,9 @@
 
     const hist = state.data.records.filter(x => x.scenario === r.scenario && x.community === r.community && (r.scenario === "user" || x.repo === r.repo)).sort((a, b) => b.date.localeCompare(a.date));
     if (hist.length > 1) sections.push(`<div class="section"><h2>${ico("chart")} 历史记录（${hist.length} 次）</h2><div class="history-list">${
-      hist.map(h => `<div class="hist" data-id="${h.id}"><span>${h.date}</span><span class="badge ${h.result}">${RES[h.result]}</span>
-        <span class="src">${h.scene && h.scene !== "compile-verify" ? h.scene : ""}</span><span class="num mono" style="text-align:right">${h.totalMinutes ? h.totalMinutes + " min" : "—"}</span></div>`).join("")}</div></div>`);
+      hist.map(h => { const desc = (h.summary || "").replace(/\*\*/g, "").trim();
+        return `<div class="hist" data-id="${h.id}"><span>${h.date}</span><span class="badge ${h.result}">${RES[h.result]}</span>
+        <span class="hist-desc" title="${esc(desc)}">${h.scene && h.scene !== "compile-verify" ? `<span class="scn">${esc(h.scene)}</span> ` : ""}${desc ? esc(desc) : `<span class="hist-dim">（无摘要）</span>`}</span><span class="num mono" style="text-align:right">${h.totalMinutes ? h.totalMinutes + " min" : "—"}</span></div>`; }).join("")}</div></div>`);
 
     if (enrich) sections.push(ph("sec-rawjson"));           // 完整 JSON 数据 —— 放最下面
     else if (r.reportFile) sections.push(`<div class="section"><h2>${ico("doc")} 完整报告（原始文档）</h2><div id="fullReport" class="full-report">加载中…</div></div>`);
@@ -545,6 +547,15 @@
   const inline = s => esc(s).replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+  // 使用者场景缺陷是扁平字符串、级别写在标题结尾括号里（如「版本信息过期（重要）」）→ 抽成 level 字段并清理标题
+  const LVL_RE = /[（(【\[]\s*(严重|重要|中等|中|一般|低|提示|info|warning|critical|major|minor)\s*[)）】\]]\s*$/i;
+  const normLevel = s => ({ 严重: "严重", critical: "严重", major: "重要", 重要: "重要", 中等: "一般", 中: "一般", 一般: "一般", minor: "一般", warning: "一般", 低: "提示", 提示: "提示", info: "提示" }[s] || s);
+  const normDefect = d => {
+    let title = d.title || "", level = d.level || "";
+    if (!level) { const m = title.match(LVL_RE); if (m) { level = normLevel(m[1]); title = title.replace(LVL_RE, "").trim(); } }
+    return Object.assign({}, d, { title, level });
+  };
 
   // 轻量 markdown → HTML（标题/表格/列表/代码块/引用/段落）
   function mdToHtml(md) {

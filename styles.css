@@ -339,3 +339,6 @@ td.cmp { white-space: nowrap; vertical-align: middle; }
 #monthSel:disabled { opacity: .5; cursor: not-allowed; }
 @media (max-width: 720px) { .cmp-legend { display: block; margin-top: 3px; } .table-toolbar { align-items: flex-start; } }
 .th-unit { font-weight: 400; font-size: 10px; color: var(--text-faint); margin-left: 1px; white-space: nowrap; }
+.hist-desc { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-dim); }
+.hist-dim { color: var(--text-faint); }
+.hist-desc .scn { display: inline-block; font-size: 10px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 5px; padding: 0 5px; margin-right: 4px; vertical-align: 1px; }
