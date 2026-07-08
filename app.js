@@ -369,7 +369,7 @@
       const dn = (r.defects || []).length;
       return `<tr data-id="${r.id}"><td class="repo-cell">${r.repo}${r.manual ? `<span class="scn manual" title="人工撰写报告">人工</span>` : ""}${r.scene && r.scene !== "compile-verify" ? `<span class="scn">${r.scene}</span>` : ""}</td>
         <td><span class="badge ${r.result}">${RES[r.result]}</span></td>${pc}${extra}
-        <td class="num">${r.totalMinutes || "·"}</td>${sampleCell}<td class="num">${dn ? `<span class="defect-n">${dn}</span>` : "·"}</td><td>${r.date}</td><td class="link-arrow">›</td></tr>`;
+        <td class="num">${r.totalMinutes || "·"}</td>${sampleCell}<td class="num">${dn ? `<span class="defect-n clk" data-defrec="${r.id}" title="点击查看这 ${dn} 个缺陷明细">${dn}</span>` : "·"}</td><td>${r.date}</td><td class="link-arrow">›</td></tr>`;
     }).join("");
     // 固定列宽：所有社区表用同一套 colgroup，保证跨表上下对齐
     const cw = ["20%", "9%"].concat(phases.map(() => "7%")).concat(isDev ? ["8%", "8%", "7%", "6%", "10%", "4%"] : ["8%", "9%", "7%", "11%", "4%"]);
@@ -377,6 +377,7 @@
     const t = document.createElement("div"); t.className = "tbl-wrap";
     t.innerHTML = `<table class="ctbl">${colgroup}<thead><tr>${cols}</tr></thead><tbody>${rows}</tbody></table>`;
     t.querySelectorAll("tbody tr").forEach(tr => tr.addEventListener("click", () => { gotoReport(tr.dataset.id); }));
+    t.querySelectorAll(".defect-n[data-defrec]").forEach(sp => sp.addEventListener("click", e => { e.stopPropagation(); openDefectModal(recById(sp.dataset.defrec)); }));
     wrap.appendChild(t);
     return wrap;
   }
@@ -447,14 +448,7 @@
       r.attempts.map(a => `<div class="log-row ${a.ok ? "ok" : "bad"}"><span class="log-dot"></span><div class="log-body">
         <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>` : "";
     // 使用者场景/无JSON 用的原样章节（不改动）
-    const defs = defects.map(normDefect);
-    const dHasSrc = defs.some(d => d.source), dHasDet = defs.some(d => d.detail || d.suggestion);
-    const srcCell = d => { if (!d.source) return "—"; const um = (d.source.match(/https?:\/\/\S+/) || [])[0]; const url = d.sourceUrl || um || ""; return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(d.source)} ↗</a>` : esc(d.source); };
-    const detCell = d => { const p = d.detail ? `<span class="def-ph">${esc(d.detail)}</span>` : "", s = d.suggestion ? `<div class="def-sug"><b>建议：</b>${esc(d.suggestion)}</div>` : ""; return (p || s) ? p + s : "—"; };
-    const dcw = dHasSrc && dHasDet ? ["30%", "9%", "20%", "41%"] : dHasDet ? ["34%", "10%", "56%"] : dHasSrc ? ["48%", "12%", "40%"] : ["82%", "18%"];
-    const secDefects = defs.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defs.length}）${(!dHasSrc && !dHasDet) ? `<span class="hint">级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」</span>` : ""}</h2>
-      <table class="dtable"><colgroup>${dcw.map(w => `<col style="width:${w}">`).join("")}</colgroup><thead><tr><th>问题</th><th>级别</th>${dHasSrc ? `<th>来源</th>` : ""}${dHasDet ? `<th>现象 / 建议</th>` : ""}</tr></thead><tbody>${
-        defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—"}</td>${dHasSrc ? `<td class="def-src">${srcCell(d)}</td>` : ""}${dHasDet ? `<td>${detCell(d)}</td>` : ""}</tr>`).join("")}</tbody></table></div>` : "";
+    const secDefects = defects.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）${defHasStruct(defects) ? "" : `<span class="hint">级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」</span>`}</h2>${defectTableHtml(defects)}</div>` : "";
     const secProblems = problems.length ? `<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
       <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
         problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
@@ -618,6 +612,36 @@
     if (!level) { const m = title.match(LVL_RE); if (m) { level = normLevel(m[1]); title = title.replace(LVL_RE, "").trim(); } }
     return Object.assign({}, d, { title, level });
   };
+  // 缺陷明细表（问题/级别/来源/现象·建议）——详情页与「点击缺陷数」弹窗共用
+  const defSrcCell = d => { if (!d.source) return "—"; const um = (d.source.match(/https?:\/\/\S+/) || [])[0]; const url = d.sourceUrl || um || ""; return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(d.source)} ↗</a>` : esc(d.source); };
+  const defDetCell = d => { const p = d.detail ? `<span class="def-ph">${esc(d.detail)}</span>` : "", s = d.suggestion ? `<div class="def-sug"><b>建议：</b>${esc(d.suggestion)}</div>` : ""; return (p || s) ? p + s : "—"; };
+  function defectTableHtml(defects) {
+    const defs = defects.map(normDefect);
+    const hasSrc = defs.some(d => d.source), hasDet = defs.some(d => d.detail || d.suggestion);
+    const cw = hasSrc && hasDet ? ["30%", "9%", "20%", "41%"] : hasDet ? ["34%", "10%", "56%"] : hasSrc ? ["48%", "12%", "40%"] : ["82%", "18%"];
+    return `<table class="dtable"><colgroup>${cw.map(w => `<col style="width:${w}">`).join("")}</colgroup><thead><tr><th>问题</th><th>级别</th>${hasSrc ? `<th>来源</th>` : ""}${hasDet ? `<th>现象 / 建议</th>` : ""}</tr></thead><tbody>${
+      defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—"}</td>${hasSrc ? `<td class="def-src">${defSrcCell(d)}</td>` : ""}${hasDet ? `<td>${defDetCell(d)}</td>` : ""}</tr>`).join("")}</tbody></table>`;
+  }
+  const defHasStruct = defects => defects.some(d => { const n = normDefect(d); return n.source || n.detail || n.suggestion; });
+  // 点击表格「缺陷数」→ 弹窗看该记录具体是哪几个缺陷
+  function openDefectModal(rec) {
+    if (!rec) return;
+    const defs = rec.defects || [];
+    const wrap = document.createElement("div"); wrap.className = "modal-overlay";
+    wrap.innerHTML = `<div class="modal-box" role="dialog" aria-modal="true"><div class="modal-head">
+      <div><h3>${ico("bug")} ${esc(rec.repo)} · 文档缺陷（${defs.length}）</h3>
+        <div class="modal-sub">社区：${esc(rec.community)} · ${SCEN[rec.scenario] || rec.scenario} · ${esc(rec.date || "")}</div></div>
+      <button class="modal-close" type="button" aria-label="关闭">✕</button></div>
+      <div class="modal-body">${defs.length ? defectTableHtml(defs) : `<div class="empty">该记录暂无结构化缺陷。</div>`}</div>
+      <div class="modal-foot"><a href="#" class="modal-detail">查看完整报告 ›</a></div></div>`;
+    document.body.appendChild(wrap);
+    const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); };
+    const onKey = e => { if (e.key === "Escape") close(); };
+    wrap.addEventListener("click", e => { if (e.target === wrap) close(); });
+    wrap.querySelector(".modal-close").addEventListener("click", close);
+    wrap.querySelector(".modal-detail").addEventListener("click", e => { e.preventDefault(); close(); gotoReport(rec.id); });
+    document.addEventListener("keydown", onKey);
+  }
 
   // 轻量 markdown → HTML（标题/表格/列表/代码块/引用/段落）
   function mdToHtml(md) {
