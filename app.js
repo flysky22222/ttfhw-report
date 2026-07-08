@@ -622,9 +622,13 @@
   function issueJac(a, b) { const A = issueBigrams(a), B = issueBigrams(b); if (!A.size || !B.size) return 0; let n = 0; A.forEach(x => { if (B.has(x)) n++; }); return n / (A.size + B.size - n); }
   const strongToks = s => new Set((String(s || "").match(/\d+(?:\.\d+)+|\d{3,}|[A-Za-z][A-Za-z0-9+.]{2,}/g) || []).map(x => x.toLowerCase()));
   const urlBase = u => { u = String(u || "").split("#")[0].split("?")[0].replace(/\/+$/, ""); return u.split("/").pop().toLowerCase(); };
-  function bestIssue(defect, community) {
+  const runIdOf = rec => { const m = String((rec && rec.reportFile) || "").match(/ttfhw-[a-z0-9][a-z0-9-]*-\d{8}-\d+/i); return m ? m[0] : ""; };
+  function bestIssue(defect, community, rec) {
     const cis = communityIssues(community); if (!cis.length) return null;
     const d = normDefect(defect);
+    // 1) 确定性匹配：issue 正文写死的 defectRefs（运行ID#缺陷序号）——提 issue 时写进正文
+    const rid = runIdOf(rec);
+    if (rid && d.anchor != null) { const ref = rid + "#" + d.anchor; const hit = cis.find(i => (i.defectRefs || []).includes(ref)); if (hit) return { issue: hit, score: 1, confident: true, exact: true }; }
     const dtext = issueNorm(`${d.title} ${d.detail || ""} ${d.suggestion || ""}`);
     const dstrong = strongToks(`${d.title} ${d.detail || ""} ${d.suggestion || ""}`);
     const durl = urlBase(d.sourceUrl);
@@ -649,7 +653,7 @@
     const w = { lvl: 9, iss: hasIssue ? 13 : 0, src: hasSrc ? 18 : 0, det: hasDet ? 36 : 0 };
     const wTitle = 100 - w.lvl - w.iss - w.src - w.det;
     const cols = [{ h: "问题", cell: d => inline(d.title) }, { h: "级别", cell: d => d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—" }];
-    if (hasIssue) cols.push({ h: "关联 Issue", cell: d => { const m = bestIssue(d, community); return m && m.confident ? issueBadge(m.issue) : `<span class="ist-none">未匹配</span>`; } });
+    if (hasIssue) cols.push({ h: "关联 Issue", cell: d => { const m = bestIssue(d, community, rec); return m && m.confident ? issueBadge(m.issue) + (m.exact ? `<span class="ist-exact" title="issue 正文写死缺陷编号，确定性关联">✓</span>` : "") : `<span class="ist-none">未匹配</span>`; } });
     if (hasSrc) cols.push({ h: "来源", cls: "def-src", cell: d => defSrcCell(d) });
     if (hasDet) cols.push({ h: "现象 / 建议", cell: d => defDetCell(d) });
     const cw = [wTitle, w.lvl].concat(hasIssue ? [w.iss] : []).concat(hasSrc ? [w.src] : []).concat(hasDet ? [w.det] : []);

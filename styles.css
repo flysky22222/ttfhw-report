@@ -386,3 +386,4 @@ td.cmp { white-space: nowrap; vertical-align: middle; }
 .ci-panel-h .ico { color: var(--accent); }
 .ci-panel a { color: var(--accent); text-decoration: none; }
 .ci-panel a:hover { text-decoration: underline; }
+.ist-exact { color: var(--success); font-weight: 700; margin-left: 3px; }
