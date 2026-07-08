@@ -448,7 +448,7 @@
       r.attempts.map(a => `<div class="log-row ${a.ok ? "ok" : "bad"}"><span class="log-dot"></span><div class="log-body">
         <div class="log-step">${esc(a.step || "—")}</div>${a.command ? `<code class="log-cmd">${esc(a.command)}</code>` : ""}${a.output ? `<div class="log-out">${esc(a.output)}</div>` : ""}</div></div>`).join("")}</div></div>` : "";
     // 使用者场景/无JSON 用的原样章节（不改动）
-    const secDefects = defects.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）${defHasStruct(defects) ? "" : `<span class="hint">级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」</span>`}</h2>${defectTableHtml(defects)}</div>` : "";
+    const secDefects = defects.length ? `<div class="section"><h2>${ico("bug")} 文档缺陷 / 缺口（${defects.length}）${defHasStruct(defects) ? "" : `<span class="hint">级别取自文档缺陷清单，详细现象见下方「完整报告（原始文档）」</span>`}</h2>${defectTableHtml(defects, r)}${communityIssuePanel(r.community)}</div>` : "";
     const secProblems = problems.length ? `<div class="section"><h2>${ico("bug")} 遇到的问题（${problems.length}）</h2>
       <table class="dtable"><colgroup><col style="width:40%"><col style="width:60%"></colgroup><thead><tr><th>问题</th><th>根因 / 解决</th></tr></thead><tbody>${
         problems.map(p => `<tr><td>${esc(p.title)}</td><td>${esc(p.source ? p.source + " — " : "")}${esc(p.detail || "")}</td></tr>`).join("")}</tbody></table></div>` : "";
@@ -615,12 +615,56 @@
   // 缺陷明细表（问题/级别/来源/现象·建议）——详情页与「点击缺陷数」弹窗共用
   const defSrcCell = d => { if (!d.source) return "—"; const um = (d.source.match(/https?:\/\/\S+/) || [])[0]; const url = d.sourceUrl || um || ""; return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(d.source)} ↗</a>` : esc(d.source); };
   const defDetCell = d => { const p = d.detail ? `<span class="def-ph">${esc(d.detail)}</span>` : "", s = d.suggestion ? `<div class="def-sug"><b>建议：</b>${esc(d.suggestion)}</div>` : ""; return (p || s) ? p + s : "—"; };
-  function defectTableHtml(defects) {
+  // ── 缺陷 ↔ 已提交 Issue 关联（issues.json）：按社区 + 来源URL + 强特征词(数字/英文) + 文本相似度模糊匹配 ──
+  const communityIssues = community => (state.issues || []).filter(i => (i.community || "").toLowerCase() === (community || "").toLowerCase());
+  const issueNorm = s => String(s || "").toLowerCase().replace(/[\s，。、,.:：；;（）()【】\[\]"“”\-_/|]+/g, "");
+  const issueBigrams = s => { const b = new Set(); for (let i = 0; i < s.length - 1; i++) b.add(s.slice(i, i + 2)); return b; };
+  function issueJac(a, b) { const A = issueBigrams(a), B = issueBigrams(b); if (!A.size || !B.size) return 0; let n = 0; A.forEach(x => { if (B.has(x)) n++; }); return n / (A.size + B.size - n); }
+  const strongToks = s => new Set((String(s || "").match(/\d+(?:\.\d+)+|\d{3,}|[A-Za-z][A-Za-z0-9+.]{2,}/g) || []).map(x => x.toLowerCase()));
+  const urlBase = u => { u = String(u || "").split("#")[0].split("?")[0].replace(/\/+$/, ""); return u.split("/").pop().toLowerCase(); };
+  function bestIssue(defect, community) {
+    const cis = communityIssues(community); if (!cis.length) return null;
+    const d = normDefect(defect);
+    const dtext = issueNorm(`${d.title} ${d.detail || ""} ${d.suggestion || ""}`);
+    const dstrong = strongToks(`${d.title} ${d.detail || ""} ${d.suggestion || ""}`);
+    const durl = urlBase(d.sourceUrl);
+    let best = null, bs = 0, sig = { sh: 0, urlm: 0 };
+    for (const i of cis) {
+      const text = issueJac(dtext, issueNorm(`${i.title || ""} ${i.symptom || ""}`));
+      const istrong = strongToks(`${i.title || ""} ${i.symptom || ""}`);
+      let sh = 0; dstrong.forEach(t => { if (istrong.has(t)) sh++; });
+      const urlm = durl && durl === urlBase(i.source_url) ? 1 : 0;
+      const score = 0.55 * text + 0.22 * Math.min(2, sh) + 0.18 * urlm + (d.level && d.level === i.level ? 0.03 : 0);
+      if (score > bs) { bs = score; best = i; sig = { sh, urlm }; }
+    }
+    return { issue: best, score: bs, confident: bs >= 0.4 && (sig.urlm > 0 || sig.sh >= 2) };
+  }
+  const issueBadge = i => `<a class="ist ${i.status === "closed" ? "closed" : "open"}" href="${esc(i.url || "")}" target="_blank" rel="noopener" title="${esc(i.title || "")}">${i.status === "closed" ? "已闭环" : "待处理"}${i.number ? " #" + esc(String(i.number)) : ""} ↗</a>`;
+
+  function defectTableHtml(defects, rec) {
+    const community = rec && rec.community;
+    const hasIssue = !!(community && communityIssues(community).length);
     const defs = defects.map(normDefect);
     const hasSrc = defs.some(d => d.source), hasDet = defs.some(d => d.detail || d.suggestion);
-    const cw = hasSrc && hasDet ? ["30%", "9%", "20%", "41%"] : hasDet ? ["34%", "10%", "56%"] : hasSrc ? ["48%", "12%", "40%"] : ["82%", "18%"];
-    return `<table class="dtable"><colgroup>${cw.map(w => `<col style="width:${w}">`).join("")}</colgroup><thead><tr><th>问题</th><th>级别</th>${hasSrc ? `<th>来源</th>` : ""}${hasDet ? `<th>现象 / 建议</th>` : ""}</tr></thead><tbody>${
-      defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}><td>${inline(d.title)}</td><td>${d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—"}</td>${hasSrc ? `<td class="def-src">${defSrcCell(d)}</td>` : ""}${hasDet ? `<td>${defDetCell(d)}</td>` : ""}</tr>`).join("")}</tbody></table>`;
+    const w = { lvl: 9, iss: hasIssue ? 13 : 0, src: hasSrc ? 18 : 0, det: hasDet ? 36 : 0 };
+    const wTitle = 100 - w.lvl - w.iss - w.src - w.det;
+    const cols = [{ h: "问题", cell: d => inline(d.title) }, { h: "级别", cell: d => d.level ? `<span class="lvl lvl-${esc(d.level)}">${esc(d.level)}</span>` : "—" }];
+    if (hasIssue) cols.push({ h: "关联 Issue", cell: d => { const m = bestIssue(d, community); return m && m.confident ? issueBadge(m.issue) : `<span class="ist-none">未匹配</span>`; } });
+    if (hasSrc) cols.push({ h: "来源", cls: "def-src", cell: d => defSrcCell(d) });
+    if (hasDet) cols.push({ h: "现象 / 建议", cell: d => defDetCell(d) });
+    const cw = [wTitle, w.lvl].concat(hasIssue ? [w.iss] : []).concat(hasSrc ? [w.src] : []).concat(hasDet ? [w.det] : []);
+    return `<table class="dtable"><colgroup>${cw.map(x => `<col style="width:${x}%">`).join("")}</colgroup><thead><tr>${cols.map(c => `<th>${c.h}</th>`).join("")}</tr></thead><tbody>${
+      defs.map(d => `<tr${d.anchor ? ` class="jumpable" data-anchor="rep-defect-${d.anchor}"` : ""}>${cols.map(c => `<td${c.cls ? ` class="${c.cls}"` : ""}>${c.cell(d)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  }
+  // 该社区已提交 Issue 面板（状态/级别/标题链接）——弹窗里给全量关联，弥补逐条模糊匹配的召回
+  function communityIssuePanel(community) {
+    const cis = communityIssues(community);
+    if (!cis.length) return "";
+    const closed = cis.filter(i => i.status === "closed").length;
+    const rows = cis.slice().sort((a, b) => (a.status === "closed") - (b.status === "closed") || (a.level || "").localeCompare(b.level || "")).map(i =>
+      `<tr><td>${issueBadge(i)}</td><td>${i.level ? `<span class="lvl lvl-${esc(i.level)}">${esc(i.level)}</span>` : "—"}</td><td><a href="${esc(i.url || "")}" target="_blank" rel="noopener">${esc(i.title || "")}</a></td></tr>`).join("");
+    return `<div class="ci-panel"><div class="ci-panel-h">${ico("bug")} 该社区已提交 Issue（${cis.length} 条 · <span class="s-succ">已闭环 ${closed}</span> · <span class="s-part">待处理 ${cis.length - closed}</span>）</div>
+      <table class="dtable"><colgroup><col style="width:16%"><col style="width:10%"><col style="width:74%"></colgroup><thead><tr><th>状态</th><th>级别</th><th>Issue 标题</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
   const defHasStruct = defects => defects.some(d => { const n = normDefect(d); return n.source || n.detail || n.suggestion; });
   // 点击表格「缺陷数」→ 弹窗看该记录具体是哪几个缺陷
@@ -632,7 +676,7 @@
       <div><h3>${ico("bug")} ${esc(rec.repo)} · 文档缺陷（${defs.length}）</h3>
         <div class="modal-sub">社区：${esc(rec.community)} · ${SCEN[rec.scenario] || rec.scenario} · ${esc(rec.date || "")}</div></div>
       <button class="modal-close" type="button" aria-label="关闭">✕</button></div>
-      <div class="modal-body">${defs.length ? defectTableHtml(defs) : `<div class="empty">该记录暂无结构化缺陷。</div>`}</div>
+      <div class="modal-body">${defs.length ? defectTableHtml(defs, rec) : `<div class="empty">该记录暂无结构化缺陷。</div>`}${communityIssuePanel(rec.community)}</div>
       <div class="modal-foot"><a href="#" class="modal-detail">查看完整报告 ›</a></div></div>`;
     document.body.appendChild(wrap);
     const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); };

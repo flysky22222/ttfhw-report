@@ -375,3 +375,14 @@ td.cmp { white-space: nowrap; vertical-align: middle; }
 .modal-foot { padding: 11px 20px; border-top: 1px solid var(--border); text-align: right; }
 .modal-detail { color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 600; }
 .modal-detail:hover { text-decoration: underline; }
+/* 缺陷 ↔ Issue 关联状态 */
+.ist { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 999px; text-decoration: none; white-space: nowrap; }
+.ist.closed { color: var(--success); background: var(--success-bg); }
+.ist.open { color: var(--partial); background: var(--partial-bg); }
+.ist:hover { text-decoration: underline; }
+.ist-none { color: var(--text-faint); font-size: 12px; }
+.ci-panel { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border); }
+.ci-panel-h { font-size: 13px; font-weight: 600; color: var(--text-dim); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+.ci-panel-h .ico { color: var(--accent); }
+.ci-panel a { color: var(--accent); text-decoration: none; }
+.ci-panel a:hover { text-decoration: underline; }
