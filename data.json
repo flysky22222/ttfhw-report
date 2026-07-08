@@ -12913,7 +12913,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
@@ -12925,7 +12925,7 @@
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
@@ -12994,7 +12994,7 @@
    ],
    "problems": [],
    "summary": "沿用 0401-0519 期代表运行 20260429-01，本地 RPM 构建场景",
-   "breakpoints": 3,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-06-openeuler-ttfhw-openeuler-rpm-build-20260429-01.md",
    "build": {},
    "test": {},
@@ -13090,19 +13090,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 38,
-     "breakpoints": 6
+     "breakpoints": 9
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 55,
@@ -13174,7 +13174,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，组件安装走 gitcode 文档路径",
-   "breakpoints": 8,
+   "breakpoints": 9,
    "reportFile": "reports/user/2026-06-cann-cann-manual-20260524-report.md",
    "build": {},
    "test": {},
@@ -13217,7 +13217,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 87,
@@ -13253,7 +13253,7 @@
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-19，MindSpore 2.9.0 CPU x86_64 安装与验证全程跑通",
-   "breakpoints": 4,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260523-19.md",
    "build": {},
    "test": {},
@@ -13325,7 +13325,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -13391,7 +13391,7 @@
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-39，docker 极简版安装",
-   "breakpoints": 3,
+   "breakpoints": 5,
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260523-39.md",
    "build": {},
    "test": {},
@@ -13515,25 +13515,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 27,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 14,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 51,
@@ -13570,7 +13570,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果",
-   "breakpoints": 7,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-06-openubmc-openubmc-manual-report-524.md",
    "build": {},
    "test": {},
@@ -13595,25 +13595,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 11,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 37,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 59,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 19,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 126,
@@ -13657,7 +13657,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，源码安装路径",
-   "breakpoints": 6,
+   "breakpoints": 5,
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-manual-20260524.md",
    "build": {},
    "test": {},
@@ -13682,7 +13682,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 18,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
@@ -13694,13 +13694,13 @@
      "name": "使用",
      "status": "success",
      "minutes": 78,
-     "breakpoints": 5
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 28,
-     "breakpoints": 8
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 130,
@@ -13758,7 +13758,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，使用阶段仍卡 HuggingFace 模型权重无国内渠道",
-   "breakpoints": 19,
+   "breakpoints": 7,
    "reportFile": "reports/user/2026-06-mindie-mindie-manual-report-0524.md",
    "build": {},
    "test": {},
@@ -13790,7 +13790,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 45,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -13847,7 +13847,7 @@
    ],
    "problems": [],
    "summary": "triton-ascend A2 NPU 安装场景，5/22 代表运行 20260522-04 部分成功（向量加法 max diff 0.0 通过，需绕过 requirements.txt 版本缺陷），4 处文档缺陷",
-   "breakpoints": 2,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-06-triton-ttfhw-triton-a2-npu-install-20260522-04.md",
    "build": {},
    "test": {},
@@ -13926,13 +13926,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 45,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -14001,7 +14001,7 @@
    ],
    "problems": [],
    "summary": "**新增社区**：tilelang-mlir-ascend A2 NPU 源码安装场景，6/7 代表运行 20260607-07 **成功**（CANN 8.5.2 + 源码构建 30 分钟，向量加法 NPU 结果与 PyTorch 完全一致）；此前 5 次运行迭代暴露完整断点链（github 直连不通 → 构建脚本强依赖 git repo → CANN 8.3.RC1.alpha002 的 bishengir-compile 参数不兼容），最终按 README News\"supports CANN 8.5\"换 8.5.2 镜像跑通；共 6 处文档缺陷（1 严重 / 3 重要 / 2 一般）",
-   "breakpoints": 1,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-06-tilelang-ttfhw-tilelang-a2-npu-install-20260607-07.md",
    "build": {},
    "test": {},
@@ -14095,7 +14095,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
@@ -14107,7 +14107,7 @@
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
@@ -14176,7 +14176,7 @@
    ],
    "problems": [],
    "summary": "沿用 0401-0519 期代表运行 20260429-01（本期无新增完整自动运行），本地 RPM 构建场景",
-   "breakpoints": 3,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-05-openeuler-ttfhw-openeuler-rpm-build-20260429-01.md",
    "build": {},
    "test": {},
@@ -14272,19 +14272,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 18,
-     "breakpoints": 6
+     "breakpoints": 9
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 58,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 35,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 119,
@@ -14356,7 +14356,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，组件安装走 gitcode 文档路径，较 0428 自动运行（285 分钟）大幅压缩",
-   "breakpoints": 8,
+   "breakpoints": 9,
    "reportFile": "reports/user/2026-05-cann-cann-manual-20260524-report.md",
    "build": {},
    "test": {},
@@ -14399,7 +14399,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 87,
@@ -14435,7 +14435,7 @@
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-19，MindSpore 2.9.0 CPU x86_64 安装与验证全程跑通",
-   "breakpoints": 4,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260523-19.md",
    "build": {},
    "test": {},
@@ -14507,7 +14507,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 35,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -14573,7 +14573,7 @@
    ],
    "problems": [],
    "summary": "5/23 完整自动运行 20260523-39，docker 极简版安装；与 5/3 代表运行口径一致",
-   "breakpoints": 3,
+   "breakpoints": 5,
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260523-39.md",
    "build": {},
    "test": {},
@@ -14697,25 +14697,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 27,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 14,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -14752,7 +14752,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，与 5/9 自动运行（166 分钟）相比因绕过认证步骤显著缩短",
-   "breakpoints": 7,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-05-openubmc-openubmc-manual-report-524.md",
    "build": {},
    "test": {},
@@ -14777,25 +14777,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 13,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 39,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 58,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 130,
@@ -14839,7 +14839,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，源码安装路径，模型适配判断归入安装阶段",
-   "breakpoints": 6,
+   "breakpoints": 5,
    "reportFile": "reports/user/2026-05-mindspeed-ttfhw-mindspeed-llm-manual-20260524.md",
    "build": {},
    "test": {},
@@ -14864,7 +14864,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
@@ -14876,13 +14876,13 @@
      "name": "使用",
      "status": "success",
      "minutes": 91,
-     "breakpoints": 5
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 30,
-     "breakpoints": 8
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 147,
@@ -14940,7 +14940,7 @@
    ],
    "problems": [],
    "summary": "5/24 人工执行最新结果，使用阶段仍卡 HuggingFace 模型权重无国内渠道，整体耗时较 0428（316 分钟）下降",
-   "breakpoints": 19,
+   "breakpoints": 7,
    "reportFile": "reports/user/2026-05-mindie-mindie-manual-report-0524.md",
    "build": {},
    "test": {},
@@ -14971,7 +14971,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 45,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -15028,7 +15028,7 @@
    ],
    "problems": [],
    "summary": "**新增社区**：triton-ascend A2 NPU 安装场景，5/22 代表运行 20260522-04 部分成功（向量加法 max diff 0.0 通过，需绕过 requirements.txt 版本缺陷），4 处文档缺陷",
-   "breakpoints": 2,
+   "breakpoints": 4,
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-install-20260522-04.md",
    "build": {},
    "test": {},
@@ -15107,19 +15107,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 45,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 65,
@@ -15149,7 +15149,7 @@
    ],
    "problems": [],
    "summary": "子报告第三阶段保持为“使用”，与统一口径一致",
-   "breakpoints": 0,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-04-openeuler-openEuler-contributor-manual-report.md",
    "build": {},
    "test": {},
@@ -15180,19 +15180,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 169,
-     "breakpoints": 5
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 94,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 35,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 307,
@@ -15243,7 +15243,7 @@
    ],
    "problems": [],
    "summary": "已将原先更接近安装闭环的问题和耗时归并到安装阶段",
-   "breakpoints": 7,
+   "breakpoints": 6,
    "reportFile": "reports/user/2026-04-cann-cann-manual-20260409-report.md",
    "build": {},
    "test": {},
@@ -15274,19 +15274,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 96,
-     "breakpoints": 0
+     "breakpoints": 7
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 68,
-     "breakpoints": 8
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 35,
-     "breakpoints": 7
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 210,
@@ -15344,7 +15344,7 @@
    ],
    "problems": [],
    "summary": "已将框架安装与环境准备并入安装阶段，使用阶段聚焦兼容修复与推理验证",
-   "breakpoints": 15,
+   "breakpoints": 7,
    "reportFile": "reports/user/2026-04-mindspore-mindspore-manual-report.md",
    "build": {},
    "test": {},
@@ -15375,7 +15375,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 21,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -15387,7 +15387,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 3
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 49,
@@ -15417,7 +15417,7 @@
    ],
    "problems": [],
    "summary": "已按“容器安装完成”为安装阶段结束点，将 SQL 验证归入使用阶段",
-   "breakpoints": 4,
+   "breakpoints": 3,
    "reportFile": "reports/user/2026-04-opengauss-opengauss-manual-report.md",
    "build": {},
    "test": {},
@@ -15448,13 +15448,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 180,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -15504,7 +15504,7 @@
    ],
    "problems": [],
    "summary": "子报告第三阶段保持为“使用”，与统一口径一致",
-   "breakpoints": 6,
+   "breakpoints": 5,
    "reportFile": "reports/user/2026-04-openubmc-openubmc-manual-report.md",
    "build": {},
    "test": {},
@@ -15535,7 +15535,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 122,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -15584,7 +15584,7 @@
    ],
    "problems": [],
    "summary": "已将模型适配判断并回安装阶段，了解阶段仅保留文档定位与阅读",
-   "breakpoints": 0,
+   "breakpoints": 4,
    "reportFile": "",
    "build": {},
    "test": {},
@@ -15614,19 +15614,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 340,
-     "breakpoints": 6
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 150,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 40,
-     "breakpoints": 0
+     "breakpoints": 2
     }
    ],
    "totalMinutes": 548,
@@ -15670,7 +15670,7 @@
    ],
    "problems": [],
    "summary": "已将原先更接近安装闭环的问题和耗时归并到安装阶段；贡献阶段按 8 个问题统计",
-   "breakpoints": 8,
+   "breakpoints": 5,
    "reportFile": "reports/user/2026-04-mindie-mindie-manual-report.md",
    "build": {},
    "test": {},
@@ -17366,7 +17366,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 150,
-     "breakpoints": 3
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -17378,7 +17378,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 285,
@@ -17390,7 +17390,7 @@
    "reportFile": "reports/user/2026-04-cann-ttfhw-cann-a2-offline-install-20260428-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -17555,7 +17555,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 38,
-     "breakpoints": 2
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -17579,7 +17579,7 @@
    "reportFile": "reports/user/2026-06-cann-ttfhw-cann-a2-offline-install-20260617-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 7,
    "rep": true,
    "envRows": [
     [
@@ -17736,13 +17736,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 7
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -17760,7 +17760,7 @@
    "reportFile": "reports/user/2026-06-cann-ttfhw-cann-a2-offline-install-20260617-03.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 8
   },
   {
    "scenario": "user",
@@ -17826,13 +17826,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 120,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 135,
-     "breakpoints": 3
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -17850,7 +17850,7 @@
    "reportFile": "reports/user/2026-04-mindie-ttfhw-mindie-llm-install-20260428-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -17993,13 +17993,13 @@
      "name": "安装",
      "status": "failed",
      "minutes": 20,
-     "breakpoints": 6
+     "breakpoints": 7
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -18197,25 +18197,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 20,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "partial",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -18357,7 +18357,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -18381,7 +18381,7 @@
    "reportFile": "reports/user/2026-05-mindspeed-ttfhw-mindspeed-llm-install-20260525-21.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 2
   },
   {
    "scenario": "user",
@@ -18483,13 +18483,13 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 10
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
@@ -18507,7 +18507,7 @@
    "reportFile": "reports/user/2026-05-mindspeed-ttfhw-mindspeed-llm-install-20260526-22.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 12
   },
   {
    "scenario": "user",
@@ -18635,13 +18635,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 28,
-     "breakpoints": 3
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 7,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -18659,7 +18659,7 @@
    "reportFile": "reports/user/2026-05-mindspeed-ttfhw-mindspeed-llm-install-20260528-24.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 5,
    "envRows": [
     [
      "测试节点",
@@ -18795,13 +18795,13 @@
      "name": "安装",
      "status": "failed",
      "minutes": 35,
-     "breakpoints": 3
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 3,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -18819,7 +18819,7 @@
    "reportFile": "reports/user/2026-05-mindspeed-mindspeed-llm-install-20260529-25.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -18921,13 +18921,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 40,
-     "breakpoints": 2
+     "breakpoints": 7
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -18945,7 +18945,7 @@
    "reportFile": "reports/user/2026-05-mindspeed-ttfhw-mindspeed-llm-install-20260530-26.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 8,
    "envRows": [
     [
      "执行模式",
@@ -19305,19 +19305,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 10,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 3
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 23,
@@ -19329,7 +19329,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260609-36.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -19514,13 +19514,13 @@
      "name": "了解",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -19544,7 +19544,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260611-38.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 2
   },
   {
    "scenario": "user",
@@ -19619,7 +19619,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 22,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -19643,7 +19643,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260612-39.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -19795,13 +19795,13 @@
      "name": "安装",
      "status": "failed",
      "minutes": 45,
-     "breakpoints": 3
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -19819,7 +19819,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-mindspeed-llm-install-20260613-40.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -19894,19 +19894,19 @@
      "name": "安装",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 5
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 20,
@@ -19918,7 +19918,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260614-41.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 7
+   "breakpoints": 5
   },
   {
    "scenario": "user",
@@ -20101,7 +20101,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 8
     },
     {
      "name": "使用",
@@ -20125,7 +20125,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260616-43.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 8,
    "ops": [
     {
      "phase": "阶段二: 获取/安装（phase2-install.log 头）",
@@ -20205,7 +20205,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 37,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -20229,7 +20229,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-20260617-44.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -20368,7 +20368,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 8
     },
     {
      "name": "使用",
@@ -20392,7 +20392,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260619-46.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 8
   },
   {
    "scenario": "user",
@@ -20534,7 +20534,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -20546,7 +20546,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 17,
@@ -20558,7 +20558,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260621-48.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 5,
    "envRows": [
     [
      "k8s Namespace",
@@ -20896,19 +20896,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 18,
@@ -20920,7 +20920,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260625-52.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 7,
    "envRows": [
     [
      "执行模式",
@@ -21006,7 +21006,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -21030,7 +21030,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260626-53.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 2
   },
   {
    "scenario": "user",
@@ -21105,13 +21105,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 37,
-     "breakpoints": 2
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 59,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -21129,7 +21129,7 @@
    "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260627-54.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 5,
    "rep": true,
    "envRows": [
     [
@@ -21263,7 +21263,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -21287,7 +21287,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260504-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -21433,7 +21433,7 @@
      "name": "使用",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -21451,7 +21451,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260507-03.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -21576,7 +21576,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 28,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -21600,7 +21600,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260508-04.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "ops": [
     {
      "phase": "阶段一 · 了解",
@@ -21673,7 +21673,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -21685,7 +21685,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 28,
@@ -21697,7 +21697,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260509-05.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 1,
    "envRows": [
     [
      "k8s Namespace",
@@ -21914,7 +21914,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 13
     },
     {
      "name": "使用",
@@ -21938,7 +21938,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260510-06.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 13
   },
   {
    "scenario": "user",
@@ -22007,7 +22007,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 75,
@@ -22019,7 +22019,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260511-07.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -22167,7 +22167,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -22179,7 +22179,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260512-08.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -22495,7 +22495,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "使用",
@@ -22519,7 +22519,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260515-11.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 0,
    "ops": [
     {
      "phase": "阶段一: 了解（phase1-understand.log 头）",
@@ -22689,13 +22689,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "贡献",
@@ -22713,7 +22713,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260517-13.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -22788,7 +22788,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 30,
-     "breakpoints": 3
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -22800,7 +22800,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 55,
@@ -22812,7 +22812,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260518-14.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -22932,19 +22932,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 17,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 11,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "unknown",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 40,
@@ -23088,13 +23088,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -23106,7 +23106,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 1,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 10,
@@ -23118,7 +23118,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260520-16.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -23252,7 +23252,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -23276,7 +23276,7 @@
    "reportFile": "reports/user/2026-05-mindspore-20260521-17.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -23333,7 +23333,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -23345,7 +23345,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 25,
@@ -23507,7 +23507,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 40,
@@ -23519,7 +23519,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260523-19.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -23636,7 +23636,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 30,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -23660,7 +23660,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260524-20.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 5,
    "envRows": [
     [
      "目标硬件",
@@ -23770,13 +23770,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -23900,7 +23900,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "使用",
@@ -23924,7 +23924,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260526-22.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 0,
    "ops": [
     {
      "phase": "阶段一: 了解（phase1-understand.log 头）",
@@ -23999,13 +23999,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -24128,13 +24128,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 18,
-     "breakpoints": 2
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 19,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -24152,7 +24152,7 @@
    "reportFile": "reports/user/2026-05-mindspore-20260528-24.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -24293,13 +24293,13 @@
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 35,
@@ -24311,7 +24311,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260530-26.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -24425,13 +24425,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 1,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 3
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -24443,7 +24443,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 20,
@@ -24455,7 +24455,7 @@
    "reportFile": "reports/user/2026-05-mindspore-ttfhw-mindspore-cpu-install-20260531-27.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -24611,13 +24611,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 12,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -24742,19 +24742,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 33,
@@ -24766,7 +24766,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260607-34.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -24917,7 +24917,7 @@
      "name": "安装",
      "status": "failed",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -24929,7 +24929,7 @@
      "name": "贡献",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 33,
@@ -24941,7 +24941,7 @@
    "reportFile": "reports/user/2026-06-mindspore-mindspore-cpu-install-20260608-35.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -24989,7 +24989,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -25001,7 +25001,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 25,
@@ -25067,7 +25067,7 @@
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -25085,7 +25085,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260610-37.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -25210,7 +25210,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 18,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -25222,7 +25222,7 @@
      "name": "贡献",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 36,
@@ -25234,7 +25234,7 @@
    "reportFile": "reports/user/2026-06-mindspore-20260611-38.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2
+   "breakpoints": 3
   },
   {
    "scenario": "user",
@@ -25402,13 +25402,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "安装",
      "status": "partial",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 14
     },
     {
      "name": "使用",
@@ -25432,7 +25432,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260612-39.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 16,
    "ops": [
     {
      "phase": "阶段一: 了解 (成功)",
@@ -25498,7 +25498,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -25522,7 +25522,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260613-40.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -25663,13 +25663,13 @@
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 24,
@@ -25681,7 +25681,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260614-41.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -25827,7 +25827,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -25839,7 +25839,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 26,
@@ -25851,7 +25851,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260615-42.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -25994,7 +25994,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 35,
-     "breakpoints": 5
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -26018,7 +26018,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260616-43.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -26225,7 +26225,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 11
     },
     {
      "name": "使用",
@@ -26249,7 +26249,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260617-44.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 11
   },
   {
    "scenario": "user",
@@ -26288,7 +26288,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -26312,7 +26312,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260618-45.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 1,
    "ops": [
     {
      "phase": "阶段一：了解",
@@ -26456,7 +26456,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -26480,7 +26480,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260620-47.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 3,
    "envRows": [
     [
      "测试社区",
@@ -26660,13 +26660,13 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 8
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -26684,7 +26684,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260621-48.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 9
   },
   {
    "scenario": "user",
@@ -26720,19 +26720,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 1,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 1,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 19,
@@ -26744,7 +26744,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260622-49.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 1,
    "ops": [
     {
      "phase": "阶段一:了解",
@@ -26905,7 +26905,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 12
     },
     {
      "name": "使用",
@@ -26929,7 +26929,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260623-50.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 12
   },
   {
    "scenario": "user",
@@ -27057,7 +27057,7 @@
      "name": "安装",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -27081,7 +27081,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260625-52.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 3
   },
   {
    "scenario": "user",
@@ -27197,13 +27197,13 @@
      "name": "使用",
      "status": "failed",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "not_run",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 28,
@@ -27215,7 +27215,7 @@
    "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260627-54.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 3,
    "envRows": [
     [
      "Pod 名称",
@@ -27441,13 +27441,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 25,
-     "breakpoints": 1
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -27465,7 +27465,7 @@
    "reportFile": "reports/user/2026-04-mindspore-ttfhw-mindspore-install-20260429-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -27600,19 +27600,19 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 120,
-     "breakpoints": 2
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -27630,7 +27630,7 @@
    "reportFile": "reports/user/2026-06-tilelang-ttfhw-tilelang-a2-npu-install-20260607-03.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -27739,7 +27739,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
@@ -27769,7 +27769,7 @@
    "reportFile": "reports/user/2026-06-tilelang-ttfhw-tilelang-a2-npu-install-${DATE_NN}.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 0
   },
   {
    "scenario": "user",
@@ -27829,7 +27829,7 @@
      "name": "安装",
      "status": "unknown",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -27853,7 +27853,7 @@
    "reportFile": "reports/user/2026-06-tilelang-ttfhw-tilelang-a2-npu-install-20260607-05.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 5,
    "envRows": [
     [
      "测试镜像",
@@ -27988,13 +27988,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 45,
-     "breakpoints": 0
+     "breakpoints": 7
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -28012,7 +28012,7 @@
    "reportFile": "reports/user/2026-06-tilelang-20260607-07.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 7
   },
   {
    "scenario": "user",
@@ -28204,7 +28204,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -28216,7 +28216,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 79,
@@ -28228,7 +28228,7 @@
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-dev-20260531-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 4,
    "envRows": [
     [
      "驱动方式",
@@ -28375,7 +28375,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 40,
-     "breakpoints": 0
+     "breakpoints": 9
     },
     {
      "name": "使用",
@@ -28387,7 +28387,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 120,
@@ -28399,7 +28399,7 @@
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-dev-20260531-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 9,
    "envRows": [
     [
      "驱动方式",
@@ -28567,7 +28567,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -28579,7 +28579,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 29,
@@ -28591,7 +28591,7 @@
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-dev-20260531-06.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行方式",
@@ -28719,7 +28719,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -28743,7 +28743,7 @@
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-install-20260522-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 6,
    "envRows": [
     [
      "目标硬件",
@@ -28870,7 +28870,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 45,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -28894,7 +28894,7 @@
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-install-20260522-04.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 4,
    "envRows": [
     [
      "Kubernetes Namespace",
@@ -29056,7 +29056,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 90,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -29080,7 +29080,7 @@
    "reportFile": "reports/user/2026-05-triton-ttfhw-triton-a2-npu-install-20260531-06.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "Kubernetes Namespace",
@@ -29240,13 +29240,13 @@
      "name": "安装",
      "status": "failed",
      "minutes": 25,
-     "breakpoints": 2
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -29264,7 +29264,7 @@
    "reportFile": "reports/user/2026-06-hpckit-ttfhw-hpckit-user-install-verify-20260617-11.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 7,
    "envRows": [
     [
      "执行模式",
@@ -29476,13 +29476,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 11
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
@@ -29500,7 +29500,7 @@
    "reportFile": "reports/user/2026-06-mindcluster-ttfhw-mindcluster-user-install-verify-20260615-08.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 13
   },
   {
    "scenario": "user",
@@ -29667,25 +29667,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 30,
-     "breakpoints": 3
+     "breakpoints": 0
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 60,
@@ -29697,7 +29697,7 @@
    "reportFile": "reports/user/2026-06-mindsdk-mindsdk-user-install-verify-20260615-07.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5
+   "breakpoints": 1
   },
   {
    "scenario": "user",
@@ -29763,19 +29763,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 2
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 55,
@@ -29787,7 +29787,7 @@
    "reportFile": "reports/user/2026-06-mindstudio-mindstudio-user-install-verify-20260615-06.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -29862,13 +29862,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 30,
-     "breakpoints": 7
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -29886,7 +29886,7 @@
    "reportFile": "reports/user/2026-06-ms-swift-ttfhw-ms-swift-user-install-verify-20260615-04.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 9,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -30029,19 +30029,19 @@
      "name": "了解",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
@@ -30059,7 +30059,7 @@
    "reportFile": "reports/user/2026-04-openeuler-ttfhw-openeuler-rpm-build-20260429-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -30203,7 +30203,7 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
@@ -30215,13 +30215,13 @@
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -30233,7 +30233,7 @@
    "reportFile": "reports/user/2026-04-openeuler-ttfhw-openeuler-rpm-build-20260429-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -30374,19 +30374,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     }
    ],
    "totalMinutes": 50,
@@ -30398,7 +30398,7 @@
    "reportFile": "reports/user/2026-06-openeuler-ttfhw-openeuler-rpm-build-20260617-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 5,
    "rep": true,
    "envRows": [
     [
@@ -30494,7 +30494,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 7,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -30506,7 +30506,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 7,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 21,
@@ -30518,7 +30518,7 @@
    "reportFile": "reports/user/2026-04-opengauss-ttfhw-opengauss-docker-install-20260430-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -30660,13 +30660,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -30678,7 +30678,7 @@
      "name": "贡献",
      "status": "failed",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 12,
@@ -30690,7 +30690,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-docker-install-v2-20260501-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -30811,13 +30811,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -30835,7 +30835,7 @@
    "reportFile": "reports/user/2026-04-opengauss-ttfhw-opengauss-hello-world-20260428-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -30969,13 +30969,13 @@
      "name": "安装",
      "status": "failed",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -30993,7 +30993,7 @@
    "reportFile": "reports/user/2026-04-opengauss-ttfhw-opengauss-install-20260430-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -31147,19 +31147,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 30,
-     "breakpoints": 3
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "unknown",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 70,
@@ -31319,25 +31319,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 28,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 16,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 3
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 64,
@@ -31490,7 +31490,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -31502,7 +31502,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 28,
@@ -31514,7 +31514,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260502-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -31662,7 +31662,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -31674,7 +31674,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 21,
@@ -31686,7 +31686,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260502-03.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -31824,7 +31824,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 45,
-     "breakpoints": 4
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -31848,7 +31848,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260503-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -32010,13 +32010,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 3
+     "breakpoints": 7
     },
     {
      "name": "使用",
@@ -32028,7 +32028,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -32040,7 +32040,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260503-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6,
+   "breakpoints": 7,
    "envRows": [
     [
      "执行模式",
@@ -32142,13 +32142,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -32307,7 +32307,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -32331,7 +32331,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260503-05.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 4,
    "envRows": [
     [
      "Namespace",
@@ -32406,13 +32406,13 @@
      "name": "了解",
      "status": "failed",
      "minutes": 30,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -32558,13 +32558,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -32576,7 +32576,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -32588,7 +32588,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260504-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -32739,13 +32739,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -32769,7 +32769,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260504-05.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -32944,7 +32944,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 9
     },
     {
      "name": "使用",
@@ -32968,7 +32968,7 @@
    "reportFile": "reports/user/2026-05-opengauss-opengauss-jijian-docker-install-v1-20260507-18.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 9
   },
   {
    "scenario": "user",
@@ -33028,25 +33028,25 @@
      "name": "了解",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "unknown",
      "minutes": 0,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 27,
@@ -33058,7 +33058,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260507-19.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -33179,7 +33179,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -33203,7 +33203,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260507-21.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -33343,7 +33343,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -33355,7 +33355,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 10,
@@ -33367,7 +33367,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260507-22.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -33523,7 +33523,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 0
+     "breakpoints": 7
     },
     {
      "name": "使用",
@@ -33547,7 +33547,7 @@
    "reportFile": "reports/user/2026-05-opengauss-20260508-23.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 7
   },
   {
    "scenario": "user",
@@ -33622,7 +33622,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -33634,7 +33634,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 23,
@@ -33646,7 +33646,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260508-24.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -33783,7 +33783,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -33807,7 +33807,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260509-25.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 4,
    "ops": [
     {
      "phase": "阶段一：了解",
@@ -33895,7 +33895,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -33907,7 +33907,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -33919,7 +33919,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260510-26.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -34045,7 +34045,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -34057,7 +34057,7 @@
      "name": "贡献",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 55,
@@ -34069,7 +34069,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260511-27.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -34198,7 +34198,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -34210,7 +34210,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 28,
@@ -34358,7 +34358,7 @@
      "name": "了解",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
@@ -34370,7 +34370,7 @@
      "name": "使用",
      "status": "failed",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -34388,7 +34388,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260513-29.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6,
+   "breakpoints": 4,
    "envRows": [
     [
      "k8s Namespace",
@@ -34518,19 +34518,19 @@
      "name": "了解",
      "status": "failed",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 3
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 0,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -34548,7 +34548,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260514-30.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6,
+   "breakpoints": 5,
    "envRows": [
     [
      "k8s Namespace",
@@ -34780,7 +34780,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -34792,7 +34792,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 32,
@@ -34944,7 +34944,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -34968,7 +34968,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260517-33.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -35110,13 +35110,13 @@
      "name": "了解",
      "status": "partial",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -35240,25 +35240,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 7,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 1,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
      "status": "partial",
      "minutes": 1,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 12,
@@ -35270,7 +35270,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260519-35.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 6,
    "ops": [
     {
      "phase": "阶段一: 了解",
@@ -35375,7 +35375,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -35399,7 +35399,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260520-36.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -35548,7 +35548,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -35560,7 +35560,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 31,
@@ -35572,7 +35572,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260521-37.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -35708,13 +35708,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -35726,7 +35726,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 31,
@@ -35738,7 +35738,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260522-38.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -35897,7 +35897,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -35921,7 +35921,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260523-39.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -36078,7 +36078,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -36102,7 +36102,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260524-40.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 3,
    "envRows": [
     [
      "k8s Namespace",
@@ -36240,7 +36240,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -36264,7 +36264,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260525-41.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -36380,7 +36380,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -36392,7 +36392,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 33,
@@ -36404,7 +36404,7 @@
    "reportFile": "reports/user/2026-05-opengauss-20260526-42.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2
+   "breakpoints": 3
   },
   {
    "scenario": "user",
@@ -36464,13 +36464,13 @@
      "name": "了解",
      "status": "failed",
      "minutes": 8,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -36494,7 +36494,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260527-43.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 4,
    "envRows": [
     [
      "测试 Pod",
@@ -36611,13 +36611,13 @@
      "name": "了解",
      "status": "failed",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -36641,7 +36641,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260528-44.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -36762,19 +36762,19 @@
      "name": "了解",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "partial",
      "minutes": 30,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -36792,7 +36792,7 @@
    "reportFile": "reports/user/2026-05-opengauss-20260529-45.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -36849,7 +36849,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 20,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -36873,7 +36873,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260530-46.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -37023,13 +37023,13 @@
      "name": "了解",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 2
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -37041,7 +37041,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -37053,7 +37053,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260531-47.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -37180,7 +37180,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 20,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -37192,7 +37192,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 43,
@@ -37332,7 +37332,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 25,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -37356,7 +37356,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260607-54.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -37482,7 +37482,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -37494,7 +37494,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 12,
@@ -37506,7 +37506,7 @@
    "reportFile": "reports/user/2026-06-opengauss-20260608-55.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 3
   },
   {
    "scenario": "user",
@@ -37557,13 +37557,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -37587,7 +37587,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260609-56.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -37730,13 +37730,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 4,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -37760,7 +37760,7 @@
    "reportFile": "reports/user/2026-06-opengauss-20260610-57.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -37826,7 +37826,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -37850,7 +37850,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260611-58.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -38021,7 +38021,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 2
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -38033,7 +38033,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 35,
@@ -38045,7 +38045,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260612-59.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -38232,7 +38232,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -38244,7 +38244,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 40,
@@ -38391,7 +38391,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -38415,7 +38415,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260615-62.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -38562,7 +38562,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -38574,7 +38574,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 31,
@@ -38586,7 +38586,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260616-63.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 4,
    "rep": true,
    "envRows": [
     [
@@ -38699,7 +38699,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 45,
@@ -38711,7 +38711,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260617-64.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 0,
    "envRows": [
     [
      "k8s Namespace",
@@ -38789,7 +38789,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -38813,7 +38813,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260618-66.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "k8s 集群",
@@ -39130,7 +39130,7 @@
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -39148,7 +39148,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260621-69.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 3,
    "envRows": [
     [
      "Kubernetes Namespace",
@@ -39288,7 +39288,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -39312,7 +39312,7 @@
    "reportFile": "reports/user/2026-06-opengauss-20260622-70.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -39360,7 +39360,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -39384,7 +39384,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260623-71.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "Pod 类型",
@@ -39537,13 +39537,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 30,
-     "breakpoints": 5
+     "breakpoints": 2
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -39567,7 +39567,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260624-72.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 5,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -39715,13 +39715,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -39745,7 +39745,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260625-73.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -39833,7 +39833,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -39857,7 +39857,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260626-74.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 1,
    "ops": [
     {
      "phase": "阶段一：了解",
@@ -39929,13 +39929,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -39947,7 +39947,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 19,
@@ -39959,7 +39959,7 @@
    "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260627-75.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -40264,19 +40264,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 27,
@@ -40288,7 +40288,7 @@
    "reportFile": "reports/user/2026-05-opengauss-ttfhw-opengauss-lite-install-v2-20260501-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -40439,25 +40439,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "partial",
      "minutes": 20,
-     "breakpoints": 3
+     "breakpoints": 6
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 3
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 50,
@@ -40469,7 +40469,7 @@
    "reportFile": "reports/user/2026-04-openubmc-ttfhw-openubmc-build-20260428-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 8,
+   "breakpoints": 6,
    "envRows": [
     [
      "执行模式",
@@ -40610,7 +40610,7 @@
      "name": "安装",
      "status": "failed",
      "minutes": 45,
-     "breakpoints": 4
+     "breakpoints": 5
     },
     {
      "name": "使用",
@@ -40634,7 +40634,7 @@
    "reportFile": "reports/user/2026-04-openubmc-ttfhw-openubmc-build-20260429-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -40758,7 +40758,7 @@
      "name": "安装",
      "status": "failed",
      "minutes": 30,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -40782,7 +40782,7 @@
    "reportFile": "reports/user/2026-05-openubmc-TTFHW-20260504-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -40839,7 +40839,7 @@
      "name": "安装",
      "status": "unknown",
      "minutes": 42,
-     "breakpoints": 1
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -40863,7 +40863,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-build-from-source-20260617-04.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "测试 Pod",
@@ -40990,7 +40990,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 20,
@@ -41002,7 +41002,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-build-from-source-20260617-05.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 4,
+   "breakpoints": 3,
    "envRows": [
     [
      "测试 Pod",
@@ -41114,7 +41114,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 60,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -41126,7 +41126,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 95,
@@ -41138,7 +41138,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-docker-env-allpaths-20260508-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -41239,7 +41239,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 30,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -41251,7 +41251,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 41,
@@ -41263,7 +41263,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-docker-env-fullcoverage-20260508-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 1,
    "ops": [
     {
      "phase": "阶段一: 了解",
@@ -41493,7 +41493,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -41505,7 +41505,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 13,
@@ -41517,7 +41517,7 @@
    "reportFile": "reports/user/2026-05-openubmc-20260506-01.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -41733,13 +41733,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -41757,7 +41757,7 @@
    "reportFile": "reports/user/2026-05-openubmc-20260510-07.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2
+   "breakpoints": 1
   },
   {
    "scenario": "user",
@@ -41793,7 +41793,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -41817,7 +41817,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260511-08.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 1,
    "envRows": [
     [
      "k8s Namespace",
@@ -41908,25 +41908,25 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 35,
@@ -42092,7 +42092,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -42116,7 +42116,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260514-11.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 3,
    "envRows": [
     [
      "测试社区",
@@ -42299,19 +42299,19 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 33,
@@ -42490,7 +42490,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 8
     },
     {
      "name": "使用",
@@ -42502,7 +42502,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 40,
@@ -42514,7 +42514,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260517-14.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 8,
    "envRows": [
     [
      "执行模式",
@@ -42634,13 +42634,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 8,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -42652,7 +42652,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 31,
@@ -42664,7 +42664,7 @@
    "reportFile": "reports/user/2026-05-openubmc-20260518-15.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1
+   "breakpoints": 5
   },
   {
    "scenario": "user",
@@ -42712,7 +42712,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -42736,7 +42736,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260519-16.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "Kubernetes Namespace",
@@ -42897,7 +42897,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 1,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -42921,7 +42921,7 @@
    "reportFile": "reports/user/2026-05-openubmc-20260521-18.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -43025,7 +43025,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 30,
@@ -43037,7 +43037,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260523-20.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 1,
    "ops": [
     {
      "phase": "阶段一：了解",
@@ -43111,7 +43111,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 1,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 11,
@@ -43123,7 +43123,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260524-21.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 0,
    "ops": [
     {
      "phase": "阶段一：了解",
@@ -43202,7 +43202,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -43226,7 +43226,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260525-22.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -43362,7 +43362,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -43386,7 +43386,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260526-23.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -43494,13 +43494,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -43524,7 +43524,7 @@
    "reportFile": "reports/user/2026-05-openubmc-20260527-24.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -43668,13 +43668,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
@@ -43692,7 +43692,7 @@
    "reportFile": "reports/user/2026-05-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260529-26.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -43797,7 +43797,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 3
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -43809,7 +43809,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 33,
@@ -43914,19 +43914,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 35,
-     "breakpoints": 4
+     "breakpoints": 7
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 2
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "unknown",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 85,
@@ -43997,7 +43997,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -44021,7 +44021,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260601-29.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 1,
    "ops": [
     {
      "phase": "阶段一：了解",
@@ -44109,7 +44109,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -44133,7 +44133,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260607-35.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 4,
    "envRows": [
     [
      "执行模式",
@@ -44235,7 +44235,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "使用",
@@ -44247,7 +44247,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 1,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 11,
@@ -44259,7 +44259,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260608-36.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2,
+   "breakpoints": 0,
    "envRows": [
     [
      "Kubernetes 版本",
@@ -44384,13 +44384,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -44402,7 +44402,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 1,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 7,
@@ -44414,7 +44414,7 @@
    "reportFile": "reports/user/2026-06-openubmc-20260609-37.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3
+   "breakpoints": 6
   },
   {
    "scenario": "user",
@@ -44468,7 +44468,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -44492,7 +44492,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260610-38.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 4,
    "ops": [
     {
      "phase": "阶段一: 了解",
@@ -44574,19 +44574,19 @@
      "name": "安装",
      "status": "partial",
      "minutes": 10,
-     "breakpoints": 2
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "partial",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 23,
@@ -44673,13 +44673,13 @@
      "name": "安装",
      "status": "failed",
      "minutes": 4,
-     "breakpoints": 0
+     "breakpoints": 4
     },
     {
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -44697,7 +44697,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260613-41.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 5,
    "ops": [
     {
      "phase": "阶段一 · 了解",
@@ -44781,13 +44781,13 @@
      "name": "使用",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "贡献",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 35,
@@ -44799,7 +44799,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260614-42.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -44932,7 +44932,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -44956,7 +44956,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260615-43.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 2,
    "envRows": [
     [
      "执行模式",
@@ -45155,13 +45155,13 @@
      "name": "安装",
      "status": "success",
      "minutes": 27,
-     "breakpoints": 0
+     "breakpoints": 5
     },
     {
      "name": "使用",
      "status": "success",
      "minutes": 14,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "贡献",
@@ -45179,7 +45179,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260616-44.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 11,
    "rep": true
   },
   {
@@ -45281,13 +45281,13 @@
      "name": "了解",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 4
     },
     {
      "name": "使用",
@@ -45311,7 +45311,7 @@
    "reportFile": "reports/user/2026-06-openubmc-20260619-46.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 2
+   "breakpoints": 4
   },
   {
    "scenario": "user",
@@ -45362,13 +45362,13 @@
      "name": "了解",
      "status": "success",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
      "status": "success",
      "minutes": 10,
-     "breakpoints": 2
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -45549,7 +45549,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -45561,7 +45561,7 @@
      "name": "贡献",
      "status": "unknown",
      "minutes": 5,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 35,
@@ -45573,7 +45573,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260622-49.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 1,
+   "breakpoints": 3,
    "envRows": [
     [
      "执行模式",
@@ -45690,7 +45690,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 6,
-     "breakpoints": 0
+     "breakpoints": 3
     },
     {
      "name": "使用",
@@ -45714,7 +45714,7 @@
    "reportFile": "reports/user/2026-06-openubmc-20260623-50.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0
+   "breakpoints": 3
   },
   {
    "scenario": "user",
@@ -45798,7 +45798,7 @@
      "name": "安装",
      "status": "partial",
      "minutes": 0,
-     "breakpoints": 0
+     "breakpoints": 6
     },
     {
      "name": "使用",
@@ -45822,7 +45822,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260624-51.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 6,
    "envRows": [
     [
      "测试 Pod",
@@ -45904,7 +45904,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 5,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -45916,7 +45916,7 @@
      "name": "贡献",
      "status": "partial",
      "minutes": 2,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 20,
@@ -46129,7 +46129,7 @@
      "name": "了解",
      "status": "partial",
      "minutes": 15,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "安装",
@@ -46141,7 +46141,7 @@
      "name": "使用",
      "status": "not_run",
      "minutes": 0,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -46159,7 +46159,7 @@
    "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260627-54.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 3,
+   "breakpoints": 1,
    "envRows": [
     [
      "执行模式",
@@ -46260,13 +46260,13 @@
      "name": "安装",
      "status": "partial",
      "minutes": 45,
-     "breakpoints": 6
+     "breakpoints": 1
     },
     {
      "name": "使用",
      "status": "failed",
      "minutes": 10,
-     "breakpoints": 1
+     "breakpoints": 0
     },
     {
      "name": "贡献",
@@ -46284,7 +46284,7 @@
    "reportFile": "reports/user/2026-06-sglang-ttfhw-sglang-user-install-verify-20260615-02.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 7,
+   "breakpoints": 1,
    "envRows": [
     [
      "测试 Pod",
@@ -46437,7 +46437,7 @@
      "name": "使用",
      "status": "partial",
      "minutes": 5,
-     "breakpoints": 2
+     "breakpoints": 1
     },
     {
      "name": "贡献",
@@ -46455,7 +46455,7 @@
    "reportFile": "reports/user/2026-06-verl-ttfhw-verl-user-install-verify-20260615-03.md",
    "url": "",
    "sampleMinutes": 0,
-   "breakpoints": 6,
+   "breakpoints": 5,
    "envRows": [
     [
      "执行模式",
@@ -46674,7 +46674,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 9,
-     "breakpoints": 1
+     "breakpoints": 2
     },
     {
      "name": "使用",
@@ -46686,7 +46686,7 @@
      "name": "贡献",
      "status": "success",
      "minutes": 3,
-     "breakpoints": 1
+     "breakpoints": 0
     }
    ],
    "totalMinutes": 19,
@@ -46735,7 +46735,7 @@
      "name": "安装",
      "status": "success",
      "minutes": 12,
-     "breakpoints": 0
+     "breakpoints": 1
     },
     {
      "name": "使用",
@@ -46759,7 +46759,7 @@
    "reportFile": "reports/user/2026-07-mindcluster-ttfhw-mindcluster-user-k8s-lite-20260702.md",
    "url": "https://gitcode.com/Ascend/mind-cluster (README + docs/zh 用户指南)",
    "sampleMinutes": 0,
-   "breakpoints": 0,
+   "breakpoints": 1,
    "rep": true
   },
   {
