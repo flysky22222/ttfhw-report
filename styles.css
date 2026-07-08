@@ -353,3 +353,10 @@ td.cmp { white-space: nowrap; vertical-align: middle; }
 .ops-list { margin: 0 0 8px; padding-left: 18px; }
 .ops-list li { font-size: 13px; line-height: 1.7; color: var(--text); }
 .ops-list code { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 5px; padding: 0 5px; font-size: 12px; }
+/* 趋势卡（占满整行）+ 指标切换按钮 */
+.charts .trend-card { grid-column: 1 / -1; }
+#ec-trend { height: 300px; }
+.trend-metrics { display: inline-flex; gap: 4px; margin-left: auto; }
+.tbtn { font-size: 11px; font-weight: 600; color: var(--text-dim); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 6px; padding: 2px 9px; cursor: pointer; }
+.tbtn:hover { border-color: var(--accent); color: var(--accent); }
+.tbtn.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }

@@ -23,7 +23,17 @@
   };
   const ico = (k, cls = "") => `<svg class="ico ${cls}" viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${I[k] || ""}</svg>`;
 
-  const state = { data: null, month: "latest", scenario: "all", result: "all", query: "", issueComm: "all", compare: false, cmpMonth: "latest" };
+  const state = { data: null, month: "latest", scenario: "all", result: "all", query: "", issueComm: "all", compare: false, cmpMonth: "latest", hw: "all", trendMetric: "pass" };
+
+  // 硬件归类：NPU（昇腾 Ascend 生态）vs 通用（CPU/Kunpeng）。按社区 + 环境/镜像关键字判定
+  const NPU_COMM = new Set(["CANN", "MindIE", "MindSpeed", "MindSpore", "MindStudio", "MindCluster", "MindEdge", "MindSDK", "PTA", "PyTorch", "MS-SWIFT", "verl", "vllm-ascend", "SGLang", "TileLang", "Triton", "Ascend", "ModelZoo"]);
+  function hwType(r) {
+    const e = r.env || {};
+    const blob = `${e.os || ""} ${e.arch || ""} ${e.image || ""} ${(r.envRows || []).map(x => x.join(" ")).join(" ")}`.toLowerCase();
+    if (/ascend|npu|910|310|cann|昇腾/.test(blob)) return "npu";
+    if (/kunpeng|鲲鹏/.test(blob)) return "cpu";
+    return NPU_COMM.has(r.community) ? "npu" : "cpu";
+  }
 
   // 阶段分钟数值/显示：整分钟显示整数；不足 1 分钟但有耗时（阶段带 sec，多见于基线秒级 build/test）显示「0.xx」；无耗时显示「·」
   const mval = p => p ? (p.minutes ? p.minutes : (p.sec ? +(p.sec / 60).toFixed(2) : 0)) : 0;
@@ -57,6 +67,7 @@
     sel.addEventListener("change", () => { state.month = sel.value; route(); });
     document.getElementById("scenarioTabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (!b) return; state.scenario = b.dataset.scenario; setActive("#scenarioTabs .tab", b); route(); });
     document.getElementById("resultChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; state.result = b.dataset.result; setActive("#resultChips .chip", b); route(); });
+    document.getElementById("hwChips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; state.hw = b.dataset.hw; setActive("#hwChips .chip", b); route(); });
     const s = document.getElementById("search");
     s.addEventListener("input", () => { state.query = s.value.trim().toLowerCase(); if (!/^#(id=|report\/|json-org\/)/.test(location.hash)) route(); });
     window.addEventListener("popstate", route);      // 干净路径(History API)前进/后退
@@ -164,6 +175,7 @@
     let out = [...g.values()];
     if (!ignoreScenario && state.scenario !== "all") out = out.filter(r => r.scenario === state.scenario);
     if (state.result !== "all") out = out.filter(r => r.result === state.result);
+    if (state.hw !== "all") out = out.filter(r => hwType(r) === state.hw);
     if (state.query) out = out.filter(r => r.repo.toLowerCase().includes(state.query) || r.community.toLowerCase().includes(state.query));
     return out;
   }
@@ -224,11 +236,19 @@
     chartRecs = chartRecs || recs;
     const el = document.getElementById("charts");
     disposeCharts();
+    const tm = state.trendMetric, tbtn = (k, t) => `<button class="tbtn ${tm === k ? "active" : ""}" data-metric="${k}">${t}</button>`;
     el.innerHTML =
+      `<div class="chart-card trend-card"><h3>${ico("chart")} 趋势（按月）<span class="trend-metrics">${tbtn("pass", "通过率")}${tbtn("time", "平均耗时")}${tbtn("defect", "平均缺陷")}</span></h3><div class="echart" id="ec-trend"></div></div>` +
       `<div class="chart-card"><h3>${ico("chart")} 结果分布</h3><div class="echart" id="ec-pie"></div></div>` +
       `<div class="chart-card"><h3>${ico("clock")} 使用者场景 · 全流程耗时 TOP（min）</h3><div class="echart" id="ec-top-user"></div></div>` +
       `<div class="chart-card"><h3>${ico("clock")} 贡献者场景 · 全流程耗时 TOP（min）</h3><div class="echart" id="ec-top-dev"></div></div>`;
     if (!window.echarts) { el.innerHTML = `<div class="empty">ECharts 资源未加载</div>`; return; }
+    buildTrendChart(tm);
+    el.querySelectorAll(".tbtn").forEach(b => b.addEventListener("click", () => {
+      state.trendMetric = b.dataset.metric;
+      el.querySelectorAll(".tbtn").forEach(x => x.classList.toggle("active", x === b));
+      buildTrendChart(state.trendMetric);
+    }));
     const P = state.palette || DEFAULT_PALETTE, th = state.theme;
 
     // 结果分布 — 环形饼图（语义实色）
@@ -251,6 +271,49 @@
     // 用忽略场景筛选的数据集，保证切到任一场景 tab 时两个柱状图都始终有内容、不隐藏
     buildTopChart("ec-top-user", "user", chartRecs);
     buildTopChart("ec-top-dev", "developer", chartRecs);
+  }
+
+  // ── 趋势（按月）：跨全部月份，尊重 场景/硬件/搜索 筛选，忽略 月份/结果 筛选 ──
+  const TREND_METRIC = {
+    pass: { label: "通过率", unit: "%", fn: rs => { const t = rs.length; return t ? Math.round(rs.filter(x => x.result === "success").length / t * 100) : null; } },
+    time: { label: "平均全程耗时", unit: " min", fn: rs => { const d = rs.filter(x => x.totalMinutes > 0).map(x => x.totalMinutes); return d.length ? Math.round(d.reduce((a, b) => a + b, 0) / d.length) : null; } },
+    defect: { label: "平均缺陷数", unit: " 个/仓", fn: rs => { const t = rs.length; return t ? +(rs.reduce((s, x) => s + ((x.defects || []).length), 0) / t).toFixed(1) : null; } },
+  };
+  function trendData(metric) {
+    const scs = state.scenario === "all" ? ["user", "developer"] : [state.scenario];
+    let recs = (state.data.records || []).filter(r => r.month && r.month !== "baseline" && scs.includes(r.scenario));
+    if (state.hw !== "all") recs = recs.filter(r => hwType(r) === state.hw);
+    if (state.query) recs = recs.filter(r => r.repo.toLowerCase().includes(state.query) || r.community.toLowerCase().includes(state.query));
+    const months = [...new Set(recs.map(r => r.month))].sort();
+    const fn = TREND_METRIC[metric].fn;
+    const total = months.map(m => fn(recs.filter(r => r.month === m)));
+    const byC = new Map();
+    recs.forEach(r => { if (!byC.has(r.community)) byC.set(r.community, []); byC.get(r.community).push(r); });
+    const commLines = [...byC.entries()]
+      .filter(([, cr]) => new Set(cr.map(r => r.month)).size >= 2)
+      .sort((a, b) => (ix(a[0]) - ix(b[0])) || a[0].localeCompare(b[0]))
+      .map(([c, cr]) => ({ name: c, data: months.map(m => fn(cr.filter(r => r.month === m))) }));
+    return { months, total, commLines };
+  }
+  function buildTrendChart(metric) {
+    const node = document.getElementById("ec-trend"); if (!node || !window.echarts) return;
+    const old = echarts.getInstanceByDom(node); if (old) old.dispose();
+    const { months, total, commLines } = trendData(metric);
+    if (months.length < 1 || total.every(v => v == null)) { node.innerHTML = `<div class="empty mini">当前筛选下无按月趋势数据</div>`; return; }
+    const M = TREND_METRIC[metric], th = state.theme;
+    const c = echarts.init(node, th, { renderer: "svg" });
+    const series = [{ name: "总体", type: "line", data: total, symbol: "circle", symbolSize: 8, lineStyle: { width: 3.5 }, itemStyle: { color: "#5470c6" }, z: 10, connectNulls: true, emphasis: { focus: "series" }, label: { show: true, fontSize: 10, color: "#5470c6", formatter: p => p.value == null ? "" : p.value + (metric === "pass" ? "%" : "") } }]
+      .concat(commLines.map(l => ({ name: l.name, type: "line", data: l.data, symbol: "circle", symbolSize: 4, lineStyle: { width: 1.5, opacity: 0.75 }, connectNulls: true, emphasis: { focus: "series" } })));
+    c.setOption({
+      tooltip: { trigger: "axis", valueFormatter: v => v == null ? "—" : v + M.unit },
+      legend: { type: "scroll", bottom: 0, textStyle: { fontSize: 11 }, pageIconSize: 9 },
+      grid: { left: 8, right: 20, top: 18, bottom: 34, containLabel: true },
+      xAxis: { type: "category", boundaryGap: false, data: months.map(m => m.replace("-", " 年 ") + " 月"), axisLabel: { fontSize: 11 } },
+      yAxis: { type: "value", name: M.label + M.unit, nameTextStyle: { fontSize: 10, color: "#9aa0ad", align: "left" }, axisLabel: { fontSize: 11, formatter: metric === "pass" ? "{value}%" : "{value}" } },
+      series,
+    });
+    c.on("click", p => { if (p.seriesName && p.seriesName !== "总体") { state.query = p.seriesName.toLowerCase(); const s = document.getElementById("search"); if (s) s.value = p.seriesName; route(); } });
+    charts.push(c);
   }
 
   // 单个「全流程耗时 TOP」堆叠横向柱：按可见堆叠总时长排序，多→少 自上而下
