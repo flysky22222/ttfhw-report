@@ -48336,6 +48336,5390 @@
    "reportFile": "",
    "jsonUrl": "https://github.com/computing-TTFHW/ttfhw-report/blob/master/json-org/json-org-630-openeuler/verification_report_WSL_xucg_20260628.json",
    "jsonPath": "json-org/json-org-630-openeuler/verification_report_WSL_xucg_20260628.json"
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "openeuler24.03",
+    "arch": "aarch64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11"
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "openeuler24.03"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:9.0.0-910b-openeuler24.03-py3.11"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 334,
+   "scene": "llm-install",
+   "date": "2026-06-28",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260628-55.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "通过 Playwright MCP 访问 https://gitcode.com/Ascend/MindSpeed-LLM",
+     "source": "测试目标"
+    }
+   ],
+   "envRows": [
+    [
+     "镜像来源",
+     "历史 md 报告未结构化记录镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 335,
+   "scene": "llm-install",
+   "date": "2026-06-29",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260629-56.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "#1: [严重] CANN toolkit 安装步骤缺失",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: [中] PyTorch/torch_npu 版本号过期",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: [中] 网络受限环境缺少镜像源配置说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: [中] GitHub 访问受限环境缺少代理配置说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5: [中] 文档未提供明确的验证命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#6: [低] Python 版本建议不明确",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "**部分成功**（文档缺陷导致无法完成完整验证）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**执行时间**: 2026-06-30 06:05:00 - 06:09:00 (约 4 分钟)  （断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**执行时间**: 2026-06-30 06:09:00 - 06:46:00 (约 37 分钟)  （断点 2）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**执行时间**: 2026-06-30 06:47:00 - 06:48:00 (约 1 分钟)  （断点 1）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**执行时间**: 2026-06-30 06:48:00 - 06:50:00 (约 2 分钟)  （断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "unknown",
+     "minutes": 37,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "not_run",
+     "minutes": 1,
+     "breakpoints": 1
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 2,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 44,
+   "result": "failed",
+   "id": 336,
+   "scene": "llm-install",
+   "date": "2026-06-30",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-mindspeed-ttfhw-mindspeed-llm-install-20260630-57.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "#1: README 缺少最小验证命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: torch_npu whl 包路径不明确",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: CANN 安装步骤缺失",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#10: Python 版本建议与实际不匹配",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#11: 未说明 npu-smi 也依赖 CANN toolkit",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#12: 未说明 MindSpeed-LLM 无 CPU fallback",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: 未说明 torch_npu 强依赖 CANN toolkit",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5: 版本号过时（torch_npu）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#6: 未给出 CANN toolkit 的具体下载命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#7: 未说明 CANN 下载可能需要账号登录",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#8: 未提供 CANN 的备用安装方案",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#9: URL 大小写错误",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "来源文档: install_guide.md",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "位置: 安装步骤结束后",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "现象: 文档只提供安装步骤，未给出类似 \"import mindspeed_llm\" 的最小验证命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "影响: 用户无法确认安装是否成功",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "建议: 在安装步骤末尾添加验证命令示例",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "级别: 中等",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "位置: \"安装PyTorch以及torch_npu\" 章节",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "现象: 文档说\"参考 PyTorch releases\"，但只给示例文件名，未给出具体下载 URL",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "影响: 用户需要额外查找下载链接，增加安装难度",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "建议: 直接给出完整的下载 URL（https://gitcode.com/Ascend/pytorch/releases/download/v...）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "级别: 高",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "位置: \"安装CANN\" 章节",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "现象: 文档只引用\"参考 CANN 软件安装\"，未给出具体命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "影响: 新手无法独立完成 CANN 安装",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "建议: 至少给出 CANN toolkit 的下载 URL 和基础安装命令",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "级别: 严重（阻塞）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "位置: 环境准备章节",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "现象: 文档建议 Python 3.10，但官方镜像用的是 3.12",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "影响: 用户可能误以为必须用 3.10",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "建议: 明确支持的 Python 版本范围（3.10-3.12）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "级别: 低",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "位置: 全文",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "现象: 文档未说明 npu-smi 需要 CANN 库才能执行",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "影响: 用户在无 CANN 环境下执行 npu-smi 会失败，不知道原因",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "建议: 在验证步骤说明 npu-smi 需要 CANN 环境",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "现象: 文档未说明 MindSpeed-LLM 必须依赖 NPU，无 CPU 版本",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "影响: 用户无法在无 NPU 环境下测试",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "建议: 添加说明\"MindSpeed-LLM 仅支持 NPU 环境，不支持 CPU\"",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "- 按文档安装了所有组件，但无法完成最小验证",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 40,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 37
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 3
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 337,
+   "scene": "llm-install",
+   "date": "2026-07-01",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-ttfhw-mindspeed-llm-install-20260701-58.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "openeuler24.03",
+    "arch": "aarch64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.2-910b-openeuler24.03-py3.11"
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "openeuler24.03"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.2-910b-openeuler24.03-py3.11"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 338,
+   "scene": "llm-install",
+   "date": "2026-07-02",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-ttfhw-mindspeed-llm-install-20260702-59.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "#1: 安装指南中 torch_npu 版本表述不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: torch_npu wheel 包下载链接缺失",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 2,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 339,
+   "scene": "llm-install",
+   "date": "2026-07-03",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-ttfhw-mindspeed-llm-install-20260703-60.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "MindSpeed",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "镜像未提供完整 registry 路径（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Python 版本要求与实际不匹配（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少从零开始的完整安装方案（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "triton-ascend 安装源未说明（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "torch_npu 版本号表述不一致（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "npu-smi 命令依赖未说明（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "v26.0.0 版本安装文档缺失（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "镜像路径缺失、Python版本不匹配、缺少CANN安装指导、triton-ascend源未说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "失败（环境受限）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpeed-LLM 用户，按 https://gitcode.com/Ascend/MindSpeed-LLM 官方仓库 README 实时获取的安装方式，在 NPU 节点的 Pod 里完成安装与最小验证，发现文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法独立完成安装，缺少从零开始的完整方案",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟;链接校验 1分钟/条（断点 4）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 4）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 2）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 8,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 50,
+     "breakpoints": 1
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 20,
+     "breakpoints": 7
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "partial",
+     "minutes": 30,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 105,
+   "result": "failed",
+   "id": 340,
+   "scene": "",
+   "date": "2026-07-04",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-mindspeed-llm-install-20260704-61.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "缺少容器内 CANN toolkit 安装方法（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Ubuntu 24.04 pip externally-managed-environment 限制未说明（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "GitHub Megatron-LM 克隆无国内镜像替代方案（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "torch_npu wheel 包缺少明确下载地址（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "安装步骤依赖关系不明确（提示）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "容器内 CANN 缺失、Ubuntu 24.04 pip 限制未说明、GitHub Megatron-LM 访问问题、torch_npu wheel 缺下载地址、安装步骤依赖关系不明确",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "失败。文档的\"源码安装方式\"未提供容器内 CANN toolkit 安装方法，导致纯净容器无法完成安装。发现的 5 个文档缺陷已整理成 Issue 草稿。",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpeed-LLM 用户，按 https://gitcode.com/Ascend/MindSpeed-LLM 官方仓库 README 实时获取的安装方式，在 NPU 节点的 Pod 里完成安装与最小验证，发现文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法在容器内完成安装，缺少 CANN toolkit 安装步骤和 wheel 包下载地址。",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条(命令、链接、参数);安装 3分钟/条;报错排查 10分钟/次（断点 5）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条(Hello World / 验证命令);验证失败 10分钟/次（断点 2）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 30,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 35,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 100,
+   "result": "failed",
+   "id": 341,
+   "scene": "llm-install",
+   "date": "2026-07-05",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-ttfhw-mindspeed-llm-install-20260705-62.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "mindspeed",
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "镜像来源",
+     "历史 md 报告未结构化记录镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 342,
+   "scene": "llm-install",
+   "date": "2026-07-06",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-ttfhw-mindspeed-llm-install-20260706-63.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "MindSpeed",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "#1：镜像安装方式不完整（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：缺少最小验证用例（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：源码安装缺少前置依赖详细步骤（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4：requirements.txt 缺少关键依赖（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5：缺少虚拟环境创建说明（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "镜像地址不完整、缺少前置依赖步骤、缺少验证用例、requirements.txt 不完整、缺少虚拟环境说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "失败 - 文档存在 5 个缺陷（3 个严重阻塞），环境缺少 CANN toolkit 和外网访问，无法完成完整安装",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpeed-LLM 用户，按 https://gitcode.com/Ascend/MindSpeed-LLM 官方仓库 README 实时获取的安装方式，在 NPU 节点的 Pod 里完成安装与最小验证，发现文档缺陷。**重要：gitee 已弃用，必须用 gitcode；URL 大小写敏感（Ascend 首字母大写，MindSpeed-LLM 用连字符）。**",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法独立完成，缺失关键步骤说明（镜像地址、CANN 安装、torch_npu 依赖）",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟; 链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条; 安装 3分钟/条; 报错排查 10分钟/次（断点 3）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条; 验证失败 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 12,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 1
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 25,
+   "result": "failed",
+   "id": 343,
+   "scene": "",
+   "date": "2026-07-08",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-20260708-65.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 22.04.5",
+    "arch": "x86_64",
+    "image": ""
+   },
+   "defects": [
+    {
+     "title": "文档示例操作系统版本滞后(一般)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档示例操作系统版本滞后（Ubuntu 18.04 vs 实际支持 22.04）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功，完全依赖官方文档完成安装与验证",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpore 用户，按 mindspore.cn 官网实时获取的安装方式，在 amd64 节点的 Pod（dind 模式）里完成 MindSpore CPU 版的安装与最小验证（import + 简单 Tensor 运算），发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档可独立完成，无需外网补充",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 22.04.5"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条(命令、链接、参数);安装 3分钟/条;报错排查 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条(Hello World / 验证命令);验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**:3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 2,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 23,
+   "result": "success",
+   "id": 344,
+   "scene": "cpu-install",
+   "date": "2026-06-28",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260628-55.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": ""
+   },
+   "defects": [
+    {
+     "title": "#1：未说明 Alpine Linux 的 Python 版本兼容性问题",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：未说明 PEP 668 环境保护机制",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：支持的操作系统版本信息过时",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4：CPU 版本 Docker 安装选项被禁用但未说明原因",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档只提到 Ubuntu/CentOS/EulerOS/openEuler，未提 Alpine",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档建议使用 Conda 创建虚拟环境，但 Alpine 没有 Conda",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Alpine 用户需要使用 python3 -m venv 或 --break-system-packages",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 7,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 7
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 345,
+   "scene": "cpu-install",
+   "date": "2026-06-29",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260629-56.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 18.04",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "#1：文档只以 Ubuntu 为例，未说明其他 Linux 发行版的支持情况",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：Miniconda 安装方式在 Alpine/musl 系统上无法工作",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：MindSpore wheel 包依赖 glibc，不支持 musl 系统（关键缺陷）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4：CPU 版本不支持 Docker 安装方式但无说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5：文档示例系统版本过旧",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#6：Python 版本支持范围缺少边界说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "失败（环境兼容性问题）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 18.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**执行方法**：Playwright MCP 动态页面抓取（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**执行环境**：dind Pod（docker:dind 镜像 + privileged，amd64 节点）（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**验证尝试**：（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**发现的文档缺陷**：（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 24,
+   "result": "failed",
+   "id": 346,
+   "scene": "cpu-install",
+   "date": "2026-06-30",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-mindspore-ttfhw-mindspore-cpu-install-20260630-57.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "",
+    "arch": "x86_64",
+    "image": ""
+   },
+   "defects": [
+    {
+     "title": "官方文档未明确系统依赖要求 (重要)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档未明确系统依赖要求（需要 glibc，不支持 Alpine/musl）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功安装并验证，发现 1 个文档缺陷",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpore 用户，按 mindspore.cn 官网实时获取的安装方式，在 amd64 节点的 Pod（dind 模式）里完成 MindSpore CPU 版的安装与最小验证（import + 简单 Tensor 运算），发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "官方文档在 glibc 系统上可独立完成，未覆盖 musl libc 系统兼容性说明",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**实际用时**: 2 分钟（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**实际用时**: 8 分钟（断点 1）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**实际用时**: 2 分钟（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**实际用时**: 1 分钟（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 2,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 13,
+   "result": "success",
+   "id": 347,
+   "scene": "cpu-install",
+   "date": "2026-07-01",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-ttfhw-mindspore-cpu-install-20260701-58.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "#1：python 命令与 python3 命令不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：Ubuntu 24.04 Python externally-managed 环境未说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：Ubuntu 版本要求过旧",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4：Docker 安装方式在 CPU 版本下被禁用",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**执行时间：** 约 10 分钟（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**执行时间：** 约 15 分钟（断点 1）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**执行时间：** 约 5 分钟（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**执行时间：** 约 5 分钟（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 4,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "unknown",
+     "minutes": 15,
+     "breakpoints": 4
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "not_run",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 35,
+   "result": "partial",
+   "id": 348,
+   "scene": "cpu-install",
+   "date": "2026-07-02",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-ttfhw-mindspore-cpu-install-20260702-59.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "ubuntu:24.04"
+   },
+   "defects": [
+    {
+     "title": "未明确说明不支持 Alpine Linux（musl libc）（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "系统版本示例过于具体（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Alpine Linux（musl libc）兼容性缺失说明、系统版本示例过于具体",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "**成功**（安装验证全部通过），发现 2 个文档缺陷",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpore 用户，按 mindspore.cn 官网实时获取的安装方式，在 amd64 节点的 Pod（dind 模式）里完成 MindSpore CPU 版的安装与最小验证（import + 简单 Tensor 运算），发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档可完成安装，但缺少系统兼容性说明（Alpine Linux 不支持）",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "ubuntu:24.04"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟；链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条；安装 3分钟/条；报错排查 10分钟/次（断点 3）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 3,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "partial",
+     "minutes": 2,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 30,
+   "result": "partial",
+   "id": 349,
+   "scene": "cpu-install",
+   "date": "2026-07-03",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-ttfhw-mindspore-cpu-install-20260703-60.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "#### 执行过程（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "#### 执行过程（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "#### 环境探测（与文档无关）（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "#### 发现的文档缺陷（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 25,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 40,
+   "result": "success",
+   "id": 350,
+   "scene": "cpu-install",
+   "date": "2026-07-04",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-ttfhw-mindspore-cpu-install-20260704-61.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "MindSpore",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": ""
+   },
+   "defects": [
+    {
+     "title": "MindSpore CPU 版不支持 Alpine Linux (musl libc)（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "CPU 版本不支持 Docker 安装方式（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档示例版本过旧（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Alpine/musl 不兼容、Docker 安装方式缺失、文档版本过旧",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "Ubuntu 24.04 环境成功安装并验证，Alpine Linux 环境因 glibc/musl 不兼容无法运行",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 MindSpore 用户，按 mindspore.cn 官网实时获取的安装方式，在 amd64 节点的 Pod（dind 模式）里完成 MindSpore CPU 版的安装与最小验证（import + 简单 Tensor 运算），发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "Ubuntu 系统可仅靠官方文档完成；Alpine 系统存在文档未说明的兼容性问题",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟；链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条；安装 3分钟/条；报错排查 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 4,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 4
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 33,
+   "result": "success",
+   "id": 351,
+   "scene": "",
+   "date": "2026-07-05",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-20260705-62.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "mindspore",
+   "env": {
+    "os": "Ubuntu 18.04",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "#4（严重）：操作系统兼容性未说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5（中等）：文档示例操作系统版本过旧",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#1：操作系统版本限制描述不准确",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：GCC 依赖描述不准确",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：pip install 命令在 externally managed Python 环境下会失败",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5：文档示例操作系统版本过旧",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 18.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "1. 创建 dind Pod（docker:dind 镜像 + privileged + amd64 nodeSelector）（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "1. 执行官网给出的验证命令 run_check（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理发现的文档缺陷为 GitCode Issue（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 352,
+   "scene": "cpu-install",
+   "date": "2026-07-07",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-ttfhw-mindspore-cpu-install-20260707-64.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MS-SWIFT",
+   "repo": "ms",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "NPU 环境安装指南缺失（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Ubuntu 24.04 pip 安装限制未说明（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "基础镜像 Python 缺失未说明（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "最小验证命令缺失（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "swift CLI 基础命令异常（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "NPU 安装指南缺失，Ubuntu 24.04 PEP 668 限制未说明，基础镜像要求不明确",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "部分成功 - pip 安装成功，但 NPU 环境因基础镜像缺少 CANN toolkit 不可用",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 ms-swift 项目的新用户，按其官方文档在测试 Pod 内真实完成：了解（搜/读官方安装文档）→ 安装（照文档装）→ 使用（跑文档给的最小验证）→ 贡献（把发现的安装/上手文档缺陷整理成可提交 Issue）。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法完成 NPU 环境安装，需要额外知识",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 7）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 2）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "partial",
+     "minutes": 30,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "partial",
+     "minutes": 5,
+     "breakpoints": 1
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 48,
+   "result": "partial",
+   "id": 353,
+   "scene": "swift-user-install-verify",
+   "date": "2026-06-15",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-ms-swift-ttfhw-ms-swift-user-install-verify-20260615-04.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openEuler",
+   "repo": "openeuler",
+   "env": {
+    "os": "openeuler.",
+    "arch": "x86_64",
+    "image": "ubuntu:24.04"
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "openeuler."
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "ubuntu:24.04"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 354,
+   "scene": "rpm-build",
+   "date": "2026-07-08",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openeuler-ttfhw-openeuler-rpm-build-20260708-04.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 22.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "#1：预构建镜像包缺少使用说明（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：镜像名未明确标注（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：文档示例版本号过期（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4：操作系统版本标注不一致（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5：文档架构操作系统描述过时（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "预构建镜像缺少使用说明、镜像名未标注、版本号过期、操作系统版本不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "安装验证成功，但文档缺陷严重阻塞用户流程",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法独立完成，用户需自行摸索 docker load 方法",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 22.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "1. 使用 Playwright MCP 访问 https://opengauss.org/zh/download/?version=rc（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条；安装 3分钟/条；报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "unknown",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 26,
+   "result": "partial",
+   "id": 355,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-06-28",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260628-76.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler22.03",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "Docker 安装文档 wget URL 仅提供 ARM 架构缺少 x86_64 架构下载链接（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档 wget URL 仅提供 ARM 架构，缺少 x86_64 架构下载链接",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功，完全依赖官方文档命令执行（仅下载 URL 需从下载页面获取）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档能独立完成安装和验证，但 wget URL 需从下载页面获取对应架构链接",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler22.03"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条(命令、链接、参数);安装 3分钟/条;报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条(Hello World / 验证命令);验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**:3分钟/条;验证失败 10分钟/次（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 2,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "partial",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 50,
+   "result": "partial",
+   "id": 356,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-06-29",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260629-77.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 22.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "镜像名不一致（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "wget 下载命令缺失（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "操作系统版本说明不清（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档示例架构不匹配（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "镜像名不一致、wget 命令缺失、OS 版本说明不清、架构示例不匹配",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功（数据库启动并可连接，SELECT version() 返回正确版本号）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "openGauss 7.0.0-RC3 极简版 Docker 镜像",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "部分完备（需要额外步骤查看真实镜像名，文档示例与实际不符）",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 22.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟；链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条；安装 3分钟/条；报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 5,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 30,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 50,
+   "result": "success",
+   "id": 357,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-06-30",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260630-78.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 22.03 LTS",
+    "arch": "x86_64",
+    "image": ""
+   },
+   "defects": [
+    {
+     "title": "#1: 下载页登录功能异常【严重】",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: 操作系统版本不一致【严重】",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: 镜像名称不一致【严重】",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: 文件大小不一致【一般】",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5: 容器OS版本不符【一般】",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "登录400错误、镜像名不一致、操作系统版本不一致、文件大小不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "部分成功，安装和验证可用，但发现多处严重文档缺陷",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法独立完成（登录功能异常、镜像名不一致、操作系统版本不一致）",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 22.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 1）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条;安装 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**实际用时**:约 3 分钟（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 20,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 43,
+   "result": "failed",
+   "id": 358,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-01",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260701-79.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 22.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "镜像名差异说明位置不够突出（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "下载页登录要求未明确说明（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "密码长度要求未明确说明（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "镜像名差异说明不够突出、下载页登录要求未明确、密码长度要求未说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功，完全按官方文档流程完成安装，无严重文档缺陷，仅有 3 条改进建议",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档可独立完成，无需外网补充",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 22.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条;安装 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**:3分钟/条（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 4,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 4
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "partial",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 31,
+   "result": "partial",
+   "id": 359,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-02",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260702-80.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 22.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "#1：缺少 Docker 镜像安装指南（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：tar 包文件名与镜像名不一致（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少 Docker 安装指南，tar 包文件名与镜像名不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "**成功**。Docker 镜像下载、加载、启动、gsql 连接验证均成功通过，但官网缺少 Docker 安装指南文档",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "**不足**。官网下载页提供 Docker 版本下载，但文档中心缺少 Docker 安装指南，用户需自行摸索或依赖社区资料",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 22.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "1. 使用 Playwright MCP 访问官网下载页：https://opengauss.org/zh/download/?version=rc（断点 1）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "1. 创建 dind 测试 Pod（docker:dind 镜像，amd64 节点，privileged）（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "1. 等待 openGauss 启动（4秒后日志显示 \"openGauss\"）（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（缺陷整理）（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 3,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 9,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 19,
+   "result": "success",
+   "id": 360,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-03",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260703-81.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "登录失败、镜像名不一致、OS 版本不匹配、wget 未说明、版本类型未区分",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功完成安装和验证，但需修正文档示例镜像名后才能正常运行",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "官方文档命令基本可执行，但存在镜像名不一致、OS 版本误导等问题，需人工修正",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 24.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟;链接校验 1分钟/条（断点 1）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条;安装 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 1,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 6,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 1
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 19,
+   "result": "failed",
+   "id": 361,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-04",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260704-82.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 22.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "#1：官网登录系统凭据验证失败（HTTP 400）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：文档 OBS URL 与下载页面操作系统版本不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3：docker pull 与 docker load 镜像名不一致",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4：文档缺少 openEuler 24.03 LTS Docker 镜像链接",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "登录凭据失效、镜像名不一致、操作系统版本不明确、缺少 openEuler 24.03 镜像链接",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功。数据库安装完成，gsql 连接成功，SQL 执行正常。但发现文档多处不一致问题。",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "登录页面凭据验证失败后，成功通过公开文档站获取安装信息。docker pull 方式与 docker load 方式镜像名不一致，用户需自行判断使用哪个。",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 22.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 1）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条(验证命令);验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**:整理缺陷 5分钟;提交 Issue 3分钟（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 5,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 12,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 28,
+   "result": "success",
+   "id": 362,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-05",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260705-83.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "Docker 安装文档缺失、GS_PASSWORD 未说明、docker run 参数未说明、gsql 连接方式未说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "部分成功（安装和验证成功，但完全依赖用户自行推断参数，官网无任何安装文档）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "openGauss 7.0.0-RC3 Docker 极简版镜像",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档无法独立完成，需大量猜测和试错",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟；链接校验 1分钟/条（断点 1）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条；安装 3分钟/条；报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条；验证失败 10分钟/次（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 1,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 1
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 31,
+   "result": "success",
+   "id": 363,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-06",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260706-84.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openGauss",
+   "repo": "opengauss",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "x86_64",
+    "image": "docker:dind"
+   },
+   "defects": [
+    {
+     "title": "Docker 镜像名不一致（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "文档示例 URL 仅提供 ARM 架构（中等）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "下载页面 URL 路径与选择项不完全对应（轻微）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "Docker 镜像名不一致，文档示例仅提供 ARM 架构 URL，下载 URL 路径与选择项不完全对应",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功（所有文档命令可执行，但镜像名需要根据 docker load 结果调整）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openGauss 用户，按 openGauss 官网最新版本（7.0.0-RC3）的安装文档（架构 x86，操作系统 openEuler 24.03 LTS）安装网页上的极简版 Docker 镜像，完成下载、安装、使用，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "基本完备（仅靠官方文档可完成，但需要注意镜像名差异）",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 24.03 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker:dind"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 4,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 4
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 28,
+   "result": "success",
+   "id": 364,
+   "scene": "jijian-docker-install-v1",
+   "date": "2026-07-07",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-opengauss-ttfhw-opengauss-jijian-docker-install-v1-20260707-85.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "",
+    "arch": "",
+    "image": ""
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "镜像来源",
+     "历史 md 报告未结构化记录镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 365,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-06-28",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260628-55.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "#1: 华为云镜像站无 openUBMC 固件直接下载入口（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: 下载页面未提供固件烧录步骤说明（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: 华为云原始镜像缺少必要工具（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: TTFHW 标准镜像架构不兼容（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#5: 文档网络配置缺少华为云镜像站具体配置说明（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "华为云镜像站作用范围不明确、缺少烧录步骤、镜像架构不兼容",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "下载验证成功，发现 5 个文档缺陷，烧录验证因缺少真实 BMC 硬件无法完成",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "openUBMC 25.12 LTS SP2 固件包",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "官方文档可完成下载，但缺少烧录指引",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 2）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "partial",
+     "minutes": 20,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "partial",
+     "minutes": 10,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 50,
+   "result": "partial",
+   "id": 366,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-06-29",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260629-56.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "#1: 文档误导性描述（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: 测试场景目标与实际不符（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: 文档未明确主软件包获取路径（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: 文档未提供SHA256标准校验值（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "华为云镜像站误导性定位（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "资源用途分类不明确（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "缺少SHA256校验值（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "华为云镜像站误导性定位，主软件包路径不明确，缺少SHA256校验值",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "部分成功（华为云镜像站路径无法使用，实际路径为官方仓库）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openUBMC 用户，按 https://openubmc.cn 网页【快速安装】里给的**华为云开源镜像站**这条免登录路径，在 amd64 节点的 Pod 里完成最小镜像下载/烧录与验证，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "部分完备（网络配置章节误导，缺少主软件包路径说明）",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条(命令、链接、参数);安装 3分钟/条;报错排查 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 8,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 10,
+     "breakpoints": 8
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 24,
+   "result": "failed",
+   "id": 367,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-06-30",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260630-57.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "#1: 华为云镜像站路径不存在（严重）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: 官网未说明镜像架构适用范围（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: ascendhub/ubuntu:24.04-base 缺少基本工具（一般）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: 官网未提供 QEMU 模拟启动说明（重要）",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "华为云镜像站路径缺失、镜像架构未标注、QEMU 使用说明缺失",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "部分成功 - 固件包下载和完整性验证成功，但华为云镜像站路径不存在（严重文档缺陷）",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "openUBMC 26.06 固件包",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "官网仅提供 repo.openubmc.cn 下载路径，华为云镜像站路径不存在；缺少 QEMU 模拟说明",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟; 链接校验 1分钟/条（断点 1）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条; 安装 3分钟/条; 报错排查 10分钟/次（断点 2）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条; 验证失败 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条; 验证失败 10分钟/次（断点 1）"
+     ]
+    }
+   ],
+   "breakpoints": 5,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 14,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 17,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 13,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "partial",
+     "minutes": 11,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 55,
+   "result": "partial",
+   "id": 368,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-07-01",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260701-58.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "",
+    "arch": "x86_64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "#1：应用市场下载链接错误",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2：下载页面与应用市场导航不清晰",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 2,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 369,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-07-02",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260702-59.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "Ubuntu 24.04.3",
+    "arch": "x86_64",
+    "image": "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+   },
+   "defects": [
+    {
+     "title": "#1: 官网首页缺少\"快速安装\"导航入口 (中等)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#2: 下载页面未展示华为云镜像站选项 (中等)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#3: Docker环境搭建文档标题未突出\"华为云镜像站\" (轻微)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "#4: 论坛帖子提到的\"方式一\"缺少独立文档链接 (轻微)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "导航路径不明显、下载页未展示镜像选项",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功 - 完全按照官方文档执行，华为云镜像站镜像可正常拉取使用",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openUBMC 用户，按 https://openubmc.cn 网页【快速安装】里给的**华为云开源镜像站**这条免登录路径，在 amd64 节点的 Pod 里完成最小镜像下载/烧录与验证，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档可独立完成，无需依赖外网补查",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04.3"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟; 链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条; 安装 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 5,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 7,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 13,
+   "result": "success",
+   "id": 370,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-07-03",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260703-60.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openUBMC",
+   "env": {
+    "os": "Ubuntu 24.04.3",
+    "arch": "x86_64",
+    "image": "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+   },
+   "defects": [
+    {
+     "title": "无严重缺陷，仅有2个低优先级改进建议",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "成功 - 华为云镜像站路径有效，镜像可成功拉取并运行，内容完整符合文档描述，无严重文档缺陷",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openUBMC 用户，按 https://openubmc.cn 网页【快速安装】里给的**华为云开源镜像站**这条免登录路径，在 amd64 节点的 Pod 里完成最小镜像下载/烧录与验证，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "仅靠官方文档可以独立完成镜像拉取和容器创建，不依赖外网补充",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04.3"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条;验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**:3分钟/条;验证失败 10分钟/次（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 1,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 1
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 18,
+   "result": "success",
+   "id": 371,
+   "scene": "",
+   "date": "2026-07-04",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-20260704-61.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "华为云开源镜像站路径不存在 (严重)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "导航栏缺少\"快速安装\"入口 (重要)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "固件包缺少使用说明 (重要)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "下载页面缺少 SHA256 校验值 (一般)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "华为云镜像站无 openUBMC 内容、导航缺少快速安装入口、固件包缺少使用说明",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "测试部分成功 - 华为云开源镜像站路径不存在（高优先级缺陷），使用官方 repo.openubmc.cn 替代完成下载验证",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "作为 openUBMC 用户，按 https://openubmc.cn 网页【快速安装】里给的华为云开源镜像站这条免登录路径，在 amd64 节点的 Pod 里完成最小镜像下载/烧录与验证，发现安装文档缺陷。",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "官方下载页面提供有效下载链接，但缺少华为云镜像站路径说明",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**: 100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**: 获取 1分钟/条;安装 3分钟/条;报错排查 10分钟/次（断点 1）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**: 3分钟/条;验证失败 10分钟/次（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**: 3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 5,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 6,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 18,
+   "result": "success",
+   "id": 372,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-07-05",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260705-62.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "",
+    "arch": "x86_64",
+    "image": "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 373,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-07-06",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260706-63.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openubmc",
+   "env": {
+    "os": "Ubuntu 24.04.3",
+    "arch": "x86_64",
+    "image": "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+   },
+   "defects": [
+    {
+     "title": "BMC SDK获取路径不明确(重要)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "用户凭据参数说明缺失(一般)",
+     "level": "",
+     "source": "",
+     "detail": ""
+    },
+    {
+     "title": "BMC SDK获取路径不明确, 用户凭据参数说明缺失",
+     "level": "",
+     "source": "",
+     "detail": ""
+    }
+   ],
+   "problems": [],
+   "summary": "部分成功 - 华为云镜像站路径验证成功，开发环境镜像可免登录拉取并正常运行，但文档缺少 BMC SDK 获取步骤说明",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "test_goal",
+     "value": "openUBMC 开发环境镜像 (swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03)",
+     "source": "测试目标"
+    },
+    {
+     "label": "doc_completeness",
+     "value": "部分完备 - 华为云镜像站路径明确且免登录，但完整开发流程需要的 BMC SDK 获取方式未补充",
+     "source": "1.2 测试总结"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04.3"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "swr.cn-north-4.myhuaweicloud.com/openubmc/ubuntu:24.04.2_26.03"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "**时间口径**:100字/分钟;链接校验 1分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "**时间口径**:获取 1分钟/条;安装 3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "**时间口径**:3分钟/条（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "**时间口径**:3分钟/条（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 3,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 8,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 19,
+   "result": "success",
+   "id": 374,
+   "scene": "huaweicloud-mirror-install",
+   "date": "2026-07-08",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260708-65.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "vllm-ascend",
+   "repo": "vllm",
+   "env": {
+    "os": "ubuntu22.04",
+    "arch": "aarch64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [],
+   "problems": [],
+   "summary": "⚠️ 终止 — claude 在 4 个阶段全部完成前被 step-level timeout (1500s/25min)",
+   "depsCount": 0,
+   "attempts": [],
+   "artifacts": [],
+   "docFacts": [],
+   "envRows": [
+    [
+     "容器 OS",
+     "ubuntu22.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "从历史 md 正文解析机器/镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "```（断点 0）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "```（断点 0）"
+     ]
+    }
+   ],
+   "breakpoints": 0,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "failed",
+     "minutes": 0,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 0,
+   "result": "terminated",
+   "id": 375,
+   "scene": "ascend-user-install-verify",
+   "date": "2026-06-15",
+   "month": "2026-06",
+   "reportFile": "reports/user/2026-06-vllm-ascend-ttfhw-vllm-ascend-user-install-verify-20260615-01.md",
+   "url": "",
+   "sampleMinutes": 0
   }
  ]
 }
