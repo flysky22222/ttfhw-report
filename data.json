@@ -53720,6 +53720,1862 @@
    "reportFile": "reports/user/2026-06-vllm-ascend-ttfhw-vllm-ascend-user-install-verify-20260615-01.md",
    "url": "",
    "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "CANN",
+   "repo": "cann",
+   "env": {
+    "os": "Ubuntu 24.04",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "快速安装页与安装指南版本不一致（9.0.1 vs 9.0.0）",
+     "level": "严重",
+     "source": "快速安装页 vs 安装指南文档",
+     "detail": "安装指南应与快速安装页同步到最新版本"
+    },
+    {
+     "title": "OPS包必要性说明位置不当",
+     "level": "重要",
+     "source": "安装指南 - 安装驱动&Toolkit合一包章节",
+     "detail": "将OPS必要性说明移到OPS章节开头"
+    },
+    {
+     "title": "快速安装页缺少NNAL包信息",
+     "level": "一般",
+     "source": "快速安装页安装指引",
+     "detail": "快速安装页应补充NNAL包信息（标注为可选）"
+    },
+    {
+     "title": "依赖列表分散（系统依赖与Python依赖分离）",
+     "level": "重要",
+     "source": "安装指南 - 安装依赖章节 + 安装后配置章节",
+     "detail": "将所有依赖集中到一个章节"
+    },
+    {
+     "title": "快速安装页缺少make和dkms依赖",
+     "level": "重要",
+     "source": "快速安装页 vs 安装指南",
+     "detail": "快速安装页应补齐make和dkms依赖"
+    },
+    {
+     "title": "快速安装页未说明容器场景差异",
+     "level": "一般",
+     "source": "快速安装页",
+     "detail": "快速安装页应补充容器场景说明"
+    },
+    {
+     "title": "文档未解释为何分两个OBS源",
+     "level": "提示",
+     "source": "准备软件包章节",
+     "detail": "补充说明（如主包在cn-north-4，算子库在cn-east-2）"
+    },
+    {
+     "title": "文档未提及sha256校验方法",
+     "level": "一般",
+     "source": "准备软件包 - 软件数字签名验证章节",
+     "detail": "补充sha256校验方法或链接"
+    },
+    {
+     "title": "快速安装页未说明--quiet参数接受EULA",
+     "level": "严重",
+     "source": "快速安装页安装命令",
+     "detail": "在命令中添加--quiet参数或说明静默安装方法"
+    },
+    {
+     "title": "ops包安装命令同样需要--quiet参数",
+     "level": "严重",
+     "source": "快速安装页ops包安装命令",
+     "detail": "在ops包安装命令中也添加--quiet参数"
+    }
+   ],
+   "problems": [
+    {
+     "title": "CANN Toolkit安装命令不加--quiet参数卡在EULA交互界面",
+     "source": "文档 - 快速安装页步骤3",
+     "detail": "添加--quiet参数接受EULA"
+    },
+    {
+     "title": "npu-smi info缺少libc_sec.so库",
+     "source": "硬件实证（非文档要求）",
+     "detail": "环境问题，非文档缺陷，不计入文档缺陷"
+    }
+   ],
+   "summary": "作为CANN用户，按官方CANN A2离线安装文档（快速安装页+安装指南），在NPU A2节点的测试Pod内真实下载、安装、验证。阶段一成功提取文档要素，阶段二安装过程中发现并修正--quiet参数缺失缺陷，阶段三验证命令成功返回芯片型号Ascend910B4。共发现文档缺陷10条（严重3条、重要3条、一般3条、提示1条），已整理为结构化Issue草稿。环境问题（npu-smi缺少库）不计入文档缺陷。整体验证结论：文档基本可用但存在严重缺陷（版本不一致、--quiet参数缺失）需要修复。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "安装",
+     "command": "kubectl apply -f cann-test-pod.yaml",
+     "ok": true,
+     "output": "Pod创建成功，调度到NPU A2节点"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl wait --for=condition=Ready pod/cann-a2-offline-test-20260709-06 -n ttfhw --timeout=300s",
+     "ok": true,
+     "output": "Pod就绪，NPU设备挂载成功（davinci0-7）"
+    },
+    {
+     "step": "安装",
+     "command": "groupadd HwHiAiUser && useradd -g HwHiAiUser -d /home/HwHiAiUser -m HwHiAiUser -s /bin/bash",
+     "ok": true,
+     "output": "用户创建成功 uid=1000(HwHiAiUser)"
+    },
+    {
+     "step": "安装",
+     "command": "apt-get update && apt-get install -y gcc python3 python3-pip",
+     "ok": true,
+     "output": "gcc 13.3.0, python3 3.12.3, pip 24.0 安装成功"
+    },
+    {
+     "step": "安装",
+     "command": "wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/CANN/CANN%209.0.1/Ascend-cann_9.0.1_linux-aarch64.run",
+     "ok": true,
+     "output": "下载成功，文件大小 1.8GB"
+    },
+    {
+     "step": "安装",
+     "command": "bash ./Ascend-cann_9.0.1_linux-aarch64.run --install",
+     "ok": false,
+     "output": "安装失败，卡在EULA交互界面"
+    },
+    {
+     "step": "安装",
+     "command": "bash ./Ascend-cann_9.0.1_linux-aarch64.run --install --quiet",
+     "ok": true,
+     "output": "CANN Toolkit 9.0.1 安装成功"
+    },
+    {
+     "step": "安装",
+     "command": "wget https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.0.1/Ascend-cann-910b-ops_9.0.1_linux-aarch64.run",
+     "ok": true,
+     "output": "下载成功，文件大小 2.2GB"
+    },
+    {
+     "step": "安装",
+     "command": "bash ./Ascend-cann-910b-ops_9.0.1_linux-aarch64.run --install --quiet",
+     "ok": true,
+     "output": "ops_910b 9.0.1 安装成功"
+    },
+    {
+     "step": "使用",
+     "command": "source /usr/local/Ascend/cann/set_env.sh",
+     "ok": true,
+     "output": "环境变量配置成功"
+    },
+    {
+     "step": "使用",
+     "command": "python3 -c \"import acl;print(acl.get_soc_name())\"",
+     "ok": true,
+     "output": "Ascend910B4"
+    },
+    {
+     "step": "使用",
+     "command": "npu-smi info",
+     "ok": false,
+     "output": "缺少libc_sec.so库"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://www.hiascend.com/cann/download + https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/900/softwareinst/instg/",
+     "source": "用户指定官方文档入口"
+    },
+    {
+     "label": "前置要求",
+     "value": "gcc；python3；python3-pip；linux-headers；make；dkms",
+     "source": "文档 - 安装依赖章节"
+    },
+    {
+     "label": "安装命令",
+     "value": "groupadd HwHiAiUser；useradd -g HwHiAiUser -d /home/HwHiAiUser -m HwHiAiUser -s /bin/bash；apt-get update；apt-get install -y gcc python3 python3-pip；wget https://ascend-cann-open.obs.cn-north-4.myhuaweicloud.com/CANN/CANN%209.0.1/Ascend-cann_9.0.1_linux-aarch64.run；bash ./Ascend-cann_9.0.1_linux-aarch",
+     "source": "文档 - 快速安装页 + 安装指南"
+    },
+    {
+     "label": "使用/验证命令",
+     "value": "python3 -c \"import acl;print(acl.get_soc_name())\"",
+     "source": "文档 - 安装后验证章节"
+    },
+    {
+     "label": "贡献入口",
+     "value": "GitCode CANN仓库: https://gitcode.com/cann/",
+     "source": "文档未提供"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "CPU 核数",
+     "8"
+    ],
+    [
+     "内存",
+     "16Gi"
+    ],
+    [
+     "宿主架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "workflow默认镜像，预装wget/curl/git/python3-pip"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "用Playwright MCP抓取官方CANN快速安装页（选择A2系列产品+Ubuntu+离线安装，提取安装指引）",
+      "抓取安装指南详细文档（访问准备软件包、安装CANN、安装后配置章节，提取完整安装步骤）",
+      "整理文档要素并记录到phase1-understand.log（提取版本信息、下载链接、安装命令、依赖列表、验证命令等）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建测试Pod，调度到NPU A2节点（Pod就绪，NPU设备davinci0-7挂载成功）",
+      "按文档创建HwHiAiUser用户（用户创建成功 uid=1000(HwHiAiUser)）",
+      "按文档安装依赖gcc python3 python3-pip（gcc 13.3.0, python3 3.12.3, pip 24.0）",
+      "按文档命令安装CANN Toolkit（不加--quiet）（发现缺陷#9：文档未说明需要--quiet参数接受EULA）",
+      "使用修正后命令（加--quiet）安装CANN Toolkit（CANN Toolkit 9.0.1安装成功）",
+      "下载并安装ops算子包（加--quiet）（ops_910b 9.0.1安装成功）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "执行文档验证命令python3 -c \"import acl\"（返回芯片型号Ascend910B4，验证成功）",
+      "执行硬件实证npu-smi info（环境问题（缺少库），非文档缺陷）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理文档缺陷为10条结构化Issue（phase4-contribution.log记录完整缺陷清单）"
+     ]
+    }
+   ],
+   "breakpoints": 10,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 4
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 15,
+     "breakpoints": 6
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 20,
+   "result": "success",
+   "id": 376,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-cann-ttfhw-cann-a2-offline-install-20260709-06.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindIE",
+   "repo": "mindie",
+   "env": {
+    "os": "Ubuntu 24.04 LTS",
+    "arch": "aarch64",
+    "image": "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+   },
+   "defects": [
+    {
+     "title": "文档结构分散",
+     "level": "重要",
+     "source": "docs/zh/user_guide/install/",
+     "detail": "提供单页面完整步骤"
+    },
+    {
+     "title": "缺少镜像 URL",
+     "level": "严重",
+     "source": "installation_introduction.md",
+     "detail": "提供镜像地址"
+    },
+    {
+     "title": "缺少安装包地址",
+     "level": "严重",
+     "source": "installation_introduction.md",
+     "detail": "提供下载链接"
+    },
+    {
+     "title": "缺少依赖说明",
+     "level": "严重",
+     "source": "environment_preparation.md",
+     "detail": "列出依赖版本"
+    }
+   ],
+   "problems": [
+    {
+     "title": "动态渲染难抓取",
+     "source": "GitCode",
+     "detail": "git clone"
+    },
+    {
+     "title": "未找到安装包",
+     "source": "文档缺陷",
+     "detail": "无法解决"
+    }
+   ],
+   "summary": "MindIE-LLM 官方文档存在严重缺陷，缺少镜像 URL、软件包下载地址、依赖说明等关键信息。用户无法按文档完成安装，自动化工具无法抓取完整内容。建议提供快速开始章节和具体安装资源链接。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "了解",
+     "command": "Playwright 访问文档",
+     "ok": true,
+     "output": "获取文档结构"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply",
+     "ok": true,
+     "output": "Pod Running"
+    },
+    {
+     "step": "安装",
+     "command": "npu-smi info",
+     "ok": false,
+     "output": "缺少基础库"
+    },
+    {
+     "step": "安装",
+     "command": "查找安装包",
+     "ok": false,
+     "output": "未找到"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://gitcode.com/ascend/mindIE-LLM",
+     "source": "环境变量 OFFICIAL_DOC_URL"
+    },
+    {
+     "label": "前置要求",
+     "value": "硬件: Atlas 800I A2 推理服务器（AArch64）；操作系统: Ubuntu 22.04/24.04, openEuler 22.03/24.03；Python: >=3.10；依赖: PyTorch（必需）；依赖: CANN（可选）",
+     "source": "docs/zh/user_guide/install/installation_introduction.md"
+    },
+    {
+     "label": "安装命令",
+     "value": "镜像安装: 未提供 URL；离线安装: 未提供下载地址；源码安装: 需要编译",
+     "source": "文档未提供具体命令"
+    },
+    {
+     "label": "贡献入口",
+     "value": "https://gitcode.com/Ascend/MindIE-LLM/issues",
+     "source": "GitCode Issues"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04 LTS"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "宿主架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-southwest-2.myhuaweicloud.com/modelfoundry/ttfhw-ubuntu-24.04-base:latest"
+    ],
+    [
+     "镜像来源",
+     "文档未提供具体镜像，使用环境变量 TEST_IMAGE 默认值"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "访问文档（获取结构）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建 Pod（NPU 节点）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理缺陷（7 条缺陷）"
+     ]
+    }
+   ],
+   "breakpoints": 4,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "partial",
+     "minutes": 10,
+     "breakpoints": 1
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 7,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "not_run",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 3,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 20,
+   "result": "failed",
+   "id": 377,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindie-ttfhw-mindie-llm-install-20260709-04.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpeed",
+   "repo": "MindSpeed",
+   "env": {
+    "os": "openEuler 24.03 LTS",
+    "arch": "aarch64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.2-910b-openeuler24.03-py3.11"
+   },
+   "defects": [
+    {
+     "title": "预构建镜像缺少完整 registry 地址",
+     "level": "严重",
+     "source": "install_guide.md - Method 1: Image Installation",
+     "detail": "增加完整镜像拉取命令，如：docker pull swr.cn-south-1.myhuaweicloud.com/ascendhub/mindspeed-llm:26.0.0-910b-openeuler24.03-py3.11-aarch64"
+    },
+    {
+     "title": "CANN 安装引用外部链接未给出具体命令",
+     "level": "重要",
+     "source": "install_guide.md - Method 2 步骤 1",
+     "detail": "在文档中补充 CANN 安装的关键步骤或提供离线安装包下载链接"
+    },
+    {
+     "title": "PyTorch/torch_npu 版本匹配要求不明确",
+     "level": "严重",
+     "source": "install_guide.md - Method 2 步骤 2",
+     "detail": "明确标注 torch_npu 版本与 CANN 版本的配套关系表，如：torch_npu 2.7.1 需要 CANN 9.0，torch_npu 2.5.x 需要 CANN 8.5.x"
+    },
+    {
+     "title": "PyTorch .whl 文件获取方式未说明",
+     "level": "一般",
+     "source": "install_guide.md - Method 2 步骤 2",
+     "detail": "说明 .whl 文件下载地址（gitcode releases 页面）或提供在线安装命令"
+    },
+    {
+     "title": "前置依赖安装流程不完整",
+     "level": "重要",
+     "source": "install_guide.md - Preparation",
+     "detail": "整合前置依赖安装流程，提供一站式安装脚本或详细步骤"
+    },
+    {
+     "title": "镜像说明与实际不符（称预装 PyTorch 但实际未预装）",
+     "level": "重要",
+     "source": "OVERVIEW.md 和 hiascend 镜像详情页",
+     "detail": "更新镜像说明，明确标注镜像预装内容（仅 CANN，不含 PyTorch）"
+    },
+    {
+     "title": "缺少明确的验证命令",
+     "level": "重要",
+     "source": "install_guide.md 全文",
+     "detail": "增加最小验证示例，如：python -c 'import mindspeed_llm; print(mindspeed_llm.__version__)'"
+    }
+   ],
+   "problems": [
+    {
+     "title": "torch_npu 导入失败：ImportError: libruntime_common.so undefined symbol",
+     "source": "实测发现",
+     "detail": "CANN 8.5.2 与 torch_npu 2.7.1 版本不匹配，需要 CANN 9.0 或降级到 torch_npu 2.5.x"
+    }
+   ],
+   "summary": "模拟用户按官方文档在 NPU A2 Pod 内尝试安装 MindSpeed-LLM，发现 7 处文档缺陷。阶段一（了解）成功，阶段二（安装）部分成功（Pod 创建和 PyTorch 安装成功，但 torch_npu 版本不匹配导致导入失败），阶段三（使用）因 torch_npu 无法导入而失败，阶段四（贡献）成功整理文档缺陷。核心问题：文档未明确说明 torch_npu 与 CANN 的版本配套关系，用户按示例安装会遇到 ImportError。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "了解",
+     "command": "Playwright browser_navigate https://gitcode.com/Ascend/MindSpeed-LLM",
+     "ok": true,
+     "output": "成功渲染动态页面，获取 README 内容"
+    },
+    {
+     "step": "了解",
+     "command": "Playwright browser_navigate install_guide.md",
+     "ok": true,
+     "output": "获取完整安装步骤（Method 1: 镜像安装, Method 2: 源码安装）"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply -f test-pod.yaml",
+     "ok": true,
+     "output": "Pod mindspeed-llm-install-test created and Ready"
+    },
+    {
+     "step": "安装",
+     "command": "pip3 install torch==2.7.1",
+     "ok": true,
+     "output": "torch-2.7.1+cpu 安装成功（99.1 MB）"
+    },
+    {
+     "step": "安装",
+     "command": "pip3 install torch_npu-2.7.1.post6",
+     "ok": true,
+     "output": "torch-npu-2.7.1.post6 安装成功（31.9 MB）"
+    },
+    {
+     "step": "安装",
+     "command": "python3 -c 'import torch_npu'",
+     "ok": false,
+     "output": "ImportError: libruntime_common.so undefined symbol (CANN 版本不匹配)"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://gitcode.com/Ascend/MindSpeed-LLM/blob/master/docs/en/pytorch/training/install_guide.md",
+     "source": "Playwright MCP 实时抓取 gitcode.com/Ascend/MindSpeed-LLM"
+    },
+    {
+     "label": "前置要求",
+     "value": "Atlas A2/A3 training products NPU；CANN 8.5.2 或 9.0.0；PyTorch 2.7.1 + torch_npu 2.7.1；Python 3.11；openEuler 24.03 或 Ubuntu 22.04",
+     "source": "文档 - 安装指南"
+    },
+    {
+     "label": "安装命令",
+     "value": "git clone https://gitcode.com/ascend/MindSpeed.git；pip3 install -r requirements.txt (MindSpeed)；pip3 install -e . (MindSpeed)；git clone https://gitcode.com/ascend/MindSpeed-LLM.git；git clone https://github.com/NVIDIA/Megatron-LM.git；git checkout core_v0.12.1 (Megatron-LM)；cp -r megatron ../MindSpeed",
+     "source": "文档 - install_guide.md Method 2"
+    },
+    {
+     "label": "贡献入口",
+     "value": "https://gitcode.com/Ascend/MindSpeed-LLM/issues",
+     "source": "文档 - README"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "openEuler 24.03 LTS"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "CPU 核数",
+     "8"
+    ],
+    [
+     "内存",
+     "32Gi"
+    ],
+    [
+     "宿主架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/cann:8.5.2-910b-openeuler24.03-py3.11"
+    ],
+    [
+     "镜像来源",
+     "文档 OVERVIEW.md 提供的基础镜像地址，CANN 8.5.2 已预装"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "用 Playwright MCP 渲染 gitcode 官方仓库，抓取 README 和安装指南（获取硬件支持、安装方式、依赖要求、镜像信息）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建测试 Pod（CANN 8.5.2 基础镜像 + NPU A2 节点）（Pod Ready，8 张 NPU 设备可见）",
+      "安装 PyTorch 2.7.1 和 torch_npu 2.7.1.post6（安装成功但 torch_npu 导入失败（CANN 版本不匹配））"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "验证 torch_npu 导入（CANN 8.5.2 与 torch_npu 2.7.1 版本不匹配，无法导入）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理文档缺陷（发现 7 个文档缺陷，已整理成结构化 Issue）"
+     ]
+    }
+   ],
+   "breakpoints": 7,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 2
+    },
+    {
+     "name": "安装",
+     "status": "partial",
+     "minutes": 15,
+     "breakpoints": 4
+    },
+    {
+     "name": "使用",
+     "status": "failed",
+     "minutes": 1,
+     "breakpoints": 1
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 27,
+   "result": "failed",
+   "id": 378,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspeed-ttfhw-mindspeed-llm-install-20260709-67.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "MindSpore",
+   "repo": "MindSpore",
+   "env": {
+    "os": "Ubuntu 24.04.4 LTS",
+    "arch": "x86_64",
+    "image": "docker.io/ubuntu:24.04"
+   },
+   "defects": [
+    {
+     "title": "TTFHW 标准基础镜像不支持 amd64 节点（exec format error）",
+     "level": "严重",
+     "source": "CLAUDE.md § 容器基础镜像 catalog",
+     "detail": "为每个base image提供多架构版本（amd64+arm64），或明确标注架构"
+    },
+    {
+     "title": "mindspore.cn 安装文档未说明 Ubuntu 24.04 的 PEP 668 限制及处理方法",
+     "level": "重要",
+     "source": "https://www.mindspore.cn/install - 安装MindSpore章节",
+     "detail": "文档需补充venv/Conda虚拟环境安装方法，或说明Ubuntu 20.04+的PEP 668处理"
+    },
+    {
+     "title": "文档 GCC 版本要求（7.3.0-11.3.0）未包含 Ubuntu 24.04 默认 GCC 13.3.0",
+     "level": "一般",
+     "source": "https://www.mindspore.cn/install - 依赖表格",
+     "detail": "更新GCC版本范围至7.3.0-13.3.0，明确Ubuntu 24.04默认GCC可用"
+    }
+   ],
+   "problems": [
+    {
+     "title": "TTFHW base image exec format error（架构不匹配）",
+     "source": "TTFHW base image catalog",
+     "detail": "临时改用docker.io/ubuntu:24.04公网镜像"
+    },
+    {
+     "title": "pip install报错externally-managed-environment（PEP 668）",
+     "source": "mindspore.cn官网安装命令",
+     "detail": "创建venv虚拟环境后再安装"
+    }
+   ],
+   "summary": "模拟用户按mindspore.cn官网安装指南在Ubuntu 24.04+x86_64环境真实安装MindSpore 2.9.0，了解/使用阶段完全成功，安装阶段遇到2个断点（环境镜像缺陷+文档PEP 668缺陷）后解决，最终验证通过。发现3个文档缺陷：1) TTFHW base镜像架构不匹配（环境配套资源）；2) Ubuntu 24.04 PEP 668保护未说明（安装步骤缺失）；3) GCC版本要求过时（版本范围未更新）。MindSpore安装成功，官方验证命令输出符合预期。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "了解",
+     "command": "Playwright browser_navigate https://www.mindspore.cn/install",
+     "ok": true,
+     "output": "页面加载成功，默认选项：版本2.9.0+Ascend+Linux-aarch64"
+    },
+    {
+     "step": "了解",
+     "command": "Playwright browser_click CPU硬件平台选项",
+     "ok": true,
+     "output": "选择CPU后，页面文档内容切换为CPU版安装指南"
+    },
+    {
+     "step": "了解",
+     "command": "Playwright browser_click Linux-x86_64操作系统选项",
+     "ok": true,
+     "output": "选择x86_64后，安装命令保持一致，文档内容为CPU版pip安装"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply 创建测试Pod（镜像：ttfhw-ubuntu-24.04-base）",
+     "ok": false,
+     "output": "Pod创建成功但容器启动失败：exec format error"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply 创建测试Pod（镜像：docker.io/ubuntu:24.04）",
+     "ok": true,
+     "output": "Pod Ready，等待约90秒镜像下载"
+    },
+    {
+     "step": "安装",
+     "command": "apt-get update && apt-get install -y python3 python3-pip python3-venv build-essential",
+     "ok": true,
+     "output": "成功安装Python 3.12.3、pip 24.0、GCC 13.3.0、build-essential"
+    },
+    {
+     "step": "安装",
+     "command": "pip install mindspore==2.9.0 -i https://repo.mindspore.cn/pypi/simple --trusted-host repo.mindspore.cn --extra-index-url https://repo.huaweicloud.com/repository",
+     "ok": false,
+     "output": "报错：externally-managed-environment（PEP 668保护）"
+    },
+    {
+     "step": "安装",
+     "command": "python3 -m venv /opt/mindspore_env && source /opt/mindspore_env/bin/activate && pip install mindspore==2.9.0 -i https://repo.mindspore.cn/pypi/simple --trusted-",
+     "ok": true,
+     "output": "Successfully installed mindspore-2.9.0 + 12个依赖包"
+    },
+    {
+     "step": "使用",
+     "command": "python -c \"import mindspore;mindspore.set_device(device_target='CPU');mindspore.run_check()\"",
+     "ok": true,
+     "output": "MindSpore version:  2.9.0; The result of multiplication calculation is correct, MindSpore has been installed on platform [CPU] successfully!"
+    },
+    {
+     "step": "使用",
+     "command": "python -c \"import mindspore; print(mindspore.__version__); from mindspore import Tensor; import numpy as np; print(Tensor(np.array([1,2,3])) + Tensor(np.array([",
+     "ok": true,
+     "output": "2.9.0; [5 7 9]（Tensor运算正确）"
+    },
+    {
+     "step": "使用",
+     "command": "cat /etc/os-release && uname -m && python --version",
+     "ok": true,
+     "output": "Ubuntu 24.04.4 LTS; x86_64; Python 3.12.3"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://www.mindspore.cn/install（动态Vue页，Playwright MCP抓取）",
+     "source": "prompt指定官方文档入口"
+    },
+    {
+     "label": "前置要求",
+     "value": "OS: Ubuntu（示例18.04）；Python: 3.9-3.12；GCC: 7.3.0-11.3.0（优选7.3.0）",
+     "source": "文档 - 安装MindSpore与依赖软件章节"
+    },
+    {
+     "label": "安装命令",
+     "value": "export MS_VERSION=2.9.0；pip install mindspore==${MS_VERSION} -i https://repo.mindspore.cn/pypi/simple --trusted-host repo.mindspore.cn --extra-index-url https://repo.huaweicloud.com/repository/pypi/simple",
+     "source": "文档 - 安装MindSpore章节 + 页面实时生成"
+    },
+    {
+     "label": "使用/验证命令",
+     "value": "python -c \"import mindspore;mindspore.set_device(device_target='CPU');mindspore.run_check()\"",
+     "source": "文档 - 验证是否成功安装章节"
+    },
+    {
+     "label": "贡献入口",
+     "value": "GitCode Issue 提交",
+     "source": "prompt指定"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04.4 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "CPU 核数",
+     "2"
+    ],
+    [
+     "内存",
+     "4Gi"
+    ],
+    [
+     "宿主架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "docker.io/ubuntu:24.04"
+    ],
+    [
+     "镜像来源",
+     "TEST_IMAGE未指定；TTFHW标准base镜像架构不匹配（exec format error）；临时降级使用docker.io Ubuntu 24.04公网镜像"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "用Playwright MCP渲染mindspore.cn/install动态页，点选Linux-x86_64+CPU+2.9.0（截图记录3步选择：初始页、选CPU、选x86_64；提取官网实时安装命令与依赖表格）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建测试Pod（尝试TTFHW base image）（exec format error；记录为环境镜像缺陷#1；临时改用docker.io/ubuntu:24.04）",
+      "安装Python/pip/GCC依赖（Python 3.12.3、GCC 13.3.0（超出文档范围））",
+      "按文档pip install安装MindSpore（记录为文档缺陷#2；改用venv虚拟环境解决）",
+      "在venv环境中安装MindSpore（Successfully installed mindspore-2.9.0）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "执行官方验证命令run_check（输出完全符合文档预期）",
+      "执行Tensor运算验证与环境实证（Tensor运算正确；环境确认：Ubuntu 24.04.4 LTS x86_64 Python 3.12.3）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理文档缺陷为GitCode Issue草稿（共3个缺陷：镜像架构不匹配、PEP 668未说明、GCC版本过时）"
+     ]
+    }
+   ],
+   "breakpoints": 3,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    },
+    {
+     "name": "安装",
+     "status": "unknown",
+     "minutes": 6,
+     "breakpoints": 3
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 14,
+   "result": "partial",
+   "id": 379,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-mindspore-ttfhw-mindspore-cpu-install-20260709-67.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "TileLang",
+   "repo": "tilelang",
+   "env": {
+    "os": "Ubuntu 22.04.5 LTS",
+    "arch": "aarch64",
+    "image": "quay.io/ascend/cann:8.5.2-910b-ubuntu22.04-py3.11"
+   },
+   "defects": [
+    {
+     "title": "README Environment Setup 段落与 Latest News CANN 版本声明不一致",
+     "level": "重要",
+     "source": "README.md Environment Setup 章节 vs Latest News 章节",
+     "detail": "更新 Environment Setup 章节，明确支持的 CANN 版本范围（如 8.3 - 8.5）"
+    },
+    {
+     "title": "README 未列出构建 AscendNPU-IR 所需的系统依赖",
+     "level": "严重",
+     "source": "README.md Build 章节 + install_npuir.sh 脚本",
+     "detail": "在 Environment Setup 或 Build 章节添加系统依赖列表：clang, clang++, lld, ninja>=1.12, patch, zlib1g-dev, libzstd-dev"
+    },
+    {
+     "title": "README 未明确 CMake 版本要求（需要 >= 3.28）",
+     "level": "重要",
+     "source": "AscendNPU-IR/CMakeLists.txt 第一行",
+     "detail": "在 Build 章节明确 CMake 版本要求，提供 pip install cmake 安装方法"
+    },
+    {
+     "title": "install_npuir.sh 在 llvm-project clone 网络中断后放弃",
+     "level": "严重",
+     "source": "install_npuir.sh 脚本",
+     "detail": "添加重试循环（至少 10 次），提供国内镜像/离线包下载选项"
+    },
+    {
+     "title": "README 未提供受限网络环境的获取途径和 pip 换源指引",
+     "level": "重要",
+     "source": "README.md Build 章节",
+     "detail": "添加受限网络环境章节，提供国内镜像配置方法"
+    },
+    {
+     "title": "README Quick Start 与 examples 目录代码 API 不一致",
+     "level": "一般",
+     "source": "README.md Quick Start 章节 vs examples/elementwise/vec_add_1d.py",
+     "detail": "统一 API 使用说明，或在文档中解释不同 API 的适用场景"
+    },
+    {
+     "title": "README 未说明 bishengir-compile 版本兼容性问题",
+     "level": "重要",
+     "source": "install_npuir.sh 脚本逻辑",
+     "detail": "明确说明 bishengir-compile 的获取方式（构建或使用 CANN 自带）"
+    }
+   ],
+   "problems": [
+    {
+     "title": "llvm-project clone 网络中断",
+     "source": "网络环境",
+     "detail": "手动重试 git submodule update --init --recursive 10 次"
+    },
+    {
+     "title": "apply_patches.sh 执行后 cmake 仍报依赖目标不存在",
+     "source": "构建系统",
+     "detail": "手动应用 patches 后重试 cmake，仍然失败"
+    },
+    {
+     "title": "cmake 配置失败：BiShengIRLinalgDialectExt 不存在",
+     "source": "BiShengIR 构建系统",
+     "detail": "无法解决，构建终止"
+    }
+   ],
+   "summary": "模拟用户按官方 README 在 A2 NPU 环境下完成了解阶段，安装阶段因构建系统问题（llvm-project clone 网络中断、BiShengIR cmake 配置失败）无法完成。发现 7 处文档缺陷（已整理为 Issue 草稿）。测试结果：失败，建议官方检查构建脚本和依赖配置。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "安装",
+     "command": "kubectl apply -f pod.yaml",
+     "ok": true,
+     "output": "Pod tilelang-a2-npu-install created and Ready"
+    },
+    {
+     "step": "安装",
+     "command": "apt-get install clang lld ninja patch && pip install ninja",
+     "ok": true,
+     "output": "构建依赖安装成功"
+    },
+    {
+     "step": "安装",
+     "command": "git clone https://github.com/tile-ai/tilelang-mlir-ascend.git --recursive",
+     "ok": true,
+     "output": "仓库 clone 成功"
+    },
+    {
+     "step": "安装",
+     "command": "bash install_npuir.sh",
+     "ok": false,
+     "output": "llvm-project clone 网络中断"
+    },
+    {
+     "step": "安装",
+     "command": "手动重试 git submodule update --init --recursive",
+     "ok": true,
+     "output": "llvm-project clone 成功"
+    },
+    {
+     "step": "安装",
+     "command": "cmake -B build -G Ninja ...",
+     "ok": false,
+     "output": "cmake 配置失败"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://github.com/tile-ai/tilelang-mlir-ascend/blob/main/README.md",
+     "source": "用户指定官方 README URL"
+    },
+    {
+     "label": "前置要求",
+     "value": "CANN toolkit 8.3.RC1.alpha002；Python 3.7.x - 3.11.4；pip 包: attrs, cython, numpy>=1.19.2,<=1.24.0, decorator, sympy, cffi, pyyaml, pathlib2, psutil, protobuf==3.20.0, scipy, requests, absl-py",
+     "source": "README Environment Setup 章节"
+    },
+    {
+     "label": "安装命令",
+     "value": "git clone https://github.com/tile-ai/tilelang-mlir-ascend.git --recursive；cd tilelang-mlir-ascend && bash install_npuir.sh；pip install pybind11 torch_npu",
+     "source": "README Build 章节 + install_npuir.sh 脚本"
+    },
+    {
+     "label": "使用/验证命令",
+     "value": "python3 examples/elementwise/vec_add_1d.py；验证: torch.testing.assert_close(y_ref, v3, rtol=1e-2, atol=1e-2)",
+     "source": "README Quick Start 章节 + examples/elementwise/vec_add_1d.py"
+    },
+    {
+     "label": "贡献入口",
+     "value": "GitHub Issues: https://github.com/tile-ai/tilelang-mlir-ascend/issues",
+     "source": "README 无贡献章节"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 22.04.5 LTS"
+    ],
+    [
+     "容器架构",
+     "aarch64"
+    ],
+    [
+     "CPU 核数",
+     "192"
+    ],
+    [
+     "内存",
+     "512Gi"
+    ],
+    [
+     "宿主架构",
+     "aarch64"
+    ],
+    [
+     "镜像",
+     "quay.io/ascend/cann:8.5.2-910b-ubuntu22.04-py3.11"
+    ],
+    [
+     "镜像来源",
+     "用户指定测试镜像，预装 CANN toolkit 8.5.2 + Python 3.11"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "用 Playwright MCP 抓取 GitHub README，跟进超链接获取构建脚本、依赖文件、示例代码（记录文档内容、CANN 版本差异、构建依赖缺失等问题）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建 NPU 测试 Pod，验证 CANN 环境，安装构建依赖（Pod Ready，CANN 8.5.2 已预装，补充安装 clang/lld/ninja/patch）",
+      "运行 install_npuir.sh 构建 AscendNPU-IR（llvm-project clone 因网络中断失败，手动重试后成功）",
+      "cmake 配置 BiShengIR 构建（BiShengIRLinalgDialectExt 依赖目标不存在，无法继续构建）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理文档缺陷为 Issue 草稿（记录 7 条文档缺陷，无法提交（需要人工审核））"
+     ]
+    }
+   ],
+   "breakpoints": 7,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 4,
+     "breakpoints": 1
+    },
+    {
+     "name": "安装",
+     "status": "failed",
+     "minutes": 70,
+     "breakpoints": 5
+    },
+    {
+     "name": "使用",
+     "status": "not_run",
+     "minutes": 0,
+     "breakpoints": 1
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 79,
+   "result": "failed",
+   "id": 380,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-tilelang-ttfhw-tilelang-a2-npu-install-20260709-08.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "Triton",
+   "repo": "triton",
+   "env": {
+    "os": "Ubuntu 22.04（预期）",
+    "arch": "x86_64",
+    "image": "quay.io/ascend/cann:9.0.0-beta.2-910b-ubuntu22.04-py3.10"
+   },
+   "defects": [
+    {
+     "title": "quick_start.md 软件依赖章节缺少 torch_npu 安装指引",
+     "level": "严重",
+     "source": "https://github.com/triton-lang/triton-ascend/blob/main/docs/zh/quick_start.md - 软件依赖章节",
+     "detail": "补充 torch_npu 安装命令（如 pip install torch-npu==2.7.1.post4）或链接到 PyTorch 官方 torch_npu 安装文档"
+    },
+    {
+     "title": "installation_guide.md CANN 镜像版本映射表未列出 beta 版本",
+     "level": "重要",
+     "source": "https://github.com/triton-lang/triton-ascend/blob/main/docs/en/installation_guide.md - Table 4",
+     "detail": "补充 beta 版本镜像 tag 到映射表，或在文档注释中说明 beta 版本不在官方支持范围"
+    },
+    {
+     "title": "requirements.txt 与 quick_start.md/installation_guide.md 的 torch_npu 版本号不一致",
+     "level": "提示",
+     "source": "https://github.com/triton-lang/triton-ascend/blob/main/requirements.txt",
+     "detail": "统一版本号描述，明确推荐使用 2.7.1.post4 版本"
+    },
+    {
+     "title": "quick_start.md 未提及 requirements.txt 安装步骤",
+     "level": "一般",
+     "source": "https://github.com/triton-lang/triton-ascend/blob/main/docs/zh/quick_start.md",
+     "detail": "在软件包安装章节后补充安装运行依赖步骤：pip install -r requirements.txt"
+    }
+   ],
+   "problems": [
+    {
+     "title": "测试镜像 quay.io/ascend/cann:9.0.0-beta.2-910b-ubuntu22.04-py3.10 拉取失败",
+     "source": "installation_guide.md Table 4",
+     "detail": "环境阻塞，无解法（离线集群无法访问外网 quay.io）"
+    }
+   ],
+   "summary": "本次测试因环境阻塞（离线集群无法拉取外网 quay.io 镜像）在安装阶段终止。阶段一文档抓取成功，发现 4 处文档缺陷：1) quick_start.md 缺少 torch_npu 安装指引（严重）；2) 镜像版本映射表未列出 beta 版本（重要）；3) torch_npu 版本号不一致（提示）；4) requirements.txt 安装时机未说明（一般）。建议在有外网访问能力的环境下重新测试验证这些缺陷是否会在实际运行中触发。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "了解",
+     "command": "curl -fsSL https://raw.githubusercontent.com/triton-lang/triton-ascend/main/docs/zh/quick_start.md",
+     "ok": true,
+     "output": "成功抓取 163 行文档"
+    },
+    {
+     "step": "了解",
+     "command": "curl -fsSL https://raw.githubusercontent.com/triton-lang/triton-ascend/main/docs/en/installation_guide.md",
+     "ok": true,
+     "output": "成功抓取 552 行安装指南"
+    },
+    {
+     "step": "了解",
+     "command": "curl -fsSL https://raw.githubusercontent.com/triton-lang/triton-ascend/main/requirements.txt",
+     "ok": true,
+     "output": "torch-npu==2.7.1, pybind11, numpy==1.26.4 等 17 行"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply -f docker:dind Pod",
+     "ok": true,
+     "output": "Pod triton-a2-npu-install-dind 创建成功，状态 Running"
+    },
+    {
+     "step": "安装",
+     "command": "docker pull quay.io/ascend/cann:9.0.0-beta.2-910b-ubuntu22.04-py3.10",
+     "ok": false,
+     "output": "TLS handshake timeout, connection reset by peer"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://github.com/triton-lang/triton-ascend/blob/main/docs/zh/quick_start.md",
+     "source": "用户指定官方文档入口"
+    },
+    {
+     "label": "前置要求",
+     "value": "操作系统: Linux (aarch64/x86_64)；Ascend 产品: Atlas A2/A3/A5 系列；Python: 3.9-3.11 (quick_start.md) 或 3.9-3.13 (installation_guide.md)；CANN: 9.0.0；torch_npu: 2.7.1.post4",
+     "source": "文档 - 软件依赖章节"
+    },
+    {
+     "label": "安装命令",
+     "value": "pip install triton-ascend==3.2.1 --extra-index-url=https://triton-ascend.osinfra.cn/pypi/simple；pip install -r requirements.txt (含 torch-npu==2.7.1)",
+     "source": "文档 - 软件包安装章节"
+    },
+    {
+     "label": "使用/验证命令",
+     "value": "source /usr/local/Ascend/ascend-toolkit/set_env.sh；git clone https://github.com/triton-lang/triton-ascend.git；python3 ./triton-ascend/third_party/ascend/tutorials/01-vector-add.py",
+     "source": "文档 - 快速开始章节"
+    },
+    {
+     "label": "贡献入口",
+     "value": "https://github.com/triton-lang/triton-ascend (GitHub Issues)",
+     "source": "文档 - README"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 22.04（预期）"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "CPU 核数",
+     "8"
+    ],
+    [
+     "内存",
+     "32Gi（推荐）"
+    ],
+    [
+     "宿主架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "quay.io/ascend/cann:9.0.0-beta.2-910b-ubuntu22.04-py3.10"
+    ],
+    [
+     "镜像来源",
+     "用户指定测试镜像（来自 triton-ascend 官方文档推荐）"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "用 curl 抓取 quick_start.md / installation_guide.md / requirements.txt / Dockerfile / 01-vector-add.py（提取前置要求、安装命令、验证步骤，发现 4 处文档缺陷）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建 docker:dind Pod 并启动 Docker daemon（Pod Running，docker info 正常）",
+      "尝试拉取测试镜像 quay.io/ascend/cann:9.0.0-beta.2-910b-ubuntu22.04-py3.10（TLS handshake timeout, connection reset - 离线集群无法稳定访问外网 quay.io）",
+      "重试镜像拉取（第二次）（同样错误，确认环境阻塞）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理阶段一发现的文档缺陷（4 处文档缺陷已记录到 phase4-contribution.log）"
+     ]
+    }
+   ],
+   "breakpoints": 4,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 10,
+     "breakpoints": 4
+    },
+    {
+     "name": "安装",
+     "status": "unknown",
+     "minutes": 25,
+     "breakpoints": 0
+    },
+    {
+     "name": "使用",
+     "status": "unknown",
+     "minutes": 0,
+     "breakpoints": 0
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 5,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 40,
+   "result": "terminated",
+   "id": 381,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-triton-ttfhw-triton-a2-npu-install-20260709-08.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openEuler",
+   "repo": "openEuler",
+   "env": {
+    "os": "Ubuntu 24.04 LTS",
+    "arch": "x86_64",
+    "image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+   },
+   "defects": [
+    {
+     "title": "sqlite 包无明确的构建示例",
+     "level": "重要",
+     "source": "文档第 3 节",
+     "detail": "补充 sqlite、nginx、redis 等常见软件包的 spec 文件模板示例"
+    },
+    {
+     "title": "sqlite 包的 SIG 归属未明确说明",
+     "level": "重要",
+     "source": "文档全文",
+     "detail": "在文档中补充常见软件包的 SIG 归属说明"
+    },
+    {
+     "title": "容器化场景缺少特化说明",
+     "level": "一般",
+     "source": "文档全文",
+     "detail": "补充容器化场景的构建指南"
+    },
+    {
+     "title": "文档未说明如何在非 openEuler 系统上构建 RPM 包",
+     "level": "严重",
+     "source": "文档第 1 节",
+     "detail": "补充跨系统构建指南或引导用户使用 openEuler 容器"
+    },
+    {
+     "title": "sqlite 无最小验证示例",
+     "level": "重要",
+     "source": "文档全文",
+     "detail": "补充常见软件的最小验证示例"
+    },
+    {
+     "title": "跨系统验证问题",
+     "level": "重要",
+     "source": "文档全文",
+     "detail": "说明如何验证 RPM 包的内容和结构"
+    }
+   ],
+   "problems": [
+    {
+     "title": "文档命令 dnf install rpmdevtools* 失败：Ubuntu 系统无 dnf 命令",
+     "source": "文档第 1 节",
+     "detail": "文档外补充：启用 universe 源并安装 rpm build-essential wget"
+    },
+    {
+     "title": "文档命令 rpmdev-setuptree 失败：Ubuntu 系统无此命令",
+     "source": "文档第 2 节",
+     "detail": "文档外补充：手动创建工作空间目录"
+    },
+    {
+     "title": "RPM 包无法在 Ubuntu 上安装：缺少 libc.so.6 等依赖",
+     "source": "文档验证方法",
+     "detail": "文档外补充：重新构建 sqlite3 二进制文件并验证功能"
+    }
+   ],
+   "summary": "本次测试模拟 openEuler 贡献者按官方文档构建 sqlite RPM 包，阶段一成功从文档抽取关键信息，阶段二因测试环境使用 Ubuntu 导致文档命令失败（发现严重缺陷），阶段三成功验证 sqlite3 功能，阶段四整理 6 个文档缺陷。测试发现文档主要问题：（1）只支持 openEuler 系统，缺少跨系统构建指南；（2）只提供 Hello World 示例，缺少 sqlite 等常见软件包示例；（3）未说明软件包 SIG 归属；（4）缺少容器化场景指导。建议优先处理跨系统构建指南（严重缺陷）。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "了解",
+     "command": "browser_navigate https://docs.openeuler.org",
+     "ok": true,
+     "output": "成功访问并重定向到 https://docs.openeuler.openatom.cn/zh/"
+    },
+    {
+     "step": "了解",
+     "command": "搜索关键词 RPM 软件包构建",
+     "ok": true,
+     "output": "命中构建RPM包文档"
+    },
+    {
+     "step": "了解",
+     "command": "阅读并抽取文档内容",
+     "ok": true,
+     "output": "成功抽取开发环境要求、工作空间设置、spec模板、构建命令"
+    },
+    {
+     "step": "了解",
+     "command": "访问 SIG 列表页面",
+     "ok": true,
+     "output": "找到 DB SIG 和 Base-service SIG，sqlite 可能归属于 DB SIG"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply -f pod.yaml",
+     "ok": true,
+     "output": "Pod 创建成功并就绪"
+    },
+    {
+     "step": "安装",
+     "command": "cat /etc/os-release",
+     "ok": true,
+     "output": "Ubuntu 24.04 LTS（与文档要求的 openEuler 不匹配）"
+    },
+    {
+     "step": "安装",
+     "command": "dnf install rpmdevtools*",
+     "ok": false,
+     "output": "命令执行失败：dnf 不存在于 Ubuntu 系统"
+    },
+    {
+     "step": "安装",
+     "command": "apt-get update && apt-get install -y rpm build-essential wget",
+     "ok": true,
+     "output": "成功安装 rpm 和构建工具（文档外补充）"
+    },
+    {
+     "step": "安装",
+     "command": "rpmdev-setuptree",
+     "ok": false,
+     "output": "命令不存在于 Ubuntu 系统"
+    },
+    {
+     "step": "安装",
+     "command": "mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}",
+     "ok": true,
+     "output": "手动创建工作空间（文档外补充）"
+    },
+    {
+     "step": "安装",
+     "command": "wget https://www.sqlite.org/2025/sqlite-autoconf-3490100.tar.gz",
+     "ok": true,
+     "output": "成功下载 sqlite 源码包（3.1M）"
+    },
+    {
+     "step": "安装",
+     "command": "创建 sqlite.spec 文件",
+     "ok": true,
+     "output": "基于文档 hello.spec 模板编写 sqlite.spec"
+    },
+    {
+     "step": "安装",
+     "command": "rpmbuild -ba --nodeps sqlite.spec",
+     "ok": true,
+     "output": "成功构建 sqlite RPM 包（5.7M）和源码包（3.1M）"
+    },
+    {
+     "step": "使用",
+     "command": "rpm -ivh sqlite-3490100-1.x86_64.rpm",
+     "ok": false,
+     "output": "安装失败：缺少 libc.so.6 等依赖（Ubuntu 与 openEuler 库不兼容）"
+    },
+    {
+     "step": "使用",
+     "command": "重新构建并验证 sqlite3",
+     "ok": true,
+     "output": "成功执行 SELECT 1+1; 返回 2，SELECT sqlite_version(); 返回 3.49.1"
+    },
+    {
+     "step": "贡献",
+     "command": "整理文档缺陷为 GitCode Issue",
+     "ok": true,
+     "output": "整理 6 个文档缺陷（1 严重、4 重要、1 一般）"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://docs.openeuler.org → 重定向到 https://docs.openeuler.openatom.cn/zh/",
+     "source": "用户指定官方文档入口"
+    },
+    {
+     "label": "前置要求",
+     "value": "OS: openEuler；权限: root；repo源: 已设置openEuler的repo软件源",
+     "source": "文档 - 搭建开发环境章节"
+    },
+    {
+     "label": "安装命令",
+     "value": "dnf install rpmdevtools*；rpmdev-setuptree",
+     "source": "文档 - 第1节"
+    },
+    {
+     "label": "spec 模板",
+     "value": "hello.spec 示例（GNU Hello World）",
+     "source": "文档 - 第3节"
+    },
+    {
+     "label": "构建命令",
+     "value": "rpmbuild -ba hello.spec；可选参数：-bp, -bc, -bi, -bl, -ba, -bb, -bs",
+     "source": "文档 - 第4节"
+    },
+    {
+     "label": "sig_info",
+     "value": "sqlite 可能归属于 DB SIG 或 Base-service SIG",
+     "source": "SIG 列表页面"
+    },
+    {
+     "label": "verification_commands",
+     "value": "执行 hello 命令（未给出 sqlite 验证）",
+     "source": "文档 - Hello World 示例"
+    },
+    {
+     "label": "container_notes",
+     "value": "文档未说明容器化场景的特殊注意事项",
+     "source": "文档未提及"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 24.04 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "CPU 核数",
+     "2"
+    ],
+    [
+     "内存",
+     "4Gi"
+    ],
+    [
+     "宿主架构",
+     "amd64"
+    ],
+    [
+     "镜像",
+     "swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base"
+    ],
+    [
+     "镜像来源",
+     "任务默认指定，但与文档不匹配（文档要求 openEuler）"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "用 Playwright 渲染官方文档，搜索并抽取构建RPM包文档（从 docs.openeuler.org 导航到构建RPM包文档，成功抽取开发环境、工作空间、spec模板、构建命令）",
+      "查询 sqlite 包的 SIG 归属（从 SIG 列表页面找到 DB SIG 和 Base-service SIG，判断 sqlite 可能归属于 DB SIG）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建测试 Pod 并配置环境（kubectl apply 创建 Pod，wait Ready 60秒，Pod 使用 Ubuntu 24.04 镜像）",
+      "按文档命令安装 rpmdevtools（Ubuntu 系统无 dnf 命令，文档未提供 Ubuntu 的安装方法，记录为严重缺陷）",
+      "文档外补充：在 Ubuntu 上安装 rpm 构建工具（启用 universe 源，安装 rpm、build-essential、wget，记录为文档缺陷）",
+      "文档外补充：手动创建工作空间（Ubuntu 无 rpmdev-setuptree 命令，手动创建 rpmbuild 目录结构，记录为文档缺陷）",
+      "下载 sqlite 源码包（从 sqlite.org 下载 sqlite-autoconf-3490100.tar.gz（3.1M），耗时 105秒）",
+      "编写 sqlite.spec 文件（基于文档 hello.spec 模板编写 sqlite.spec，记录为文档缺陷（文档未给出 sqlite 示例））",
+      "构建 sqlite RPM 包（使用 rpmbuild -ba --nodeps 成功构建 RPM 包（5.7M）和源码包（3.1M））"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "尝试安装并验证 RPM 包（RPM 包无法在 Ubuntu 上安装（缺少依赖），改用重新构建验证，成功执行 SELECT 1+1 和版本查询）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理文档缺陷为 GitCode Issue（整理 6 个文档缺陷，因缺少 GITCODE_TOKEN 无法自动提交，输出 Issue 标题和正文）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 3
+    },
+    {
+     "name": "安装",
+     "status": "partial",
+     "minutes": 11,
+     "breakpoints": 1
+    },
+    {
+     "name": "使用",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 2
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 16,
+   "result": "partial",
+   "id": 382,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openeuler-ttfhw-openeuler-rpm-build-20260709-07.md",
+   "url": "",
+   "sampleMinutes": 0
+  },
+  {
+   "scenario": "user",
+   "community": "openUBMC",
+   "repo": "openUBMC",
+   "env": {
+    "os": "Ubuntu 22.04.5 LTS",
+    "arch": "x86_64",
+    "image": "ubuntu:22.04"
+   },
+   "defects": [
+    {
+     "title": "官网未说明华为云开源镜像站下载路径",
+     "level": "严重",
+     "source": "https://www.openubmc.cn/zh/download",
+     "detail": "在下载页面明确标注华为云镜像站访问地址和说明，或删除测试目标中的'华为云镜像站'描述"
+    },
+    {
+     "title": "缺少固件快速安装指南",
+     "level": "重要",
+     "source": "https://www.openubmc.cn/docs/zh/development/quick_start/explore_openubmc.html",
+     "detail": "新增'快速试用'章节，说明如何下载和验证固件包"
+    },
+    {
+     "title": "缺少固件烧录/更新指南",
+     "level": "重要",
+     "source": "官网缺失文档",
+     "detail": "编写'固件更新指南'，包括烧录步骤和支持硬件型号"
+    },
+    {
+     "title": "未提供 SHA256 校验值下载",
+     "level": "一般",
+     "source": "https://www.openubmc.cn/zh/download",
+     "detail": "在下载表格中直接显示 SHA256 校验值，提供 .sha256 校验文件下载"
+    },
+    {
+     "title": "缺少 HPM 固件包使用说明",
+     "level": "一般",
+     "source": "https://www.openubmc.cn/zh/download",
+     "detail": "在固件包内添加 README.md，说明文件列表和用途"
+    },
+    {
+     "title": "缺少容器环境验证方案",
+     "level": "提示",
+     "source": "测试环境限制",
+     "detail": "提供 openUBMC QEMU 镜像或在文档中明确说明需要真实硬件"
+    }
+   ],
+   "problems": [
+    {
+     "title": "官网下载页面所有链接指向 repo.openubmc.cn，未提及华为云镜像站",
+     "source": "官网下载页面",
+     "detail": "使用官网提供的链接进行测试，记录为文档缺陷"
+    },
+    {
+     "title": "BMC 固件需要真实硬件，无法在容器环境验证功能",
+     "source": "测试环境限制",
+     "detail": "仅进行文件完整性和内容验证，记录为环境限制"
+    }
+   ],
+   "summary": "模拟用户按官方文档在 Ubuntu 容器内完成 openUBMC 固件包的下载和验证，了解/安装/使用阶段部分成功（可下载固件包并验证完整性），但发现 6 处文档缺陷（华为云镜像站路径缺失、快速安装指南缺失、烧录指南缺失等）。由于 BMC 固件需要真实硬件，无法在容器环境进行功能验证，这是硬件依赖型软件的固有限制。",
+   "depsCount": 0,
+   "attempts": [
+    {
+     "step": "了解",
+     "command": "Playwright 访问 https://www.openubmc.cn",
+     "ok": true,
+     "output": "成功进入官网首页"
+    },
+    {
+     "step": "安装",
+     "command": "kubectl apply -f pod.yaml",
+     "ok": true,
+     "output": "Pod 创建成功"
+    },
+    {
+     "step": "安装",
+     "command": "wget --quiet -O openUBMC-CMT_26.06.00.01.zip https://repo.openubmc.cn/26.06/firmware/openUBMC-CMT_26.06.00.01.zip",
+     "ok": true,
+     "output": "下载成功，文件大小 78MB"
+    },
+    {
+     "step": "使用",
+     "command": "unzip -q openUBMC-CMT_26.06.00.01.zip",
+     "ok": true,
+     "output": "解压成功，包含 License.md、version.xml、openUBMC-CMT_26.06.00.01.hpm"
+    },
+    {
+     "step": "使用",
+     "command": "sha256sum openUBMC-CMT_26.06.00.01.hpm",
+     "ok": true,
+     "output": "SHA256: 249a3a2e3ae323c0fa45e913a0ff6d0d640dc03d8a479507ac47a3a9bb0b21a8"
+    }
+   ],
+   "artifacts": [],
+   "docFacts": [
+    {
+     "label": "文档入口",
+     "value": "https://www.openubmc.cn/zh/download 社区发行版下载页面",
+     "source": "用户指定官方文档入口"
+    },
+    {
+     "label": "前置要求",
+     "value": "华为服务器硬件（Model 2280 V2）；BMC 管理权限",
+     "source": "官网无明确前置要求"
+    },
+    {
+     "label": "安装命令",
+     "value": "wget https://repo.openubmc.cn/26.06/firmware/openUBMC-CMT_26.06.00.01.zip",
+     "source": "官网无安装命令"
+    },
+    {
+     "label": "贡献入口",
+     "value": "缺少固件使用文档",
+     "source": "官网无贡献入口"
+    }
+   ],
+   "envRows": [
+    [
+     "容器 OS",
+     "Ubuntu 22.04.5 LTS"
+    ],
+    [
+     "容器架构",
+     "x86_64"
+    ],
+    [
+     "CPU 核数",
+     "4"
+    ],
+    [
+     "内存",
+     "8Gi"
+    ],
+    [
+     "宿主架构",
+     "x86_64"
+    ],
+    [
+     "镜像",
+     "ubuntu:22.04"
+    ],
+    [
+     "镜像来源",
+     "官网未提供容器镜像，使用基础镜像进行固件包下载验证"
+    ]
+   ],
+   "ops": [
+    {
+     "phase": "了解",
+     "steps": [
+      "使用 Playwright 访问官网首页，点击下载和文档导航（找到固件包下载链接，但未找到华为云镜像站路径说明）"
+     ]
+    },
+    {
+     "phase": "安装",
+     "steps": [
+      "创建测试 Pod（ubuntu:22.04 基础镜像）（Pod 在 amd64 节点成功运行）",
+      "下载固件包并安装验证工具（成功下载 78MB 固件包并计算 SHA256）"
+     ]
+    },
+    {
+     "phase": "使用",
+     "steps": [
+      "解压固件包并查看内容（确认包含 License、version.xml 和 HPM 固件文件）",
+      "环境实证：cat /etc/os-release、uname -m（确认 Pod 环境：Ubuntu 22.04.5 LTS, x86_64 架构）"
+     ]
+    },
+    {
+     "phase": "贡献",
+     "steps": [
+      "整理 6 个文档缺陷（缺陷涵盖华为云镜像站缺失、快速安装指南缺失、烧录指南缺失等）"
+     ]
+    }
+   ],
+   "breakpoints": 6,
+   "phases": [
+    {
+     "name": "了解",
+     "status": "partial",
+     "minutes": 3,
+     "breakpoints": 2
+    },
+    {
+     "name": "安装",
+     "status": "success",
+     "minutes": 2,
+     "breakpoints": 2
+    },
+    {
+     "name": "使用",
+     "status": "partial",
+     "minutes": 1,
+     "breakpoints": 2
+    },
+    {
+     "name": "贡献",
+     "status": "success",
+     "minutes": 1,
+     "breakpoints": 0
+    }
+   ],
+   "totalMinutes": 7,
+   "result": "partial",
+   "id": 383,
+   "scene": "",
+   "date": "2026-07-09",
+   "month": "2026-07",
+   "reportFile": "reports/user/2026-07-openubmc-ttfhw-openubmc-huaweicloud-mirror-install-20260709-67.md",
+   "url": "",
+   "sampleMinutes": 0
   }
  ]
 }
