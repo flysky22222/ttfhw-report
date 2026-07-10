@@ -4,11 +4,11 @@
 
 - 目标：`ms-swift 4.3.0`
 - 时间：2026-06-15T09:00:00 ~ 2026-06-15T09:48:00（2880 秒）
-- 镜像：`` —— 历史 md 报告未结构化记录镜像
+- 镜像：`swr.cn-south-1.myhuaweicloud.com/ascendhub/ubuntu:24.04-base` —— 从历史 md 正文解析机器/镜像
 
 ## 二、环境
 
-- 容器 OS：｜架构：｜Python：
+- 容器 OS：Ubuntu 24.04｜架构：｜Python：
 
 ## 三、文档阅读 / 抽取
 

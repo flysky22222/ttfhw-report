@@ -14799,7 +14799,7 @@
     }
    ],
    "totalMinutes": 130,
-   "result": "failed",
+   "result": "partial",
    "defects": [
     {
      "title": "源码安装缺少 CANN toolkit 具体安装命令，文档仅给外链无操作步骤，裸容器内无法执行（最高频、最严重）。",
